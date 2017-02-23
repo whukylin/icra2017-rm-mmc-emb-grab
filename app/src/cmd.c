@@ -21,22 +21,21 @@
 /**********************************************/
 
 PeriphsState_t functionalStateRef;
-PantiltState_t pantiltPositionRef;
 ChassisState_t chassisVelocityRef;
 MecanumState_t mecanumVelocityRef; // Auto-Wired
 
 void Cmd_Init()
 {
+	DCI_Init();
+
 	FS_Clr(&functionalStateRef, FS_ALL);
-	GS_Set(&pantiltPositionRef, 0, 0);
 	CS_Set(&chassisVelocityRef, 0, 0, 0);
 	MS_Set(&mecanumVelocityRef, 0, 0, 0, 0);
 }
 
 void Cmd_Proc()
 {
-	LIMIT(pantiltPositionRef.y,  cfg.yaw.posCfg.min, cfg.yaw.posCfg.max);
-	LIMIT(pantiltPositionRef.p,  cfg.pit.posCfg.min, cfg.pit.posCfg.max);
+	DCI_Proc();
 	LIMIT(chassisVelocityRef.x, -cfg.cha.spdCfg.max, cfg.cha.spdCfg.max);
 	LIMIT(chassisVelocityRef.y, -cfg.cha.spdCfg.max, cfg.cha.spdCfg.max);
 	LIMIT(chassisVelocityRef.z, -cfg.cha.spdCfg.max, cfg.cha.spdCfg.max);

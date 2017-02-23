@@ -18,9 +18,14 @@
 #define __DCI_H__
 
 #include "dbus.h"
+#include "rci.h"
+#include "hci.h"
+#include "wdg.h"
 
 void DCI_Init();
 void DCI_Proc();
+
+void Rcv_Proc(uint8_t* buf);
 
 extern DBUS_t dbus;
 

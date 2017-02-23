@@ -27,17 +27,8 @@ typedef uint32_t PeriphsState_t; // Peripherals Functional State
 
 #define FS_LED_GREEN      	(((uint32_t)1)<<0)
 #define FS_LED_RED        	(((uint32_t)1)<<1)
-#define FS_GUN      		(((uint32_t)1)<<2)
-#define FS_LASER    		(((uint32_t)1)<<3)
-#define FS_SPINNER  		(((uint32_t)1)<<4)
-#define FS_ALL      		(FS_LED_GREEN|FS_LED_RED|FS_GUN|FS_LASER|FS_SPINNER)
+#define FS_ALL      		(FS_LED_GREEN|FS_LED_RED)
 #define FS_NON       		((uint32_t)0)
-
-typedef struct
-{
-	float y;
-	float p;
-}PantiltState_t;
 
 typedef struct
 {
@@ -59,7 +50,6 @@ void FS_Set(PeriphsState_t* fs, PeriphsState_t msk);
 void FS_Clr(PeriphsState_t* fs, PeriphsState_t msk);
 void FS_Tog(PeriphsState_t* fs, PeriphsState_t msk);
 void CS_Set(ChassisState_t* cs, float x, float y, float z);
-void GS_Set(PantiltState_t* gs, float y, float p);
 void MS_Set(MecanumState_t* ms, float w1, float w2, float w3, float w4);
 
 #ifdef __cplusplus

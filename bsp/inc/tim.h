@@ -53,4 +53,5 @@ void Tim_Stop();
 void TickTimCallback();
 void SyncTimCallback();
 
-#endif /* __TIM_H__ */
+#endif
+

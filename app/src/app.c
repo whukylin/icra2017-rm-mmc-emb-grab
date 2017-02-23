@@ -25,8 +25,6 @@ void App_Init()
 	Bsp_Config();
 
 	Act_Init();
-	Can_Init();
-	Cfg_Init();
 	Clk_Init();
 	Cmd_Init();
 	Com_Init();
@@ -35,7 +33,7 @@ void App_Init()
 	Wdg_Init();
 }
 
-void App_Sync()
+void App_Proc()
 {
 	Wdg_Proc();
 	Cmd_Proc();
@@ -44,6 +42,3 @@ void App_Sync()
 	Act_Proc();
 }
 
-void App_Proc()
-{
-}

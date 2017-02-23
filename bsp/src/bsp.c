@@ -26,10 +26,6 @@ void Bsp_Config()
 	Can1_Config();
 	Can2_Config();
 	Rcv_Config();
-	Gun_Config();
-	Laser_Config();
-	Spinner_Config();
-	MPU6050_Config();
 	Tim_Start();
 	LED_GREEN_ON();
 }

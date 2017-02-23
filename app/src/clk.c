@@ -20,8 +20,8 @@
 /*     System Clock Source     */
 /*******************************/
 
-static uint32_t us_tick;
-static uint32_t ms_tick;
+static volatile uint32_t us_tick;
+static volatile uint32_t ms_tick;
 
 void Clk_Init()
 {

@@ -25,6 +25,7 @@
 extern "C" {
 #endif
 
+#include "dci.h"
 #include "sys.h"
 #include "mec.h"
 #include "cfg.h"
@@ -34,7 +35,6 @@ void Cmd_Init();
 void Cmd_Proc();
 
 extern PeriphsState_t functionalStateRef;
-extern PantiltState_t pantiltPositionRef;
 extern ChassisState_t chassisVelocityRef;
 extern MecanumState_t mecanumVelocityRef; // Auto-Wired
 

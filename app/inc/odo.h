@@ -28,16 +28,12 @@ extern "C" {
 #include "bsp.h"
 #include "can.h"
 #include "sys.h"
-#include "ins.h"
 #include "mec.h"
 
 void Odo_Init();
 void Odo_Proc();
 
 extern PeriphsState_t functionalStateFdb;
-extern PantiltState_t pantiltPositionFdb;
-extern PantiltState_t pantiltVelocityFdb;
-extern PantiltState_t pantiltCurrentsFdb;
 extern MecanumState_t mecanumPositionFdb;
 extern MecanumState_t mecanumVelocityFdb;
 extern MecanumState_t mecanumCurrentsFdb;

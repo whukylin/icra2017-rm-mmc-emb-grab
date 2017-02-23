@@ -1,10 +1,10 @@
-asp/src/dbus.o: /home/bj/workspace/eclipse/stm32/kylinbot/asp/src/dbus.c \
- /home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/dbus.h \
- /home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/rcp.h \
- /home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/hcp.h
+asp/src/dbus.o: H:/bj/workspace/eclipse/stm/kylinbot/asp/src/dbus.c \
+ h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\dbus.h \
+ h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\rcp.h \
+ h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\hcp.h
 
-/home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/dbus.h:
+h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\dbus.h:
 
-/home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/rcp.h:
+h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\rcp.h:
 
-/home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/hcp.h:
+h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\hcp.h:

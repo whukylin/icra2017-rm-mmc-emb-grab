@@ -39,11 +39,6 @@ static void ChassisStateAct()
 	CM_CMD(mecanumCurrentsCtl.w1, mecanumCurrentsCtl.w2, mecanumCurrentsCtl.w3, mecanumCurrentsCtl.w4);
 }
 
-static void PantiltStateAct()
-{
-	GM_CMD(pantiltCurrentsCtl.y, pantiltCurrentsCtl.p);
-}
-
 void Act_Init()
 {
 	CM_CMD(0, 0, 0, 0);
@@ -54,5 +49,4 @@ void Act_Proc()
 {
 	PeriphsStateAct();
 	ChassisStateAct();
-	PantiltStateAct();
 }

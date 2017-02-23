@@ -24,6 +24,8 @@ extern "C" {
 #include "rcp.h"
 #include "hcp.h"
 
+#define DBUS_FRAME_LEN 18
+
 /* --------------------- DBUS = RCP + HCP ------------------------ */
 #define HCP_OFFSET 6
 

@@ -24,6 +24,7 @@
 
 void Com_Init()
 {
+	Cfg_Init();
 }
 
 void Com_Proc()

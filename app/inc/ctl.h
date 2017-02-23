@@ -30,7 +30,6 @@ extern "C" {
 #include "cmd.h"
 #include "odo.h"
 #include "sys.h"
-#include "ini.h"
 #include "wdg.h"
 
 typedef enum {
@@ -40,15 +39,6 @@ typedef enum {
 	WORKING_STATE_CONFIG,
 }WorkingState_e;
 
-typedef enum {
-	WORKING_STATE_SWITCH_NOP, // Working State Switch: No Operation
-	WORKING_STATE_SWITCH_S2P, // Working State Switch: Stop -> Prepare
-	WORKING_STATE_SWITCH_P2N, // Working State Switch: Prepare -> Normal
-	WORKING_STATE_SWITCH_N2P, // Working State Switch: Normal -> Prepare
-	WORKING_STATE_SWITCH_P2S, // Working State Switch: Prepare -> Stop
-	WORKING_STATE_SWITCH_N2S, // Working State Switch: Normal -> Stop
-}WorkingStateSwitch_e;
-
 void Ctl_Init();
 void Ctl_Proc();
 
@@ -56,27 +46,18 @@ void Ctl_Proc();
 /*             Exported Variables             */
 /**********************************************/
 extern WorkingState_e workingState; // Auto-Controlled
-extern WorkingStateSwitch_e workingStateSwitch; // Auto-Controlled
 
 extern PID_t CM1SpeedPID;
 extern PID_t CM2SpeedPID;
 extern PID_t CM3SpeedPID;
 extern PID_t CM4SpeedPID;
-extern PID_t GMYAnglePID;
-extern PID_t GMYSpeedPID;
-extern PID_t GMPAnglePID;
-extern PID_t GMPSpeedPID;
 
 extern Ramp_t CM1SpeedRamp;
 extern Ramp_t CM2SpeedRamp;
 extern Ramp_t CM3SpeedRamp;
 extern Ramp_t CM4SpeedRamp;
-extern Ramp_t GMYSpeedRamp;
-extern Ramp_t GMPSpeedRamp;
 
 extern PeriphsState_t functionalStateCtl;
-extern PantiltState_t pantiltVelocityCtl;
-extern PantiltState_t pantiltCurrentsCtl;
 extern MecanumState_t mecanumCurrentsCtl;
 
 #ifdef __cplusplus

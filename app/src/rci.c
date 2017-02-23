@@ -57,17 +57,8 @@ static void GetFunctionalStateRef(RCP_t* rcp)
 {
 	switch (switchEvents[SW_IDX_L]) {
 		case SWITCH_EVENT_3TO1:
-			FS_Tog(&functionalStateRef, FS_GUN);
-			if (FS_Get(&functionalStateRef, FS_GUN)) {
-				FS_Set(&functionalStateRef, FS_LASER);
-			}
 			break;
 		case SWITCH_EVENT_3TO2:
-			if (FS_Get(&functionalStateRef, FS_GUN)) {
-				FS_Tog(&functionalStateRef, FS_SPINNER);
-			} else {
-				FS_Clr(&functionalStateRef, FS_SPINNER);
-			}
 			break;
 		default:
 			break;
@@ -79,12 +70,6 @@ static void GetChassisVelocityRef(RCP_t* rcp)
 	chassisVelocityRef.x = map(rcp->ch[0], CH_MIN, CH_MAX, -cfg.cha.spdCfg.max, cfg.cha.spdCfg.max);
 	chassisVelocityRef.y = map(rcp->ch[1], CH_MIN, CH_MAX, -cfg.cha.spdCfg.max, cfg.cha.spdCfg.max);
 	chassisVelocityRef.z = map(rcp->ch[2], CH_MIN, CH_MAX, -cfg.cha.spdCfg.max, cfg.cha.spdCfg.max);
-}
-
-static void GetPantiltPositionRef(RCP_t* rcp)
-{
-	pantiltPositionRef.y += map(rcp->ch[2], CH_MIN, CH_MAX, -cfg.yaw.spdCfg.max, cfg.yaw.spdCfg.max);
-	pantiltPositionRef.p += map(rcp->ch[3], CH_MIN, CH_MAX, -cfg.pit.spdCfg.max, cfg.pit.spdCfg.max);
 }
 
 void RCI_Init()
@@ -103,6 +88,5 @@ void RCI_Proc(RCP_t* rcp)
 {
 	GetFunctionalStateRef(rcp);
 	GetChassisVelocityRef(rcp);
-	GetPantiltPositionRef(rcp);
 }
 

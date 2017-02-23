@@ -20,17 +20,17 @@
 #include "stm32util.h"
 #include "fifo.h"
 
-#define TTY_TX_PIN PB10
-#define TTY_RX_PIN PB11
-#define TTY_USART USART3
-#define TTY_USART_BR 115200
+#define TTY_TX_PIN PD5
+#define TTY_RX_PIN PD6
+#define TTY_USART USART2
+#define TTY_USART_BR 9600
 #define TTY_USART_WL 8
 #define TTY_USART_PA 'N'
 #define TTY_USART_SB 1
 #define TTY_USART_FC 'N'
 
-#define TTY_IRQ_HANDLER IRQ_HANDLER(USART3)
-#define TTY_NVIC IRQ(USART3)
+#define TTY_IRQ_HANDLER IRQ_HANDLER(USART2)
+#define TTY_NVIC IRQ(USART2)
 #define TTY_NVIC_PRE_PRIORITY 1
 #define TTY_NVIC_SUB_PRIORITY 0
 
@@ -38,7 +38,6 @@
 #define TTY_TX_FIFO_SIZE 256u
 
 void Tty_Config();
-//void Tty_SetRxCallback(void (func(uint8_t)));
 
 uint8_t Tty_ReadByte();
 void Tty_WriteByte(uint8_t b);

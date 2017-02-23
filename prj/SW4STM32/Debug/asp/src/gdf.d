@@ -1,4 +1,4 @@
-asp/src/gdf.o: /home/bj/workspace/eclipse/stm32/kylinbot/asp/src/gdf.c \
- /home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/gdf.h
+asp/src/gdf.o: H:/bj/workspace/eclipse/stm/kylinbot/asp/src/gdf.c \
+ h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\gdf.h
 
-/home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/gdf.h:
+h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\gdf.h:

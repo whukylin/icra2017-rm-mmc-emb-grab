@@ -21,9 +21,6 @@
 /**********************************************/
 
 PeriphsState_t functionalStateFdb;
-PantiltState_t pantiltPositionFdb;
-PantiltState_t pantiltVelocityFdb;
-PantiltState_t pantiltCurrentsFdb;
 MecanumState_t mecanumPositionFdb;
 MecanumState_t mecanumVelocityFdb;
 MecanumState_t mecanumCurrentsFdb;
@@ -42,24 +39,6 @@ static void GetFunctionalStateFdb()
 	} else {
 		functionalStateFdb &= ~FS_LED_RED;
 	}
-}
-
-static void GetPantiltPositionFdb()
-{
-	pantiltPositionFdb.y = motor[4].angle;
-	pantiltPositionFdb.p = motor[5].angle;
-}
-
-static void GetPantiltVelocityFdb()
-{
-	pantiltVelocityFdb.y = motor[4].rate;
-	pantiltVelocityFdb.p = motor[5].rate;
-}
-
-static void GetPantiltCurrentsFdb()
-{
-	pantiltCurrentsFdb.y = motor[4].current_fdb;
-	pantiltCurrentsFdb.p = motor[5].current_fdb;
 }
 
 static void GetMecanumPositionFdb()
@@ -98,10 +77,9 @@ static void GetChassisVelocityFdb()
 
 void Odo_Init()
 {
+	Can_Init();
+
 	FS_Clr(&functionalStateFdb, FS_ALL);
-	GS_Set(&pantiltPositionFdb, 0, 0);
-	GS_Set(&pantiltVelocityFdb, 0, 0);
-	GS_Set(&pantiltCurrentsFdb, 0, 0);
 	CS_Set(&chassisPositionFdb, 0, 0, 0);
 	CS_Set(&chassisVelocityFdb, 0, 0, 0);
 	MS_Set(&mecanumPositionFdb, 0, 0, 0, 0);
@@ -112,9 +90,6 @@ void Odo_Init()
 void Odo_Proc()
 {
 	GetFunctionalStateFdb();
-	GetPantiltPositionFdb();
-	GetPantiltVelocityFdb();
-	GetPantiltCurrentsFdb();
 	GetMecanumPositionFdb();
 	GetMecanumVelocityFdb();
 	GetMecanumCurrentsFdb();

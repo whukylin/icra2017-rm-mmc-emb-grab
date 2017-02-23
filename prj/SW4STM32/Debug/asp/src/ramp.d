@@ -1,4 +1,4 @@
-asp/src/ramp.o: /home/bj/workspace/eclipse/stm32/kylinbot/asp/src/ramp.c \
- /home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/ramp.h
+asp/src/ramp.o: H:/bj/workspace/eclipse/stm/kylinbot/asp/src/ramp.c \
+ h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\ramp.h
 
-/home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/ramp.h:
+h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\ramp.h:

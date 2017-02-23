@@ -1,5 +1,4 @@
-asp/src/stack.o: \
- /home/bj/workspace/eclipse/stm32/kylinbot/asp/src/stack.c \
- /home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/stack.h
+asp/src/stack.o: H:/bj/workspace/eclipse/stm/kylinbot/asp/src/stack.c \
+ h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\stack.h
 
-/home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/stack.h:
+h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\stack.h:

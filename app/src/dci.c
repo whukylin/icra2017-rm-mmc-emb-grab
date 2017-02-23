@@ -16,9 +16,29 @@
 
 #include "dci.h"
 
+static uint8_t dbuf[DBUS_FRAME_LEN];
+
 DBUS_t dbus;
+
+void DCI_Init()
+{
+	DBUS_Rst(&dbus);
+}
+
+void DCI_Proc()
+{
+	DBUS_Dec(&dbus, dbuf);
+	GetSwitchStates(&dbus.rcp);
+	GetSwitchEvents(&dbus.rcp);
+	if (switchStates[SW_IDX_R] == SWITCH_STATE_1) {
+		RCI_Proc(&dbus.rcp);
+	} else if (switchStates[SW_IDX_R] == SWITCH_STATE_2) {
+		HCI_Proc(&dbus.hcp);
+	}
+}
 
 void Rcv_Proc(uint8_t* buf)
 {
-	DBUS_Dec(&dbus, buf);
+	Wdg_Feed(WDG_IDX_RC);
+	memcpy(dbuf, buf, DBUS_FRAME_LEN);
 }

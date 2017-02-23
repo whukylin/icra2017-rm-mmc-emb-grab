@@ -57,16 +57,6 @@ static void GetFunctionalStateRef(HCP_t* hcp)
 {
 	GetMouseButtonStates(hcp);
 	GetMouseButtonEvents(hcp);
-	if (mouseButtonStates[MOUSE_BTN_IDX_R]) {
-		FS_Set(&functionalStateRef, FS_GUN | FS_LASER);
-		if (mouseButtonStates[MOUSE_BTN_IDX_L]) {
-			FS_Set(&functionalStateRef, FS_SPINNER);
-		} else {
-			FS_Clr(&functionalStateRef, FS_SPINNER);
-		}
-	} else {
-		FS_Clr(&functionalStateRef, FS_GUN | FS_LASER | FS_SPINNER);
-	}
 }
 
 static MAFilter_t fx, fy, fz;
@@ -80,12 +70,6 @@ static void GetChassisVelocityRef(HCP_t* hcp)
 	chassisVelocityRef.x = MAFilter_Calc(&fx, vx);
 	chassisVelocityRef.y = MAFilter_Calc(&fy, vy);
 	chassisVelocityRef.z = MAFilter_Calc(&fz, vz);
-}
-
-static void GetPantiltPositionRef(HCP_t* hcp)
-{
-	pantiltPositionRef.y += map(hcp->mouse.x, MOUSE_SPEED_MIN, MOUSE_SPEED_MAX, -cfg.yaw.spdCfg.max, cfg.yaw.spdCfg.max);
-	pantiltPositionRef.p += map(hcp->mouse.y, MOUSE_SPEED_MIN, MOUSE_SPEED_MAX, -cfg.pit.spdCfg.max, cfg.pit.spdCfg.max);
 }
 
 void Hci_Init()
@@ -107,5 +91,4 @@ void Hci_Proc(HCP_t* hcp)
 {
 	GetFunctionalStateRef(hcp);
 	GetChassisVelocityRef(hcp);
-	GetPantiltPositionRef(hcp);
 }

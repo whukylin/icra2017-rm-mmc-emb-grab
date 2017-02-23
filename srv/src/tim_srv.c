@@ -23,5 +23,5 @@ void TickTimCallback()
 
 void SyncTimCallback()
 {
-	//App_Sync();
+	App_Proc();
 }

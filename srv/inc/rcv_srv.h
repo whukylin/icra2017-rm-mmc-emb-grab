@@ -21,7 +21,7 @@
 extern "C" {
 #endif
 
-#include "ims.h"
+#include "dci.h"
 
 #ifdef __cplusplus
 }

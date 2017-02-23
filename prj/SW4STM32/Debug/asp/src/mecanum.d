@@ -1,5 +1,4 @@
-asp/src/mecanum.o: \
- /home/bj/workspace/eclipse/stm32/kylinbot/asp/src/mecanum.c \
- /home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/mecanum.h
+asp/src/mecanum.o: H:/bj/workspace/eclipse/stm/kylinbot/asp/src/mecanum.c \
+ h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\mecanum.h
 
-/home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/mecanum.h:
+h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\mecanum.h:

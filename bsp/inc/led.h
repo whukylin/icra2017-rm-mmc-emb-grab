@@ -19,8 +19,8 @@
 
 #include "stm32util.h"
 
-#define LED_GREEN_PIN PC1
-#define LED_RED_PIN   PC2
+#define LED_GREEN_PIN PF14
+#define LED_RED_PIN   PE7
 
 #define LED_GREEN_STATE()   GPIO_READ_OUT(LED_GREEN_PIN)
 #define LED_GREEN_IS_ON()   (LED_GREEN_STATE() != 0)
@@ -38,4 +38,5 @@
 
 void Led_Config();
 
-#endif /* __LED_H__ */
+#endif
+

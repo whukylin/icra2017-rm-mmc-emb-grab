@@ -1,7 +1,7 @@
-asp/src/cbus.o: /home/bj/workspace/eclipse/stm32/kylinbot/asp/src/cbus.c \
- /home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/cbus.h \
- /home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/crc16.h
+asp/src/cbus.o: H:/bj/workspace/eclipse/stm/kylinbot/asp/src/cbus.c \
+ h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\cbus.h \
+ h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\crc16.h
 
-/home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/cbus.h:
+h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\cbus.h:
 
-/home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/crc16.h:
+h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\crc16.h:

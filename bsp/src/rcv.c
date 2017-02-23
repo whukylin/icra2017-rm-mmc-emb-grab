@@ -16,8 +16,6 @@
  
 #include "rcv.h"
 
-//void (*rcv_out)(uint8_t* buf);
-
 static uint8_t buf[2][RCV_DMA_BUF_SIZE];
 
 void Rcv_Config()

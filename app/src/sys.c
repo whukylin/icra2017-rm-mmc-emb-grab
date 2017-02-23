@@ -43,12 +43,6 @@ void CS_Set(ChassisState_t* cs, float x, float y, float z)
 	cs->z = z;
 }
 
-void GS_Set(PantiltState_t* gs, float y, float p)
-{
-	gs->y = y;
-	gs->p = p;
-}
-
 void MS_Set(MecanumState_t* ms, float w1, float w2, float w3, float w4)
 {
 	ms->w1 = w1;

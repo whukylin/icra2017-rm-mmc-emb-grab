@@ -19,7 +19,7 @@
 
 #include "platform.h"
 
-#define MOTOR_CAN CAN2
+#define MOTOR_CAN CAN1
 #define CM_CMD(c201,c202,c203,c204) CM_Cmd(MOTOR_CAN,c201,c202,c203,c204)
 #define GM_CMD(c205,c206) GM_Cmd(MOTOR_CAN,c205,c206)
 

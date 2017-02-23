@@ -1,4 +1,4 @@
-asp/src/rcp.o: /home/bj/workspace/eclipse/stm32/kylinbot/asp/src/rcp.c \
- /home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/rcp.h
+asp/src/rcp.o: H:/bj/workspace/eclipse/stm/kylinbot/asp/src/rcp.c \
+ h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\rcp.h
 
-/home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/rcp.h:
+h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\rcp.h:
