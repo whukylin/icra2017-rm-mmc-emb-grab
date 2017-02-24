@@ -22,7 +22,7 @@ void Sch_Init()
 {
 	uint32_t tick = Clk_GetMsTick();
 	SchTask_t* curr = list;
-	for (; curr != NULL; curr = curr->next) {
+	for (; curr != NULL; curr = (SchTask_t*)curr->next) {
 		curr->lastrun = tick;
 	}
 }
@@ -84,7 +84,9 @@ uint8_t Sch_Arrange(SchRun_t run, uint32_t interval)
 
 uint8_t Sch_Dismiss(SchRun_t run)
 {
-	if (list->run == run) {
+	if (list == NULL) {
+		return 0;
+	} else if (list->run == run) {
 		freeSchTask(list);
 		return 1;
 	} else {

@@ -1,7 +1,7 @@
-app/src/mec.o: H:/bj/workspace/eclipse/stm/kylinbot/app/src/mec.c \
- h:\bj\workspace\eclipse\stm\kylinbot\app\inc\mec.h \
- h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\mecanum.h
+app/src/mec.o: /home/bj/workspace/eclipse/stm32/kylinbot/app/src/mec.c \
+ /home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../app/inc/mec.h \
+ /home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/mecanum.h
 
-h:\bj\workspace\eclipse\stm\kylinbot\app\inc\mec.h:
+/home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../app/inc/mec.h:
 
-h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\mecanum.h:
+/home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/mecanum.h:

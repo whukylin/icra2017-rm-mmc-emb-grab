@@ -16,30 +16,29 @@
 
 #include "retarget.h"
 
-static uint8_t (*_in)(void);
+static uint8_t (*_in)();
 static void (*_out)(uint8_t);
 
-void dev_in(uint8_t (*in)(void))
+void Retarget_In(uint8_t (*in)())
 {
 	_in = in;
 }
 
-void dev_out(void (*out)(uint8_t))
+void Retarget_Out(void (*out)(uint8_t))
 {
 	_out = out;
 }
 
-/*
-int putc(int c, FILE* f)
+
+PUTCHAR_PROTOTYPE
 {
 	if (_out) _out(c);
 	return c;
 }
 
-int getc(FILE* f)
+GETCHAR_PROTOTYPE
 {
 	if (_in) return _in();
-	return Btm_ReadByte();
+	return 0;
 }
-*/
 

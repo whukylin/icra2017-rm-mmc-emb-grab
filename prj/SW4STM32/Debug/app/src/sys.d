@@ -1,4 +1,4 @@
-app/src/sys.o: H:/bj/workspace/eclipse/stm/kylinbot/app/src/sys.c \
- h:\bj\workspace\eclipse\stm\kylinbot\app\inc\sys.h
+app/src/sys.o: /home/bj/workspace/eclipse/stm32/kylinbot/app/src/sys.c \
+ /home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../app/inc/sys.h
 
-h:\bj\workspace\eclipse\stm\kylinbot\app\inc\sys.h:
+/home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../app/inc/sys.h:

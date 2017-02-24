@@ -1,4 +1,5 @@
-asp/src/kalman.o: H:/bj/workspace/eclipse/stm/kylinbot/asp/src/kalman.c \
- h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\kalman.h
+asp/src/kalman.o: \
+ /home/bj/workspace/eclipse/stm32/kylinbot/asp/src/kalman.c \
+ /home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/kalman.h
 
-h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\kalman.h:
+/home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../asp/inc/kalman.h:

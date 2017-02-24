@@ -18,9 +18,12 @@
 
 int main()
 {
-	App_Init();
+	//App_Init();
+	Bsp_Config();
 	while(1)
 	{
-
+		//printf("Hello, Jack.\n");
+		LED_GREEN_TOG();
+		delay_ms(500);
     }
 }

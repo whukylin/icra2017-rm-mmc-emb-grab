@@ -18,9 +18,16 @@
 #define __RETARGET_H__
 
 #include <stdio.h>
-#include "btm.h"
 
-void dev_in(uint8_t (*in)(void));
-void dev_out(void (*out)(uint8_t));
+#ifdef __GNUC__
+#define PUTCHAR_PROTOTYPE int __io_putchar(int c)
+#define GETCHAR_PROTOTYPE int __io_getchar(void)
+#else
+#define PUTCHAR_PROTOTYPE int fput(int c, FILE* f)
+#define GETCHAR_PROTOTYPE int fgetc(FILE* f)
+#endif
+
+void Retarget_In(uint8_t (*in)());
+void Retarget_Out(void (*out)(uint8_t));
 
 #endif

@@ -24,7 +24,7 @@
 
 typedef void (*SchRun_t)(void);
 
-typedef struct
+typedef struct SchTask_t
 {
 	SchRun_t run;
 	uint32_t interval;

@@ -1,4 +1,4 @@
-app/src/clk.o: H:/bj/workspace/eclipse/stm/kylinbot/app/src/clk.c \
- h:\bj\workspace\eclipse\stm\kylinbot\app\inc\clk.h
+app/src/clk.o: /home/bj/workspace/eclipse/stm32/kylinbot/app/src/clk.c \
+ /home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../app/inc/clk.h
 
-h:\bj\workspace\eclipse\stm\kylinbot\app\inc\clk.h:
+/home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/../../app/inc/clk.h:
