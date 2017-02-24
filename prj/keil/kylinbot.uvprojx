@@ -10,7 +10,7 @@
       <TargetName>kylinbot</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060422::V5.06 update 4 (build 422)::ARMCC</pCCUsed>
+      <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F427IIHx</Device>
@@ -662,6 +662,11 @@
               <FilePath>..\..\asp\inc\dbus.h</FilePath>
             </File>
             <File>
+              <FileName>ekf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\asp\inc\ekf.h</FilePath>
+            </File>
+            <File>
               <FileName>est.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\asp\inc\est.h</FilePath>
@@ -672,11 +677,6 @@
               <FilePath>..\..\asp\inc\fifo.h</FilePath>
             </File>
             <File>
-              <FileName>gauss.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\asp\inc\gauss.h</FilePath>
-            </File>
-            <File>
               <FileName>gdf.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\asp\inc\gdf.h</FilePath>
@@ -685,11 +685,6 @@
               <FileName>hcp.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\asp\inc\hcp.h</FilePath>
-            </File>
-            <File>
-              <FileName>kalman.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\asp\inc\kalman.h</FilePath>
             </File>
             <File>
               <FileName>mafilter.h</FileName>
@@ -747,6 +742,11 @@
               <FilePath>..\..\asp\src\dbus.c</FilePath>
             </File>
             <File>
+              <FileName>ekf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\asp\src\ekf.c</FilePath>
+            </File>
+            <File>
               <FileName>est.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\asp\src\est.c</FilePath>
@@ -757,11 +757,6 @@
               <FilePath>..\..\asp\src\fifo.c</FilePath>
             </File>
             <File>
-              <FileName>gauss.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\asp\src\gauss.c</FilePath>
-            </File>
-            <File>
               <FileName>gdf.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\asp\src\gdf.c</FilePath>
@@ -770,11 +765,6 @@
               <FileName>hcp.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\asp\src\hcp.c</FilePath>
-            </File>
-            <File>
-              <FileName>kalman.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\asp\src\kalman.c</FilePath>
             </File>
             <File>
               <FileName>mafilter.c</FileName>
