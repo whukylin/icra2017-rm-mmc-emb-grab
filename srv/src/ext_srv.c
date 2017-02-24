@@ -15,9 +15,11 @@
  */
  
 #include "ext_srv.h"
- 
+#include "led.h"
+
 void BtnCallback()
 {
+	LED_RED_TOG();
 }
 
  

@@ -22,8 +22,13 @@ int main()
 	Bsp_Config();
 	while(1)
 	{
+		
+		//USART_SendData(BTM_USART, 'a');
 		//printf("Hello, Jack.\n");
-		LED_GREEN_TOG();
-		delay_ms(500);
-    }
+		if (TICK_US() % 500000 == 0) {
+			Btm_Print("Hello, Jack.\n");
+			LED_GREEN_TOG();
+			delay_ms(500);
+		}
+  }
 }

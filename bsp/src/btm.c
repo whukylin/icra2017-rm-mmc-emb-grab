@@ -87,14 +87,14 @@ void BTM_IRQ_HANDLER()
 {
     if (USART_GetITStatus(BTM_USART, USART_IT_TXE) != RESET)
     {
-		if (!FIFO_IsEmpty(&tx_fifo))
-		{
-			uint8_t tx_data = 0;
-			FIFO_Pop(&tx_fifo, &tx_data, 1);
-			USART_SendData(BTM_USART, tx_data);
-		} else {
-			USART_ITConfig(BTM_USART, USART_IT_TXE, DISABLE);
-		}
+			if (!FIFO_IsEmpty(&tx_fifo))
+			{
+				uint8_t tx_data = 0;
+				FIFO_Pop(&tx_fifo, &tx_data, 1);
+				USART_SendData(BTM_USART, tx_data);
+			} else {
+				USART_ITConfig(BTM_USART, USART_IT_TXE, DISABLE);
+			}
     }
 	else if (USART_GetITStatus(BTM_USART, USART_IT_RXNE) != RESET)
     {

@@ -20,10 +20,16 @@
 #include "stm32util.h"
 
 #define BTN_PIN PD10
+#define BTN_EXTI_LINE EXTI_Line10
+#define BTN_IRQ_HANDLER IRQ_HANDLER(EXTI15_10)
+#define BTN_NVIC IRQ(EXTI15_10)
+#define BTN_NVIC_PRE_PRIORITY 2
+#define BTN_NVIC_SUB_PRIORITY 2
+
 #define BTN_STATE() GPIO_READ_IN(BTN_PIN)
-//#define BTN_NVIC
 
 void Btn_Config();
 
+void BtnCallback();
 
 #endif

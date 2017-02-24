@@ -18,6 +18,7 @@
  
 void BtmRxCallback(uint8_t data)
 {
+	Btm_WriteByte(data);
 }
 
  
