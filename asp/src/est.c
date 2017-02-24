@@ -16,63 +16,71 @@
 
 #include "est.h"
 
-Est_t* Est_Create(uint32_t gaussN, float kalmanQ)
+void Est_Init(Est_t* est, Gdf_t* gdf, Ekf_t* ekf)
 {
-	Est_t* est = (Est_t*)malloc(sizeof(Est_t));
-	if (est == NULL) {
-		return NULL;
-	}
-	est->gauss = GaussCreate(gaussN);
-	if (est->gauss == NULL) {
-		free(est);
-		est = NULL;
-		return NULL;
-	}
-	est->kalman = KalmanCreate();
-	if (est->kalman == NULL) {
-		GaussDestroy(est->gauss);
-		free(est);
-		est = NULL;
-		return NULL;
-	}
-	KalmanSetQ(est->kalman, kalmanQ);
-	est->error = FLT_MAX;
-	return est;
+	est->gdf = gdf;
+	est->ekf = ekf;
+	Est_Reset(est);
 }
-
 void Est_Proc(Est_t* est, float v)
 {
 	if (est->error > 0) {
-		GaussProc(est->gauss, v);
-		if (est->gauss->error < est->error) {
-			est->error = est->gauss->error;
-			KalmanSetR(est->kalman, est->gauss->mse);
-			KalmanSetE(est->kalman, est->gauss->mean);
-			KalmanSetD(est->kalman, est->gauss->delta_mean);
+		Gdf_Proc(est->gdf, v);
+		if (est->gdf->error < est->error) {
+			est->error = est->gdf->error;
+			Ekf_SetR(est->ekf, est->gdf->var);
+			Ekf_SetE(est->ekf, est->gdf->avg);
+			Ekf_SetD(est->ekf, est->gdf->avgd);
 		}
-		est->value = est->gauss->mean;
-		est->delta = est->gauss->delta_mean;
+		est->value = est->gdf->avg;
+		est->delta = est->gdf->avgd;
 	} else {
-		KalmanFilter(est->kalman, v);
-		est->value = est->kalman->e;
-		est->delta = est->kalman->d;
+		Ekf_Proc(est->ekf, v);
+		est->value = est->ekf->e;
+		est->delta = est->ekf->d;
 	}
 }
 
 void Est_Reset(Est_t* est)
 {
-	GaussReset(est->gauss);
-	KalmanReset(est->kalman);
+	Gdf_Reset(est->gdf);
+	Ekf_Reset(est->ekf);
 	est->error = FLT_MAX;
 	est->value = 0;
 	est->delta = 0;
 }
 
+Est_t* Est_Create(uint32_t N, float Q)
+{
+	Est_t* est = (Est_t*)malloc(sizeof(Est_t));
+	if (est == NULL) {
+		return NULL;
+	}
+	est->gdf = Gdf_Create(N);
+	if (est->gdf == NULL) {
+		free(est);
+		est = NULL;
+		return NULL;
+	}
+	Gdf_Reset(est->gdf);
+	est->ekf = Ekf_Create();
+	if (est->ekf == NULL) {
+		Gdf_Destroy(est->gdf);
+		free(est);
+		est = NULL;
+		return NULL;
+	}
+	Ekf_Reset(est->ekf);
+	Ekf_SetQ(est->ekf, Q);
+	est->error = FLT_MAX;
+	return est;
+}
+
 void Est_Destroy(Est_t* est)
 {
 	if (est != NULL) {
-		GaussDestroy(est->gauss);
-		KalmanDestroy(est->kalman);
+		Gdf_Destroy(est->gdf);
+		Ekf_Destroy(est->ekf);
 		free(est);
 		est = NULL;
 	}

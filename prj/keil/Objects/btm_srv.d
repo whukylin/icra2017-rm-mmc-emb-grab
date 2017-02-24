@@ -5,7 +5,7 @@
 .\objects\btm_srv.o: ..\..\bsp\inc\platform.h
 .\objects\btm_srv.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\btm_srv.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\btm_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\btm_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\btm_srv.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\btm_srv.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\btm_srv.o: ..\..\stl\CMSIS\core\core_cmSimd.h
@@ -40,6 +40,6 @@
 .\objects\btm_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\btm_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
 .\objects\btm_srv.o: ..\..\asp\inc\fifo.h
-.\objects\btm_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\btm_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\btm_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\btm_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\btm_srv.o: ..\..\bsp\inc\led.h

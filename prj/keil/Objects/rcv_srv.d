@@ -3,7 +3,7 @@
 .\objects\rcv_srv.o: ..\..\app\inc\dci.h
 .\objects\rcv_srv.o: ..\..\asp\inc\dbus.h
 .\objects\rcv_srv.o: ..\..\asp\inc\rcp.h
-.\objects\rcv_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\rcv_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\rcv_srv.o: ..\..\asp\inc\hcp.h
 .\objects\rcv_srv.o: ..\..\app\inc\rci.h
 .\objects\rcv_srv.o: ..\..\app\inc\cmd.h
@@ -53,6 +53,6 @@
 .\objects\rcv_srv.o: ..\..\app\inc\fun.h
 .\objects\rcv_srv.o: ..\..\app\inc\hci.h
 .\objects\rcv_srv.o: ..\..\asp\inc\mafilter.h
-.\objects\rcv_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\rcv_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\rcv_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\rcv_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\rcv_srv.o: ..\..\app\inc\wdg.h

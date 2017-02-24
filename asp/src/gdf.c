@@ -31,9 +31,11 @@ void Gdf_Reset(Gdf_t* gdf)
 	gdf->var = 0;
 	gdf->avgd = 0;
 	gdf->vard = 0;
+	gdf->error = FLT_MAX;
 }
 
-void Gdf_Calc(Gdf_t* gdf, float v)
+#define SQR(x) (x*x)
+void Gdf_Proc(Gdf_t* gdf, float v)
 {
 	float avg = gdf->avg;
 	float del = v - gdf->buf[gdf->i];
@@ -41,6 +43,7 @@ void Gdf_Calc(Gdf_t* gdf, float v)
 	gdf->avg += gdf->avgd;
 	gdf->vard = del * (gdf->buf[gdf->i] - avg + v - gdf->avg) / gdf->len;
 	gdf->var += gdf->vard;
+	gdf->error = SQR(gdf->avgd) + SQR(gdf->vard);
 	gdf->buf[gdf->i++] = v;
 	if (gdf->i == gdf->len) gdf->i = 0;
 }
@@ -52,13 +55,13 @@ Gdf_t* Gdf_Create(uint32_t len)
 		return NULL;
 	}
 	memset(gdf, 0, sizeof(Gdf_t));
+	gdf->len = len;
 	gdf->buf = (float*)malloc(len * sizeof(float));
 	if (gdf->buf == NULL) {
 		free(gdf);
 		gdf = NULL;
 		return NULL;
 	}
-	gdf->len = len;
 	Gdf_Reset(gdf);
 	return gdf;
 }

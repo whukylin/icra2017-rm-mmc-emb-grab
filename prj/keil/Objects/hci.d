@@ -1,7 +1,7 @@
 .\objects\hci.o: ..\..\app\src\hci.c
 .\objects\hci.o: ..\..\app\inc\hci.h
 .\objects\hci.o: ..\..\asp\inc\hcp.h
-.\objects\hci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\hci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\hci.o: ..\..\app\inc\cmd.h
 .\objects\hci.o: ..\..\app\inc\dci.h
 .\objects\hci.o: ..\..\asp\inc\dbus.h
@@ -54,5 +54,5 @@
 .\objects\hci.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
 .\objects\hci.o: ..\..\app\inc\fun.h
 .\objects\hci.o: ..\..\asp\inc\mafilter.h
-.\objects\hci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\hci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\hci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\hci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

@@ -2,7 +2,7 @@
 .\objects\dci.o: ..\..\app\inc\dci.h
 .\objects\dci.o: ..\..\asp\inc\dbus.h
 .\objects\dci.o: ..\..\asp\inc\rcp.h
-.\objects\dci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\dci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\dci.o: ..\..\asp\inc\hcp.h
 .\objects\dci.o: ..\..\app\inc\rci.h
 .\objects\dci.o: ..\..\app\inc\cmd.h
@@ -52,6 +52,6 @@
 .\objects\dci.o: ..\..\app\inc\fun.h
 .\objects\dci.o: ..\..\app\inc\hci.h
 .\objects\dci.o: ..\..\asp\inc\mafilter.h
-.\objects\dci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\dci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\dci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\dci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\dci.o: ..\..\app\inc\wdg.h

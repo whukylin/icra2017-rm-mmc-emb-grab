@@ -22,7 +22,7 @@ void Sch_Init(void)
 {
 	uint32_t tick = Clk_GetMsTick();
 	SchTask_t* curr = list;
-	for (; curr != NULL; curr = (SchTask_t*)curr->next) {
+	for (; curr != NULL; curr = curr->next) {
 		curr->lastrun = tick;
 	}
 }

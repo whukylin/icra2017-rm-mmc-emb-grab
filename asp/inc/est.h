@@ -22,8 +22,8 @@ extern "C" {
 #endif
 
 // Estimator
-#include "gauss.h"
-#include "kalman.h"
+#include "gdf.h"
+#include "ekf.h"
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
@@ -31,16 +31,18 @@ extern "C" {
 
 typedef struct
 {
-	Gauss_t* gauss;     // gauss processor
-	Kalman_t* kalman;   // kalman filter
+	Gdf_t* gdf;         // gauss distribution function
+	Ekf_t* ekf;         // kalman filter
 	float error;        // error
 	float value;        // estimated value
 	float delta;        // delta value
 }Est_t; // Estimator
 
-Est_t* Est_Create(uint32_t gaussN, float kalmanQ);
+void Est_Init(Est_t* est, Gdf_t* gdf, Ekf_t* ekf);
 void Est_Proc(Est_t* est, float v);
 void Est_Reset(Est_t* est);
+
+Est_t* Est_Create(uint32_t N, float Q);
 void Est_Destroy(Est_t* est);
 
 #ifdef __cplusplus

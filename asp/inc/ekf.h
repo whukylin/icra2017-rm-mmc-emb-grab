@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef __KALMAN_H__
-#define __KALMAN_H__
+#ifndef __EFK_H__
+#define __EFK_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -36,18 +36,18 @@ typedef struct
   float d;    // difference
   float k;    // kalman gain
   float p;    // fused variance
-}Kalman_t;
+}Ekf_t;
 
-void KalmanInit(Kalman_t* kalman, float q, float r, float e, float d);
-void KalmanReset(Kalman_t* kalman);
-void KalmanSetE(Kalman_t* kalman, float e);
-void KalmanSetD(Kalman_t* kalman, float d);
-void KalmanSetQ(Kalman_t* kalman, float q);
-void KalmanSetR(Kalman_t* kalman, float r);
-float KalmanFilter(Kalman_t* kalman, float x);
+void Ekf_Init(Ekf_t* ekf, float q, float r, float e, float d);
+void Ekf_Reset(Ekf_t* ekf);
+void Ekf_SetE(Ekf_t* ekf, float e);
+void Ekf_SetD(Ekf_t* ekf, float d);
+void Ekf_SetQ(Ekf_t* ekf, float q);
+void Ekf_SetR(Ekf_t* ekf, float r);
+float Ekf_Proc(Ekf_t* ekf, float x);
 
-Kalman_t* KalmanCreate(void);
-void KalmanDestroy(Kalman_t* kalman);
+Ekf_t* Ekf_Create(void);
+void Ekf_Destroy(Ekf_t* ekf);
 
 #ifdef __cplusplus
 }

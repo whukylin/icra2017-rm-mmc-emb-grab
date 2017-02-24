@@ -7,7 +7,7 @@
 .\objects\tty_srv.o: ..\..\bsp\inc\platform.h
 .\objects\tty_srv.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\tty_srv.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\tty_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\tty_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\tty_srv.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\tty_srv.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\tty_srv.o: ..\..\stl\CMSIS\core\core_cmSimd.h
@@ -44,6 +44,6 @@
 .\objects\tty_srv.o: ..\..\bsp\inc\tty.h
 .\objects\tty_srv.o: ..\..\bsp\inc\stm32util.h
 .\objects\tty_srv.o: ..\..\asp\inc\fifo.h
-.\objects\tty_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\tty_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\tty_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\tty_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\tty_srv.o: ..\..\app\inc\wdg.h

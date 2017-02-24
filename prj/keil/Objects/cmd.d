@@ -3,14 +3,14 @@
 .\objects\cmd.o: ..\..\app\inc\dci.h
 .\objects\cmd.o: ..\..\asp\inc\dbus.h
 .\objects\cmd.o: ..\..\asp\inc\rcp.h
-.\objects\cmd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\cmd.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\cmd.o: ..\..\asp\inc\hcp.h
 .\objects\cmd.o: ..\..\app\inc\rci.h
 .\objects\cmd.o: ..\..\app\inc\cmd.h
 .\objects\cmd.o: ..\..\app\inc\hci.h
 .\objects\cmd.o: ..\..\asp\inc\mafilter.h
-.\objects\cmd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\cmd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\cmd.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\cmd.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\cmd.o: ..\..\app\inc\wdg.h
 .\objects\cmd.o: ..\..\app\inc\sys.h
 .\objects\cmd.o: ..\..\app\inc\mec.h
