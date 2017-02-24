@@ -20,12 +20,12 @@ static uint8_t dbuf[DBUS_FRAME_LEN];
 
 DBUS_t dbus;
 
-void DCI_Init()
+void DCI_Init(void)
 {
 	DBUS_Rst(&dbus);
 }
 
-void DCI_Proc()
+void DCI_Proc(void)
 {
 	DBUS_Dec(&dbus, dbuf);
 	GetSwitchStates(&dbus.rcp);

@@ -16,7 +16,7 @@
  
 #include "can1.h"
 
-void Can1_Config()
+void Can1_Config(void)
 {
 	GPIO_AF(CAN1_RX_PIN, GPIO_AF_CAN1);
 	GPIO_AF(CAN1_TX_PIN, GPIO_AF_CAN1);
@@ -25,7 +25,7 @@ void Can1_Config()
 	NVIC_Config(CAN1_TX_NVIC, CAN1_TX_NVIC_PRE_PRIORITY, CAN1_TX_NVIC_SUB_PRIORITY);
 
 	//CAN BaudRate 42/(1+9+4)/3=1Mbps
-	CAN_Config(CAN1, 3, 0, CAN_SJW_1tq, CAN_BS1_9tq, CAN_BS2_4tq);
+	CAN_Config(CAN1, 3, 0x01, CAN_SJW_1tq, CAN_BS1_9tq, CAN_BS2_4tq);
 
 	CAN_Filter_Config(0x0000, 0x0000, 0x0000, 0x0000, 0, 0);
 
@@ -33,23 +33,23 @@ void Can1_Config()
 	CAN_ITConfig(CAN1, CAN_IT_TME, ENABLE);
 }
 
-void CAN1_RX_IRQ_HANDLER()
+void CAN1_RX_IRQ_HANDLER(void)
 {
-    if (CAN_GetITStatus(CAN1, CAN_IT_FMP0) != RESET)
+  if (CAN_GetITStatus(CAN1, CAN_IT_FMP0) != RESET)
 	{
-    	CanRxMsg canRxMsg;
-        CAN_ClearITPendingBit(CAN1, CAN_IT_FF0);
+		CanRxMsg canRxMsg;
+		CAN_ClearITPendingBit(CAN1, CAN_IT_FF0);
 		CAN_ClearFlag(CAN1, CAN_FLAG_FF0);
 		CAN_Receive(CAN1, CAN_FIFO0, &canRxMsg);
 
 		Can1RxCallback(canRxMsg.StdId, canRxMsg.Data);
-    }
+  }
 }
 
-void CAN1_TX_IRQ_HANDLER()
+void CAN1_TX_IRQ_HANDLER(void)
 {
-    if (CAN_GetITStatus(CAN1, CAN_IT_TME) != RESET)
+  if (CAN_GetITStatus(CAN1, CAN_IT_TME) != RESET)
 	{
 		CAN_ClearITPendingBit(CAN1, CAN_IT_TME);
-    }
+  }
 }

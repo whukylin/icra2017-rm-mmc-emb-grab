@@ -38,20 +38,20 @@
 #define SYNC_TIM_NVIC_SUB_PRIORITY 1
 #define SYNC_TIM_IRQ_HANDLER IRQ_HANDLER(TIM6_DAC)
 
-void TickTim_Config();
-void TickTim_Start();
-void TickTim_Stop();
+void TickTim_Config(void);
+void TickTim_Start(void);
+void TickTim_Stop(void);
 
-void SyncTim_Config();
-void SyncTim_Start();
-void SyncTim_Stop();
+void SyncTim_Config(void);
+void SyncTim_Start(void);
+void SyncTim_Stop(void);
 
-void Tim_Config();
-void Tim_Start();
-void Tim_Stop();
+void Tim_Config(void);
+void Tim_Start(void);
+void Tim_Stop(void);
 
-void TickTimCallback();
-void SyncTimCallback();
+void TickTimCallback(void);
+void SyncTimCallback(void);
 
 #endif
 

@@ -18,12 +18,12 @@
 
 static IniFlag iniFlag;
 
-void Ini_Init()
+void Ini_Init(void)
 {
 	iniFlag = INI_FLAG_NONE;
 }
 
-void Ini_Proc()
+void Ini_Proc(void)
 {
 	if (motor[0].reset == 1) {
 		iniFlag &= ~INI_FLAG_MOTOR1;

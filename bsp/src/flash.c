@@ -63,23 +63,23 @@ u8 Flash_Write(u32 addr, u8 *buf, u32 size)
 	#define BREAK_IF_NOT_COMPLETE(status) if(status != FLASH_COMPLETE) break
 
 	// flash status
-    FLASH_Status status = FLASH_COMPLETE;
-    // end address
-    u32 end_addr = addr + size;
-    // start sector
-    u32 start_sector = Flash_GetSector(addr);
-    // end sector
-    u32 end_sector = Flash_GetSector(end_addr);
+	FLASH_Status status = FLASH_COMPLETE;
+	// end address
+	u32 end_addr = addr + size;
+	// start sector
+	u32 start_sector = Flash_GetSector(addr);
+	// end sector
+	u32 end_sector = Flash_GetSector(end_addr);
 
-    // validate flash address
-    if(addr < STM32_FLASH_BASE_ADDR) return 0;
+	// validate flash address
+	if(addr < STM32_FLASH_BASE_ADDR) return 0;
 
-    // unlock flash
+	// unlock flash
 	FLASH_Unlock();
 	// disable data cache
-    FLASH_DataCacheCmd(DISABLE);
+  FLASH_DataCacheCmd(DISABLE);
 
-    // erase sector before written
+  // erase sector before written
 	if(addr < 0x1FFF0000)
 	{
 		int i = 0;
@@ -101,11 +101,11 @@ u8 Flash_Write(u32 addr, u8 *buf, u32 size)
 	}
 
 	// enable data cache
-    FLASH_DataCacheCmd(ENABLE);
-    // lock flash
-    FLASH_Lock();
+	FLASH_DataCacheCmd(ENABLE);
+	// lock flash
+	FLASH_Lock();
 
-    return status == FLASH_COMPLETE;
+	return status == FLASH_COMPLETE;
 } 
 
 

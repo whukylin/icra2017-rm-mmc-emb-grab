@@ -24,7 +24,7 @@ PeriphsState_t functionalStateRef;
 ChassisState_t chassisVelocityRef;
 MecanumState_t mecanumVelocityRef; // Auto-Wired
 
-void Cmd_Init()
+void Cmd_Init(void)
 {
 	DCI_Init();
 
@@ -33,7 +33,7 @@ void Cmd_Init()
 	MS_Set(&mecanumVelocityRef, 0, 0, 0, 0);
 }
 
-void Cmd_Proc()
+void Cmd_Proc(void)
 {
 	DCI_Proc();
 	LIMIT(chassisVelocityRef.x, -cfg.cha.spdCfg.max, cfg.cha.spdCfg.max);

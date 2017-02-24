@@ -15,10 +15,12 @@
  */
  
 #include "btm_srv.h"
- 
+#include "led.h"
+
 void BtmRxCallback(uint8_t data)
 {
-	Btm_WriteByte(data);
+	//Btm_WriteByte(data);
+	LED_RED_TOG();
 }
 
  

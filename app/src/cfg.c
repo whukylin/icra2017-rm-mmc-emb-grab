@@ -42,7 +42,7 @@ void Cfg_SetFlag(Cfg_t* cfg, CfgFlag_t flag)
 	cfg->flag |= flag;
 }
 
-void Cfg_Init()
+void Cfg_Init(void)
 {
 	Cfg_Load(&cfg);
 	if (Cfg_GetFlag(&cfg, CFG_FLAG_DONE) == 0) {
@@ -50,7 +50,7 @@ void Cfg_Init()
 	}
 }
 
-void Cfg_Proc()
+void Cfg_Proc(void)
 {
 	if (Cfg_GetFlag(&cfg, CFG_FLAG_SAVE)) {
 		Cfg_Save(&cfg);

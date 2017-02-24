@@ -16,37 +16,37 @@
  
 #include "can2.h"
 
-void Can2_Config()
+void Can2_Config(void)
 {
-    GPIO_AF(CAN2_RX_PIN, GPIO_AF_CAN2);
-    GPIO_AF(CAN2_TX_PIN, GPIO_AF_CAN2);
+	GPIO_AF(CAN2_RX_PIN, GPIO_AF_CAN2);
+	GPIO_AF(CAN2_TX_PIN, GPIO_AF_CAN2);
 
-    NVIC_Config(CAN2_RX_NVIC, CAN2_RX_NVIC_PRE_PRIORITY, CAN2_RX_NVIC_SUB_PRIORITY);
-    NVIC_Config(CAN2_TX_NVIC, CAN2_TX_NVIC_PRE_PRIORITY, CAN2_TX_NVIC_SUB_PRIORITY);
+	NVIC_Config(CAN2_RX_NVIC, CAN2_RX_NVIC_PRE_PRIORITY, CAN2_RX_NVIC_SUB_PRIORITY);
+	NVIC_Config(CAN2_TX_NVIC, CAN2_TX_NVIC_PRE_PRIORITY, CAN2_TX_NVIC_SUB_PRIORITY);
 
-    //CAN BaudRate 42/(1+9+4)/3=1Mbps
-    CAN_Config(CAN2, 3, 0, CAN_SJW_1tq, CAN_BS1_9tq, CAN_BS2_4tq);
+	//CAN BaudRate 42/(1+9+4)/3=1Mbps
+	CAN_Config(CAN2, 3, 0x01, CAN_SJW_1tq, CAN_BS1_9tq, CAN_BS2_4tq);
 
-    CAN_Filter_Config(0x0000, 0x0000, 0x0000, 0x0000, 0, 14);
-    
-    CAN_ITConfig(CAN2, CAN_IT_FMP0, ENABLE);
-    CAN_ITConfig(CAN2, CAN_IT_TME, ENABLE);
+	CAN_Filter_Config(0x0000, 0x0000, 0x0000, 0x0000, 0, 14);
+
+	CAN_ITConfig(CAN2, CAN_IT_FMP0, ENABLE);
+	CAN_ITConfig(CAN2, CAN_IT_TME, ENABLE);
 }
 
-void CAN2_RX_IRQ_HANDLER()
+void CAN2_RX_IRQ_HANDLER(void)
 {
-    if (CAN_GetITStatus(CAN2, CAN_IT_FMP0) != RESET)
-    {
-    	CanRxMsg canRxMsg;
-        CAN_ClearITPendingBit(CAN2, CAN_IT_FMP0);
-        CAN_ClearFlag(CAN2, CAN_FLAG_FF0);
-        CAN_Receive(CAN2, CAN_FIFO0, &canRxMsg);
+	if (CAN_GetITStatus(CAN2, CAN_IT_FMP0) != RESET)
+	{
+		CanRxMsg canRxMsg;
+		CAN_ClearITPendingBit(CAN2, CAN_IT_FMP0);
+		CAN_ClearFlag(CAN2, CAN_FLAG_FF0);
+		CAN_Receive(CAN2, CAN_FIFO0, &canRxMsg);
 
-        Can2RxCallback(canRxMsg.StdId, canRxMsg.Data);
-    }
+		Can2RxCallback(canRxMsg.StdId, canRxMsg.Data);
+	}
 }
 
-void CAN2_TX_IRQ_HANDLER()
+void CAN2_TX_IRQ_HANDLER(void)
 {
 	if (CAN_GetITStatus(CAN2, CAN_IT_TME) != RESET)
 	{

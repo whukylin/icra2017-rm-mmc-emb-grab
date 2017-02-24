@@ -40,7 +40,7 @@ typedef uint8_t MouseButtonEvent_t;
 #define MOUSE_BUTTON_EVENT_DOWN GET_MOUSE_BUTTON_EVENT(MOUSE_BUTTON_UP, MOUSE_BUTTON_DOWM)
 #define MOUSE_BUTTON_EVENT_NONE 0
 
-void HCI_Init();
+void HCI_Init(void);
 void HCI_Proc(HCP_t* hcp);
 
 extern MouseButtonState_t mouseButtonStates[MOUSE_BTN_CNT];

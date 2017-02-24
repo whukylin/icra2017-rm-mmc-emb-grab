@@ -21,7 +21,7 @@
 extern "C" {
 #endif
 
-#include "app.h"
+#include "clk.h"
 
 #ifdef __cplusplus
 }

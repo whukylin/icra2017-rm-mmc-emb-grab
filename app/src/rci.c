@@ -72,7 +72,7 @@ static void GetChassisVelocityRef(RCP_t* rcp)
 	chassisVelocityRef.z = map(rcp->ch[2], CH_MIN, CH_MAX, -cfg.cha.spdCfg.max, cfg.cha.spdCfg.max);
 }
 
-void RCI_Init()
+void RCI_Init(void)
 {
 	uint32_t i = 0;
 	for (; i < SW_CNT; i++) {

@@ -42,3 +42,4 @@
 .\objects\btm_srv.o: ..\..\asp\inc\fifo.h
 .\objects\btm_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\btm_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\btm_srv.o: ..\..\bsp\inc\led.h

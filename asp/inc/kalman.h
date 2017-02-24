@@ -46,7 +46,7 @@ void KalmanSetQ(Kalman_t* kalman, float q);
 void KalmanSetR(Kalman_t* kalman, float r);
 float KalmanFilter(Kalman_t* kalman, float x);
 
-Kalman_t* KalmanCreate();
+Kalman_t* KalmanCreate(void);
 void KalmanDestroy(Kalman_t* kalman);
 
 #ifdef __cplusplus

@@ -41,7 +41,7 @@ MecanumState_t mecanumCurrentsCtl;
 /**********************************************/
 /*        Working State Switch Machine        */
 /**********************************************/
-static void WorkingStateSwitchMach()
+static void WorkingStateSwitchMach(void)
 {
 	switch (workingState) {
 	case WORKING_STATE_STOP:
@@ -73,7 +73,7 @@ static void WorkingStateSwitchMach()
 /**********************************************/
 /*    Peripherals Functional State Control    */
 /**********************************************/
-static void FunctionalStateControl()
+static void FunctionalStateControl(void)
 {
 	if (workingState != WORKING_STATE_NORMAL) {
 		FS_Clr(&functionalStateCtl, FS_ALL);
@@ -94,7 +94,7 @@ static void FunctionalStateControl()
 /**********************************************/
 /*          Chassis Velocity Control          */
 /**********************************************/
-static void ChassisVelocityControl()
+static void ChassisVelocityControl(void)
 {
 	if (workingState != WORKING_STATE_NORMAL) {
 		PID_Reset(&CM1SpeedPID);
@@ -118,7 +118,7 @@ static void ChassisVelocityControl()
 /**********************************************/
 /*       Logic Controller Initialization      */
 /**********************************************/
-void Ctl_Init()
+void Ctl_Init(void)
 {
 	workingState = WORKING_STATE_STOP;
 
@@ -139,7 +139,7 @@ void Ctl_Init()
 /**********************************************/
 /*          Logic Controller Process          */
 /**********************************************/
-void Ctl_Proc()
+void Ctl_Proc(void)
 {
 	WorkingStateSwitchMach();
 	FunctionalStateControl();

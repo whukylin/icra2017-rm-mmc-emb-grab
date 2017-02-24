@@ -424,8 +424,8 @@ void CAN_Filter_Config(u16 id_h, u16 id_l, u16 msk_h, u16 msk_l, u16 fifo, u8 nu
 	can_filter.CAN_FilterMaskIdLow = msk_l;
 	can_filter.CAN_FilterFIFOAssignment = fifo;
 	can_filter.CAN_FilterNumber = num;
-	can_filter.CAN_FilterMode = 0x00;
-	can_filter.CAN_FilterScale = 0x01;
+	can_filter.CAN_FilterMode = CAN_FilterMode_IdMask;
+	can_filter.CAN_FilterScale = CAN_FilterScale_32bit;
 	can_filter.CAN_FilterActivation = ENABLE;
 	CAN_FilterInit(&can_filter);
 }

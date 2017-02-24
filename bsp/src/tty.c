@@ -21,10 +21,10 @@ static FIFO_t tx_fifo;
 static uint8_t rx_buf[TTY_RX_FIFO_SIZE];
 static uint8_t tx_buf[TTY_RX_FIFO_SIZE];
 
-void Tty_Config()
+void Tty_Config(void)
 {
     USART_Bind(TTY_RX_PIN, TTY_TX_PIN,
-    		   TTY_USART,
+    		 TTY_USART,
 			   TTY_USART_BR,
 			   TTY_USART_WL,
 			   TTY_USART_PA,
@@ -42,12 +42,12 @@ void Tty_Config()
     USART_Cmd(TTY_USART, ENABLE);
 }
 
-uint32_t Tty_RxAvailable()
+uint32_t Tty_RxCnt(void)
 {
 	return FIFO_GetUsed(&rx_fifo);
 }
 
-uint8_t Tty_ReadByte()
+uint8_t Tty_ReadByte(void)
 {
 	uint8_t data = 0;
 	while (FIFO_IsEmpty(&rx_fifo));
@@ -58,8 +58,8 @@ uint8_t Tty_ReadByte()
 void Tty_WriteByte(uint8_t b)
 {
 	while (FIFO_IsFull(&tx_fifo));
-    FIFO_Push(&tx_fifo, &b, 1);
-    USART_ITConfig(TTY_USART, USART_IT_TXE, ENABLE);
+	FIFO_Push(&tx_fifo, &b, 1);
+	USART_ITConfig(TTY_USART, USART_IT_TXE, ENABLE);
 }
 
 void Tty_Read(uint8_t* buf, uint32_t len)
@@ -83,10 +83,10 @@ void Tty_Print(const char* str)
 	Tty_Write((const uint8_t*)str, strlen(str));
 }
 
-void TTY_IRQ_HANDLER()
+void TTY_IRQ_HANDLER(void)
 {  
-    if (USART_GetITStatus(TTY_USART, USART_IT_TXE) != RESET)
-    {   
+	if (USART_GetITStatus(TTY_USART, USART_IT_TXE) != RESET)
+	{   
 		if (!FIFO_IsEmpty(&tx_fifo))
 		{
 			uint8_t tx_data = 0;
@@ -95,16 +95,16 @@ void TTY_IRQ_HANDLER()
 		} else {
 			USART_ITConfig(TTY_USART, USART_IT_TXE, DISABLE);
 		}
-    }
+	}
 	else if (USART_GetITStatus(TTY_USART, USART_IT_RXNE) != RESET)
-    {
-        uint8_t rx_data = USART_ReceiveData(TTY_USART);
-        if (FIFO_IsFull(&rx_fifo)) {
-        	uint8_t tmp = 0;
-        	FIFO_Pop(&rx_fifo, &tmp, 1);
-        }
-        FIFO_Push(&rx_fifo, &rx_data, 1);
-        TtyRxCallback(rx_data);
-    }       
+	{
+		uint8_t rx_data = USART_ReceiveData(TTY_USART);
+		if (FIFO_IsFull(&rx_fifo)) {
+			uint8_t tmp = 0;
+			FIFO_Pop(&rx_fifo, &tmp, 1);
+		}
+		FIFO_Push(&rx_fifo, &rx_data, 1);
+		TtyRxCallback(rx_data);
+	}       
 }
 

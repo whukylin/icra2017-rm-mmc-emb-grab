@@ -72,11 +72,11 @@ typedef struct
 	float current;        // Motor electronic speed controller current in ampere
 }Motor_t; // For EC60 & RM6025 Motor Encoder & ESC
 
-uint8_t Can_Init();
+uint8_t Can_Init(void);
 void Can_Proc(uint32_t id, uint8_t* data);
-void ZGyro_Reset();
+void ZGyro_Reset(void);
 void Motor_Reset(uint8_t i);
-void Can_Reset();
+void Can_Reset(void);
 
 extern ZGyro_t zgyro;
 extern Motor_t motor[MOTOR_NUM]; // Motor group

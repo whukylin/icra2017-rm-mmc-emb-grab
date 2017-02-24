@@ -31,8 +31,8 @@ extern "C" {
 #include "cfg.h"
 #include "fun.h"
 
-void Cmd_Init();
-void Cmd_Proc();
+void Cmd_Init(void);
+void Cmd_Proc(void);
 
 extern PeriphsState_t functionalStateRef;
 extern ChassisState_t chassisVelocityRef;

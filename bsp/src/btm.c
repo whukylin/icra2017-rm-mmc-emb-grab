@@ -21,10 +21,10 @@ static FIFO_t tx_fifo;
 static uint8_t rx_buf[BTM_RX_FIFO_SIZE];
 static uint8_t tx_buf[BTM_RX_FIFO_SIZE];
 
-void Btm_Config()
+void Btm_Config(void)
 {
     USART_Bind(BTM_RX_PIN, BTM_TX_PIN,
-    		   BTM_USART,
+    		 BTM_USART,
 			   BTM_USART_BR,
 			   BTM_USART_WL,
 			   BTM_USART_PA,
@@ -42,12 +42,12 @@ void Btm_Config()
     USART_Cmd(BTM_USART, ENABLE);
 }
 
-uint32_t Btm_RxAvailable()
+uint32_t Btm_RxCnt(void)
 {
 	return FIFO_GetUsed(&rx_fifo);
 }
 
-uint8_t Btm_ReadByte()
+uint8_t Btm_ReadByte(void)
 {
 	uint8_t data = 0;
 	while (FIFO_IsEmpty(&rx_fifo));
@@ -58,8 +58,8 @@ uint8_t Btm_ReadByte()
 void Btm_WriteByte(uint8_t b)
 {
 	while (FIFO_IsFull(&tx_fifo));
-    FIFO_Push(&tx_fifo, &b, 1);
-    USART_ITConfig(BTM_USART, USART_IT_TXE, ENABLE);
+	FIFO_Push(&tx_fifo, &b, 1);
+	USART_ITConfig(BTM_USART, USART_IT_TXE, ENABLE);
 }
 
 void Btm_Read(uint8_t* buf, uint32_t len)
@@ -83,7 +83,7 @@ void Btm_Print(const char* str)
 	Btm_Write((const uint8_t*)str, strlen(str));
 }
 
-void BTM_IRQ_HANDLER()
+void BTM_IRQ_HANDLER(void)
 {
     if (USART_GetITStatus(BTM_USART, USART_IT_TXE) != RESET)
     {
@@ -96,7 +96,7 @@ void BTM_IRQ_HANDLER()
 				USART_ITConfig(BTM_USART, USART_IT_TXE, DISABLE);
 			}
     }
-	else if (USART_GetITStatus(BTM_USART, USART_IT_RXNE) != RESET)
+		else if (USART_GetITStatus(BTM_USART, USART_IT_RXNE) != RESET)
     {
         uint8_t rx_data = USART_ReceiveData(BTM_USART);
         if (FIFO_IsFull(&rx_fifo)) {

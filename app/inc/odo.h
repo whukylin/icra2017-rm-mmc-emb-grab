@@ -30,8 +30,8 @@ extern "C" {
 #include "sys.h"
 #include "mec.h"
 
-void Odo_Init();
-void Odo_Proc();
+void Odo_Init(void);
+void Odo_Proc(void);
 
 extern PeriphsState_t functionalStateFdb;
 extern MecanumState_t mecanumPositionFdb;

@@ -310,8 +310,8 @@ uint8_t Cfg_Save(Cfg_t* cfg);
 CfgFlag_t Cfg_GetFlag(const Cfg_t* cfg, CfgFlag_t flag);
 void Cfg_SetFlag(Cfg_t* cfg, CfgFlag_t flag);
 
-void Cfg_Init();
-void Cfg_Proc();
+void Cfg_Init(void);
+void Cfg_Proc(void);
 
 extern Cfg_t cfg;
 

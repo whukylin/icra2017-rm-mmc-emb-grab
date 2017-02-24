@@ -30,7 +30,7 @@
 #include "tim.h"
 #include "tty.h"
 
-void Bsp_Config();
+void Bsp_Config(void);
 
 #endif
 

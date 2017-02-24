@@ -70,32 +70,5 @@
 .\objects\srv.o: ..\..\app\inc\hci.h
 .\objects\srv.o: ..\..\asp\inc\mafilter.h
 .\objects\srv.o: ..\..\srv\inc\tty_srv.h
-.\objects\srv.o: ..\..\app\inc\app.h
-.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\objects\srv.o: ..\..\asp\inc\asp.h
-.\objects\srv.o: ..\..\asp\inc\ahrs.h
-.\objects\srv.o: ..\..\asp\inc\cbus.h
-.\objects\srv.o: ..\..\asp\inc\crc16.h
-.\objects\srv.o: ..\..\asp\inc\pid.h
-.\objects\srv.o: ..\..\asp\inc\ramp.h
-.\objects\srv.o: ..\..\asp\inc\stack.h
-.\objects\srv.o: ..\..\bsp\inc\bsp.h
-.\objects\srv.o: ..\..\bsp\inc\can1.h
-.\objects\srv.o: ..\..\bsp\inc\can2.h
-.\objects\srv.o: ..\..\bsp\inc\delay.h
-.\objects\srv.o: ..\..\bsp\inc\led.h
-.\objects\srv.o: ..\..\bsp\inc\motor.h
-.\objects\srv.o: ..\..\bsp\inc\rcv.h
-.\objects\srv.o: ..\..\bsp\inc\retarget.h
-.\objects\srv.o: ..\..\bsp\inc\tim.h
-.\objects\srv.o: ..\..\bsp\inc\tty.h
-.\objects\srv.o: ..\..\srv\inc\srv.h
-.\objects\srv.o: ..\..\app\inc\act.h
-.\objects\srv.o: ..\..\app\inc\ctl.h
-.\objects\srv.o: ..\..\app\inc\odo.h
-.\objects\srv.o: ..\..\app\inc\ini.h
-.\objects\srv.o: ..\..\app\inc\clk.h
 .\objects\srv.o: ..\..\app\inc\com.h
-.\objects\srv.o: ..\..\app\inc\sch.h
+.\objects\srv.o: ..\..\bsp\inc\tty.h

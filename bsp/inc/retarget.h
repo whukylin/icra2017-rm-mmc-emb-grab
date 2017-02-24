@@ -28,7 +28,7 @@
 #define GETCHAR_PROTOTYPE int fgetc(FILE* f)
 #endif
 
-void Retarget_In(uint8_t (*in)());
+void Retarget_In(uint8_t (*in)(void));
 void Retarget_Out(void (*out)(uint8_t));
 
 #endif

@@ -40,8 +40,8 @@ typedef enum {
 	WORKING_STATE_CONFIG,
 }WorkingState_e;
 
-void Ctl_Init();
-void Ctl_Proc();
+void Ctl_Init(void);
+void Ctl_Proc(void);
 
 /**********************************************/
 /*             Exported Variables             */

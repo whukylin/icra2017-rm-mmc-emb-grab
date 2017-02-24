@@ -28,8 +28,8 @@ extern "C" {
 #include "ctl.h"
 #include "bsp.h"
 
-void Act_Init();
-void Act_Proc();
+void Act_Init(void);
+void Act_Proc(void);
 
 #ifdef __cplusplus
 }

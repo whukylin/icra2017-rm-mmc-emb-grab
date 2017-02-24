@@ -37,9 +37,10 @@
 #define BTM_RX_FIFO_SIZE 256u
 #define BTM_TX_FIFO_SIZE 256u
 
-void Btm_Config();
+void Btm_Config(void);
 
-uint8_t Btm_ReadByte();
+uint32_t Btm_RxCnt(void);
+uint8_t Btm_ReadByte(void);
 void Btm_WriteByte(uint8_t b);
 void Btm_Read(uint8_t* buf, uint32_t len);
 void Btm_Write(const uint8_t* buf, uint32_t len);

@@ -29,12 +29,12 @@ static uint8_t key;
 static uint32_t head;
 */
 
-void Com_Init()
+void Com_Init(void)
 {
 	//Cfg_Init();
 }
 
-void Com_Proc()
+void Com_Proc(void)
 {
 
 }

@@ -22,8 +22,8 @@
 #include "hci.h"
 #include "wdg.h"
 
-void DCI_Init();
-void DCI_Proc();
+void DCI_Init(void);
+void DCI_Proc(void);
 
 void Rcv_Proc(uint8_t* buf);
 

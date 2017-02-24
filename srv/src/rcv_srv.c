@@ -18,6 +18,6 @@
 
 void RcvCallback(uint8_t* dbuf)
 {
-	Rcv_Proc(dbuf);
+	//Rcv_Proc(dbuf);
 }
 

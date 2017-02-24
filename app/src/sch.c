@@ -18,7 +18,7 @@
 
 static SchTask_t* list = NULL;
 
-void Sch_Init()
+void Sch_Init(void)
 {
 	uint32_t tick = Clk_GetMsTick();
 	SchTask_t* curr = list;
@@ -27,7 +27,7 @@ void Sch_Init()
 	}
 }
 
-void Sch_Proc()
+void Sch_Proc(void)
 {
 	uint32_t tick = Clk_GetMsTick();
 	SchTask_t* curr = list;

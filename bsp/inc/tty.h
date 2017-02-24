@@ -37,9 +37,10 @@
 #define TTY_RX_FIFO_SIZE 256u
 #define TTY_TX_FIFO_SIZE 256u
 
-void Tty_Config();
+void Tty_Config(void);
 
-uint8_t Tty_ReadByte();
+uint32_t Tty_RxCnt(void);
+uint8_t Tty_ReadByte(void);
 void Tty_WriteByte(uint8_t b);
 void Tty_Read(uint8_t* buf, uint32_t len);
 void Tty_Write(const uint8_t* buf, uint32_t len);

@@ -18,9 +18,9 @@
 
 static uint8_t buf[2][RCV_DMA_BUF_SIZE];
 
-void Rcv_Config()
+void Rcv_Config(void)
 {
-	USART_Bind(RCV_SIG_PIN,  0,
+	USART_Bind(RCV_SIG_PIN, 0,
 			   RCV_USART,
 			   RCV_USART_BR,
 			   RCV_USART_WL,
@@ -28,27 +28,27 @@ void Rcv_Config()
 			   RCV_USART_SB,
 			   RCV_USART_FC);
 
-    USART_DMACmd(RCV_USART, USART_DMAReq_Rx, ENABLE);
-    
-    DMA_Config(RCV_DMA_STREAM,
-    		   RCV_DMA_CHANNEL,
+	USART_DMACmd(RCV_USART, USART_DMAReq_Rx, ENABLE);
+	
+	DMA_Config(RCV_DMA_STREAM,
+			   RCV_DMA_CHANNEL,
 			   (u32)&RCV_USART->DR,
 			   (u32)buf[0], 0,
 			   RCV_DMA_BUF_SIZE);
 
-    DMA_DoubleBufferModeConfig(RCV_DMA_STREAM, (u32)buf[1], DMA_Memory_0);
-    DMA_DoubleBufferModeCmd(RCV_DMA_STREAM, ENABLE);
-    
-    DMA_Cmd(RCV_DMA_STREAM, ENABLE);
-    
-    NVIC_Config(RCV_NVIC, RCV_NVIC_PRE_PRIORITY, RCV_NVIC_SUB_PRIORITY);
+	DMA_DoubleBufferModeConfig(RCV_DMA_STREAM, (u32)buf[1], DMA_Memory_0);
+	DMA_DoubleBufferModeCmd(RCV_DMA_STREAM, ENABLE);
+	
+	DMA_Cmd(RCV_DMA_STREAM, ENABLE);
+	
+	NVIC_Config(RCV_NVIC, RCV_NVIC_PRE_PRIORITY, RCV_NVIC_SUB_PRIORITY);
     
 	USART_ITConfig(RCV_USART, USART_IT_IDLE, ENABLE); // 14mspf
-    USART_Cmd(RCV_USART, ENABLE);
+  USART_Cmd(RCV_USART, ENABLE);
 
 }
 
-void RCV_IRQ_HANDLER()
+void RCV_IRQ_HANDLER(void)
 {
 	if(USART_GetITStatus(RCV_USART, USART_IT_IDLE) != RESET)
 	{

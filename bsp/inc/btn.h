@@ -28,8 +28,8 @@
 
 #define BTN_STATE() GPIO_READ_IN(BTN_PIN)
 
-void Btn_Config();
+void Btn_Config(void);
 
-void BtnCallback();
+void BtnCallback(void);
 
 #endif

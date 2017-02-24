@@ -66,7 +66,7 @@ float KalmanFilter(Kalman_t* kalman, float x) {
 	return kalman->e;
 }
 
-Kalman_t* KalmanCreate()
+Kalman_t* KalmanCreate(void)
 {
 	Kalman_t* kalman = (Kalman_t*)malloc(sizeof(Kalman_t));
 	if (kalman == NULL) return NULL;

@@ -16,19 +16,24 @@
  
 #include "main.h"
 
+static void task(void)
+{
+	LED_GREEN_TOG();
+}
+
 int main()
 {
 	//App_Init();
 	Bsp_Config();
+	//Sch_Init();
+	//Sch_Arrange(task, 500);
 	while(1)
 	{
-		
-		//USART_SendData(BTM_USART, 'a');
-		//printf("Hello, Jack.\n");
-		if (TICK_US() % 500000 == 0) {
-			Btm_Print("Hello, Jack.\n");
-			LED_GREEN_TOG();
-			delay_ms(500);
+		//Sch_Proc();
+		if (Clk_GetMsTick() % 50 == 0) {
+			//Btm_Print("Hello, Jack.\n");
+			//Btm_Print("Hello, Jack.\n");
+			task();
 		}
   }
 }

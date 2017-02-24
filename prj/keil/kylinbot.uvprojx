@@ -775,9 +775,19 @@
           <GroupName>srv/inc</GroupName>
           <Files>
             <File>
+              <FileName>btm_srv.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\srv\inc\btm_srv.h</FilePath>
+            </File>
+            <File>
               <FileName>can_srv.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\srv\inc\can_srv.h</FilePath>
+            </File>
+            <File>
+              <FileName>ext_srv.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\srv\inc\ext_srv.h</FilePath>
             </File>
             <File>
               <FileName>rcv_srv.h</FileName>
@@ -805,9 +815,19 @@
           <GroupName>srv/src</GroupName>
           <Files>
             <File>
+              <FileName>btm_srv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\srv\src\btm_srv.c</FilePath>
+            </File>
+            <File>
               <FileName>can_srv.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\srv\src\can_srv.c</FilePath>
+            </File>
+            <File>
+              <FileName>ext_srv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\srv\src\ext_srv.c</FilePath>
             </File>
             <File>
               <FileName>rcv_srv.c</FileName>
@@ -993,6 +1013,213 @@
         </Group>
         <Group>
           <GroupName>stl/inc</GroupName>
+          <Files>
+            <File>
+              <FileName>stm32f4xx.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\CMSIS\device\stm32f4xx.h</FilePath>
+            </File>
+            <File>
+              <FileName>system_stm32f4xx.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\CMSIS\device\system_stm32f4xx.h</FilePath>
+            </File>
+            <File>
+              <FileName>misc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\misc.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_adc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_adc.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_can.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_cec.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_cec.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_conf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_conf.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_crc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_crc.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_cryp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_cryp.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_dac.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dac.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_dbgmcu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_dcmi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_dfsdm.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dfsdm.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_dma.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_dma2d.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_dsi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dsi.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_exti.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_exti.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_flash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_flash.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_flash_ramfunc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_fmc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_fmc.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_fmpi2c.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_fmpi2c.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_fsmc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_fsmc.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_gpio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_gpio.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_hash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_hash.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_i2c.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_i2c.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_iwdg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_iwdg.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_lptim.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_lptim.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_ltdc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_ltdc.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_pwr.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_pwr.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_qspi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_qspi.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_rcc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_rcc.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_rng.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_rng.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_rtc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_rtc.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_sai.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_sdio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sdio.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_spdifrx.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_spdifrx.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_spi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_spi.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_syscfg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_syscfg.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_tim.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_tim.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_usart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_usart.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_wwdg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\stl\StdPeriph_Driver\inc\stm32f4xx_wwdg.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>stl/src</GroupName>
@@ -1218,9 +1445,9 @@
               <FilePath>..\..\stl\src\system_stm32f4xx.c</FilePath>
             </File>
             <File>
-              <FileName>startup_stm32.s</FileName>
+              <FileName>startup_stm32f427xx.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\..\stl\src\startup_stm32.s</FilePath>
+              <FilePath>..\..\stl\src\arm\startup_stm32f427xx.s</FilePath>
             </File>
           </Files>
         </Group>

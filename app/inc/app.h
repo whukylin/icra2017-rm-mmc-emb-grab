@@ -60,9 +60,9 @@ extern "C" {
 #include "sys.h" // System-wide Variable Types and Functions
 #include "wdg.h" // Watch Dog
 
-void App_Init();
-void App_Proc();
-void App_Boot();
+void App_Init(void);
+void App_Proc(void);
+void App_Boot(void);
 
 #ifdef __cplusplus
 }

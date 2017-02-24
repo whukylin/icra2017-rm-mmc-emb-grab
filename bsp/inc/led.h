@@ -36,7 +36,7 @@
 #define LED_RED_OFF()       GPIO_SET(LED_RED_PIN)
 #define LED_RED_TOG()       GPIO_TOG(LED_RED_PIN)
 
-void Led_Config();
+void Led_Config(void);
 
 #endif
 

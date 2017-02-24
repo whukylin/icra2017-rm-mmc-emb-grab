@@ -27,7 +27,7 @@ MecanumState_t mecanumCurrentsFdb;
 ChassisState_t chassisPositionFdb;
 ChassisState_t chassisVelocityFdb;
 
-static void GetFunctionalStateFdb()
+static void GetFunctionalStateFdb(void)
 {
 	if (LED_GREEN_IS_ON()) {
 		functionalStateFdb |= FS_LED_GREEN;
@@ -41,7 +41,7 @@ static void GetFunctionalStateFdb()
 	}
 }
 
-static void GetMecanumPositionFdb()
+static void GetMecanumPositionFdb(void)
 {
 	mecanumPositionFdb.w1 = motor[0].angle;
 	mecanumPositionFdb.w2 = motor[1].angle;
@@ -49,7 +49,7 @@ static void GetMecanumPositionFdb()
 	mecanumPositionFdb.w4 = motor[3].angle;
 }
 
-static void GetMecanumVelocityFdb()
+static void GetMecanumVelocityFdb(void)
 {
 	mecanumVelocityFdb.w1 = motor[0].rate;
 	mecanumVelocityFdb.w2 = motor[1].rate;
@@ -57,7 +57,7 @@ static void GetMecanumVelocityFdb()
 	mecanumVelocityFdb.w4 = motor[3].rate;
 }
 
-static void GetMecanumCurrentsFdb()
+static void GetMecanumCurrentsFdb(void)
 {
 	mecanumCurrentsFdb.w1 = motor[0].current_fdb;
 	mecanumCurrentsFdb.w2 = motor[1].current_fdb;
@@ -65,17 +65,17 @@ static void GetMecanumCurrentsFdb()
 	mecanumCurrentsFdb.w4 = motor[3].current_fdb;
 }
 
-static void GetChassisPositionFdb()
+static void GetChassisPositionFdb(void)
 {
 	Mec_Synthe((float*)&mecanumPositionFdb, (float*)&chassisPositionFdb);
 }
 
-static void GetChassisVelocityFdb()
+static void GetChassisVelocityFdb(void)
 {
 	Mec_Synthe((float*)&mecanumVelocityFdb, (float*)&chassisVelocityFdb);
 }
 
-void Odo_Init()
+void Odo_Init(void)
 {
 	Can_Init();
 
@@ -87,7 +87,7 @@ void Odo_Init()
 	MS_Set(&mecanumCurrentsFdb, 0, 0, 0, 0);
 }
 
-void Odo_Proc()
+void Odo_Proc(void)
 {
 	GetFunctionalStateFdb();
 	GetMecanumPositionFdb();

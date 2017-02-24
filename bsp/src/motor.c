@@ -32,7 +32,7 @@ void CM_Cmd(CAN_TypeDef *CANx, int16_t c201, int16_t c202, int16_t c203, int16_t
     canTxMsg.Data[5] = (uint8_t)c203;
     canTxMsg.Data[6] = (uint8_t)(c204 >> 8);
     canTxMsg.Data[7] = (uint8_t)c204;
-    CAN_Transmit(CANx,&canTxMsg);
+    CAN_Transmit(CANx, &canTxMsg);
 }
 
 void GM_Cmd(CAN_TypeDef *CANx, int16_t c205, int16_t c206)
@@ -51,5 +51,5 @@ void GM_Cmd(CAN_TypeDef *CANx, int16_t c205, int16_t c206)
     canTxMsg.Data[5] = (uint8_t)0x00;
     canTxMsg.Data[6] = (uint8_t)0x00;
     canTxMsg.Data[7] = (uint8_t)0x00;
-    CAN_Transmit(CANx,&canTxMsg);
+    CAN_Transmit(CANx, &canTxMsg);
 }

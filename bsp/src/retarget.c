@@ -16,10 +16,10 @@
 
 #include "retarget.h"
 
-static uint8_t (*_in)();
+static uint8_t (*_in)(void);
 static void (*_out)(uint8_t);
 
-void Retarget_In(uint8_t (*in)())
+void Retarget_In(uint8_t (*in)(void))
 {
 	_in = in;
 }

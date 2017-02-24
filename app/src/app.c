@@ -20,7 +20,7 @@
 /*            Application             */
 /**************************************/
 
-void App_Init()
+void App_Init(void)
 {
 	Act_Init();
 	Clk_Init();
@@ -31,7 +31,7 @@ void App_Init()
 	Wdg_Init();
 }
 
-void App_Proc()
+void App_Proc(void)
 {
 	Wdg_Proc();
 	Cmd_Proc();
@@ -40,7 +40,7 @@ void App_Proc()
 	Act_Proc();
 }
 
-void App_Boot()
+void App_Boot(void)
 {
 	Bsp_Config();
 	App_Init();

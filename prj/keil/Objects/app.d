@@ -91,11 +91,10 @@
 .\objects\app.o: ..\..\app\inc\fun.h
 .\objects\app.o: ..\..\app\inc\hci.h
 .\objects\app.o: ..\..\srv\inc\tty_srv.h
-.\objects\app.o: ..\..\app\inc\app.h
+.\objects\app.o: ..\..\app\inc\com.h
 .\objects\app.o: ..\..\app\inc\act.h
 .\objects\app.o: ..\..\app\inc\ctl.h
 .\objects\app.o: ..\..\app\inc\odo.h
 .\objects\app.o: ..\..\app\inc\ini.h
 .\objects\app.o: ..\..\app\inc\clk.h
-.\objects\app.o: ..\..\app\inc\com.h
 .\objects\app.o: ..\..\app\inc\sch.h

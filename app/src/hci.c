@@ -72,7 +72,7 @@ static void GetChassisVelocityRef(HCP_t* hcp)
 	chassisVelocityRef.z = MAFilter_Calc(&fz, vz);
 }
 
-void HCI_Init()
+void HCI_Init(void)
 {
 	uint32_t i = 0;
 	for (; i < MOUSE_BTN_CNT; i++) {

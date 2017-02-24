@@ -44,8 +44,8 @@ typedef uint32_t ComMsgHead;
 #define COM_MSG_HEAD_TERMINAL COM_MSG_HEAD(COM_MSG_ID_TERMINAL,COM_MSG_LEN_TERMINAL,COM_MSG_KEY_TERMINAL)
 
 
-void Com_Init();
-void Com_Proc();
+void Com_Init(void);
+void Com_Proc(void);
 
 void Tty_Proc(uint8_t data);
 

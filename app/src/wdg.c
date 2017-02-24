@@ -48,12 +48,12 @@ uint32_t wdg[WDG_NUM] = {
 
 uint32_t err = 0xFFFFFFFF;
 
-void Wdg_Init()
+void Wdg_Init(void)
 {
 
 }
 
-void Wdg_Proc()
+void Wdg_Proc(void)
 {
 	int i = 0;
 	for(i = 0; i < WDG_NUM; i++)
@@ -81,7 +81,7 @@ void Wdg_Hang(uint8_t i)
 	wdg[i] = WDG[i];
 }
 
-uint32_t Wdg_GetErr()
+uint32_t Wdg_GetErr(void)
 {
 	return err;
 }

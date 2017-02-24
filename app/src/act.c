@@ -20,7 +20,7 @@
 /*             Action             */
 /**********************************/
 
-static void PeriphsStateAct()
+static void PeriphsStateAct(void)
 {
 	if (FS_Get(&functionalStateCtl, FS_LED_GREEN)) {
 		LED_GREEN_ON();
@@ -34,18 +34,18 @@ static void PeriphsStateAct()
 	}
 }
 
-static void ChassisStateAct()
+static void ChassisStateAct(void)
 {
 	CM_CMD(mecanumCurrentsCtl.w1, mecanumCurrentsCtl.w2, mecanumCurrentsCtl.w3, mecanumCurrentsCtl.w4);
 }
 
-void Act_Init()
+void Act_Init(void)
 {
 	CM_CMD(0, 0, 0, 0);
 	GM_CMD(0, 0);
 }
 
-void Act_Proc()
+void Act_Proc(void)
 {
 	PeriphsStateAct();
 	ChassisStateAct();

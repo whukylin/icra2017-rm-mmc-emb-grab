@@ -28,7 +28,7 @@ Motor_t motor[MOTOR_NUM];
 
 static Est_t* est[MOTOR_NUM];    // Estimator Group
 
-uint8_t Can_Init()
+uint8_t Can_Init(void)
 {
 	uint8_t i = 0;
 	for (; i < MOTOR_NUM; i++) {
@@ -134,7 +134,7 @@ void Can_Proc(uint32_t id, uint8_t* data)
 	}
 }
 
-void ZGyro_Reset()
+void ZGyro_Reset(void)
 {
 	zgyro.reset = 1;
 }
@@ -145,7 +145,7 @@ void Motor_Reset(uint8_t i)
 	motor[i].reset = 1;
 }
 
-void Can_Reset()
+void Can_Reset(void)
 {
 	ZGyro_Reset();
 	Motor_Reset(0);

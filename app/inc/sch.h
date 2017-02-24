@@ -32,8 +32,8 @@ typedef struct SchTask_t
 	struct SchTask_t* next;
 }SchTask_t;
 
-void Sch_Init();
-void Sch_Proc();
+void Sch_Init(void);
+void Sch_Proc(void);
 
 uint8_t Sch_Arrange(SchRun_t run, uint32_t interval);
 uint8_t Sch_Dismiss(SchRun_t run);
