@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016, Jack Mo (mobangjack@foxmail.com).
+ * Copyright (c) 2011-2016, Jack Mo (mobangjack@foxmail.com).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,35 +14,9 @@
  * limitations under the License.
  */
 
-#include "app.h"
+#include "btn.h"
 
-/**************************************/
-/*            Application             */
-/**************************************/
-
-void App_Init()
+void Btn_Config()
 {
-	Act_Init();
-	Clk_Init();
-	Cmd_Init();
-	Com_Init();
-	Ctl_Init();
-	Odo_Init();
-	Wdg_Init();
-}
-
-void App_Proc()
-{
-	Wdg_Proc();
-	Cmd_Proc();
-	Odo_Proc();
-	Ctl_Proc();
-	Act_Proc();
-}
-
-void App_Boot()
-{
-	Bsp_Config();
-	App_Init();
-	Tim_Start();
+	GPIO_In(BTN_PIN);
 }

@@ -1,7 +1,8 @@
 app/src/com.o: H:/bj/workspace/eclipse/stm/kylinbot/app/src/com.c \
  h:\bj\workspace\eclipse\stm\kylinbot\app\inc\com.h \
- h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\tty.h \
- h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\stm32util.h \
+ h:\bj\workspace\eclipse\stm\kylinbot\app\inc\cfg.h \
+ h:\bj\workspace\eclipse\stm\kylinbot\app\inc\fos.h \
+ h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\flash.h \
  h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\platform.h \
  h:\bj\workspace\eclipse\stm\kylinbot\stl\cmsis\device\stm32f4xx.h \
  h:\bj\workspace\eclipse\stm\kylinbot\stl\cmsis\core\core_cm4.h \
@@ -37,14 +38,18 @@ app/src/com.o: H:/bj/workspace/eclipse/stm/kylinbot/app/src/com.c \
  h:\bj\workspace\eclipse\stm\kylinbot\stl\stdperiph_driver\inc\stm32f4xx_dcmi.h \
  h:\bj\workspace\eclipse\stm\kylinbot\stl\stdperiph_driver\inc\stm32f4xx_dma2d.h \
  h:\bj\workspace\eclipse\stm\kylinbot\stl\stdperiph_driver\inc\stm32f4xx_sai.h \
+ h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\tty.h \
+ h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\stm32util.h \
  h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\fifo.h \
  h:\bj\workspace\eclipse\stm\kylinbot\app\inc\wdg.h
 
 h:\bj\workspace\eclipse\stm\kylinbot\app\inc\com.h:
 
-h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\tty.h:
+h:\bj\workspace\eclipse\stm\kylinbot\app\inc\cfg.h:
 
-h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\stm32util.h:
+h:\bj\workspace\eclipse\stm\kylinbot\app\inc\fos.h:
+
+h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\flash.h:
 
 h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\platform.h:
 
@@ -115,6 +120,10 @@ h:\bj\workspace\eclipse\stm\kylinbot\stl\stdperiph_driver\inc\stm32f4xx_dcmi.h:
 h:\bj\workspace\eclipse\stm\kylinbot\stl\stdperiph_driver\inc\stm32f4xx_dma2d.h:
 
 h:\bj\workspace\eclipse\stm\kylinbot\stl\stdperiph_driver\inc\stm32f4xx_sai.h:
+
+h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\tty.h:
+
+h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\stm32util.h:
 
 h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\fifo.h:
 

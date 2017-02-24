@@ -20,15 +20,23 @@
 /*          Communication          */
 /***********************************/
 
-//static uint8_t buf[COM_RX_FIFO_SIZE];
+/*
+static uint8_t buf[COM_RX_BUF_SIZE];
+
+static uint8_t id;
+static uint8_t len;
+static uint8_t key;
+static uint32_t head;
+*/
 
 void Com_Init()
 {
-	Cfg_Init();
+	//Cfg_Init();
 }
 
 void Com_Proc()
 {
+
 }
 
 void Tty_Proc(uint8_t data)

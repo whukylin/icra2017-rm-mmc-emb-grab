@@ -13,38 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-#ifndef __TTY_H__
-#define __TTY_H__
+
+#ifndef __BTM_H___
+#define __BTM_H___
 
 #include "stm32util.h"
 #include "fifo.h"
 
-#define TTY_TX_PIN PD5
-#define TTY_RX_PIN PD6
-#define TTY_USART USART6
-#define TTY_USART_BR 115200
-#define TTY_USART_WL 8
-#define TTY_USART_PA 'N'
-#define TTY_USART_SB 1
-#define TTY_USART_FC 'N'
+#define BTM_TX_PIN PD5
+#define BTM_RX_PIN PD6
+#define BTM_USART USART2
+#define BTM_USART_BR 9600
+#define BTM_USART_WL 8
+#define BTM_USART_PA 'N'
+#define BTM_USART_SB 1
+#define BTM_USART_FC 'N'
 
-#define TTY_IRQ_HANDLER IRQ_HANDLER(USART6)
-#define TTY_NVIC IRQ(USART6)
-#define TTY_NVIC_PRE_PRIORITY 1
-#define TTY_NVIC_SUB_PRIORITY 0
+#define BTM_IRQ_HANDLER IRQ_HANDLER(USART2)
+#define BTM_NVIC IRQ(USART2)
+#define BTM_NVIC_PRE_PRIORITY 1
+#define BTM_NVIC_SUB_PRIORITY 0
 
-#define TTY_RX_FIFO_SIZE 256u
-#define TTY_TX_FIFO_SIZE 256u
+#define BTM_RX_FIFO_SIZE 256u
+#define BTM_TX_FIFO_SIZE 256u
 
-void Tty_Config();
+void Btm_Config();
 
-uint8_t Tty_ReadByte();
-void Tty_WriteByte(uint8_t b);
-void Tty_Read(uint8_t* buf, uint32_t len);
-void Tty_Write(const uint8_t* buf, uint32_t len);
-void Tty_Print(const char* str);
+uint8_t Btm_ReadByte();
+void Btm_WriteByte(uint8_t b);
+void Btm_Read(uint8_t* buf, uint32_t len);
+void Btm_Write(const uint8_t* buf, uint32_t len);
+void Btm_Print(const char* str);
 
-void TtyRxCallback(uint8_t data);
+void BtmRxCallback(uint8_t data);
+
 
 #endif

@@ -20,13 +20,14 @@ void Bsp_Config()
 {
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	
+	Btm_Config();
+	Btn_Config();
 	Led_Config();
 	Tty_Config();
 	Tim_Config();
 	Can1_Config();
 	Can2_Config();
 	Rcv_Config();
-	Tim_Start();
 	LED_GREEN_ON();
 }
 

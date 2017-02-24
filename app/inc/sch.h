@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016, Jack Mo (mobangjack@foxmail.com).
+ * Copyright (c) 2011-2016, Jack Mo (mobangjack@foxmail.com).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,35 +14,28 @@
  * limitations under the License.
  */
 
-#include "app.h"
+#ifndef __SCH_H__
+#define __SCH_H__
 
-/**************************************/
-/*            Application             */
-/**************************************/
+#include <stdlib.h>
+#include <string.h>
 
-void App_Init()
+#include "clk.h"
+
+typedef void (*SchRun_t)(void);
+
+typedef struct
 {
-	Act_Init();
-	Clk_Init();
-	Cmd_Init();
-	Com_Init();
-	Ctl_Init();
-	Odo_Init();
-	Wdg_Init();
-}
+	SchRun_t run;
+	uint32_t interval;
+	uint32_t lastrun;
+	struct SchTask_t* next;
+}SchTask_t;
 
-void App_Proc()
-{
-	Wdg_Proc();
-	Cmd_Proc();
-	Odo_Proc();
-	Ctl_Proc();
-	Act_Proc();
-}
+void Sch_Init();
+void Sch_Proc();
 
-void App_Boot()
-{
-	Bsp_Config();
-	App_Init();
-	Tim_Start();
-}
+uint8_t Sch_Arrange(SchRun_t run, uint32_t interval);
+uint8_t Sch_Dismiss(SchRun_t run);
+
+#endif

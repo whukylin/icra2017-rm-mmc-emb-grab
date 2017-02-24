@@ -1,6 +1,6 @@
 bsp/src/bsp.o: H:/bj/workspace/eclipse/stm/kylinbot/bsp/src/bsp.c \
  h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\bsp.h \
- h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\can1.h \
+ h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\btm.h \
  h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\stm32util.h \
  h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\platform.h \
  h:\bj\workspace\eclipse\stm\kylinbot\stl\cmsis\device\stm32f4xx.h \
@@ -37,19 +37,22 @@ bsp/src/bsp.o: H:/bj/workspace/eclipse/stm/kylinbot/bsp/src/bsp.c \
  h:\bj\workspace\eclipse\stm\kylinbot\stl\stdperiph_driver\inc\stm32f4xx_dcmi.h \
  h:\bj\workspace\eclipse\stm\kylinbot\stl\stdperiph_driver\inc\stm32f4xx_dma2d.h \
  h:\bj\workspace\eclipse\stm\kylinbot\stl\stdperiph_driver\inc\stm32f4xx_sai.h \
+ h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\fifo.h \
+ h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\btn.h \
+ h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\can1.h \
  h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\can2.h \
  h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\delay.h \
  h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\flash.h \
  h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\led.h \
  h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\motor.h \
  h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\rcv.h \
+ h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\retarget.h \
  h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\tim.h \
- h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\tty.h \
- h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\fifo.h
+ h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\tty.h
 
 h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\bsp.h:
 
-h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\can1.h:
+h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\btm.h:
 
 h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\stm32util.h:
 
@@ -123,6 +126,12 @@ h:\bj\workspace\eclipse\stm\kylinbot\stl\stdperiph_driver\inc\stm32f4xx_dma2d.h:
 
 h:\bj\workspace\eclipse\stm\kylinbot\stl\stdperiph_driver\inc\stm32f4xx_sai.h:
 
+h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\fifo.h:
+
+h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\btn.h:
+
+h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\can1.h:
+
 h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\can2.h:
 
 h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\delay.h:
@@ -135,8 +144,8 @@ h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\motor.h:
 
 h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\rcv.h:
 
+h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\retarget.h:
+
 h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\tim.h:
 
 h:\bj\workspace\eclipse\stm\kylinbot\bsp\inc\tty.h:
-
-h:\bj\workspace\eclipse\stm\kylinbot\asp\inc\fifo.h:

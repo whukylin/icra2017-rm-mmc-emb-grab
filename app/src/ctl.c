@@ -52,17 +52,18 @@ static void WorkingStateSwitchMach()
 	case WORKING_STATE_PREPARE:
 		if (Wdg_IsErrSet(WDG_ERR_FATAL)) {
 			workingState = WORKING_STATE_STOP;
-		} else {
+		} else if (Ini_GetFlag(INI_FLAG_ALL)){
 			workingState = WORKING_STATE_NORMAL;
 		}
 		break;
 	case WORKING_STATE_NORMAL:
 		if (Wdg_IsErrSet(WDG_ERR_FATAL)) {
 			workingState = WORKING_STATE_STOP;
+		} else if (!Ini_GetFlag(INI_FLAG_ALL)){
+			workingState = WORKING_STATE_PREPARE;
 		}
 		break;
 	case WORKING_STATE_CONFIG:
-		// Current working state is CONFIG.
 		break;
 	default:
 		break;
@@ -74,11 +75,19 @@ static void WorkingStateSwitchMach()
 /**********************************************/
 static void FunctionalStateControl()
 {
-	if (FS_Get(&functionalStateRef, FS_LED_GREEN)) {
-		FS_Set(&functionalStateCtl, FS_LED_GREEN);
-	}
-	if (FS_Get(&functionalStateRef, FS_LED_RED)) {
-		FS_Set(&functionalStateCtl, FS_LED_RED);
+	if (workingState != WORKING_STATE_NORMAL) {
+		FS_Clr(&functionalStateCtl, FS_ALL);
+	} else {
+		if (FS_Get(&functionalStateRef, FS_LED_GREEN)) {
+			FS_Set(&functionalStateCtl, FS_LED_GREEN);
+		} else {
+			FS_Clr(&functionalStateCtl, FS_LED_GREEN);
+		}
+		if (FS_Get(&functionalStateRef, FS_LED_RED)) {
+			FS_Set(&functionalStateCtl, FS_LED_RED);
+		} else {
+			FS_Clr(&functionalStateCtl, FS_LED_RED);
+		}
 	}
 }
 
@@ -87,10 +96,23 @@ static void FunctionalStateControl()
 /**********************************************/
 static void ChassisVelocityControl()
 {
-	mecanumCurrentsCtl.w1 = PID_Calc(&CM1SpeedPID, mecanumVelocityRef.w1, mecanumVelocityFdb.w1) * Ramp_Calc(&CM1SpeedRamp);
-	mecanumCurrentsCtl.w2 = PID_Calc(&CM2SpeedPID, mecanumVelocityRef.w2, mecanumVelocityFdb.w2) * Ramp_Calc(&CM2SpeedRamp);
-	mecanumCurrentsCtl.w3 = PID_Calc(&CM3SpeedPID, mecanumVelocityRef.w3, mecanumVelocityFdb.w3) * Ramp_Calc(&CM3SpeedRamp);
-	mecanumCurrentsCtl.w4 = PID_Calc(&CM4SpeedPID, mecanumVelocityRef.w4, mecanumVelocityFdb.w4) * Ramp_Calc(&CM4SpeedRamp);
+	if (workingState != WORKING_STATE_NORMAL) {
+		PID_Reset(&CM1SpeedPID);
+		PID_Reset(&CM2SpeedPID);
+		PID_Reset(&CM3SpeedPID);
+		PID_Reset(&CM4SpeedPID);
+		Ramp_Reset(&CM1SpeedRamp);
+		Ramp_Reset(&CM2SpeedRamp);
+		Ramp_Reset(&CM3SpeedRamp);
+		Ramp_Reset(&CM4SpeedRamp);
+		MS_Set(&mecanumCurrentsCtl, 0, 0, 0, 0);
+	} else {
+		mecanumCurrentsCtl.w1 = PID_Calc(&CM1SpeedPID, mecanumVelocityRef.w1, mecanumVelocityFdb.w1) * Ramp_Calc(&CM1SpeedRamp);
+		mecanumCurrentsCtl.w2 = PID_Calc(&CM2SpeedPID, mecanumVelocityRef.w2, mecanumVelocityFdb.w2) * Ramp_Calc(&CM2SpeedRamp);
+		mecanumCurrentsCtl.w3 = PID_Calc(&CM3SpeedPID, mecanumVelocityRef.w3, mecanumVelocityFdb.w3) * Ramp_Calc(&CM3SpeedRamp);
+		mecanumCurrentsCtl.w4 = PID_Calc(&CM4SpeedPID, mecanumVelocityRef.w4, mecanumVelocityFdb.w4) * Ramp_Calc(&CM4SpeedRamp);
+	}
+
 }
 
 /**********************************************/
@@ -120,10 +142,7 @@ void Ctl_Init()
 void Ctl_Proc()
 {
 	WorkingStateSwitchMach();
-	if(workingState == WORKING_STATE_NORMAL)
-	{
-		FunctionalStateControl();
-		ChassisVelocityControl();
-	}
+	FunctionalStateControl();
+	ChassisVelocityControl();
 }
 

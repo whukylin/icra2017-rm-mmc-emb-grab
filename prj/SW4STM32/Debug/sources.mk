@@ -20,6 +20,7 @@ asp/src \
 bsp/src \
 srv/src \
 stl/StdPeriph_Driver/src \
+stl \
 . \
 usr/src \
 

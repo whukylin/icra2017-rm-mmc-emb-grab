@@ -13,24 +13,41 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-#ifndef __BSP_H__
-#define __BSP_H__
 
-#include "btm.h"
-#include "btn.h"
-#include "can1.h"
-#include "can2.h"
-#include "delay.h"
-#include "flash.h"
-#include "led.h"
-#include "motor.h"
-#include "rcv.h"
-#include "retarget.h"
-#include "tim.h"
-#include "tty.h"
+#include "ini.h"
 
-void Bsp_Config();
+static IniFlag iniFlag;
 
-#endif
+void Ini_Init()
+{
+	iniFlag = INI_FLAG_NONE;
+}
 
+void Ini_Proc()
+{
+	if (motor[0].reset == 1) {
+		iniFlag &= ~INI_FLAG_MOTOR1;
+	} else {
+		iniFlag |= INI_FLAG_MOTOR1;
+	}
+	if (motor[1].reset == 1) {
+		iniFlag &= ~INI_FLAG_MOTOR2;
+	} else {
+		iniFlag |= INI_FLAG_MOTOR2;
+	}
+	if (motor[2].reset == 1) {
+		iniFlag &= ~INI_FLAG_MOTOR3;
+	} else {
+		iniFlag |= INI_FLAG_MOTOR3;
+	}
+	if (motor[3].reset == 1) {
+		iniFlag &= ~INI_FLAG_MOTOR4;
+	} else {
+		iniFlag |= INI_FLAG_MOTOR4;
+	}
+}
+
+IniFlag Ini_GetFlag(IniFlag flag)
+{
+	return iniFlag & flag;
+}

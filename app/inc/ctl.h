@@ -30,6 +30,7 @@ extern "C" {
 #include "cmd.h"
 #include "odo.h"
 #include "sys.h"
+#include "ini.h"
 #include "wdg.h"
 
 typedef enum {
@@ -45,7 +46,7 @@ void Ctl_Proc();
 /**********************************************/
 /*             Exported Variables             */
 /**********************************************/
-extern WorkingState_e workingState; // Auto-Controlled
+extern WorkingState_e workingState;
 
 extern PID_t CM1SpeedPID;
 extern PID_t CM2SpeedPID;

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016, Jack Mo (mobangjack@foxmail.com).
+ * Copyright (c) 2011-2016, Jack Mo (mobangjack@foxmail.com).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,35 +14,25 @@
  * limitations under the License.
  */
 
-#include "app.h"
 
-/**************************************/
-/*            Application             */
-/**************************************/
+#ifndef __INI_H__
+#define __INI_H__
 
-void App_Init()
-{
-	Act_Init();
-	Clk_Init();
-	Cmd_Init();
-	Com_Init();
-	Ctl_Init();
-	Odo_Init();
-	Wdg_Init();
-}
+#include "can.h"
 
-void App_Proc()
-{
-	Wdg_Proc();
-	Cmd_Proc();
-	Odo_Proc();
-	Ctl_Proc();
-	Act_Proc();
-}
+typedef uint32_t IniFlag;
 
-void App_Boot()
-{
-	Bsp_Config();
-	App_Init();
-	Tim_Start();
-}
+#define INI_FLAG_NONE       0u
+#define INI_FLAG_MOTOR1     (1u<<0)
+#define INI_FLAG_MOTOR2     (1u<<1)
+#define INI_FLAG_MOTOR3     (1u<<2)
+#define INI_FLAG_MOTOR4     (1u<<3)
+
+#define INI_FLAG_ALL (INI_FLAG_MOTOR1 | INI_FLAG_MOTOR2 | INI_FLAG_MOTOR3 | INI_FLAG_MOTOR4)
+
+void Ini_Init();
+void Ini_Proc();
+
+IniFlag Ini_GetFlag(IniFlag flag);
+
+#endif

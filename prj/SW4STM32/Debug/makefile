@@ -10,6 +10,7 @@ RM := rm -rf
 -include sources.mk
 -include usr/src/subdir.mk
 -include stl/StdPeriph_Driver/src/subdir.mk
+-include stl/subdir.mk
 -include srv/src/subdir.mk
 -include bsp/src/subdir.mk
 -include asp/src/subdir.mk

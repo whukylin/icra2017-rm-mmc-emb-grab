@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016, Jack Mo (mobangjack@foxmail.com).
+ * Copyright (c) 2011-2016, Jack Mo (mobangjack@foxmail.com).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,35 +14,32 @@
  * limitations under the License.
  */
 
-#include "app.h"
+#include "retarget.h"
 
-/**************************************/
-/*            Application             */
-/**************************************/
+static uint8_t (*_in)(void);
+static void (*_out)(uint8_t);
 
-void App_Init()
+void dev_in(uint8_t (*in)(void))
 {
-	Act_Init();
-	Clk_Init();
-	Cmd_Init();
-	Com_Init();
-	Ctl_Init();
-	Odo_Init();
-	Wdg_Init();
+	_in = in;
 }
 
-void App_Proc()
+void dev_out(void (*out)(uint8_t))
 {
-	Wdg_Proc();
-	Cmd_Proc();
-	Odo_Proc();
-	Ctl_Proc();
-	Act_Proc();
+	_out = out;
 }
 
-void App_Boot()
+/*
+int putc(int c, FILE* f)
 {
-	Bsp_Config();
-	App_Init();
-	Tim_Start();
+	if (_out) _out(c);
+	return c;
 }
+
+int getc(FILE* f)
+{
+	if (_in) return _in();
+	return Btm_ReadByte();
+}
+*/
+

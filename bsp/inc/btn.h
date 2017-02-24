@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016, Jack Mo (mobangjack@foxmail.com).
+ * Copyright (c) 2011-2016, Jack Mo (mobangjack@foxmail.com).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,35 +14,16 @@
  * limitations under the License.
  */
 
-#include "app.h"
+#ifndef __BTN_H___
+#define __BTN_H___
 
-/**************************************/
-/*            Application             */
-/**************************************/
+#include "stm32util.h"
 
-void App_Init()
-{
-	Act_Init();
-	Clk_Init();
-	Cmd_Init();
-	Com_Init();
-	Ctl_Init();
-	Odo_Init();
-	Wdg_Init();
-}
+#define BTN_PIN PD10
+#define BTN_STATE() GPIO_READ_IN(BTN_PIN)
+//#define BTN_NVIC
 
-void App_Proc()
-{
-	Wdg_Proc();
-	Cmd_Proc();
-	Odo_Proc();
-	Ctl_Proc();
-	Act_Proc();
-}
+void Btn_Config();
 
-void App_Boot()
-{
-	Bsp_Config();
-	App_Init();
-	Tim_Start();
-}
+
+#endif
