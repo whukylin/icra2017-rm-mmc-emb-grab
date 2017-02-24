@@ -72,7 +72,7 @@ static void GetChassisVelocityRef(HCP_t* hcp)
 	chassisVelocityRef.z = MAFilter_Calc(&fz, vz);
 }
 
-void Hci_Init()
+void HCI_Init()
 {
 	uint32_t i = 0;
 	for (; i < MOUSE_BTN_CNT; i++) {
@@ -87,7 +87,7 @@ void Hci_Init()
 	MAFilter_Init(&fz, buf[2], KEY_CONTROL_MAFILTER_LEN);
 }
 
-void Hci_Proc(HCP_t* hcp)
+void HCI_Proc(HCP_t* hcp)
 {
 	GetFunctionalStateRef(hcp);
 	GetChassisVelocityRef(hcp);

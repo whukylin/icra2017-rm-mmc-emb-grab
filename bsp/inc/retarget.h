@@ -18,6 +18,7 @@
 #define __RETARGET_H__
 
 #include <stdio.h>
+#include <stdint.h>
 
 #ifdef __GNUC__
 #define PUTCHAR_PROTOTYPE int __io_putchar(int c)

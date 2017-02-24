@@ -21,8 +21,8 @@ void Bsp_Config()
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	
 	Led_Config();
-	LED_RED_ON();
-	//LED_GREEN_ON();
+	//LED_RED_ON();
+	LED_GREEN_ON();
 	/*
 	Btm_Config();
 	Retarget_In(Btm_ReadByte);
