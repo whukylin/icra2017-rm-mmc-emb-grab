@@ -43,11 +43,11 @@
 .\objects\srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
+.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\srv.o: ..\..\bsp\inc\tty.h
 .\objects\srv.o: ..\..\bsp\inc\stm32util.h
 .\objects\srv.o: ..\..\asp\inc\fifo.h
 .\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\srv.o: ..\..\app\inc\wdg.h
 .\objects\srv.o: ..\..\srv\inc\can_srv.h
 .\objects\srv.o: ..\..\app\inc\can.h

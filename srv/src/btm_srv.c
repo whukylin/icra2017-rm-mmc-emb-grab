@@ -18,7 +18,7 @@
 
 void BtmRxCallback(uint8_t data)
 {
-	Btm_Proc(data);
+	//Btm_Proc(data);
 }
 
  

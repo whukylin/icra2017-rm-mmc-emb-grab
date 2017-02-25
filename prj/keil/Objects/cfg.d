@@ -39,3 +39,4 @@
 .\objects\cfg.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\cfg.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\cfg.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
+.\objects\cfg.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

@@ -22,10 +22,10 @@
 
 void Can1RxCallback(uint32_t id, uint8_t* data)
 {
-	Can_Proc(id, data);
+	//Can_Proc(id, data);
 }
 
 void Can2RxCallback(uint32_t id, uint8_t* data)
 {
-	Can_Proc(id, data);
+	//Can_Proc(id, data);
 }

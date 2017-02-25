@@ -42,9 +42,9 @@
 .\objects\tty_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\tty_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\tty_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
+.\objects\tty_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\tty_srv.o: ..\..\bsp\inc\tty.h
 .\objects\tty_srv.o: ..\..\bsp\inc\stm32util.h
 .\objects\tty_srv.o: ..\..\asp\inc\fifo.h
 .\objects\tty_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\tty_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\tty_srv.o: ..\..\app\inc\wdg.h

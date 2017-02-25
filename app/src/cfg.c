@@ -47,6 +47,8 @@ void Cfg_Init(void)
 	Cfg_Load(&cfg);
 	if (Cfg_GetFlag(CFG_FLAG_DONE) == 0) {
 		// Use default configuration
+		Cfg_t tmp = CFG_DEFAULT;
+		memcpy(&cfg, &tmp, sizeof(Cfg_t));
 	}
 }
 

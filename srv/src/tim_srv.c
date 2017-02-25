@@ -18,10 +18,10 @@
 
 void TickTimCallback(void)
 {
-	Clk_Spin();
+	//Clk_Spin();
 }
 
 void SyncTimCallback(void)
 {
-	//App_Proc();
+	//Sch_Proc();
 }

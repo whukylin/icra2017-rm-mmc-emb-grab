@@ -34,10 +34,9 @@ void FIFO_Flush(FIFO_t* fifo)
 uint32_t FIFO_Push(FIFO_t* fifo, uint8_t* e, uint32_t n)
 {
 	uint32_t i = 0;
-	for (; i < n && fifo->n != fifo->s; i++) {
+	for (; i < n && fifo->n != fifo->s; i++, fifo->n++) {
 		fifo->m[fifo->w++] = e[i];
 		if (fifo->w == fifo->s) fifo->w = 0;
-		fifo->n++;
 	}
 	return i;
 }
@@ -45,10 +44,9 @@ uint32_t FIFO_Push(FIFO_t* fifo, uint8_t* e, uint32_t n)
 uint32_t FIFO_Pop(FIFO_t* fifo, uint8_t* e, uint32_t n)
 {
 	uint32_t i = 0;
-	for (; i < n && fifo->n != 0; i++) {
+	for (; i < n && fifo->n != 0; i++, fifo->n--) {
 		e[i] = fifo->m[fifo->r++];
 		if (fifo->r == fifo->s) fifo->r = 0;
-		fifo->n--;
 	}
 	return i;
 }
@@ -56,7 +54,7 @@ uint32_t FIFO_Pop(FIFO_t* fifo, uint8_t* e, uint32_t n)
 uint32_t FIFO_Peek(const FIFO_t* fifo, uint8_t* e, uint32_t n)
 {
 	uint32_t i = 0, j = fifo->r;
-	for (; i < fifo->n; i++) {
+	for (; i < n && i < fifo->n; i++) {
 		e[i] = fifo->m[j++];
 		if (j == fifo->s) j = 0;
 	}

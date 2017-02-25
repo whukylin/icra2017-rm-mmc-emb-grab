@@ -49,9 +49,9 @@
 .\objects\dci.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\dci.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\dci.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
+.\objects\dci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\dci.o: ..\..\app\inc\fun.h
 .\objects\dci.o: ..\..\app\inc\hci.h
 .\objects\dci.o: ..\..\asp\inc\mafilter.h
 .\objects\dci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\dci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\dci.o: ..\..\app\inc\wdg.h

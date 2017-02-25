@@ -42,9 +42,9 @@
 .\objects\btm_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\btm_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\btm_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
+.\objects\btm_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\btm_srv.o: ..\..\bsp\inc\tty.h
 .\objects\btm_srv.o: ..\..\bsp\inc\stm32util.h
 .\objects\btm_srv.o: ..\..\asp\inc\fifo.h
 .\objects\btm_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\btm_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\btm_srv.o: ..\..\app\inc\wdg.h

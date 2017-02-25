@@ -26,7 +26,8 @@ extern "C" {
 #endif
 
 #include "fos.h"
-
+#include <string.h>
+	
 // VERSION: (20)17/1/7
 #define VERSION_A		1u
 #define VERSION_B		7u

@@ -21,19 +21,39 @@ static void task(void)
 	LED_GREEN_TOG();
 }
 
+void print(const char* s, uint32_t len)
+{
+	uint16_t i = 0;
+	for (; i < len; i++) {
+		USART_SendData(USART2, s[i]);
+		//while(USART_GetITStatus(USART2, USART_IT_TXE));
+		delay_ms(10);
+	}
+}
+
 int main()
 {
-	KOS_Boot();
-	//App_Init();
+	//KOS_Boot();
+	//Sch_Arrange(task, 5000);
 	Bsp_Config();
-	//Sch_Init();
-	//Sch_Arrange(task, 500);
+	//Btm_Config();
+	//Led_Config();
+	//TickTim_Config();
+	TickTim_Start();
+	//Btm_Print("Hello, Jack.\n");
 	while(1)
 	{
-		//Sch_Proc();
-		if (Clk_GetMsTick() % 50 == 0) {
-			//Btm_Print("Hello, Jack.\n");
-			//Btm_Print("Hello, Jack.\n");
+		if (TICK_US() % 500000 == 0) {
+			//USART_SendData(USART2, 'a');
+			//delay_ms(5);
+			//USART_SendData(USART2, 'b');
+			//delay_ms(5);
+			//USART_SendData(USART2, 'c');
+			//delay_ms(5);
+			//USART_SendData(USART2, '\n');
+			//delay_ms(5);
+			Btm_Print("Hello, Jack.\n");
+			//Btm_Print("Hello\n");
 			task();
 		}
   }

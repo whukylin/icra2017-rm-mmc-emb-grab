@@ -41,9 +41,9 @@
 .\objects\com.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\com.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\com.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
+.\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\com.o: ..\..\bsp\inc\tty.h
 .\objects\com.o: ..\..\bsp\inc\stm32util.h
 .\objects\com.o: ..\..\asp\inc\fifo.h
 .\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\com.o: ..\..\app\inc\wdg.h

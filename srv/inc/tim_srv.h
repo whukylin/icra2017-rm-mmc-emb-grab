@@ -22,6 +22,7 @@ extern "C" {
 #endif
 
 #include "clk.h"
+#include "sch.h"
 
 #ifdef __cplusplus
 }
