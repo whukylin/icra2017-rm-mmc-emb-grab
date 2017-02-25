@@ -23,10 +23,17 @@ extern "C" {
 
 #include <stdint.h>
 
+typedef enum {
+	WORKING_STATE_STOP,
+	WORKING_STATE_PREPARE,
+	WORKING_STATE_NORMAL,
+	WORKING_STATE_CONFIG,
+}WorkingState_e;
+
 typedef uint32_t PeriphsState_t; // Peripherals Functional State
 
-#define FS_LED_GREEN      	(((uint32_t)1)<<0)
-#define FS_LED_RED        	(((uint32_t)1)<<1)
+#define FS_LED_GREEN    (((uint32_t)1)<<0)
+#define FS_LED_RED      (((uint32_t)1)<<1)
 #define FS_ALL      		(FS_LED_GREEN|FS_LED_RED)
 #define FS_NON       		((uint32_t)0)
 

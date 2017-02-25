@@ -16,12 +16,18 @@
 
 #include "dci.h"
 
+/*****************************************/
+/*     DBUS Direct Control Interface     */
+/*****************************************/
+
 static uint8_t dbuf[DBUS_FRAME_LEN];
 
 DBUS_t dbus;
 
 void DCI_Init(void)
 {
+	RCI_Init();
+	HCI_Init();
 	DBUS_Rst(&dbus);
 }
 
@@ -32,13 +38,16 @@ void DCI_Proc(void)
 	GetSwitchEvents(&dbus.rcp);
 	if (switchStates[SW_IDX_R] == SWITCH_STATE_1) {
 		RCI_Proc(&dbus.rcp);
-	} else if (switchStates[SW_IDX_R] == SWITCH_STATE_2) {
+	} else if (switchStates[SW_IDX_R] == SWITCH_STATE_3) {
 		HCI_Proc(&dbus.hcp);
+	} else if (switchStates[SW_IDX_R] == SWITCH_STATE_2) {
+	} else {
+		// Should never reach here
 	}
 }
 
 void Rcv_Proc(uint8_t* buf)
 {
-	Wdg_Feed(WDG_IDX_RC);
+	Wdg_Feed(WDG_IDX_RCV);
 	memcpy(dbuf, buf, DBUS_FRAME_LEN);
 }

@@ -307,8 +307,8 @@ typedef struct
 void Cfg_Load(Cfg_t* cfg);
 uint8_t Cfg_Save(Cfg_t* cfg);
 
-CfgFlag_t Cfg_GetFlag(const Cfg_t* cfg, CfgFlag_t flag);
-void Cfg_SetFlag(Cfg_t* cfg, CfgFlag_t flag);
+CfgFlag_t Cfg_GetFlag(CfgFlag_t flag);
+void Cfg_SetFlag(CfgFlag_t flag);
 
 void Cfg_Init(void);
 void Cfg_Proc(void);

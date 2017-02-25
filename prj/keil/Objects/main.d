@@ -1,5 +1,6 @@
 .\objects\main.o: ..\..\usr\src\main.c
 .\objects\main.o: ..\..\usr\inc\main.h
+.\objects\main.o: ..\..\kos\inc\kos.h
 .\objects\main.o: ..\..\app\inc\app.h
 .\objects\main.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\main.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
@@ -96,6 +97,7 @@
 .\objects\main.o: ..\..\app\inc\act.h
 .\objects\main.o: ..\..\app\inc\ctl.h
 .\objects\main.o: ..\..\app\inc\odo.h
-.\objects\main.o: ..\..\app\inc\ini.h
 .\objects\main.o: ..\..\app\inc\clk.h
+.\objects\main.o: ..\..\app\inc\ini.h
 .\objects\main.o: ..\..\app\inc\sch.h
+.\objects\main.o: ..\..\app\inc\wsm.h

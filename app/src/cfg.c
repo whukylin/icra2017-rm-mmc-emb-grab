@@ -32,27 +32,27 @@ uint8_t Cfg_Save(Cfg_t* cfg)
 	return Fos_Write((uint8_t*)cfg, sizeof(Cfg_t));
 }
 
-CfgFlag_t Cfg_GetFlag(const Cfg_t* cfg, CfgFlag_t flag)
+CfgFlag_t Cfg_GetFlag(CfgFlag_t flag)
 {
-	return cfg->flag & flag;
+	return cfg.flag & flag;
 }
 
-void Cfg_SetFlag(Cfg_t* cfg, CfgFlag_t flag)
+void Cfg_SetFlag(CfgFlag_t flag)
 {
-	cfg->flag |= flag;
+	cfg.flag |= flag;
 }
 
 void Cfg_Init(void)
 {
 	Cfg_Load(&cfg);
-	if (Cfg_GetFlag(&cfg, CFG_FLAG_DONE) == 0) {
+	if (Cfg_GetFlag(CFG_FLAG_DONE) == 0) {
 		// Use default configuration
 	}
 }
 
 void Cfg_Proc(void)
 {
-	if (Cfg_GetFlag(&cfg, CFG_FLAG_SAVE)) {
+	if (Cfg_GetFlag(CFG_FLAG_SAVE)) {
 		Cfg_Save(&cfg);
 	}
 }

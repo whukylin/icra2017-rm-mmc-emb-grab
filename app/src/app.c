@@ -27,22 +27,18 @@ void App_Init(void)
 	Cmd_Init();
 	Com_Init();
 	Ctl_Init();
+	Ini_Proc();
 	Odo_Init();
+	Sch_Init();
 	Wdg_Init();
+	WSM_Init();
 }
 
 void App_Proc(void)
 {
 	Wdg_Proc();
-	Cmd_Proc();
-	Odo_Proc();
-	Ctl_Proc();
-	Act_Proc();
+	Ini_Proc();
+	WSM_Proc();
+	Upd_Proc();
 }
 
-void App_Boot(void)
-{
-	Bsp_Config();
-	App_Init();
-	Tim_Start();
-}

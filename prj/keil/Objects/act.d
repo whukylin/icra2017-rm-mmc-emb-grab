@@ -1,9 +1,8 @@
 .\objects\act.o: ..\..\app\src\act.c
 .\objects\act.o: ..\..\app\inc\act.h
 .\objects\act.o: ..\..\app\inc\ctl.h
-.\objects\act.o: ..\..\asp\inc\pid.h
+.\objects\act.o: ..\..\app\inc\sys.h
 .\objects\act.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\act.o: ..\..\asp\inc\ramp.h
 .\objects\act.o: ..\..\app\inc\cmd.h
 .\objects\act.o: ..\..\app\inc\dci.h
 .\objects\act.o: ..\..\asp\inc\dbus.h
@@ -16,7 +15,6 @@
 .\objects\act.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\act.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\act.o: ..\..\app\inc\wdg.h
-.\objects\act.o: ..\..\app\inc\sys.h
 .\objects\act.o: ..\..\app\inc\mec.h
 .\objects\act.o: ..\..\asp\inc\mecanum.h
 .\objects\act.o: ..\..\app\inc\cfg.h
@@ -80,4 +78,5 @@
 .\objects\act.o: ..\..\asp\inc\gdf.h
 .\objects\act.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
 .\objects\act.o: ..\..\asp\inc\ekf.h
-.\objects\act.o: ..\..\app\inc\ini.h
+.\objects\act.o: ..\..\asp\inc\pid.h
+.\objects\act.o: ..\..\asp\inc\ramp.h

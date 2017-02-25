@@ -95,6 +95,7 @@
 .\objects\app.o: ..\..\app\inc\act.h
 .\objects\app.o: ..\..\app\inc\ctl.h
 .\objects\app.o: ..\..\app\inc\odo.h
-.\objects\app.o: ..\..\app\inc\ini.h
 .\objects\app.o: ..\..\app\inc\clk.h
+.\objects\app.o: ..\..\app\inc\ini.h
 .\objects\app.o: ..\..\app\inc\sch.h
+.\objects\app.o: ..\..\app\inc\wsm.h

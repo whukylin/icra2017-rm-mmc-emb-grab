@@ -53,16 +53,18 @@ extern "C" {
 #include "fos.h" // File Operating System
 #include "fun.h" // Helper functions
 #include "hci.h" // Host Control Interface
+#include "ini.h" // Initialization State Provider
 #include "mec.h" // Mecanum Power Transmission System
 #include "odo.h" // Odometer (Sensor Message Feedback)
 #include "rci.h" // Remote Control Interface
 #include "sch.h" // Scheduler
 #include "sys.h" // System-wide Variable Types and Functions
+#include "upd.h" // System Updater
 #include "wdg.h" // Watch Dog
+#include "wsm.h" // Working State Machine
 
 void App_Init(void);
 void App_Proc(void);
-void App_Boot(void);
 
 #ifdef __cplusplus
 }

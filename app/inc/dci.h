@@ -17,6 +17,10 @@
 #ifndef __DCI_H__
 #define __DCI_H__
 
+/*****************************************/
+/*     DBUS Direct Control Interface     */
+/*****************************************/
+
 #include "dbus.h"
 #include "rci.h"
 #include "hci.h"

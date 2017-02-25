@@ -17,6 +17,7 @@
 #ifndef __MAIN_H__
 #define __MAIN_H__
 
-#include "app.h"
+#include "kos.h"
 
 #endif 
+

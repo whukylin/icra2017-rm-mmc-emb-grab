@@ -1,5 +1,6 @@
 --cpu Cortex-M4.fp
 ".\objects\main.o"
+".\objects\kos.o"
 ".\objects\act.o"
 ".\objects\app.o"
 ".\objects\can.o"
@@ -19,6 +20,7 @@
 ".\objects\sch.o"
 ".\objects\sys.o"
 ".\objects\wdg.o"
+".\objects\wsm.o"
 ".\objects\ahrs.o"
 ".\objects\cbus.o"
 ".\objects\crc16.o"

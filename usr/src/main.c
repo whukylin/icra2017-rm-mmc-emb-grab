@@ -23,6 +23,7 @@ static void task(void)
 
 int main()
 {
+	KOS_Boot();
 	//App_Init();
 	Bsp_Config();
 	//Sch_Init();

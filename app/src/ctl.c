@@ -20,11 +20,6 @@
 /*              Logic Controller              */
 /**********************************************/
 
-/**********************************************/
-/*             Exported Variables             */
-/**********************************************/
-WorkingState_e workingState;
-
 PID_t CM1SpeedPID;
 PID_t CM2SpeedPID;
 PID_t CM3SpeedPID;
@@ -39,55 +34,19 @@ PeriphsState_t functionalStateCtl;
 MecanumState_t mecanumCurrentsCtl;
 
 /**********************************************/
-/*        Working State Switch Machine        */
-/**********************************************/
-static void WorkingStateSwitchMach(void)
-{
-	switch (workingState) {
-	case WORKING_STATE_STOP:
-		if (!Wdg_IsErrSet(WDG_ERR_FATAL)) {
-			workingState = WORKING_STATE_PREPARE;
-		}
-		break;
-	case WORKING_STATE_PREPARE:
-		if (Wdg_IsErrSet(WDG_ERR_FATAL)) {
-			workingState = WORKING_STATE_STOP;
-		} else if (Ini_GetFlag(INI_FLAG_ALL)){
-			workingState = WORKING_STATE_NORMAL;
-		}
-		break;
-	case WORKING_STATE_NORMAL:
-		if (Wdg_IsErrSet(WDG_ERR_FATAL)) {
-			workingState = WORKING_STATE_STOP;
-		} else if (!Ini_GetFlag(INI_FLAG_ALL)){
-			workingState = WORKING_STATE_PREPARE;
-		}
-		break;
-	case WORKING_STATE_CONFIG:
-		break;
-	default:
-		break;
-	}
-}
-
-/**********************************************/
 /*    Peripherals Functional State Control    */
 /**********************************************/
 static void FunctionalStateControl(void)
 {
-	if (workingState != WORKING_STATE_NORMAL) {
-		FS_Clr(&functionalStateCtl, FS_ALL);
+	if (FS_Get(&functionalStateRef, FS_LED_GREEN)) {
+		FS_Set(&functionalStateCtl, FS_LED_GREEN);
 	} else {
-		if (FS_Get(&functionalStateRef, FS_LED_GREEN)) {
-			FS_Set(&functionalStateCtl, FS_LED_GREEN);
-		} else {
-			FS_Clr(&functionalStateCtl, FS_LED_GREEN);
-		}
-		if (FS_Get(&functionalStateRef, FS_LED_RED)) {
-			FS_Set(&functionalStateCtl, FS_LED_RED);
-		} else {
-			FS_Clr(&functionalStateCtl, FS_LED_RED);
-		}
+		FS_Clr(&functionalStateCtl, FS_LED_GREEN);
+	}
+	if (FS_Get(&functionalStateRef, FS_LED_RED)) {
+		FS_Set(&functionalStateCtl, FS_LED_RED);
+	} else {
+		FS_Clr(&functionalStateCtl, FS_LED_RED);
 	}
 }
 
@@ -96,23 +55,10 @@ static void FunctionalStateControl(void)
 /**********************************************/
 static void ChassisVelocityControl(void)
 {
-	if (workingState != WORKING_STATE_NORMAL) {
-		PID_Reset(&CM1SpeedPID);
-		PID_Reset(&CM2SpeedPID);
-		PID_Reset(&CM3SpeedPID);
-		PID_Reset(&CM4SpeedPID);
-		Ramp_Reset(&CM1SpeedRamp);
-		Ramp_Reset(&CM2SpeedRamp);
-		Ramp_Reset(&CM3SpeedRamp);
-		Ramp_Reset(&CM4SpeedRamp);
-		MS_Set(&mecanumCurrentsCtl, 0, 0, 0, 0);
-	} else {
 		mecanumCurrentsCtl.w1 = PID_Calc(&CM1SpeedPID, mecanumVelocityRef.w1, mecanumVelocityFdb.w1) * Ramp_Calc(&CM1SpeedRamp);
 		mecanumCurrentsCtl.w2 = PID_Calc(&CM2SpeedPID, mecanumVelocityRef.w2, mecanumVelocityFdb.w2) * Ramp_Calc(&CM2SpeedRamp);
 		mecanumCurrentsCtl.w3 = PID_Calc(&CM3SpeedPID, mecanumVelocityRef.w3, mecanumVelocityFdb.w3) * Ramp_Calc(&CM3SpeedRamp);
 		mecanumCurrentsCtl.w4 = PID_Calc(&CM4SpeedPID, mecanumVelocityRef.w4, mecanumVelocityFdb.w4) * Ramp_Calc(&CM4SpeedRamp);
-	}
-
 }
 
 /**********************************************/
@@ -120,8 +66,6 @@ static void ChassisVelocityControl(void)
 /**********************************************/
 void Ctl_Init(void)
 {
-	workingState = WORKING_STATE_STOP;
-
 	FS_Clr(&functionalStateCtl, FS_ALL);
 	MS_Set(&mecanumCurrentsCtl, 0, 0, 0, 0);
 
@@ -141,7 +85,6 @@ void Ctl_Init(void)
 /**********************************************/
 void Ctl_Proc(void)
 {
-	WorkingStateSwitchMach();
 	FunctionalStateControl();
 	ChassisVelocityControl();
 }

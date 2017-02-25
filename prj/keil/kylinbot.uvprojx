@@ -373,7 +373,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F427X,STM32F427xx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\stl\CMSIS\core;..\..\stl\CMSIS\device;..\..\stl\StdPeriph_Driver\inc;..\..\stl\inc;..\..\bsp\inc;..\..\srv\inc;..\..\asp\inc;..\..\app\inc;..\..\usr\inc</IncludePath>
+              <IncludePath>..\..\stl\CMSIS\core;..\..\stl\CMSIS\device;..\..\stl\StdPeriph_Driver\inc;..\..\stl\inc;..\..\bsp\inc;..\..\srv\inc;..\..\asp\inc;..\..\app\inc;..\..\usr\inc;..\..\kos\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -430,6 +430,26 @@
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\usr\src\main.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>kos/inc</GroupName>
+          <Files>
+            <File>
+              <FileName>kos.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\kos\inc\kos.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>kos/src</GroupName>
+          <Files>
+            <File>
+              <FileName>kos.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\kos\src\kos.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -527,9 +547,19 @@
               <FilePath>..\..\app\inc\sys.h</FilePath>
             </File>
             <File>
+              <FileName>upd.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\app\inc\upd.h</FilePath>
+            </File>
+            <File>
               <FileName>wdg.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\app\inc\wdg.h</FilePath>
+            </File>
+            <File>
+              <FileName>wsm.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\app\inc\wsm.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -627,9 +657,19 @@
               <FilePath>..\..\app\src\sys.c</FilePath>
             </File>
             <File>
+              <FileName>upd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\app\src\upd.c</FilePath>
+            </File>
+            <File>
               <FileName>wdg.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\app\src\wdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>wsm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\app\src\wsm.c</FilePath>
             </File>
           </Files>
         </Group>

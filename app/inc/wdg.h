@@ -29,7 +29,7 @@ extern "C" {
 
 #define WDG_NUM              10u
 
-#define WDG_IDX_RC           0u
+#define WDG_IDX_RCV          0u
 #define WDG_IDX_COM          1u
 #define WDG_IDX_IMU          2u
 #define WDG_IDX_ZGYRO        3u
@@ -41,10 +41,10 @@ extern "C" {
 #define WDG_IDX_MOTOR6       9u
 
 
-#define WDG_ERR_RC			 (1u<<WDG_IDX_RC)
-#define WDG_ERR_COM			 (1u<<WDG_IDX_COM)
-#define WDG_ERR_IMU			 (1u<<WDG_IDX_IMU)
-#define WDG_ERR_ZGYRO		 (1u<<WDG_IDX_ZGYRO)
+#define WDG_ERR_RCV			   (1u<<WDG_IDX_RCV)
+#define WDG_ERR_COM			   (1u<<WDG_IDX_COM)
+#define WDG_ERR_IMU			   (1u<<WDG_IDX_IMU)
+#define WDG_ERR_ZGYRO		   (1u<<WDG_IDX_ZGYRO)
 #define WDG_ERR_MOTOR1		 (1u<<WDG_IDX_MOTOR1)
 #define WDG_ERR_MOTOR2		 (1u<<WDG_IDX_MOTOR2)
 #define WDG_ERR_MOTOR3		 (1u<<WDG_IDX_MOTOR3)
@@ -53,7 +53,7 @@ extern "C" {
 #define WDG_ERR_MOTOR6		 (1u<<WDG_IDX_MOTOR6)
 
 #define WDG_ERR_ALL ( \
-		WDG_ERR_RC | \
+		WDG_ERR_RCV | \
 		WDG_ERR_COM | \
 		WDG_ERR_IMU | \
 		WDG_ERR_ZGYRO | \
@@ -66,7 +66,7 @@ extern "C" {
 		)
 
 #define WDG_ERR_FATAL ( \
-		WDG_ERR_RC | \
+		WDG_ERR_RCV | \
 		WDG_ERR_IMU | \
 		WDG_ERR_ZGYRO | \
 		WDG_ERR_MOTOR1 | \
@@ -77,7 +77,7 @@ extern "C" {
 		WDG_ERR_MOTOR6 \
 		)
 
-#define WDG_OVERFLOW_CNT_RC   	    100u
+#define WDG_OVERFLOW_CNT_RCV   	  100u
 #define WDG_OVERFLOW_CNT_COM  		100u
 #define WDG_OVERFLOW_CNT_IMU  		100u
 #define WDG_OVERFLOW_CNT_ZGYRO 		100u

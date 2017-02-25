@@ -25,20 +25,11 @@
 extern "C" {
 #endif
 
-#include "pid.h"
-#include "ramp.h"
+#include "sys.h"
 #include "cmd.h"
 #include "odo.h"
-#include "sys.h"
-#include "ini.h"
-#include "wdg.h"
-
-typedef enum {
-	WORKING_STATE_STOP,
-	WORKING_STATE_PREPARE,
-	WORKING_STATE_NORMAL,
-	WORKING_STATE_CONFIG,
-}WorkingState_e;
+#include "pid.h"
+#include "ramp.h"
 
 void Ctl_Init(void);
 void Ctl_Proc(void);
@@ -46,7 +37,6 @@ void Ctl_Proc(void);
 /**********************************************/
 /*             Exported Variables             */
 /**********************************************/
-extern WorkingState_e workingState;
 
 extern PID_t CM1SpeedPID;
 extern PID_t CM2SpeedPID;
