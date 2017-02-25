@@ -1,12 +1,13 @@
 .\objects\com.o: ..\..\app\src\com.c
 .\objects\com.o: ..\..\app\inc\com.h
+.\objects\com.o: ..\..\asp\inc\msg.h
+.\objects\com.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\com.o: ..\..\app\inc\cfg.h
 .\objects\com.o: ..\..\app\inc\fos.h
 .\objects\com.o: ..\..\bsp\inc\flash.h
 .\objects\com.o: ..\..\bsp\inc\platform.h
 .\objects\com.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\com.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\com.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\com.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\com.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\com.o: ..\..\stl\CMSIS\core\core_cmSimd.h

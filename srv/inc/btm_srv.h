@@ -21,8 +21,8 @@
 extern "C" {
 #endif
 	
-#include "btm.h"
-
+#include "com.h"
+	
 #ifdef __cplusplus
 }
 #endif

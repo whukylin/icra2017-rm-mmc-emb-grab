@@ -737,6 +737,11 @@
               <FilePath>..\..\asp\inc\mecanum.h</FilePath>
             </File>
             <File>
+              <FileName>msg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\asp\inc\msg.h</FilePath>
+            </File>
+            <File>
               <FileName>pid.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\asp\inc\pid.h</FilePath>
@@ -815,6 +820,11 @@
               <FileName>mecanum.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\asp\src\mecanum.c</FilePath>
+            </File>
+            <File>
+              <FileName>msg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\asp\src\msg.c</FilePath>
             </File>
             <File>
               <FileName>pid.c</FileName>

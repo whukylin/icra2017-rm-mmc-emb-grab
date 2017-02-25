@@ -1,13 +1,14 @@
 .\objects\tty_srv.o: ..\..\srv\src\tty_srv.c
 .\objects\tty_srv.o: ..\..\srv\inc\tty_srv.h
 .\objects\tty_srv.o: ..\..\app\inc\com.h
+.\objects\tty_srv.o: ..\..\asp\inc\msg.h
+.\objects\tty_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\tty_srv.o: ..\..\app\inc\cfg.h
 .\objects\tty_srv.o: ..\..\app\inc\fos.h
 .\objects\tty_srv.o: ..\..\bsp\inc\flash.h
 .\objects\tty_srv.o: ..\..\bsp\inc\platform.h
 .\objects\tty_srv.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\tty_srv.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\tty_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\tty_srv.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\tty_srv.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\tty_srv.o: ..\..\stl\CMSIS\core\core_cmSimd.h

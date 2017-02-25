@@ -24,23 +24,22 @@ void Upd_Proc(void)
 {
 	switch (WSM_GetWorkingState()) {
 		case WORKING_STATE_STOP:
+			Act_Init();
 			break;
 		case WORKING_STATE_PREPARE:
+			Act_Init();
 			break;
 		case WORKING_STATE_NORMAL:
+			Cmd_Proc();
+			Odo_Proc();
+			Ctl_Proc();
+			Act_Proc();
 			break;
 		case WORKING_STATE_CONFIG:
+			Cfg_Proc();
 			break;
 		default:
 			break;
-	}
-	if (WSM_GetWorkingState == WORKING_STATE_STOP) {
-		
-	} else if (WSM_GetWorkingState() == WORKING_STATE_NORMAL) {
-		Cmd_Proc();
-		Odo_Proc();
-		Ctl_Proc();
-		Act_Proc();
 	}
 }
 

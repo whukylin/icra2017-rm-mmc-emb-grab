@@ -34,7 +34,6 @@ void WSM_Init(void);
 void WSM_Proc(void);
 
 WorkingState_e WSM_GetWorkingState(void);
-void WSM_SetWorkingState(WorkingState_e newWorkingState);
 WorkingState_e WSM_GetLastWorkingState(void);
 
 #ifdef __cplusplus

@@ -18,5 +18,5 @@
 
 void TtyRxCallback(uint8_t data)
 {
-	//Tty_Proc(data);
+	Tty_Proc(data);
 }

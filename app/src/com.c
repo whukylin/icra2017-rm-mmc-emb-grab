@@ -41,5 +41,10 @@ void Com_Proc(void)
 
 void Tty_Proc(uint8_t data)
 {
-	Wdg_Feed(WDG_IDX_COM);
+	Wdg_Feed(WDG_IDX_TTY);
+}
+
+void Btm_Proc(uint8_t data)
+{
+	Wdg_Feed(WDG_IDX_BTM);
 }

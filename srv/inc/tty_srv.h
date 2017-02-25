@@ -17,6 +17,16 @@
 #ifndef __COM_SRV_H__
 #define __COM_SRV_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "com.h"
 
+#ifdef __cplusplus
+}
 #endif
+
+#endif
+
+

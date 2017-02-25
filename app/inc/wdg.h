@@ -27,22 +27,24 @@ extern "C" {
 
 #include <stdint.h>
 
-#define WDG_NUM              10u
+#define WDG_NUM              11u
 
 #define WDG_IDX_RCV          0u
-#define WDG_IDX_COM          1u
-#define WDG_IDX_IMU          2u
-#define WDG_IDX_ZGYRO        3u
-#define WDG_IDX_MOTOR1       4u
-#define WDG_IDX_MOTOR2       5u
-#define WDG_IDX_MOTOR3       6u
-#define WDG_IDX_MOTOR4       7u
-#define WDG_IDX_MOTOR5       8u
-#define WDG_IDX_MOTOR6       9u
+#define WDG_IDX_TTY          1u
+#define WDG_IDX_BTM          2u
+#define WDG_IDX_IMU          3u
+#define WDG_IDX_ZGYRO        4u
+#define WDG_IDX_MOTOR1       5u
+#define WDG_IDX_MOTOR2       6u
+#define WDG_IDX_MOTOR3       7u
+#define WDG_IDX_MOTOR4       8u
+#define WDG_IDX_MOTOR5       9u
+#define WDG_IDX_MOTOR6       10u
 
 
 #define WDG_ERR_RCV			   (1u<<WDG_IDX_RCV)
-#define WDG_ERR_COM			   (1u<<WDG_IDX_COM)
+#define WDG_ERR_TTY			   (1u<<WDG_IDX_TTY)
+#define WDG_ERR_BTM			   (1u<<WDG_IDX_BTM)
 #define WDG_ERR_IMU			   (1u<<WDG_IDX_IMU)
 #define WDG_ERR_ZGYRO		   (1u<<WDG_IDX_ZGYRO)
 #define WDG_ERR_MOTOR1		 (1u<<WDG_IDX_MOTOR1)
@@ -54,7 +56,8 @@ extern "C" {
 
 #define WDG_ERR_ALL ( \
 		WDG_ERR_RCV | \
-		WDG_ERR_COM | \
+		WDG_ERR_TTY | \
+		WDG_ERR_BTM | \
 		WDG_ERR_IMU | \
 		WDG_ERR_ZGYRO | \
 		WDG_ERR_MOTOR1 | \
@@ -67,18 +70,15 @@ extern "C" {
 
 #define WDG_ERR_FATAL ( \
 		WDG_ERR_RCV | \
-		WDG_ERR_IMU | \
-		WDG_ERR_ZGYRO | \
 		WDG_ERR_MOTOR1 | \
 		WDG_ERR_MOTOR2 | \
 		WDG_ERR_MOTOR3 | \
-		WDG_ERR_MOTOR4 | \
-		WDG_ERR_MOTOR5 | \
-		WDG_ERR_MOTOR6 \
+		WDG_ERR_MOTOR4 \
 		)
 
 #define WDG_OVERFLOW_CNT_RCV   	  100u
-#define WDG_OVERFLOW_CNT_COM  		100u
+#define WDG_OVERFLOW_CNT_TTY  		100u
+#define WDG_OVERFLOW_CNT_BTM  		100u
 #define WDG_OVERFLOW_CNT_IMU  		100u
 #define WDG_OVERFLOW_CNT_ZGYRO 		100u
 #define WDG_OVERFLOW_CNT_MOTOR 		100u

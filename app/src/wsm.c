@@ -69,11 +69,6 @@ WorkingState_e WSM_GetWorkingState(void)
 	return workingState;
 }
 
-void WSM_SetWorkingState(WorkingState_e newWorkingState)
-{
-	workingState = newWorkingState;
-}
-
 WorkingState_e WSM_GetLastWorkingState(void)
 {
 	return lastWorkingState;
