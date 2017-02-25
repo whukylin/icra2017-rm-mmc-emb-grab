@@ -26,7 +26,7 @@ void KOS_Boot(void)
 	App_Init();
 	
 	// Arrange scheduled tasks
-	Sch_Arrange(App_Proc, 1000);
+	Sch_Arrange(App_Proc, 1);
 	
 	// BSP configuration
 	Bsp_Config();

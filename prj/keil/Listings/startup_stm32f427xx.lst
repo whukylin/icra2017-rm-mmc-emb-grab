@@ -920,7 +920,7 @@ ARM Macro Assembler    Page 15
               00000000 
 Command Line: --debug --xref --cpreproc --diag_suppress=9931 --cpu=Cortex-M4.fp
  --apcs=interwork --depend=.\objects\startup_stm32f427xx.d -o.\objects\startup_
-stm32f427xx.o --predefine="__UVISION_VERSION SETA 517" --predefine="STM32F427xx
+stm32f427xx.o --predefine="__UVISION_VERSION SETA 523" --predefine="STM32F427xx
  SETA 1" --list=.\listings\startup_stm32f427xx.lst ..\..\stl\src\arm\startup_st
 m32f427xx.s
 

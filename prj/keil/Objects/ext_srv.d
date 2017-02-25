@@ -5,7 +5,7 @@
 .\objects\ext_srv.o: ..\..\bsp\inc\platform.h
 .\objects\ext_srv.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\ext_srv.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\ext_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\ext_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\ext_srv.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\ext_srv.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\ext_srv.o: ..\..\stl\CMSIS\core\core_cmSimd.h

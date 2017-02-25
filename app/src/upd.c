@@ -18,6 +18,19 @@
 
 void Upd_Init(void)
 {
+	Mec_Config(cfg.cha.mecCfg.lx, cfg.cha.mecCfg.ly, cfg.cha.mecCfg.r1, cfg.cha.mecCfg.r2);
+	PID_Config(&CM1SpeedPID, cfg.cha.spdPID.kp, cfg.cha.spdPID.ki, cfg.cha.spdPID.kd, cfg.cha.spdPID.it,
+							cfg.cha.spdPID.Pmax, cfg.cha.spdPID.Imax, cfg.cha.spdPID.Dmax, cfg.cha.spdPID.Omax);
+	PID_Config(&CM2SpeedPID, cfg.cha.spdPID.kp, cfg.cha.spdPID.ki, cfg.cha.spdPID.kd, cfg.cha.spdPID.it,
+							cfg.cha.spdPID.Pmax, cfg.cha.spdPID.Imax, cfg.cha.spdPID.Dmax, cfg.cha.spdPID.Omax);
+	PID_Config(&CM3SpeedPID, cfg.cha.spdPID.kp, cfg.cha.spdPID.ki, cfg.cha.spdPID.kd, cfg.cha.spdPID.it,
+							cfg.cha.spdPID.Pmax, cfg.cha.spdPID.Imax, cfg.cha.spdPID.Dmax, cfg.cha.spdPID.Omax);
+	PID_Config(&CM4SpeedPID, cfg.cha.spdPID.kp, cfg.cha.spdPID.ki, cfg.cha.spdPID.kd, cfg.cha.spdPID.it,
+							cfg.cha.spdPID.Pmax, cfg.cha.spdPID.Imax, cfg.cha.spdPID.Dmax, cfg.cha.spdPID.Omax);
+	Ramp_Config(&CM1SpeedRamp, cfg.ctl.rmp);
+	Ramp_Config(&CM2SpeedRamp, cfg.ctl.rmp);
+	Ramp_Config(&CM3SpeedRamp, cfg.ctl.rmp);
+	Ramp_Config(&CM4SpeedRamp, cfg.ctl.rmp);
 }
 
 void Upd_Proc(void)
@@ -27,15 +40,27 @@ void Upd_Proc(void)
 			Act_Init();
 			break;
 		case WORKING_STATE_PREPARE:
+			if (WSM_GetLastWorkingState() != WORKING_STATE_PREPARE) {
+				Cmd_Init();
+				Odo_Init();
+				Ctl_Init();
+			}
 			Act_Init();
 			break;
 		case WORKING_STATE_NORMAL:
+			if (WSM_GetLastWorkingState() == WORKING_STATE_CONFIG) {
+				Upd_Init();
+			}
 			Cmd_Proc();
 			Odo_Proc();
 			Ctl_Proc();
 			Act_Proc();
 			break;
 		case WORKING_STATE_CONFIG:
+			Cmd_Proc();
+			Odo_Proc();
+			Ctl_Proc();
+			Act_Proc();
 			Cfg_Proc();
 			break;
 		default:

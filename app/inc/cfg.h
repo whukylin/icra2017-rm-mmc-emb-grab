@@ -282,8 +282,8 @@ typedef struct
 	CHA_SPD_PID_CFG_DEFAULT, \
 }
 
-#define CTL_DIV_DEFAULT 4
-#define CTL_RMP_DEFAULT 5000
+#define CTL_DIV_DEFAULT 1
+#define CTL_RMP_DEFAULT 4000
 
 #define CTL_CFG_DEFAULT \
 { \

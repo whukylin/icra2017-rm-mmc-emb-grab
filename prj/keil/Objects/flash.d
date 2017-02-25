@@ -3,7 +3,7 @@
 .\objects\flash.o: ..\..\bsp\inc\platform.h
 .\objects\flash.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\flash.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\flash.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\flash.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\flash.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\flash.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\flash.o: ..\..\stl\CMSIS\core\core_cmSimd.h

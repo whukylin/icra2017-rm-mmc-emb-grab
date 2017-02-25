@@ -19,8 +19,9 @@
 #define __INI_H__
 
 #include "can.h"
+#include "cfg.h"
 
-typedef uint32_t IniFlag;
+typedef uint32_t IniFlag_t;
 
 #define INI_FLAG_NONE       0u
 #define INI_FLAG_MOTOR1     (1u<<0)
@@ -33,6 +34,6 @@ typedef uint32_t IniFlag;
 void Ini_Init(void);
 void Ini_Proc(void);
 
-IniFlag Ini_GetFlag(IniFlag flag);
+IniFlag_t Ini_GetFlag(IniFlag_t flag);
 
 #endif

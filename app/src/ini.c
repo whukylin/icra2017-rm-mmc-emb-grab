@@ -16,7 +16,7 @@
 
 #include "ini.h"
 
-static IniFlag iniFlag;
+static IniFlag_t iniFlag;
 
 void Ini_Init(void)
 {
@@ -47,7 +47,9 @@ void Ini_Proc(void)
 	}
 }
 
-IniFlag Ini_GetFlag(IniFlag flag)
+IniFlag_t Ini_GetFlag(IniFlag_t flag)
 {
 	return iniFlag & flag;
 }
+
+

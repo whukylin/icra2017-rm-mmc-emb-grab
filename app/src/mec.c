@@ -16,7 +16,7 @@
 
 #include "mec.h"
 
-Mecanum_t mecanum;
+static Mecanum_t mecanum;
 
 void Mec_Config(float lx, float ly, float r1, float r2)
 {

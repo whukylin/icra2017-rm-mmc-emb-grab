@@ -2,7 +2,7 @@
 .\objects\btm_srv.o: ..\..\srv\inc\btm_srv.h
 .\objects\btm_srv.o: ..\..\app\inc\com.h
 .\objects\btm_srv.o: ..\..\asp\inc\msg.h
-.\objects\btm_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\btm_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\btm_srv.o: ..\..\app\inc\cfg.h
 .\objects\btm_srv.o: ..\..\app\inc\fos.h
 .\objects\btm_srv.o: ..\..\bsp\inc\flash.h
@@ -45,6 +45,6 @@
 .\objects\btm_srv.o: ..\..\bsp\inc\tty.h
 .\objects\btm_srv.o: ..\..\bsp\inc\stm32util.h
 .\objects\btm_srv.o: ..\..\asp\inc\fifo.h
-.\objects\btm_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\btm_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\btm_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\btm_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\btm_srv.o: ..\..\app\inc\wdg.h

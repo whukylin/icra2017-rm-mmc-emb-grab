@@ -36,9 +36,11 @@ void Cmd_Init(void)
 void Cmd_Proc(void)
 {
 	DCI_Proc();
+	
 	LIMIT(chassisVelocityRef.x, -cfg.cha.spdCfg.max, cfg.cha.spdCfg.max);
 	LIMIT(chassisVelocityRef.y, -cfg.cha.spdCfg.max, cfg.cha.spdCfg.max);
 	LIMIT(chassisVelocityRef.z, -cfg.cha.spdCfg.max, cfg.cha.spdCfg.max);
+	
 	Mec_Decomp((float*)&chassisVelocityRef, (float*)&mecanumVelocityRef);
 }
 

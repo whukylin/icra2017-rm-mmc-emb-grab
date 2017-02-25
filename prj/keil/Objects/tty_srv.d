@@ -2,7 +2,7 @@
 .\objects\tty_srv.o: ..\..\srv\inc\tty_srv.h
 .\objects\tty_srv.o: ..\..\app\inc\com.h
 .\objects\tty_srv.o: ..\..\asp\inc\msg.h
-.\objects\tty_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\tty_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\tty_srv.o: ..\..\app\inc\cfg.h
 .\objects\tty_srv.o: ..\..\app\inc\fos.h
 .\objects\tty_srv.o: ..\..\bsp\inc\flash.h
@@ -45,6 +45,6 @@
 .\objects\tty_srv.o: ..\..\bsp\inc\tty.h
 .\objects\tty_srv.o: ..\..\bsp\inc\stm32util.h
 .\objects\tty_srv.o: ..\..\asp\inc\fifo.h
-.\objects\tty_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\tty_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\tty_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\tty_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\tty_srv.o: ..\..\app\inc\wdg.h

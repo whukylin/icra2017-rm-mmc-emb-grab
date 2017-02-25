@@ -39,6 +39,7 @@ void Can_Init(void)
 		Ekf_Init(&ekf[i], EST_Q, 0, 0, 0);
 		Est_Init(&est[i], &gdf[i], &ekf[i]);
 	}
+	Can_Reset();
 }
 
 #define PI 3.1415926f

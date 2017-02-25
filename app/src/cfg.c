@@ -52,7 +52,8 @@ void Cfg_Init(void)
 
 void Cfg_Proc(void)
 {
-	if (Cfg_GetFlag(CFG_FLAG_SAVE)) {
+	if (!Cfg_GetFlag(CFG_FLAG_SAVE)) {
 		Cfg_Save(&cfg);
+		Cfg_SetFlag(CFG_FLAG_SAVE);
 	}
 }

@@ -38,8 +38,6 @@ void Mec_Config(float lx, float ly, float r1, float r2);
 void Mec_Synthe(const float* w, float* v);
 void Mec_Decomp(const float* v, float* w);
 
-extern Mecanum_t mecanum;
-
 #ifdef __cplusplus
 }
 #endif
