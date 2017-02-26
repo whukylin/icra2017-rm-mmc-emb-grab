@@ -38,3 +38,4 @@
 .\objects\rcv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\rcv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\rcv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
+.\objects\rcv.o: ..\..\bsp\inc\led.h

@@ -70,6 +70,7 @@
 .\objects\main.o: ..\..\bsp\inc\flash.h
 .\objects\main.o: ..\..\bsp\inc\led.h
 .\objects\main.o: ..\..\bsp\inc\motor.h
+.\objects\main.o: ..\..\bsp\inc\pwm.h
 .\objects\main.o: ..\..\bsp\inc\rcv.h
 .\objects\main.o: ..\..\bsp\inc\retarget.h
 .\objects\main.o: ..\..\bsp\inc\tim.h

@@ -20,20 +20,22 @@ void Bsp_Config(void)
 {
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	
-	Btm_Config();
+	//Pwm_Config();
+	//Btm_Config();
 	//Btm_Print("Hello from Kylinbot.\n");
 	//Retarget_In(Btm_ReadByte);
 	//Retarget_Out(Btm_WriteByte);
 
 	//printf("Hello from Kylinbot.\n");
 
-	Btn_Config();
+	//Btn_Config();
 	Led_Config();
 	//Tty_Config();
-	Tim_Config();
+	//Tim_Config();
 	//Can1_Config();
 	//Can2_Config();
-	//Rcv_Config();
+	Rcv_Config();
+	//USART1_Config();
 	LED_GREEN_ON();
 }
 

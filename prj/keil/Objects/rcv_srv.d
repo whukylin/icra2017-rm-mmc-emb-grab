@@ -56,3 +56,5 @@
 .\objects\rcv_srv.o: ..\..\asp\inc\mafilter.h
 .\objects\rcv_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\rcv_srv.o: ..\..\app\inc\wdg.h
+.\objects\rcv_srv.o: ..\..\bsp\inc\led.h
+.\objects\rcv_srv.o: ..\..\bsp\inc\stm32util.h

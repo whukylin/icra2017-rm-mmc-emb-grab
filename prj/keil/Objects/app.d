@@ -68,6 +68,7 @@
 .\objects\app.o: ..\..\bsp\inc\flash.h
 .\objects\app.o: ..\..\bsp\inc\led.h
 .\objects\app.o: ..\..\bsp\inc\motor.h
+.\objects\app.o: ..\..\bsp\inc\pwm.h
 .\objects\app.o: ..\..\bsp\inc\rcv.h
 .\objects\app.o: ..\..\bsp\inc\retarget.h
 .\objects\app.o: ..\..\bsp\inc\tim.h

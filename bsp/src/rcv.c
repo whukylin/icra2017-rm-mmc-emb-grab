@@ -15,6 +15,7 @@
  */
  
 #include "rcv.h"
+#include "led.h"
 
 static uint8_t buf[2][RCV_DMA_BUF_SIZE];
 
@@ -29,7 +30,7 @@ void Rcv_Config(void)
 			   RCV_USART_FC);
 
 	USART_DMACmd(RCV_USART, USART_DMAReq_Rx, ENABLE);
-	
+		
 	DMA_Config(RCV_DMA_STREAM,
 			   RCV_DMA_CHANNEL,
 			   (u32)&RCV_USART->DR,

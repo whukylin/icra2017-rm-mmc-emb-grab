@@ -67,6 +67,7 @@
 .\objects\ctl.o: ..\..\bsp\inc\delay.h
 .\objects\ctl.o: ..\..\bsp\inc\led.h
 .\objects\ctl.o: ..\..\bsp\inc\motor.h
+.\objects\ctl.o: ..\..\bsp\inc\pwm.h
 .\objects\ctl.o: ..\..\bsp\inc\rcv.h
 .\objects\ctl.o: ..\..\bsp\inc\retarget.h
 .\objects\ctl.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

@@ -69,6 +69,7 @@
 .\objects\kos.o: ..\..\bsp\inc\flash.h
 .\objects\kos.o: ..\..\bsp\inc\led.h
 .\objects\kos.o: ..\..\bsp\inc\motor.h
+.\objects\kos.o: ..\..\bsp\inc\pwm.h
 .\objects\kos.o: ..\..\bsp\inc\rcv.h
 .\objects\kos.o: ..\..\bsp\inc\retarget.h
 .\objects\kos.o: ..\..\bsp\inc\tim.h

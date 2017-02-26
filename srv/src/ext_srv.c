@@ -16,9 +16,11 @@
  
 #include "ext_srv.h"
 #include "led.h"
+#include "pwm.h"
 
 void BtnCallback()
 {
-	//LED_RED_TOG();
+	LED_RED_TOG();
+	CLAW_TOG();
 }
 

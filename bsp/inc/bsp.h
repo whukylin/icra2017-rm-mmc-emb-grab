@@ -25,6 +25,7 @@
 #include "flash.h"
 #include "led.h"
 #include "motor.h"
+#include "pwm.h"
 #include "rcv.h"
 #include "retarget.h"
 #include "tim.h"

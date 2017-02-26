@@ -59,8 +59,8 @@ void GPIO_Out(GPIO gpio)
 
 void GPIO_AF(GPIO gpio, u8 af)
 {
-	GPIO_PinAFConfig(GPIO_PIN_GRP(gpio), GPIO_PIN_NUM(gpio), af);
 	GPIO_Config(gpio, GPIO_Mode_AF, GPIO_Fast_Speed, GPIO_OType_PP, GPIO_PuPd_NOPULL);
+	GPIO_PinAFConfig(GPIO_PIN_GRP(gpio), GPIO_PIN_NUM(gpio), af);
 }
 
 void EXTI_Bind(GPIO gpio, EXTITrigger_TypeDef trig)
@@ -449,12 +449,12 @@ void DMA_Config(DMA_Stream_TypeDef* DMAy_Streamx, u32 channel, u32 pba, u32 mba,
 	dma.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
 	dma.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
 	dma.DMA_Mode = DMA_Mode_Circular;
-	dma.DMA_Priority = DMA_Priority_VeryHigh;
+	dma.DMA_Priority = DMA_Priority_Medium;
 	dma.DMA_FIFOMode = DMA_FIFOMode_Disable;
 	dma.DMA_FIFOThreshold = DMA_FIFOThreshold_1QuarterFull;
-	dma.DMA_MemoryBurst = DMA_Mode_Normal;
+	dma.DMA_MemoryBurst = DMA_MemoryBurst_Single;
 	dma.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
-	DMA_Init(DMAy_Streamx,&dma);
+	DMA_Init(DMAy_Streamx, &dma);
 }
 
 void EXTI_Config(u32 line, EXTIMode_TypeDef mode, EXTITrigger_TypeDef trig)

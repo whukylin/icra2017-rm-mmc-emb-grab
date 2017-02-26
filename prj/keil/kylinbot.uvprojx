@@ -945,6 +945,11 @@
               <FilePath>..\..\bsp\inc\platform.h</FilePath>
             </File>
             <File>
+              <FileName>pwm.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\bsp\inc\pwm.h</FilePath>
+            </File>
+            <File>
               <FileName>rcv.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\bsp\inc\rcv.h</FilePath>
@@ -1023,6 +1028,11 @@
               <FileName>motor.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\bsp\src\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\bsp\src\pwm.c</FilePath>
             </File>
             <File>
               <FileName>rcv.c</FileName>

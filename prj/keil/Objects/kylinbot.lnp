@@ -54,6 +54,7 @@
 ".\objects\flash.o"
 ".\objects\led.o"
 ".\objects\motor.o"
+".\objects\pwm.o"
 ".\objects\rcv.o"
 ".\objects\retarget.o"
 ".\objects\stm32util.o"

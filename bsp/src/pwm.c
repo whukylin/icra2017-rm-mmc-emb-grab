@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016, Jack Mo (mobangjack@foxmail.com).
+ * Copyright (c) 2011-2016, Jack Mo (mobangjack@foxmail.com).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,17 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ 
+#include "pwm.h"
 
-#include "rcv_srv.h"
-#include "led.h"
-
-void RcvCallback(uint8_t* dbuf)
+void Pwm_Config(void)
 {
-	//Rcv_Proc(dbuf);
-	static uint32_t tick = 0;
-	if (++tick > 50) {
-		LED_GREEN_TOG();
-		tick = 0;
-	}
+    PWM_Bind(CLAW_PWM_PIN_1, CLAW_PWM_PIN_2, CLAW_PWM_PIN_3, CLAW_PWM_PIN_4,
+    	 CLAW_PWM_TIM,
+			 CLAW_PWM_TIM_PS,
+			 CLAW_PWM_TIM_PD,
+			 CLAW_PWM_TIM_PW);
+    TIM_Cmd(CLAW_PWM_TIM, ENABLE);
+	  CLAW_OPEN();
 }
-

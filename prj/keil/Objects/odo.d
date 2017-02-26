@@ -50,6 +50,7 @@
 .\objects\odo.o: ..\..\bsp\inc\flash.h
 .\objects\odo.o: ..\..\bsp\inc\led.h
 .\objects\odo.o: ..\..\bsp\inc\motor.h
+.\objects\odo.o: ..\..\bsp\inc\pwm.h
 .\objects\odo.o: ..\..\bsp\inc\rcv.h
 .\objects\odo.o: ..\..\bsp\inc\retarget.h
 .\objects\odo.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

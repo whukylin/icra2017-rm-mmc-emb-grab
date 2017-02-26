@@ -18,7 +18,7 @@
 
 static void task(void)
 {
-	LED_GREEN_TOG();
+	//LED_GREEN_TOG();
 }
 
 void print(const char* s, uint32_t len)
@@ -39,11 +39,16 @@ int main()
 	//Btm_Config();
 	//Led_Config();
 	//TickTim_Config();
-	TickTim_Start();
+	//TickTim_Start();
 	//Btm_Print("Hello, Jack.\n");
 	while(1)
 	{
-		if (TICK_US() % 500000 == 0) {
+		//Btm_Print("Hello, Jack.\n");
+		//Btm_Print("Hello\n");
+	  //task();
+		//delay_ms(500);
+		//CLAW_TOG();
+		//if (TICK_US() % 500000 == 0) {
 			//USART_SendData(USART2, 'a');
 			//delay_ms(5);
 			//USART_SendData(USART2, 'b');
@@ -52,9 +57,9 @@ int main()
 			//delay_ms(5);
 			//USART_SendData(USART2, '\n');
 			//delay_ms(5);
-			Btm_Print("Hello, Jack.\n");
+			//Btm_Print("Hello, Jack.\n");
 			//Btm_Print("Hello\n");
-			task();
-		}
+			//task();
+		//}
   }
 }

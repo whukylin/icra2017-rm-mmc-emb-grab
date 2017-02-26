@@ -22,8 +22,7 @@ typedef uint32_t GPIO;
 #define GPIO_PIN_MSK(gpio) (((uint32_t)1) << GPIO_PIN_NUM(gpio))
 #define IS_VALID_GPIO_GRP(grp) IS_GPIO_ALL_PERIPH(grp)
 #define IS_VALID_GPIO_PIN_NUM(pin) (((pin) >= 0) && ((pin) <= 15))
-#define IS_VALID_GPIO(gpio) (IS_VALID_GPIO_GRP(GPIO_PIN_GRP(gpio)) \
-		&& IS_VALID_GPIO_PIN_NUM(GPIO_PIN_NUM(gpio)))
+#define IS_VALID_GPIO(gpio) (IS_VALID_GPIO_GRP(GPIO_PIN_GRP(gpio)) && IS_VALID_GPIO_PIN_NUM(GPIO_PIN_NUM(gpio)))
 
 #define UINT32(Y) (((uint32_t)Y) & 0x0000000f)
 #define GPIO_BASE(X,Y) (GPIO##X##_BASE | UINT32(Y))

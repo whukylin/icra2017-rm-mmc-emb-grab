@@ -40,3 +40,4 @@
 .\objects\ext_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\ext_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
 .\objects\ext_srv.o: ..\..\bsp\inc\led.h
+.\objects\ext_srv.o: ..\..\bsp\inc\pwm.h

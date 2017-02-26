@@ -75,6 +75,7 @@
 .\objects\upd.o: ..\..\bsp\inc\delay.h
 .\objects\upd.o: ..\..\bsp\inc\led.h
 .\objects\upd.o: ..\..\bsp\inc\motor.h
+.\objects\upd.o: ..\..\bsp\inc\pwm.h
 .\objects\upd.o: ..\..\bsp\inc\rcv.h
 .\objects\upd.o: ..\..\bsp\inc\retarget.h
 .\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
