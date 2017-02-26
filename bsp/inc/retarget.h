@@ -18,17 +18,15 @@
 #define __RETARGET_H__
 
 #include <stdio.h>
-#include <stdint.h>
+#include "btm.h"
+#include "dbi.h"
 
 #ifdef __GNUC__
 #define PUTCHAR_PROTOTYPE int __io_putchar(int c)
 #define GETCHAR_PROTOTYPE int __io_getchar(void)
 #else
-#define PUTCHAR_PROTOTYPE int fput(int c, FILE* f)
+#define PUTCHAR_PROTOTYPE int fputc(int c, FILE* f)
 #define GETCHAR_PROTOTYPE int fgetc(FILE* f)
 #endif
-
-void Retarget_In(uint8_t (*in)(void));
-void Retarget_Out(void (*out)(uint8_t));
 
 #endif

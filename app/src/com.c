@@ -48,3 +48,9 @@ void Btm_Proc(uint8_t data)
 {
 	Wdg_Feed(WDG_IDX_BTM);
 }
+
+void Dbi_Proc(uint8_t data)
+{
+	Wdg_Feed(WDG_IDX_DBI);
+}
+

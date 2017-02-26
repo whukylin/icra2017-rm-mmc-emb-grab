@@ -72,6 +72,7 @@
 .\objects\upd.o: ..\..\bsp\inc\btn.h
 .\objects\upd.o: ..\..\bsp\inc\can1.h
 .\objects\upd.o: ..\..\bsp\inc\can2.h
+.\objects\upd.o: ..\..\bsp\inc\dbi.h
 .\objects\upd.o: ..\..\bsp\inc\delay.h
 .\objects\upd.o: ..\..\bsp\inc\led.h
 .\objects\upd.o: ..\..\bsp\inc\motor.h

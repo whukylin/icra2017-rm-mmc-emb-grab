@@ -46,6 +46,7 @@
 .\objects\odo.o: ..\..\bsp\inc\btn.h
 .\objects\odo.o: ..\..\bsp\inc\can1.h
 .\objects\odo.o: ..\..\bsp\inc\can2.h
+.\objects\odo.o: ..\..\bsp\inc\dbi.h
 .\objects\odo.o: ..\..\bsp\inc\delay.h
 .\objects\odo.o: ..\..\bsp\inc\flash.h
 .\objects\odo.o: ..\..\bsp\inc\led.h

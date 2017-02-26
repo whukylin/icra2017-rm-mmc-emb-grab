@@ -65,6 +65,7 @@
 .\objects\kos.o: ..\..\bsp\inc\btn.h
 .\objects\kos.o: ..\..\bsp\inc\can1.h
 .\objects\kos.o: ..\..\bsp\inc\can2.h
+.\objects\kos.o: ..\..\bsp\inc\dbi.h
 .\objects\kos.o: ..\..\bsp\inc\delay.h
 .\objects\kos.o: ..\..\bsp\inc\flash.h
 .\objects\kos.o: ..\..\bsp\inc\led.h

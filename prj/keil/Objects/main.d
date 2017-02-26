@@ -66,6 +66,7 @@
 .\objects\main.o: ..\..\bsp\inc\btn.h
 .\objects\main.o: ..\..\bsp\inc\can1.h
 .\objects\main.o: ..\..\bsp\inc\can2.h
+.\objects\main.o: ..\..\bsp\inc\dbi.h
 .\objects\main.o: ..\..\bsp\inc\delay.h
 .\objects\main.o: ..\..\bsp\inc\flash.h
 .\objects\main.o: ..\..\bsp\inc\led.h

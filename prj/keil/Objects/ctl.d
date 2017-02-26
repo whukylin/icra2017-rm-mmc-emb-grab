@@ -64,6 +64,7 @@
 .\objects\ctl.o: ..\..\bsp\inc\btn.h
 .\objects\ctl.o: ..\..\bsp\inc\can1.h
 .\objects\ctl.o: ..\..\bsp\inc\can2.h
+.\objects\ctl.o: ..\..\bsp\inc\dbi.h
 .\objects\ctl.o: ..\..\bsp\inc\delay.h
 .\objects\ctl.o: ..\..\bsp\inc\led.h
 .\objects\ctl.o: ..\..\bsp\inc\motor.h

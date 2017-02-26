@@ -21,7 +21,13 @@ void BtmRxCallback(uint8_t data)
 	Btm_Proc(data);
 }
 
+void DbiRxCallback(uint8_t data)
+{
+	Dbi_Proc(data);
+}
+
 void TtyRxCallback(uint8_t data)
 {
 	Tty_Proc(data);
 }
+

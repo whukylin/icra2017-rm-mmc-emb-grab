@@ -35,8 +35,10 @@ extern "C" {
 void Com_Init(void);
 void Com_Proc(void);
 
-void Tty_Proc(uint8_t data);
 void Btm_Proc(uint8_t data);
+void Dbi_Proc(uint8_t data);
+void Tty_Proc(uint8_t data);
+
 
 #ifdef __cplusplus
 }

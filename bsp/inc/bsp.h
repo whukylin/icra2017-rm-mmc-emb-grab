@@ -21,6 +21,7 @@
 #include "btn.h"
 #include "can1.h"
 #include "can2.h"
+#include "dbi.h"
 #include "delay.h"
 #include "flash.h"
 #include "led.h"

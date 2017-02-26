@@ -15,7 +15,6 @@
  */
 
 #include "tim_srv.h"
-#include "led.h"
 
 void TickTimCallback(void)
 {

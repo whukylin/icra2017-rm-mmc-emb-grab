@@ -48,6 +48,7 @@
 ".\objects\btn.o"
 ".\objects\can1.o"
 ".\objects\can2.o"
+".\objects\dbi.o"
 ".\objects\delay.o"
 ".\objects\flash.o"
 ".\objects\led.o"
@@ -103,7 +104,7 @@
 ".\objects\stm32f4xx_wwdg.o"
 ".\objects\system_stm32f4xx.o"
 ".\objects\startup_stm32f427xx.o"
---strict --scatter ".\Objects\kylinbot.sct"
+--library_type=microlib --strict --scatter ".\Objects\kylinbot.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Listings\kylinbot.map" -o .\Objects\kylinbot.axf

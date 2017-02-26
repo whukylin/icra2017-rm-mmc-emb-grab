@@ -16,29 +16,17 @@
 
 #include "retarget.h"
 
-static uint8_t (*_in)(void);
-static void (*_out)(uint8_t);
-
-void Retarget_In(uint8_t (*in)(void))
-{
-	_in = in;
-}
-
-void Retarget_Out(void (*out)(uint8_t))
-{
-	_out = out;
-}
-
-
+/*
 PUTCHAR_PROTOTYPE
 {
-	if (_out) _out(c);
+	Btm_WriteByte(c);
+	Dbi_WriteByte(c);
 	return c;
 }
 
 GETCHAR_PROTOTYPE
 {
-	if (_in) return _in();
-	return 0;
+	return Dbi_ReadByte();
 }
+*/
 
