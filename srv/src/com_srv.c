@@ -14,9 +14,14 @@
  * limitations under the License.
  */
 
-#include "tty_srv.h"
+#include "com_srv.h"
+
+void BtmRxCallback(uint8_t data)
+{
+	Btm_Proc(data);
+}
 
 void TtyRxCallback(uint8_t data)
 {
-	//Tty_Proc(data);
+	Tty_Proc(data);
 }

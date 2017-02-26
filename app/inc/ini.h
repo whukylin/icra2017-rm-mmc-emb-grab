@@ -30,6 +30,7 @@ typedef uint32_t IniFlag_t;
 #define INI_FLAG_MOTOR4     (1u<<3)
 
 #define INI_FLAG_ALL (INI_FLAG_MOTOR1 | INI_FLAG_MOTOR2 | INI_FLAG_MOTOR3 | INI_FLAG_MOTOR4)
+#define INI_FLAG_VATAL (INI_FLAG_MOTOR1 | INI_FLAG_MOTOR2 | INI_FLAG_MOTOR3 | INI_FLAG_MOTOR4)
 
 void Ini_Init(void);
 void Ini_Proc(void);

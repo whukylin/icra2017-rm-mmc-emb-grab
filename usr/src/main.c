@@ -16,19 +16,9 @@
  
 #include "main.h"
 
-static void task(void)
+void task(void)
 {
 	//LED_GREEN_TOG();
-}
-
-void print(const char* s, uint32_t len)
-{
-	uint16_t i = 0;
-	for (; i < len; i++) {
-		USART_SendData(USART2, s[i]);
-		//while(USART_GetITStatus(USART2, USART_IT_TXE));
-		delay_ms(10);
-	}
 }
 
 int main()
@@ -45,21 +35,5 @@ int main()
 	{
 		//Btm_Print("Hello, Jack.\n");
 		//Btm_Print("Hello\n");
-	  //task();
-		//delay_ms(500);
-		//CLAW_TOG();
-		//if (TICK_US() % 500000 == 0) {
-			//USART_SendData(USART2, 'a');
-			//delay_ms(5);
-			//USART_SendData(USART2, 'b');
-			//delay_ms(5);
-			//USART_SendData(USART2, 'c');
-			//delay_ms(5);
-			//USART_SendData(USART2, '\n');
-			//delay_ms(5);
-			//Btm_Print("Hello, Jack.\n");
-			//Btm_Print("Hello\n");
-			//task();
-		//}
   }
 }

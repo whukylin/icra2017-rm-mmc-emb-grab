@@ -16,7 +16,7 @@
  
 #include "delay.h"
 
-void delay_ms(unsigned int t)
+void Delay_Ms(unsigned int t)
 {
 	int i = 0;
 	for (; i < t; i++)
@@ -26,7 +26,7 @@ void delay_ms(unsigned int t)
 	}
 }
 
-void delay_us(unsigned int t)
+void Delay_Us(unsigned int t)
 {
 	int i = 0;
 	for (; i < t; i++)
@@ -35,3 +35,4 @@ void delay_us(unsigned int t)
 		while (a--);
 	}
 }
+

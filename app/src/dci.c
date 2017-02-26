@@ -20,8 +20,6 @@
 /*     DBUS Direct Control Interface     */
 /*****************************************/
 
-static uint8_t dbuf[DBUS_FRAME_LEN];
-
 DBUS_t dbus;
 
 void DCI_Init(void)
@@ -33,21 +31,20 @@ void DCI_Init(void)
 
 void DCI_Proc(void)
 {
-	DBUS_Dec(&dbus, dbuf);
-	GetSwitchStates(&dbus.rcp);
-	GetSwitchEvents(&dbus.rcp);
-	if (switchStates[SW_IDX_R] == SWITCH_STATE_1) {
+	if (switchStates[SW_IDX_R] == SW_UP) {
 		RCI_Proc(&dbus.rcp);
-	} else if (switchStates[SW_IDX_R] == SWITCH_STATE_3) {
+	} else if (switchStates[SW_IDX_R] == SW_MD) {
 		HCI_Proc(&dbus.hcp);
-	} else if (switchStates[SW_IDX_R] == SWITCH_STATE_2) {
+	} else if (switchStates[SW_IDX_R] == SW_DN) {
 	} else {
 		// Should never reach here
 	}
 }
 
-void Rcv_Proc(uint8_t* buf)
+void Rcv_Proc(uint8_t* dbuf)
 {
 	Wdg_Feed(WDG_IDX_RCV);
-	memcpy(dbuf, buf, DBUS_FRAME_LEN);
+	DBUS_Dec(&dbus, dbuf);
+	GetSwitchStates(&dbus.rcp);
+	GetSwitchEvents(&dbus.rcp);
 }

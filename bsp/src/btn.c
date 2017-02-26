@@ -18,15 +18,6 @@
 
 void Btn_Config(void)
 {
-	EXTI_Bind(BTN_PIN, EXTI_Trigger_Falling);
-	NVIC_Config(BTN_NVIC, BTN_NVIC_PRE_PRIORITY, BTN_NVIC_SUB_PRIORITY);
-}
-
-void BTN_IRQ_HANDLER(void)
-{
-	if (EXTI_GetITStatus(BTN_EXTI_LINE) != RESET) {
-		EXTI_ClearITPendingBit(BTN_EXTI_LINE);
-		BtnCallback();
-	}
+	GPIO_In(BTN_PIN);
 }
 

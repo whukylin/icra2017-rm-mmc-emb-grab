@@ -22,12 +22,11 @@
 // Tick timer
 #define TICK_TIM TIM2
 #define TICK_TIM_PS 83
-#define TICK_TIM_PD 0xFFFFFFFF
+#define TICK_TIM_PD 1
 #define TICK_TIM_NVIC IRQ(TIM2)
 #define TICK_TIM_NVIC_PRE_PRIORITY 0
 #define TICK_TIM_NVIC_SUB_PRIORITY 0
 #define TICK_TIM_IRQ_HANDLER IRQ_HANDLER(TIM2)
-#define TICK_US() TICK_TIM->CNT
 
 // Sync timer
 #define SYNC_TIM TIM6

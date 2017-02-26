@@ -19,13 +19,13 @@
 static WorkingState_e workingState = WORKING_STATE_STOP;
 static WorkingState_e lastWorkingState = WORKING_STATE_STOP;
 
-void WSM_Init(void)
+void Wsm_Init(void)
 {
 	workingState = WORKING_STATE_STOP;
 	lastWorkingState = WORKING_STATE_STOP;
 }
 
-void WSM_Proc(void)
+void Wsm_Proc(void)
 {
 	lastWorkingState = workingState;
 	switch (workingState) {
@@ -37,14 +37,14 @@ void WSM_Proc(void)
 	case WORKING_STATE_PREPARE:
 		if (Wdg_IsErrSet(WDG_ERR_FATAL)) {
 			workingState = WORKING_STATE_STOP;
-		} else if (Ini_GetFlag(INI_FLAG_ALL)){
+		} else if (Ini_GetFlag(INI_FLAG_VATAL)){
 			workingState = WORKING_STATE_NORMAL;
 		}
 		break;
 	case WORKING_STATE_NORMAL:
 		if (Wdg_IsErrSet(WDG_ERR_FATAL)) {
 			workingState = WORKING_STATE_STOP;
-		} else if (!Ini_GetFlag(INI_FLAG_ALL)){
+		} else if (!Ini_GetFlag(INI_FLAG_VATAL)){
 			workingState = WORKING_STATE_PREPARE;
 		} else if (!Cfg_GetFlag(CFG_FLAG_SAVE)) {
 			workingState = WORKING_STATE_CONFIG;
@@ -53,7 +53,7 @@ void WSM_Proc(void)
 	case WORKING_STATE_CONFIG:
 		if (Wdg_IsErrSet(WDG_ERR_FATAL)) {
 			workingState = WORKING_STATE_STOP;
-		} else if (!Ini_GetFlag(INI_FLAG_ALL)){
+		} else if (!Ini_GetFlag(INI_FLAG_VATAL)){
 			workingState = WORKING_STATE_PREPARE;
 		} else if (Cfg_GetFlag(CFG_FLAG_SAVE)) {
 			workingState = WORKING_STATE_NORMAL;
@@ -64,12 +64,12 @@ void WSM_Proc(void)
 	}
 }
 
-WorkingState_e WSM_GetWorkingState(void)
+WorkingState_e Wsm_GetWorkingState(void)
 {
 	return workingState;
 }
 
-WorkingState_e WSM_GetLastWorkingState(void)
+WorkingState_e Wsm_GetLastWorkingState(void)
 {
 	return lastWorkingState;
 }

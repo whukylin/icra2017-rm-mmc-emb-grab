@@ -48,7 +48,7 @@ void GetSwitchEvents(RCP_t* rcp)
 {
 	uint32_t i = 0;
 	for (; i < SW_CNT; i++) {
-		switchEvents[i] = GET_SWITCH_EVENT(lastSwitchStates[i], switchStates[i]);
+		switchEvents[i] = SWITCH_EVENT(lastSwitchStates[i], switchStates[i]);
 		lastSwitchStates[i] = switchStates[i];
 	}
 }
@@ -56,9 +56,9 @@ void GetSwitchEvents(RCP_t* rcp)
 static void GetFunctionalStateRef(RCP_t* rcp)
 {
 	switch (switchEvents[SW_IDX_L]) {
-		case SWITCH_EVENT_3TO1:
+		case SWITCH_EVENT(3,1):
 			break;
-		case SWITCH_EVENT_3TO2:
+		case SWITCH_EVENT(3,2):
 			break;
 		default:
 			break;

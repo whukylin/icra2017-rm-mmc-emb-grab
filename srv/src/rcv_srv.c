@@ -15,15 +15,9 @@
  */
 
 #include "rcv_srv.h"
-#include "led.h"
 
 void RcvCallback(uint8_t* dbuf)
 {
-	//Rcv_Proc(dbuf);
-	static uint32_t tick = 0;
-	if (++tick > 50) {
-		LED_GREEN_TOG();
-		tick = 0;
-	}
+	Rcv_Proc(dbuf);
 }
 

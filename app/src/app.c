@@ -33,14 +33,14 @@ void App_Init(void)
 	Sch_Init();
 	Upd_Init();
 	Wdg_Init();
-	WSM_Init();
+	Wsm_Init();
 }
 
 void App_Proc(void)
 {
 	Wdg_Proc();
 	Ini_Proc();
-	WSM_Proc();
+	Wsm_Proc();
 	Upd_Proc();
 }
 

@@ -46,7 +46,7 @@ void RCP_Rst(RCP_t* rcp)
 		rcp->ch[i] = CH_MID;
 	}
 	for (i = 0; i < SW_CNT; i++) {
-		rcp->sw[i] = SW_MID;
+		rcp->sw[i] = SW_MD;
 	}
 }
 

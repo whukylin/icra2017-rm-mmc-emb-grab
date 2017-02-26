@@ -30,11 +30,11 @@ extern "C" {
 #include "wdg.h"
 #include "cfg.h"
 	
-void WSM_Init(void);
-void WSM_Proc(void);
+void Wsm_Init(void);
+void Wsm_Proc(void);
 
-WorkingState_e WSM_GetWorkingState(void);
-WorkingState_e WSM_GetLastWorkingState(void);
+WorkingState_e Wsm_GetWorkingState(void);
+WorkingState_e Wsm_GetLastWorkingState(void);
 
 #ifdef __cplusplus
 }

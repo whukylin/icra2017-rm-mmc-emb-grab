@@ -35,12 +35,12 @@ void Upd_Init(void)
 
 void Upd_Proc(void)
 {
-	switch (WSM_GetWorkingState()) {
+	switch (Wsm_GetWorkingState()) {
 		case WORKING_STATE_STOP:
 			Act_Init();
 			break;
 		case WORKING_STATE_PREPARE:
-			if (WSM_GetLastWorkingState() != WORKING_STATE_PREPARE) {
+			if (Wsm_GetLastWorkingState() != WORKING_STATE_PREPARE) {
 				Cmd_Init();
 				Odo_Init();
 				Ctl_Init();
@@ -48,7 +48,7 @@ void Upd_Proc(void)
 			Act_Init();
 			break;
 		case WORKING_STATE_NORMAL:
-			if (WSM_GetLastWorkingState() == WORKING_STATE_CONFIG) {
+			if (Wsm_GetLastWorkingState() == WORKING_STATE_CONFIG) {
 				Upd_Init();
 			}
 			Cmd_Proc();

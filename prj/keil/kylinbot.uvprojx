@@ -815,19 +815,14 @@
           <GroupName>srv/inc</GroupName>
           <Files>
             <File>
-              <FileName>btm_srv.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\srv\inc\btm_srv.h</FilePath>
-            </File>
-            <File>
               <FileName>can_srv.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\srv\inc\can_srv.h</FilePath>
             </File>
             <File>
-              <FileName>ext_srv.h</FileName>
+              <FileName>com_srv.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\srv\inc\ext_srv.h</FilePath>
+              <FilePath>..\..\srv\inc\com_srv.h</FilePath>
             </File>
             <File>
               <FileName>rcv_srv.h</FileName>
@@ -844,30 +839,20 @@
               <FileType>5</FileType>
               <FilePath>..\..\srv\inc\tim_srv.h</FilePath>
             </File>
-            <File>
-              <FileName>tty_srv.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\srv\inc\tty_srv.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>srv/src</GroupName>
           <Files>
             <File>
-              <FileName>btm_srv.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\srv\src\btm_srv.c</FilePath>
-            </File>
-            <File>
               <FileName>can_srv.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\srv\src\can_srv.c</FilePath>
             </File>
             <File>
-              <FileName>ext_srv.c</FileName>
+              <FileName>com_srv.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\srv\src\ext_srv.c</FilePath>
+              <FilePath>..\..\srv\src\com_srv.c</FilePath>
             </File>
             <File>
               <FileName>rcv_srv.c</FileName>
@@ -883,11 +868,6 @@
               <FileName>tim_srv.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\srv\src\tim_srv.c</FilePath>
-            </File>
-            <File>
-              <FileName>tty_srv.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\srv\src\tty_srv.c</FilePath>
             </File>
           </Files>
         </Group>

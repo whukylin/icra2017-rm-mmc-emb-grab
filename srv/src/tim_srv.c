@@ -15,13 +15,14 @@
  */
 
 #include "tim_srv.h"
+#include "led.h"
 
 void TickTimCallback(void)
 {
-	//Clk_Spin();
+	Clk_Spin();
 }
 
 void SyncTimCallback(void)
 {
-	//Sch_Proc();
+	Sch_Proc();
 }
