@@ -50,6 +50,9 @@ void HCP_Rst(HCP_t* hcp)
 	for (; i < MOUSE_BTN_CNT; i++) {
 		hcp->mouse.b[i] = MOUSE_BTN_UP;
 	}
+	hcp->mouse.x = 0;
+	hcp->mouse.y = 0;
+	hcp->mouse.z = 0;
 	hcp->key.val = 0;
 	hcp->res.val = 0;
 }
