@@ -1,7 +1,7 @@
 .\objects\rci.o: ..\..\app\src\rci.c
 .\objects\rci.o: ..\..\app\inc\rci.h
 .\objects\rci.o: ..\..\asp\inc\rcp.h
-.\objects\rci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\rci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\rci.o: ..\..\app\inc\cmd.h
 .\objects\rci.o: ..\..\app\inc\dci.h
 .\objects\rci.o: ..\..\asp\inc\dbus.h
@@ -10,12 +10,11 @@
 .\objects\rci.o: ..\..\app\inc\hci.h
 .\objects\rci.o: ..\..\app\inc\cmd.h
 .\objects\rci.o: ..\..\asp\inc\mafilter.h
-.\objects\rci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\rci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\rci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\rci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\rci.o: ..\..\app\inc\wdg.h
 .\objects\rci.o: ..\..\app\inc\sys.h
 .\objects\rci.o: ..\..\app\inc\mec.h
-.\objects\rci.o: ..\..\asp\inc\mecanum.h
 .\objects\rci.o: ..\..\app\inc\cfg.h
 .\objects\rci.o: ..\..\app\inc\fos.h
 .\objects\rci.o: ..\..\bsp\inc\flash.h
@@ -55,4 +54,5 @@
 .\objects\rci.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\rci.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\rci.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
+.\objects\rci.o: ..\..\asp\inc\mecanum.h
 .\objects\rci.o: ..\..\app\inc\fun.h

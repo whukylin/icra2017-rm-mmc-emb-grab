@@ -29,7 +29,7 @@ extern "C" {
 #include "cmd.h"
 #include "odo.h"
 #include "pid.h"
-#include "ramp.h"
+#include "rmp.h"
 
 void Ctl_Init(void);
 void Ctl_Proc(void);
@@ -43,10 +43,10 @@ extern PID_t CM2SpeedPID;
 extern PID_t CM3SpeedPID;
 extern PID_t CM4SpeedPID;
 
-extern Ramp_t CM1SpeedRamp;
-extern Ramp_t CM2SpeedRamp;
-extern Ramp_t CM3SpeedRamp;
-extern Ramp_t CM4SpeedRamp;
+extern Rmp_t CM1SpeedRmp;
+extern Rmp_t CM2SpeedRmp;
+extern Rmp_t CM3SpeedRmp;
+extern Rmp_t CM4SpeedRmp;
 
 extern PeriphsState_t functionalStateCtl;
 extern MecanumState_t mecanumCurrentsCtl;

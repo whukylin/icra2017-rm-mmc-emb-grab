@@ -36,7 +36,8 @@ void Com_Init(void)
 
 void Com_Proc(void)
 {
-
+	//char* str;
+	//sscanf("cfg mec lx=%d, ly=%d, r1=%d, r2=%d", 
 }
 
 void Tty_Proc(uint8_t data)

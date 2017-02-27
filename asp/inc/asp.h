@@ -28,10 +28,12 @@ extern "C" {
 #include "ekf.h"
 #include "fifo.h"
 #include "gdf.h"
+#include "hcp.h"
 #include "mafilter.h"
 #include "mecanum.h"
 #include "pid.h"
-#include "ramp.h"
+#include "rcp.h"
+#include "rmp.h"
 #include "stack.h"
 
 #ifdef __cplusplus

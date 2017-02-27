@@ -25,11 +25,9 @@ void App_Init(void)
 	Cfg_Init();
 	Act_Init();
 	Clk_Init();
-	Cmd_Init();
 	Com_Init();
 	Ctl_Init();
 	Ini_Init();
-	Odo_Init();
 	Sch_Init();
 	Upd_Init();
 	Wdg_Init();

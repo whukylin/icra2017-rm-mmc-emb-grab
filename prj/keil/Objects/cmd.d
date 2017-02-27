@@ -3,18 +3,17 @@
 .\objects\cmd.o: ..\..\app\inc\dci.h
 .\objects\cmd.o: ..\..\asp\inc\dbus.h
 .\objects\cmd.o: ..\..\asp\inc\rcp.h
-.\objects\cmd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\cmd.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\cmd.o: ..\..\asp\inc\hcp.h
 .\objects\cmd.o: ..\..\app\inc\rci.h
 .\objects\cmd.o: ..\..\app\inc\cmd.h
 .\objects\cmd.o: ..\..\app\inc\hci.h
 .\objects\cmd.o: ..\..\asp\inc\mafilter.h
-.\objects\cmd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\cmd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\cmd.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\cmd.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\cmd.o: ..\..\app\inc\wdg.h
 .\objects\cmd.o: ..\..\app\inc\sys.h
 .\objects\cmd.o: ..\..\app\inc\mec.h
-.\objects\cmd.o: ..\..\asp\inc\mecanum.h
 .\objects\cmd.o: ..\..\app\inc\cfg.h
 .\objects\cmd.o: ..\..\app\inc\fos.h
 .\objects\cmd.o: ..\..\bsp\inc\flash.h
@@ -54,4 +53,5 @@
 .\objects\cmd.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\cmd.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\cmd.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
+.\objects\cmd.o: ..\..\asp\inc\mecanum.h
 .\objects\cmd.o: ..\..\app\inc\fun.h

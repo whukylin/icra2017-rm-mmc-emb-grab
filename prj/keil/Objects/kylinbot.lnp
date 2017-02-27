@@ -1,4 +1,4 @@
---cpu=Cortex-M4.fp
+--cpu Cortex-M4.fp
 ".\objects\main.o"
 ".\objects\kos.o"
 ".\objects\act.o"
@@ -35,8 +35,8 @@
 ".\objects\mecanum.o"
 ".\objects\msg.o"
 ".\objects\pid.o"
-".\objects\ramp.o"
 ".\objects\rcp.o"
+".\objects\rmp.o"
 ".\objects\stack.o"
 ".\objects\can_srv.o"
 ".\objects\com_srv.o"

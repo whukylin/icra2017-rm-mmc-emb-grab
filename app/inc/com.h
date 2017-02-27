@@ -25,6 +25,8 @@
 extern "C" {
 #endif
 
+#include <stdio.h>
+
 #include "msg.h"
 #include "cfg.h"
 #include "tty.h"

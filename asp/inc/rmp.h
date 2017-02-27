@@ -14,29 +14,34 @@
  * limitations under the License.
  */
  
-#include "ramp.h"
+#ifndef __RMP_H__
+#define __RMP_H__
 
-void Ramp_Config(Ramp_t* ramp, uint32_t scale)
-{
-	ramp->scale = scale;
-}
+#ifdef __cpluplus
+extern "C" {
+#endif
 
-float Ramp_Calc(Ramp_t* ramp)
-{
-	if(ramp->count < ramp->scale)
-	{
-		ramp->count++;
-		return ramp->count / (float)ramp->scale;
-	}
-	return 1;
-}
+#include <stdint.h>
 
-void Ramp_Reset(Ramp_t* ramp)
+typedef struct
 {
-	ramp->count = 0;
-}
+	uint32_t scale;
+	uint32_t count;
+}Rmp_t;
 
-uint8_t Ramp_IsOverflow(const Ramp_t* ramp)
-{
-	return ramp->count >= ramp->scale;
+void Rmp_Config(Rmp_t* rmp, uint32_t scale);
+float Rmp_Calc(Rmp_t* rmp);
+void Rmp_Reset(Rmp_t* rmp);
+uint8_t Rmp_IsOverflow(const Rmp_t* rmp);
+
+#define RMP(SCALE) { \
+	.scale = SCALE, \
+	.count = 0, \
 }
+	
+#ifdef __cpluplus
+}
+#endif
+
+#endif
+

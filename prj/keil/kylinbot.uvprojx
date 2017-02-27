@@ -10,7 +10,7 @@
       <TargetName>kylinbot</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060422::V5.06 update 4 (build 422)::ARMCC</pCCUsed>
+      <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F427IIHx</Device>
@@ -747,14 +747,14 @@
               <FilePath>..\..\asp\inc\pid.h</FilePath>
             </File>
             <File>
-              <FileName>ramp.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\asp\inc\ramp.h</FilePath>
-            </File>
-            <File>
               <FileName>rcp.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\asp\inc\rcp.h</FilePath>
+            </File>
+            <File>
+              <FileName>rmp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\asp\inc\rmp.h</FilePath>
             </File>
             <File>
               <FileName>stack.h</FileName>
@@ -832,14 +832,14 @@
               <FilePath>..\..\asp\src\pid.c</FilePath>
             </File>
             <File>
-              <FileName>ramp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\asp\src\ramp.c</FilePath>
-            </File>
-            <File>
               <FileName>rcp.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\asp\src\rcp.c</FilePath>
+            </File>
+            <File>
+              <FileName>rmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\asp\src\rmp.c</FilePath>
             </File>
             <File>
               <FileName>stack.c</FileName>

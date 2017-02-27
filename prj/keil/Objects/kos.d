@@ -1,27 +1,27 @@
 .\objects\kos.o: ..\..\kos\src\kos.c
 .\objects\kos.o: ..\..\kos\inc\kos.h
 .\objects\kos.o: ..\..\app\inc\app.h
-.\objects\kos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\kos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\kos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\kos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\kos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\kos.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\kos.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\kos.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\kos.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\kos.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\kos.o: ..\..\asp\inc\asp.h
 .\objects\kos.o: ..\..\asp\inc\ahrs.h
 .\objects\kos.o: ..\..\asp\inc\cbus.h
 .\objects\kos.o: ..\..\asp\inc\crc16.h
-.\objects\kos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\kos.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\kos.o: ..\..\asp\inc\dbus.h
 .\objects\kos.o: ..\..\asp\inc\rcp.h
 .\objects\kos.o: ..\..\asp\inc\hcp.h
 .\objects\kos.o: ..\..\asp\inc\ekf.h
 .\objects\kos.o: ..\..\asp\inc\fifo.h
 .\objects\kos.o: ..\..\asp\inc\gdf.h
-.\objects\kos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
+.\objects\kos.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
 .\objects\kos.o: ..\..\asp\inc\mafilter.h
 .\objects\kos.o: ..\..\asp\inc\mecanum.h
 .\objects\kos.o: ..\..\asp\inc\pid.h
-.\objects\kos.o: ..\..\asp\inc\ramp.h
+.\objects\kos.o: ..\..\asp\inc\rmp.h
 .\objects\kos.o: ..\..\asp\inc\stack.h
 .\objects\kos.o: ..\..\bsp\inc\bsp.h
 .\objects\kos.o: ..\..\bsp\inc\btm.h

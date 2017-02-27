@@ -16,7 +16,7 @@
 
 #include "sys.h"
 
-PeriphsState_t FS_Get(PeriphsState_t* fs, PeriphsState_t msk)
+PeriphsState_t FS_Get(const PeriphsState_t* fs, PeriphsState_t msk)
 {
 	return (*fs) & msk;
 }
@@ -34,6 +34,21 @@ void FS_Clr(PeriphsState_t* fs, PeriphsState_t msk)
 void FS_Tog(PeriphsState_t* fs, PeriphsState_t msk)
 {
 	FS_Get(fs, msk) ? FS_Clr(fs, msk) : FS_Set(fs, msk);
+}
+
+void FS_Cpy(PeriphsState_t* fs, PeriphsState_t src, PeriphsState_t msk)
+{
+	uint8_t n = sizeof(PeriphsState_t) * 8;
+	uint8_t i = 0;
+	PeriphsState_t tmp = 0;
+	for (; i < n; i++) {
+		tmp = (msk >> i) & 0x00000001;
+		if (FS_Get(fs, tmp)) {
+			FS_Set(fs, tmp);
+		} else {
+			FS_Clr(fs, tmp);
+		}
+	}
 }
 
 void CS_Set(ChassisState_t* cs, float x, float y, float z)

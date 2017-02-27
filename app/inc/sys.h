@@ -52,10 +52,11 @@ typedef struct
 	float w4;
 }MecanumState_t;
 
-PeriphsState_t FS_Get(PeriphsState_t* fs, PeriphsState_t msk);
+PeriphsState_t FS_Get(const PeriphsState_t* fs, PeriphsState_t msk);
 void FS_Set(PeriphsState_t* fs, PeriphsState_t msk);
 void FS_Clr(PeriphsState_t* fs, PeriphsState_t msk);
 void FS_Tog(PeriphsState_t* fs, PeriphsState_t msk);
+void FS_Cpy(PeriphsState_t* fs, PeriphsState_t src, PeriphsState_t msk);
 void CS_Set(ChassisState_t* cs, float x, float y, float z);
 void MS_Set(MecanumState_t* ms, float w1, float w2, float w3, float w4);
 
