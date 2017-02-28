@@ -24,12 +24,12 @@ void Bsp_Config(void)
 	Btn_Config();
 	//Can1_Config();
 	//Can2_Config();
-	//Dbi_Config();
+	Dbi_Config();
 	Led_Config();
-	Pwm_Config();
+	//Pwm_Config();
 	//Rcv_Config();
 	//Tim_Config();
-	//Tty_Config();
+	Tty_Config();
 	LED_GREEN_ON();
 }
 

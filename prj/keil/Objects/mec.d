@@ -6,7 +6,7 @@
 .\objects\mec.o: ..\..\bsp\inc\platform.h
 .\objects\mec.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\mec.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\mec.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\mec.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\mec.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\mec.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\mec.o: ..\..\stl\CMSIS\core\core_cmSimd.h
@@ -40,5 +40,5 @@
 .\objects\mec.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\mec.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\mec.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
-.\objects\mec.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\mec.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\mec.o: ..\..\asp\inc\mecanum.h

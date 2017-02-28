@@ -1,4 +1,4 @@
---cpu Cortex-M4.fp
+--cpu=Cortex-M4.fp
 ".\objects\main.o"
 ".\objects\kos.o"
 ".\objects\act.o"
@@ -14,6 +14,7 @@
 ".\objects\fun.o"
 ".\objects\hci.o"
 ".\objects\ini.o"
+".\objects\ios.o"
 ".\objects\mec.o"
 ".\objects\odo.o"
 ".\objects\rci.o"
@@ -55,7 +56,6 @@
 ".\objects\motor.o"
 ".\objects\pwm.o"
 ".\objects\rcv.o"
-".\objects\retarget.o"
 ".\objects\stm32util.o"
 ".\objects\tim.o"
 ".\objects\tty.o"

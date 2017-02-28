@@ -16,13 +16,6 @@
  
 #include "main.h"
 
-int fputc(int ch, FILE *f)
-{
-    while (USART_GetFlagStatus(USART2,USART_FLAG_TC) == RESET);
-    USART_SendData(USART2, (uint8_t)ch);
-    return ch;
-}
-
 void task(void)
 {
 	printf("Hello, Jack.\n");
@@ -31,12 +24,15 @@ void task(void)
 
 int main()
 {
-	KOS_Boot();
+	//KOS_Boot();
 	//Sch_Arrange(task, 250);
+	Bsp_Config();
+	IOS_Init();
 	while(1)
 	{
 		LED_GREEN_TOG();
 		printf("Hello, Jack.\n");
-		Delay_Ms(250);
+		//Dbi_Print("Hello, Jack.\n");
+		Delay_Ms(100);
   }
 }

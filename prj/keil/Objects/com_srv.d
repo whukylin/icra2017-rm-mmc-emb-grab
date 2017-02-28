@@ -1,9 +1,9 @@
 .\objects\com_srv.o: ..\..\srv\src\com_srv.c
 .\objects\com_srv.o: ..\..\srv\inc\com_srv.h
 .\objects\com_srv.o: ..\..\app\inc\com.h
-.\objects\com_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\com_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\com_srv.o: ..\..\asp\inc\msg.h
-.\objects\com_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\com_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\com_srv.o: ..\..\app\inc\cfg.h
 .\objects\com_srv.o: ..\..\app\inc\fos.h
 .\objects\com_srv.o: ..\..\bsp\inc\flash.h
@@ -43,9 +43,9 @@
 .\objects\com_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\com_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\com_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
-.\objects\com_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\com_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\com_srv.o: ..\..\bsp\inc\tty.h
 .\objects\com_srv.o: ..\..\bsp\inc\stm32util.h
 .\objects\com_srv.o: ..\..\asp\inc\fifo.h
-.\objects\com_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\com_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\com_srv.o: ..\..\app\inc\wdg.h

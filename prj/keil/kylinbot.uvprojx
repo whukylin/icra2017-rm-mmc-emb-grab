@@ -10,7 +10,7 @@
       <TargetName>kylinbot</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
+      <pCCUsed>5060422::V5.06 update 4 (build 422)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F427IIHx</Device>
@@ -125,47 +125,6 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
-          <Simulator>
-            <UseSimulator>0</UseSimulator>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>1</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Simulator>
-          <Target>
-            <UseTarget>1</UseTarget>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>0</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <RestoreTracepoints>1</RestoreTracepoints>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Target>
-          <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>11</TargetSelection>
-          <SimDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-          </SimDlls>
-          <TargetDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-            <Driver>STLink\ST-LINKIII-KEIL_SWO.dll</Driver>
-          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -369,6 +328,9 @@
             <v6LangP>3</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
+            <v6Lto>0</v6Lto>
+            <v6WtE>0</v6WtE>
+            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>--C99</MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F427X,STM32F427xx</Define>
@@ -386,6 +348,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>1</uSurpInc>
             <useXO>0</useXO>
+            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls> --cpreproc</MiscControls>
               <Define></Define>
@@ -522,6 +485,11 @@
               <FilePath>..\..\app\inc\ini.h</FilePath>
             </File>
             <File>
+              <FileName>ios.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\app\inc\ios.h</FilePath>
+            </File>
+            <File>
               <FileName>mec.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\app\inc\mec.h</FilePath>
@@ -630,6 +598,11 @@
               <FileName>ini.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\app\src\ini.c</FilePath>
+            </File>
+            <File>
+              <FileName>ios.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\app\src\ios.c</FilePath>
             </File>
             <File>
               <FileName>mec.c</FileName>
@@ -977,11 +950,6 @@
               <FilePath>..\..\bsp\inc\rcv.h</FilePath>
             </File>
             <File>
-              <FileName>retarget.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\bsp\inc\retarget.h</FilePath>
-            </File>
-            <File>
               <FileName>stm32f4xx_it.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\bsp\inc\stm32f4xx_it.h</FilePath>
@@ -1065,11 +1033,6 @@
               <FileName>rcv.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\bsp\src\rcv.c</FilePath>
-            </File>
-            <File>
-              <FileName>retarget.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\bsp\src\retarget.c</FilePath>
             </File>
             <File>
               <FileName>stm32util.c</FileName>

@@ -2,7 +2,7 @@
 .\objects\act.o: ..\..\app\inc\act.h
 .\objects\act.o: ..\..\app\inc\ctl.h
 .\objects\act.o: ..\..\app\inc\sys.h
-.\objects\act.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\act.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\act.o: ..\..\app\inc\cmd.h
 .\objects\act.o: ..\..\app\inc\dci.h
 .\objects\act.o: ..\..\asp\inc\dbus.h
@@ -12,8 +12,8 @@
 .\objects\act.o: ..\..\app\inc\cmd.h
 .\objects\act.o: ..\..\app\inc\hci.h
 .\objects\act.o: ..\..\asp\inc\mafilter.h
-.\objects\act.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\act.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\act.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\act.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\act.o: ..\..\app\inc\wdg.h
 .\objects\act.o: ..\..\app\inc\mec.h
 .\objects\act.o: ..\..\app\inc\cfg.h
@@ -71,14 +71,12 @@
 .\objects\act.o: ..\..\bsp\inc\motor.h
 .\objects\act.o: ..\..\bsp\inc\pwm.h
 .\objects\act.o: ..\..\bsp\inc\rcv.h
-.\objects\act.o: ..\..\bsp\inc\retarget.h
-.\objects\act.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\act.o: ..\..\bsp\inc\tim.h
 .\objects\act.o: ..\..\bsp\inc\tty.h
 .\objects\act.o: ..\..\app\inc\can.h
 .\objects\act.o: ..\..\asp\inc\est.h
 .\objects\act.o: ..\..\asp\inc\gdf.h
-.\objects\act.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
+.\objects\act.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
 .\objects\act.o: ..\..\asp\inc\ekf.h
 .\objects\act.o: ..\..\asp\inc\pid.h
 .\objects\act.o: ..\..\asp\inc\rmp.h

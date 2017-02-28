@@ -14,19 +14,30 @@
  * limitations under the License.
  */
 
-#include "retarget.h"
+#ifndef __IOS_H__
+#define __IOS_H__
 
-/*
-PUTCHAR_PROTOTYPE
-{
-	Btm_WriteByte(c);
-	Dbi_WriteByte(c);
-	return c;
-}
+#include <stdio.h>
+#include "tty.h"
+#include "dbi.h"
+#include "btm.h"
+#include "wdg.h"
 
-GETCHAR_PROTOTYPE
-{
-	return Dbi_ReadByte();
-}
-*/
+#ifdef __GNUC__
+#define PUTCHAR_PROTOTYPE int __io_putchar(int c)
+#define GETCHAR_PROTOTYPE int __io_getchar(void)
+#else
+#define PUTCHAR_PROTOTYPE int fputc(int c, FILE* f)
+#define GETCHAR_PROTOTYPE int fgetc(FILE* f)
+#endif
+
+void IOS_In(uint8_t (*in)(void));
+void IOS_Out(void (*out)(uint8_t));
+
+void IOS_PutByte(uint8_t b);
+uint8_t IOS_GetByte(void);
+
+void IOS_Init(void);
+
+#endif
 

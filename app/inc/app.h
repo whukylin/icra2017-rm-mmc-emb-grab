@@ -54,6 +54,7 @@ extern "C" {
 #include "fun.h" // Helper functions
 #include "hci.h" // Host Control Interface
 #include "ini.h" // Initialization State Provider
+#include "ios.h" // Input/Output Stream
 #include "mec.h" // Mecanum Power Transmission System
 #include "odo.h" // Odometer (Sensor Message Feedback)
 #include "rci.h" // Remote Control Interface
