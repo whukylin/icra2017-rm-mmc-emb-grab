@@ -44,7 +44,6 @@ void Upd_Proc(void)
 		case WORKING_STATE_CONFIG:
 			Ctl_Proc();
 			Act_Proc();
-			Cfg_Proc();
 			break;
 		default:
 			break;

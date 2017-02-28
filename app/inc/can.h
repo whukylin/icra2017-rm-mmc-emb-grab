@@ -52,7 +52,7 @@ typedef struct
 {
 	int32_t angle_fdb;    // ZGyro raw angle feedback
 
-	uint8_t reset;        // ZGyro reset control flag
+	uint8_t ini;          // ZGyro initialization done flag
 	float bias;           // ZGyro bias in radian
 	float angle;          // ZGyro angle in radian
 	float rate;           // ZGyro angle rate in rad/s
@@ -64,7 +64,7 @@ typedef struct
 	int32_t current_fdb;    // Motor electronic speed controller current feedback
 	int32_t current_ref;    // Motor electronic speed controller current reference
 
-	uint8_t reset;        // Motor encoder reset control flag
+	uint8_t ini;          // Motor encoder initialization done flag
 	int32_t rnd;          // Motor spinning rounds
 	float bias;           // Motor encoder bias
 	float angle;          // Motor encoder angle (continuous) in radian

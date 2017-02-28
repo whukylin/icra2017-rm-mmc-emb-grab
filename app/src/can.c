@@ -48,9 +48,9 @@ static void ZGyro_Proc(uint8_t* data)
 	volatile float angle = 0;
 	zgyro.angle_fdb = ((int32_t)(data[0]<<24) | (int32_t)(data[1]<<16) | (int32_t)(data[2]<<8) | (int32_t)(data[3]));
 	angle = -ZGYRO_ANGLE_RECIP * zgyro.angle_fdb;
-	if (zgyro.reset) {
+	if (!zgyro.ini) {
 		zgyro.bias = angle;
-		zgyro.reset = 0;
+		zgyro.ini = 1;
 	}
 	zgyro.rate = (angle - zgyro.angle) * ZGYRO_SPEED_RECIP;
 	zgyro.angle = angle - zgyro.bias;
@@ -72,10 +72,10 @@ static void Motor_Proc(uint8_t i, uint8_t* data)
 
 	angle = motor[i].angle_fdb[1] * MOTOR_ANGLE_RECIP;
 
-	if (motor[i].reset) {
+	if (!motor[i].ini) {
 		motor[i].bias = angle;
 		motor[i].rnd = 0;
-		motor[i].reset = 0;
+		motor[i].ini = 1;
 	}
 
 	angle_fdb_dif = motor[i].angle_fdb[1] - motor[i].angle_fdb[0];
@@ -135,22 +135,20 @@ void Can_Proc(uint32_t id, uint8_t* data)
 
 void ZGyro_Reset(void)
 {
-	zgyro.reset = 1;
+	memset(&zgyro, 0, sizeof(ZGyro_t));
 }
 
 void Motor_Reset(uint8_t i)
 {
 	Est_Reset(&est[i]);
-	motor[i].reset = 1;
+	memset(&motor[i], 0, sizeof(Motor_t));
 }
 
 void Can_Reset(void)
 {
+	uint8_t i = 0;
+	for (; i < MOTOR_NUM; i++) {
+		Motor_Reset(i);
+	}
 	ZGyro_Reset();
-	Motor_Reset(0);
-	Motor_Reset(1);
-	Motor_Reset(2);
-	Motor_Reset(3);
-	Motor_Reset(4);
-	Motor_Reset(5);
 }
