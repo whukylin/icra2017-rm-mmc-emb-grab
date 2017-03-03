@@ -29,40 +29,32 @@ ChassisState_t chassisVelocityFdb;
 
 static void GetFunctionalStateFdb(void)
 {
-	if (LED_GREEN_IS_ON()) {
-		functionalStateFdb |= FS_LED_GREEN;
-	} else {
-		functionalStateFdb &= ~FS_LED_GREEN;
-	}
-	if (LED_RED_IS_ON()) {
-		functionalStateFdb |= FS_LED_RED;
-	} else {
-		functionalStateFdb &= ~FS_LED_RED;
-	}
+	FS_Det(LED_GREEN_IS_ON(), &functionalStateFdb, FS_LED_GREEN);
+	FS_Det(LED_RED_IS_ON(), &functionalStateFdb, FS_LED_RED);
 }
 
 static void GetMecanumPositionFdb(void)
 {
-	mecanumPositionFdb.w1 = motor[0].angle;
-	mecanumPositionFdb.w2 = motor[1].angle;
-	mecanumPositionFdb.w3 = motor[2].angle;
-	mecanumPositionFdb.w4 = motor[3].angle;
+	mecanumPositionFdb.w1 = motor1.angle;
+	mecanumPositionFdb.w2 = motor2.angle;
+	mecanumPositionFdb.w3 = motor3.angle;
+	mecanumPositionFdb.w4 = motor4.angle;
 }
 
 static void GetMecanumVelocityFdb(void)
 {
-	mecanumVelocityFdb.w1 = motor[0].rate;
-	mecanumVelocityFdb.w2 = motor[1].rate;
-	mecanumVelocityFdb.w3 = motor[2].rate;
-	mecanumVelocityFdb.w4 = motor[3].rate;
+	mecanumVelocityFdb.w1 = motor1.rate;
+	mecanumVelocityFdb.w2 = motor2.rate;
+	mecanumVelocityFdb.w3 = motor3.rate;
+	mecanumVelocityFdb.w4 = motor4.rate;
 }
 
 static void GetMecanumCurrentsFdb(void)
 {
-	mecanumCurrentsFdb.w1 = motor[0].current_fdb;
-	mecanumCurrentsFdb.w2 = motor[1].current_fdb;
-	mecanumCurrentsFdb.w3 = motor[2].current_fdb;
-	mecanumCurrentsFdb.w4 = motor[3].current_fdb;
+	mecanumCurrentsFdb.w1 = motor1.current_fdb;
+	mecanumCurrentsFdb.w2 = motor2.current_fdb;
+	mecanumCurrentsFdb.w3 = motor3.current_fdb;
+	mecanumCurrentsFdb.w4 = motor4.current_fdb;
 }
 
 static void GetChassisPositionFdb(void)

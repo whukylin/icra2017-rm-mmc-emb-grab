@@ -2,21 +2,16 @@
 .\objects\srv.o: ..\..\srv\inc\srv.h
 .\objects\srv.o: ..\..\srv\inc\can_srv.h
 .\objects\srv.o: ..\..\app\inc\can.h
-.\objects\srv.o: ..\..\asp\inc\est.h
-.\objects\srv.o: ..\..\asp\inc\gdf.h
-.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
-.\objects\srv.o: ..\..\asp\inc\ekf.h
 .\objects\srv.o: ..\..\app\inc\wdg.h
+.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\srv.o: ..\..\srv\inc\com_srv.h
 .\objects\srv.o: ..\..\app\inc\com.h
 .\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\srv.o: ..\..\asp\inc\msg.h
 .\objects\srv.o: ..\..\app\inc\cfg.h
 .\objects\srv.o: ..\..\app\inc\fos.h
-.\objects\srv.o: ..\..\bsp\inc\flash.h
+.\objects\srv.o: ..\..\drv\inc\flash.h
 .\objects\srv.o: ..\..\bsp\inc\platform.h
 .\objects\srv.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\srv.o: ..\..\stl\CMSIS\core\core_cm4.h
@@ -53,9 +48,11 @@
 .\objects\srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
+.\objects\srv.o: ..\..\app\inc\fun.h
 .\objects\srv.o: ..\..\bsp\inc\tty.h
 .\objects\srv.o: ..\..\bsp\inc\stm32util.h
 .\objects\srv.o: ..\..\asp\inc\fifo.h
+.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\srv.o: ..\..\srv\inc\rcv_srv.h
 .\objects\srv.o: ..\..\app\inc\dci.h
 .\objects\srv.o: ..\..\asp\inc\dbus.h
@@ -63,10 +60,8 @@
 .\objects\srv.o: ..\..\asp\inc\hcp.h
 .\objects\srv.o: ..\..\app\inc\rci.h
 .\objects\srv.o: ..\..\app\inc\cmd.h
-.\objects\srv.o: ..\..\app\inc\dci.h
 .\objects\srv.o: ..\..\app\inc\sys.h
 .\objects\srv.o: ..\..\app\inc\mec.h
 .\objects\srv.o: ..\..\asp\inc\mecanum.h
-.\objects\srv.o: ..\..\app\inc\fun.h
 .\objects\srv.o: ..\..\app\inc\hci.h
 .\objects\srv.o: ..\..\asp\inc\mafilter.h

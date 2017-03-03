@@ -335,7 +335,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F427X,STM32F427xx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\stl\CMSIS\core;..\..\stl\CMSIS\device;..\..\stl\StdPeriph_Driver\inc;..\..\stl\inc;..\..\bsp\inc;..\..\srv\inc;..\..\asp\inc;..\..\app\inc;..\..\usr\inc;..\..\kos\inc</IncludePath>
+              <IncludePath>..\..\stl\CMSIS\core;..\..\stl\CMSIS\device;..\..\stl\StdPeriph_Driver\inc;..\..\stl\inc;..\..\bsp\inc;..\..\srv\inc;..\..\asp\inc;..\..\app\inc;..\..\usr\inc;..\..\kos\inc;..\..\drv\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -384,6 +384,11 @@
               <FileType>5</FileType>
               <FilePath>..\..\usr\inc\main.h</FilePath>
             </File>
+            <File>
+              <FileName>stm32f4xx_it.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\usr\inc\stm32f4xx_it.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -393,6 +398,11 @@
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\usr\src\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_it.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\usr\src\stm32f4xx_it.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -404,6 +414,11 @@
               <FileType>5</FileType>
               <FilePath>..\..\kos\inc\kos.h</FilePath>
             </File>
+            <File>
+              <FileName>sch.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\kos\inc\sch.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -413,6 +428,11 @@
               <FileName>kos.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\kos\src\kos.c</FilePath>
+            </File>
+            <File>
+              <FileName>sch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\kos\src\sch.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -503,11 +523,6 @@
               <FileName>rci.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\app\inc\rci.h</FilePath>
-            </File>
-            <File>
-              <FileName>sch.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\app\inc\sch.h</FilePath>
             </File>
             <File>
               <FileName>sys.h</FileName>
@@ -618,11 +633,6 @@
               <FileName>rci.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\app\src\rci.c</FilePath>
-            </File>
-            <File>
-              <FileName>sch.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\app\src\sch.c</FilePath>
             </File>
             <File>
               <FileName>sys.c</FileName>
@@ -915,24 +925,9 @@
               <FilePath>..\..\bsp\inc\dbi.h</FilePath>
             </File>
             <File>
-              <FileName>delay.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\bsp\inc\delay.h</FilePath>
-            </File>
-            <File>
-              <FileName>flash.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\bsp\inc\flash.h</FilePath>
-            </File>
-            <File>
               <FileName>led.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\bsp\inc\led.h</FilePath>
-            </File>
-            <File>
-              <FileName>motor.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\bsp\inc\motor.h</FilePath>
             </File>
             <File>
               <FileName>platform.h</FileName>
@@ -948,11 +943,6 @@
               <FileName>rcv.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\bsp\inc\rcv.h</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f4xx_it.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\bsp\inc\stm32f4xx_it.h</FilePath>
             </File>
             <File>
               <FileName>stm32util.h</FileName>
@@ -1005,24 +995,9 @@
               <FilePath>..\..\bsp\src\dbi.c</FilePath>
             </File>
             <File>
-              <FileName>delay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\bsp\src\delay.c</FilePath>
-            </File>
-            <File>
-              <FileName>flash.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\bsp\src\flash.c</FilePath>
-            </File>
-            <File>
               <FileName>led.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\bsp\src\led.c</FilePath>
-            </File>
-            <File>
-              <FileName>motor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\bsp\src\motor.c</FilePath>
             </File>
             <File>
               <FileName>pwm.c</FileName>
@@ -1048,6 +1023,66 @@
               <FileName>tty.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\bsp\src\tty.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>drv/inc</GroupName>
+          <Files>
+            <File>
+              <FileName>delay.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\drv\inc\delay.h</FilePath>
+            </File>
+            <File>
+              <FileName>flash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\drv\inc\flash.h</FilePath>
+            </File>
+            <File>
+              <FileName>motor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\drv\inc\motor.h</FilePath>
+            </File>
+            <File>
+              <FileName>zgyro.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\drv\inc\zgyro.h</FilePath>
+            </File>
+            <File>
+              <FileName>drv.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\drv\inc\drv.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>drv/src</GroupName>
+          <Files>
+            <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\drv\src\delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\drv\src\flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\drv\src\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>zgyro.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\drv\src\zgyro.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\drv\src\drv.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -25,10 +25,9 @@
 extern "C" {
 #endif
 
-#include "est.h"
+#include <string.h>
+	
 #include "wdg.h"
-
-#define MOTOR_NUM 6
 
 #define ZGYRO_FDB_CAN_MSG_ID   0x401
 #define MOTOR1_FDB_CAN_MSG_ID  0x201
@@ -38,48 +37,49 @@ extern "C" {
 #define MOTOR5_FDB_CAN_MSG_ID  0x205
 #define MOTOR6_FDB_CAN_MSG_ID  0x206
 
-#define ZGYRO_ANGLE_RECIP      1.7453292e-04f
-#define ZGYRO_SPEED_RECIP      1000 // 1khz
-#define MOTOR_ANGLE_FDB_MAX    8191
-#define MOTOR_ANGLE_FDB_MOD    8192
-#define MOTOR_ANGLE_RECIP      7.6699042e-04f
-#define MOTOR_SPEED_RECIP      1000 // 1khz
-#define MOTOR_CURRENT_RECIP    0.001f // Ampere
-#define MOTOR_CURRENT_FDB_MAX  13000
-#define MOTOR_CURRENT_REF_MAX  5000
+#define MOTOR_ESC_CURRENT_FDB_MAX 13000
+#define MOTOR_ECD_MOD 8192
+#define MOTOR_ECD_GAP 7500
+#define MOTOR_ECD_RATE_BUF_SIZE 6
 
 typedef struct
 {
-	int32_t angle_fdb;    // ZGyro raw angle feedback
-
-	uint8_t ini;          // ZGyro initialization done flag
-	float bias;           // ZGyro bias in radian
-	float angle;          // ZGyro angle in radian
-	float rate;           // ZGyro angle rate in rad/s
+	uint8_t ini;
+	int32_t angle_fdb;
+	int32_t bias;
+	int32_t rate;
+	int32_t angle;
 }ZGyro_t;
 
 typedef struct
 {
-	uint16_t angle_fdb[2];  // Motor encoder raw angle feedback, index 1 is the newest
-	int32_t current_fdb;    // Motor electronic speed controller current feedback
-	int32_t current_ref;    // Motor electronic speed controller current reference
+	uint8_t ini;
+	uint16_t angle_fdb;
+	int32_t current_fdb;
+	int32_t current_ref;
+	uint16_t bias;
+	int32_t round;
+	int32_t angle;
+	int16_t rate_buf[MOTOR_ECD_RATE_BUF_SIZE];
+	uint8_t rate_idx;
+	int16_t rate;
+}Motor_t;
 
-	uint8_t ini;          // Motor encoder initialization done flag
-	int32_t rnd;          // Motor spinning rounds
-	float bias;           // Motor encoder bias
-	float angle;          // Motor encoder angle (continuous) in radian
-	float rate;           // Motor encoder angle rate in rad/s
-	float current;        // Motor electronic speed controller current in ampere
-}Motor_t; // For EC60 & RM6025 Motor Encoder & ESC
+void ZGyro_Process(ZGyro_t* zgyro, uint8_t* data);
+void Motor_Process(Motor_t* motor, uint8_t* data);
+void ZGyro_Reset(void);
+void Motor_Reset(void);
 
 void Can_Init(void);
 void Can_Proc(uint32_t id, uint8_t* data);
-void ZGyro_Reset(void);
-void Motor_Reset(uint8_t i);
-void Can_Reset(void);
 
 extern ZGyro_t zgyro;
-extern Motor_t motor[MOTOR_NUM]; // Motor group
+extern Motor_t motor1;
+extern Motor_t motor2;
+extern Motor_t motor3;
+extern Motor_t motor4;
+extern Motor_t motor5;
+extern Motor_t motor6;
 
 #ifdef __cplusplus
 }

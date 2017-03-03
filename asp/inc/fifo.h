@@ -36,7 +36,7 @@ typedef struct
 
 void FIFO_Init(FIFO_t* fifo, uint8_t* m, uint32_t s);
 void FIFO_Flush(FIFO_t* fifo);
-uint32_t FIFO_Push(FIFO_t* fifo, uint8_t* e, uint32_t n);
+uint32_t FIFO_Push(FIFO_t* fifo, const uint8_t* e, uint32_t n);
 uint32_t FIFO_Pop(FIFO_t* fifo, uint8_t* e, uint32_t n);
 uint32_t FIFO_Peek(const FIFO_t* fifo, uint8_t* e, uint32_t n);
 uint8_t FIFO_IsFull(const FIFO_t* fifo);

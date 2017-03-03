@@ -19,7 +19,7 @@
 static FIFO_t rx_fifo;
 static FIFO_t tx_fifo;
 static uint8_t rx_buf[BTM_RX_FIFO_SIZE];
-static uint8_t tx_buf[BTM_RX_FIFO_SIZE];
+static uint8_t tx_buf[BTM_TX_FIFO_SIZE];
 
 void Btm_Config(void)
 {

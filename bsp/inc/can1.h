@@ -17,6 +17,10 @@
 #ifndef __CAN1_H__
 #define __CAN1_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+	
 #include "stm32util.h"
 
 #define CAN1_RX_PIN PD0
@@ -24,14 +28,18 @@
 #define CAN1_RX_IRQ_HANDLER IRQ_HANDLER(CAN1_RX0)
 #define CAN1_RX_NVIC IRQ(CAN1_RX0)
 #define CAN1_RX_NVIC_PRE_PRIORITY 1
-#define CAN1_RX_NVIC_SUB_PRIORITY 0
+#define CAN1_RX_NVIC_SUB_PRIORITY 1
 #define CAN1_TX_IRQ_HANDLER IRQ_HANDLER(CAN1_TX)
 #define CAN1_TX_NVIC IRQ(CAN1_TX)
-#define CAN1_TX_NVIC_PRE_PRIORITY 2
-#define CAN1_TX_NVIC_SUB_PRIORITY 2
+#define CAN1_TX_NVIC_PRE_PRIORITY 0
+#define CAN1_TX_NVIC_SUB_PRIORITY 1
 
 void Can1_Config(void);
 
 void Can1RxCallback(uint32_t id, uint8_t* data);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

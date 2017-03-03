@@ -46,10 +46,7 @@
 .\objects\bsp.o: ..\..\bsp\inc\can1.h
 .\objects\bsp.o: ..\..\bsp\inc\can2.h
 .\objects\bsp.o: ..\..\bsp\inc\dbi.h
-.\objects\bsp.o: ..\..\bsp\inc\delay.h
-.\objects\bsp.o: ..\..\bsp\inc\flash.h
 .\objects\bsp.o: ..\..\bsp\inc\led.h
-.\objects\bsp.o: ..\..\bsp\inc\motor.h
 .\objects\bsp.o: ..\..\bsp\inc\pwm.h
 .\objects\bsp.o: ..\..\bsp\inc\rcv.h
 .\objects\bsp.o: ..\..\bsp\inc\tim.h

@@ -1,7 +1,8 @@
 .\objects\cfg.o: ..\..\app\src\cfg.c
 .\objects\cfg.o: ..\..\app\inc\cfg.h
+.\objects\cfg.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\cfg.o: ..\..\app\inc\fos.h
-.\objects\cfg.o: ..\..\bsp\inc\flash.h
+.\objects\cfg.o: ..\..\drv\inc\flash.h
 .\objects\cfg.o: ..\..\bsp\inc\platform.h
 .\objects\cfg.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\cfg.o: ..\..\stl\CMSIS\core\core_cm4.h
@@ -39,4 +40,4 @@
 .\objects\cfg.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\cfg.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\cfg.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
-.\objects\cfg.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\cfg.o: ..\..\app\inc\fun.h

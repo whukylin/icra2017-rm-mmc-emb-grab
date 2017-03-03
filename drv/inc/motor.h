@@ -17,6 +17,10 @@
 #ifndef __MOTOR_H__
 #define __MOTOR_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "platform.h"
 
 #define MOTOR_CAN CAN1
@@ -29,4 +33,8 @@
 void CM_Cmd(CAN_TypeDef *CANx, int16_t c201, int16_t c202, int16_t c203, int16_t c204);
 void GM_Cmd(CAN_TypeDef *CANx, int16_t c205, int16_t c206);
 
+#ifdef __cplusplus
+}
+#endif
+	
 #endif

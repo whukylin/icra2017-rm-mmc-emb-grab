@@ -47,22 +47,17 @@
 .\objects\odo.o: ..\..\bsp\inc\can1.h
 .\objects\odo.o: ..\..\bsp\inc\can2.h
 .\objects\odo.o: ..\..\bsp\inc\dbi.h
-.\objects\odo.o: ..\..\bsp\inc\delay.h
-.\objects\odo.o: ..\..\bsp\inc\flash.h
 .\objects\odo.o: ..\..\bsp\inc\led.h
-.\objects\odo.o: ..\..\bsp\inc\motor.h
 .\objects\odo.o: ..\..\bsp\inc\pwm.h
 .\objects\odo.o: ..\..\bsp\inc\rcv.h
 .\objects\odo.o: ..\..\bsp\inc\tim.h
 .\objects\odo.o: ..\..\bsp\inc\tty.h
 .\objects\odo.o: ..\..\app\inc\can.h
-.\objects\odo.o: ..\..\asp\inc\est.h
-.\objects\odo.o: ..\..\asp\inc\gdf.h
-.\objects\odo.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
-.\objects\odo.o: ..\..\asp\inc\ekf.h
 .\objects\odo.o: ..\..\app\inc\wdg.h
 .\objects\odo.o: ..\..\app\inc\sys.h
+.\objects\odo.o: ..\..\app\inc\fun.h
 .\objects\odo.o: ..\..\app\inc\mec.h
 .\objects\odo.o: ..\..\app\inc\cfg.h
 .\objects\odo.o: ..\..\app\inc\fos.h
+.\objects\odo.o: ..\..\drv\inc\flash.h
 .\objects\odo.o: ..\..\asp\inc\mecanum.h

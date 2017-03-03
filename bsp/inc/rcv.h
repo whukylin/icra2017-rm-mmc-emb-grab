@@ -17,6 +17,11 @@
 #ifndef __RCV_H__
 #define __RCV_H__
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+	
 #include "stm32util.h"
 
 #define RCV_SIG_PIN PB7
@@ -30,7 +35,7 @@
 #define RCV_IRQ_HANDLER IRQ_HANDLER(USART1)
 #define RCV_NVIC IRQ(USART1)
 #define RCV_NVIC_PRE_PRIORITY 0
-#define RCV_NVIC_SUB_PRIORITY 1
+#define RCV_NVIC_SUB_PRIORITY 0
 #define RCV_DMA_STREAM DMA2_Stream2
 #define RCV_DMA_CHANNEL DMA_Channel_4
 
@@ -40,5 +45,9 @@
 void Rcv_Config(void);
 
 void RcvCallback(uint8_t* dbuf);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

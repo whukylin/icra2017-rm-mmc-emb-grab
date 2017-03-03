@@ -1,6 +1,6 @@
 .\objects\fos.o: ..\..\app\src\fos.c
 .\objects\fos.o: ..\..\app\inc\fos.h
-.\objects\fos.o: ..\..\bsp\inc\flash.h
+.\objects\fos.o: ..\..\drv\inc\flash.h
 .\objects\fos.o: ..\..\bsp\inc\platform.h
 .\objects\fos.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\fos.o: ..\..\stl\CMSIS\core\core_cm4.h

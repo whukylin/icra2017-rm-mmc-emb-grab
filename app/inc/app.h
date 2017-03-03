@@ -38,6 +38,9 @@ extern "C" {
 // Board Supported Packages
 #include "bsp.h"
 
+// Drivers
+#include "drv.h"
+
 // Services
 #include "srv.h"
 
@@ -58,7 +61,6 @@ extern "C" {
 #include "mec.h" // Mecanum Power Transmission System
 #include "odo.h" // Odometer (Sensor Message Feedback)
 #include "rci.h" // Remote Control Interface
-#include "sch.h" // Scheduler
 #include "sys.h" // System-wide Variable Types and Functions
 #include "upd.h" // System Updater
 #include "wdg.h" // Watch Dog

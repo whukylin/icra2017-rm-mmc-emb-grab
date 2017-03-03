@@ -17,6 +17,15 @@
 #ifndef __PLATFORM_H__
 #define __PLATFORM_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "stm32f4xx.h"
 
-#endif /* __PLATFORM_H__ */
+#ifdef __cplusplus
+}
+#endif
+
+#endif
+

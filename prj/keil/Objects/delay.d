@@ -1,2 +1,2 @@
-.\objects\delay.o: ..\..\bsp\src\delay.c
-.\objects\delay.o: ..\..\bsp\inc\delay.h
+.\objects\delay.o: ..\..\drv\src\delay.c
+.\objects\delay.o: ..\..\drv\inc\delay.h

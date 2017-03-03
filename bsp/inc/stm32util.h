@@ -1,6 +1,10 @@
 #ifndef __STM32_UTIL_H__
 #define __STM32_UTIL_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "platform.h"
 
 typedef uint32_t GPIO;
@@ -290,6 +294,10 @@ void CAN_Config(CAN_TypeDef* canx, u16 ps, u8 mode, u8 sjw, u8 bs1, u8 bs2);
 void CAN_Filter_Config(u16 id_h, u16 id_l, u16 msk_h, u16 msk_l, u16 fifo, u8 num);
 void DMA_Config(DMA_Stream_TypeDef* DMAy_Streamx, u32 channel, u32 pba, u32 mba, u32 dir, u32 bs);
 void EXTI_Config(u32 line, EXTIMode_TypeDef mode, EXTITrigger_TypeDef trig);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

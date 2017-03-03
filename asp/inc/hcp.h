@@ -22,18 +22,18 @@
 /* ----------------------- PC Mouse Value Definition------------------------------ */
 #define MOUSE_SPEED_MIN          ((int16_t)-32768 )
 #define MOUSE_SPEED_MID          ((int16_t)0      )
-#define MOUSE_SPEED_MAX		     ((int16_t)32767  )
-#define MOUSE_BTN_UP         	 ((uint8_t)0      )
+#define MOUSE_SPEED_MAX		       ((int16_t)32767  )
+#define MOUSE_BTN_UP         	   ((uint8_t)0      )
 #define MOUSE_BTN_DOWN           ((uint8_t)1      )
 /* ----------------------- PC Key Value Definition-------------------------------- */
-#define KEY_W         			 ((uint8_t)0x01<<0)
-#define KEY_S         			 ((uint8_t)0x01<<1)
-#define KEY_A         			 ((uint8_t)0x01<<2)
-#define KEY_D         			 ((uint8_t)0x01<<3)
-#define KEY_SHIFT     		     ((uint8_t)0x01<<4)
-#define KEY_CTRL      		     ((uint8_t)0x01<<5)
-#define KEY_Q         		     ((uint8_t)0x01<<6)
-#define KEY_E         			 ((uint8_t)0x01<<7)
+#define KEY_W         			     ((uint8_t)0x01<<0)
+#define KEY_S         			 		 ((uint8_t)0x01<<1)
+#define KEY_A         			     ((uint8_t)0x01<<2)
+#define KEY_D         			     ((uint8_t)0x01<<3)
+#define KEY_SHIFT     		       ((uint8_t)0x01<<4)
+#define KEY_CTRL      		       ((uint8_t)0x01<<5)
+#define KEY_Q         		       ((uint8_t)0x01<<6)
+#define KEY_E         			     ((uint8_t)0x01<<7)
 
 #define KEY_UP   0
 #define KEY_DOWN 1
@@ -50,9 +50,17 @@ typedef struct
 	uint8_t b[MOUSE_BTN_CNT];
 }Mouse_t; // Mouse control domain
 
-typedef struct
+typedef union
 {
 	uint16_t val;
+	uint8_t W : 1;
+	uint8_t S : 1;
+	uint8_t A : 1;
+	uint8_t D : 1;
+	uint8_t Shift : 1;
+	uint8_t Ctrl : 1;
+	uint8_t Q : 1;
+	uint8_t E : 1;
 }Key_t; // Key control domain
 
 typedef struct

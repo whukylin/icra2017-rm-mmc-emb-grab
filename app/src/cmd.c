@@ -19,15 +19,13 @@
 /**********************************************/
 /*          System Command Interface          */
 /**********************************************/
-
+WorkingState_t workingStateRef;
 PeriphsState_t functionalStateRef;
 ChassisState_t chassisVelocityRef;
 MecanumState_t mecanumVelocityRef; // Auto-Wired
 
 void Cmd_Init(void)
 {
-	DCI_Init();
-
 	FS_Clr(&functionalStateRef, FS_ALL);
 	CS_Set(&chassisVelocityRef, 0, 0, 0);
 	MS_Set(&mecanumVelocityRef, 0, 0, 0, 0);
@@ -35,11 +33,9 @@ void Cmd_Init(void)
 
 void Cmd_Proc(void)
 {
-	DCI_Proc();
-	
-	LIMIT(chassisVelocityRef.x, -cfg.cha.spdCfg.max, cfg.cha.spdCfg.max);
-	LIMIT(chassisVelocityRef.y, -cfg.cha.spdCfg.max, cfg.cha.spdCfg.max);
-	LIMIT(chassisVelocityRef.z, -cfg.cha.spdCfg.max, cfg.cha.spdCfg.max);
+	CONSTRAIN(chassisVelocityRef.x, -cfg.spd.x, cfg.spd.x);
+	CONSTRAIN(chassisVelocityRef.y, -cfg.spd.y, cfg.spd.y);
+	CONSTRAIN(chassisVelocityRef.z, -cfg.spd.z, cfg.spd.z);
 	
 	Mec_Decomp((float*)&chassisVelocityRef, (float*)&mecanumVelocityRef);
 }

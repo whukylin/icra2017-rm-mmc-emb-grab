@@ -17,6 +17,10 @@
 #ifndef __BTN_H___
 #define __BTN_H___
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+	
 #include "stm32util.h"
 
 #define BTN_PIN PD10
@@ -26,5 +30,9 @@
 #define BTN_STATE_DN 0
 
 void Btn_Config(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

@@ -19,7 +19,7 @@
 static FIFO_t rx_fifo;
 static FIFO_t tx_fifo;
 static uint8_t rx_buf[TTY_RX_FIFO_SIZE];
-static uint8_t tx_buf[TTY_RX_FIFO_SIZE];
+static uint8_t tx_buf[TTY_TX_FIFO_SIZE];
 
 void Tty_Config(void)
 {

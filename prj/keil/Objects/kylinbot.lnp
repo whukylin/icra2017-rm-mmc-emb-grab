@@ -1,6 +1,7 @@
 --cpu=Cortex-M4.fp
 ".\objects\main.o"
 ".\objects\kos.o"
+".\objects\sch.o"
 ".\objects\act.o"
 ".\objects\app.o"
 ".\objects\can.o"
@@ -18,7 +19,6 @@
 ".\objects\mec.o"
 ".\objects\odo.o"
 ".\objects\rci.o"
-".\objects\sch.o"
 ".\objects\sys.o"
 ".\objects\upd.o"
 ".\objects\wdg.o"

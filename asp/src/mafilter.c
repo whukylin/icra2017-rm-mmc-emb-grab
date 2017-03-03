@@ -46,8 +46,8 @@ MAFilter_t* MAFilter_Create(uint32_t len)
 float MAFilter_Calc(MAFilter_t* mafilter, float v)
 {
 	mafilter->avg += (v - mafilter->buf[mafilter->i]) / mafilter->len;
-	mafilter->buf[mafilter->i] = v;
-	mafilter->i = (mafilter->i == mafilter->len) ? 0 : mafilter->i + 1;
+	mafilter->buf[mafilter->i++] = v;
+	if (mafilter->i >= mafilter->len) mafilter->i = 0;
 	return mafilter->avg;
 }
 

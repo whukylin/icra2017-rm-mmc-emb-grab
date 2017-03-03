@@ -17,6 +17,10 @@
 #ifndef __IOS_H__
 #define __IOS_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+	
 #include <stdio.h>
 #include "tty.h"
 #include "dbi.h"
@@ -31,13 +35,17 @@
 #define GETCHAR_PROTOTYPE int fgetc(FILE* f)
 #endif
 
-void IOS_In(uint8_t (*in)(void));
-void IOS_Out(void (*out)(uint8_t));
+void Ios_SetIn(uint8_t (*in)(void));
+void Ios_SetOut(void (*out)(uint8_t));
 
-void IOS_PutByte(uint8_t b);
-uint8_t IOS_GetByte(void);
+void Ios_PutByte(uint8_t b);
+uint8_t Ios_GetByte(void);
 
-void IOS_Init(void);
+void Ios_Init(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

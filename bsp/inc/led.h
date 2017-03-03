@@ -17,6 +17,10 @@
 #ifndef __LED_H__
 #define __LED_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+	
 #include "stm32util.h"
 
 #define LED_GREEN_PIN PF14
@@ -37,6 +41,10 @@
 #define LED_RED_TOG()       GPIO_TOG(LED_RED_PIN)
 
 void Led_Config(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

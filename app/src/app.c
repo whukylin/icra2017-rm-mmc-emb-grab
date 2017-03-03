@@ -28,7 +28,7 @@ void App_Init(void)
 	Com_Init();
 	Ctl_Init();
 	Ini_Init();
-	Sch_Init();
+	Ios_Init();
 	Upd_Init();
 	Wdg_Init();
 	Wsm_Init();

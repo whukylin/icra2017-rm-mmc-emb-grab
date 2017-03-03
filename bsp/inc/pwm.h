@@ -17,6 +17,10 @@
 #ifndef __PWM_H__
 #define __PWM_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+	
 #include "stm32util.h"
 
 #define CLAW_PWM_PIN_1 PD12
@@ -45,6 +49,10 @@
 #define CLAW_TOG()      do { if(CLAW_IS_OPEN()) CLAW_CLOSE(); else CLAW_OPEN(); } while(0)
 
 void Pwm_Config(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

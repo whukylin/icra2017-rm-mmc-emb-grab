@@ -25,7 +25,7 @@ void Can2_Config(void)
 	NVIC_Config(CAN2_TX_NVIC, CAN2_TX_NVIC_PRE_PRIORITY, CAN2_TX_NVIC_SUB_PRIORITY);
 
 	//CAN BaudRate 42/(1+9+4)/3=1Mbps
-	CAN_Config(CAN2, 3, 0x01, CAN_SJW_1tq, CAN_BS1_9tq, CAN_BS2_4tq);
+	CAN_Config(CAN2, 3, 0, CAN_SJW_1tq, CAN_BS1_9tq, CAN_BS2_4tq);
 
 	CAN_Filter_Config(0x0000, 0x0000, 0x0000, 0x0000, 0, 14);
 
@@ -39,7 +39,7 @@ void CAN2_RX_IRQ_HANDLER(void)
 	{
 		CanRxMsg canRxMsg;
 		CAN_ClearITPendingBit(CAN2, CAN_IT_FMP0);
-		CAN_ClearFlag(CAN2, CAN_FLAG_FF0);
+		//CAN_ClearFlag(CAN2, CAN_FLAG_FF0);
 		CAN_Receive(CAN2, CAN_FIFO0, &canRxMsg);
 
 		Can2RxCallback(canRxMsg.StdId, canRxMsg.Data);

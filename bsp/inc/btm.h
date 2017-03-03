@@ -17,6 +17,10 @@
 #ifndef __BTM_H___
 #define __BTM_H___
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+	
 #include "stm32util.h"
 #include "fifo.h"
 
@@ -48,4 +52,10 @@ void Btm_Print(const char* str);
 
 void BtmRxCallback(uint8_t data);
 
+#ifdef __cplusplus
+}
 #endif
+
+#endif
+
+

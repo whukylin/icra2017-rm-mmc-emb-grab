@@ -31,7 +31,7 @@ void FIFO_Flush(FIFO_t* fifo)
 	fifo->n = 0;
 }
 
-uint32_t FIFO_Push(FIFO_t* fifo, uint8_t* e, uint32_t n)
+uint32_t FIFO_Push(FIFO_t* fifo, const uint8_t* e, uint32_t n)
 {
 	uint32_t i = 0;
 	for (; i < n && fifo->n != fifo->s; i++, fifo->n++) {

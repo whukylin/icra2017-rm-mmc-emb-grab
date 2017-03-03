@@ -27,20 +27,31 @@ Project File Date:  02/28/2017
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin'
 Build target 'kylinbot'
-compiling ios.c...
-compiling kos.c...
+compiling wsm.c...
+..\..\app\src\wsm.c(49): error:  #20: identifier "CFG_FLAG_SAVE" is undefined
+  		} else if (!Cfg_GetFlag(CFG_FLAG_SAVE)) {
+..\..\app\src\wsm.c(58): error:  #20: identifier "CFG_FLAG_SAVE" is undefined
+  		} else if (Cfg_GetFlag(CFG_FLAG_SAVE)) {
+..\..\app\src\wsm.c: 0 warnings, 2 errors
 compiling main.c...
-compiling app.c...
-linking...
-Program Size: Code=9576 RO-data=460 RW-data=108 ZI-data=5868  
-FromELF: creating hex file...
-".\Objects\kylinbot.axf" - 0 Error(s), 0 Warning(s).
+..\..\drv\inc\zgyro.h(40): warning:  #1-D: last line of file ends without a newline
+  	
+..\..\usr\src\main.c(88): warning:  #223-D: function "IOS_Init" declared implicitly
+  	IOS_Init();
+..\..\usr\src\main.c(95): error:  #109: expression preceding parentheses of apparent call must have (pointer-to-) function type
+  		if (
+ICK_US() % 5000 == 0)
+..\..\usr\src\main.c(98): warning:  #223-D: function "print_est" declared implicitly
+  			print_est();
+..\..\usr\src\main.c: 3 warnings, 1 error
+".\Objects\kylinbot.axf" - 3 Error(s), 3 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   .\RTE\_kylinbot
   D:\Program Files (x86)\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
+Target not created.
 Build Time Elapsed:  00:00:02
 </pre>
 </body>

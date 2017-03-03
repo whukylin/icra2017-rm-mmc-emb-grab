@@ -63,16 +63,18 @@ static MAFilter_t fx, fy, fz;
 static float buf[3][KEY_CONTROL_MAFILTER_LEN];
 static void GetChassisVelocityRef(HCP_t* hcp)
 {
-	float speed = (hcp->key.val & KEY_SHIFT) ? cfg.cha.spdCfg.max : cfg.cha.spdCfg.max / 2.f;
-	float vx = (hcp->key.val & KEY_A) ? -speed : ((hcp->key.val & KEY_D) ? speed : 0);
-	float vy = (hcp->key.val & KEY_S) ? -speed : ((hcp->key.val & KEY_W) ? speed : 0);
-	float vz = map(hcp->mouse.x, MOUSE_SPEED_MIN, MOUSE_SPEED_MAX, -cfg.yaw.spdCfg.max, cfg.yaw.spdCfg.max);
+	float sx = hcp->key.Shift ? cfg.spd.x : cfg.spd.x / 2.f;
+	float sy = hcp->key.Shift ? cfg.spd.y : cfg.spd.y / 2.f;
+	float sz = hcp->key.Shift ? cfg.spd.z : cfg.spd.z / 2.f;
+	float vx = hcp->key.A ? -sx : hcp->key.D ? sx : 0;
+	float vy = hcp->key.S ? -sy : hcp->key.W ? sy : 0;
+	float vz = map(hcp->mouse.x, MOUSE_SPEED_MIN, MOUSE_SPEED_MAX, -sz, sz);
 	chassisVelocityRef.x = MAFilter_Calc(&fx, vx);
 	chassisVelocityRef.y = MAFilter_Calc(&fy, vy);
 	chassisVelocityRef.z = MAFilter_Calc(&fz, vz);
 }
 
-void HCI_Init(void)
+void Hci_Init(void)
 {
 	uint32_t i = 0;
 	for (; i < MOUSE_BTN_CNT; i++) {
@@ -87,7 +89,7 @@ void HCI_Init(void)
 	MAFilter_Init(&fz, buf[2], KEY_CONTROL_MAFILTER_LEN);
 }
 
-void HCI_Proc(HCP_t* hcp)
+void Hci_Proc(HCP_t* hcp)
 {
 	GetFunctionalStateRef(hcp);
 	GetChassisVelocityRef(hcp);

@@ -17,11 +17,15 @@
 #ifndef __TTY_H__
 #define __TTY_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+	
 #include "stm32util.h"
 #include "fifo.h"
 
-#define TTY_TX_PIN PD5
-#define TTY_RX_PIN PD6
+#define TTY_TX_PIN PG9
+#define TTY_RX_PIN PG14
 #define TTY_USART USART6
 #define TTY_USART_BR 115200
 #define TTY_USART_WL 8
@@ -31,8 +35,8 @@
 
 #define TTY_IRQ_HANDLER IRQ_HANDLER(USART6)
 #define TTY_NVIC IRQ(USART6)
-#define TTY_NVIC_PRE_PRIORITY 1
-#define TTY_NVIC_SUB_PRIORITY 1
+#define TTY_NVIC_PRE_PRIORITY 2
+#define TTY_NVIC_SUB_PRIORITY 2
 
 #define TTY_RX_FIFO_SIZE 256u
 #define TTY_TX_FIFO_SIZE 256u
@@ -47,5 +51,9 @@ void Tty_Write(const uint8_t* buf, uint32_t len);
 void Tty_Print(const char* str);
 
 void TtyRxCallback(uint8_t data);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

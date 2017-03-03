@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2011-2016, Jack Mo (mobangjack@foxmail.com).
  *
@@ -14,12 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-#ifndef __DELAY_H__
-#define __DELAY_H__
 
-void Delay_Ms(unsigned int t);
-void Delay_Us(unsigned int t);
+#ifndef __DRV_H__
+#define __DRV_H__
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+	
+#include "delay.h"
+#include "flash.h"
+#include "motor.h"
+#include "zgyro.h"
+
+void Drv_Init(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
+
 

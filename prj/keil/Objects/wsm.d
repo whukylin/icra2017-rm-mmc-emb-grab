@@ -2,18 +2,14 @@
 .\objects\wsm.o: ..\..\app\inc\wsm.h
 .\objects\wsm.o: ..\..\app\inc\sys.h
 .\objects\wsm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\wsm.o: ..\..\app\inc\fun.h
 .\objects\wsm.o: ..\..\app\inc\ini.h
 .\objects\wsm.o: ..\..\app\inc\can.h
-.\objects\wsm.o: ..\..\asp\inc\est.h
-.\objects\wsm.o: ..\..\asp\inc\gdf.h
-.\objects\wsm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\wsm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\wsm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
-.\objects\wsm.o: ..\..\asp\inc\ekf.h
 .\objects\wsm.o: ..\..\app\inc\wdg.h
 .\objects\wsm.o: ..\..\app\inc\cfg.h
 .\objects\wsm.o: ..\..\app\inc\fos.h
-.\objects\wsm.o: ..\..\bsp\inc\flash.h
+.\objects\wsm.o: ..\..\drv\inc\flash.h
 .\objects\wsm.o: ..\..\bsp\inc\platform.h
 .\objects\wsm.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\wsm.o: ..\..\stl\CMSIS\core\core_cm4.h

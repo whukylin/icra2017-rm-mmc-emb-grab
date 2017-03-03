@@ -20,29 +20,13 @@
 /*     System Clock Source     */
 /*******************************/
 
-static uint32_t us_tick = 0;
-static uint32_t ms_tick = 0;
-
 void Clk_Init(void)
 {
-	us_tick = 0;
-	ms_tick = 0;
-}
-
-void Clk_Spin(void)
-{
-	us_tick++;
-	if (us_tick % 1000 == 0) {
-		ms_tick++;
-	}
+	TICK_US = 0;
 }
 
 uint32_t Clk_GetUsTick(void)
 {
-	return us_tick;
+	return TICK_US;
 }
 
-uint32_t Clk_GetMsTick(void)
-{
-	return ms_tick;
-}

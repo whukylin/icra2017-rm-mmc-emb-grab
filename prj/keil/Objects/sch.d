@@ -1,6 +1,44 @@
-.\objects\sch.o: ..\..\app\src\sch.c
-.\objects\sch.o: ..\..\app\inc\sch.h
+.\objects\sch.o: ..\..\kos\src\sch.c
+.\objects\sch.o: ..\..\kos\inc\sch.h
 .\objects\sch.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\sch.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\sch.o: ..\..\app\inc\clk.h
+.\objects\sch.o: ..\..\bsp\inc\tim.h
+.\objects\sch.o: ..\..\bsp\inc\stm32util.h
+.\objects\sch.o: ..\..\bsp\inc\platform.h
+.\objects\sch.o: ..\..\stl\CMSIS\device\stm32f4xx.h
+.\objects\sch.o: ..\..\stl\CMSIS\core\core_cm4.h
 .\objects\sch.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\sch.o: ..\..\stl\CMSIS\core\core_cmInstr.h
+.\objects\sch.o: ..\..\stl\CMSIS\core\core_cmFunc.h
+.\objects\sch.o: ..\..\stl\CMSIS\core\core_cmSimd.h
+.\objects\sch.o: ..\..\stl\CMSIS\device\system_stm32f4xx.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_conf.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_adc.h
+.\objects\sch.o: ..\..\stl\CMSIS\device\stm32f4xx.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_crc.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_exti.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_flash.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_gpio.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_i2c.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_iwdg.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_pwr.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_rcc.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_rtc.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sdio.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_spi.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_syscfg.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_tim.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_usart.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_wwdg.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_cryp.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_hash.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_rng.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dac.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
+.\objects\sch.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h

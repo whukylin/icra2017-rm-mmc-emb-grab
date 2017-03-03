@@ -17,6 +17,10 @@
 #ifndef __FLASH_H__
 #define __FLASH_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+	
 #include "platform.h"
 
 #define STM32_FLASH_BASE_ADDR 0x08000000
@@ -37,6 +41,12 @@
 void Flash_Read(u32 addr, u8* buf, u32 size);
 u8 Flash_Write(u32 addr, u8* buf, u32 size);
 
+#ifdef __cplusplus
+}
 #endif
+
+#endif
+
+
 
 

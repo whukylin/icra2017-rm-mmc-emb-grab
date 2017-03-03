@@ -17,21 +17,26 @@
 #ifndef __BSP_H__
 #define __BSP_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "btm.h"
 #include "btn.h"
 #include "can1.h"
 #include "can2.h"
 #include "dbi.h"
-#include "delay.h"
-#include "flash.h"
 #include "led.h"
-#include "motor.h"
 #include "pwm.h"
 #include "rcv.h"
 #include "tim.h"
 #include "tty.h"
 
 void Bsp_Config(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

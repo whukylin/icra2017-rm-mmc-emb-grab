@@ -25,10 +25,11 @@
 extern "C" {
 #endif
 
-#include "app.h"
+#include "app.h" // Application
+#include "sch.h" // Scheduler
 	
 void KOS_Boot(void);
-void KOS_Stop(void);
+void KOS_Kill(void);
 	
 #ifdef __cplusplus
 }

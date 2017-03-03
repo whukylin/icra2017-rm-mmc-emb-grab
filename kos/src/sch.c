@@ -48,6 +48,7 @@ static SchTask_t* newSchTask(SchRun_t run, uint32_t interval)
 	memset(task, 0, sizeof(SchTask_t));
 	task->run = run;
 	task->interval = interval;
+	task->prev = NULL;
 	task->next = NULL;
 	return task;
 }

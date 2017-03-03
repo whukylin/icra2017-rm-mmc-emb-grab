@@ -25,45 +25,40 @@
 extern "C" {
 #endif
 
-#include "fos.h"
 #include <string.h>
 	
-// VERSION: (20)17/1/7
-#define VERSION_A		1u
-#define VERSION_B		7u
-#define VERSION_C		1u
-#define VERSION_D		7u
-#define VERSION			(VERSION_A<<24)|(VERSION_B<<16)|(VERSION_C<<8)|(VERSION_D)
+#include "fos.h"
+#include "fun.h"
 
-typedef uint32_t Version_t;
-typedef uint32_t CfgFlag_t;
+#define CFG_FLAG_IMU                (1u<<0)
+#define CFG_FLAG_MAG                (1u<<1)
+#define CFG_FLAG_AHR                (1u<<2)
+#define CFG_FLAG_PID                (1u<<3)
+#define CFG_FLAG_RMP                (1u<<4)
+#define CFG_FLAG_SPD                (1u<<5)
+#define CFG_FLAG_MEC                (1u<<6)
+#define CFG_FLAG_ELE                (1u<<7)
+#define CFG_FLAG_CLA                (1u<<8)
+#define CFG_FLAG_ALL (CFG_FLAG_IMU|CFG_FLAG_MAG|CFG_FLAG_AHR|CFG_FLAG_PID|CFG_FLAG_RMP|CFG_FLAG_SPD|CFG_FLAG_MEC|CFG_FLAG_ELE|CFG_FLAG_CLA)
 
-#define CFG_FLAG_NONE               0u
-#define CFG_FLAG_SAVE               (1u<<0)
-#define CFG_FLAG_DONE               (1u<<1)
-#define CFG_FLAG_IMU                (1u<<2)
-#define CFG_FLAG_MAG                (1u<<3)
-#define CFG_FLAG_YAW                (1u<<4)
-#define CFG_FLAG_PIT                (1u<<5)
-#define CFG_FLAG_CHA                (1u<<6)
-#define CFG_FLAG_ALL   (CFG_FLAG_IMU | CFG_FLAG_MAG | CFG_FLAG_YAW | \
-                        CFG_FLAG_PIT | CFG_FLAG_CHA)
+typedef uint32_t CfgVer_t;
+typedef uint32_t CfgFlg_t;
 
 typedef struct
 {
-	float ax_offset;
-	float ay_offset;
-	float az_offset;
-	float gx_offset;
-	float gy_offset;
-	float gz_offset;
+	int16_t ax;
+	int16_t ay;
+	int16_t az;
+	int16_t gx;
+	int16_t gy;
+	int16_t gz;
 }ImuCfg_t; // IMU offset Configuration
 
 typedef struct
 {
-	float mx_offset;
-	float my_offset;
-	float mz_offset;
+	int16_t mx;
+	int16_t my;
+	int16_t mz;
 }MagCfg_t; // MAG offset Configuration
 
 typedef struct
@@ -71,18 +66,6 @@ typedef struct
 	float kp;
 	float ki;
 }AhrCfg_t; // Attitude Heading Reference System Configuration
-
-typedef struct
-{
-	float max;
-	float min;
-	float ofs;
-}PosCfg_t; // Position Configuration
-
-typedef struct
-{
-	float max;
-}SpdCfg_t; // Velocity Configuration
 
 typedef struct
 {
@@ -94,222 +77,173 @@ typedef struct
 	float Imax;
 	float Dmax;
 	float Omax;
-}PIDCfg_t; // PID Configuration
+}PidCfg_t; // PID Configuration
 
 typedef struct
 {
-	PosCfg_t posCfg;
-	SpdCfg_t spdCfg;
-	PIDCfg_t posPID;
-	PIDCfg_t spdPID;
-}GimCfg_t; // Gimbal Configuration
+	uint16_t cnt;
+}RmpCfg_t; // Ramp Configuration
 
 typedef struct
 {
-	float lx;
-	float ly;
-	float r1;
-	float r2;
+	uint16_t x;
+	uint16_t y;
+	uint16_t z;
+	uint16_t e;
+	uint16_t c;
+}SpdCfg_t; // Speed Configuration
+
+typedef struct
+{
+	uint16_t lx;
+	uint16_t ly;
+	uint16_t r1;
+	uint16_t r2;
 }MecCfg_t; // Mecanum Wheel Configuration
 
 typedef struct
 {
-	MecCfg_t mecCfg;
-	SpdCfg_t spdCfg;
-	PIDCfg_t spdPID;
-}ChaCfg_t; // Chassis Configuration
+	int32_t max;
+	int32_t min;
+	int32_t def;
+}EleCfg_t; // Elevator Position Configuration
 
 typedef struct
 {
-	uint32_t div; // Clock Division
-	uint32_t rmp; // Action Ramp
-}CtlCfg_t; // Logic Controller Configuration
+	uint16_t max; 
+	uint16_t min; 
+	uint16_t def; 
+}ClaCfg_t; // Claw Position Configuration
 
 typedef struct
 {
-	Version_t version;
-	CfgFlag_t flag;
+	CfgVer_t ver;
+	CfgFlg_t flg;
 	ImuCfg_t imu;
 	MagCfg_t mag;
 	AhrCfg_t ahr;
-	GimCfg_t yaw;
-	GimCfg_t pit;
-	ChaCfg_t cha;
-	CtlCfg_t ctl;
+	PidCfg_t pid;
+	RmpCfg_t rmp;
+	SpdCfg_t spd;
+	MecCfg_t mec;
+	EleCfg_t ele;
+	ClaCfg_t cla;
 }Cfg_t; // Application Configuration
 
 #define CFG_SIZE() sizeof(Cfg_t)
 
-#define IMU_CFG_DEFAULT \
+#define CFG_VER_DEF ((1<<24)|(7<<16)|(1<<8)|7)
+#define CFG_FLG_DEF 0
+
+#define FLG_CFG_DEF \
 { \
-	.ax_offset = 0, \
-	.ay_offset = 0, \
-	.az_offset = 0, \
-	.gx_offset = 0, \
-	.gy_offset = 0, \
-	.gz_offset = 0, \
+	.imu = 0, \
+	.mag = 0, \
+	.ahr = 0, \
+	.pid = 0, \
+	.rmp = 0, \
+	.spd = 0, \
+	.mec = 0, \
+	.ele = 0, \
+	.cla = 0, \
 }
 
-#define MAG_CFG_DEFAULT \
+#define IMU_CFG_DEF \
 { \
-	.mx_offset = 0, \
-	.my_offset = 0, \
-	.mz_offset = 0, \
+	.ax = 0, \
+	.ay = 0, \
+	.az = 0, \
+	.gx = 0, \
+	.gy = 0, \
+	.gz = 0, \
 }
 
-#define ARH_CFG_DEFAULT \
+#define MAG_CFG_DEF \
+{ \
+	.mx = 0, \
+	.my = 0, \
+	.mz = 0, \
+}
+
+#define ARH_CFG_DEF \
 { \
 	.kp = 2.0f, \
 	.ki = 0.02f, \
 }
 
-#define YAW_POS_CFG_DEFAULT \
+#define PID_CFG_DEF \
 { \
-	.max = 0, \
+	.kp = 220, \
+	.ki = 0, \
+	.kd = 0, \
+	.it = 0, \
+	.Pmax = 4950, \
+	.Imax = 2000, \
+	.Dmax = 2000, \
+	.Omax = 4950, \
+}
+
+#define RMP_CNT_DEF 4000
+#define RMP_CFG_DEF \
+{ \
+	.cnt = RMP_CNT_DEF, \
+}
+
+#define SPD_CFG_DEF \
+{ \
+	.x = 0, \
+	.y = 0, \
+	.z = 0, \
+	.e = 0, \
+	.c = 0, \
+}
+
+#define MEC_CFG_DEF \
+{ \
+	.lx = 160, \
+	.ly = 160, \
+	.r1 = 9, \
+	.r2 = 70, \
+}
+
+#define ELE_CFG_DEF \
+{ \
+	.max = 8191, \
 	.min = 0, \
-	.ofs = 0, \
+	.def = 0, \
 }
 
-#define YAW_SPD_CFG_DEFAULT \
+#define CLA_CFG_DEF \
 { \
-	.max = 1.0f, \
+	.max = 1700, \
+	.min = 1000, \
+	.def = 1300, \
 }
 
-#define YAW_POS_PID_CFG_DEFAULT \
+#define CFG_DEF \
 { \
-	.kp = 220, \
-	.ki = 0, \
-	.kd = 0, \
-	.it = 0, \
-	.Pmax = 4950, \
-	.Imax = 2000, \
-	.Dmax = 2000, \
-	.Omax = 4950, \
-}
-
-#define YAW_SPD_PID_CFG_DEFAULT \
-{ \
-	.kp = 220, \
-	.ki = 0, \
-	.kd = 0, \
-	.it = 0, \
-	.Pmax = 4950, \
-	.Imax = 2000, \
-	.Dmax = 2000, \
-	.Omax = 4950, \
-}
-
-#define YAW_CFG_DEFAULT \
-{ \
-	YAW_POS_CFG_DEFAULT, \
-	YAW_SPD_CFG_DEFAULT, \
-	YAW_POS_PID_CFG_DEFAULT, \
-	YAW_SPD_PID_CFG_DEFAULT, \
-}
-
-#define PIT_POS_CFG_DEFAULT \
-{ \
-	.max = 0, \
-	.min = 0, \
-	.ofs = 0, \
-}
-
-#define PIT_SPD_CFG_DEFAULT \
-{ \
-	.max = 1.0f, \
-}
-
-#define PIT_POS_PID_CFG_DEFAULT \
-{ \
-	.kp = 220, \
-	.ki = 0, \
-	.kd = 0, \
-	.it = 0, \
-	.Pmax = 4950, \
-	.Imax = 2000, \
-	.Dmax = 2000, \
-	.Omax = 4950, \
-}
-
-#define PIT_SPD_PID_CFG_DEFAULT \
-{ \
-	.kp = 220, \
-	.ki = 0, \
-	.kd = 0, \
-	.it = 0, \
-	.Pmax = 4950, \
-	.Imax = 2000, \
-	.Dmax = 2000, \
-	.Omax = 4950, \
-}
-
-#define PIT_CFG_DEFAULT \
-{ \
-	PIT_POS_CFG_DEFAULT, \
-	PIT_SPD_CFG_DEFAULT, \
-	PIT_POS_PID_CFG_DEFAULT, \
-	PIT_SPD_PID_CFG_DEFAULT, \
-}
-
-#define CHA_MEC_CFG_DEFAULT \
-{ \
-	.lx = 0.160f, \
-	.ly = 0.160f, \
-	.r1 = 0.009f, \
-	.r2 = 0.070f, \
-}
-
-#define CHA_SPD_CFG_DEFAULT \
-{ \
-	.max = 4.0f, \
-}
-
-#define CHA_SPD_PID_CFG_DEFAULT \
-{ \
-	.kp = 220, \
-	.ki = 0, \
-	.kd = 0, \
-	.it = 0, \
-	.Pmax = 4950, \
-	.Imax = 2000, \
-	.Dmax = 2000, \
-	.Omax = 4950, \
-}
-
-#define CHA_CFG_DEFAULT \
-{ \
-	CHA_MEC_CFG_DEFAULT, \
-	CHA_SPD_CFG_DEFAULT, \
-	CHA_SPD_PID_CFG_DEFAULT, \
-}
-
-#define CTL_DIV_DEFAULT 1
-#define CTL_RMP_DEFAULT 4000
-
-#define CTL_CFG_DEFAULT \
-{ \
-	.div = CTL_DIV_DEFAULT, \
-	.rmp = CTL_RMP_DEFAULT, \
-}
-
-#define CFG_DEFAULT \
-{ \
-	VERSION, \
-	CFG_FLAG_NONE, \
-	IMU_CFG_DEFAULT, \
-	MAG_CFG_DEFAULT, \
-	ARH_CFG_DEFAULT, \
-	YAW_CFG_DEFAULT, \
-	PIT_CFG_DEFAULT, \
-	CHA_CFG_DEFAULT, \
-	CTL_CFG_DEFAULT, \
+	CFG_VER_DEF, \
+	CFG_FLG_DEF, \
+	IMU_CFG_DEF, \
+	MAG_CFG_DEF, \
+	ARH_CFG_DEF, \
+	PID_CFG_DEF, \
+	RMP_CFG_DEF, \
+	SPD_CFG_DEF, \
+	MEC_CFG_DEF, \
+	ELE_CFG_DEF, \
+	CLA_CFG_DEF, \
 }
 
 void Cfg_Load(Cfg_t* cfg);
 uint8_t Cfg_Save(Cfg_t* cfg);
 
-CfgFlag_t Cfg_GetFlag(CfgFlag_t flag);
-void Cfg_SetFlag(CfgFlag_t flag);
+CfgVer_t Cfg_GetVer(CfgVer_t msk);
+CfgVer_t Cfg_SetVer(CfgVer_t ver, CfgVer_t msk);
+
+CfgFlg_t Cfg_GetFlag(CfgFlg_t flg);
+void Cfg_SetFlag(CfgFlg_t flg);
+void Cfg_ClrFlag(CfgFlg_t flg);
 
 void Cfg_Init(void);
 void Cfg_Proc(void);

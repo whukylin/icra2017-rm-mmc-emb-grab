@@ -67,12 +67,12 @@ static void GetFunctionalStateRef(RCP_t* rcp)
 
 static void GetChassisVelocityRef(RCP_t* rcp)
 {
-	chassisVelocityRef.x = map(rcp->ch[0], CH_MIN, CH_MAX, -cfg.cha.spdCfg.max, cfg.cha.spdCfg.max);
-	chassisVelocityRef.y = map(rcp->ch[1], CH_MIN, CH_MAX, -cfg.cha.spdCfg.max, cfg.cha.spdCfg.max);
-	chassisVelocityRef.z = map(rcp->ch[2], CH_MIN, CH_MAX, -cfg.cha.spdCfg.max, cfg.cha.spdCfg.max);
+	chassisVelocityRef.x = map(rcp->ch[0], CH_MIN, CH_MAX, -cfg.spd.x, cfg.spd.x);
+	chassisVelocityRef.y = map(rcp->ch[1], CH_MIN, CH_MAX, -cfg.spd.y, cfg.spd.y);
+	chassisVelocityRef.z = map(rcp->ch[2], CH_MIN, CH_MAX, -cfg.spd.z, cfg.spd.z);
 }
 
-void RCI_Init(void)
+void Rci_Init(void)
 {
 	uint32_t i = 0;
 	for (; i < SW_CNT; i++) {
@@ -84,7 +84,7 @@ void RCI_Init(void)
 	}
 }
 
-void RCI_Proc(RCP_t* rcp)
+void Rci_Proc(RCP_t* rcp)
 {
 	GetFunctionalStateRef(rcp);
 	GetChassisVelocityRef(rcp);

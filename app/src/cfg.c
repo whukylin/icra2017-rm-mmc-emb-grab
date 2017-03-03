@@ -20,7 +20,7 @@
 /*     Application Configuration     */
 /*************************************/
 
-Cfg_t cfg = CFG_DEFAULT;
+Cfg_t cfg = CFG_DEF;
 
 void Cfg_Load(Cfg_t* cfg)
 {
@@ -32,30 +32,49 @@ uint8_t Cfg_Save(Cfg_t* cfg)
 	return Fos_Write((uint8_t*)cfg, sizeof(Cfg_t));
 }
 
-CfgFlag_t Cfg_GetFlag(CfgFlag_t flag)
+CfgVer_t Cfg_GetVer(CfgVer_t msk)
 {
-	return cfg.flag & flag;
+	return Flag_Get(&cfg.ver, msk);
 }
 
-void Cfg_SetFlag(CfgFlag_t flag)
+CfgVer_t Cfg_SetVer(CfgVer_t ver, CfgVer_t msk)
 {
-	cfg.flag |= flag;
+	Flag_Set(&cfg.ver, msk);
+}
+
+CfgFlg_t Cfg_GetFlag(CfgFlg_t flg)
+{
+	return Flag_Get(&cfg.flg, flg);
+}
+
+void Cfg_SetFlag(CfgFlg_t flg)
+{
+	Flag_Set(&cfg.flg, flg);
+}
+
+void Cfg_ClrFlag(CfgFlg_t flg)
+{
+	Flag_Clr(&cfg.flg, flg);
 }
 
 void Cfg_Init(void)
 {
 	Cfg_Load(&cfg);
-	if (Cfg_GetFlag(CFG_FLAG_DONE) == 0) {
+	if (!Cfg_GetFlag(CFG_FLAG_IMU)) {
 		// Use default configuration
-		Cfg_t tmp = CFG_DEFAULT;
+		Cfg_t tmp = CFG_DEF;
 		memcpy(&cfg, &tmp, sizeof(Cfg_t));
 	}
 }
 
 void Cfg_Proc(void)
 {
-	if (!Cfg_GetFlag(CFG_FLAG_SAVE)) {
+	if (Cfg_GetFlag(CFG_FLAG_SAVED)) {
+		Cfg_t tmp = CFG_DEF;
+		CHECK_NOT_ZERO(cfg.mec.lx, tmp.mec.lx);
+		CHECK_NOT_ZERO(cfg.mec.ly, tmp.mec.ly);
+		CHECK_NOT_ZERO(cfg.mec.r1, tmp.mec.r1);
+		CHECK_NOT_ZERO(cfg.mec.r2, tmp.mec.r2);
 		Cfg_Save(&cfg);
-		Cfg_SetFlag(CFG_FLAG_SAVE);
 	}
 }

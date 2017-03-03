@@ -17,6 +17,10 @@
 #ifndef __DBI_H__
 #define __DBI_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+	
 #include "stm32util.h"
 #include "fifo.h"
 
@@ -31,8 +35,8 @@
 
 #define DBI_IRQ_HANDLER IRQ_HANDLER(USART3)
 #define DBI_NVIC IRQ(USART3)
-#define DBI_NVIC_PRE_PRIORITY 1
-#define DBI_NVIC_SUB_PRIORITY 1
+#define DBI_NVIC_PRE_PRIORITY 2
+#define DBI_NVIC_SUB_PRIORITY 2
 
 #define DBI_RX_FIFO_SIZE 256u
 #define DBI_TX_FIFO_SIZE 256u
@@ -47,6 +51,10 @@ void Dbi_Write(const uint8_t* buf, uint32_t len);
 void Dbi_Print(const char* str);
 
 void DbiRxCallback(uint8_t data);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

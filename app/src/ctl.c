@@ -55,19 +55,19 @@ static void ChassisVelocityControl(void)
 static void PID_Init(PID_t* pid)
 {
 	PID_Config(pid, 
-		 cfg.cha.spdPID.kp, 
-		 cfg.cha.spdPID.ki, 
-		 cfg.cha.spdPID.kd, 
-		 cfg.cha.spdPID.it,
-		 cfg.cha.spdPID.Pmax, 
-		 cfg.cha.spdPID.Imax, 
-		 cfg.cha.spdPID.Dmax, 
-		 cfg.cha.spdPID.Omax);
+		 cfg.pid.kp, 
+		 cfg.pid.ki, 
+		 cfg.pid.kd, 
+		 cfg.pid.it,
+		 cfg.pid.Pmax, 
+		 cfg.pid.Imax, 
+		 cfg.pid.Dmax, 
+		 cfg.pid.Omax);
 }
 
 static void Rmp_Init(Rmp_t* rmp)
 {
-	Rmp_Config(rmp, cfg.ctl.rmp);
+	Rmp_Config(rmp, cfg.rmp.cnt);
 }
 
 /**********************************************/

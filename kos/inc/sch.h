@@ -33,6 +33,7 @@ typedef struct SchTask_t
 	SchRun_t run;
 	uint32_t interval;
 	uint32_t lastrun;
+	struct SchTask_t* prev;
 	struct SchTask_t* next;
 }SchTask_t;
 

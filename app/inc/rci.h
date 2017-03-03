@@ -38,8 +38,8 @@ typedef uint8_t SwitchEvent_t;
 void GetSwitchStates(RCP_t* rcp);
 void GetSwitchEvents(RCP_t* rcp);
 
-void RCI_Init(void);
-void RCI_Proc(RCP_t* rcp);
+void Rci_Init(void);
+void Rci_Proc(RCP_t* rcp);
 
 extern SwitchState_t switchStates[SW_CNT];
 extern SwitchEvent_t switchEvents[SW_CNT];

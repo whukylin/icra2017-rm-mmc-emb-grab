@@ -19,12 +19,12 @@
 uint8_t (*_in)(void);
 void (*_out)(uint8_t);
 
-void IOS_In(uint8_t (*in)(void))
+void Ios_SetIn(uint8_t (*in)(void))
 {
 	if (in) _in = in;
 }
 
-void IOS_Out(void (*out)(uint8_t))
+void Ios_SetOut(void (*out)(uint8_t))
 {
 	if (out) _out = out;
 }
@@ -41,14 +41,16 @@ GETCHAR_PROTOTYPE
 	return 0;
 }
 
-void IOS_PutByte(uint8_t b)
+void Ios_PutByte(uint8_t b)
 {
-	Tty_WriteByte(b);
-	Dbi_WriteByte(b);
-	Btm_WriteByte(b);
+	//Tty_WriteByte(b);
+	//Dbi_WriteByte(b);
+	//Btm_WriteByte(b);
+	while (USART_GetFlagStatus(USART3, USART_FLAG_TC) == RESET);
+	USART3->DR = b;
 }
 
-uint8_t IOS_GetByte(void)
+uint8_t Ios_GetByte(void)
 {
 	if (!Wdg_IsErrSet(WDG_ERR_TTY)) {
 		return Tty_ReadByte();
@@ -62,10 +64,10 @@ uint8_t IOS_GetByte(void)
 	return 0;
 }
 
-void IOS_Init(void)
+void Ios_Init(void)
 {
-	IOS_In(IOS_GetByte);
-	IOS_Out(IOS_PutByte);
+	Ios_SetIn(Ios_GetByte);
+	Ios_SetOut(Ios_PutByte);
 }
 
 

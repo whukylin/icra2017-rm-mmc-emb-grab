@@ -33,8 +33,8 @@ extern "C" {
 void Wsm_Init(void);
 void Wsm_Proc(void);
 
-WorkingState_e Wsm_GetWorkingState(void);
-WorkingState_e Wsm_GetLastWorkingState(void);
+WorkingState_t Wsm_GetWorkingState(void);
+WorkingState_t Wsm_GetLastWorkingState(void);
 
 #ifdef __cplusplus
 }

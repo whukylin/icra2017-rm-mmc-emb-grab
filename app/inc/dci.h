@@ -18,7 +18,7 @@
 #define __DCI_H__
 
 /*****************************************/
-/*     DBUS Direct Control Interface     */
+/*        DBUS Control Interface         */
 /*****************************************/
 
 #include "dbus.h"
@@ -26,8 +26,8 @@
 #include "hci.h"
 #include "wdg.h"
 
-void DCI_Init(void);
-void DCI_Proc(void);
+void Dci_Init(void);
+void Dci_Proc(DBUS_t* dbus);
 
 void Rcv_Proc(uint8_t* buf);
 

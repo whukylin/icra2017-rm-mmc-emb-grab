@@ -23,12 +23,14 @@ extern "C" {
 
 #include <stdint.h>
 
+#include "fun.h"
+
 typedef enum {
 	WORKING_STATE_STOP,
 	WORKING_STATE_PREPARE,
 	WORKING_STATE_NORMAL,
 	WORKING_STATE_CONFIG,
-}WorkingState_e;
+}WorkingState_t;
 
 typedef uint32_t PeriphsState_t; // Peripherals Functional State
 
@@ -57,6 +59,8 @@ void FS_Set(PeriphsState_t* fs, PeriphsState_t msk);
 void FS_Clr(PeriphsState_t* fs, PeriphsState_t msk);
 void FS_Tog(PeriphsState_t* fs, PeriphsState_t msk);
 void FS_Cpy(PeriphsState_t* fs, PeriphsState_t src, PeriphsState_t msk);
+void FS_Det(uint8_t cond, Flag_t* flag, Flag_t mask);
+
 void CS_Set(ChassisState_t* cs, float x, float y, float z);
 void MS_Set(MecanumState_t* ms, float w1, float w2, float w3, float w4);
 

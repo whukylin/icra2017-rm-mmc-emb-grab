@@ -29,3 +29,48 @@ float constrain(float val, float min, float max)
 {
 	return val < min ? min : val > max ? max : val;
 }
+
+Flag_t Flag_Get(const Flag_t* flag, Flag_t mask)
+{
+	return (*flag) & mask;
+}
+
+void Flag_Set(Flag_t* flag, Flag_t mask)
+{
+	(*flag) |= mask;
+}
+
+void Flag_Clr(Flag_t* flag, Flag_t mask)
+{
+	(*flag) &= ~mask;
+}
+
+void Flag_Tog(Flag_t* flag, Flag_t mask)
+{
+	Flag_Get(flag, mask) ? Flag_Clr(flag, mask) : Flag_Set(flag, mask);
+}
+
+void Flag_Cpy(Flag_t* flag, Flag_t src, Flag_t mask)
+{
+	uint8_t n = sizeof(Flag_t) * 8;
+	uint8_t i = 0;
+	Flag_t tmp = 0;
+	for (; i < n; i++) {
+		tmp =  (((uint32_t)0x01) << i) & mask;
+		if (Flag_Get(flag, tmp)) {
+			Flag_Set(flag, tmp);
+		} else {
+			Flag_Clr(flag, tmp);
+		}
+	}
+}
+
+void Flag_Det(uint8_t cond, Flag_t* flag, Flag_t mask)
+{
+	if (cond) {
+		Flag_Set(flag, mask);
+	} else {
+		Flag_Clr(flag, mask);
+	}
+}
+

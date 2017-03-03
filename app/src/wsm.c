@@ -16,8 +16,8 @@
  
 #include "wsm.h"
 
-static WorkingState_e workingState = WORKING_STATE_STOP;
-static WorkingState_e lastWorkingState = WORKING_STATE_STOP;
+static WorkingState_t workingState = WORKING_STATE_STOP;
+static WorkingState_t lastWorkingState = WORKING_STATE_STOP;
 
 void Wsm_Init(void)
 {
@@ -46,7 +46,7 @@ void Wsm_Proc(void)
 			workingState = WORKING_STATE_STOP;
 		} else if (!Ini_GetFlag(INI_FLAG_VATAL)){
 			workingState = WORKING_STATE_PREPARE;
-		} else if (!Cfg_GetFlag(CFG_FLAG_SAVE)) {
+		} else if (!Cfg_GetFlag(CFG_FLAG_SAVED)) {
 			workingState = WORKING_STATE_CONFIG;
 		}
 		break;
@@ -55,7 +55,7 @@ void Wsm_Proc(void)
 			workingState = WORKING_STATE_STOP;
 		} else if (!Ini_GetFlag(INI_FLAG_VATAL)){
 			workingState = WORKING_STATE_PREPARE;
-		} else if (Cfg_GetFlag(CFG_FLAG_SAVE)) {
+		} else if (Cfg_GetFlag(CFG_FLAG_SAVED)) {
 			workingState = WORKING_STATE_NORMAL;
 		}
 		break;

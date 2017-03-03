@@ -7,12 +7,13 @@
 .\objects\rcv_srv.o: ..\..\asp\inc\hcp.h
 .\objects\rcv_srv.o: ..\..\app\inc\rci.h
 .\objects\rcv_srv.o: ..\..\app\inc\cmd.h
-.\objects\rcv_srv.o: ..\..\app\inc\dci.h
 .\objects\rcv_srv.o: ..\..\app\inc\sys.h
+.\objects\rcv_srv.o: ..\..\app\inc\fun.h
 .\objects\rcv_srv.o: ..\..\app\inc\mec.h
 .\objects\rcv_srv.o: ..\..\app\inc\cfg.h
+.\objects\rcv_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\rcv_srv.o: ..\..\app\inc\fos.h
-.\objects\rcv_srv.o: ..\..\bsp\inc\flash.h
+.\objects\rcv_srv.o: ..\..\drv\inc\flash.h
 .\objects\rcv_srv.o: ..\..\bsp\inc\platform.h
 .\objects\rcv_srv.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\rcv_srv.o: ..\..\stl\CMSIS\core\core_cm4.h
@@ -49,9 +50,7 @@
 .\objects\rcv_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\rcv_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\rcv_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
-.\objects\rcv_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\rcv_srv.o: ..\..\asp\inc\mecanum.h
-.\objects\rcv_srv.o: ..\..\app\inc\fun.h
 .\objects\rcv_srv.o: ..\..\app\inc\hci.h
 .\objects\rcv_srv.o: ..\..\asp\inc\mafilter.h
 .\objects\rcv_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

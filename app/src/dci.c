@@ -17,24 +17,26 @@
 #include "dci.h"
 
 /*****************************************/
-/*     DBUS Direct Control Interface     */
+/*        DBUS Control Interface         */
 /*****************************************/
 
 DBUS_t dbus;
 
-void DCI_Init(void)
+void Dci_Init(void)
 {
-	RCI_Init();
-	HCI_Init();
+	Rci_Init();
+	Hci_Init();
 	DBUS_Rst(&dbus);
 }
 
-void DCI_Proc(void)
+void Dci_Proc(DBUS_t* dbus)
 {
+	GetSwitchStates(&dbus->rcp);
+	GetSwitchEvents(&dbus->rcp);
 	if (switchStates[SW_IDX_R] == SW_UP) {
-		RCI_Proc(&dbus.rcp);
+		Rci_Proc(&dbus->rcp);
 	} else if (switchStates[SW_IDX_R] == SW_MD) {
-		HCI_Proc(&dbus.hcp);
+		Hci_Proc(&dbus->hcp);
 	} else if (switchStates[SW_IDX_R] == SW_DN) {
 	} else {
 		// Should never reach here
@@ -45,6 +47,6 @@ void Rcv_Proc(uint8_t* dbuf)
 {
 	Wdg_Feed(WDG_IDX_RCV);
 	DBUS_Dec(&dbus, dbuf);
-	GetSwitchStates(&dbus.rcp);
-	GetSwitchEvents(&dbus.rcp);
+	Dci_Proc(&dbus);
 }
+

@@ -4,8 +4,9 @@
 .\objects\com.o: ..\..\asp\inc\msg.h
 .\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\com.o: ..\..\app\inc\cfg.h
+.\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\com.o: ..\..\app\inc\fos.h
-.\objects\com.o: ..\..\bsp\inc\flash.h
+.\objects\com.o: ..\..\drv\inc\flash.h
 .\objects\com.o: ..\..\bsp\inc\platform.h
 .\objects\com.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\com.o: ..\..\stl\CMSIS\core\core_cm4.h
@@ -42,7 +43,7 @@
 .\objects\com.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\com.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\com.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
-.\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\com.o: ..\..\app\inc\fun.h
 .\objects\com.o: ..\..\bsp\inc\tty.h
 .\objects\com.o: ..\..\bsp\inc\stm32util.h
 .\objects\com.o: ..\..\asp\inc\fifo.h
