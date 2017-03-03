@@ -46,8 +46,6 @@ void Wsm_Proc(void)
 			workingState = WORKING_STATE_STOP;
 		} else if (!Ini_GetFlag(INI_FLAG_VATAL)){
 			workingState = WORKING_STATE_PREPARE;
-		} else if (!Cfg_GetFlag(CFG_FLAG_SAVED)) {
-			workingState = WORKING_STATE_CONFIG;
 		}
 		break;
 	case WORKING_STATE_CONFIG:
@@ -55,8 +53,6 @@ void Wsm_Proc(void)
 			workingState = WORKING_STATE_STOP;
 		} else if (!Ini_GetFlag(INI_FLAG_VATAL)){
 			workingState = WORKING_STATE_PREPARE;
-		} else if (Cfg_GetFlag(CFG_FLAG_SAVED)) {
-			workingState = WORKING_STATE_NORMAL;
 		}
 		break;
 	default:
@@ -64,12 +60,12 @@ void Wsm_Proc(void)
 	}
 }
 
-WorkingState_e Wsm_GetWorkingState(void)
+WorkingState_t Wsm_GetWorkingState(void)
 {
 	return workingState;
 }
 
-WorkingState_e Wsm_GetLastWorkingState(void)
+WorkingState_t Wsm_GetLastWorkingState(void)
 {
 	return lastWorkingState;
 }

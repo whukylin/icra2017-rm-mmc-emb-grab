@@ -177,9 +177,9 @@ typedef struct
 	.ki = 0, \
 	.kd = 0, \
 	.it = 0, \
-	.Pmax = 4950, \
-	.Imax = 2000, \
-	.Dmax = 2000, \
+	.Pmax = 4900, \
+	.Imax = 3500, \
+	.Dmax = 1500, \
 	.Omax = 4950, \
 }
 
@@ -191,9 +191,9 @@ typedef struct
 
 #define SPD_CFG_DEF \
 { \
-	.x = 0, \
-	.y = 0, \
-	.z = 0, \
+	.x = 4000, \
+	.y = 4000, \
+	.z = 6000, \
 	.e = 0, \
 	.c = 0, \
 }

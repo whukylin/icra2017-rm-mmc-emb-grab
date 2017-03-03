@@ -69,12 +69,10 @@ void Cfg_Init(void)
 
 void Cfg_Proc(void)
 {
-	if (Cfg_GetFlag(CFG_FLAG_SAVED)) {
-		Cfg_t tmp = CFG_DEF;
-		CHECK_NOT_ZERO(cfg.mec.lx, tmp.mec.lx);
-		CHECK_NOT_ZERO(cfg.mec.ly, tmp.mec.ly);
-		CHECK_NOT_ZERO(cfg.mec.r1, tmp.mec.r1);
-		CHECK_NOT_ZERO(cfg.mec.r2, tmp.mec.r2);
-		Cfg_Save(&cfg);
-	}
+	Cfg_t tmp = CFG_DEF;
+	CHECK_NOT_ZERO(cfg.mec.lx, tmp.mec.lx);
+	CHECK_NOT_ZERO(cfg.mec.ly, tmp.mec.ly);
+	CHECK_NOT_ZERO(cfg.mec.r1, tmp.mec.r1);
+	CHECK_NOT_ZERO(cfg.mec.r2, tmp.mec.r2);
+	Cfg_Save(&cfg);
 }

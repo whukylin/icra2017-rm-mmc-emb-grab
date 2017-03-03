@@ -20,7 +20,7 @@ static SchTask_t* list = NULL;
 
 void Sch_Init(void)
 {
-	uint32_t tick = Clk_GetMsTick();
+	uint32_t tick = 0;//Clk_GetMsTick();
 	SchTask_t* curr = list;
 	for (; curr != NULL; curr = curr->next) {
 		curr->lastrun = tick;
@@ -29,7 +29,7 @@ void Sch_Init(void)
 
 void Sch_Proc(void)
 {
-	uint32_t tick = Clk_GetMsTick();
+	uint32_t tick = 0;//Clk_GetMsTick();
 	SchTask_t* curr = list;
 	for (; curr != NULL; curr = curr->next) {
 		//uint32_t interval = tick - curr->lastrun;

@@ -80,6 +80,7 @@
 .\objects\main.o: ..\..\srv\inc\srv.h
 .\objects\main.o: ..\..\srv\inc\can_srv.h
 .\objects\main.o: ..\..\app\inc\can.h
+.\objects\main.o: ..\..\asp\inc\est.h
 .\objects\main.o: ..\..\app\inc\wdg.h
 .\objects\main.o: ..\..\srv\inc\com_srv.h
 .\objects\main.o: ..\..\app\inc\com.h

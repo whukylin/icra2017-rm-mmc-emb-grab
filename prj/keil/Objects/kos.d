@@ -79,6 +79,7 @@
 .\objects\kos.o: ..\..\srv\inc\srv.h
 .\objects\kos.o: ..\..\srv\inc\can_srv.h
 .\objects\kos.o: ..\..\app\inc\can.h
+.\objects\kos.o: ..\..\asp\inc\est.h
 .\objects\kos.o: ..\..\app\inc\wdg.h
 .\objects\kos.o: ..\..\srv\inc\com_srv.h
 .\objects\kos.o: ..\..\app\inc\com.h

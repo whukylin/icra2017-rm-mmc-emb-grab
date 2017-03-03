@@ -62,6 +62,10 @@
 .\objects\ctl.o: ..\..\bsp\inc\tim.h
 .\objects\ctl.o: ..\..\bsp\inc\tty.h
 .\objects\ctl.o: ..\..\app\inc\can.h
+.\objects\ctl.o: ..\..\asp\inc\est.h
+.\objects\ctl.o: ..\..\asp\inc\gdf.h
+.\objects\ctl.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
+.\objects\ctl.o: ..\..\asp\inc\ekf.h
 .\objects\ctl.o: ..\..\app\inc\wdg.h
 .\objects\ctl.o: ..\..\asp\inc\pid.h
 .\objects\ctl.o: ..\..\asp\inc\rmp.h

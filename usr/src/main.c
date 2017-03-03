@@ -63,39 +63,46 @@ void read_flash(void)
 
 void print_ecd(void)
 {
-	printf("m1=%d,m2=%d,m3=%d,m4=%d\n", motor1.angle_fdb, motor2.angle_fdb, motor3.angle_fdb, motor4.angle_fdb);
+	printf("m1=%d,m2=%d,m3=%d,m4=%d\n", motor[0].angle_fdb, motor[1].angle_fdb, motor[2].angle_fdb, motor[3].angle_fdb);
 }
 
 void print_esc(void)
 {
-	printf("%d,%d\n", motor1.current_ref, motor1.current_fdb);
+	printf("%d,%d\n", motor[0].current_ref, motor[0].current_fdb);
 }
 
 void print_spd(void)
 {
-	printf("%d\n", motor1.rate);
+	printf("%d\n", motor[0].rate);
+}
+
+void dbg_motor(void)
+{
+	printf("%d,%d\n", motor[0].angle_fdb, motor[0].rate);
 }
 
 int main()
 {
 	mec_cfg();
+	Dci_Init();
 	//KOS_Boot();
 	//Sch_Arrange(task, 250);
 	Cmd_Init();
 	Can_Init();
 	Bsp_Config();
 	TickTim_Start();
-	IOS_Init();
+	Ios_Init();
 	//write_flash();
 	//Cfg_Init();
 	while(1)
 	{
 		cmd();
 		//CM_CMD(1000,1000,1000,1000);
-		if (TICK_US() % 5000 == 0)
+		if (TICK_US % 5000 == 0)
 		{
+			//printf("hello\n");
+			//dbg_motor();
 			//print_esc();
-			print_est();
 			//print_vel();
 			//LED_GREEN_TOG();
 			//printf("Hello, Jack.\n");

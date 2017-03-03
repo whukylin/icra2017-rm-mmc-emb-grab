@@ -26,7 +26,7 @@ extern "C" {
 #endif
 
 #include <string.h>
-	
+#include "est.h"
 #include "wdg.h"
 
 #define ZGYRO_FDB_CAN_MSG_ID   0x401
@@ -39,8 +39,12 @@ extern "C" {
 
 #define MOTOR_ESC_CURRENT_FDB_MAX 13000
 #define MOTOR_ECD_MOD 8192
-#define MOTOR_ECD_GAP 7500
-#define MOTOR_ECD_RATE_BUF_SIZE 6
+#define MOTOR_ECD_GAP 4000
+
+#define MOTOR_NUM 6
+#define MOTOR_BUF_N 10
+#define MOTOR_EKF_Q 0.1f
+#define MOTOR_EKF_R 0.9f
 
 typedef struct
 {
@@ -54,15 +58,21 @@ typedef struct
 typedef struct
 {
 	uint8_t ini;
+	int32_t old;
+	int32_t del;
+	int16_t buf[MOTOR_BUF_N];
+	int32_t sum;
+	int16_t dsum;
+	uint8_t i;
+	int16_t ret;
+	Ekf_t ekf;
 	uint16_t angle_fdb;
 	int32_t current_fdb;
 	int32_t current_ref;
 	uint16_t bias;
 	int32_t round;
-	int32_t angle;
-	int16_t rate_buf[MOTOR_ECD_RATE_BUF_SIZE];
-	uint8_t rate_idx;
 	int16_t rate;
+	int32_t angle;
 }Motor_t;
 
 void ZGyro_Process(ZGyro_t* zgyro, uint8_t* data);
@@ -74,12 +84,7 @@ void Can_Init(void);
 void Can_Proc(uint32_t id, uint8_t* data);
 
 extern ZGyro_t zgyro;
-extern Motor_t motor1;
-extern Motor_t motor2;
-extern Motor_t motor3;
-extern Motor_t motor4;
-extern Motor_t motor5;
-extern Motor_t motor6;
+extern Motor_t motor[MOTOR_NUM];
 
 #ifdef __cplusplus
 }

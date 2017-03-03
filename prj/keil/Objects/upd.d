@@ -7,6 +7,11 @@
 .\objects\upd.o: ..\..\app\inc\ini.h
 .\objects\upd.o: ..\..\app\inc\can.h
 .\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\upd.o: ..\..\asp\inc\est.h
+.\objects\upd.o: ..\..\asp\inc\gdf.h
+.\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
+.\objects\upd.o: ..\..\asp\inc\ekf.h
 .\objects\upd.o: ..\..\app\inc\wdg.h
 .\objects\upd.o: ..\..\app\inc\cfg.h
 .\objects\upd.o: ..\..\app\inc\fos.h
@@ -56,7 +61,6 @@
 .\objects\upd.o: ..\..\bsp\inc\btm.h
 .\objects\upd.o: ..\..\bsp\inc\stm32util.h
 .\objects\upd.o: ..\..\asp\inc\fifo.h
-.\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\upd.o: ..\..\bsp\inc\btn.h
 .\objects\upd.o: ..\..\bsp\inc\can1.h
 .\objects\upd.o: ..\..\bsp\inc\can2.h
@@ -69,3 +73,7 @@
 .\objects\upd.o: ..\..\asp\inc\pid.h
 .\objects\upd.o: ..\..\asp\inc\rmp.h
 .\objects\upd.o: ..\..\app\inc\act.h
+.\objects\upd.o: ..\..\drv\inc\drv.h
+.\objects\upd.o: ..\..\drv\inc\delay.h
+.\objects\upd.o: ..\..\drv\inc\motor.h
+.\objects\upd.o: ..\..\drv\inc\zgyro.h

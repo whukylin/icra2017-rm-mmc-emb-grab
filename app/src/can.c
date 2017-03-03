@@ -16,17 +16,15 @@
 
 #include "can.h"
 
+#include <stdio.h>
+#include "est.h"
+
 /*********************************************/
 /*          Controller Area Network          */
 /*********************************************/
 
-ZGyro_t ZGyro;
-Motor_t Motor1;
-Motor_t Motor2;
-Motor_t Motor3;
-Motor_t Motor4;
-Motor_t Motor5;
-Motor_t Motor6;
+ZGyro_t zgyro;
+Motor_t motor[MOTOR_NUM];
 
 #define PI 3.1415926f
 void ZGyro_Process(ZGyro_t* zgyro, uint8_t* data)
@@ -44,31 +42,35 @@ void ZGyro_Process(ZGyro_t* zgyro, uint8_t* data)
 void Motor_Process(Motor_t* motor, uint8_t* data)
 {
 	uint16_t angle_fdb = (data[0] << 8) | data[1];
-	int16_t ecd_angle_dif = angle_fdb - motor->angle_fdb;
-	int16_t rate = 0;
-	
+	int16_t angle_diff = angle_fdb - motor->angle_fdb;
+	motor->angle_fdb = angle_fdb;
 	motor->current_fdb = (data[2] << 8) | data[3];
 	motor->current_ref = (data[4] << 8) | data[5];
-	
 	if (!motor->ini) {
 		motor->bias = angle_fdb;
 		motor->round = 0;
 		motor->ini = 1;
 	}
-	if (ecd_angle_dif > MOTOR_ECD_GAP) {
+	if (angle_diff > MOTOR_ECD_GAP) {
 		motor->round--;
-		rate = ecd_angle_dif - MOTOR_ECD_MOD;
-	} else if (ecd_angle_dif < -MOTOR_ECD_GAP) {
+		motor->rate = angle_diff - MOTOR_ECD_MOD;
+	} else if (angle_diff < -MOTOR_ECD_GAP) {
 		motor->round++;
-		rate = ecd_angle_dif + MOTOR_ECD_MOD;
+		motor->rate = angle_diff + MOTOR_ECD_MOD;
 	} else {
-		rate = ecd_angle_dif;
+		motor->rate = angle_diff;
 	}
-	motor->rate += (rate - motor->rate_buf[motor->rate_idx]) / MOTOR_ECD_RATE_BUF_SIZE;
-	motor->rate_buf[motor->rate_idx++] = rate;
-	if (motor->rate_idx >= MOTOR_ECD_RATE_BUF_SIZE) motor->rate_idx = 0;
+	
 	motor->angle = (angle_fdb - motor->bias) + motor->round * MOTOR_ECD_MOD;
-	motor->angle_fdb = angle_fdb;
+	motor->dsum = motor->rate - motor->buf[motor->i];
+	motor->sum += motor->dsum;
+	motor->ret = motor->sum / MOTOR_BUF_N;
+	motor->buf[motor->i] = motor->rate;
+	motor->i++;
+	if (motor->i >= MOTOR_BUF_N) motor->i = 0;
+	motor->old = motor->ekf.e;
+	Ekf_Proc(&motor->ekf, motor->angle);
+	motor->del = motor->ekf.e - motor->old;
 }
 
 void ZGyro_Reset(void)
@@ -78,12 +80,13 @@ void ZGyro_Reset(void)
 
 void Motor_Reset(void)
 {
-	memset(&motor1, 0, sizeof(Motor_t));
-	memset(&motor2, 0, sizeof(Motor_t));
-	memset(&motor3, 0, sizeof(Motor_t));
-	memset(&motor4, 0, sizeof(Motor_t));
-	memset(&motor5, 0, sizeof(Motor_t));
-	memset(&motor6, 0, sizeof(Motor_t));
+	uint8_t i = 0;
+	for (; i < MOTOR_NUM; i++) {
+		memset(&motor[i], 0, sizeof(Motor_t));
+		//Gdf_Init(&motor[i].gdf, motor->buf, MOTOR_BUF_N);
+		Ekf_Init(&motor[i].ekf, MOTOR_EKF_Q, MOTOR_EKF_R, 0, 0);
+		//Est_Init(&motor[i].est, &motor[i].gdf, &motor[i].ekf);
+	}
 }
 
 void Can_Init(void)
@@ -101,27 +104,33 @@ void Can_Proc(uint32_t id, uint8_t* data)
 		break;
 	case MOTOR1_FDB_CAN_MSG_ID:
 		Wdg_Feed(WDG_IDX_MOTOR1);
-		Motor_Process(&motor1, data);
+		Motor_Process(&motor[0], data);
+	  if(motor[0].ini)
+			//printf("%f\n", motor[0].est.delta);
+			//printf("%d\n", motor[0].angle);
+			//printf("%d,%d,%d,%d\n", motor[0].angle, (int)motor[0].est.value, motor[0].rate, (int)motor[0].est.delta);
+			//printf("%d\n", motor[0].angle);
 		break;
 	case MOTOR2_FDB_CAN_MSG_ID:
 		Wdg_Feed(WDG_IDX_MOTOR2);
-		Motor_Process(&motor2, data);
+		Motor_Process(&motor[1], data);
+	  printf("%d,%d,%d,%d,%d\n", motor[1].angle, (int)motor[1].ekf.e, motor[1].rate, (int)motor[1].del, motor[1].ret);
 		break;
 	case MOTOR3_FDB_CAN_MSG_ID:
 		Wdg_Feed(WDG_IDX_MOTOR3);
-		Motor_Process(&motor3, data);
+		Motor_Process(&motor[2], data);
 		break;
 	case MOTOR4_FDB_CAN_MSG_ID:
 		Wdg_Feed(WDG_IDX_MOTOR4);
-		Motor_Process(&motor4, data);
+		Motor_Process(&motor[3], data);
 		break;
 	case MOTOR5_FDB_CAN_MSG_ID:
 		Wdg_Feed(WDG_IDX_MOTOR5);
-		Motor_Process(&motor5, data);
+		Motor_Process(&motor[4], data);
 		break;
 	case MOTOR6_FDB_CAN_MSG_ID:
 		Wdg_Feed(WDG_IDX_MOTOR6);
-		Motor_Process(&motor6, data);
+		Motor_Process(&motor[5], data);
 		break;
 	default:
 		break;

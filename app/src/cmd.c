@@ -19,7 +19,6 @@
 /**********************************************/
 /*          System Command Interface          */
 /**********************************************/
-WorkingState_t workingStateRef;
 PeriphsState_t functionalStateRef;
 ChassisState_t chassisVelocityRef;
 MecanumState_t mecanumVelocityRef; // Auto-Wired

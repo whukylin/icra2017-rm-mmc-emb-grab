@@ -53,6 +53,10 @@
 .\objects\odo.o: ..\..\bsp\inc\tim.h
 .\objects\odo.o: ..\..\bsp\inc\tty.h
 .\objects\odo.o: ..\..\app\inc\can.h
+.\objects\odo.o: ..\..\asp\inc\est.h
+.\objects\odo.o: ..\..\asp\inc\gdf.h
+.\objects\odo.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
+.\objects\odo.o: ..\..\asp\inc\ekf.h
 .\objects\odo.o: ..\..\app\inc\wdg.h
 .\objects\odo.o: ..\..\app\inc\sys.h
 .\objects\odo.o: ..\..\app\inc\fun.h

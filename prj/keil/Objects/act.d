@@ -1,18 +1,12 @@
 .\objects\act.o: ..\..\app\src\act.c
 .\objects\act.o: ..\..\app\inc\act.h
-.\objects\act.o: ..\..\app\inc\ctl.h
-.\objects\act.o: ..\..\app\inc\sys.h
-.\objects\act.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\act.o: ..\..\app\inc\fun.h
-.\objects\act.o: ..\..\app\inc\cmd.h
-.\objects\act.o: ..\..\app\inc\mec.h
-.\objects\act.o: ..\..\app\inc\cfg.h
-.\objects\act.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\act.o: ..\..\app\inc\fos.h
-.\objects\act.o: ..\..\drv\inc\flash.h
+.\objects\act.o: ..\..\bsp\inc\bsp.h
+.\objects\act.o: ..\..\bsp\inc\btm.h
+.\objects\act.o: ..\..\bsp\inc\stm32util.h
 .\objects\act.o: ..\..\bsp\inc\platform.h
 .\objects\act.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\act.o: ..\..\stl\CMSIS\core\core_cm4.h
+.\objects\act.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\act.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\act.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\act.o: ..\..\stl\CMSIS\core\core_cmSimd.h
@@ -46,13 +40,9 @@
 .\objects\act.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\act.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\act.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
-.\objects\act.o: ..\..\asp\inc\mecanum.h
-.\objects\act.o: ..\..\app\inc\odo.h
-.\objects\act.o: ..\..\bsp\inc\bsp.h
-.\objects\act.o: ..\..\bsp\inc\btm.h
-.\objects\act.o: ..\..\bsp\inc\stm32util.h
 .\objects\act.o: ..\..\asp\inc\fifo.h
 .\objects\act.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\act.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\act.o: ..\..\bsp\inc\btn.h
 .\objects\act.o: ..\..\bsp\inc\can1.h
 .\objects\act.o: ..\..\bsp\inc\can2.h
@@ -62,7 +52,25 @@
 .\objects\act.o: ..\..\bsp\inc\rcv.h
 .\objects\act.o: ..\..\bsp\inc\tim.h
 .\objects\act.o: ..\..\bsp\inc\tty.h
+.\objects\act.o: ..\..\drv\inc\drv.h
+.\objects\act.o: ..\..\drv\inc\delay.h
+.\objects\act.o: ..\..\drv\inc\flash.h
+.\objects\act.o: ..\..\drv\inc\motor.h
+.\objects\act.o: ..\..\drv\inc\zgyro.h
+.\objects\act.o: ..\..\app\inc\ctl.h
+.\objects\act.o: ..\..\app\inc\sys.h
+.\objects\act.o: ..\..\app\inc\fun.h
+.\objects\act.o: ..\..\app\inc\cmd.h
+.\objects\act.o: ..\..\app\inc\mec.h
+.\objects\act.o: ..\..\app\inc\cfg.h
+.\objects\act.o: ..\..\app\inc\fos.h
+.\objects\act.o: ..\..\asp\inc\mecanum.h
+.\objects\act.o: ..\..\app\inc\odo.h
 .\objects\act.o: ..\..\app\inc\can.h
+.\objects\act.o: ..\..\asp\inc\est.h
+.\objects\act.o: ..\..\asp\inc\gdf.h
+.\objects\act.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
+.\objects\act.o: ..\..\asp\inc\ekf.h
 .\objects\act.o: ..\..\app\inc\wdg.h
 .\objects\act.o: ..\..\asp\inc\pid.h
 .\objects\act.o: ..\..\asp\inc\rmp.h

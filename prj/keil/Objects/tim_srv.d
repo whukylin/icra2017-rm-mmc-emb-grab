@@ -47,6 +47,11 @@
 .\objects\tim_srv.o: ..\..\app\inc\ini.h
 .\objects\tim_srv.o: ..\..\app\inc\can.h
 .\objects\tim_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\tim_srv.o: ..\..\asp\inc\est.h
+.\objects\tim_srv.o: ..\..\asp\inc\gdf.h
+.\objects\tim_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\tim_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
+.\objects\tim_srv.o: ..\..\asp\inc\ekf.h
 .\objects\tim_srv.o: ..\..\app\inc\wdg.h
 .\objects\tim_srv.o: ..\..\app\inc\cfg.h
 .\objects\tim_srv.o: ..\..\app\inc\fos.h
@@ -59,7 +64,6 @@
 .\objects\tim_srv.o: ..\..\bsp\inc\bsp.h
 .\objects\tim_srv.o: ..\..\bsp\inc\btm.h
 .\objects\tim_srv.o: ..\..\asp\inc\fifo.h
-.\objects\tim_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\tim_srv.o: ..\..\bsp\inc\btn.h
 .\objects\tim_srv.o: ..\..\bsp\inc\can1.h
 .\objects\tim_srv.o: ..\..\bsp\inc\can2.h
@@ -71,3 +75,7 @@
 .\objects\tim_srv.o: ..\..\asp\inc\pid.h
 .\objects\tim_srv.o: ..\..\asp\inc\rmp.h
 .\objects\tim_srv.o: ..\..\app\inc\act.h
+.\objects\tim_srv.o: ..\..\drv\inc\drv.h
+.\objects\tim_srv.o: ..\..\drv\inc\delay.h
+.\objects\tim_srv.o: ..\..\drv\inc\motor.h
+.\objects\tim_srv.o: ..\..\drv\inc\zgyro.h

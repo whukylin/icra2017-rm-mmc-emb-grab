@@ -36,5 +36,4 @@ void ZGyro_RST(CAN_TypeDef* CANx);
 	
 #endif
 
-
 	

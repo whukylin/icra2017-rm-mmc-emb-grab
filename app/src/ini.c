@@ -35,12 +35,12 @@ static void Ini_Check(uint8_t ini, IniFlag_t flag)
 void Ini_Proc(void)
 {
 	Ini_Check(zgyro.ini,  INI_FLAG_ZGYRO);
-	Ini_Check(motor1.ini, INI_FLAG_MOTOR1);
-	Ini_Check(motor2.ini, INI_FLAG_MOTOR2);
-	Ini_Check(motor3.ini, INI_FLAG_MOTOR3);
-	Ini_Check(motor4.ini, INI_FLAG_MOTOR4);
-	Ini_Check(motor5.ini, INI_FLAG_MOTOR5);
-	Ini_Check(motor6.ini, INI_FLAG_MOTOR6);
+	Ini_Check(motor[0].ini, INI_FLAG_MOTOR1);
+	Ini_Check(motor[1].ini, INI_FLAG_MOTOR2);
+	Ini_Check(motor[2].ini, INI_FLAG_MOTOR3);
+	Ini_Check(motor[3].ini, INI_FLAG_MOTOR4);
+	Ini_Check(motor[4].ini, INI_FLAG_MOTOR5);
+	Ini_Check(motor[5].ini, INI_FLAG_MOTOR6);
 }
 
 IniFlag_t Ini_GetFlag(IniFlag_t flag)

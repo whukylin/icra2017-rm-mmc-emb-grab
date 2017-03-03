@@ -78,6 +78,7 @@
 .\objects\app.o: ..\..\srv\inc\srv.h
 .\objects\app.o: ..\..\srv\inc\can_srv.h
 .\objects\app.o: ..\..\app\inc\can.h
+.\objects\app.o: ..\..\asp\inc\est.h
 .\objects\app.o: ..\..\app\inc\wdg.h
 .\objects\app.o: ..\..\srv\inc\com_srv.h
 .\objects\app.o: ..\..\app\inc\com.h

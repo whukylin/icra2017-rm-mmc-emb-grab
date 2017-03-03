@@ -33,7 +33,6 @@ extern "C" {
 void Cmd_Init(void);
 void Cmd_Proc(void);
 
-extern WorkingState_t workingStateRef;
 extern PeriphsState_t functionalStateRef;
 extern ChassisState_t chassisVelocityRef;
 extern MecanumState_t mecanumVelocityRef; // Auto-Wired

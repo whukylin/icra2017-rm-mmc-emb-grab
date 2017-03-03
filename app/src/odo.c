@@ -35,26 +35,26 @@ static void GetFunctionalStateFdb(void)
 
 static void GetMecanumPositionFdb(void)
 {
-	mecanumPositionFdb.w1 = motor1.angle;
-	mecanumPositionFdb.w2 = motor2.angle;
-	mecanumPositionFdb.w3 = motor3.angle;
-	mecanumPositionFdb.w4 = motor4.angle;
+	mecanumPositionFdb.w1 = motor[0].angle;
+	mecanumPositionFdb.w2 = motor[1].angle;
+	mecanumPositionFdb.w3 = motor[2].angle;
+	mecanumPositionFdb.w4 = motor[3].angle;
 }
 
 static void GetMecanumVelocityFdb(void)
 {
-	mecanumVelocityFdb.w1 = motor1.rate;
-	mecanumVelocityFdb.w2 = motor2.rate;
-	mecanumVelocityFdb.w3 = motor3.rate;
-	mecanumVelocityFdb.w4 = motor4.rate;
+	mecanumVelocityFdb.w1 = motor[0].rate;
+	mecanumVelocityFdb.w2 = motor[1].rate;
+	mecanumVelocityFdb.w3 = motor[2].rate;
+	mecanumVelocityFdb.w4 = motor[3].rate;
 }
 
 static void GetMecanumCurrentsFdb(void)
 {
-	mecanumCurrentsFdb.w1 = motor1.current_fdb;
-	mecanumCurrentsFdb.w2 = motor2.current_fdb;
-	mecanumCurrentsFdb.w3 = motor3.current_fdb;
-	mecanumCurrentsFdb.w4 = motor4.current_fdb;
+	mecanumCurrentsFdb.w1 = motor[0].current_fdb;
+	mecanumCurrentsFdb.w2 = motor[1].current_fdb;
+	mecanumCurrentsFdb.w3 = motor[2].current_fdb;
+	mecanumCurrentsFdb.w4 = motor[3].current_fdb;
 }
 
 static void GetChassisPositionFdb(void)
