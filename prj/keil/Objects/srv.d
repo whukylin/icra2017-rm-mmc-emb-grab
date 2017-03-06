@@ -2,13 +2,11 @@
 .\objects\srv.o: ..\..\srv\inc\srv.h
 .\objects\srv.o: ..\..\srv\inc\can_srv.h
 .\objects\srv.o: ..\..\app\inc\can.h
-.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\srv.o: ..\..\asp\inc\est.h
-.\objects\srv.o: ..\..\asp\inc\gdf.h
-.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
 .\objects\srv.o: ..\..\asp\inc\ekf.h
+.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\srv.o: ..\..\asp\inc\maf.h
 .\objects\srv.o: ..\..\app\inc\wdg.h
 .\objects\srv.o: ..\..\srv\inc\com_srv.h
 .\objects\srv.o: ..\..\app\inc\com.h
@@ -68,4 +66,3 @@
 .\objects\srv.o: ..\..\app\inc\mec.h
 .\objects\srv.o: ..\..\asp\inc\mecanum.h
 .\objects\srv.o: ..\..\app\inc\hci.h
-.\objects\srv.o: ..\..\asp\inc\mafilter.h

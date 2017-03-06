@@ -46,12 +46,10 @@
 .\objects\tim_srv.o: ..\..\app\inc\fun.h
 .\objects\tim_srv.o: ..\..\app\inc\ini.h
 .\objects\tim_srv.o: ..\..\app\inc\can.h
-.\objects\tim_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\tim_srv.o: ..\..\asp\inc\est.h
-.\objects\tim_srv.o: ..\..\asp\inc\gdf.h
-.\objects\tim_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\tim_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
 .\objects\tim_srv.o: ..\..\asp\inc\ekf.h
+.\objects\tim_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\tim_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\tim_srv.o: ..\..\asp\inc\maf.h
 .\objects\tim_srv.o: ..\..\app\inc\wdg.h
 .\objects\tim_srv.o: ..\..\app\inc\cfg.h
 .\objects\tim_srv.o: ..\..\app\inc\fos.h

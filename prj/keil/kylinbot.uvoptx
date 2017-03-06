@@ -208,7 +208,7 @@
 
   <Group>
     <GroupName>usr/src</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -304,7 +304,7 @@
 
   <Group>
     <GroupName>app/inc</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -564,7 +564,7 @@
 
   <Group>
     <GroupName>app/src</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -955,8 +955,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\asp\inc\mafilter.h</PathWithFileName>
-      <FilenameWithoutPath>mafilter.h</FilenameWithoutPath>
+      <PathWithFileName>..\..\asp\inc\maf.h</PathWithFileName>
+      <FilenameWithoutPath>maf.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1036,7 +1036,7 @@
 
   <Group>
     <GroupName>asp/src</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1155,8 +1155,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\asp\src\mafilter.c</PathWithFileName>
-      <FilenameWithoutPath>mafilter.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\asp\src\maf.c</PathWithFileName>
+      <FilenameWithoutPath>maf.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

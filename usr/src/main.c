@@ -61,70 +61,30 @@ void read_flash(void)
 	printf("lx=%d,ly=%d,r1=%d,r2=%d\n", cfg.mec.lx, cfg.mec.ly, cfg.mec.r1, cfg.mec.r2);
 }
 
-void print_ecd(void)
-{
-	printf("m1=%d,m2=%d,m3=%d,m4=%d\n", motor[0].angle_fdb, motor[1].angle_fdb, motor[2].angle_fdb, motor[3].angle_fdb);
-}
-
-void print_esc(void)
-{
-	printf("%d,%d\n", motor[0].current_ref, motor[0].current_fdb);
-}
-
-void print_spd(void)
-{
-	printf("%d\n", motor[0].rate);
-}
-
-void dbg_motor(void)
-{
-	printf("%d,%d\n", motor[0].angle_fdb, motor[0].rate);
-}
-
 int main()
 {
 	mec_cfg();
 	Dci_Init();
 	//KOS_Boot();
 	//Sch_Arrange(task, 250);
+	Ios_Init();
 	Cmd_Init();
 	Can_Init();
 	Bsp_Config();
 	TickTim_Start();
-	Ios_Init();
 	//write_flash();
 	//Cfg_Init();
 	while(1)
 	{
 		cmd();
-		//CM_CMD(1000,1000,1000,1000);
-		if (TICK_US % 5000 == 0)
+		if (Clk_GetUsTick() % 1000 == 0)
 		{
+			//printf("%d\t%d\t%d\t%d\n", motor[0].angle_raw, motor[0].angle_filtered, motor[0].rate_raw, motor[0].rate_filtered);
+			//printf("main\n");
+			//printf("%d,%d\n", motor[1].angle, motor[1].rate);
 			//printf("hello\n");
-			//dbg_motor();
-			//print_esc();
-			//print_vel();
 			//LED_GREEN_TOG();
 			//printf("Hello, Jack.\n");
 		}
-		//printf("Clk_GetMsTick=%d\n", Clk_GetMsTick());
-		//dbug_dbus(&dbus);
-		//Delay_Ms(20);
-		//if (Clk_GetMsTick() % 3 == 0)
-		//{
-			//cmd();
-		//}
-		//if (Clk_GetMsTick() % 250 == 0)
-		//{
-			//LED_GREEN_TOG();
-			//printf("%d\n", Clk_GetMsTick());
-			//read_flash();
-			//debug_can();
-		//}
-		//LED_GREEN_TOG();
-		//printf("Hello, Jack.\n");
-		//Dbi_Print("Hello, Jack.\n");
-		//dbug_dbus(&dbus);
-		//Delay_Ms(250);
   }
 }

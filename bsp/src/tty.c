@@ -51,15 +51,18 @@ uint8_t Tty_ReadByte(void)
 {
 	uint8_t data = 0;
 	while (FIFO_IsEmpty(&rx_fifo));
+	TTY_DISABLE_IT_RXNE();
 	FIFO_Pop(&rx_fifo, &data, 1);
+	TTY_ENABLE_IT_RXNE();
 	return data;
 }
 
 void Tty_WriteByte(uint8_t b)
 {
 	while (FIFO_IsFull(&tx_fifo));
+	TTY_DISABLE_IT_TXE();
 	FIFO_Push(&tx_fifo, &b, 1);
-	USART_ITConfig(TTY_USART, USART_IT_TXE, ENABLE);
+	TTY_ENABLE_IT_TXE();
 }
 
 void Tty_Read(uint8_t* buf, uint32_t len)
@@ -93,7 +96,7 @@ void TTY_IRQ_HANDLER(void)
 			FIFO_Pop(&tx_fifo, &tx_data, 1);
 			USART_SendData(TTY_USART, tx_data);
 		} else {
-			USART_ITConfig(TTY_USART, USART_IT_TXE, DISABLE);
+			TTY_DISABLE_IT_TXE();
 		}
 	}
 	else if (USART_GetITStatus(TTY_USART, USART_IT_RXNE) != RESET)

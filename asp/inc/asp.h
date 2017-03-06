@@ -29,7 +29,7 @@ extern "C" {
 #include "fifo.h"
 #include "gdf.h"
 #include "hcp.h"
-#include "mafilter.h"
+#include "maf.h"
 #include "mecanum.h"
 #include "pid.h"
 #include "rcp.h"

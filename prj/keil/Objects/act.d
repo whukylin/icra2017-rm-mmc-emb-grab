@@ -67,10 +67,8 @@
 .\objects\act.o: ..\..\asp\inc\mecanum.h
 .\objects\act.o: ..\..\app\inc\odo.h
 .\objects\act.o: ..\..\app\inc\can.h
-.\objects\act.o: ..\..\asp\inc\est.h
-.\objects\act.o: ..\..\asp\inc\gdf.h
-.\objects\act.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
 .\objects\act.o: ..\..\asp\inc\ekf.h
+.\objects\act.o: ..\..\asp\inc\maf.h
 .\objects\act.o: ..\..\app\inc\wdg.h
 .\objects\act.o: ..\..\asp\inc\pid.h
 .\objects\act.o: ..\..\asp\inc\rmp.h

@@ -51,15 +51,18 @@ uint8_t Btm_ReadByte(void)
 {
 	uint8_t data = 0;
 	while (FIFO_IsEmpty(&rx_fifo));
+	BTM_DISABLE_IT_RXNE();
 	FIFO_Pop(&rx_fifo, &data, 1);
+	BTM_ENABLE_IT_RXNE();
 	return data;
 }
 
 void Btm_WriteByte(uint8_t b)
 {
 	while (FIFO_IsFull(&tx_fifo));
+	BTM_DISABLE_IT_TXE();
 	FIFO_Push(&tx_fifo, &b, 1);
-	USART_ITConfig(BTM_USART, USART_IT_TXE, ENABLE);
+	BTM_ENABLE_IT_TXE();
 }
 
 void Btm_Read(uint8_t* buf, uint32_t len)
@@ -93,7 +96,7 @@ void BTM_IRQ_HANDLER(void)
 				FIFO_Pop(&tx_fifo, &tx_data, 1);
 				USART_SendData(BTM_USART, tx_data);
 			} else {
-				USART_ITConfig(BTM_USART, USART_IT_TXE, DISABLE);
+				BTM_DISABLE_IT_TXE();
 			}
     }
 		else if (USART_GetITStatus(BTM_USART, USART_IT_RXNE) != RESET)

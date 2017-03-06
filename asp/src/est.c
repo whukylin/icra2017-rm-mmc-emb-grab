@@ -36,8 +36,8 @@ void Est_Proc(Est_t* est, float v)
 		est->delta = est->gdf->avgd;
 	} else {
 		Ekf_Proc(est->ekf, v);
+		est->delta = est->ekf->e - est->value;
 		est->value = est->ekf->e;
-		est->delta = est->ekf->d;
 	}
 }
 

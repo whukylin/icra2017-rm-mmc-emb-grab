@@ -710,9 +710,9 @@
               <FilePath>..\..\asp\inc\hcp.h</FilePath>
             </File>
             <File>
-              <FileName>mafilter.h</FileName>
+              <FileName>maf.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\asp\inc\mafilter.h</FilePath>
+              <FilePath>..\..\asp\inc\maf.h</FilePath>
             </File>
             <File>
               <FileName>mecanum.h</FileName>
@@ -795,9 +795,9 @@
               <FilePath>..\..\asp\src\hcp.c</FilePath>
             </File>
             <File>
-              <FileName>mafilter.c</FileName>
+              <FileName>maf.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\asp\src\mafilter.c</FilePath>
+              <FilePath>..\..\asp\src\maf.c</FilePath>
             </File>
             <File>
               <FileName>mecanum.c</FileName>

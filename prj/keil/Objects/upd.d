@@ -6,12 +6,10 @@
 .\objects\upd.o: ..\..\app\inc\fun.h
 .\objects\upd.o: ..\..\app\inc\ini.h
 .\objects\upd.o: ..\..\app\inc\can.h
-.\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\upd.o: ..\..\asp\inc\est.h
-.\objects\upd.o: ..\..\asp\inc\gdf.h
-.\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
 .\objects\upd.o: ..\..\asp\inc\ekf.h
+.\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\upd.o: ..\..\asp\inc\maf.h
 .\objects\upd.o: ..\..\app\inc\wdg.h
 .\objects\upd.o: ..\..\app\inc\cfg.h
 .\objects\upd.o: ..\..\app\inc\fos.h

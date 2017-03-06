@@ -38,7 +38,7 @@ typedef struct
   float p;    // fused variance
 }Ekf_t;
 
-void Ekf_Init(Ekf_t* ekf, float q, float r, float e, float d);
+void Ekf_Init(Ekf_t* ekf, float q, float r);
 void Ekf_Reset(Ekf_t* ekf);
 void Ekf_SetE(Ekf_t* ekf, float e);
 void Ekf_SetD(Ekf_t* ekf, float d);

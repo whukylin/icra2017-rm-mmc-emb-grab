@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef __MAFILTER_H__
-#define __MAFILTER_H__
+#ifndef __MAF_H__
+#define __MAF_H__
 
 /*******************************************/
 /*          Moving Average Filter          */
@@ -35,17 +35,19 @@ typedef struct
 	uint32_t len;  // length
 	uint32_t i;    // index
 	float avg;     // average
-}MAFilter_t;
+}Maf_t;
 
-void MAFilter_Init(MAFilter_t* mafilter, float* buf, uint32_t len);
-float MAFilter_Calc(MAFilter_t* mafilter, float v);
-void MAFilter_Reset(MAFilter_t* mafilter);
+void Maf_Init(Maf_t* maf, float* buf, uint32_t len);
+void Maf_Reset(Maf_t* maf);
+float Maf_Proc(Maf_t* maf, float v);
 
-MAFilter_t* MAFilter_Create(uint32_t len);
-void MAFilter_Destroy(MAFilter_t* mafilter);
+Maf_t* Maf_Create(uint32_t len);
+void Maf_Destroy(Maf_t* maf);
 
 #ifdef __cpluplus
 }
 #endif
 
-#endif /* __MAFILTER_H__ */
+#endif
+
+

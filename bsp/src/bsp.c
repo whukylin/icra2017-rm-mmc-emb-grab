@@ -22,10 +22,10 @@ void Bsp_Config(void)
 	
 	Btm_Config();
 	Btn_Config();
-	//CAN1_Configuration();
-	//CAN2_Configuration();
-	Can1_Config();
-	Can2_Config();
+	CAN1_Configuration();
+	CAN2_Configuration();
+	//Can1_Config();
+	//Can2_Config();
 	Dbi_Config();
 	Led_Config();
 	Pwm_Config();

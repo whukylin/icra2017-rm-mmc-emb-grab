@@ -25,8 +25,8 @@
 extern "C" {
 #endif
 
-#include <string.h>
-#include "est.h"
+#include "ekf.h"
+#include "maf.h"
 #include "wdg.h"
 
 #define ZGYRO_FDB_CAN_MSG_ID   0x401
@@ -39,12 +39,14 @@ extern "C" {
 
 #define MOTOR_ESC_CURRENT_FDB_MAX 13000
 #define MOTOR_ECD_MOD 8192
-#define MOTOR_ECD_GAP 4000
+#define MOTOR_ECD_GAP 4096
 
 #define MOTOR_NUM 6
-#define MOTOR_BUF_N 10
-#define MOTOR_EKF_Q 0.1f
-#define MOTOR_EKF_R 0.9f
+#define MOTOR_INI_CNT 100
+#define MOTOR_RATE_EKF_Q 0.1f
+#define MOTOR_RATE_EKF_R 1.3f
+#define MOTOR_ANGLE_EKF_Q 0.01f
+#define MOTOR_ANGLE_EKF_R 0.9f
 
 typedef struct
 {
@@ -57,28 +59,27 @@ typedef struct
 
 typedef struct
 {
-	uint8_t ini;
-	int32_t old;
-	int32_t del;
-	int16_t buf[MOTOR_BUF_N];
-	int32_t sum;
-	int16_t dsum;
-	uint8_t i;
-	int16_t ret;
-	Ekf_t ekf;
-	uint16_t angle_fdb;
+	uint16_t ini;
+	Ekf_t rate_ekf;
+	Ekf_t angle_ekf;
+	uint16_t angle_fdb[2];
 	int32_t current_fdb;
 	int32_t current_ref;
+	int16_t angle_diff;
 	uint16_t bias;
 	int32_t round;
-	int16_t rate;
-	int32_t angle;
+	int16_t rate_raw;
+	int32_t angle_raw;
+	int16_t rate_filtered;
+	int32_t angle_filtered;
 }Motor_t;
 
 void ZGyro_Process(ZGyro_t* zgyro, uint8_t* data);
 void Motor_Process(Motor_t* motor, uint8_t* data);
-void ZGyro_Reset(void);
-void Motor_Reset(void);
+uint8_t ZGyro_Ready(const ZGyro_t* zgyro);
+uint8_t Motor_Ready(const Motor_t* motor);
+void ZGyro_Reset(ZGyro_t* zgyro);
+void Motor_Reset(Motor_t* motor);
 
 void Can_Init(void);
 void Can_Proc(uint32_t id, uint8_t* data);

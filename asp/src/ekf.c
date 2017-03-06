@@ -18,12 +18,11 @@
 
 #define SQR(x) (x*x)
 
-void Ekf_Init(Ekf_t* ekf, float q, float r, float e, float d)
+void Ekf_Init(Ekf_t* ekf, float q, float r)
 {
 	ekf->q = q;
 	ekf->r = r;
-	ekf->e = e;
-	ekf->d = d;
+	Ekf_Reset(ekf);
 }
 
 void Ekf_Reset(Ekf_t* ekf)

@@ -59,8 +59,8 @@ static void GetFunctionalStateRef(HCP_t* hcp)
 	GetMouseButtonEvents(hcp);
 }
 
-static MAFilter_t fx, fy, fz;
-static float buf[3][KEY_CONTROL_MAFILTER_LEN];
+static Maf_t fx, fy, fz;
+static float buf[3][KEY_CONTROL_MAF_LEN];
 static void GetChassisVelocityRef(HCP_t* hcp)
 {
 	float sx = hcp->key.Shift ? cfg.spd.x : cfg.spd.x / 2.f;
@@ -69,9 +69,9 @@ static void GetChassisVelocityRef(HCP_t* hcp)
 	float vx = hcp->key.A ? -sx : hcp->key.D ? sx : 0;
 	float vy = hcp->key.S ? -sy : hcp->key.W ? sy : 0;
 	float vz = map(hcp->mouse.x, MOUSE_SPEED_MIN, MOUSE_SPEED_MAX, -sz, sz);
-	chassisVelocityRef.x = MAFilter_Calc(&fx, vx);
-	chassisVelocityRef.y = MAFilter_Calc(&fy, vy);
-	chassisVelocityRef.z = MAFilter_Calc(&fz, vz);
+	chassisVelocityRef.x = Maf_Proc(&fx, vx);
+	chassisVelocityRef.y = Maf_Proc(&fy, vy);
+	chassisVelocityRef.z = Maf_Proc(&fz, vz);
 }
 
 void Hci_Init(void)
@@ -84,9 +84,9 @@ void Hci_Init(void)
 		mouseButtonEvents[i] = 0;
 		lastMouseButtonStates[i] = 0;
 	}
-	MAFilter_Init(&fx, buf[0], KEY_CONTROL_MAFILTER_LEN);
-	MAFilter_Init(&fy, buf[1], KEY_CONTROL_MAFILTER_LEN);
-	MAFilter_Init(&fz, buf[2], KEY_CONTROL_MAFILTER_LEN);
+	Maf_Init(&fx, buf[0], KEY_CONTROL_MAF_LEN);
+	Maf_Init(&fy, buf[1], KEY_CONTROL_MAF_LEN);
+	Maf_Init(&fz, buf[2], KEY_CONTROL_MAF_LEN);
 }
 
 void Hci_Proc(HCP_t* hcp)

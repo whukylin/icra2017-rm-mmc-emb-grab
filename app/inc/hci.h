@@ -27,12 +27,12 @@ extern "C" {
 
 #include "hcp.h"
 #include "cmd.h"
-#include "mafilter.h"
+#include "maf.h"
 
 typedef uint8_t MouseButtonState_t;
 typedef uint8_t MouseButtonEvent_t;
 
-#define KEY_CONTROL_MAFILTER_LEN 10
+#define KEY_CONTROL_MAF_LEN 10
 #define MOUSE_BUTTON_PRESSED_CNT 10
 
 #define GET_MOUSE_BUTTON_EVENT(LAST,THIS) ((LAST<<3)|THIS)

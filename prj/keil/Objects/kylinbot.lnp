@@ -33,7 +33,7 @@
 ".\objects\fifo.o"
 ".\objects\gdf.o"
 ".\objects\hcp.o"
-".\objects\mafilter.o"
+".\objects\maf.o"
 ".\objects\mecanum.o"
 ".\objects\msg.o"
 ".\objects\pid.o"

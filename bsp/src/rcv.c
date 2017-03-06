@@ -57,9 +57,10 @@ void RCV_IRQ_HANDLER(void)
 
 		uint16_t rx_len = 0;
 
-		//clear the idle pending flag
+		//clear the RXNE & idle pending flag
+		USART_ClearFlag(RCV_USART, USART_FLAG_RXNE);
 		USART_ClearITPendingBit(RCV_USART, USART_IT_IDLE);
-
+		
 		DMA_Cmd(RCV_DMA_STREAM, DISABLE);
 		rx_len = RCV_DMA_BUF_SIZE - DMA_GetCurrDataCounter(RCV_DMA_STREAM);
 		RCV_DMA_STREAM->NDTR = (uint16_t)RCV_DMA_BUF_SIZE;     //relocate the DMA memory pointer to the beginning position

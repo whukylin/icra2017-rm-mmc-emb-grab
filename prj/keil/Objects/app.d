@@ -17,7 +17,7 @@
 .\objects\app.o: ..\..\asp\inc\fifo.h
 .\objects\app.o: ..\..\asp\inc\gdf.h
 .\objects\app.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
-.\objects\app.o: ..\..\asp\inc\mafilter.h
+.\objects\app.o: ..\..\asp\inc\maf.h
 .\objects\app.o: ..\..\asp\inc\mecanum.h
 .\objects\app.o: ..\..\asp\inc\pid.h
 .\objects\app.o: ..\..\asp\inc\rmp.h
@@ -78,7 +78,6 @@
 .\objects\app.o: ..\..\srv\inc\srv.h
 .\objects\app.o: ..\..\srv\inc\can_srv.h
 .\objects\app.o: ..\..\app\inc\can.h
-.\objects\app.o: ..\..\asp\inc\est.h
 .\objects\app.o: ..\..\app\inc\wdg.h
 .\objects\app.o: ..\..\srv\inc\com_srv.h
 .\objects\app.o: ..\..\app\inc\com.h

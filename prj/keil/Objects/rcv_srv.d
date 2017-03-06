@@ -52,6 +52,6 @@
 .\objects\rcv_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
 .\objects\rcv_srv.o: ..\..\asp\inc\mecanum.h
 .\objects\rcv_srv.o: ..\..\app\inc\hci.h
-.\objects\rcv_srv.o: ..\..\asp\inc\mafilter.h
+.\objects\rcv_srv.o: ..\..\asp\inc\maf.h
 .\objects\rcv_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\rcv_srv.o: ..\..\app\inc\wdg.h
