@@ -25,13 +25,15 @@ extern "C" {
 #include <stdlib.h>
 #include <string.h>
 
+#include "clk.h"
+
 typedef void (*SchRun_t)(void);
 
 typedef struct SchTask_t
 {
 	SchRun_t run;
 	uint32_t interval;
-	uint32_t count;
+	uint32_t lastrun;
 	struct SchTask_t* prev;
 	struct SchTask_t* next;
 }SchTask_t;

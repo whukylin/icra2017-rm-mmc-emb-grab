@@ -16,23 +16,28 @@
 
 #include "sch.h"
 
-static SchTask_t* list = NULL;
+static SchTask_t* first = NULL;
+static SchTask_t* last = NULL;
 
 void Sch_Init(void)
 {
-	SchTask_t* curr = list;
+	uint32_t tick = Clk_GetMsTick();
+	SchTask_t* curr = first;
 	for (; curr != NULL; curr = curr->next) {
-		curr->count = 0;
+		curr->lastrun = tick;
 	}
 }
 
 void Sch_Proc(void)
 {
-	SchTask_t* curr = list;
+	uint32_t tick = Clk_GetMsTick();
+	SchTask_t* curr = first;
 	for (; curr != NULL; curr = curr->next) {
-		if (++curr->count >= curr->interval) {
-			curr->count = 0;
+		//uint32_t interval = tick - curr->lastrun;
+		uint32_t interval = tick > curr->lastrun ? tick - curr->lastrun : (uint32_t)0xFFFFFFFF - curr->lastrun + tick;
+		if (interval >= curr->interval) {
 			curr->run();
+			curr->lastrun = tick;
 		}
 	}
 }
@@ -44,38 +49,63 @@ static SchTask_t* newSchTask(SchRun_t run, uint32_t interval)
 	memset(task, 0, sizeof(SchTask_t));
 	task->run = run;
 	task->interval = interval;
-	task->count = 0;
 	task->prev = NULL;
 	task->next = NULL;
 	return task;
 }
 
-static void freeSchTask(SchTask_t* task)
+static void delSchTask(SchTask_t* task)
 {
-	if (task != NULL) {
-		free(task);
-		task = NULL;
+	if (task == first) {
+		first = task->next;
 	}
+	if (task == last) {
+		last = task->prev;
+	}
+	if (task->prev != NULL) {
+		task->prev->next = task->next;
+	}
+	if (task->next != NULL) {
+		task->next->prev = task->prev;
+	}
+	free(task);
+	task = NULL;
+}
+
+static SchTask_t* getSchTask(SchRun_t run)
+{
+	SchTask_t* curr = first;
+	for (; curr != NULL; curr = curr->next) {
+		if (curr->run == run) {
+			return curr;
+		}
+	}
+	return NULL;
+}
+
+static void addSchTask(SchTask_t* curr)
+{
+	last->next = curr;
+	curr->prev = last;
+	last = curr;
 }
 
 uint8_t Sch_Arrange(SchRun_t run, uint32_t interval)
 {
-	if (list == NULL) {
-		list = newSchTask(run, interval);
+	if (first == NULL) {
+		first = newSchTask(run, interval);
+		last = first;
 		return 1;
 	} else {
-		SchTask_t* curr = list;
-		for (; curr != NULL; curr = curr->next) {
-			if (curr->run == run) {
-				curr->interval = interval;
-				return 1;
-			}
-			if (curr->next == NULL) {
-				curr->next = newSchTask(run, interval);
-				return curr->next ? 1 : 0;
-			}
+		SchTask_t* curr = getSchTask(run);
+		if (curr != NULL) {
+			curr->interval = interval;
+			return 1;
 		}
-		// Should never reach here
+		else {
+			curr = newSchTask(run, interval);
+			addSchTask(curr);
+		}
 		return 0;
 	}
 
@@ -83,20 +113,14 @@ uint8_t Sch_Arrange(SchRun_t run, uint32_t interval)
 
 uint8_t Sch_Dismiss(SchRun_t run)
 {
-	if (list == NULL) {
+	if (first == NULL) {
 		return 0;
-	} else if (list->run == run) {
-		freeSchTask(list);
-		return 1;
-	} else {
-		SchTask_t* curr = list;
-		SchTask_t* prev = NULL;
-		for (; curr != NULL; prev = curr, curr = curr->next) {
-			if (curr->run == run) {
-				prev->next = curr->next;
-				freeSchTask(curr);
-				return 1;
-			}
+	}
+	else {
+		SchTask_t* curr = getSchTask(run);
+		if (curr != NULL) {
+			delSchTask(curr);
+			return 1;
 		}
 		return 0;
 	}

@@ -1,4 +1,4 @@
---cpu=Cortex-M4.fp
+--cpu Cortex-M4.fp
 ".\objects\main.o"
 ".\objects\stm32f4xx_it.o"
 ".\objects\kos.o"
@@ -61,7 +61,7 @@
 ".\objects\tty.o"
 ".\objects\delay.o"
 ".\objects\flash.o"
-".\objects\motor_1.o"
+".\objects\motor.o"
 ".\objects\zgyro.o"
 ".\objects\drv.o"
 ".\objects\misc.o"

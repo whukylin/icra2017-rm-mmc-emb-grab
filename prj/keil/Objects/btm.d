@@ -4,7 +4,7 @@
 .\objects\btm.o: ..\..\bsp\inc\platform.h
 .\objects\btm.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\btm.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\btm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\btm.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\btm.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\btm.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\btm.o: ..\..\stl\CMSIS\core\core_cmSimd.h
@@ -39,5 +39,5 @@
 .\objects\btm.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\btm.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
 .\objects\btm.o: ..\..\asp\inc\fifo.h
-.\objects\btm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\btm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\btm.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\btm.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
