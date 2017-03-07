@@ -53,22 +53,27 @@ void task(void)
 
 int main()
 {
-	mec_cfg();
-	Dci_Init();
-	//KOS_Boot();
+	//mec_cfg();
+	//Dci_Init();
+	KOS_Boot();
 	//Sch_Arrange(task, 250);
-	Ios_Init();
-	Cmd_Init();
-	Can_Init();
-	Bsp_Config();
-	TickTim_Start();
+	//Ios_Init();
+	//Cmd_Init();
+	//Can_Init();
+	//Bsp_Config();
+	//TickTim_Start();
 	//write_flash();
 	//Cfg_Init();
 	while(1)
 	{
-		cmd();
-		if (Clk_GetUsTick() % 1000 == 0)
+		//Sch_Proc();
+		//cmd();
+		if (Clk_GetUsTick() % 4000 == 0)
 		{
+			Dbg_Motor(&motor[0]);
+			//Dbg_Cmd();
+			//task();
+			//Dbg_DBUS(&dbus);
 			//printf("%d\t%d\t%d\t%d\n", motor[0].angle_raw, motor[0].angle_filtered, motor[0].rate_raw, motor[0].rate_filtered);
 			//printf("main\n");
 			//printf("%d,%d\n", motor[1].angle, motor[1].rate);

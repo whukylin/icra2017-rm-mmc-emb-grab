@@ -24,6 +24,11 @@ void Dbg_DBUS(const DBUS_t* dbus)
 		dbus->hcp.mouse.b[0], dbus->hcp.mouse.b[1]);
 }
 
+void Dbg_Cmd(void)
+{
+	printf("vx=%f\tvy=%f\tvz=%f\n", chassisVelocityRef.x, chassisVelocityRef.y, chassisVelocityRef.z);
+}
+
 void Dbg_Motor(const Motor_t* motor)
 {
 	printf("%d\t%d\t%d\t%d\n", motor->angle_raw, motor->angle_filtered, motor->rate_raw, motor->rate_filtered);

@@ -6,7 +6,7 @@
 .\objects\odo.o: ..\..\bsp\inc\platform.h
 .\objects\odo.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\odo.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\odo.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\odo.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\odo.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\odo.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\odo.o: ..\..\stl\CMSIS\core\core_cmSimd.h
@@ -41,8 +41,8 @@
 .\objects\odo.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\odo.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
 .\objects\odo.o: ..\..\asp\inc\fifo.h
-.\objects\odo.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\odo.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\odo.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\odo.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\odo.o: ..\..\bsp\inc\btn.h
 .\objects\odo.o: ..\..\bsp\inc\can1.h
 .\objects\odo.o: ..\..\bsp\inc\can2.h

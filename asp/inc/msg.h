@@ -52,8 +52,8 @@ typedef struct VelCmdMsg_t
 	int16_t z;
 }VelCmdMsg_t;
 
-//uint32_t Msg_Serialize(uint8_t* buf, const uint32_t head, const uint8_t* body);
-//uint32_t Msg_Deserialize(const uint8_t* buf, const uint32_t head, const uint8_t* body);
+uint32_t Msg_Pack(uint8_t* buf, const uint32_t head, const uint8_t* body);
+uint32_t Msg_Unpack(const uint8_t* buf, const uint32_t head, const uint8_t* body);
 
 #ifdef __cplusplus
 }

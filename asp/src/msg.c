@@ -14,5 +14,16 @@
  * limitations under the License.
  */
  
- 
- 
+#include "msg.h"
+
+uint32_t Msg_Pack(uint8_t* buf, const uint32_t head, const uint8_t* body)
+{
+	return 0;
+}
+
+uint32_t Msg_Unpack(const uint8_t* buf, const uint32_t head, const uint8_t* body)
+{
+	return 0;
+}
+
+

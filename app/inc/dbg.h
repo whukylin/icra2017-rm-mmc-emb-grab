@@ -30,6 +30,7 @@ extern "C" {
 #include "can.h"
 
 void Dbg_DBUS(const DBUS_t* dbus);
+void Dbg_Cmd(void);
 void Dbg_Motor(const Motor_t* motor);
 void Dbg_ZGyro(const ZGyro_t* zgyro);
 	

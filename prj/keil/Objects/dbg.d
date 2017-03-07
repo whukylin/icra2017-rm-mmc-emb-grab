@@ -1,13 +1,13 @@
 .\objects\dbg.o: ..\..\app\src\dbg.c
 .\objects\dbg.o: ..\..\app\inc\dbg.h
 .\objects\dbg.o: ..\..\app\inc\ios.h
-.\objects\dbg.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\dbg.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\dbg.o: ..\..\bsp\inc\tty.h
 .\objects\dbg.o: ..\..\bsp\inc\stm32util.h
 .\objects\dbg.o: ..\..\bsp\inc\platform.h
 .\objects\dbg.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\dbg.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\dbg.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\dbg.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\dbg.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\dbg.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\dbg.o: ..\..\stl\CMSIS\core\core_cmSimd.h
@@ -42,8 +42,8 @@
 .\objects\dbg.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\dbg.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
 .\objects\dbg.o: ..\..\asp\inc\fifo.h
-.\objects\dbg.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\dbg.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\dbg.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\dbg.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\dbg.o: ..\..\bsp\inc\dbi.h
 .\objects\dbg.o: ..\..\bsp\inc\btm.h
 .\objects\dbg.o: ..\..\app\inc\wdg.h

@@ -15,7 +15,6 @@
  */
  
 #include "rcv.h"
-#include "led.h"
 
 static uint8_t buf[2][RCV_DMA_BUF_SIZE];
 

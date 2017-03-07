@@ -70,7 +70,6 @@ void Wdg_Proc(void)
 		if(wdg[i] >= WDG[i])
 		{
 			err |= (uint32_t)(1 << i); //set the error bit
-
 		}
 		else
 		{
