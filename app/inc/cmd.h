@@ -27,6 +27,7 @@ extern "C" {
 
 #include "sys.h"
 #include "mec.h"
+#include "dci.h"
 #include "cfg.h"
 #include "fun.h"
 

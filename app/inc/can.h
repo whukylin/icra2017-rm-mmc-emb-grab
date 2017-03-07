@@ -27,6 +27,7 @@ extern "C" {
 
 #include "ekf.h"
 #include "maf.h"
+#include "fun.h"
 #include "wdg.h"
 
 #define ZGYRO_FDB_CAN_MSG_ID   0x401
@@ -47,14 +48,22 @@ extern "C" {
 #define MOTOR_RATE_EKF_R 1.3f
 #define MOTOR_ANGLE_EKF_Q 0.01f
 #define MOTOR_ANGLE_EKF_R 0.9f
+#define MOTOR_VAL2DEG_RECIP 0.0439453125f
+
+#define ZGYRO_INI_CNT 100
+#define ZGYRO_VAL2DEG_RECIP 0.01f
 
 typedef struct
 {
-	uint8_t ini;
-	int32_t angle_fdb;
+	uint16_t ini;
+	int32_t angle_fdb[2];
 	int32_t bias;
 	int32_t rate;
 	int32_t angle;
+	float rate_deg;
+	float rate_rad;
+	float angle_deg;
+	float angle_rad;
 }ZGyro_t;
 
 typedef struct
@@ -72,6 +81,10 @@ typedef struct
 	int32_t angle_raw;
 	int16_t rate_filtered;
 	int32_t angle_filtered;
+	float rate_deg;
+	float rate_rad;
+	float angle_deg;
+	float angle_rad;
 }Motor_t;
 
 void ZGyro_Process(ZGyro_t* zgyro, uint8_t* data);

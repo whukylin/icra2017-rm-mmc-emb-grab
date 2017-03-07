@@ -34,7 +34,6 @@ extern "C" {
 #define CAN1_TX_NVIC_PRE_PRIORITY 0
 #define CAN1_TX_NVIC_SUB_PRIORITY 1
 
-void CAN1_Configuration(void);
 void Can1_Config(void);
 
 void Can1RxCallback(uint32_t id, uint8_t* data);

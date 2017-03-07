@@ -16,8 +16,6 @@
 
 #include "can.h"
 
-#include <stdio.h>
-
 /*********************************************/
 /*          Controller Area Network          */
 /*********************************************/
@@ -25,20 +23,21 @@
 ZGyro_t zgyro;
 Motor_t motor[MOTOR_NUM];
 
-//float buf[MOTOR_NUM];
-//Maf_t maf[MOTOR_NUM];
-
 #define PI 3.1415926f
 void ZGyro_Process(ZGyro_t* zgyro, uint8_t* data)
 {
-	int32_t angle_fdb = ((int32_t)(data[0]<<24)|(int32_t)(data[1]<<16)|(int32_t)(data[2]<<8)|(int32_t)(data[3]));
-	if (!zgyro->ini) {
-		zgyro->bias = angle_fdb;
-		zgyro->ini = 1;
+	zgyro->angle_fdb[0] = zgyro->angle_fdb[1];
+	zgyro->angle_fdb[1] = ((int32_t)(data[0]<<24)|(int32_t)(data[1]<<16)|(int32_t)(data[2]<<8)|(int32_t)(data[3]));
+	if (zgyro->ini < ZGYRO_INI_CNT) {
+		zgyro->bias = zgyro->angle_fdb[1];
+		zgyro->ini++;
 	}
-	zgyro->angle = angle_fdb - zgyro->bias;
-	zgyro->rate = angle_fdb - zgyro->angle_fdb;
-	zgyro->angle_fdb = angle_fdb;
+	zgyro->rate = zgyro->angle_fdb[1] - zgyro->angle_fdb[0];
+	zgyro->rate_deg = ZGYRO_VAL2DEG_RECIP * zgyro->rate;
+	zgyro->rate_rad = DEG2RAD_RECIP * zgyro->rate_deg;
+	zgyro->angle = zgyro->angle_fdb[1] - zgyro->bias;
+	zgyro->angle_deg = zgyro->angle * ZGYRO_VAL2DEG_RECIP;
+	zgyro->angle_rad = DEG2RAD_RECIP * zgyro->angle_deg;
 }
 
 void Motor_Process(Motor_t* motor, uint8_t* data)
@@ -68,14 +67,18 @@ void Motor_Process(Motor_t* motor, uint8_t* data)
 	}
 	Ekf_Proc(&motor->rate_ekf, motor->rate_raw);
 	motor->rate_filtered = (int32_t)motor->rate_ekf.e;
+	motor->rate_deg = MOTOR_VAL2DEG_RECIP * motor->rate_filtered;
+	motor->rate_rad = DEG2RAD_RECIP * motor->rate_deg;
 	motor->angle_raw = (motor->angle_fdb[1] - motor->bias) + motor->round * MOTOR_ECD_MOD;
 	Ekf_Proc(&motor->angle_ekf, motor->angle_raw);
 	motor->angle_filtered = (int32_t)motor->angle_ekf.e;
+	motor->angle_deg = MOTOR_VAL2DEG_RECIP * motor->angle_filtered;
+	motor->angle_rad = DEG2RAD_RECIP * motor->angle_deg;
 }
 
 uint8_t ZGyro_Ready(const ZGyro_t* zgyro)
 {
-	return zgyro->ini;
+	return zgyro->ini >= ZGYRO_INI_CNT;
 }
 
 uint8_t Motor_Ready(const Motor_t* motor)
@@ -86,10 +89,15 @@ uint8_t Motor_Ready(const Motor_t* motor)
 void ZGyro_Reset(ZGyro_t* zgyro)
 {
 	zgyro->ini = 0;
-	zgyro->angle_fdb = 0;
+	zgyro->angle_fdb[0] = 0;
+	zgyro->angle_fdb[1] = 0;
 	zgyro->bias = 0;
 	zgyro->rate = 0;
+	zgyro->rate_deg = 0;
+	zgyro->rate_rad = 0;
 	zgyro->angle = 0;
+	zgyro->angle_deg = 0;
+	zgyro->angle_rad = 0;
 }
 
 void Motor_Reset(Motor_t* motor)
@@ -103,9 +111,13 @@ void Motor_Reset(Motor_t* motor)
 	motor->bias = 0;
 	motor->round = 0;
 	motor->rate_raw = 0;
-	motor->angle_raw = 0;
 	motor->rate_filtered = 0;
+	motor->rate_deg = 0;
+	motor->rate_rad = 0;
+	motor->angle_raw = 0;
 	motor->angle_filtered = 0;
+	motor->angle_deg = 0;
+	motor->angle_rad = 0;
 	Ekf_Reset(&motor->rate_ekf);
 	Ekf_Reset(&motor->angle_ekf);
 }
@@ -129,7 +141,6 @@ void Can_Proc(uint32_t id, uint8_t* data)
 	case MOTOR1_FDB_CAN_MSG_ID:
 		Wdg_Feed(WDG_IDX_MOTOR1);
 		Motor_Process(&motor[0], data);
-	  printf("%d\t%d\t%d\t%d\t%d\n", motor[0].angle_raw, motor[0].angle_filtered, motor[0].rate_raw, motor[0].rate_filtered, motor[0].angle_diff);
 		break;
 	case MOTOR2_FDB_CAN_MSG_ID:
 		Wdg_Feed(WDG_IDX_MOTOR2);

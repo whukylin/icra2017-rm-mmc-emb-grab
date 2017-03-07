@@ -23,29 +23,25 @@ void Ini_Init(void)
 	iniFlag = 0;
 }
 
-static void Ini_Check(uint8_t ini, IniFlag_t flag)
+static void Ini_Check(uint8_t cond, IniFlag_t mask)
 {
-	if (ini) {
-		iniFlag |= flag;
-	} else {
-		iniFlag &= ~flag;
-	}
+	Flag_Det(cond, &iniFlag, mask);
 }
 
 void Ini_Proc(void)
 {
-	Ini_Check(zgyro.ini,  INI_FLAG_ZGYRO);
-	Ini_Check(motor[0].ini, INI_FLAG_MOTOR1);
-	Ini_Check(motor[1].ini, INI_FLAG_MOTOR2);
-	Ini_Check(motor[2].ini, INI_FLAG_MOTOR3);
-	Ini_Check(motor[3].ini, INI_FLAG_MOTOR4);
-	Ini_Check(motor[4].ini, INI_FLAG_MOTOR5);
-	Ini_Check(motor[5].ini, INI_FLAG_MOTOR6);
+	Ini_Check(ZGyro_Ready(&zgyro),  INI_FLAG_ZGYRO);
+	Ini_Check(Motor_Ready(&motor[0]), INI_FLAG_MOTOR1);
+	Ini_Check(Motor_Ready(&motor[1]), INI_FLAG_MOTOR2);
+	Ini_Check(Motor_Ready(&motor[2]), INI_FLAG_MOTOR3);
+	Ini_Check(Motor_Ready(&motor[3]), INI_FLAG_MOTOR4);
+	Ini_Check(Motor_Ready(&motor[4]), INI_FLAG_MOTOR5);
+	Ini_Check(Motor_Ready(&motor[5]), INI_FLAG_MOTOR6);
 }
 
-IniFlag_t Ini_GetFlag(IniFlag_t flag)
+IniFlag_t Ini_GetFlag(IniFlag_t mask)
 {
-	return iniFlag & flag;
+	return Flag_Get(&iniFlag, mask);
 }
 
 

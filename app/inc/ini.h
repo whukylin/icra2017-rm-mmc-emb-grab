@@ -19,6 +19,7 @@
 #define __INI_H__
 
 #include "can.h"
+#include "fun.h"
 
 typedef uint32_t IniFlag_t;
 
@@ -37,6 +38,6 @@ typedef uint32_t IniFlag_t;
 void Ini_Init(void);
 void Ini_Proc(void);
 
-IniFlag_t Ini_GetFlag(IniFlag_t flag);
+IniFlag_t Ini_GetFlag(IniFlag_t mask);
 
 #endif

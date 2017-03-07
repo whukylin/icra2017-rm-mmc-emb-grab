@@ -25,6 +25,8 @@ MecanumState_t mecanumVelocityRef; // Auto-Wired
 
 void Cmd_Init(void)
 {
+	Dci_Init();
+	
 	FS_Clr(&functionalStateRef, FS_ALL);
 	CS_Set(&chassisVelocityRef, 0, 0, 0);
 	MS_Set(&mecanumVelocityRef, 0, 0, 0, 0);

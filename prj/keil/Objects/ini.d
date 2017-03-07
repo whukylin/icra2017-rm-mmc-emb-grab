@@ -7,3 +7,4 @@
 .\objects\ini.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\ini.o: ..\..\asp\inc\maf.h
 .\objects\ini.o: ..\..\app\inc\wdg.h
+.\objects\ini.o: ..\..\app\inc\fun.h
