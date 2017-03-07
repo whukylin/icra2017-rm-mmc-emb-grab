@@ -52,6 +52,7 @@ extern "C" {
 #include "cmd.h" // System Command Interface
 #include "com.h" // Communication
 #include "ctl.h" // Logic Controller
+#include "dbg.h" // Debug Function Calls
 #include "dci.h" // DBUS Control interface
 #include "fos.h" // File Operating System
 #include "fun.h" // Helper functions

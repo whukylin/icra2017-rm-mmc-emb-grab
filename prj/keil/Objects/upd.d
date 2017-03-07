@@ -9,7 +9,6 @@
 .\objects\upd.o: ..\..\asp\inc\ekf.h
 .\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\upd.o: ..\..\asp\inc\maf.h
 .\objects\upd.o: ..\..\app\inc\wdg.h
 .\objects\upd.o: ..\..\app\inc\cfg.h
 .\objects\upd.o: ..\..\app\inc\fos.h
@@ -54,6 +53,14 @@
 .\objects\upd.o: ..\..\app\inc\cmd.h
 .\objects\upd.o: ..\..\app\inc\mec.h
 .\objects\upd.o: ..\..\asp\inc\mecanum.h
+.\objects\upd.o: ..\..\app\inc\dci.h
+.\objects\upd.o: ..\..\asp\inc\dbus.h
+.\objects\upd.o: ..\..\asp\inc\rcp.h
+.\objects\upd.o: ..\..\asp\inc\hcp.h
+.\objects\upd.o: ..\..\app\inc\rci.h
+.\objects\upd.o: ..\..\app\inc\cmd.h
+.\objects\upd.o: ..\..\app\inc\hci.h
+.\objects\upd.o: ..\..\asp\inc\maf.h
 .\objects\upd.o: ..\..\app\inc\odo.h
 .\objects\upd.o: ..\..\bsp\inc\bsp.h
 .\objects\upd.o: ..\..\bsp\inc\btm.h

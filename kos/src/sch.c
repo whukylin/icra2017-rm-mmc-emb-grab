@@ -20,23 +20,19 @@ static SchTask_t* list = NULL;
 
 void Sch_Init(void)
 {
-	uint32_t tick = 0;//Clk_GetMsTick();
 	SchTask_t* curr = list;
 	for (; curr != NULL; curr = curr->next) {
-		curr->lastrun = tick;
+		curr->count = 0;
 	}
 }
 
 void Sch_Proc(void)
 {
-	uint32_t tick = 0;//Clk_GetMsTick();
 	SchTask_t* curr = list;
 	for (; curr != NULL; curr = curr->next) {
-		//uint32_t interval = tick - curr->lastrun;
-		uint32_t interval = tick > curr->lastrun ? tick - curr->lastrun : (uint32_t)0xFFFFFFFF - curr->lastrun + tick;
-		if (interval >= curr->interval) {
+		if (++curr->count >= curr->interval) {
+			curr->count = 0;
 			curr->run();
-			curr->lastrun = tick;
 		}
 	}
 }
@@ -48,6 +44,7 @@ static SchTask_t* newSchTask(SchRun_t run, uint32_t interval)
 	memset(task, 0, sizeof(SchTask_t));
 	task->run = run;
 	task->interval = interval;
+	task->count = 0;
 	task->prev = NULL;
 	task->next = NULL;
 	return task;

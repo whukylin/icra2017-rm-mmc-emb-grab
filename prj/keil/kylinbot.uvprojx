@@ -480,6 +480,11 @@
               <FilePath>..\..\app\inc\ctl.h</FilePath>
             </File>
             <File>
+              <FileName>dbg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\app\inc\dbg.h</FilePath>
+            </File>
+            <File>
               <FileName>dci.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\app\inc\dci.h</FilePath>
@@ -518,6 +523,11 @@
               <FileName>odo.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\app\inc\odo.h</FilePath>
+            </File>
+            <File>
+              <FileName>pip.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\app\inc\pip.h</FilePath>
             </File>
             <File>
               <FileName>rci.h</FileName>
@@ -590,6 +600,11 @@
               <FilePath>..\..\app\src\ctl.c</FilePath>
             </File>
             <File>
+              <FileName>dbg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\app\src\dbg.c</FilePath>
+            </File>
+            <File>
               <FileName>dci.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\app\src\dci.c</FilePath>
@@ -628,6 +643,11 @@
               <FileName>odo.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\app\src\odo.c</FilePath>
+            </File>
+            <File>
+              <FileName>pip.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\app\src\pip.c</FilePath>
             </File>
             <File>
               <FileName>rci.c</FileName>

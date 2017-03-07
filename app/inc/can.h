@@ -26,7 +26,6 @@ extern "C" {
 #endif
 
 #include "ekf.h"
-#include "maf.h"
 #include "fun.h"
 #include "wdg.h"
 
@@ -48,10 +47,17 @@ extern "C" {
 #define MOTOR_RATE_EKF_R 1.3f
 #define MOTOR_ANGLE_EKF_Q 0.01f
 #define MOTOR_ANGLE_EKF_R 0.9f
-#define MOTOR_VAL2DEG_RECIP 0.0439453125f
+
+#define MOTOR_RATE_DEG_RECIP 43.94531f
+#define MOTOR_RATE_RAD_RECIP 0.7669904f
+#define MOTOR_ANGLE_DEG_RECIP 0.04394531f
+#define MOTOR_ANGLE_RAD_RECIP 7.669904e-4f
 
 #define ZGYRO_INI_CNT 100
-#define ZGYRO_VAL2DEG_RECIP 0.01f
+#define ZGYRO_RATE_DEG_RECIP 10.0f
+#define ZGYRO_RATE_RAD_RECIP 0.1745329f
+#define ZGYRO_ANGLE_DEG_RECIP 0.01f
+#define ZGYRO_ANGLE_RAD_RECIP 1.745329e-4f
 
 typedef struct
 {

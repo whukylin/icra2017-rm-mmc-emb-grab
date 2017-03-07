@@ -16,20 +16,6 @@
  
 #include "main.h"
 
-void task(void)
-{
-	printf("Hello, Jack.\n");
-	LED_GREEN_TOG();
-}
-
-void dbug_dbus(const DBUS_t* dbus)
-{
-	printf("ch0=%d,ch1=%d,ch2=%d,ch3=%d,s1=%d,s2=%d,key=%d,mx=%d,my=%d,mz=%d,bl=%d,br=%d\n", 
-		dbus->rcp.ch[0], dbus->rcp.ch[1], dbus->rcp.ch[2], dbus->rcp.ch[3], dbus->rcp.sw[0],
-		dbus->rcp.sw[1], dbus->hcp.key.val, dbus->hcp.mouse.x, dbus->hcp.mouse.y, dbus->hcp.mouse.z,
-		dbus->hcp.mouse.b[0], dbus->hcp.mouse.b[1]);
-}
-
 void mec_cfg(void)
 {
 	Mec_Config(0.160f, 0.160f, 0.009f, 0.070f);
@@ -52,13 +38,17 @@ void cmd(void)
 void write_flash(void)
 {
 	Cfg_t tmp = CFG_DEF;
-	tmp.mec.lx = 222;
 	Cfg_Save(&tmp);
 }
 
 void read_flash(void)
 {
-	printf("lx=%d,ly=%d,r1=%d,r2=%d\n", cfg.mec.lx, cfg.mec.ly, cfg.mec.r1, cfg.mec.r2);
+	printf("lx=%f,ly=%f,r1=%f,r2=%f\n", cfg.mec.lx, cfg.mec.ly, cfg.mec.r1, cfg.mec.r2);
+}
+
+void task(void)
+{
+	LED_GREEN_TOG();
 }
 
 int main()

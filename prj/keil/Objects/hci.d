@@ -47,5 +47,12 @@
 .\objects\hci.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\hci.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
 .\objects\hci.o: ..\..\asp\inc\mecanum.h
+.\objects\hci.o: ..\..\app\inc\dci.h
+.\objects\hci.o: ..\..\asp\inc\dbus.h
+.\objects\hci.o: ..\..\asp\inc\rcp.h
+.\objects\hci.o: ..\..\app\inc\rci.h
+.\objects\hci.o: ..\..\app\inc\cmd.h
+.\objects\hci.o: ..\..\app\inc\hci.h
+.\objects\hci.o: ..\..\app\inc\wdg.h
 .\objects\hci.o: ..\..\asp\inc\maf.h
 .\objects\hci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

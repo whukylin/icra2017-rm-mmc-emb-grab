@@ -20,11 +20,10 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-	
+
+#include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
-
-#include "clk.h"
 
 typedef void (*SchRun_t)(void);
 
@@ -32,7 +31,7 @@ typedef struct SchTask_t
 {
 	SchRun_t run;
 	uint32_t interval;
-	uint32_t lastrun;
+	uint32_t count;
 	struct SchTask_t* prev;
 	struct SchTask_t* next;
 }SchTask_t;

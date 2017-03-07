@@ -46,19 +46,19 @@ typedef uint32_t CfgFlg_t;
 
 typedef struct
 {
-	int16_t ax;
-	int16_t ay;
-	int16_t az;
-	int16_t gx;
-	int16_t gy;
-	int16_t gz;
+	float ax;
+	float ay;
+	float az;
+	float gx;
+	float gy;
+	float gz;
 }ImuCfg_t; // IMU offset Configuration
 
 typedef struct
 {
-	int16_t mx;
-	int16_t my;
-	int16_t mz;
+	float mx;
+	float my;
+	float mz;
 }MagCfg_t; // MAG offset Configuration
 
 typedef struct
@@ -86,33 +86,33 @@ typedef struct
 
 typedef struct
 {
-	uint16_t x;
-	uint16_t y;
-	uint16_t z;
-	uint16_t e;
-	uint16_t c;
+	float x;
+	float y;
+	float z;
+	float e;
+	float c;
 }SpdCfg_t; // Speed Configuration
 
 typedef struct
 {
-	uint16_t lx;
-	uint16_t ly;
-	uint16_t r1;
-	uint16_t r2;
+	float lx;
+	float ly;
+	float r1;
+	float r2;
 }MecCfg_t; // Mecanum Wheel Configuration
 
 typedef struct
 {
-	int32_t max;
-	int32_t min;
-	int32_t def;
+	float max;
+	float min;
+	float def;
 }EleCfg_t; // Elevator Position Configuration
 
 typedef struct
 {
-	uint16_t max; 
-	uint16_t min; 
-	uint16_t def; 
+	float max; 
+	float min; 
+	float def; 
 }ClaCfg_t; // Claw Position Configuration
 
 typedef struct
@@ -132,21 +132,12 @@ typedef struct
 
 #define CFG_SIZE() sizeof(Cfg_t)
 
-#define CFG_VER_DEF ((1<<24)|(7<<16)|(1<<8)|7)
-#define CFG_FLG_DEF 0
-
-#define FLG_CFG_DEF \
-{ \
-	.imu = 0, \
-	.mag = 0, \
-	.ahr = 0, \
-	.pid = 0, \
-	.rmp = 0, \
-	.spd = 0, \
-	.mec = 0, \
-	.ele = 0, \
-	.cla = 0, \
-}
+#define CFG_VER_A 1u
+#define CFG_VER_B 7u
+#define CFG_VER_C 1u
+#define CFG_VER_D 7u
+#define CFG_VER_DEF ((CFG_VER_A<<24)|(CFG_VER_B<<16)|(CFG_VER_C<<8)|CFG_VER_D)
+#define CFG_FLG_DEF (CFG_FLAG_AHR|CFG_FLAG_PID|CFG_FLAG_RMP|CFG_FLAG_SPD|CFG_FLAG_MEC|CFG_FLAG_ELE|CFG_FLAG_CLA)
 
 #define IMU_CFG_DEF \
 { \
@@ -191,19 +182,29 @@ typedef struct
 
 #define SPD_CFG_DEF \
 { \
-	.x = 4000, \
-	.y = 4000, \
-	.z = 6000, \
+	.x = 4, \
+	.y = 4, \
+	.z = 6, \
 	.e = 0, \
 	.c = 0, \
 }
 
+/*******************************************/
+/* Mecanum Wheel Power Transmission System */
+/*******************************************/
+/*              2        1                 */
+/*                  |y                     */
+/*                 b|___x                  */
+/*               z    a                    */
+/*              3        4                 */
+/*                                         */
+/*******************************************/
 #define MEC_CFG_DEF \
 { \
-	.lx = 160, \
-	.ly = 160, \
-	.r1 = 9, \
-	.r2 = 70, \
+	.lx = 0.165f, \
+	.ly = 0.160f, \
+	.r1 = 0.009f, \
+	.r2 = 0.070f, \
 }
 
 #define ELE_CFG_DEF \
@@ -238,12 +239,12 @@ typedef struct
 void Cfg_Load(Cfg_t* cfg);
 uint8_t Cfg_Save(Cfg_t* cfg);
 
-CfgVer_t Cfg_GetVer(CfgVer_t msk);
-CfgVer_t Cfg_SetVer(CfgVer_t ver, CfgVer_t msk);
+CfgVer_t Cfg_GetVer(CfgVer_t mask);
+void Cfg_SetVer(CfgVer_t ver, CfgVer_t mask);
 
-CfgFlg_t Cfg_GetFlag(CfgFlg_t flg);
-void Cfg_SetFlag(CfgFlg_t flg);
-void Cfg_ClrFlag(CfgFlg_t flg);
+CfgFlg_t Cfg_GetFlag(CfgFlg_t flag);
+void Cfg_SetFlag(CfgFlg_t flag);
+void Cfg_ClrFlag(CfgFlg_t flag);
 
 void Cfg_Init(void);
 void Cfg_Proc(void);

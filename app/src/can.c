@@ -33,11 +33,11 @@ void ZGyro_Process(ZGyro_t* zgyro, uint8_t* data)
 		zgyro->ini++;
 	}
 	zgyro->rate = zgyro->angle_fdb[1] - zgyro->angle_fdb[0];
-	zgyro->rate_deg = ZGYRO_VAL2DEG_RECIP * zgyro->rate;
-	zgyro->rate_rad = DEG2RAD_RECIP * zgyro->rate_deg;
+	zgyro->rate_deg = ZGYRO_RATE_DEG_RECIP * zgyro->rate;
+	zgyro->rate_rad = DEG2RAD_RECIP * zgyro->rate;
 	zgyro->angle = zgyro->angle_fdb[1] - zgyro->bias;
-	zgyro->angle_deg = zgyro->angle * ZGYRO_VAL2DEG_RECIP;
-	zgyro->angle_rad = DEG2RAD_RECIP * zgyro->angle_deg;
+	zgyro->angle_deg = ZGYRO_ANGLE_DEG_RECIP * zgyro->angle;
+	zgyro->angle_rad = ZGYRO_ANGLE_RAD_RECIP * zgyro->angle;
 }
 
 void Motor_Process(Motor_t* motor, uint8_t* data)
@@ -67,13 +67,13 @@ void Motor_Process(Motor_t* motor, uint8_t* data)
 	}
 	Ekf_Proc(&motor->rate_ekf, motor->rate_raw);
 	motor->rate_filtered = (int32_t)motor->rate_ekf.e;
-	motor->rate_deg = MOTOR_VAL2DEG_RECIP * motor->rate_filtered;
-	motor->rate_rad = DEG2RAD_RECIP * motor->rate_deg;
+	motor->rate_deg = MOTOR_RATE_DEG_RECIP * motor->rate_filtered;
+	motor->rate_rad = MOTOR_RATE_RAD_RECIP * motor->rate_filtered;
 	motor->angle_raw = (motor->angle_fdb[1] - motor->bias) + motor->round * MOTOR_ECD_MOD;
 	Ekf_Proc(&motor->angle_ekf, motor->angle_raw);
 	motor->angle_filtered = (int32_t)motor->angle_ekf.e;
-	motor->angle_deg = MOTOR_VAL2DEG_RECIP * motor->angle_filtered;
-	motor->angle_rad = DEG2RAD_RECIP * motor->angle_deg;
+	motor->angle_deg = MOTOR_ANGLE_DEG_RECIP * motor->angle_filtered;
+	motor->angle_rad = MOTOR_ANGLE_RAD_RECIP * motor->angle_filtered;
 }
 
 uint8_t ZGyro_Ready(const ZGyro_t* zgyro)

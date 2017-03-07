@@ -29,7 +29,7 @@ extern "C" {
 #include "sch.h" // Scheduler
 	
 void KOS_Boot(void);
-void KOS_Kill(void);
+void KOS_Stop(void);
 	
 #ifdef __cplusplus
 }

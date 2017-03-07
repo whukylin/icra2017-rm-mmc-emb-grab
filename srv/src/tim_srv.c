@@ -18,15 +18,12 @@
 
 void TickTimCallback(void)
 {
-	//Clk_Spin();
+	Clk_Spin();
 }
 
 void SyncTimCallback(void)
 {
-	//Sch_Proc();
-	static uint32_t tick = 0;
-	if (tick % 4 == 0)
-	{
-		Upd_Proc();
-	}
+	Sch_Proc();
 }
+
+

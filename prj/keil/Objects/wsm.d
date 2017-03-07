@@ -8,7 +8,6 @@
 .\objects\wsm.o: ..\..\asp\inc\ekf.h
 .\objects\wsm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\wsm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\wsm.o: ..\..\asp\inc\maf.h
 .\objects\wsm.o: ..\..\app\inc\wdg.h
 .\objects\wsm.o: ..\..\app\inc\cfg.h
 .\objects\wsm.o: ..\..\app\inc\fos.h

@@ -63,11 +63,11 @@ static Maf_t fx, fy, fz;
 static float buf[3][KEY_CONTROL_MAF_LEN];
 static void GetChassisVelocityRef(HCP_t* hcp)
 {
-	float sx = hcp->key.Shift ? cfg.spd.x : cfg.spd.x / 2.f;
-	float sy = hcp->key.Shift ? cfg.spd.y : cfg.spd.y / 2.f;
-	float sz = hcp->key.Shift ? cfg.spd.z : cfg.spd.z / 2.f;
-	float vx = hcp->key.A ? -sx : hcp->key.D ? sx : 0;
-	float vy = hcp->key.S ? -sy : hcp->key.W ? sy : 0;
+	float sx = hcp->key.press.Shift ? cfg.spd.x : cfg.spd.x / 2.f;
+	float sy = hcp->key.press.Shift ? cfg.spd.y : cfg.spd.y / 2.f;
+	float sz = hcp->key.press.Shift ? cfg.spd.z : cfg.spd.z / 2.f;
+	float vx = hcp->key.press.A ? -sx : hcp->key.press.D ? sx : 0;
+	float vy = hcp->key.press.S ? -sy : hcp->key.press.W ? sy : 0;
 	float vz = map(hcp->mouse.x, MOUSE_SPEED_MIN, MOUSE_SPEED_MAX, -sz, sz);
 	chassisVelocityRef.x = Maf_Proc(&fx, vx);
 	chassisVelocityRef.y = Maf_Proc(&fy, vy);

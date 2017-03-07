@@ -53,14 +53,17 @@ typedef struct
 typedef union
 {
 	uint16_t val;
-	uint8_t W : 1;
-	uint8_t S : 1;
-	uint8_t A : 1;
-	uint8_t D : 1;
-	uint8_t Shift : 1;
-	uint8_t Ctrl : 1;
-	uint8_t Q : 1;
-	uint8_t E : 1;
+	struct
+	{
+		uint8_t W : 1;
+		uint8_t S : 1;
+		uint8_t A : 1;
+		uint8_t D : 1;
+		uint8_t Shift : 1;
+		uint8_t Ctrl : 1;
+		uint8_t Q : 1;
+		uint8_t E : 1;
+	}press;
 }Key_t; // Key control domain
 
 typedef struct
