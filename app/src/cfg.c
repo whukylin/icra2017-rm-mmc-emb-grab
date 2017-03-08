@@ -100,4 +100,10 @@ void Cfg_Proc(void)
 	Cfg_Save(&cfg);
 }
 
+void Cfg_Reset(void)
+{
+	Cfg_t tmp = CFG_DEF;
+	Cfg_Save(&tmp);
+	Cfg_Load(&cfg);
+}
 

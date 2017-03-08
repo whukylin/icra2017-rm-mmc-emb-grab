@@ -20,63 +20,58 @@
 /*                  Odometer                  */
 /**********************************************/
 
-PeriphsState_t functionalStateFdb;
-MecanumState_t mecanumPositionFdb;
-MecanumState_t mecanumVelocityFdb;
-MecanumState_t mecanumCurrentsFdb;
-ChassisState_t chassisPositionFdb;
-ChassisState_t chassisVelocityFdb;
+Odo_t odo;
 
 static void GetFunctionalStateFdb(void)
 {
-	FS_Det(LED_GREEN_IS_ON(), &functionalStateFdb, FS_LED_GREEN);
-	FS_Det(LED_RED_IS_ON(), &functionalStateFdb, FS_LED_RED);
+	FS_Det(LED_GREEN_IS_ON(), &odo.fs, FS_LED_GREEN);
+	FS_Det(LED_RED_IS_ON(), &odo.fs, FS_LED_RED);
 }
 
 static void GetMecanumPositionFdb(void)
 {
-	mecanumPositionFdb.w1 = motor[0].angle_rad;
-	mecanumPositionFdb.w2 = motor[1].angle_rad;
-	mecanumPositionFdb.w3 = motor[2].angle_rad;
-	mecanumPositionFdb.w4 = motor[3].angle_rad;
+	odo.mp.w1 = motor[0].angle_rad;
+	odo.mp.w2 = motor[1].angle_rad;
+	odo.mp.w3 = motor[2].angle_rad;
+	odo.mp.w4 = motor[3].angle_rad;
 }
 
 static void GetMecanumVelocityFdb(void)
 {
-	mecanumVelocityFdb.w1 = motor[0].rate_rad;
-	mecanumVelocityFdb.w2 = motor[1].rate_rad;
-	mecanumVelocityFdb.w3 = motor[2].rate_rad;
-	mecanumVelocityFdb.w4 = motor[3].rate_rad;
+	odo.mv.w1 = motor[0].rate_rad;
+	odo.mv.w2 = motor[1].rate_rad;
+	odo.mv.w3 = motor[2].rate_rad;
+	odo.mv.w4 = motor[3].rate_rad;
 }
 
 static void GetMecanumCurrentsFdb(void)
 {
-	mecanumCurrentsFdb.w1 = motor[0].current_fdb;
-	mecanumCurrentsFdb.w2 = motor[1].current_fdb;
-	mecanumCurrentsFdb.w3 = motor[2].current_fdb;
-	mecanumCurrentsFdb.w4 = motor[3].current_fdb;
+	odo.mc.w1 = motor[0].current_fdb;
+	odo.mc.w2 = motor[1].current_fdb;
+	odo.mc.w3 = motor[2].current_fdb;
+	odo.mc.w4 = motor[3].current_fdb;
 }
 
 static void GetChassisPositionFdb(void)
 {
-	Mec_Synthe((float*)&mecanumPositionFdb, (float*)&chassisPositionFdb);
+	Mec_Synthe((float*)&odo.mp, (float*)&odo.cp);
 }
 
 static void GetChassisVelocityFdb(void)
 {
-	Mec_Synthe((float*)&mecanumVelocityFdb, (float*)&chassisVelocityFdb);
+	Mec_Synthe((float*)&odo.mv, (float*)&odo.cv);
 }
 
 void Odo_Init(void)
 {
 	Can_Init();
 
-	FS_Clr(&functionalStateFdb, FS_ALL);
-	CS_Set(&chassisPositionFdb, 0, 0, 0);
-	CS_Set(&chassisVelocityFdb, 0, 0, 0);
-	MS_Set(&mecanumPositionFdb, 0, 0, 0, 0);
-	MS_Set(&mecanumVelocityFdb, 0, 0, 0, 0);
-	MS_Set(&mecanumCurrentsFdb, 0, 0, 0, 0);
+	FS_Clr(&odo.fs, FS_ALL);
+	CS_Set(&odo.cp, 0, 0, 0);
+	CS_Set(&odo.cv, 0, 0, 0);
+	MS_Set(&odo.mp, 0, 0, 0, 0);
+	MS_Set(&odo.mv, 0, 0, 0, 0);
+	MS_Set(&odo.mc, 0, 0, 0, 0);
 }
 
 void Odo_Proc(void)

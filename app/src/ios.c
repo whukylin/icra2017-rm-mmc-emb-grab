@@ -43,11 +43,11 @@ GETCHAR_PROTOTYPE
 
 void Ios_PutByte(uint8_t b)
 {
-	//Tty_WriteByte(b);
-	//Dbi_WriteByte(b);
-	//Btm_WriteByte(b);
-	while (USART_GetFlagStatus(USART3, USART_FLAG_TC) == RESET);
-	USART3->DR = b;
+	Tty_WriteByte(b);
+	Dbi_WriteByte(b);
+	Btm_WriteByte(b);
+	//while (USART_GetFlagStatus(USART3, USART_FLAG_TC) == RESET);
+	//USART3->DR = b;
 }
 
 uint8_t Ios_GetByte(void)

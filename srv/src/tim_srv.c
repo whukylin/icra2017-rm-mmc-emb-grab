@@ -15,7 +15,6 @@
  */
 
 #include "tim_srv.h"
-#include <stdio.h>
 
 void TickTimCallback(void)
 {
@@ -24,8 +23,7 @@ void TickTimCallback(void)
 
 void SyncTimCallback(void)
 {
-	//Sch_Proc();
-	printf("SyncTimCallback\n");
+	Sch_Proc();
 }
 
 

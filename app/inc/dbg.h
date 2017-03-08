@@ -26,16 +26,21 @@ extern "C" {
 #endif
 
 #include "ios.h"
-#include "dci.h"
-#include "can.h"
 #include "wsm.h"
+#include "ctl.h"
 
-void Dbg_DBUS(const DBUS_t* dbus);
+void Dbg_Mec(void);
+void Dbg_Pid(void);
+void Dbg_Rci(void);
+void Dbg_Hci(void);
+void Dbg_Dci(void);
 void Dbg_Cmd(void);
+void Dbg_Odo(void);
 void Dbg_Wsm(void);
 void Dbg_Wdg(void);
-void Dbg_Motor(const Motor_t* motor);
-void Dbg_ZGyro(const ZGyro_t* zgyro);
+void Dbg_Can(void);
+void Dbg_Motor(void);
+void Dbg_ZGyro(void);
 	
 #ifdef __cplusplus
 }

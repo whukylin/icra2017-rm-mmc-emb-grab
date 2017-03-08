@@ -38,7 +38,7 @@ void TickTim_Stop(void)
 
 void TICK_TIM_IRQ_HANDLER(void)
 {
-	if (TIM_GetITStatus(TICK_TIM, TIM_IT_Update)!= RESET)
+	if (TIM_GetITStatus(TICK_TIM, TIM_IT_Update) != RESET)
 	{
 		TIM_ClearITPendingBit(TICK_TIM, TIM_IT_Update);
 		TIM_ClearFlag(TICK_TIM, TIM_FLAG_Update);
@@ -56,7 +56,7 @@ void SyncTim_Config()
 void SyncTim_Start()
 {
 	TIM_ClearFlag(SYNC_TIM, TIM_FLAG_Update);
-	TIM_ITConfig(SYNC_TIM, TIM_IT_Update,ENABLE);
+	TIM_ITConfig(SYNC_TIM, TIM_IT_Update, ENABLE);
 	TIM_Cmd(SYNC_TIM, ENABLE);
 }
 
@@ -65,6 +65,17 @@ void SyncTim_Stop()
 	TIM_Cmd(SYNC_TIM, DISABLE);
 	TIM_ITConfig(SYNC_TIM, TIM_IT_Update, DISABLE);
 	TIM_ClearFlag(SYNC_TIM, TIM_FLAG_Update);
+}
+
+void SYNC_TIM_IRQ_HANDLER()
+{
+	if (TIM_GetITStatus(SYNC_TIM, TIM_IT_Update) != RESET)
+	{
+		TIM_ClearITPendingBit(SYNC_TIM, TIM_IT_Update);
+		TIM_ClearFlag(SYNC_TIM, TIM_FLAG_Update);
+
+		SyncTimCallback();
+	}
 }
 
 void Tim_Config()
@@ -85,14 +96,5 @@ void Tim_Stop()
 	SyncTim_Stop();
 }
 
-void SYNC_TIM_IRQ_HANDLER()
-{
-	if (TIM_GetITStatus(SYNC_TIM, TIM_IT_Update)!= RESET)
-	{
-		TIM_ClearITPendingBit(SYNC_TIM, TIM_IT_Update);
-		TIM_ClearFlag(SYNC_TIM, TIM_FLAG_Update);
 
-		SyncTimCallback();
-	}
-}
 

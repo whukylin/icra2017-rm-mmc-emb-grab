@@ -34,10 +34,17 @@ void Dci_Proc(DBUS_t* dbus)
 	GetSwitchStates(&dbus->rcp);
 	GetSwitchEvents(&dbus->rcp);
 	if (switchStates[SW_IDX_R] == SW_UP) {
+		if (lastSwitchStates[SW_IDX_R] != SW_UP) {
+			Rci_Init();
+		}
 		Rci_Proc(&dbus->rcp);
 	} else if (switchStates[SW_IDX_R] == SW_MD) {
+		if (lastSwitchStates[SW_IDX_R] != SW_MD) {
+			Hci_Init();
+		}
 		Hci_Proc(&dbus->hcp);
 	} else if (switchStates[SW_IDX_R] == SW_DN) {
+		// Other control interface
 	} else {
 		// Should never reach here
 	}

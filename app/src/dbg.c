@@ -16,19 +16,46 @@
  
 #include "dbg.h"
 
-void Dbg_DBUS(const DBUS_t* dbus)
+void Dbg_Mec(void)
+{
+	printf("lx=%.3f,ly=%.3f,r1=%.3f,r2=%.3f\n", cfg.mec.lx, cfg.mec.ly, cfg.mec.r1, cfg.mec.r2);
+}
+
+void Dbg_Pid(void)
+{
+	printf("kp=%.1f,ki=%.1f,kd=%.1f,it=%.1f\n", cfg.pid.kp, cfg.pid.ki, cfg.pid.kd, cfg.pid.it);
+}
+
+void Dbg_Rci(void)
+{
+	printf("ch0=%d,ch1=%d,ch2=%d,ch3=%d,s1=%d,s2=%d\n", 
+		dbus.rcp.ch[0], dbus.rcp.ch[1], dbus.rcp.ch[2], dbus.rcp.ch[3], dbus.rcp.sw[0], dbus.rcp.sw[1]);
+}
+
+void Dbg_Hci(void)
+{
+	printf("k=%d,x=%d,y=%d,z=%d,l=%d,r=%d\n", 
+		dbus.hcp.key.val, dbus.hcp.mouse.x, dbus.hcp.mouse.y, dbus.hcp.mouse.z,
+		dbus.hcp.mouse.b[0], dbus.hcp.mouse.b[1]);
+}
+
+void Dbg_Dci(void)
 {
 	printf("ch0=%d,ch1=%d,ch2=%d,ch3=%d,s1=%d,s2=%d,k=%d,x=%d,y=%d,z=%d,l=%d,r=%d\n", 
-		dbus->rcp.ch[0], dbus->rcp.ch[1], dbus->rcp.ch[2], dbus->rcp.ch[3], dbus->rcp.sw[0],
-		dbus->rcp.sw[1], dbus->hcp.key.val, dbus->hcp.mouse.x, dbus->hcp.mouse.y, dbus->hcp.mouse.z,
-		dbus->hcp.mouse.b[0], dbus->hcp.mouse.b[1]);
+		dbus.rcp.ch[0], dbus.rcp.ch[1], dbus.rcp.ch[2], dbus.rcp.ch[3], dbus.rcp.sw[0],
+		dbus.rcp.sw[1], dbus.hcp.key.val, dbus.hcp.mouse.x, dbus.hcp.mouse.y, dbus.hcp.mouse.z,
+		dbus.hcp.mouse.b[0], dbus.hcp.mouse.b[1]);
 }
 
 void Dbg_Cmd(void)
 {
-	printf("vx=%f\tvy=%f\tvz=%f\n", chassisVelocityRef.x, chassisVelocityRef.y, chassisVelocityRef.z);
+	printf("vx=%.3f\tvy=%.3f\tvz=%.3f\n", cmd.cv.x, cmd.cv.y, cmd.cv.z);
 }
 
+void Dbg_Odo(void)
+{
+	printf("px=%.3f\tpy=%.3f\tpz=%.3f\tvx=%.3f\tvy=%.3f\tvz=%.3f\n", odo.cp.x, odo.cp.y, odo.cp.z, odo.cv.x, odo.cv.y, odo.cv.z);
+}
 
 void Dbg_Wsm(void)
 {
@@ -40,14 +67,19 @@ void Dbg_Wdg(void)
 	printf("wdg=%x,rcv=%d,fatal=%d\n", Wdg_GetErr(), Wdg_IsErrSet(WDG_ERR_RCV), Wdg_IsErrSet(WDG_ERR_FATAL));
 }
 
-void Dbg_Motor(const Motor_t* motor)
+void Dbg_Can(void)
 {
-	printf("%d\t%d\t%d\t%d\n", motor->angle_raw, motor->angle_filtered, motor->rate_raw, motor->rate_filtered);
+	printf("%d\t%d\t%d\t%d\t%d\n", motor[0].id, motor[1].id, motor[2].id, motor[3].id, zgyro.id);
 }
 
-void Dbg_ZGyro(const ZGyro_t* zgyro)
+void Dbg_Motor(void)
 {
-	printf("%d\t%d\n", zgyro->angle, zgyro->rate);
+	printf("%d\t%d\t%d\t%d\n", motor[0].angle_raw, motor[1].angle_raw, motor[2].angle_raw, motor[3].angle_raw);
+}
+
+void Dbg_ZGyro(void)
+{
+	printf("%d\t%d\n", zgyro.angle, zgyro.rate);
 }
 
 

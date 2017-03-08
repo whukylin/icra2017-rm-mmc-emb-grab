@@ -20,6 +20,8 @@
 /*              Logic Controller              */
 /**********************************************/
 
+Ctl_t ctl;
+
 PID_t CM1SpeedPID;
 PID_t CM2SpeedPID;
 PID_t CM3SpeedPID;
@@ -30,15 +32,12 @@ Rmp_t CM2SpeedRmp;
 Rmp_t CM3SpeedRmp;
 Rmp_t CM4SpeedRmp;
 
-PeriphsState_t functionalStateCtl;
-MecanumState_t mecanumCurrentsCtl;
-
 /**********************************************/
 /*    Peripherals Functional State Control    */
 /**********************************************/
 static void FunctionalStateControl(void)
 {
-	FS_Cpy(&functionalStateCtl, functionalStateRef, FS_LED_GREEN | FS_LED_RED);
+	FS_Cpy(&ctl.fs, cmd.fs, FS_LED_GREEN | FS_LED_RED);
 }
 
 /**********************************************/
@@ -46,10 +45,10 @@ static void FunctionalStateControl(void)
 /**********************************************/
 static void ChassisVelocityControl(void)
 {
-	mecanumCurrentsCtl.w1 = PID_Calc(&CM1SpeedPID, mecanumVelocityRef.w1, mecanumVelocityFdb.w1) * Rmp_Calc(&CM1SpeedRmp);
-	mecanumCurrentsCtl.w2 = PID_Calc(&CM2SpeedPID, mecanumVelocityRef.w2, mecanumVelocityFdb.w2) * Rmp_Calc(&CM2SpeedRmp);
-	mecanumCurrentsCtl.w3 = PID_Calc(&CM3SpeedPID, mecanumVelocityRef.w3, mecanumVelocityFdb.w3) * Rmp_Calc(&CM3SpeedRmp);
-	mecanumCurrentsCtl.w4 = PID_Calc(&CM4SpeedPID, mecanumVelocityRef.w4, mecanumVelocityFdb.w4) * Rmp_Calc(&CM4SpeedRmp);
+	ctl.mc.w1 = PID_Calc(&CM1SpeedPID, cmd.mv.w1, odo.mv.w1) * Rmp_Calc(&CM1SpeedRmp);
+	ctl.mc.w2 = PID_Calc(&CM2SpeedPID, cmd.mv.w2, odo.mv.w2) * Rmp_Calc(&CM2SpeedRmp);
+	ctl.mc.w3 = PID_Calc(&CM3SpeedPID, cmd.mv.w3, odo.mv.w3) * Rmp_Calc(&CM3SpeedRmp);
+	ctl.mc.w4 = PID_Calc(&CM4SpeedPID, cmd.mv.w4, odo.mv.w4) * Rmp_Calc(&CM4SpeedRmp);
 }
 
 static void PID_Init(PID_t* pid)
@@ -98,8 +97,8 @@ void Ctl_Init(void)
 	Rmp_Reset(&CM3SpeedRmp);
 	Rmp_Reset(&CM4SpeedRmp);
 	
-	FS_Clr(&functionalStateCtl, FS_ALL);
-	MS_Set(&mecanumCurrentsCtl, 0, 0, 0, 0);
+	FS_Clr(&ctl.fs, FS_ALL);
+	MS_Set(&ctl.mc, 0, 0, 0, 0);
 }
 
 /**********************************************/

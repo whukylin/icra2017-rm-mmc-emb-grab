@@ -30,15 +30,20 @@ extern "C" {
 #include "sys.h"
 #include "mec.h"
 
+typedef struct
+{
+	PeriphsState_t fs;
+	MecanumState_t mp;
+	MecanumState_t mv;
+	MecanumState_t mc;
+	ChassisState_t cp;
+	ChassisState_t cv;
+}Odo_t;
+
 void Odo_Init(void);
 void Odo_Proc(void);
 
-extern PeriphsState_t functionalStateFdb;
-extern MecanumState_t mecanumPositionFdb;
-extern MecanumState_t mecanumVelocityFdb;
-extern MecanumState_t mecanumCurrentsFdb;
-extern ChassisState_t chassisPositionFdb;
-extern ChassisState_t chassisVelocityFdb;
+extern Odo_t odo;
 
 #ifdef __cplusplus
 }

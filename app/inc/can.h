@@ -61,6 +61,7 @@ extern "C" {
 
 typedef struct
 {
+	uint32_t id;
 	uint16_t ini;
 	int32_t angle_fdb[2];
 	int32_t bias;
@@ -74,6 +75,7 @@ typedef struct
 
 typedef struct
 {
+	uint32_t id;
 	uint16_t ini;
 	Ekf_t rate_ekf;
 	Ekf_t angle_ekf;
@@ -93,8 +95,8 @@ typedef struct
 	float angle_rad;
 }Motor_t;
 
-void ZGyro_Process(ZGyro_t* zgyro, uint8_t* data);
-void Motor_Process(Motor_t* motor, uint8_t* data);
+void ZGyro_Process(ZGyro_t* zgyro, uint32_t id, uint8_t* data);
+void Motor_Process(Motor_t* motor, uint32_t id, uint8_t* data);
 uint8_t ZGyro_Ready(const ZGyro_t* zgyro);
 uint8_t Motor_Ready(const Motor_t* motor);
 void ZGyro_Reset(ZGyro_t* zgyro);

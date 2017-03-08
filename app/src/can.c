@@ -24,8 +24,9 @@ ZGyro_t zgyro;
 Motor_t motor[MOTOR_NUM];
 
 #define PI 3.1415926f
-void ZGyro_Process(ZGyro_t* zgyro, uint8_t* data)
+void ZGyro_Process(ZGyro_t* zgyro, uint32_t id, uint8_t* data)
 {
+	zgyro->id = id;
 	zgyro->angle_fdb[0] = zgyro->angle_fdb[1];
 	zgyro->angle_fdb[1] = ((int32_t)(data[0]<<24)|(int32_t)(data[1]<<16)|(int32_t)(data[2]<<8)|(int32_t)(data[3]));
 	if (zgyro->ini < ZGYRO_INI_CNT) {
@@ -40,8 +41,9 @@ void ZGyro_Process(ZGyro_t* zgyro, uint8_t* data)
 	zgyro->angle_rad = ZGYRO_ANGLE_RAD_RECIP * zgyro->angle;
 }
 
-void Motor_Process(Motor_t* motor, uint8_t* data)
+void Motor_Process(Motor_t* motor, uint32_t id, uint8_t* data)
 {
+	motor->id = id;
 	motor->angle_fdb[0] = motor->angle_fdb[1];
 	motor->angle_fdb[1] = (data[0] << 8) | data[1];
 	motor->current_fdb = (data[2] << 8) | data[3];
@@ -136,31 +138,31 @@ void Can_Proc(uint32_t id, uint8_t* data)
 	switch (id) {
 	case ZGYRO_FDB_CAN_MSG_ID:
 		Wdg_Feed(WDG_IDX_ZGYRO);
-		ZGyro_Process(&zgyro, data);
+		ZGyro_Process(&zgyro, id, data);
 		break;
 	case MOTOR1_FDB_CAN_MSG_ID:
 		Wdg_Feed(WDG_IDX_MOTOR1);
-		Motor_Process(&motor[0], data);
+		Motor_Process(&motor[0], id, data);
 		break;
 	case MOTOR2_FDB_CAN_MSG_ID:
 		Wdg_Feed(WDG_IDX_MOTOR2);
-		Motor_Process(&motor[1], data);
+		Motor_Process(&motor[1], id, data);
 		break;
 	case MOTOR3_FDB_CAN_MSG_ID:
 		Wdg_Feed(WDG_IDX_MOTOR3);
-		Motor_Process(&motor[2], data);
+		Motor_Process(&motor[2], id, data);
 		break;
 	case MOTOR4_FDB_CAN_MSG_ID:
 		Wdg_Feed(WDG_IDX_MOTOR4);
-		Motor_Process(&motor[3], data);
+		Motor_Process(&motor[3], id, data);
 		break;
 	case MOTOR5_FDB_CAN_MSG_ID:
 		Wdg_Feed(WDG_IDX_MOTOR5);
-		Motor_Process(&motor[4], data);
+		Motor_Process(&motor[4], id, data);
 		break;
 	case MOTOR6_FDB_CAN_MSG_ID:
 		Wdg_Feed(WDG_IDX_MOTOR6);
-		Motor_Process(&motor[5], data);
+		Motor_Process(&motor[5], id, data);
 		break;
 	default:
 		break;

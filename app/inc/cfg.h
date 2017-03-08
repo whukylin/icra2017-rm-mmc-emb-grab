@@ -174,17 +174,19 @@ typedef struct
 	.Omax = 4950, \
 }
 
-#define RMP_CNT_DEF 4000
+#define RMP_CNT_DEF 250
 #define RMP_CFG_DEF \
 { \
 	.cnt = RMP_CNT_DEF, \
 }
 
+#define SPD_TRA_DEF 3
+#define SPD_ROT_DEF 6
 #define SPD_CFG_DEF \
 { \
-	.x = 4, \
-	.y = 4, \
-	.z = 6, \
+	.x = SPD_TRA_DEF, \
+	.y = SPD_TRA_DEF, \
+	.z = SPD_ROT_DEF, \
 	.e = 0, \
 	.c = 0, \
 }
@@ -248,6 +250,8 @@ void Cfg_ClrFlag(CfgFlg_t flag);
 
 void Cfg_Init(void);
 void Cfg_Proc(void);
+
+void Cfg_Reset(void);
 
 extern Cfg_t cfg;
 

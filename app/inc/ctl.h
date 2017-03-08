@@ -31,12 +31,20 @@ extern "C" {
 #include "pid.h"
 #include "rmp.h"
 
+typedef struct
+{
+	PeriphsState_t fs;
+	MecanumState_t mc;
+}Ctl_t;
+
 void Ctl_Init(void);
 void Ctl_Proc(void);
 
 /**********************************************/
 /*             Exported Variables             */
 /**********************************************/
+
+extern Ctl_t ctl;
 
 extern PID_t CM1SpeedPID;
 extern PID_t CM2SpeedPID;
@@ -47,9 +55,6 @@ extern Rmp_t CM1SpeedRmp;
 extern Rmp_t CM2SpeedRmp;
 extern Rmp_t CM3SpeedRmp;
 extern Rmp_t CM4SpeedRmp;
-
-extern PeriphsState_t functionalStateCtl;
-extern MecanumState_t mecanumCurrentsCtl;
 
 #ifdef __cplusplus
 }

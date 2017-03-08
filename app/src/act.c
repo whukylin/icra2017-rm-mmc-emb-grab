@@ -22,12 +22,12 @@
 
 static void PeriphsStateAct(void)
 {
-	if (FS_Get(&functionalStateCtl, FS_LED_GREEN)) {
+	if (FS_Get(&ctl.fs, FS_LED_GREEN)) {
 		LED_GREEN_ON();
 	} else {
 		LED_GREEN_OFF();
 	}
-	if (FS_Get(&functionalStateCtl, FS_LED_RED)) {
+	if (FS_Get(&ctl.fs, FS_LED_RED)) {
 		LED_RED_ON();
 	} else {
 		LED_RED_OFF();
@@ -36,7 +36,7 @@ static void PeriphsStateAct(void)
 
 static void ChassisStateAct(void)
 {
-	CM_CMD(mecanumCurrentsCtl.w1, mecanumCurrentsCtl.w2, mecanumCurrentsCtl.w3, mecanumCurrentsCtl.w4);
+	CM_CMD(ctl.mc.w1, ctl.mc.w2, ctl.mc.w3, ctl.mc.w4);
 }
 
 void Act_Init(void)

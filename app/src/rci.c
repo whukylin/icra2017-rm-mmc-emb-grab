@@ -43,7 +43,7 @@ void GetSwitchStates(const RCP_t* rcp)
 	}
 }
 
-static SwitchState_t lastSwitchStates[SW_CNT];
+SwitchState_t lastSwitchStates[SW_CNT];
 void GetSwitchEvents(const RCP_t* rcp)
 {
 	uint32_t i = 0;
@@ -67,9 +67,9 @@ static void GetFunctionalStateRef(const RCP_t* rcp)
 
 static void GetChassisVelocityRef(const RCP_t* rcp)
 {
-	chassisVelocityRef.x = map(rcp->ch[0], CH_MIN, CH_MAX, -cfg.spd.x, cfg.spd.x);
-	chassisVelocityRef.y = map(rcp->ch[1], CH_MIN, CH_MAX, -cfg.spd.y, cfg.spd.y);
-	chassisVelocityRef.z = map(rcp->ch[2], CH_MIN, CH_MAX, -cfg.spd.z, cfg.spd.z);
+	cmd.cv.x = map(rcp->ch[0], CH_MIN, CH_MAX, -cfg.spd.x, cfg.spd.x);
+	cmd.cv.y = map(rcp->ch[1], CH_MIN, CH_MAX, -cfg.spd.y, cfg.spd.y);
+	cmd.cv.z = map(rcp->ch[2], CH_MIN, CH_MAX, -cfg.spd.z, cfg.spd.z);
 }
 
 void Rci_Init(void)

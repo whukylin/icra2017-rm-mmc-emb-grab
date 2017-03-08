@@ -44,6 +44,8 @@ void Rci_Proc(const RCP_t* rcp);
 extern SwitchState_t switchStates[SW_CNT];
 extern SwitchEvent_t switchEvents[SW_CNT];
 
+extern SwitchState_t lastSwitchStates[SW_CNT];
+
 #ifdef __cplusplus
 }
 #endif

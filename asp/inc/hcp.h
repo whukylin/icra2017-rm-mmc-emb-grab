@@ -20,9 +20,7 @@
 #include <stdint.h>
 
 /* ----------------------- PC Mouse Value Definition------------------------------ */
-#define MOUSE_SPEED_MIN          ((int16_t)-32768 )
-#define MOUSE_SPEED_MID          ((int16_t)0      )
-#define MOUSE_SPEED_MAX		       ((int16_t)32767  )
+#define MOUSE_SPEED_MAX		       ((int16_t)100    ) // Modified @ 32768
 #define MOUSE_BTN_UP         	   ((uint8_t)0      )
 #define MOUSE_BTN_DOWN           ((uint8_t)1      )
 /* ----------------------- PC Key Value Definition-------------------------------- */

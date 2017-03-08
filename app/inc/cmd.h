@@ -31,12 +31,17 @@ extern "C" {
 #include "cfg.h"
 #include "fun.h"
 
+typedef struct
+{
+	PeriphsState_t fs;
+	ChassisState_t cv;
+	MecanumState_t mv; // Auto-Wired
+}Cmd_t;
+
 void Cmd_Init(void);
 void Cmd_Proc(void);
 
-extern PeriphsState_t functionalStateRef;
-extern ChassisState_t chassisVelocityRef;
-extern MecanumState_t mecanumVelocityRef; // Auto-Wired
+extern Cmd_t cmd;
 
 #ifdef __cplusplus
 }

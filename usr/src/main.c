@@ -21,14 +21,14 @@ int main()
 	KOS_Boot();
 	while(1)
 	{
-		//Dbg_Wdg();
-		//Dbg_Wsm();
-		if (Clk_GetMsTick() % 5 == 0) {
+		if (Clk_GetMsTick() % 40 == 0) {
+			//Dbg_Mec();
+			//Dbg_Pid();
+			//Dbg_Dci();
+			//Dbg_Odo();
 			//Dbg_Cmd();
 			//Dbg_Wsm();
 			//Dbg_Wdg();
-			//printf("hello\n");
 		}
-		// TODO
   }
 }
