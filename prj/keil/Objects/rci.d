@@ -55,4 +55,6 @@
 .\objects\rci.o: ..\..\app\inc\cmd.h
 .\objects\rci.o: ..\..\asp\inc\maf.h
 .\objects\rci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\rci.o: ..\..\app\inc\aci.h
+.\objects\rci.o: ..\..\asp\inc\cbus.h
 .\objects\rci.o: ..\..\app\inc\wdg.h

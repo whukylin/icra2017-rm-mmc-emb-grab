@@ -54,7 +54,7 @@ typedef union MsgHead_t
 typedef RCP_t VirtualRC_t;
 typedef HCP_t VirtualHC_t;
 typedef DBUS_t VirtualDBUS_t;
-typedef DBUS_t VirtualCBUS_t;
+typedef CBUS_t VirtualCBUS_t;
 
 #define WRAP_U8(V) ((uint8_t)V)
 #define WRAP_U16(V) ((uint16_t)V)
@@ -90,7 +90,7 @@ typedef DBUS_t VirtualCBUS_t;
  * @arg body Message body
  * @ret Message length (num of bytes)
  */
-uint32_t Msg_Fifo_Push(FIFO_t* fifo, const MsgHead_t* head, const uint8_t* body);
+uint32_t Msg_Fifo_Push(FIFO_t* fifo, const void* head, const void* body);
 
 /**
  * Brief: Pop a single message from message fifo. 
@@ -99,7 +99,7 @@ uint32_t Msg_Fifo_Push(FIFO_t* fifo, const MsgHead_t* head, const uint8_t* body)
  * @arg body Message body
  * @ret Message length (num of bytes)
  */
-uint32_t Msg_Fifo_Pop(FIFO_t* fifo, const MsgHead_t* head, uint8_t* body);
+uint32_t Msg_Fifo_Pop(FIFO_t* fifo, const void* head, void* body);
 
 #ifdef __cplusplus
 }

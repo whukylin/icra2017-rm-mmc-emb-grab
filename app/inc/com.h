@@ -25,22 +25,32 @@
 extern "C" {
 #endif
 
-#include <stdio.h>
-
+#include "ios.h"
+#include "api.h"
 #include "msg.h"
 #include "cfg.h"
 #include "tty.h"
 #include "wdg.h"
 
-#define COM_RX_BUF_SIZE TTY_RX_FIFO_SIZE
+#define COM_RX_BUF_SIZE 256u
 
 void Com_Init(void);
+void Com_Read(void);
 void Com_Proc(void);
 
 void Btm_Proc(uint8_t data);
 void Dbi_Proc(uint8_t data);
 void Tty_Proc(uint8_t data);
 
+extern const MsgHead_t msg_header_vrc;
+extern const MsgHead_t msg_header_vhc;
+extern const MsgHead_t msg_header_vdbus;
+extern const MsgHead_t msg_header_vcbus;
+
+extern VirtualRC_t vrc;
+extern VirtualHC_t vhc;
+extern VirtualDBUS_t vdbus;
+extern VirtualCBUS_t vcbus;
 
 #ifdef __cplusplus
 }

@@ -61,6 +61,8 @@
 .\objects\upd.o: ..\..\app\inc\cmd.h
 .\objects\upd.o: ..\..\app\inc\hci.h
 .\objects\upd.o: ..\..\asp\inc\maf.h
+.\objects\upd.o: ..\..\app\inc\aci.h
+.\objects\upd.o: ..\..\asp\inc\cbus.h
 .\objects\upd.o: ..\..\app\inc\odo.h
 .\objects\upd.o: ..\..\bsp\inc\bsp.h
 .\objects\upd.o: ..\..\bsp\inc\btm.h

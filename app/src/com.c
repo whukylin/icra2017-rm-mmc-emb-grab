@@ -20,25 +20,62 @@
 /*          Communication          */
 /***********************************/
 
-/*
-static uint8_t buf[COM_RX_BUF_SIZE];
+const MsgHead_t msg_header_vrc = {MSG_HEADER_VRC};
+const MsgHead_t msg_header_vhc = {MSG_HEADER_VHC};
+const MsgHead_t msg_header_vdbus = {MSG_HEADER_VDBUS};
+const MsgHead_t msg_header_vcbus = {MSG_HEADER_VCBUS};
 
-static uint8_t id;
-static uint8_t len;
-static uint8_t key;
-static uint32_t head;
-*/
+VirtualRC_t vrc;
+VirtualHC_t vhc;
+VirtualDBUS_t vdbus;
+VirtualCBUS_t vcbus;
 
+static uint8_t buf[2][COM_RX_BUF_SIZE];
+static FIFO_t rx_fifo;
 
 void Com_Init(void)
 {
-	//Cfg_Init();
+	FIFO_Init(&rx_fifo, buf[0], COM_RX_BUF_SIZE);
+}
+
+void Com_Read(void)
+{
+	if (!Wdg_IsErrSet(WDG_ERR_TTY)) {
+		uint32_t len = Tty_RxCnt();
+		if (len) {
+			Tty_Read(buf[1], len);
+			FIFO_Push(&rx_fifo, buf[1], len);
+		}
+	} else if (!Wdg_IsErrSet(WDG_ERR_DBI)) {
+		uint32_t len = Dbi_RxCnt();
+		if (len) {
+			Dbi_Read(buf[1], len);
+			FIFO_Push(&rx_fifo, buf[1], len);
+		}
+	} else if (!Wdg_IsErrSet(WDG_ERR_BTM)) {
+		uint32_t len = Btm_RxCnt();
+		if (len) {
+			Btm_Read(buf[1], len);
+			FIFO_Push(&rx_fifo, buf[1], len);
+		}
+	}
 }
 
 void Com_Proc(void)
 {
-	//char* str;
-	//sscanf("cfg mec lx=%d, ly=%d, r1=%d, r2=%d", 
+	Com_Read();
+	if (Msg_Fifo_Pop(&rx_fifo, &msg_header_vrc, &vrc)) {
+		VRC_Proc(&vrc);
+	} else if (Msg_Fifo_Pop(&rx_fifo, &msg_header_vhc, &vhc)) {
+		VHC_Proc(&vhc);
+	} else if (Msg_Fifo_Pop(&rx_fifo, &msg_header_vdbus, &vdbus)) {
+		VDBUS_Proc(&vdbus);
+	} else if (Msg_Fifo_Pop(&rx_fifo, &msg_header_vcbus, &vcbus)) {
+		VCBUS_Proc(&vcbus);
+	} else {
+		uint8_t b;
+		FIFO_Pop(&rx_fifo, &b, 1);
+	}
 }
 
 void Tty_Proc(uint8_t data)

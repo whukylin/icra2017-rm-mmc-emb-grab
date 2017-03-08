@@ -55,6 +55,8 @@
 .\objects\ctl.o: ..\..\app\inc\hci.h
 .\objects\ctl.o: ..\..\asp\inc\maf.h
 .\objects\ctl.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\ctl.o: ..\..\app\inc\aci.h
+.\objects\ctl.o: ..\..\asp\inc\cbus.h
 .\objects\ctl.o: ..\..\app\inc\wdg.h
 .\objects\ctl.o: ..\..\app\inc\odo.h
 .\objects\ctl.o: ..\..\bsp\inc\bsp.h

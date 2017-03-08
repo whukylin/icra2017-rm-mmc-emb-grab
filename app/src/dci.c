@@ -29,7 +29,7 @@ void Dci_Init(void)
 	DBUS_Rst(&dbus);
 }
 
-void Dci_Proc(DBUS_t* dbus)
+void Dci_Proc(const DBUS_t* dbus)
 {
 	GetSwitchStates(&dbus->rcp);
 	GetSwitchEvents(&dbus->rcp);
@@ -45,12 +45,15 @@ void Dci_Proc(DBUS_t* dbus)
 		Hci_Proc(&dbus->hcp);
 	} else if (switchStates[SW_IDX_R] == SW_DN) {
 		// Other control interface
+		if (lastSwitchStates[SW_IDX_R] != SW_DN) {
+			Aci_Init();
+		}
 	} else {
 		// Should never reach here
 	}
 }
 
-void Rcv_Proc(uint8_t* dbuf)
+void Rcv_Proc(const uint8_t* dbuf)
 {
 	Wdg_Feed(WDG_IDX_RCV);
 	DBUS_Dec(&dbus, dbuf);

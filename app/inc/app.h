@@ -45,6 +45,7 @@ extern "C" {
 #include "srv.h"
 
 // Applications
+#include "aci.h" // Auto-Control Interface
 #include "act.h" // Action (Depend on BSP)
 #include "can.h" // Controller Area Network
 #include "cfg.h" // System Configuration

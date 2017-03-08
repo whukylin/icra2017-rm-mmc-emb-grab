@@ -44,7 +44,7 @@ extern "C" {
 
 void Rcv_Config(void);
 
-void RcvCallback(uint8_t* dbuf);
+void RcvCallback(const uint8_t* dbuf);
 
 #ifdef __cplusplus
 }

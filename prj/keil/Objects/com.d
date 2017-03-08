@@ -1,22 +1,13 @@
 .\objects\com.o: ..\..\app\src\com.c
 .\objects\com.o: ..\..\app\inc\com.h
+.\objects\com.o: ..\..\app\inc\ios.h
 .\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\com.o: ..\..\asp\inc\msg.h
-.\objects\com.o: ..\..\asp\inc\cbus.h
-.\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\com.o: ..\..\asp\inc\dbus.h
-.\objects\com.o: ..\..\asp\inc\rcp.h
-.\objects\com.o: ..\..\asp\inc\hcp.h
-.\objects\com.o: ..\..\asp\inc\fifo.h
-.\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\com.o: ..\..\asp\inc\crc16.h
-.\objects\com.o: ..\..\app\inc\cfg.h
-.\objects\com.o: ..\..\app\inc\fos.h
-.\objects\com.o: ..\..\drv\inc\flash.h
+.\objects\com.o: ..\..\bsp\inc\tty.h
+.\objects\com.o: ..\..\bsp\inc\stm32util.h
 .\objects\com.o: ..\..\bsp\inc\platform.h
 .\objects\com.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\com.o: ..\..\stl\CMSIS\core\core_cm4.h
+.\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\com.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\com.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\com.o: ..\..\stl\CMSIS\core\core_cmSimd.h
@@ -50,7 +41,30 @@
 .\objects\com.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\com.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\com.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
-.\objects\com.o: ..\..\app\inc\fun.h
-.\objects\com.o: ..\..\bsp\inc\tty.h
-.\objects\com.o: ..\..\bsp\inc\stm32util.h
+.\objects\com.o: ..\..\asp\inc\fifo.h
+.\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\com.o: ..\..\bsp\inc\dbi.h
+.\objects\com.o: ..\..\bsp\inc\btm.h
 .\objects\com.o: ..\..\app\inc\wdg.h
+.\objects\com.o: ..\..\api\inc\api.h
+.\objects\com.o: ..\..\app\inc\cmd.h
+.\objects\com.o: ..\..\app\inc\sys.h
+.\objects\com.o: ..\..\app\inc\fun.h
+.\objects\com.o: ..\..\app\inc\mec.h
+.\objects\com.o: ..\..\app\inc\cfg.h
+.\objects\com.o: ..\..\app\inc\fos.h
+.\objects\com.o: ..\..\drv\inc\flash.h
+.\objects\com.o: ..\..\asp\inc\mecanum.h
+.\objects\com.o: ..\..\app\inc\dci.h
+.\objects\com.o: ..\..\asp\inc\dbus.h
+.\objects\com.o: ..\..\asp\inc\rcp.h
+.\objects\com.o: ..\..\asp\inc\hcp.h
+.\objects\com.o: ..\..\app\inc\rci.h
+.\objects\com.o: ..\..\app\inc\cmd.h
+.\objects\com.o: ..\..\app\inc\hci.h
+.\objects\com.o: ..\..\asp\inc\maf.h
+.\objects\com.o: ..\..\app\inc\aci.h
+.\objects\com.o: ..\..\asp\inc\cbus.h
+.\objects\com.o: ..\..\asp\inc\msg.h
+.\objects\com.o: ..\..\asp\inc\crc16.h

@@ -1,23 +1,14 @@
 .\objects\com_srv.o: ..\..\srv\src\com_srv.c
 .\objects\com_srv.o: ..\..\srv\inc\com_srv.h
 .\objects\com_srv.o: ..\..\app\inc\com.h
+.\objects\com_srv.o: ..\..\app\inc\ios.h
 .\objects\com_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\com_srv.o: ..\..\asp\inc\msg.h
-.\objects\com_srv.o: ..\..\asp\inc\cbus.h
-.\objects\com_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\com_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\com_srv.o: ..\..\asp\inc\dbus.h
-.\objects\com_srv.o: ..\..\asp\inc\rcp.h
-.\objects\com_srv.o: ..\..\asp\inc\hcp.h
-.\objects\com_srv.o: ..\..\asp\inc\fifo.h
-.\objects\com_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\com_srv.o: ..\..\asp\inc\crc16.h
-.\objects\com_srv.o: ..\..\app\inc\cfg.h
-.\objects\com_srv.o: ..\..\app\inc\fos.h
-.\objects\com_srv.o: ..\..\drv\inc\flash.h
+.\objects\com_srv.o: ..\..\bsp\inc\tty.h
+.\objects\com_srv.o: ..\..\bsp\inc\stm32util.h
 .\objects\com_srv.o: ..\..\bsp\inc\platform.h
 .\objects\com_srv.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\com_srv.o: ..\..\stl\CMSIS\core\core_cm4.h
+.\objects\com_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\com_srv.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\com_srv.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\com_srv.o: ..\..\stl\CMSIS\core\core_cmSimd.h
@@ -51,7 +42,30 @@
 .\objects\com_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 .\objects\com_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\com_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
-.\objects\com_srv.o: ..\..\app\inc\fun.h
-.\objects\com_srv.o: ..\..\bsp\inc\tty.h
-.\objects\com_srv.o: ..\..\bsp\inc\stm32util.h
+.\objects\com_srv.o: ..\..\asp\inc\fifo.h
+.\objects\com_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\com_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\com_srv.o: ..\..\bsp\inc\dbi.h
+.\objects\com_srv.o: ..\..\bsp\inc\btm.h
 .\objects\com_srv.o: ..\..\app\inc\wdg.h
+.\objects\com_srv.o: ..\..\api\inc\api.h
+.\objects\com_srv.o: ..\..\app\inc\cmd.h
+.\objects\com_srv.o: ..\..\app\inc\sys.h
+.\objects\com_srv.o: ..\..\app\inc\fun.h
+.\objects\com_srv.o: ..\..\app\inc\mec.h
+.\objects\com_srv.o: ..\..\app\inc\cfg.h
+.\objects\com_srv.o: ..\..\app\inc\fos.h
+.\objects\com_srv.o: ..\..\drv\inc\flash.h
+.\objects\com_srv.o: ..\..\asp\inc\mecanum.h
+.\objects\com_srv.o: ..\..\app\inc\dci.h
+.\objects\com_srv.o: ..\..\asp\inc\dbus.h
+.\objects\com_srv.o: ..\..\asp\inc\rcp.h
+.\objects\com_srv.o: ..\..\asp\inc\hcp.h
+.\objects\com_srv.o: ..\..\app\inc\rci.h
+.\objects\com_srv.o: ..\..\app\inc\cmd.h
+.\objects\com_srv.o: ..\..\app\inc\hci.h
+.\objects\com_srv.o: ..\..\asp\inc\maf.h
+.\objects\com_srv.o: ..\..\app\inc\aci.h
+.\objects\com_srv.o: ..\..\asp\inc\cbus.h
+.\objects\com_srv.o: ..\..\asp\inc\msg.h
+.\objects\com_srv.o: ..\..\asp\inc\crc16.h

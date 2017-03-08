@@ -73,6 +73,8 @@
 .\objects\act.o: ..\..\app\inc\cmd.h
 .\objects\act.o: ..\..\app\inc\hci.h
 .\objects\act.o: ..\..\asp\inc\maf.h
+.\objects\act.o: ..\..\app\inc\aci.h
+.\objects\act.o: ..\..\asp\inc\cbus.h
 .\objects\act.o: ..\..\app\inc\wdg.h
 .\objects\act.o: ..\..\app\inc\odo.h
 .\objects\act.o: ..\..\app\inc\can.h

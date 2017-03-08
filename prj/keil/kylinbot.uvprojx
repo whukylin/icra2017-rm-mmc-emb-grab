@@ -335,7 +335,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F427X,STM32F427xx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\stl\CMSIS\core;..\..\stl\CMSIS\device;..\..\stl\StdPeriph_Driver\inc;..\..\stl\inc;..\..\bsp\inc;..\..\srv\inc;..\..\asp\inc;..\..\app\inc;..\..\usr\inc;..\..\kos\inc;..\..\drv\inc</IncludePath>
+              <IncludePath>..\..\stl\CMSIS\core;..\..\stl\CMSIS\device;..\..\stl\StdPeriph_Driver\inc;..\..\stl\inc;..\..\bsp\inc;..\..\srv\inc;..\..\asp\inc;..\..\app\inc;..\..\usr\inc;..\..\kos\inc;..\..\drv\inc;..\..\api\inc;..\..\stl\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -376,6 +376,26 @@
         </TargetArmAds>
       </TargetOption>
       <Groups>
+        <Group>
+          <GroupName>api/inc</GroupName>
+          <Files>
+            <File>
+              <FileName>api.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\api\inc\api.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>api/src</GroupName>
+          <Files>
+            <File>
+              <FileName>api.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\api\src\api.c</FilePath>
+            </File>
+          </Files>
+        </Group>
         <Group>
           <GroupName>usr/inc</GroupName>
           <Files>
@@ -439,6 +459,11 @@
         <Group>
           <GroupName>app/inc</GroupName>
           <Files>
+            <File>
+              <FileName>aci.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\app\inc\aci.h</FilePath>
+            </File>
             <File>
               <FileName>act.h</FileName>
               <FileType>5</FileType>
@@ -554,6 +579,11 @@
         <Group>
           <GroupName>app/src</GroupName>
           <Files>
+            <File>
+              <FileName>aci.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\app\src\aci.c</FilePath>
+            </File>
             <File>
               <FileName>act.c</FileName>
               <FileType>1</FileType>

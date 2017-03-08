@@ -1,8 +1,10 @@
 --cpu=Cortex-M4.fp
+".\objects\api.o"
 ".\objects\main.o"
 ".\objects\stm32f4xx_it.o"
 ".\objects\kos.o"
 ".\objects\sch.o"
+".\objects\aci.o"
 ".\objects\act.o"
 ".\objects\app.o"
 ".\objects\can.o"

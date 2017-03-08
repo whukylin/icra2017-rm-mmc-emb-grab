@@ -24,12 +24,13 @@
 #include "dbus.h"
 #include "rci.h"
 #include "hci.h"
+#include "aci.h"
 #include "wdg.h"
 
 void Dci_Init(void);
-void Dci_Proc(DBUS_t* dbus);
+void Dci_Proc(const DBUS_t* dbus);
 
-void Rcv_Proc(uint8_t* buf);
+void Rcv_Proc(const uint8_t* buf);
 
 extern DBUS_t dbus;
 

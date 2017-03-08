@@ -68,6 +68,8 @@
 .\objects\dbg.o: ..\..\app\inc\cmd.h
 .\objects\dbg.o: ..\..\app\inc\hci.h
 .\objects\dbg.o: ..\..\asp\inc\maf.h
+.\objects\dbg.o: ..\..\app\inc\aci.h
+.\objects\dbg.o: ..\..\asp\inc\cbus.h
 .\objects\dbg.o: ..\..\app\inc\odo.h
 .\objects\dbg.o: ..\..\bsp\inc\bsp.h
 .\objects\dbg.o: ..\..\bsp\inc\btn.h

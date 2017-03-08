@@ -53,6 +53,8 @@
 .\objects\hci.o: ..\..\app\inc\rci.h
 .\objects\hci.o: ..\..\app\inc\cmd.h
 .\objects\hci.o: ..\..\app\inc\hci.h
+.\objects\hci.o: ..\..\app\inc\aci.h
+.\objects\hci.o: ..\..\asp\inc\cbus.h
 .\objects\hci.o: ..\..\app\inc\wdg.h
 .\objects\hci.o: ..\..\asp\inc\maf.h
 .\objects\hci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

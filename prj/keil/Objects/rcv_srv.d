@@ -55,4 +55,6 @@
 .\objects\rcv_srv.o: ..\..\app\inc\hci.h
 .\objects\rcv_srv.o: ..\..\asp\inc\maf.h
 .\objects\rcv_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\rcv_srv.o: ..\..\app\inc\aci.h
+.\objects\rcv_srv.o: ..\..\asp\inc\cbus.h
 .\objects\rcv_srv.o: ..\..\app\inc\wdg.h

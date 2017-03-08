@@ -54,4 +54,6 @@
 .\objects\dci.o: ..\..\app\inc\hci.h
 .\objects\dci.o: ..\..\asp\inc\maf.h
 .\objects\dci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\dci.o: ..\..\app\inc\aci.h
+.\objects\dci.o: ..\..\asp\inc\cbus.h
 .\objects\dci.o: ..\..\app\inc\wdg.h
