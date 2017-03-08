@@ -8,8 +8,8 @@
 .\objects\app.o: ..\..\asp\inc\asp.h
 .\objects\app.o: ..\..\asp\inc\ahrs.h
 .\objects\app.o: ..\..\asp\inc\cbus.h
-.\objects\app.o: ..\..\asp\inc\crc16.h
 .\objects\app.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\app.o: ..\..\asp\inc\crc16.h
 .\objects\app.o: ..\..\asp\inc\dbus.h
 .\objects\app.o: ..\..\asp\inc\rcp.h
 .\objects\app.o: ..\..\asp\inc\hcp.h

@@ -25,7 +25,7 @@ int main()
 			//Dbg_Mec();
 			//Dbg_Pid();
 			//Dbg_Dci();
-			//Dbg_Odo();
+			Dbg_Odo();
 			//Dbg_Cmd();
 			//Dbg_Wsm();
 			//Dbg_Wdg();

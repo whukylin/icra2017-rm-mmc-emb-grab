@@ -3,9 +3,16 @@
 .\objects\com_srv.o: ..\..\app\inc\com.h
 .\objects\com_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\com_srv.o: ..\..\asp\inc\msg.h
+.\objects\com_srv.o: ..\..\asp\inc\cbus.h
 .\objects\com_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\com_srv.o: ..\..\app\inc\cfg.h
 .\objects\com_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\com_srv.o: ..\..\asp\inc\dbus.h
+.\objects\com_srv.o: ..\..\asp\inc\rcp.h
+.\objects\com_srv.o: ..\..\asp\inc\hcp.h
+.\objects\com_srv.o: ..\..\asp\inc\fifo.h
+.\objects\com_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\com_srv.o: ..\..\asp\inc\crc16.h
+.\objects\com_srv.o: ..\..\app\inc\cfg.h
 .\objects\com_srv.o: ..\..\app\inc\fos.h
 .\objects\com_srv.o: ..\..\drv\inc\flash.h
 .\objects\com_srv.o: ..\..\bsp\inc\platform.h
@@ -47,6 +54,4 @@
 .\objects\com_srv.o: ..\..\app\inc\fun.h
 .\objects\com_srv.o: ..\..\bsp\inc\tty.h
 .\objects\com_srv.o: ..\..\bsp\inc\stm32util.h
-.\objects\com_srv.o: ..\..\asp\inc\fifo.h
-.\objects\com_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\com_srv.o: ..\..\app\inc\wdg.h

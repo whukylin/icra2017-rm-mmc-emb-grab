@@ -17,31 +17,39 @@
 #ifndef __CBUS_H__
 #define __CBUS_H__
 
+/**************************************************/
+/*             Kylinbot Control Bus               */
+/**************************************************/
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "crc16.h"
-#include <string.h>
 #include <stdint.h>
-#include <stdlib.h>
+#include <string.h>
 
-#define CBUS_HEADER ((uint16_t)0x1234)
-#define CBUS_CRC ((uint16_t)0x1234)
-#define CBUS_FRAME_LEN 16
-
+/*******************************************/
+/* Mecanum Wheel Power Transmission System */
+/*******************************************/
+/*              2        1                 */
+/*                  |y                     */
+/*                 b|___x                  */
+/*               z    a                    */
+/*              3        4                 */
+/*                                         */
+/*******************************************/
 typedef struct
 {
-	int16_t x;
-	int16_t y;
-	int16_t z;
-	int16_t p;
-	int16_t t;
-	uint16_t f;
+	int16_t vx; // Bot linear velocity in x-axis, unit: mm/s
+	int16_t vy; // Bot linear velocity in y-axis, unit: mm/s
+	int16_t vz; // Bot angular velocity in z-axis, unit: rad/s
+	int16_t vl; // Lifter velocity, +: up, -:down, unit: mm/s
+	int16_t pc; // Claw PWM position
+	uint32_t fs; // Functional state control bits
 }CBUS_t;
 
 void CBUS_Enc(const CBUS_t* cbus, uint8_t* cbuf);
-uint8_t CBUS_Dec(CBUS_t* cbus, const uint8_t* cbuf);
+void CBUS_Dec(CBUS_t* cbus, const uint8_t* cbuf);
 
 #ifdef __cplusplus
 }

@@ -30,8 +30,11 @@
 extern "C" {
 #endif
 
-#include <stdint.h>
-
+#include "cbus.h"
+#include "dbus.h"
+#include "fifo.h"
+#include "crc16.h"
+	
 /* Message length minimum/maximum limit */
 #define MSG_LEN_MIN 4u
 #define MSG_LEN_MAX 256u
@@ -40,20 +43,63 @@ extern "C" {
 typedef union MsgHead_t
 {
 	uint32_t head; // Message head value in 32bit
-	uint8_t id : 8; // Message ID
-	uint8_t length : 8; // Message length (unit: byte)
-	uint16_t token : 16; // Message CRC token
+	struct
+	{
+		uint8_t id : 8; // Message ID
+		uint8_t length : 8; // Message length (unit: byte)
+		uint16_t token : 16; // Message CRC token
+	}field;
 }MsgHead_t; // Message head union typedef
 
-typedef struct VelCmdMsg_t
-{
-	int16_t x;
-	int16_t y;
-	int16_t z;
-}VelCmdMsg_t;
+typedef RCP_t VirtualRC_t;
+typedef HCP_t VirtualHC_t;
+typedef DBUS_t VirtualDBUS_t;
+typedef DBUS_t VirtualCBUS_t;
 
-uint32_t Msg_Pack(uint8_t* buf, const uint32_t head, const uint8_t* body);
-uint32_t Msg_Unpack(const uint8_t* buf, const uint32_t head, const uint8_t* body);
+#define WRAP_U8(V) ((uint8_t)V)
+#define WRAP_U16(V) ((uint16_t)V)
+#define WRAP_U32(V) ((uint32_t)V)
+
+#define MSG_ID_VRC WRAP_U8(0x01)
+#define MSG_ID_VHC WRAP_U8(0x02)
+#define MSG_ID_VDBUS WRAP_U8(0x03)
+#define MSG_ID_VCBUS WRAP_U8(0x04)
+
+#define MSG_LEN_VRC sizeof(VirtualRC_t)
+#define MSG_LEN_VHC sizeof(VirtualHC_t)
+#define MSG_LEN_VDBUS sizeof(VirtualDBUS_t)
+#define MSG_LEN_VCBUS sizeof(VirtualCBUS_t)
+
+#define MSG_TOKEN_VRC WRAP_U16(0x1234)
+#define MSG_TOKEN_VHC WRAP_U16(0x2345)
+#define MSG_TOKEN_VDBUS WRAP_U16(0x3456)
+#define MSG_TOKEN_VCBUS WRAP_U16(0x4567)
+
+#define MSG_HEADER(ID,LEN,TOKEN) ((WRAP_U32(TOKEN)<<24) | (WRAP_U32(LEN)<<16) | WRAP_U32(ID))
+#define MSG_HEADER_OF(NAME) MSG_HEADER(MSG_ID_##NAME,MSG_LEN_##NAME,MSG_TOKEN_##NAME)
+
+#define MSG_HEADER_VRC MSG_HEADER_OF(VRC)
+#define MSG_HEADER_VHC MSG_HEADER_OF(VHC)
+#define MSG_HEADER_VDBUS MSG_HEADER_OF(VDBUS)
+#define MSG_HEADER_VCBUS MSG_HEADER_OF(VCBUS)
+
+/**
+ * Brief: Push a single message to message fifo. 
+ * @arg fifo Message fifo
+ * @arg head Message head
+ * @arg body Message body
+ * @ret Message length (num of bytes)
+ */
+uint32_t Msg_Fifo_Push(FIFO_t* fifo, const MsgHead_t* head, const uint8_t* body);
+
+/**
+ * Brief: Pop a single message from message fifo. 
+ * @arg fifo Message fifo
+ * @arg head Message head
+ * @arg body Message body
+ * @ret Message length (num of bytes)
+ */
+uint32_t Msg_Fifo_Pop(FIFO_t* fifo, const MsgHead_t* head, uint8_t* body);
 
 #ifdef __cplusplus
 }

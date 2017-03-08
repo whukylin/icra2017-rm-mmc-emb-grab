@@ -9,8 +9,8 @@
 .\objects\kos.o: ..\..\asp\inc\asp.h
 .\objects\kos.o: ..\..\asp\inc\ahrs.h
 .\objects\kos.o: ..\..\asp\inc\cbus.h
-.\objects\kos.o: ..\..\asp\inc\crc16.h
 .\objects\kos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\kos.o: ..\..\asp\inc\crc16.h
 .\objects\kos.o: ..\..\asp\inc\dbus.h
 .\objects\kos.o: ..\..\asp\inc\rcp.h
 .\objects\kos.o: ..\..\asp\inc\hcp.h

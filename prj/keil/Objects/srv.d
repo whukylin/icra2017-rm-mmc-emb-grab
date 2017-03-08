@@ -12,6 +12,12 @@
 .\objects\srv.o: ..\..\app\inc\com.h
 .\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\srv.o: ..\..\asp\inc\msg.h
+.\objects\srv.o: ..\..\asp\inc\cbus.h
+.\objects\srv.o: ..\..\asp\inc\dbus.h
+.\objects\srv.o: ..\..\asp\inc\rcp.h
+.\objects\srv.o: ..\..\asp\inc\hcp.h
+.\objects\srv.o: ..\..\asp\inc\fifo.h
+.\objects\srv.o: ..\..\asp\inc\crc16.h
 .\objects\srv.o: ..\..\app\inc\cfg.h
 .\objects\srv.o: ..\..\app\inc\fos.h
 .\objects\srv.o: ..\..\drv\inc\flash.h
@@ -53,12 +59,8 @@
 .\objects\srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
 .\objects\srv.o: ..\..\bsp\inc\tty.h
 .\objects\srv.o: ..\..\bsp\inc\stm32util.h
-.\objects\srv.o: ..\..\asp\inc\fifo.h
 .\objects\srv.o: ..\..\srv\inc\rcv_srv.h
 .\objects\srv.o: ..\..\app\inc\dci.h
-.\objects\srv.o: ..\..\asp\inc\dbus.h
-.\objects\srv.o: ..\..\asp\inc\rcp.h
-.\objects\srv.o: ..\..\asp\inc\hcp.h
 .\objects\srv.o: ..\..\app\inc\rci.h
 .\objects\srv.o: ..\..\app\inc\cmd.h
 .\objects\srv.o: ..\..\app\inc\sys.h
