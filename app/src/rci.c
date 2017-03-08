@@ -25,9 +25,9 @@ SwitchEvent_t switchEvents[SW_CNT];
 
 static uint8_t lastRawSwitchStates[SW_CNT];
 static uint32_t switchConfirmCounts[SW_CNT];
-void GetSwitchStates(RCP_t* rcp)
+void GetSwitchStates(const RCP_t* rcp)
 {
-	uint8_t* thisRawSwitchStates = rcp->sw;
+	const uint8_t* thisRawSwitchStates = rcp->sw;
 	uint32_t i = 0;
 	for (; i < SW_CNT; i++) {
 		if (thisRawSwitchStates[i] == lastRawSwitchStates[i]) {
@@ -44,7 +44,7 @@ void GetSwitchStates(RCP_t* rcp)
 }
 
 static SwitchState_t lastSwitchStates[SW_CNT];
-void GetSwitchEvents(RCP_t* rcp)
+void GetSwitchEvents(const RCP_t* rcp)
 {
 	uint32_t i = 0;
 	for (; i < SW_CNT; i++) {
@@ -53,7 +53,7 @@ void GetSwitchEvents(RCP_t* rcp)
 	}
 }
 
-static void GetFunctionalStateRef(RCP_t* rcp)
+static void GetFunctionalStateRef(const RCP_t* rcp)
 {
 	switch (switchEvents[SW_IDX_L]) {
 		case SWITCH_EVENT(3,1):
@@ -65,7 +65,7 @@ static void GetFunctionalStateRef(RCP_t* rcp)
 	}
 }
 
-static void GetChassisVelocityRef(RCP_t* rcp)
+static void GetChassisVelocityRef(const RCP_t* rcp)
 {
 	chassisVelocityRef.x = map(rcp->ch[0], CH_MIN, CH_MAX, -cfg.spd.x, cfg.spd.x);
 	chassisVelocityRef.y = map(rcp->ch[1], CH_MIN, CH_MAX, -cfg.spd.y, cfg.spd.y);
@@ -84,7 +84,7 @@ void Rci_Init(void)
 	}
 }
 
-void Rci_Proc(RCP_t* rcp)
+void Rci_Proc(const RCP_t* rcp)
 {
 	GetFunctionalStateRef(rcp);
 	GetChassisVelocityRef(rcp);

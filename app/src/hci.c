@@ -25,9 +25,9 @@ MouseButtonEvent_t mouseButtonEvents[MOUSE_BTN_CNT];
 
 static MouseButtonState_t lastRawMouseButtonStates[MOUSE_BTN_CNT];
 static uint32_t mouseButtonPressedCounts[MOUSE_BTN_CNT];
-static void GetMouseButtonStates(HCP_t* hcp)
+static void GetMouseButtonStates(const HCP_t* hcp)
 {
-	uint8_t* thisRawMouseButtonStates = hcp->mouse.b;
+	const uint8_t* thisRawMouseButtonStates = hcp->mouse.b;
 	uint32_t i = 0;
 	for (; i < MOUSE_BTN_CNT; i++) {
 		if (thisRawMouseButtonStates[i] == lastRawMouseButtonStates[i]) {
@@ -44,7 +44,7 @@ static void GetMouseButtonStates(HCP_t* hcp)
 }
 
 static MouseButtonState_t lastMouseButtonStates[MOUSE_BTN_CNT];
-static void GetMouseButtonEvents(HCP_t* hcp)
+static void GetMouseButtonEvents(const HCP_t* hcp)
 {
 	uint32_t i = 0;
 	for (; i < MOUSE_BTN_CNT; i++) {
@@ -53,7 +53,7 @@ static void GetMouseButtonEvents(HCP_t* hcp)
 	}
 }
 
-static void GetFunctionalStateRef(HCP_t* hcp)
+static void GetFunctionalStateRef(const HCP_t* hcp)
 {
 	GetMouseButtonStates(hcp);
 	GetMouseButtonEvents(hcp);
@@ -61,7 +61,7 @@ static void GetFunctionalStateRef(HCP_t* hcp)
 
 static Maf_t fx, fy, fz;
 static float buf[3][KEY_CONTROL_MAF_LEN];
-static void GetChassisVelocityRef(HCP_t* hcp)
+static void GetChassisVelocityRef(const HCP_t* hcp)
 {
 	float sx = hcp->key.press.Shift ? cfg.spd.x : cfg.spd.x / 2.f;
 	float sy = hcp->key.press.Shift ? cfg.spd.y : cfg.spd.y / 2.f;
@@ -89,7 +89,7 @@ void Hci_Init(void)
 	Maf_Init(&fz, buf[2], KEY_CONTROL_MAF_LEN);
 }
 
-void Hci_Proc(HCP_t* hcp)
+void Hci_Proc(const HCP_t* hcp)
 {
 	GetFunctionalStateRef(hcp);
 	GetChassisVelocityRef(hcp);

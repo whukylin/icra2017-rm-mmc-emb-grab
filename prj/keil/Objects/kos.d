@@ -100,7 +100,7 @@
 .\objects\kos.o: ..\..\app\inc\clk.h
 .\objects\kos.o: ..\..\app\inc\dbg.h
 .\objects\kos.o: ..\..\app\inc\ios.h
+.\objects\kos.o: ..\..\app\inc\wsm.h
 .\objects\kos.o: ..\..\app\inc\ini.h
 .\objects\kos.o: ..\..\app\inc\upd.h
-.\objects\kos.o: ..\..\app\inc\wsm.h
 .\objects\kos.o: ..\..\kos\inc\sch.h

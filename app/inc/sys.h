@@ -26,10 +26,10 @@ extern "C" {
 #include "fun.h"
 
 typedef enum {
-	WORKING_STATE_STOP,
-	WORKING_STATE_PREPARE,
-	WORKING_STATE_NORMAL,
-	WORKING_STATE_CONFIG,
+	WORKING_STATE_STOP = 0x00,
+	WORKING_STATE_PREPARE = 0x01,
+	WORKING_STATE_NORMAL = 0x02,
+	WORKING_STATE_CONFIG = 0x03,
 }WorkingState_t;
 
 typedef uint32_t PeriphsState_t; // Peripherals Functional State

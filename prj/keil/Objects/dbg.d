@@ -65,3 +65,5 @@
 .\objects\dbg.o: ..\..\asp\inc\maf.h
 .\objects\dbg.o: ..\..\app\inc\can.h
 .\objects\dbg.o: ..\..\asp\inc\ekf.h
+.\objects\dbg.o: ..\..\app\inc\wsm.h
+.\objects\dbg.o: ..\..\app\inc\ini.h

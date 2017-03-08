@@ -34,7 +34,7 @@ void PID_Reset(PID_t *pid)
 	pid->integral = 0;
 }
 
-#define LIMIT(val,min,max) (val=val>max?max:(val<min?min:val))
+#define LIMIT(val,min,max) do { val = val > max ? max : val < min ? min : val; } while (0)
 float PID_Calc(PID_t* pid, float ref, float fdb)
 {
 	float error, difference, proportion, derivative, output = 0;
@@ -42,7 +42,7 @@ float PID_Calc(PID_t* pid, float ref, float fdb)
 	difference = error - pid->error;
 	proportion = pid->kp * error; // P
 	LIMIT(proportion, -pid->Pmax, pid->Pmax); // limit P
-	if (difference < pid->it) {
+	if (error < pid->it) {
 		pid->integral += pid->ki * error; // I
 		LIMIT(pid->integral, -pid->Imax, pid->Imax); // limit I
 	} else {

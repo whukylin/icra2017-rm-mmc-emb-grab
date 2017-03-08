@@ -22,16 +22,16 @@
 
 void App_Init(void)
 {
+	Ios_Init();
 	Cfg_Init();
 	Act_Init();
 	Clk_Init();
 	Com_Init();
-	Ctl_Init();
-	Ini_Init();
-	Ios_Init();
-	Upd_Init();
+	
 	Wdg_Init();
+	Ini_Init();
 	Wsm_Init();
+	Upd_Init();
 }
 
 void App_Proc(void)

@@ -35,11 +35,11 @@ typedef uint8_t SwitchEvent_t;
 
 #define SWITCH_EVENT(LAST,THIS) (((LAST)<<3)|(THIS))
 
-void GetSwitchStates(RCP_t* rcp);
-void GetSwitchEvents(RCP_t* rcp);
+void GetSwitchStates(const RCP_t* rcp);
+void GetSwitchEvents(const RCP_t* rcp);
 
 void Rci_Init(void);
-void Rci_Proc(RCP_t* rcp);
+void Rci_Proc(const RCP_t* rcp);
 
 extern SwitchState_t switchStates[SW_CNT];
 extern SwitchEvent_t switchEvents[SW_CNT];

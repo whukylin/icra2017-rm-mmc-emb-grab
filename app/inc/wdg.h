@@ -92,7 +92,7 @@ void Wdg_Proc(void);
 void Wdg_Feed(uint8_t i);
 void Wdg_Hang(uint8_t i);
 uint32_t Wdg_GetErr(void);
-uint8_t Wdg_IsErrSet(uint32_t mask);
+uint32_t Wdg_IsErrSet(uint32_t mask);
 
 #ifdef __cplusplus
 }

@@ -99,6 +99,6 @@
 .\objects\app.o: ..\..\app\inc\clk.h
 .\objects\app.o: ..\..\app\inc\dbg.h
 .\objects\app.o: ..\..\app\inc\ios.h
+.\objects\app.o: ..\..\app\inc\wsm.h
 .\objects\app.o: ..\..\app\inc\ini.h
 .\objects\app.o: ..\..\app\inc\upd.h
-.\objects\app.o: ..\..\app\inc\wsm.h

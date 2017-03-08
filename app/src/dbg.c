@@ -29,6 +29,17 @@ void Dbg_Cmd(void)
 	printf("vx=%f\tvy=%f\tvz=%f\n", chassisVelocityRef.x, chassisVelocityRef.y, chassisVelocityRef.z);
 }
 
+
+void Dbg_Wsm(void)
+{
+	printf("ws=%d,prev=%d\n", Wsm_GetWorkingState(), Wsm_GetLastWorkingState());
+}
+
+void Dbg_Wdg(void)
+{
+	printf("wdg=%x,rcv=%d,fatal=%d\n", Wdg_GetErr(), Wdg_IsErrSet(WDG_ERR_RCV), Wdg_IsErrSet(WDG_ERR_FATAL));
+}
+
 void Dbg_Motor(const Motor_t* motor)
 {
 	printf("%d\t%d\t%d\t%d\n", motor->angle_raw, motor->angle_filtered, motor->rate_raw, motor->rate_filtered);

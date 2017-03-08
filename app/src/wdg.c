@@ -69,11 +69,11 @@ void Wdg_Proc(void)
 	{
 		if(wdg[i] >= WDG[i])
 		{
-			err |= (uint32_t)(1 << i); //set the error bit
+			err |= (uint32_t)(1u << i); //set the error bit
 		}
 		else
 		{
-			err &= ~(uint32_t)(1 << i); //clear the error bit
+			err &= ~(uint32_t)(1u << i); //clear the error bit
 			wdg[i]++;			        //add 1 each time
 		}
 	}
@@ -94,8 +94,8 @@ uint32_t Wdg_GetErr(void)
 	return err;
 }
 
-uint8_t Wdg_IsErrSet(uint32_t mask)
+uint32_t Wdg_IsErrSet(uint32_t mask)
 {
-	return (err & mask) == mask;
+	return (err & mask);
 }
 

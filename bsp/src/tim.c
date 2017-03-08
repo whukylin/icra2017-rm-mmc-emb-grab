@@ -19,15 +19,14 @@
 void TickTim_Config(void)
 {
 	TIM_Config(TICK_TIM, TICK_TIM_PS, TIM_CounterMode_Up, TICK_TIM_PD, TIM_CKD_DIV1, 0);
-	TIM_ARRPreloadConfig(TICK_TIM, ENABLE);
 	NVIC_Config(TICK_TIM_NVIC, TICK_TIM_NVIC_PRE_PRIORITY, TICK_TIM_NVIC_SUB_PRIORITY);
 }
 
 void TickTim_Start(void)
 {
-	TIM_Cmd(TICK_TIM, ENABLE);
-	TIM_ITConfig(TICK_TIM, TIM_IT_Update, ENABLE);
 	TIM_ClearFlag(TICK_TIM, TIM_FLAG_Update);
+	TIM_ITConfig(TICK_TIM, TIM_IT_Update, ENABLE);
+	TIM_Cmd(TICK_TIM, ENABLE);
 }
 
 void TickTim_Stop(void)
@@ -56,9 +55,9 @@ void SyncTim_Config()
 
 void SyncTim_Start()
 {
-	TIM_Cmd(SYNC_TIM, ENABLE);
-	TIM_ITConfig(SYNC_TIM, TIM_IT_Update,ENABLE);
 	TIM_ClearFlag(SYNC_TIM, TIM_FLAG_Update);
+	TIM_ITConfig(SYNC_TIM, TIM_IT_Update,ENABLE);
+	TIM_Cmd(SYNC_TIM, ENABLE);
 }
 
 void SyncTim_Stop()
