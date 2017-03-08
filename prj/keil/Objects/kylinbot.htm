@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\kylinbot.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\kylinbot.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Wed Mar 08 22:52:06 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Thu Mar 09 00:16:33 2017
 <BR><P>
 <H3>Maximum Stack Usage =        256 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -855,9 +855,9 @@ Global Symbols
 <P><STRONG><a name="[b8]"></a>Can_Proc</STRONG> (Thumb, 168 bytes, Stack size 16 bytes, can.o(i.Can_Proc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Can_Proc &rArr; Motor_Process
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wdg_Feed
-<LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ZGyro_Process
+<BR>[Calls]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ZGyro_Process
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Process
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wdg_Feed
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Can2RxCallback
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Can1RxCallback
@@ -904,9 +904,9 @@ Global Symbols
 <P><STRONG><a name="[c8]"></a>Cmd_Init</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, cmd.o(i.Cmd_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = Cmd_Init &rArr; Dci_Init &rArr; Hci_Init &rArr; Maf_Init &rArr; Maf_Reset
 </UL>
-<BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS_Set
+<BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Dci_Init
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS_Set
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FS_Clr
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Dci_Init
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CS_Set
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ctl_Init
@@ -1062,23 +1062,23 @@ Global Symbols
 <P><STRONG><a name="[c9]"></a>Dci_Init</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, dci.o(i.Dci_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Dci_Init &rArr; Hci_Init &rArr; Maf_Init &rArr; Maf_Reset
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Rci_Init
+<BR>[Calls]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DBUS_Rst
+<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Rci_Init
 <LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hci_Init
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DBUS_Rst
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cmd_Init
 </UL>
 
-<P><STRONG><a name="[ea]"></a>Dci_Proc</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, dci.o(i.Dci_Proc))
+<P><STRONG><a name="[ea]"></a>Dci_Proc</STRONG> (Thumb, 94 bytes, Stack size 8 bytes, dci.o(i.Dci_Proc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = Dci_Proc &rArr; Hci_Proc &rArr; GetChassisVelocityRef
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Aci_Init
-<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Rci_Proc
+<BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Rci_Proc
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hci_Proc
+<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Aci_Init
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Rci_Init
 <LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hci_Init
-<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetSwitchStates
-<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetSwitchEvents
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetSwitchState
+<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetSwitchEvent
 </UL>
 <BR>[Called By]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Rcv_Proc
 </UL>
@@ -1300,16 +1300,18 @@ Global Symbols
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led_Config
 </UL>
 
-<P><STRONG><a name="[ec]"></a>GetSwitchEvents</STRONG> (Thumb, 30 bytes, Stack size 12 bytes, rci.o(i.GetSwitchEvents))
-<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = GetSwitchEvents
+<P><STRONG><a name="[ec]"></a>GetSwitchEvent</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, rci.o(i.GetSwitchEvent))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = GetSwitchEvent
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Dci_Proc
+<LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Rcv_Proc
 </UL>
 
-<P><STRONG><a name="[eb]"></a>GetSwitchStates</STRONG> (Thumb, 60 bytes, Stack size 20 bytes, rci.o(i.GetSwitchStates))
-<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = GetSwitchStates
+<P><STRONG><a name="[eb]"></a>GetSwitchState</STRONG> (Thumb, 50 bytes, Stack size 12 bytes, rci.o(i.GetSwitchState))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = GetSwitchState
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Dci_Proc
+<LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Rcv_Proc
 </UL>
 
 <P><STRONG><a name="[da]"></a>HCP_Dec</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, hcp.o(i.HCP_Dec))
@@ -1666,12 +1668,14 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Bsp_Config
 </UL>
 
-<P><STRONG><a name="[123]"></a>Rcv_Proc</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, dci.o(i.Rcv_Proc))
+<P><STRONG><a name="[123]"></a>Rcv_Proc</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, dci.o(i.Rcv_Proc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Rcv_Proc &rArr; Dci_Proc &rArr; Hci_Proc &rArr; GetChassisVelocityRef
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wdg_Feed
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Dci_Proc
+<BR>[Calls]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Dci_Proc
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetSwitchState
+<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetSwitchEvent
 <LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DBUS_Dec
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wdg_Feed
 </UL>
 <BR>[Called By]<UL><LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RcvCallback
 </UL>
@@ -1978,13 +1982,13 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FIFO_Push
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FIFO_Pop
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BtmRxCallback
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FIFO_IsFull
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FIFO_IsEmpty
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
 <LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ReceiveData
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
 <LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BtmRxCallback
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f427xx.o(RESET)
 </UL>
@@ -1993,13 +1997,13 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FIFO_Push
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FIFO_Pop
-<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DbiRxCallback
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FIFO_IsFull
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FIFO_IsEmpty
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
 <LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ReceiveData
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
 <LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
+<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DbiRxCallback
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f427xx.o(RESET)
 </UL>
@@ -2008,13 +2012,13 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FIFO_Push
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FIFO_Pop
-<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TtyRxCallback
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FIFO_IsFull
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FIFO_IsEmpty
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_SendData
 <LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ReceiveData
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
 <LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
+<LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TtyRxCallback
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f427xx.o(RESET)
 </UL>
@@ -2272,12 +2276,12 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ctl_Init
 </UL>
 
-<P><STRONG><a name="[fc]"></a>GetChassisVelocityRef</STRONG> (Thumb, 200 bytes, Stack size 32 bytes, hci.o(i.GetChassisVelocityRef))
+<P><STRONG><a name="[fc]"></a>GetChassisVelocityRef</STRONG> (Thumb, 198 bytes, Stack size 32 bytes, hci.o(i.GetChassisVelocityRef))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = GetChassisVelocityRef
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constrain
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Maf_Proc
+<BR>[Calls]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Maf_Proc
 <LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;map
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;constrain
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hci_Proc
 </UL>
@@ -2312,7 +2316,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[151]"></a>_fp_digits</STRONG> (Thumb, 366 bytes, Stack size 64 bytes, printfa.o(i._fp_digits), UNUSED)
+<P><STRONG><a name="[151]"></a>_fp_digits</STRONG> (Thumb, 334 bytes, Stack size 56 bytes, printfa.o(i._fp_digits), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd

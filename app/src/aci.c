@@ -18,10 +18,14 @@
 
 void Aci_Init(void)
 {
-	
 }
 
-void Aci_Proc(void)
+void Aci_Proc(const CBUS_t* cbus)
 {
+	//float vx = constrain(cbus->vx, -cfg.spd.x, cfg.spd.x);
+	cmd.cv.x = cbus->vx;
+	cmd.cv.y = cbus->vy;
+	cmd.cv.z = cbus->vz;
+	cmd.fs   = cbus->fs;
 }
 

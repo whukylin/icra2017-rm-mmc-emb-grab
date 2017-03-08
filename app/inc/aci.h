@@ -25,13 +25,11 @@
 extern "C" {
 #endif
 
-#include "rci.h"
-#include "hci.h"
+#include "cmd.h"
 #include "cbus.h"
-#include "dbus.h"
 	
 void Aci_Init(void);
-void Aci_Proc(void);	
+void Aci_Proc(const CBUS_t* cbus);	
 	
 #ifdef __cplusplus
 }

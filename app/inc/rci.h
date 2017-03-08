@@ -35,6 +35,8 @@ typedef uint8_t SwitchEvent_t;
 
 #define SWITCH_EVENT(LAST,THIS) (((LAST)<<3)|(THIS))
 
+void GetSwitchState(const RCP_t* rcp, uint32_t i);
+void GetSwitchEvent(const RCP_t* rcp, uint32_t i);
 void GetSwitchStates(const RCP_t* rcp);
 void GetSwitchEvents(const RCP_t* rcp);
 

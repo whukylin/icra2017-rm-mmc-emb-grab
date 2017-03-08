@@ -42,16 +42,6 @@ void Btm_Proc(uint8_t data);
 void Dbi_Proc(uint8_t data);
 void Tty_Proc(uint8_t data);
 
-extern const MsgHead_t msg_header_vrc;
-extern const MsgHead_t msg_header_vhc;
-extern const MsgHead_t msg_header_vdbus;
-extern const MsgHead_t msg_header_vcbus;
-
-extern VirtualRC_t vrc;
-extern VirtualHC_t vhc;
-extern VirtualDBUS_t vdbus;
-extern VirtualCBUS_t vcbus;
-
 #ifdef __cplusplus
 }
 #endif

@@ -42,13 +42,13 @@ extern "C" {
 /* Message head union typedef */
 typedef union MsgHead_t
 {
-	uint32_t head; // Message head value in 32bit
+	uint32_t value; // Message head value in 32bit
 	struct
 	{
 		uint8_t id : 8; // Message ID
 		uint8_t length : 8; // Message length (unit: byte)
 		uint16_t token : 16; // Message CRC token
-	}field;
+	}attr; // Message head attributes
 }MsgHead_t; // Message head union typedef
 
 typedef RCP_t VirtualRC_t;
@@ -75,13 +75,19 @@ typedef CBUS_t VirtualCBUS_t;
 #define MSG_TOKEN_VDBUS WRAP_U16(0x3456)
 #define MSG_TOKEN_VCBUS WRAP_U16(0x4567)
 
-#define MSG_HEADER(ID,LEN,TOKEN) ((WRAP_U32(TOKEN)<<24) | (WRAP_U32(LEN)<<16) | WRAP_U32(ID))
-#define MSG_HEADER_OF(NAME) MSG_HEADER(MSG_ID_##NAME,MSG_LEN_##NAME,MSG_TOKEN_##NAME)
+#define MSG_HEADER_VALUE(ID,LEN,TOKEN) ((WRAP_U32(TOKEN)<<24) | (WRAP_U32(LEN)<<16) | WRAP_U32(ID))
+#define MSG_HEADER_VALUE_OF(NAME) MSG_HEADER_VALUE(MSG_ID_##NAME,MSG_LEN_##NAME,MSG_TOKEN_##NAME)
 
-#define MSG_HEADER_VRC MSG_HEADER_OF(VRC)
-#define MSG_HEADER_VHC MSG_HEADER_OF(VHC)
-#define MSG_HEADER_VDBUS MSG_HEADER_OF(VDBUS)
-#define MSG_HEADER_VCBUS MSG_HEADER_OF(VCBUS)
+#define MSG_HEADER_VALUE_VRC MSG_HEADER_VALUE_OF(VRC)
+#define MSG_HEADER_VALUE_VHC MSG_HEADER_VALUE_OF(VHC)
+#define MSG_HEADER_VALUE_VDBUS MSG_HEADER_VALUE_OF(VDBUS)
+#define MSG_HEADER_VALUE_VCBUS MSG_HEADER_VALUE_OF(VCBUS)
+
+#define MSG_HEADER_VRC { MSG_HEADER_VALUE_VRC }
+#define MSG_HEADER_VHC { MSG_HEADER_VALUE_VHC }
+#define MSG_HEADER_VDBUS { MSG_HEADER_VALUE_VDBUS }
+#define MSG_HEADER_VCBUS { MSG_HEADER_VALUE_VCBUS }
+
 
 /**
  * Brief: Push a single message to message fifo. 
@@ -100,6 +106,11 @@ uint32_t Msg_Fifo_Push(FIFO_t* fifo, const void* head, const void* body);
  * @ret Message length (num of bytes)
  */
 uint32_t Msg_Fifo_Pop(FIFO_t* fifo, const void* head, void* body);
+
+extern const MsgHead_t msg_header_vrc;
+extern const MsgHead_t msg_header_vhc;
+extern const MsgHead_t msg_header_vdbus;
+extern const MsgHead_t msg_header_vcbus;
 
 #ifdef __cplusplus
 }

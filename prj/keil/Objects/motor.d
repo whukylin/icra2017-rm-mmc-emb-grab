@@ -3,7 +3,7 @@
 .\objects\motor.o: ..\..\bsp\inc\platform.h
 .\objects\motor.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\motor.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\motor.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\motor.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\motor.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\motor.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\motor.o: ..\..\stl\CMSIS\core\core_cmSimd.h

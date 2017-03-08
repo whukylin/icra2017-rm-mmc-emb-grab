@@ -16,6 +16,11 @@
  
 #include "msg.h"
 
+const MsgHead_t msg_header_vrc = MSG_HEADER_VRC;
+const MsgHead_t msg_header_vhc = MSG_HEADER_VHC;
+const MsgHead_t msg_header_vdbus = MSG_HEADER_VDBUS;
+const MsgHead_t msg_header_vcbus = MSG_HEADER_VCBUS;
+
 /**
  * Brief: Push a single message to message buffer. 
  * @arg buf Message buffer
@@ -26,7 +31,7 @@
 uint32_t Msg_Fifo_Push(FIFO_t* fifo, const void* head, const void* body)
 {
 	const MsgHead_t* hd = (MsgHead_t*)head;
-	uint32_t len = sizeof(MsgHead_t) + hd->field.length + 2;
+	uint32_t len = sizeof(MsgHead_t) + hd->attr.length + 2;
 	if (FIFO_GetFree(fifo) < len) {
 		return 0;
 	} else {
@@ -34,9 +39,9 @@ uint32_t Msg_Fifo_Push(FIFO_t* fifo, const void* head, const void* body)
 		len = 0;
 		memcpy(buf, head, sizeof(MsgHead_t));
 		len += sizeof(MsgHead_t);
-		memcpy(buf+len, body, hd->field.length);
-		len += hd->field.length;
-		CRC16Append(buf, len + 2, hd->field.token);
+		memcpy(buf+len, body, hd->attr.length);
+		len += hd->attr.length;
+		CRC16Append(buf, len + 2, hd->attr.token);
 		len += 2;
 		FIFO_Push(fifo, buf, len);
 		return len;
@@ -55,21 +60,21 @@ uint32_t Msg_Fifo_Pop(FIFO_t* fifo, const void* head, void* body)
 {
 	const MsgHead_t* hd = (MsgHead_t*)head;
 	MsgHead_t h;
-	uint32_t len = sizeof(MsgHead_t) + hd->field.length + 2;
+	uint32_t len = sizeof(MsgHead_t) + hd->attr.length + 2;
 	uint8_t buf[MSG_LEN_MAX];
 	if (FIFO_GetUsed(fifo) < len) {
 		return 0;
 	}
 	FIFO_Peek(fifo, (uint8_t*)&h, sizeof(MsgHead_t));
-	if (h.field.id != hd->field.id) {
+	if (h.attr.id != hd->attr.id) {
 		return 0;
 	}
-	if (h.field.length != hd->field.length) {
+	if (h.attr.length != hd->attr.length) {
 		return 0;
 	}
 	FIFO_Peek(fifo, buf, len);
-	if (CRC16Check(buf, len, hd->field.token)) {
-		memcpy(body, buf+sizeof(MsgHead_t), hd->field.length);
+	if (CRC16Check(buf, len, hd->attr.token)) {
+		memcpy(body, buf+sizeof(MsgHead_t), hd->attr.length);
 		FIFO_Pop(fifo, buf, len);
 		return len;
 	}

@@ -20,16 +20,6 @@
 /*          Communication          */
 /***********************************/
 
-const MsgHead_t msg_header_vrc = {MSG_HEADER_VRC};
-const MsgHead_t msg_header_vhc = {MSG_HEADER_VHC};
-const MsgHead_t msg_header_vdbus = {MSG_HEADER_VDBUS};
-const MsgHead_t msg_header_vcbus = {MSG_HEADER_VCBUS};
-
-VirtualRC_t vrc;
-VirtualHC_t vhc;
-VirtualDBUS_t vdbus;
-VirtualCBUS_t vcbus;
-
 static uint8_t buf[2][COM_RX_BUF_SIZE];
 static FIFO_t rx_fifo;
 
@@ -64,10 +54,13 @@ void Com_Read(void)
 void Com_Proc(void)
 {
 	Com_Read();
-	if (Msg_Fifo_Pop(&rx_fifo, &msg_header_vrc, &vrc)) {
-		VRC_Proc(&vrc);
-	} else if (Msg_Fifo_Pop(&rx_fifo, &msg_header_vhc, &vhc)) {
-		VHC_Proc(&vhc);
+	if (!FIFO_GetUsed(&rx_fifo)) {
+		return;
+	}
+	if (Msg_Fifo_Pop(&rx_fifo, &msg_header_vrc, &vdbus.rcp)) {
+		VRC_Proc(&vdbus.rcp);
+	} else if (Msg_Fifo_Pop(&rx_fifo, &msg_header_vhc, &vdbus.hcp)) {
+		VHC_Proc(&vdbus.hcp);
 	} else if (Msg_Fifo_Pop(&rx_fifo, &msg_header_vdbus, &vdbus)) {
 		VDBUS_Proc(&vdbus);
 	} else if (Msg_Fifo_Pop(&rx_fifo, &msg_header_vcbus, &vcbus)) {

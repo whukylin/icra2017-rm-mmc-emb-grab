@@ -16,35 +16,60 @@
  
 #include "api.h"
 
+VirtualDBUS_t vdbus;
+VirtualCBUS_t vcbus;
+
 void Api_Init(void)
 {
+	Aci_Init();
+	Dci_Init();
+	
+	CBUS_Rst(&vcbus);
+	DBUS_Rst(&vdbus);
 }
 
 void Api_Proc(void)
 {
+	
 }
 
 void VRC_Proc(const VirtualRC_t* vrc)
 {
-	Rci_Proc(vrc);
+	if (switchStates[SW_IDX_R] == SW_DN) {
+		if (switchStates[SW_IDX_R] != SW_DN) {
+			Rci_Init();
+		}
+		Rci_Proc(vrc);
+	}
 }
 
 void VHC_Proc(const VirtualHC_t* vhc)
 {
-	Hci_Proc(vhc);
+	if (switchStates[SW_IDX_R] == SW_DN) {
+		if (switchStates[SW_IDX_R] != SW_DN) {
+			Hci_Init();
+		}
+		Hci_Proc(vhc);
+	}
 }
 
 void VDBUS_Proc(const VirtualDBUS_t* vdbus)
 {
-	Dci_Proc(vdbus);
+	if (switchStates[SW_IDX_R] == SW_DN) {
+		if (switchStates[SW_IDX_R] != SW_DN) {
+			Dci_Init();
+		}
+		Dci_Proc(vdbus);
+	}
 }
 
 void VCBUS_Proc(const VirtualCBUS_t* vcbus)
 {
-	float vx = constrain(vcbus->vx, -cfg.spd.x, cfg.spd.x);
-	cmd.cv.x = vcbus->vx;
-	cmd.cv.y = vcbus->vy;
-	cmd.cv.z = vcbus->vz;
-	cmd.fs   = vcbus->fs;
+	if (switchStates[SW_IDX_R] == SW_DN) {
+		if (switchStates[SW_IDX_R] != SW_DN) {
+			Aci_Init();
+		}
+		Aci_Proc(vcbus);
+	}
 }
 

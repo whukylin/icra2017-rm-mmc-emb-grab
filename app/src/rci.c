@@ -25,31 +25,41 @@ SwitchEvent_t switchEvents[SW_CNT];
 
 static uint8_t lastRawSwitchStates[SW_CNT];
 static uint32_t switchConfirmCounts[SW_CNT];
-void GetSwitchStates(const RCP_t* rcp)
+void GetSwitchState(const RCP_t* rcp, uint32_t i)
 {
 	const uint8_t* thisRawSwitchStates = rcp->sw;
+	if (thisRawSwitchStates[i] == lastRawSwitchStates[i]) {
+		if (switchConfirmCounts[i] < SWITCH_CONFIRM_CNT) {
+			switchConfirmCounts[i]++;
+		} else {
+			switchStates[i] = thisRawSwitchStates[i];
+		}
+	} else {
+		switchConfirmCounts[i] = 0;
+	}
+	lastRawSwitchStates[i] = thisRawSwitchStates[i];
+}
+
+void GetSwitchStates(const RCP_t* rcp)
+{
 	uint32_t i = 0;
 	for (; i < SW_CNT; i++) {
-		if (thisRawSwitchStates[i] == lastRawSwitchStates[i]) {
-			if (switchConfirmCounts[i] < SWITCH_CONFIRM_CNT) {
-				switchConfirmCounts[i]++;
-			} else {
-				switchStates[i] = thisRawSwitchStates[i];
-			}
-		} else {
-			switchConfirmCounts[i] = 0;
-		}
-		lastRawSwitchStates[i] = thisRawSwitchStates[i];
+		GetSwitchState(rcp, i);
 	}
 }
 
 SwitchState_t lastSwitchStates[SW_CNT];
+void GetSwitchEvent(const RCP_t* rcp, uint32_t i)
+{
+	switchEvents[i] = SWITCH_EVENT(lastSwitchStates[i], switchStates[i]);
+	lastSwitchStates[i] = switchStates[i];
+}
+
 void GetSwitchEvents(const RCP_t* rcp)
 {
 	uint32_t i = 0;
 	for (; i < SW_CNT; i++) {
-		switchEvents[i] = SWITCH_EVENT(lastSwitchStates[i], switchStates[i]);
-		lastSwitchStates[i] = switchStates[i];
+		GetSwitchEvent(rcp, i);
 	}
 }
 
