@@ -39,7 +39,7 @@ void App_Proc(void)
 	Wdg_Proc();
 	Ini_Proc();
 	Wsm_Proc();
-	Com_Proc();
+	//Com_Proc();
 	Upd_Proc();
 }
 

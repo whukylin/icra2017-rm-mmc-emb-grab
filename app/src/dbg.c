@@ -72,7 +72,7 @@ void Dbg_Can(void)
 	printf("%d\t%d\t%d\t%d\t%d\n", motor[0].id, motor[1].id, motor[2].id, motor[3].id, zgyro.id);
 }
 
-void Dbg_Motor(void)
+void Dbg_Ecd(void)
 {
 	printf("%d\t%d\t%d\t%d\n", motor[0].angle_raw, motor[1].angle_raw, motor[2].angle_raw, motor[3].angle_raw);
 }

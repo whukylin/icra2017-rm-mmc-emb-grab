@@ -21,8 +21,9 @@ int main()
 	KOS_Boot();
 	while(1)
 	{
-		if (Clk_GetMsTick() % 250 == 0) {
-			LED_GREEN_TOG();
+		if (Clk_GetMsTick() % 20 == 0) {
+			Dbg_Ecd();
+			//LED_GREEN_TOG();
 			//Dbg_Mec();
 			//Dbg_Pid();
 			//Dbg_Dci();

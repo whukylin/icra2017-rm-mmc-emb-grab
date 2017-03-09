@@ -39,7 +39,7 @@ void Dbg_Odo(void);
 void Dbg_Wsm(void);
 void Dbg_Wdg(void);
 void Dbg_Can(void);
-void Dbg_Motor(void);
+void Dbg_Ecd(void);
 void Dbg_ZGyro(void);
 	
 #ifdef __cplusplus

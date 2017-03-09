@@ -40,7 +40,7 @@ void Ios_SetIn(uint8_t (*in)(void));
 void Ios_SetOut(void (*out)(uint8_t));
 
 uint8_t Ios_ReadByte(void);
-void Ios_WriteByte(uint8_t b);
+void Ios_WriteByte(uint8_t data);
 
 uint32_t Ios_Read(uint8_t* buf, uint32_t len);
 uint32_t Ios_Write(const uint8_t* buf, uint32_t len);

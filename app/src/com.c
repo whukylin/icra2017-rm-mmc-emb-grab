@@ -30,8 +30,22 @@ void Com_Init(void)
 
 void Com_Proc(void)
 {
-	uint32_t len = Ios_Read(buf[1], COM_RX_BUF_SIZE);
+	// Get fifo free space
+	uint32_t len = FIFO_GetFree(&rx_fifo);
+	// If fifo free space insufficient, pop one element out
+	if (!len) {
+		uint8_t b;
+		len = FIFO_Pop(&rx_fifo, &b, 1);
+	}
+	// Read input stream according to the fifo free space left
+	len = Ios_Read(buf[1], len);
+	// If stream not available, just return.
+	if (!len) {
+		return;
+	}
+	// Push stream into fifo
 	FIFO_Push(&rx_fifo, buf[1], len);
+	// Check if any message received
 	if (Msg_Pop(&rx_fifo, &msg_header_vrc, &vdbus.rcp)) {
 		VRC_Proc(&vdbus.rcp);
 	} else if (Msg_Pop(&rx_fifo, &msg_header_vhc, &vdbus.hcp)) {
@@ -40,9 +54,6 @@ void Com_Proc(void)
 		VDBUS_Proc(&vdbus);
 	} else if (Msg_Pop(&rx_fifo, &msg_header_vcbus, &vcbus)) {
 		VCBUS_Proc(&vcbus);
-	} else if (!FIFO_IsEmpty(&rx_fifo)){
-		uint8_t b;
-		FIFO_Pop(&rx_fifo, &b, 1);
 	}
 }
 
