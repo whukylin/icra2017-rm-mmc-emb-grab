@@ -28,10 +28,10 @@ const MsgHead_t msg_header_vcbus = MSG_HEADER_VCBUS;
  * @arg body Message body
  * @ret Message length (num of bytes)
  */
-uint32_t Msg_Fifo_Push(FIFO_t* fifo, const void* head, const void* body)
+uint32_t Msg_Push(FIFO_t* fifo, const void* head, const void* body)
 {
-	const MsgHead_t* hd = (MsgHead_t*)head;
-	uint32_t len = sizeof(MsgHead_t) + hd->attr.length + 2;
+	const MsgHead_t* phead = (MsgHead_t*)head;
+	uint32_t len = sizeof(MsgHead_t) + phead->attr.length + 2;
 	if (FIFO_GetFree(fifo) < len) {
 		return 0;
 	} else {
@@ -39,9 +39,9 @@ uint32_t Msg_Fifo_Push(FIFO_t* fifo, const void* head, const void* body)
 		len = 0;
 		memcpy(buf, head, sizeof(MsgHead_t));
 		len += sizeof(MsgHead_t);
-		memcpy(buf+len, body, hd->attr.length);
-		len += hd->attr.length;
-		CRC16Append(buf, len + 2, hd->attr.token);
+		memcpy(buf+len, body, phead->attr.length);
+		len += phead->attr.length;
+		CRC16Append(buf, len + 2, phead->attr.token);
 		len += 2;
 		FIFO_Push(fifo, buf, len);
 		return len;
@@ -56,25 +56,25 @@ uint32_t Msg_Fifo_Push(FIFO_t* fifo, const void* head, const void* body)
  * @arg body Message body
  * @ret Message length (num of bytes)
  */
-uint32_t Msg_Fifo_Pop(FIFO_t* fifo, const void* head, void* body)
+uint32_t Msg_Pop(FIFO_t* fifo, const void* head, void* body)
 {
-	const MsgHead_t* hd = (MsgHead_t*)head;
-	MsgHead_t h;
-	uint32_t len = sizeof(MsgHead_t) + hd->attr.length + 2;
+	MsgHead_t mhead;
+	const MsgHead_t* phead = (MsgHead_t*)head;
+	uint32_t len = sizeof(MsgHead_t) + phead->attr.length + 2;
 	uint8_t buf[MSG_LEN_MAX];
 	if (FIFO_GetUsed(fifo) < len) {
 		return 0;
 	}
-	FIFO_Peek(fifo, (uint8_t*)&h, sizeof(MsgHead_t));
-	if (h.attr.id != hd->attr.id) {
+	FIFO_Peek(fifo, (uint8_t*)&mhead, sizeof(MsgHead_t));
+	if (mhead.attr.id != phead->attr.id) {
 		return 0;
 	}
-	if (h.attr.length != hd->attr.length) {
+	if (mhead.attr.length != phead->attr.length) {
 		return 0;
 	}
 	FIFO_Peek(fifo, buf, len);
-	if (CRC16Check(buf, len, hd->attr.token)) {
-		memcpy(body, buf+sizeof(MsgHead_t), hd->attr.length);
+	if (CRC16Check(buf, len, phead->attr.token)) {
+		memcpy(body, buf+sizeof(MsgHead_t), phead->attr.length);
 		FIFO_Pop(fifo, buf, len);
 		return len;
 	}

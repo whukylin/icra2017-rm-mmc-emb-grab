@@ -1,13 +1,13 @@
 .\objects\rci.o: ..\..\app\src\rci.c
 .\objects\rci.o: ..\..\app\inc\rci.h
 .\objects\rci.o: ..\..\asp\inc\rcp.h
-.\objects\rci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\rci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\rci.o: ..\..\app\inc\cmd.h
 .\objects\rci.o: ..\..\app\inc\sys.h
 .\objects\rci.o: ..\..\app\inc\fun.h
 .\objects\rci.o: ..\..\app\inc\mec.h
 .\objects\rci.o: ..\..\app\inc\cfg.h
-.\objects\rci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\rci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\rci.o: ..\..\app\inc\fos.h
 .\objects\rci.o: ..\..\drv\inc\flash.h
 .\objects\rci.o: ..\..\bsp\inc\platform.h
@@ -54,7 +54,7 @@
 .\objects\rci.o: ..\..\app\inc\hci.h
 .\objects\rci.o: ..\..\app\inc\cmd.h
 .\objects\rci.o: ..\..\asp\inc\maf.h
-.\objects\rci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\rci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\rci.o: ..\..\app\inc\aci.h
 .\objects\rci.o: ..\..\asp\inc\cbus.h
 .\objects\rci.o: ..\..\app\inc\wdg.h

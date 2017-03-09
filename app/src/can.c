@@ -23,7 +23,6 @@
 ZGyro_t zgyro;
 Motor_t motor[MOTOR_NUM];
 
-#define PI 3.1415926f
 void ZGyro_Process(ZGyro_t* zgyro, uint32_t id, uint8_t* data)
 {
 	zgyro->id = id;

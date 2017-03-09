@@ -21,11 +21,12 @@ int main()
 	KOS_Boot();
 	while(1)
 	{
-		if (Clk_GetMsTick() % 40 == 0) {
+		if (Clk_GetMsTick() % 250 == 0) {
+			LED_GREEN_TOG();
 			//Dbg_Mec();
 			//Dbg_Pid();
 			//Dbg_Dci();
-			Dbg_Odo();
+			//Dbg_Odo();
 			//Dbg_Cmd();
 			//Dbg_Wsm();
 			//Dbg_Wdg();

@@ -6,7 +6,7 @@
 .\objects\tim_srv.o: ..\..\bsp\inc\platform.h
 .\objects\tim_srv.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\tim_srv.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\tim_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\tim_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\tim_srv.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\tim_srv.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\tim_srv.o: ..\..\stl\CMSIS\core\core_cmSimd.h
@@ -41,5 +41,5 @@
 .\objects\tim_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\tim_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
 .\objects\tim_srv.o: ..\..\kos\inc\sch.h
-.\objects\tim_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\tim_srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\tim_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\tim_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

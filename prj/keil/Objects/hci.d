@@ -1,13 +1,13 @@
 .\objects\hci.o: ..\..\app\src\hci.c
 .\objects\hci.o: ..\..\app\inc\hci.h
 .\objects\hci.o: ..\..\asp\inc\hcp.h
-.\objects\hci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\hci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\hci.o: ..\..\app\inc\cmd.h
 .\objects\hci.o: ..\..\app\inc\sys.h
 .\objects\hci.o: ..\..\app\inc\fun.h
 .\objects\hci.o: ..\..\app\inc\mec.h
 .\objects\hci.o: ..\..\app\inc\cfg.h
-.\objects\hci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\hci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\hci.o: ..\..\app\inc\fos.h
 .\objects\hci.o: ..\..\drv\inc\flash.h
 .\objects\hci.o: ..\..\bsp\inc\platform.h
@@ -57,4 +57,4 @@
 .\objects\hci.o: ..\..\asp\inc\cbus.h
 .\objects\hci.o: ..\..\app\inc\wdg.h
 .\objects\hci.o: ..\..\asp\inc\maf.h
-.\objects\hci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\hci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

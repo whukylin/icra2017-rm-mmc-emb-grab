@@ -29,13 +29,11 @@ extern "C" {
 #include "api.h"
 #include "msg.h"
 #include "cfg.h"
-#include "tty.h"
 #include "wdg.h"
 
 #define COM_RX_BUF_SIZE 256u
 
 void Com_Init(void);
-void Com_Read(void);
 void Com_Proc(void);
 
 void Btm_Proc(uint8_t data);

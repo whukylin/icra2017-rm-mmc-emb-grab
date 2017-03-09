@@ -28,44 +28,19 @@ void Com_Init(void)
 	FIFO_Init(&rx_fifo, buf[0], COM_RX_BUF_SIZE);
 }
 
-void Com_Read(void)
-{
-	if (!Wdg_IsErrSet(WDG_ERR_TTY)) {
-		uint32_t len = Tty_RxCnt();
-		if (len) {
-			Tty_Read(buf[1], len);
-			FIFO_Push(&rx_fifo, buf[1], len);
-		}
-	} else if (!Wdg_IsErrSet(WDG_ERR_DBI)) {
-		uint32_t len = Dbi_RxCnt();
-		if (len) {
-			Dbi_Read(buf[1], len);
-			FIFO_Push(&rx_fifo, buf[1], len);
-		}
-	} else if (!Wdg_IsErrSet(WDG_ERR_BTM)) {
-		uint32_t len = Btm_RxCnt();
-		if (len) {
-			Btm_Read(buf[1], len);
-			FIFO_Push(&rx_fifo, buf[1], len);
-		}
-	}
-}
-
 void Com_Proc(void)
 {
-	Com_Read();
-	if (!FIFO_GetUsed(&rx_fifo)) {
-		return;
-	}
-	if (Msg_Fifo_Pop(&rx_fifo, &msg_header_vrc, &vdbus.rcp)) {
+	uint32_t len = Ios_Read(buf[1], COM_RX_BUF_SIZE);
+	FIFO_Push(&rx_fifo, buf[1], len);
+	if (Msg_Pop(&rx_fifo, &msg_header_vrc, &vdbus.rcp)) {
 		VRC_Proc(&vdbus.rcp);
-	} else if (Msg_Fifo_Pop(&rx_fifo, &msg_header_vhc, &vdbus.hcp)) {
+	} else if (Msg_Pop(&rx_fifo, &msg_header_vhc, &vdbus.hcp)) {
 		VHC_Proc(&vdbus.hcp);
-	} else if (Msg_Fifo_Pop(&rx_fifo, &msg_header_vdbus, &vdbus)) {
+	} else if (Msg_Pop(&rx_fifo, &msg_header_vdbus, &vdbus)) {
 		VDBUS_Proc(&vdbus);
-	} else if (Msg_Fifo_Pop(&rx_fifo, &msg_header_vcbus, &vcbus)) {
+	} else if (Msg_Pop(&rx_fifo, &msg_header_vcbus, &vcbus)) {
 		VCBUS_Proc(&vcbus);
-	} else {
+	} else if (!FIFO_IsEmpty(&rx_fifo)){
 		uint8_t b;
 		FIFO_Pop(&rx_fifo, &b, 1);
 	}

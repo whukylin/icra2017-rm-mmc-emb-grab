@@ -41,16 +41,7 @@ GETCHAR_PROTOTYPE
 	return 0;
 }
 
-void Ios_PutByte(uint8_t b)
-{
-	Tty_WriteByte(b);
-	Dbi_WriteByte(b);
-	Btm_WriteByte(b);
-	//while (USART_GetFlagStatus(USART3, USART_FLAG_TC) == RESET);
-	//USART3->DR = b;
-}
-
-uint8_t Ios_GetByte(void)
+uint8_t Ios_ReadByte(void)
 {
 	if (!Wdg_IsErrSet(WDG_ERR_TTY)) {
 		return Tty_ReadByte();
@@ -64,10 +55,47 @@ uint8_t Ios_GetByte(void)
 	return 0;
 }
 
+void Ios_WriteByte(uint8_t b)
+{
+	Tty_WriteByte(b);
+	Dbi_WriteByte(b);
+	Btm_WriteByte(b);
+	//while (USART_GetFlagStatus(USART3, USART_FLAG_TC) == RESET);
+	//USART3->DR = b;
+}
+
+uint32_t Ios_Read(uint8_t* buf, uint32_t len)
+{
+	uint32_t tmp_len = 0;
+	if (!Wdg_IsErrSet(WDG_ERR_TTY)) {
+		tmp_len = Tty_RxCnt();
+		UPPER_BOUND(len, tmp_len);
+		Tty_Read(buf, len);
+	} else if (!Wdg_IsErrSet(WDG_ERR_DBI)) {
+		tmp_len = Dbi_RxCnt();
+		UPPER_BOUND(len, tmp_len);
+		Dbi_Read(buf, len);
+	} else if (!Wdg_IsErrSet(WDG_ERR_BTM)) {
+		tmp_len = Btm_RxCnt();
+		UPPER_BOUND(len, tmp_len);
+		Btm_Read(buf, len);
+	}
+	return len;
+}
+
+uint32_t Ios_Write(const uint8_t* buf, uint32_t len)
+{
+	uint32_t i = 0;
+	for (; i < len; i++) {
+		Ios_WriteByte(buf[i]);
+	}
+	return i;
+}
+
 void Ios_Init(void)
 {
-	Ios_SetIn(Ios_GetByte);
-	Ios_SetOut(Ios_PutByte);
+	Ios_SetIn(Ios_ReadByte);
+	Ios_SetOut(Ios_WriteByte);
 }
 
 

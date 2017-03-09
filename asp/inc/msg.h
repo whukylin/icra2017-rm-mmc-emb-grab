@@ -96,7 +96,7 @@ typedef CBUS_t VirtualCBUS_t;
  * @arg body Message body
  * @ret Message length (num of bytes)
  */
-uint32_t Msg_Fifo_Push(FIFO_t* fifo, const void* head, const void* body);
+uint32_t Msg_Push(FIFO_t* fifo, const void* head, const void* body);
 
 /**
  * Brief: Pop a single message from message fifo. 
@@ -105,7 +105,7 @@ uint32_t Msg_Fifo_Push(FIFO_t* fifo, const void* head, const void* body);
  * @arg body Message body
  * @ret Message length (num of bytes)
  */
-uint32_t Msg_Fifo_Pop(FIFO_t* fifo, const void* head, void* body);
+uint32_t Msg_Pop(FIFO_t* fifo, const void* head, void* body);
 
 extern const MsgHead_t msg_header_vrc;
 extern const MsgHead_t msg_header_vhc;

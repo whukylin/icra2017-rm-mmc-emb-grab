@@ -2,7 +2,7 @@
 .\objects\dci.o: ..\..\app\inc\dci.h
 .\objects\dci.o: ..\..\asp\inc\dbus.h
 .\objects\dci.o: ..\..\asp\inc\rcp.h
-.\objects\dci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\dci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\dci.o: ..\..\asp\inc\hcp.h
 .\objects\dci.o: ..\..\app\inc\rci.h
 .\objects\dci.o: ..\..\app\inc\cmd.h
@@ -10,7 +10,7 @@
 .\objects\dci.o: ..\..\app\inc\fun.h
 .\objects\dci.o: ..\..\app\inc\mec.h
 .\objects\dci.o: ..\..\app\inc\cfg.h
-.\objects\dci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\dci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\dci.o: ..\..\app\inc\fos.h
 .\objects\dci.o: ..\..\drv\inc\flash.h
 .\objects\dci.o: ..\..\bsp\inc\platform.h
@@ -53,7 +53,7 @@
 .\objects\dci.o: ..\..\app\inc\dci.h
 .\objects\dci.o: ..\..\app\inc\hci.h
 .\objects\dci.o: ..\..\asp\inc\maf.h
-.\objects\dci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\dci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\dci.o: ..\..\app\inc\aci.h
 .\objects\dci.o: ..\..\asp\inc\cbus.h
 .\objects\dci.o: ..\..\app\inc\wdg.h

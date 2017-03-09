@@ -25,6 +25,7 @@ extern "C" {
 #include "tty.h"
 #include "dbi.h"
 #include "btm.h"
+#include "fun.h"
 #include "wdg.h"
 
 #ifdef __GNUC__
@@ -38,8 +39,11 @@ extern "C" {
 void Ios_SetIn(uint8_t (*in)(void));
 void Ios_SetOut(void (*out)(uint8_t));
 
-void Ios_PutByte(uint8_t b);
-uint8_t Ios_GetByte(void);
+uint8_t Ios_ReadByte(void);
+void Ios_WriteByte(uint8_t b);
+
+uint32_t Ios_Read(uint8_t* buf, uint32_t len);
+uint32_t Ios_Write(const uint8_t* buf, uint32_t len);
 
 void Ios_Init(void);
 

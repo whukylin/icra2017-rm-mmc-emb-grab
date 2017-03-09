@@ -31,6 +31,10 @@ extern "C" {
 #define PI 3.1415926f
 #define DEG2RAD_RECIP 7.669904e-4f
 #define MAP(val,min1,max1,min2,max2) ((val-min1)*(max2-min2)/(max1-min1)+min2)
+#define MIN(V1,V2) (V1<V2?V1:V2)
+#define MAX(V1,V2) (V1>V2?V1:V2)
+#define UPPER_BOUND(V,M) do { if (V > M) V = M; } while (0)
+#define LOWER_BOUND(V,M) do { if (V < M) V = M; } while (0)
 #define CONSTRAIN(X,MIN,MAX) do { X=X>(MAX)?(MAX):X<(MIN)?(MIN):X; } while(0)
 #define CHECK_NOT_ZERO(FIELD,DEF) do { if (FIELD == 0) FIELD = DEF; } while (0)
 #define CHECK_FLAG(CONDITION,FLAG,MASK) do { if (CONDITION) FLAG |= MASK; else FLAG &= ~MASK; } while (0)

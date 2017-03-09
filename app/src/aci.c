@@ -22,10 +22,9 @@ void Aci_Init(void)
 
 void Aci_Proc(const CBUS_t* cbus)
 {
-	//float vx = constrain(cbus->vx, -cfg.spd.x, cfg.spd.x);
-	cmd.cv.x = cbus->vx;
-	cmd.cv.y = cbus->vy;
-	cmd.cv.z = cbus->vz;
+	cmd.cv.x = constrain(cbus->vx * 1e-3f, -cfg.spd.x, cfg.spd.x);
+	cmd.cv.y = constrain(cbus->vy * 1e-3f, -cfg.spd.y, cfg.spd.y);
+	cmd.cv.z = constrain(cbus->vz * 1e-3f, -cfg.spd.z, cfg.spd.z);
 	cmd.fs   = cbus->fs;
 }
 

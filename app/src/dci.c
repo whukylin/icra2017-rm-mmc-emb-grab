@@ -56,8 +56,8 @@ void Rcv_Proc(const uint8_t* dbuf)
 {
 	Wdg_Feed(WDG_IDX_RCV);
 	DBUS_Dec(&dbus, dbuf);
-	Dci_Proc(&dbus);
 	GetSwitchState(&dbus.rcp, SW_IDX_R);
 	GetSwitchEvent(&dbus.rcp, SW_IDX_R);
+	Dci_Proc(&dbus);
 }
 
