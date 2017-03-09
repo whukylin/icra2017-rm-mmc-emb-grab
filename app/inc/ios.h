@@ -22,6 +22,7 @@ extern "C" {
 #endif
 	
 #include <stdio.h>
+
 #include "tty.h"
 #include "dbi.h"
 #include "btm.h"

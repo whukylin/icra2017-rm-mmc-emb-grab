@@ -32,6 +32,7 @@ extern "C" {
 
 typedef struct
 {
+	//WorkingState_t ws;
 	PeriphsState_t fs;
 	MecanumState_t mp;
 	MecanumState_t mv;

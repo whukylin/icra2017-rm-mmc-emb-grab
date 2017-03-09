@@ -77,7 +77,33 @@ void Dbg_Ecd(void)
 	printf("%d\t%d\t%d\t%d\n", motor[0].angle_raw, motor[1].angle_raw, motor[2].angle_raw, motor[3].angle_raw);
 }
 
-void Dbg_ZGyro(void)
+void Dbg_Vrc(void)
+{
+	printf("ch0=%d,ch1=%d,ch2=%d,ch3=%d,s1=%d,s2=%d\n", 
+		vdbus.rcp.ch[0], vdbus.rcp.ch[1], vdbus.rcp.ch[2], vdbus.rcp.ch[3], vdbus.rcp.sw[0], vdbus.rcp.sw[1]);
+}
+
+void Dbg_Vhc(void)
+{
+	printf("k=%d,x=%d,y=%d,z=%d,l=%d,r=%d\n", 
+		vdbus.hcp.key.val, vdbus.hcp.mouse.x, vdbus.hcp.mouse.y, vdbus.hcp.mouse.z,
+		vdbus.hcp.mouse.b[0], vdbus.hcp.mouse.b[1]);
+}
+
+void Dbg_Vdc(void)
+{
+	printf("ch0=%d,ch1=%d,ch2=%d,ch3=%d,s1=%d,s2=%d,k=%d,x=%d,y=%d,z=%d,l=%d,r=%d\n", 
+		vdbus.rcp.ch[0], vdbus.rcp.ch[1], vdbus.rcp.ch[2], vdbus.rcp.ch[3], vdbus.rcp.sw[0],
+		vdbus.rcp.sw[1], vdbus.hcp.key.val, vdbus.hcp.mouse.x, vdbus.hcp.mouse.y, vdbus.hcp.mouse.z,
+		vdbus.hcp.mouse.b[0], vdbus.hcp.mouse.b[1]);
+}
+
+void Dbg_Vcc(void)
+{
+	printf("vx=%d,vy=%d,vz=%d,vl=%d,pc=%d,fs=%x\n", vcbus.vx, vcbus.vy, vcbus.vz, vcbus.vl, vcbus.pc, vcbus.fs);
+}
+
+void Dbg_Imu(void)
 {
 	printf("%d\t%d\n", zgyro.angle, zgyro.rate);
 }

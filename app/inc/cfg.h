@@ -187,8 +187,8 @@ typedef struct
 	.x = SPD_TRA_DEF, \
 	.y = SPD_TRA_DEF, \
 	.z = SPD_ROT_DEF, \
-	.e = 0, \
-	.c = 0, \
+	.e = 10, \
+	.c = 10, \
 }
 
 /*******************************************/
@@ -211,7 +211,7 @@ typedef struct
 
 #define ELE_CFG_DEF \
 { \
-	.max = 8191, \
+	.max = 81920, \
 	.min = 0, \
 	.def = 0, \
 }

@@ -24,7 +24,8 @@ extern "C" {
 #include "aci.h"
 #include "dci.h"
 #include "msg.h"
-	
+#include "wdg.h"
+
 void Api_Init(void);
 void Api_Proc(void);
 

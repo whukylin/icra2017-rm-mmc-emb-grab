@@ -35,6 +35,7 @@ void Api_Proc(void)
 
 void VRC_Proc(const VirtualRC_t* vrc)
 {
+	Wdg_Feed(WDG_IDX_VRC);
 	if (switchStates[SW_IDX_R] == SW_DN) {
 		if (switchStates[SW_IDX_R] != SW_DN) {
 			Rci_Init();
@@ -45,6 +46,7 @@ void VRC_Proc(const VirtualRC_t* vrc)
 
 void VHC_Proc(const VirtualHC_t* vhc)
 {
+	Wdg_Feed(WDG_IDX_VHC);
 	if (switchStates[SW_IDX_R] == SW_DN) {
 		if (switchStates[SW_IDX_R] != SW_DN) {
 			Hci_Init();
@@ -55,6 +57,7 @@ void VHC_Proc(const VirtualHC_t* vhc)
 
 void VDBUS_Proc(const VirtualDBUS_t* vdbus)
 {
+	Wdg_Feed(WDG_IDX_VDBUS);
 	if (switchStates[SW_IDX_R] == SW_DN) {
 		if (switchStates[SW_IDX_R] != SW_DN) {
 			Dci_Init();
@@ -65,6 +68,7 @@ void VDBUS_Proc(const VirtualDBUS_t* vdbus)
 
 void VCBUS_Proc(const VirtualCBUS_t* vcbus)
 {
+	Wdg_Feed(WDG_IDX_VCBUS);
 	if (switchStates[SW_IDX_R] == SW_DN) {
 		if (switchStates[SW_IDX_R] != SW_DN) {
 			Aci_Init();

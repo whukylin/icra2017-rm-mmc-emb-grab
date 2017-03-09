@@ -33,6 +33,7 @@ extern "C" {
 
 typedef struct
 {
+	//WorkingState_t ws;
 	PeriphsState_t fs;
 	ChassisState_t cv;
 	MecanumState_t mv; // Auto-Wired

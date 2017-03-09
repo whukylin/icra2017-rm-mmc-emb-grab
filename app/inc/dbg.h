@@ -28,6 +28,7 @@ extern "C" {
 #include "ios.h"
 #include "wsm.h"
 #include "ctl.h"
+#include "api.h"
 
 void Dbg_Mec(void);
 void Dbg_Pid(void);
@@ -40,7 +41,11 @@ void Dbg_Wsm(void);
 void Dbg_Wdg(void);
 void Dbg_Can(void);
 void Dbg_Ecd(void);
-void Dbg_ZGyro(void);
+void Dbg_Vrc(void);
+void Dbg_Vhc(void);
+void Dbg_Vdc(void);
+void Dbg_Vcc(void);
+void Dbg_Imu(void);
 	
 #ifdef __cplusplus
 }

@@ -26,8 +26,8 @@ extern "C" {
 #endif
 
 #include "sys.h"
-#include "ini.h"
 #include "wdg.h"
+#include "ini.h"
 #include "cfg.h"
 	
 void Wsm_Init(void);

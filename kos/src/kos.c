@@ -26,7 +26,7 @@ void KOS_Boot(void)
 	App_Init();
 	
 	// Arrange scheduled tasks, 4ms/exec
-	//Sch_Arrange(App_Proc, 4);
+	Sch_Arrange(App_Proc, 4);
 	
 	Sch_Init();
 	
@@ -41,5 +41,10 @@ void KOS_Stop(void)
 {
 	Tim_Stop();
 	Act_Init();
+}
+
+void KOS_Ward(void)
+{
+	
 }
 

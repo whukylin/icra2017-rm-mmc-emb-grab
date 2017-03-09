@@ -81,3 +81,6 @@
 .\objects\dbg.o: ..\..\bsp\inc\tim.h
 .\objects\dbg.o: ..\..\asp\inc\pid.h
 .\objects\dbg.o: ..\..\asp\inc\rmp.h
+.\objects\dbg.o: ..\..\app\inc\api.h
+.\objects\dbg.o: ..\..\asp\inc\msg.h
+.\objects\dbg.o: ..\..\asp\inc\crc16.h

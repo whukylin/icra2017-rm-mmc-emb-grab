@@ -19,6 +19,8 @@
 /***********************************/
 /*          Communication          */
 /***********************************/
+//void Com_Init(void){}
+//void Com_Proc(void){}
 
 static uint8_t buf[2][COM_RX_BUF_SIZE];
 static FIFO_t rx_fifo;
