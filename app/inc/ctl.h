@@ -35,6 +35,7 @@ typedef struct
 {
 	PeriphsState_t fs;
 	MecanumState_t mc;
+	GrabberState_t gc;
 }Ctl_t;
 
 void Ctl_Init(void);
@@ -50,11 +51,13 @@ extern PID_t CM1SpeedPID;
 extern PID_t CM2SpeedPID;
 extern PID_t CM3SpeedPID;
 extern PID_t CM4SpeedPID;
+extern PID_t GMPSpeedPID;
 
 extern Rmp_t CM1SpeedRmp;
 extern Rmp_t CM2SpeedRmp;
 extern Rmp_t CM3SpeedRmp;
 extern Rmp_t CM4SpeedRmp;
+extern Rmp_t GMPSpeedRmp;
 
 #ifdef __cplusplus
 }

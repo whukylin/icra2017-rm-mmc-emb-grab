@@ -55,6 +55,12 @@ typedef struct
 	float w4;
 }MecanumState_t;
 
+typedef struct
+{
+	float e;
+	float c;
+}GrabberState_t;
+
 PeriphsState_t FS_Get(const PeriphsState_t* fs, PeriphsState_t msk);
 void FS_Set(PeriphsState_t* fs, PeriphsState_t msk);
 void FS_Clr(PeriphsState_t* fs, PeriphsState_t msk);
@@ -64,6 +70,7 @@ void FS_Det(uint8_t cond, Flag_t* flag, Flag_t mask);
 
 void CS_Set(ChassisState_t* cs, float x, float y, float z);
 void MS_Set(MecanumState_t* ms, float w1, float w2, float w3, float w4);
+void GS_Set(GrabberState_t* gs, float e, float c);
 
 #ifdef __cplusplus
 }

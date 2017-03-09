@@ -39,14 +39,22 @@ static void ChassisStateAct(void)
 	CM_CMD(ctl.mc.w1, ctl.mc.w2, ctl.mc.w3, ctl.mc.w4);
 }
 
+static void GrabberStateAct(void)
+{
+	GM_CMD(0, ctl.gc.e);
+	CLAW_PWM = ctl.gc.c;
+}
+
 void Act_Init(void)
 {
 	CM_CMD(0, 0, 0, 0);
 	GM_CMD(0, 0);
+	CLAW_PWM = 0;
 }
 
 void Act_Proc(void)
 {
 	PeriphsStateAct();
 	ChassisStateAct();
+	GrabberStateAct();
 }

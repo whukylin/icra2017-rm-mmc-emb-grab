@@ -38,6 +38,8 @@ extern "C" {
 #define CLAW_PWM_3 CLAW_PWM_TIM->CCR3
 #define CLAW_PWM_4 CLAW_PWM_TIM->CCR4
 
+#define CLAW_PWM CLAW_PWM_1
+	
 #define CLAW_PWM_H 1700
 #define CLAW_PWM_L 1000
 

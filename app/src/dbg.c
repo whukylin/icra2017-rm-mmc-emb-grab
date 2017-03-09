@@ -100,7 +100,7 @@ void Dbg_Vdc(void)
 
 void Dbg_Vcc(void)
 {
-	printf("vx=%d,vy=%d,vz=%d,vl=%d,pc=%d,fs=%x\n", vcbus.vx, vcbus.vy, vcbus.vz, vcbus.vl, vcbus.pc, vcbus.fs);
+	printf("vx=%d,vy=%d,vz=%d,ve=%d,vc=%d,fs=%x\n", vcbus.vx, vcbus.vy, vcbus.vz, vcbus.ve, vcbus.vc, vcbus.fs);
 }
 
 void Dbg_Imu(void)

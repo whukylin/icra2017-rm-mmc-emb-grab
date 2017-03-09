@@ -28,6 +28,7 @@ void Cmd_Init(void)
 	FS_Clr(&cmd.fs, FS_ALL);
 	CS_Set(&cmd.cv, 0, 0, 0);
 	MS_Set(&cmd.mv, 0, 0, 0, 0);
+	GS_Set(&cmd.gv, 0, 0);
 }
 
 void Cmd_Proc(void)
@@ -35,6 +36,8 @@ void Cmd_Proc(void)
 	CONSTRAIN(cmd.cv.x, -cfg.spd.x, cfg.spd.x);
 	CONSTRAIN(cmd.cv.y, -cfg.spd.y, cfg.spd.y);
 	CONSTRAIN(cmd.cv.z, -cfg.spd.z, cfg.spd.z);
+	CONSTRAIN(cmd.gv.e, -cfg.spd.e, cfg.spd.e);
+	CONSTRAIN(cmd.gv.c, -cfg.spd.c, cfg.spd.c);
 	
 	Mec_Decomp((float*)&cmd.cv, (float*)&cmd.mv);
 }

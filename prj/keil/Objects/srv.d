@@ -3,15 +3,15 @@
 .\objects\srv.o: ..\..\srv\inc\can_srv.h
 .\objects\srv.o: ..\..\app\inc\can.h
 .\objects\srv.o: ..\..\asp\inc\ekf.h
-.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\srv.o: ..\..\app\inc\fun.h
 .\objects\srv.o: ..\..\app\inc\wdg.h
 .\objects\srv.o: ..\..\srv\inc\com_srv.h
 .\objects\srv.o: ..\..\app\inc\com.h
 .\objects\srv.o: ..\..\app\inc\ios.h
-.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\srv.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\srv.o: ..\..\bsp\inc\tty.h
 .\objects\srv.o: ..\..\bsp\inc\stm32util.h
 .\objects\srv.o: ..\..\bsp\inc\platform.h

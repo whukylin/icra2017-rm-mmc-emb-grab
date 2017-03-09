@@ -75,6 +75,12 @@ static void GetChassisVelocityRef(const HCP_t* hcp)
 	cmd.cv.z = Maf_Proc(&fz, vz);
 }
 
+static void GetGrabberVelocityRef(const HCP_t* hcp)
+{
+	cmd.gv.e = map(hcp->mouse.z, -MOUSE_SPEED_MAX, MOUSE_SPEED_MAX, -cfg.spd.e, cfg.spd.e);
+	cmd.gv.c = mouseButtonStates[MOUSE_BTN_IDX_L] == MOUSE_BTN_DOWN ? 10 : mouseButtonStates[MOUSE_BTN_IDX_R] == MOUSE_BTN_DOWN ? -10 : 0;
+}
+
 void Hci_Init(void)
 {
 	uint32_t i = 0;
@@ -94,4 +100,5 @@ void Hci_Proc(const HCP_t* hcp)
 {
 	GetFunctionalStateRef(hcp);
 	GetChassisVelocityRef(hcp);
+	GetGrabberVelocityRef(hcp);
 }

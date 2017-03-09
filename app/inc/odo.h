@@ -32,13 +32,15 @@ extern "C" {
 
 typedef struct
 {
-	//WorkingState_t ws;
 	PeriphsState_t fs;
 	MecanumState_t mp;
 	MecanumState_t mv;
 	MecanumState_t mc;
 	ChassisState_t cp;
 	ChassisState_t cv;
+	GrabberState_t gp;
+	GrabberState_t gv;
+	GrabberState_t gc;
 }Odo_t;
 
 void Odo_Init(void);
