@@ -29,7 +29,6 @@ extern "C" {
 #include "drv.h"
 #include "ctl.h"
 
-
 void Act_Init(void);
 void Act_Proc(void);
 

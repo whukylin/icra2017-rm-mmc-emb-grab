@@ -20,43 +20,16 @@
 /*          Communication          */
 /***********************************/
 
-VirtualDBUS_t vdbus;
-VirtualCBUS_t vcbus;
-
-//void Com_Init(void){}
-//void Com_Proc(void){}
-
-static uint8_t buf[2][COM_RX_BUF_SIZE];
-static FIFO_t rx_fifo;
-
 void Com_Init(void)
 {
-	FIFO_Init(&rx_fifo, buf[0], COM_RX_BUF_SIZE);
+	Upl_Init();
+	Dnl_Init();
 }
 
 void Com_Proc(void)
 {
-	// Get fifo free space
-	uint32_t len = FIFO_GetFree(&rx_fifo);
-	// If fifo free space insufficient, pop one element out
-	if (!len) {
-		uint8_t b;
-		len = FIFO_Pop(&rx_fifo, &b, 1);
-	}
-	// Read input stream according to the fifo free space left
-	len = Ios_Read(buf[1], len);
-	// Push stream into fifo
-	FIFO_Push(&rx_fifo, buf[1], len);
-	// Check if any message received
-	if (Msg_Pop(&rx_fifo, &msg_header_vrc, &vdbus.rcp)) {
-		VRC_Proc(&vdbus.rcp);
-	} else if (Msg_Pop(&rx_fifo, &msg_header_vhc, &vdbus.hcp)) {
-		VHC_Proc(&vdbus.hcp);
-	} else if (Msg_Pop(&rx_fifo, &msg_header_vdbus, &vdbus)) {
-		VDBUS_Proc(&vdbus);
-	} else if (Msg_Pop(&rx_fifo, &msg_header_vcbus, &vcbus)) {
-		VCBUS_Proc(&vcbus);
-	}
+	Upl_Proc();
+	Dnl_Proc();
 }
 
 void Tty_Proc(uint8_t data)

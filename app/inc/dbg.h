@@ -29,7 +29,6 @@ extern "C" {
 #include "com.h"
 #include "wsm.h"
 #include "ctl.h"
-#include "api.h"
 
 void Dbg_Mec(void);
 void Dbg_Pid(void);

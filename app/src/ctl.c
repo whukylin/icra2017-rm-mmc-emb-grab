@@ -56,7 +56,7 @@ static void ChassisVelocityControl(void)
 static void GrabberVelocityControl(void)
 {
 	ctl.gc.e = PID_Calc(&GMPSpeedPID, cmd.gv.e, odo.gv.e) * Rmp_Calc(&GMPSpeedRmp);
-	ctl.gc.c = cmd.gv.c;
+	ctl.gc.c += cmd.gv.c;
 }
 
 static void PID_Init(PID_t* pid)

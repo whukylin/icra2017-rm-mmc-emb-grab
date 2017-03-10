@@ -43,6 +43,7 @@ extern "C" {
 #define CLAW_PWM_H 1700
 #define CLAW_PWM_L 1000
 
+#define CLAW_GET_PWM() CLAW_PWM
 #define CLAW_SET_PWM(PWM) do { CLAW_PWM_1 = CLAW_PWM_2 = CLAW_PWM_3 = CLAW_PWM_4 = PWM; } while(0)
 #define CLAW_OPEN()     CLAW_SET_PWM(CLAW_PWM_H)
 #define CLAW_CLOSE()    CLAW_SET_PWM(CLAW_PWM_L)

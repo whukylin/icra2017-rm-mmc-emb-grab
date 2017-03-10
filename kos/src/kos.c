@@ -25,10 +25,10 @@ void KOS_Boot(void)
 	// Application initialization
 	App_Init();
 	
-	// Arrange scheduled tasks, 4ms/exec
-	Sch_Arrange(App_Proc, 4);
+	// Arrange scheduled tasks, @{SYS_CTL_TMS} ms/exec
+	//Sch_Arrange(App_Proc, SYS_CTL_TMS);
 	
-	Sch_Init();
+	//Sch_Init();
 	
 	// BSP configuration
 	Bsp_Config();
@@ -40,6 +40,7 @@ void KOS_Boot(void)
 void KOS_Stop(void)
 {
 	Tim_Stop();
+	Sch_Init();
 	Act_Init();
 }
 

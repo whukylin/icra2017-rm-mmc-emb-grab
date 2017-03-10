@@ -17,22 +17,25 @@
 #ifndef __UPL_H__
 #define __UPL_H__
 
-/****************************************/
-/*     Communication Up-Link Module     */
-/****************************************/
+/*****************************************/
+/*         Up-Link Communication         */
+/*****************************************/
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include "msg.h"
+#include "cmd.h"
+#include "odo.h"
+#include "wdg.h"
+#include "ini.h"
 #include "ios.h"
 
-void Upl_Pose(void);
-
+#define UPL_BUF_SIZE 256u
+	
 void Upl_Init(void);
 void Upl_Proc(void);
-	
 	
 #ifdef __cplusplus
 }

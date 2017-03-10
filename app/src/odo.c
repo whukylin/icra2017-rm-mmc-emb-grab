@@ -54,30 +54,30 @@ static void GetMecanumCurrentsFdb(void)
 
 static void GetChassisPositionFdb(void)
 {
-	Mec_Synthe((float*)&odo.mp, (float*)&odo.cp);
+	Tfx_Synthe((float*)&odo.mp, (float*)&odo.cp);
 }
 
 static void GetChassisVelocityFdb(void)
 {
-	Mec_Synthe((float*)&odo.mv, (float*)&odo.cv);
+	Tfx_Synthe((float*)&odo.mv, (float*)&odo.cv);
 }
 
 static void GetGrabberPositionFdb(void)
 {
 	odo.gp.e = motor[5].angle_filtered;
-	odo.gp.c = CLAW_PWM;
+	odo.gp.c = CLAW_GET_PWM();
 }
 
 static void GetGrabberVelocityFdb(void)
 {
 	odo.gv.e = motor[5].rate_filtered;
-	odo.gv.c = CLAW_PWM;
+	odo.gv.c = CLAW_GET_PWM();
 }
 
 static void GetGrabberCurrentsFdb(void)
 {
 	odo.gc.e = motor[5].current_fdb;
-	odo.gc.c = CLAW_PWM;
+	odo.gc.c = CLAW_GET_PWM();
 }
 
 void Odo_Init(void)

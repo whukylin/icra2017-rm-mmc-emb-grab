@@ -20,6 +20,16 @@
 /*                  Helper Functions                  */
 /******************************************************/
 
+float min(float v1, float v2)
+{
+	return v1 < v2 ? v1 : v2;
+}
+
+float max(float v1, float v2)
+{
+	return v1 > v2 ? v1 : v2;
+}
+
 float map(float val, float min1, float max1, float min2, float max2)
 {
 	CONSTRAIN(val, min1, max1);

@@ -16,15 +16,19 @@
 
 #include "sch.h"
 
+/**
+ * Scheduler (Serial)
+ *
+ */
+ 
 static SchTask_t* first = NULL;
 static SchTask_t* last = NULL;
 
 void Sch_Init(void)
 {
-	uint32_t tick = Clk_GetMsTick();
 	SchTask_t* curr = first;
 	for (; curr != NULL; curr = curr->next) {
-		curr->lastrun = tick;
+		curr->lastrun = 0;
 	}
 }
 
@@ -33,8 +37,8 @@ void Sch_Proc(void)
 	uint32_t tick = Clk_GetMsTick();
 	SchTask_t* curr = first;
 	for (; curr != NULL; curr = curr->next) {
-		uint32_t interval = tick - curr->lastrun;
-		//uint32_t interval = tick > curr->lastrun ? tick - curr->lastrun : (uint32_t)0xFFFFFFFF - curr->lastrun + tick;
+		//uint32_t interval = tick - curr->lastrun;
+		uint32_t interval = tick > curr->lastrun ? tick - curr->lastrun : (uint32_t)0xFFFFFFFF - curr->lastrun + tick;
 		if (interval >= curr->interval) {
 			curr->run();
 			curr->lastrun = tick;

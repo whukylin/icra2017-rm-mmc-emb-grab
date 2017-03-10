@@ -25,13 +25,12 @@
 extern "C" {
 #endif
 
+#include "upl.h"
+#include "dnl.h"
 #include "ios.h"
-#include "api.h"
 #include "msg.h"
 #include "cfg.h"
 #include "wdg.h"
-
-#define COM_RX_BUF_SIZE 256u
 
 void Com_Init(void);
 void Com_Proc(void);
@@ -40,9 +39,6 @@ void Btm_Proc(uint8_t data);
 void Dbi_Proc(uint8_t data);
 void Tty_Proc(uint8_t data);
 
-extern VirtualDBUS_t vdbus;
-extern VirtualCBUS_t vcbus;
-	
 #ifdef __cplusplus
 }
 #endif

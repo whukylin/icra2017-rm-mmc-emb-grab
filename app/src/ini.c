@@ -16,11 +16,21 @@
 
 #include "ini.h"
 
-static IniFlag_t iniFlag;
+static IniFlag_t iniFlag = 0;
 
 void Ini_Init(void)
 {
 	iniFlag = 0;
+}
+
+IniFlag_t Ini_IsFlagSet(IniFlag_t mask)
+{
+	return Flag_Get(&iniFlag, mask);
+}
+
+IniFlag_t Ini_GetFlag(void)
+{
+	return iniFlag;
 }
 
 static void Ini_Check(uint8_t cond, IniFlag_t mask)
@@ -39,13 +49,8 @@ void Ini_Proc(void)
 	Ini_Check(Motor_Ready(&motor[5]), INI_FLAG_MOTOR6);
 }
 
-IniFlag_t Ini_GetFlag(IniFlag_t mask)
-{
-	return Flag_Get(&iniFlag, mask);
-}
-
 IniFlag_t Ini_IsDone(void)
 {
-	return Ini_GetFlag(INI_FLAG_VATAL);
+	return Ini_IsFlagSet(INI_FLAG_VATAL);
 }
 

@@ -26,7 +26,7 @@ extern "C" {
 #endif
 
 #include "sys.h"
-#include "mec.h"
+#include "tfx.h"
 #include "dci.h"
 #include "cfg.h"
 #include "fun.h"
@@ -37,6 +37,7 @@ typedef struct
 	ChassisState_t cv;
 	MecanumState_t mv; // Auto-Wired
 	GrabberState_t gv;
+	GrabberState_t gp; // Auto-Wired
 }Cmd_t;
 
 void Cmd_Init(void);

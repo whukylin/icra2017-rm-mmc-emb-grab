@@ -20,6 +20,12 @@ const MsgHead_t msg_header_vrc = MSG_HEADER_VRC;
 const MsgHead_t msg_header_vhc = MSG_HEADER_VHC;
 const MsgHead_t msg_header_vdbus = MSG_HEADER_VDBUS;
 const MsgHead_t msg_header_vcbus = MSG_HEADER_VCBUS;
+const MsgHead_t msg_header_zgyro = MSG_HEADER_ZGYRO;
+const MsgHead_t msg_header_motor = MSG_HEADER_MOTOR;
+const MsgHead_t msg_header_odome = MSG_HEADER_ODOME;
+const MsgHead_t msg_header_grasp = MSG_HEADER_GRASP;
+const MsgHead_t msg_header_statu = MSG_HEADER_STATU;
+const MsgHead_t msg_header_calib = MSG_HEADER_CALIB;
 
 /**
  * Brief: Push a single message to message buffer. 
@@ -39,7 +45,7 @@ uint32_t Msg_Push(FIFO_t* fifo, const void* head, const void* body)
 		len = 0;
 		memcpy(buf, head, sizeof(MsgHead_t));
 		len += sizeof(MsgHead_t);
-		memcpy(buf+len, body, phead->attr.length);
+		memcpy(buf + len, body, phead->attr.length);
 		len += phead->attr.length;
 		CRC16Append(buf, len + 2, phead->attr.token);
 		len += 2;
@@ -59,9 +65,9 @@ uint32_t Msg_Push(FIFO_t* fifo, const void* head, const void* body)
 uint32_t Msg_Pop(FIFO_t* fifo, const void* head, void* body)
 {
 	MsgHead_t mhead;
+	uint8_t buf[MSG_LEN_MAX];
 	const MsgHead_t* phead = (MsgHead_t*)head;
 	uint32_t len = sizeof(MsgHead_t) + phead->attr.length + 2;
-	uint8_t buf[MSG_LEN_MAX];
 	if (FIFO_GetUsed(fifo) < len) {
 		return 0;
 	}

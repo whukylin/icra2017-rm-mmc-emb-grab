@@ -440,11 +440,6 @@
           <GroupName>app/inc</GroupName>
           <Files>
             <File>
-              <FileName>aci.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\app\inc\aci.h</FilePath>
-            </File>
-            <File>
               <FileName>act.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\app\inc\act.h</FilePath>
@@ -453,11 +448,6 @@
               <FileName>app.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\app\inc\app.h</FilePath>
-            </File>
-            <File>
-              <FileName>api.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\app\inc\api.h</FilePath>
             </File>
             <File>
               <FileName>can.h</FileName>
@@ -515,11 +505,6 @@
               <FilePath>..\..\app\inc\fos.h</FilePath>
             </File>
             <File>
-              <FileName>fun.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\app\inc\fun.h</FilePath>
-            </File>
-            <File>
               <FileName>hci.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\app\inc\hci.h</FilePath>
@@ -535,11 +520,6 @@
               <FilePath>..\..\app\inc\ios.h</FilePath>
             </File>
             <File>
-              <FileName>mec.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\app\inc\mec.h</FilePath>
-            </File>
-            <File>
               <FileName>odo.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\app\inc\odo.h</FilePath>
@@ -553,6 +533,11 @@
               <FileName>sys.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\app\inc\sys.h</FilePath>
+            </File>
+            <File>
+              <FileName>tfx.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\app\inc\tfx.h</FilePath>
             </File>
             <File>
               <FileName>upd.h</FileName>
@@ -580,11 +565,6 @@
           <GroupName>app/src</GroupName>
           <Files>
             <File>
-              <FileName>aci.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\app\src\aci.c</FilePath>
-            </File>
-            <File>
               <FileName>act.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\app\src\act.c</FilePath>
@@ -593,11 +573,6 @@
               <FileName>app.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\app\src\app.c</FilePath>
-            </File>
-            <File>
-              <FileName>api.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\app\src\api.c</FilePath>
             </File>
             <File>
               <FileName>can.c</FileName>
@@ -655,11 +630,6 @@
               <FilePath>..\..\app\src\fos.c</FilePath>
             </File>
             <File>
-              <FileName>fun.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\app\src\fun.c</FilePath>
-            </File>
-            <File>
               <FileName>hci.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\app\src\hci.c</FilePath>
@@ -675,11 +645,6 @@
               <FilePath>..\..\app\src\ios.c</FilePath>
             </File>
             <File>
-              <FileName>mec.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\app\src\mec.c</FilePath>
-            </File>
-            <File>
               <FileName>odo.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\app\src\odo.c</FilePath>
@@ -693,6 +658,11 @@
               <FileName>sys.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\app\src\sys.c</FilePath>
+            </File>
+            <File>
+              <FileName>tfx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\app\src\tfx.c</FilePath>
             </File>
             <File>
               <FileName>upd.c</FileName>
@@ -760,6 +730,11 @@
               <FilePath>..\..\asp\inc\fifo.h</FilePath>
             </File>
             <File>
+              <FileName>fun.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\asp\inc\fun.h</FilePath>
+            </File>
+            <File>
               <FileName>gdf.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\asp\inc\gdf.h</FilePath>
@@ -775,9 +750,9 @@
               <FilePath>..\..\asp\inc\maf.h</FilePath>
             </File>
             <File>
-              <FileName>mecanum.h</FileName>
+              <FileName>mec.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\asp\inc\mecanum.h</FilePath>
+              <FilePath>..\..\asp\inc\mec.h</FilePath>
             </File>
             <File>
               <FileName>msg.h</FileName>
@@ -845,6 +820,11 @@
               <FilePath>..\..\asp\src\fifo.c</FilePath>
             </File>
             <File>
+              <FileName>fun.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\asp\src\fun.c</FilePath>
+            </File>
+            <File>
               <FileName>gdf.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\asp\src\gdf.c</FilePath>
@@ -860,9 +840,9 @@
               <FilePath>..\..\asp\src\maf.c</FilePath>
             </File>
             <File>
-              <FileName>mecanum.c</FileName>
+              <FileName>mec.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\asp\src\mecanum.c</FilePath>
+              <FilePath>..\..\asp\src\mec.c</FilePath>
             </File>
             <File>
               <FileName>msg.c</FileName>

@@ -18,15 +18,16 @@
 #define __CFG_H__
 
 /*************************************/
-/*     Application Configuration     */
+/*           Configuration           */
 /*************************************/
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+#include <stdint.h>
 #include <string.h>
-	
+
 #include "fos.h"
 #include "fun.h"
 
@@ -141,7 +142,7 @@ typedef struct
 #define CFG_VER_MSK_C ((uint32_t)0x00ff0000)
 #define CFG_VER_MSK_D ((uint32_t)0xff000000)
 #define CFG_VER_DEF ((CFG_VER_A<<24)|(CFG_VER_B<<16)|(CFG_VER_C<<8)|CFG_VER_D)
-#define CFG_FLG_DEF (CFG_FLAG_AHR|CFG_FLAG_PID|CFG_FLAG_RMP|CFG_FLAG_SPD|CFG_FLAG_MEC|CFG_FLAG_ELE|CFG_FLAG_CLA)
+#define CFG_FLG_DEF 0 //(CFG_FLAG_AHR|CFG_FLAG_PID|CFG_FLAG_RMP|CFG_FLAG_SPD|CFG_FLAG_MEC|CFG_FLAG_ELE|CFG_FLAG_CLA)
 
 #define IMU_CFG_DEF \
 { \
@@ -241,9 +242,6 @@ typedef struct
 	ELE_CFG_DEF, \
 	CLA_CFG_DEF, \
 }
-
-void Cfg_Load(Cfg_t* cfg);
-uint8_t Cfg_Save(Cfg_t* cfg);
 
 CfgVer_t Cfg_GetVer(void);
 void Cfg_SetVer(CfgVer_t ver);

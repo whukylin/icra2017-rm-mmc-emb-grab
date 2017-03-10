@@ -25,6 +25,7 @@
 extern "C" {
 #endif
 
+#define CTL_
 #include "sys.h"
 #include "cmd.h"
 #include "odo.h"

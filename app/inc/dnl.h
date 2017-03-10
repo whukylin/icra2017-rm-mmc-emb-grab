@@ -17,21 +17,29 @@
 #ifndef __DNL_H__
 #define __DNL_H__
 
-/****************************************/
-/*    Communication Down-Link Module    */
-/****************************************/
+/*****************************************/
+/*        Down-Link Communication        */
+/*****************************************/
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include "msg.h"
+#include "cmd.h"
+#include "cci.h"
+#include "cfg.h"
 #include "ios.h"
 
+#define DNL_BUF_SIZE 256u
+	
 void Dnl_Init(void);
 void Dnl_Proc(void);
-	
-	
+
+extern VirtualDBUS_t vdbus;
+extern VirtualCBUS_t vcbus;
+extern CalibMsg_t calibMsg;
+
 #ifdef __cplusplus
 }
 #endif

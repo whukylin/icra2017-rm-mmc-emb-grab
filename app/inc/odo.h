@@ -25,10 +25,10 @@
 extern "C" {
 #endif
 
+#include "sys.h"
 #include "bsp.h"
 #include "can.h"
-#include "sys.h"
-#include "mec.h"
+#include "tfx.h"
 
 typedef struct
 {

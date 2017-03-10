@@ -22,16 +22,7 @@
 
 static void PeriphsStateAct(void)
 {
-	if (FS_Get(&ctl.fs, FS_LED_GREEN)) {
-		LED_GREEN_ON();
-	} else {
-		LED_GREEN_OFF();
-	}
-	if (FS_Get(&ctl.fs, FS_LED_RED)) {
-		LED_RED_ON();
-	} else {
-		LED_RED_OFF();
-	}
+	
 }
 
 static void ChassisStateAct(void)
@@ -42,14 +33,14 @@ static void ChassisStateAct(void)
 static void GrabberStateAct(void)
 {
 	GM_CMD(0, ctl.gc.e);
-	CLAW_PWM = ctl.gc.c;
+	CLAW_SET_PWM((uint32_t)ctl.gc.c);
 }
 
 void Act_Init(void)
 {
 	CM_CMD(0, 0, 0, 0);
 	GM_CMD(0, 0);
-	CLAW_PWM = 0;
+	CLAW_SET_PWM(0);
 }
 
 void Act_Proc(void)

@@ -22,7 +22,10 @@ int main()
 	while(1)
 	{
 		//KOS_Ward();
-		if (Clk_GetMsTick() % 20 == 0) {
+		if (Clk_GetMsTick() % 4 == 0) {
+			Upl_Proc();
+			//printf("%d\n", sizeof(Cfg_t));
+			//Upl_Proc();
 			//Dbg_Ecd();
 			//LED_GREEN_TOG();
 			//Dbg_Mec();

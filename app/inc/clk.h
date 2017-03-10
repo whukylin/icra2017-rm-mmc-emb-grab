@@ -25,14 +25,15 @@
 extern "C" {
 #endif
 
-#include "tim.h"
+#include <stdint.h>
 
 void Clk_Init(void);
 void Clk_Spin(void);
 
 uint32_t Clk_GetUsTick(void);
 uint32_t Clk_GetMsTick(void);
-	
+uint32_t Clk_GetScTick(void);
+
 #ifdef __cpluplus
 }
 #endif

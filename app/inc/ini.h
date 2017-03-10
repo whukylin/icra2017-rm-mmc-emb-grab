@@ -40,7 +40,8 @@ typedef uint32_t IniFlag_t;
 void Ini_Init(void);
 void Ini_Proc(void);
 
-IniFlag_t Ini_GetFlag(IniFlag_t mask);
+IniFlag_t Ini_IsFlagSet(IniFlag_t mask);
+IniFlag_t Ini_GetFlag(void);
 IniFlag_t Ini_IsDone(void);
 
 #endif

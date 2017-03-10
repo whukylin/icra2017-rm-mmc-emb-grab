@@ -21,15 +21,30 @@
 /*******************************/
 
 static uint32_t us_tick = 0;
+static uint32_t us_temp = 0;
+static uint32_t ms_tick = 0;
+static uint32_t ms_temp = 0;
+static uint32_t sc_tick = 0;
 
 void Clk_Init(void)
 {
 	us_tick = 0;
+	us_temp = 0;
+	ms_tick = 0;
 }
 
 void Clk_Spin(void)
 {
 	us_tick++;
+	us_temp++;
+	if (us_temp > 999) {
+		us_temp = 0;
+		ms_tick++;
+		ms_temp++;
+		if (ms_temp > 999) {
+			sc_tick++;
+		}
+	}
 }
 
 uint32_t Clk_GetUsTick(void)
@@ -39,7 +54,12 @@ uint32_t Clk_GetUsTick(void)
 
 uint32_t Clk_GetMsTick(void)
 {
-	return us_tick / 1000;
+	return ms_tick;
+}
+
+uint32_t Clk_GetScTick(void)
+{
+	return sc_tick;
 }
 
 

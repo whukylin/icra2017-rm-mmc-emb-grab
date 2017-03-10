@@ -24,7 +24,6 @@
 #include "dbus.h"
 #include "rci.h"
 #include "hci.h"
-#include "aci.h"
 #include "wdg.h"
 
 void Dci_Init(void);

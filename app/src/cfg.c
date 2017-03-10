@@ -17,7 +17,7 @@
 #include "cfg.h"
 
 /*************************************/
-/*     Application Configuration     */
+/*           Configuration           */
 /*************************************/
 
 uint8_t cfg_sync_flag = 0;

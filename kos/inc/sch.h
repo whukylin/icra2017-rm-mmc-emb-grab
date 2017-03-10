@@ -17,6 +17,11 @@
 #ifndef __SCH_H__
 #define __SCH_H__
 
+/**
+ * Scheduler (Serial)
+ *
+ */
+ 
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -26,7 +31,7 @@ extern "C" {
 #include <string.h>
 
 #include "clk.h"
-
+	
 typedef void (*SchRun_t)(void);
 
 typedef struct SchTask_t

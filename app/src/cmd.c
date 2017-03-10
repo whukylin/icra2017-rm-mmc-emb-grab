@@ -39,7 +39,7 @@ void Cmd_Proc(void)
 	CONSTRAIN(cmd.gv.e, -cfg.spd.e, cfg.spd.e);
 	CONSTRAIN(cmd.gv.c, -cfg.spd.c, cfg.spd.c);
 	
-	Mec_Decomp((float*)&cmd.cv, (float*)&cmd.mv);
+	Tfx_Decomp((float*)&cmd.cv, (float*)&cmd.mv);
 }
 
 

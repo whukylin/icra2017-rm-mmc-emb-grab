@@ -17,24 +17,30 @@
 #ifndef __ASP_H__
 #define __ASP_H__
 
+/**
+ * Stand-Alone Application Support Packages (Platform Independent)
+ *
+ */
+ 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "ahrs.h"
-#include "cbus.h"
-#include "crc16.h"
-#include "dbus.h"
-#include "ekf.h"
-#include "fifo.h"
-#include "gdf.h"
-#include "hcp.h"
-#include "maf.h"
-#include "mecanum.h"
-#include "pid.h"
-#include "rcp.h"
-#include "rmp.h"
-#include "stack.h"
+#include "ahrs.h"  // Attitude Heading Reference System
+#include "cbus.h"  // Control Bus
+#include "crc16.h" // 16bit CRC
+#include "dbus.h"  // DBUS Protocol (DBUS = RCP + HCP)
+#include "ekf.h"   // Kalman Filter
+#include "fifo.h"  // FIFO Data Structure and Algorithm
+#include "fun.h"   // Helper Functions
+#include "gdf.h"   // Gaussian Distribution Function
+#include "hcp.h"   // Host Control Protocol
+#include "maf.h"   // Moving Average Filter
+#include "mec.h"   // Mecanum Power Transmission System
+#include "pid.h"   // PID Regulator
+#include "rcp.h"   // Remote Control Protocol
+#include "rmp.h"   // Ramp Generator
+#include "stack.h" // Stack Data Structure and Algorithm
 
 #ifdef __cplusplus
 }
