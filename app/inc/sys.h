@@ -36,8 +36,7 @@ typedef uint32_t PeriphsState_t; // Peripherals Functional State
 
 #define FS_LED_GREEN    (((uint32_t)1)<<0)
 #define FS_LED_RED      (((uint32_t)1)<<1)
-#define FS_CLAW         (((uint32_t)1)<<2)
-#define FS_ALL      		(FS_LED_GREEN|FS_LED_RED|FS_CLAW)
+#define FS_ALL      		(FS_LED_GREEN|FS_LED_RED)
 #define FS_NON       		((uint32_t)0)
 
 typedef struct
@@ -61,11 +60,11 @@ typedef struct
 	float c;
 }GrabberState_t;
 
-PeriphsState_t FS_Get(const PeriphsState_t* fs, PeriphsState_t msk);
-void FS_Set(PeriphsState_t* fs, PeriphsState_t msk);
-void FS_Clr(PeriphsState_t* fs, PeriphsState_t msk);
-void FS_Tog(PeriphsState_t* fs, PeriphsState_t msk);
-void FS_Cpy(PeriphsState_t* fs, PeriphsState_t src, PeriphsState_t msk);
+PeriphsState_t FS_Get(const PeriphsState_t* fs, PeriphsState_t mask);
+void FS_Set(PeriphsState_t* fs, PeriphsState_t mask);
+void FS_Clr(PeriphsState_t* fs, PeriphsState_t mask);
+void FS_Tog(PeriphsState_t* fs, PeriphsState_t mask);
+void FS_Cpy(PeriphsState_t* fs, PeriphsState_t src, PeriphsState_t mask);
 void FS_Det(uint8_t cond, Flag_t* flag, Flag_t mask);
 
 void CS_Set(ChassisState_t* cs, float x, float y, float z);

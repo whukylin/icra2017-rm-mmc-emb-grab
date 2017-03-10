@@ -44,4 +44,8 @@ IniFlag_t Ini_GetFlag(IniFlag_t mask)
 	return Flag_Get(&iniFlag, mask);
 }
 
+IniFlag_t Ini_IsDone(void)
+{
+	return Ini_GetFlag(INI_FLAG_VATAL);
+}
 

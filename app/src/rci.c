@@ -85,7 +85,7 @@ static void GetChassisVelocityRef(const RCP_t* rcp)
 static void GetGrabberVelocityRef(const RCP_t* rcp)
 {
 	cmd.gv.e = map(rcp->ch[3], CH_MIN, CH_MAX, -cfg.spd.e, cfg.spd.e);
-	cmd.gv.c = switchStates[SW_IDX_L] == SW_UP ? 10 : switchStates[SW_IDX_L] == SW_DN ? -10 : 0;
+	cmd.gv.c = switchStates[SW_IDX_L] == SW_UP ? cfg.spd.c : switchStates[SW_IDX_L] == SW_DN ? -cfg.spd.c : 0;
 }
 
 void Rci_Init(void)

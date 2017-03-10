@@ -48,6 +48,7 @@ extern "C" {
 #include "aci.h" // Auto-Control Interface
 #include "act.h" // Action (Depend on BSP)
 #include "can.h" // Controller Area Network
+#include "cci.h" // CBUS Control Interface
 #include "cfg.h" // System Configuration
 #include "clk.h" // System Clock Source
 #include "cmd.h" // System Command Interface
@@ -58,8 +59,8 @@ extern "C" {
 #include "fos.h" // File Operating System
 #include "fun.h" // Helper functions
 #include "hci.h" // Host Control Interface
-#include "ini.h" // Initialization State Provider
-#include "ios.h" // Input/Output Stream
+#include "ini.h" // Initialization Status Information Provider
+#include "ios.h" // Input/Output Stream Pipe
 #include "mec.h" // Mecanum Power Transmission System
 #include "odo.h" // Odometer (Sensor Message Feedback)
 #include "rci.h" // Remote Control Interface

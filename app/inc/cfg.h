@@ -136,6 +136,10 @@ typedef struct
 #define CFG_VER_B 7u
 #define CFG_VER_C 1u
 #define CFG_VER_D 7u
+#define CFG_VER_MSK_A ((uint32_t)0x000000ff)
+#define CFG_VER_MSK_B ((uint32_t)0x0000ff00)
+#define CFG_VER_MSK_C ((uint32_t)0x00ff0000)
+#define CFG_VER_MSK_D ((uint32_t)0xff000000)
 #define CFG_VER_DEF ((CFG_VER_A<<24)|(CFG_VER_B<<16)|(CFG_VER_C<<8)|CFG_VER_D)
 #define CFG_FLG_DEF (CFG_FLAG_AHR|CFG_FLAG_PID|CFG_FLAG_RMP|CFG_FLAG_SPD|CFG_FLAG_MEC|CFG_FLAG_ELE|CFG_FLAG_CLA)
 
@@ -241,12 +245,15 @@ typedef struct
 void Cfg_Load(Cfg_t* cfg);
 uint8_t Cfg_Save(Cfg_t* cfg);
 
-CfgVer_t Cfg_GetVer(CfgVer_t mask);
-void Cfg_SetVer(CfgVer_t ver, CfgVer_t mask);
+CfgVer_t Cfg_GetVer(void);
+void Cfg_SetVer(CfgVer_t ver);
 
 CfgFlg_t Cfg_GetFlag(CfgFlg_t flag);
 void Cfg_SetFlag(CfgFlg_t flag);
 void Cfg_ClrFlag(CfgFlg_t flag);
+
+uint8_t Cfg_IsSynced(void);
+void Cfg_Sync(void);
 
 void Cfg_Init(void);
 void Cfg_Proc(void);
@@ -254,6 +261,7 @@ void Cfg_Proc(void);
 void Cfg_Reset(void);
 
 extern Cfg_t cfg;
+extern uint8_t cfg_sync_flag;
 
 #ifdef __cplusplus
 }

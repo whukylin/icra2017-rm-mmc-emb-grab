@@ -1,4 +1,4 @@
---cpu Cortex-M4.fp
+--cpu=Cortex-M4.fp
 ".\objects\main.o"
 ".\objects\stm32f4xx_it.o"
 ".\objects\kos.o"
@@ -8,6 +8,7 @@
 ".\objects\app.o"
 ".\objects\api.o"
 ".\objects\can.o"
+".\objects\cci.o"
 ".\objects\cfg.o"
 ".\objects\clk.o"
 ".\objects\cmd.o"

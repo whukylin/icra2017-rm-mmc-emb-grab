@@ -10,7 +10,7 @@
       <TargetName>kylinbot</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060061::V5.06 update 1 (build 61)::ARMCC</pCCUsed>
+      <pCCUsed>5060422::V5.06 update 4 (build 422)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F427IIHx</Device>
@@ -125,47 +125,6 @@
             <HexOffset>0</HexOffset>
             <Oh166RecLen>16</Oh166RecLen>
           </OPTHX>
-          <Simulator>
-            <UseSimulator>0</UseSimulator>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>1</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <LimitSpeedToRealTime>0</LimitSpeedToRealTime>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Simulator>
-          <Target>
-            <UseTarget>1</UseTarget>
-            <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>1</RunToMain>
-            <RestoreBreakpoints>1</RestoreBreakpoints>
-            <RestoreWatchpoints>1</RestoreWatchpoints>
-            <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
-            <RestoreFunctions>0</RestoreFunctions>
-            <RestoreToolbox>1</RestoreToolbox>
-            <RestoreTracepoints>1</RestoreTracepoints>
-            <RestoreSysVw>1</RestoreSysVw>
-          </Target>
-          <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>11</TargetSelection>
-          <SimDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-          </SimDlls>
-          <TargetDlls>
-            <CpuDll></CpuDll>
-            <CpuDllArguments></CpuDllArguments>
-            <PeripheralDll></PeripheralDll>
-            <PeripheralDllArguments></PeripheralDllArguments>
-            <InitializationFile></InitializationFile>
-            <Driver>STLink\ST-LINKIII-KEIL_SWO.dll</Driver>
-          </TargetDlls>
         </DebugOption>
         <Utilities>
           <Flash1>
@@ -369,6 +328,9 @@
             <v6LangP>3</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
+            <v6Lto>0</v6Lto>
+            <v6WtE>0</v6WtE>
+            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>--C99</MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F427X,STM32F427xx</Define>
@@ -386,6 +348,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>1</uSurpInc>
             <useXO>0</useXO>
+            <uClangAs>0</uClangAs>
             <VariousControls>
               <MiscControls> --cpreproc</MiscControls>
               <Define></Define>
@@ -502,6 +465,11 @@
               <FilePath>..\..\app\inc\can.h</FilePath>
             </File>
             <File>
+              <FileName>cci.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\app\inc\cci.h</FilePath>
+            </File>
+            <File>
               <FileName>cfg.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\app\inc\cfg.h</FilePath>
@@ -535,6 +503,11 @@
               <FileName>dci.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\app\inc\dci.h</FilePath>
+            </File>
+            <File>
+              <FileName>dnl.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\app\inc\dnl.h</FilePath>
             </File>
             <File>
               <FileName>fos.h</FileName>
@@ -587,6 +560,11 @@
               <FilePath>..\..\app\inc\upd.h</FilePath>
             </File>
             <File>
+              <FileName>upl.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\app\inc\upl.h</FilePath>
+            </File>
+            <File>
               <FileName>wdg.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\app\inc\wdg.h</FilePath>
@@ -627,6 +605,11 @@
               <FilePath>..\..\app\src\can.c</FilePath>
             </File>
             <File>
+              <FileName>cci.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\app\src\cci.c</FilePath>
+            </File>
+            <File>
               <FileName>cfg.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\app\src\cfg.c</FilePath>
@@ -660,6 +643,11 @@
               <FileName>dci.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\app\src\dci.c</FilePath>
+            </File>
+            <File>
+              <FileName>dnl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\app\src\dnl.c</FilePath>
             </File>
             <File>
               <FileName>fos.c</FileName>
@@ -710,6 +698,11 @@
               <FileName>upd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\app\src\upd.c</FilePath>
+            </File>
+            <File>
+              <FileName>upl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\app\src\upl.c</FilePath>
             </File>
             <File>
               <FileName>wdg.c</FileName>

@@ -16,15 +16,60 @@
  
 #include "aci.h"
 
+/***********************************************/
+/*           Auto-Control Interface            */
+/***********************************************/
+
 void Aci_Init(void)
 {
+	
 }
 
-void Aci_Proc(const CBUS_t* cbus)
+void Aci_Proc(void)
 {
-	cmd.cv.x = constrain(cbus->vx * 1e-3f, -cfg.spd.x, cfg.spd.x);
-	cmd.cv.y = constrain(cbus->vy * 1e-3f, -cfg.spd.y, cfg.spd.y);
-	cmd.cv.z = constrain(cbus->vz * 1e-3f, -cfg.spd.z, cfg.spd.z);
-	cmd.fs   = cbus->fs;
+	
 }
+
+void VRC_Proc(const VirtualRC_t* vrc)
+{
+	Wdg_Feed(WDG_IDX_VRC);
+	if (switchStates[SW_IDX_R] == SW_DN) {
+		if (lastSwitchStates[SW_IDX_R] != SW_DN) {
+			Rci_Init();
+		}
+		Rci_Proc(vrc);
+	}
+}
+
+void VHC_Proc(const VirtualHC_t* vhc)
+{
+	Wdg_Feed(WDG_IDX_VHC);
+	if (switchStates[SW_IDX_R] == SW_DN) {
+		if (lastSwitchStates[SW_IDX_R] != SW_DN) {
+			Hci_Init();
+		}
+		Hci_Proc(vhc);
+	}
+}
+
+void VDBUS_Proc(const VirtualDBUS_t* vdbus)
+{
+	Wdg_Feed(WDG_IDX_VDBUS);
+	// To use this mode, the remote controller must be turned of.
+	if (!Wdg_IsErrSet(WDG_ERR_RCV)) return;
+	Dci_Proc(vdbus);
+}
+
+void VCBUS_Proc(const VirtualCBUS_t* vcbus)
+{
+	Wdg_Feed(WDG_IDX_VCBUS);
+	if (switchStates[SW_IDX_R] == SW_DN) {
+		if (lastSwitchStates[SW_IDX_R] != SW_DN) {
+			Cci_Init();
+		}
+		Cci_Proc(vcbus);
+	}
+}
+
+
 

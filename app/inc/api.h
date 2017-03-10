@@ -29,14 +29,6 @@ extern "C" {
 void Api_Init(void);
 void Api_Proc(void);
 
-void VRC_Proc(const VirtualRC_t* vrc);
-void VHC_Proc(const VirtualHC_t* vhc);
-void VDBUS_Proc(const VirtualDBUS_t* vdbus);
-void VCBUS_Proc(const VirtualCBUS_t* vcbus);
-
-extern VirtualDBUS_t vdbus;
-extern VirtualCBUS_t vcbus;
-
 #ifdef __cplusplus
 }
 #endif

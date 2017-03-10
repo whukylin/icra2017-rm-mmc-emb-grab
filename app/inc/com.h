@@ -40,6 +40,9 @@ void Btm_Proc(uint8_t data);
 void Dbi_Proc(uint8_t data);
 void Tty_Proc(uint8_t data);
 
+extern VirtualDBUS_t vdbus;
+extern VirtualCBUS_t vcbus;
+	
 #ifdef __cplusplus
 }
 #endif

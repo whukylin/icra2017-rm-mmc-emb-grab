@@ -16,34 +16,34 @@
 
 #include "sys.h"
 
-PeriphsState_t FS_Get(const PeriphsState_t* fs, PeriphsState_t msk)
+PeriphsState_t FS_Get(const PeriphsState_t* fs, PeriphsState_t mask)
 {
-	return Flag_Get(fs, msk);
+	return Flag_Get(fs, mask);
 }
 
-void FS_Set(PeriphsState_t* fs, PeriphsState_t msk)
+void FS_Set(PeriphsState_t* fs, PeriphsState_t mask)
 {
-	Flag_Set(fs, msk);
+	Flag_Set(fs, mask);
 }
 
-void FS_Clr(PeriphsState_t* fs, PeriphsState_t msk)
+void FS_Clr(PeriphsState_t* fs, PeriphsState_t mask)
 {
-	Flag_Clr(fs, msk);
+	Flag_Clr(fs, mask);
 }
 
-void FS_Tog(PeriphsState_t* fs, PeriphsState_t msk)
+void FS_Tog(PeriphsState_t* fs, PeriphsState_t mask)
 {
-	Flag_Tog(fs, msk);
+	Flag_Tog(fs, mask);
 }
 
-void FS_Cpy(PeriphsState_t* fs, PeriphsState_t src, PeriphsState_t msk)
+void FS_Cpy(PeriphsState_t* fs, PeriphsState_t src, PeriphsState_t mask)
 {
-	Flag_Cpy(fs, src, msk);
+	Flag_Cpy(fs, src, mask);
 }
 
-void FS_Det(uint8_t cond, PeriphsState_t* fs, PeriphsState_t msk)
+void FS_Det(uint8_t cond, PeriphsState_t* fs, PeriphsState_t mask)
 {
-	Flag_Det(cond, fs, msk);
+	Flag_Det(cond, fs, mask);
 }
 
 void CS_Set(ChassisState_t* cs, float x, float y, float z)

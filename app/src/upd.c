@@ -29,21 +29,17 @@ void Upd_Proc(void)
 			Act_Init();
 			break;
 		case WORKING_STATE_PREPARE:
-			if (Wsm_GetLastWorkingState() != WORKING_STATE_PREPARE) {
-				Upd_Init();
-			}
 			Act_Init();
 			break;
 		case WORKING_STATE_NORMAL:
-			if (Wsm_GetLastWorkingState() == WORKING_STATE_CONFIG) {
+			if (Wsm_GetLastWorkingState() != WORKING_STATE_NORMAL) {
 				Upd_Init();
 			}
 			Ctl_Proc();
 			Act_Proc();
 			break;
 		case WORKING_STATE_CONFIG:
-			Ctl_Proc();
-			Act_Proc();
+			Act_Init();
 			break;
 		default:
 			break;

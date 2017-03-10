@@ -2,7 +2,7 @@
 .\objects\stm32f4xx_dma2d.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\stm32f4xx_dma2d.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\stm32f4xx_dma2d.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\stm32f4xx_dma2d.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\stm32f4xx_dma2d.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\stm32f4xx_dma2d.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\stm32f4xx_dma2d.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\stm32f4xx_dma2d.o: ..\..\stl\CMSIS\core\core_cmSimd.h

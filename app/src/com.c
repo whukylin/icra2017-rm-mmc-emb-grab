@@ -19,6 +19,10 @@
 /***********************************/
 /*          Communication          */
 /***********************************/
+
+VirtualDBUS_t vdbus;
+VirtualCBUS_t vcbus;
+
 //void Com_Init(void){}
 //void Com_Proc(void){}
 
@@ -41,10 +45,6 @@ void Com_Proc(void)
 	}
 	// Read input stream according to the fifo free space left
 	len = Ios_Read(buf[1], len);
-	// If stream not available, just return.
-	if (!len) {
-		return;
-	}
 	// Push stream into fifo
 	FIFO_Push(&rx_fifo, buf[1], len);
 	// Check if any message received

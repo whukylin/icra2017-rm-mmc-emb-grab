@@ -20,6 +20,8 @@
 /*     Application Configuration     */
 /*************************************/
 
+uint8_t cfg_sync_flag = 0;
+
 Cfg_t cfg = CFG_DEF;
 
 void Cfg_Load(Cfg_t* cfg)
@@ -32,14 +34,14 @@ uint8_t Cfg_Save(Cfg_t* cfg)
 	return Fos_Write((uint8_t*)cfg, sizeof(Cfg_t));
 }
 
-CfgVer_t Cfg_GetVer(CfgVer_t mask)
+CfgVer_t Cfg_GetVer(void)
 {
-	return Flag_Get(&cfg.ver, mask);
+	return cfg.ver;
 }
 
-void Cfg_SetVer(CfgVer_t ver, CfgVer_t mask)
+void Cfg_SetVer(CfgVer_t ver)
 {
-	Flag_Set(&cfg.ver, mask);
+	cfg.ver = ver;
 }
 
 CfgFlg_t Cfg_GetFlag(CfgFlg_t flag)
@@ -55,6 +57,16 @@ void Cfg_SetFlag(CfgFlg_t flag)
 void Cfg_ClrFlag(CfgFlg_t flag)
 {
 	Flag_Clr(&cfg.flg, flag);
+}
+
+uint8_t Cfg_IsSynced(void)
+{
+	return cfg_sync_flag;
+}
+
+void Cfg_Sync(void)
+{
+	cfg_sync_flag = 1;
 }
 
 void Cfg_Init(void)
@@ -88,16 +100,20 @@ void Cfg_Init(void)
 	if (!Cfg_GetFlag(CFG_FLAG_CLA)) {
 		memcpy(&cfg.cla, &tmp.cla, sizeof(ClaCfg_t));
 	}
+	cfg_sync_flag = 0;
 }
 
 void Cfg_Proc(void)
 {
-	Cfg_t tmp = CFG_DEF;
-	CHECK_NOT_ZERO(cfg.mec.lx, tmp.mec.lx);
-	CHECK_NOT_ZERO(cfg.mec.ly, tmp.mec.ly);
-	CHECK_NOT_ZERO(cfg.mec.r1, tmp.mec.r1);
-	CHECK_NOT_ZERO(cfg.mec.r2, tmp.mec.r2);
-	Cfg_Save(&cfg);
+	if (cfg_sync_flag == 1) {
+		Cfg_t tmp = CFG_DEF;
+		CHECK_NOT_ZERO(cfg.mec.lx, tmp.mec.lx);
+		CHECK_NOT_ZERO(cfg.mec.ly, tmp.mec.ly);
+		CHECK_NOT_ZERO(cfg.mec.r1, tmp.mec.r1);
+		CHECK_NOT_ZERO(cfg.mec.r2, tmp.mec.r2);
+		Cfg_Save(&cfg);
+		cfg_sync_flag = 0;
+	}
 }
 
 void Cfg_Reset(void)
@@ -106,4 +122,6 @@ void Cfg_Reset(void)
 	Cfg_Save(&tmp);
 	Cfg_Load(&cfg);
 }
+
+
 

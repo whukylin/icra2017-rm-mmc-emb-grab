@@ -26,6 +26,7 @@ extern "C" {
 #endif
 
 #include "ios.h"
+#include "com.h"
 #include "wsm.h"
 #include "ctl.h"
 #include "api.h"

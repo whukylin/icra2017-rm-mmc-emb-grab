@@ -31,8 +31,13 @@ void Dci_Init(void)
 
 void Dci_Proc(const DBUS_t* dbus)
 {
-	GetSwitchState(&dbus->rcp, SW_IDX_L);
-	GetSwitchEvent(&dbus->rcp, SW_IDX_L);
+	//GetSwitchState(&dbus->rcp, SW_IDX_L);
+	//GetSwitchEvent(&dbus->rcp, SW_IDX_L);
+	// The right switch is used as mode switcher and should never be modified by other processes
+	//GetSwitchState(&dbus->rcp, SW_IDX_R);
+	//GetSwitchEvent(&dbus->rcp, SW_IDX_R);
+	GetSwitchStates(&dbus->rcp);
+	GetSwitchEvents(&dbus->rcp);
 	if (switchStates[SW_IDX_R] == SW_UP) {
 		if (lastSwitchStates[SW_IDX_R] != SW_UP) {
 			Rci_Init();
@@ -44,9 +49,7 @@ void Dci_Proc(const DBUS_t* dbus)
 		}
 		Hci_Proc(&dbus->hcp);
 	} else if (switchStates[SW_IDX_R] == SW_DN) {
-		if (lastSwitchStates[SW_IDX_R] != SW_DN) {
-			Aci_Init();
-		}
+		// Other control interface
 	} else {
 		// Should never reach here
 	}
@@ -56,8 +59,6 @@ void Rcv_Proc(const uint8_t* dbuf)
 {
 	Wdg_Feed(WDG_IDX_RCV);
 	DBUS_Dec(&dbus, dbuf);
-	GetSwitchState(&dbus.rcp, SW_IDX_R);
-	GetSwitchEvent(&dbus.rcp, SW_IDX_R);
 	Dci_Proc(&dbus);
 }
 

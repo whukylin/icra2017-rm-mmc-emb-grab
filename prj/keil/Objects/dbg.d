@@ -1,13 +1,13 @@
 .\objects\dbg.o: ..\..\app\src\dbg.c
 .\objects\dbg.o: ..\..\app\inc\dbg.h
 .\objects\dbg.o: ..\..\app\inc\ios.h
-.\objects\dbg.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\dbg.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\dbg.o: ..\..\bsp\inc\tty.h
 .\objects\dbg.o: ..\..\bsp\inc\stm32util.h
 .\objects\dbg.o: ..\..\bsp\inc\platform.h
 .\objects\dbg.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\dbg.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\dbg.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\dbg.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\dbg.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\dbg.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\dbg.o: ..\..\stl\CMSIS\core\core_cmSimd.h
@@ -42,23 +42,22 @@
 .\objects\dbg.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_dma2d.h
 .\objects\dbg.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_sai.h
 .\objects\dbg.o: ..\..\asp\inc\fifo.h
-.\objects\dbg.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\dbg.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\dbg.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\dbg.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\dbg.o: ..\..\bsp\inc\dbi.h
 .\objects\dbg.o: ..\..\bsp\inc\btm.h
 .\objects\dbg.o: ..\..\app\inc\fun.h
 .\objects\dbg.o: ..\..\app\inc\wdg.h
-.\objects\dbg.o: ..\..\app\inc\wsm.h
+.\objects\dbg.o: ..\..\app\inc\com.h
+.\objects\dbg.o: ..\..\app\inc\api.h
+.\objects\dbg.o: ..\..\app\inc\aci.h
+.\objects\dbg.o: ..\..\app\inc\cci.h
+.\objects\dbg.o: ..\..\app\inc\cmd.h
 .\objects\dbg.o: ..\..\app\inc\sys.h
-.\objects\dbg.o: ..\..\app\inc\ini.h
-.\objects\dbg.o: ..\..\app\inc\can.h
-.\objects\dbg.o: ..\..\asp\inc\ekf.h
+.\objects\dbg.o: ..\..\app\inc\mec.h
 .\objects\dbg.o: ..\..\app\inc\cfg.h
 .\objects\dbg.o: ..\..\app\inc\fos.h
 .\objects\dbg.o: ..\..\drv\inc\flash.h
-.\objects\dbg.o: ..\..\app\inc\ctl.h
-.\objects\dbg.o: ..\..\app\inc\cmd.h
-.\objects\dbg.o: ..\..\app\inc\mec.h
 .\objects\dbg.o: ..\..\asp\inc\mecanum.h
 .\objects\dbg.o: ..\..\app\inc\dci.h
 .\objects\dbg.o: ..\..\asp\inc\dbus.h
@@ -70,6 +69,13 @@
 .\objects\dbg.o: ..\..\asp\inc\maf.h
 .\objects\dbg.o: ..\..\app\inc\aci.h
 .\objects\dbg.o: ..\..\asp\inc\cbus.h
+.\objects\dbg.o: ..\..\asp\inc\msg.h
+.\objects\dbg.o: ..\..\asp\inc\crc16.h
+.\objects\dbg.o: ..\..\app\inc\wsm.h
+.\objects\dbg.o: ..\..\app\inc\ini.h
+.\objects\dbg.o: ..\..\app\inc\can.h
+.\objects\dbg.o: ..\..\asp\inc\ekf.h
+.\objects\dbg.o: ..\..\app\inc\ctl.h
 .\objects\dbg.o: ..\..\app\inc\odo.h
 .\objects\dbg.o: ..\..\bsp\inc\bsp.h
 .\objects\dbg.o: ..\..\bsp\inc\btn.h
@@ -81,6 +87,3 @@
 .\objects\dbg.o: ..\..\bsp\inc\tim.h
 .\objects\dbg.o: ..\..\asp\inc\pid.h
 .\objects\dbg.o: ..\..\asp\inc\rmp.h
-.\objects\dbg.o: ..\..\app\inc\api.h
-.\objects\dbg.o: ..\..\asp\inc\msg.h
-.\objects\dbg.o: ..\..\asp\inc\crc16.h

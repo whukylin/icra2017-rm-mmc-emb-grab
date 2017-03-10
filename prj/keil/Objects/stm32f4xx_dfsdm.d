@@ -3,7 +3,7 @@
 .\objects\stm32f4xx_dfsdm.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_rcc.h
 .\objects\stm32f4xx_dfsdm.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\stm32f4xx_dfsdm.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\stm32f4xx_dfsdm.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\stm32f4xx_dfsdm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\stm32f4xx_dfsdm.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\stm32f4xx_dfsdm.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\stm32f4xx_dfsdm.o: ..\..\stl\CMSIS\core\core_cmSimd.h

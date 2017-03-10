@@ -39,7 +39,7 @@ Rmp_t GMPSpeedRmp;
 /**********************************************/
 static void FunctionalStateControl(void)
 {
-	FS_Cpy(&ctl.fs, cmd.fs, FS_LED_GREEN | FS_LED_RED);
+	FS_Cpy(&ctl.fs, cmd.fs, FS_ALL);
 }
 
 /**********************************************/
@@ -70,11 +70,13 @@ static void PID_Init(PID_t* pid)
 		 cfg.pid.Imax, 
 		 cfg.pid.Dmax, 
 		 cfg.pid.Omax);
+	PID_Reset(pid);
 }
 
 static void Rmp_Init(Rmp_t* rmp)
 {
 	Rmp_Config(rmp, cfg.rmp.cnt);
+	Rmp_Reset(rmp);
 }
 
 /**********************************************/
@@ -89,21 +91,13 @@ void Ctl_Init(void)
 	PID_Init(&CM2SpeedPID);
 	PID_Init(&CM3SpeedPID);
 	PID_Init(&CM4SpeedPID);
+	PID_Init(&GMPSpeedPID);
 	
 	Rmp_Init(&CM1SpeedRmp);
 	Rmp_Init(&CM2SpeedRmp);
 	Rmp_Init(&CM3SpeedRmp);
 	Rmp_Init(&CM4SpeedRmp);
-	
-	PID_Reset(&CM1SpeedPID);
-	PID_Reset(&CM2SpeedPID);
-	PID_Reset(&CM3SpeedPID);
-	PID_Reset(&CM4SpeedPID);
-
-	Rmp_Reset(&CM1SpeedRmp);
-	Rmp_Reset(&CM2SpeedRmp);
-	Rmp_Reset(&CM3SpeedRmp);
-	Rmp_Reset(&CM4SpeedRmp);
+	Rmp_Init(&GMPSpeedRmp);
 	
 	FS_Clr(&ctl.fs, FS_ALL);
 	MS_Set(&ctl.mc, 0, 0, 0, 0);

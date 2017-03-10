@@ -73,3 +73,8 @@ uint32_t Wdg_IsErrSet(uint32_t mask)
 	return (err & mask);
 }
 
+uint32_t Wdg_IsOkay(void)
+{
+	return (Wdg_IsErrSet(WDG_ERR_RCV) && Wdg_IsErrSet(WDG_ERR_VDBUS)) || Wdg_IsErrSet(WDG_ERR_MOTORS);
+}
+

@@ -30,29 +30,33 @@ void Wsm_Proc(void)
 	lastWorkingState = workingState;
 	switch (workingState) {
 	case WORKING_STATE_STOP:
-		if (!Wdg_IsErrSet(WDG_ERR_FATAL)) {
+		if (!Wdg_IsOkay()) {
 			workingState = WORKING_STATE_PREPARE;
 		}
 		break;
 	case WORKING_STATE_PREPARE:
-		if (Wdg_IsErrSet(WDG_ERR_FATAL)) {
+		if (!Wdg_IsOkay()) {
 			workingState = WORKING_STATE_STOP;
-		} else if (Ini_GetFlag(INI_FLAG_VATAL)){
+		} else if (Ini_IsDone()){
 			workingState = WORKING_STATE_NORMAL;
 		}
 		break;
 	case WORKING_STATE_NORMAL:
-		if (Wdg_IsErrSet(WDG_ERR_FATAL)) {
+		if (!Wdg_IsOkay()) {
 			workingState = WORKING_STATE_STOP;
-		} else if (!Ini_GetFlag(INI_FLAG_VATAL)){
+		} else if (!Ini_IsDone()){
 			workingState = WORKING_STATE_PREPARE;
+		} else if (!Cfg_IsSynced()) {
+			workingState = WORKING_STATE_CONFIG;
 		}
 		break;
 	case WORKING_STATE_CONFIG:
-		if (Wdg_IsErrSet(WDG_ERR_FATAL)) {
+		if (!Wdg_IsOkay()) {
 			workingState = WORKING_STATE_STOP;
-		} else if (!Ini_GetFlag(INI_FLAG_VATAL)){
+		} else if (!Ini_IsDone()){
 			workingState = WORKING_STATE_PREPARE;
+		} else if (Cfg_IsSynced()) {
+			workingState = WORKING_STATE_NORMAL;
 		}
 		break;
 	default:
