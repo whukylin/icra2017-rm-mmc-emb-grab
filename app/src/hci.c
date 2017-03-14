@@ -20,48 +20,15 @@
 /*          Host Control Interface          */
 /********************************************/
 
-MouseButtonState_t mouseButtonStates[MOUSE_BTN_CNT];
-MouseButtonEvent_t mouseButtonEvents[MOUSE_BTN_CNT];
-
-static MouseButtonState_t lastRawMouseButtonStates[MOUSE_BTN_CNT];
-static uint32_t mouseButtonPressedCounts[MOUSE_BTN_CNT];
-static void GetMouseButtonStates(const HCP_t* hcp)
-{
-	const uint8_t* thisRawMouseButtonStates = hcp->mouse.b;
-	uint32_t i = 0;
-	for (; i < MOUSE_BTN_CNT; i++) {
-		if (thisRawMouseButtonStates[i] == lastRawMouseButtonStates[i]) {
-			if (mouseButtonPressedCounts[i] < MOUSE_BUTTON_PRESSED_CNT) {
-				mouseButtonPressedCounts[i]++;
-			} else {
-				mouseButtonStates[i] = thisRawMouseButtonStates[i];
-			}
-		} else {
-			mouseButtonPressedCounts[i] = 0;
-		}
-		lastRawMouseButtonStates[i] = thisRawMouseButtonStates[i];
-	}
-}
-
-static MouseButtonState_t lastMouseButtonStates[MOUSE_BTN_CNT];
-static void GetMouseButtonEvents(const HCP_t* hcp)
-{
-	uint32_t i = 0;
-	for (; i < MOUSE_BTN_CNT; i++) {
-		mouseButtonEvents[i] = GET_MOUSE_BUTTON_EVENT(lastMouseButtonStates[i],mouseButtonStates[i]);
-		lastMouseButtonStates[i] = mouseButtonStates[i];
-	}
-}
-
-static void GetFunctionalStateRef(const HCP_t* hcp)
-{
-	GetMouseButtonStates(hcp);
-	GetMouseButtonEvents(hcp);
-}
-
+static Hcf_t hcf;
 static Maf_t fx, fy, fz;
-static float buf[3][KEY_CONTROL_MAF_LEN];
-static void GetChassisVelocityRef(const HCP_t* hcp)
+static float buf[3][HCI_KEY_CTL_MAF_LEN];
+
+static void GetFunctionalStateRef(const Hcp_t* hcp)
+{
+}
+
+static void GetChassisVelocityRef(const Hcp_t* hcp)
 {
 	float sx = hcp->key.press.Shift ? cfg.spd.x : cfg.spd.x / 2.f;
 	float sy = hcp->key.press.Shift ? cfg.spd.y : cfg.spd.y / 2.f;
@@ -75,28 +42,21 @@ static void GetChassisVelocityRef(const HCP_t* hcp)
 	cmd.cv.z = Maf_Proc(&fz, vz);
 }
 
-static void GetGrabberVelocityRef(const HCP_t* hcp)
+static void GetGrabberVelocityRef(const Hcp_t* hcp)
 {
 	cmd.gv.e = map(hcp->mouse.z, -MOUSE_SPEED_MAX, MOUSE_SPEED_MAX, -cfg.spd.e, cfg.spd.e);
-	cmd.gv.c = mouseButtonStates[MOUSE_BTN_IDX_L] == MOUSE_BTN_DOWN ? cfg.spd.c : mouseButtonStates[MOUSE_BTN_IDX_R] == MOUSE_BTN_DOWN ? -cfg.spd.c : 0;
+	cmd.gv.c = 0;
 }
 
 void Hci_Init(void)
 {
-	uint32_t i = 0;
-	for (; i < MOUSE_BTN_CNT; i++) {
-		lastRawMouseButtonStates[i] = 0;
-		mouseButtonPressedCounts[i] = 0;
-		mouseButtonStates[i] = 0;
-		mouseButtonEvents[i] = 0;
-		lastMouseButtonStates[i] = 0;
-	}
-	Maf_Init(&fx, buf[0], KEY_CONTROL_MAF_LEN);
-	Maf_Init(&fy, buf[1], KEY_CONTROL_MAF_LEN);
-	Maf_Init(&fz, buf[2], KEY_CONTROL_MAF_LEN);
+	Hcf_Init(&hcf);
+	Maf_Init(&fx, buf[0], HCI_KEY_CTL_MAF_LEN);
+	Maf_Init(&fy, buf[1], HCI_KEY_CTL_MAF_LEN);
+	Maf_Init(&fz, buf[2], HCI_KEY_CTL_MAF_LEN);
 }
 
-void Hci_Proc(const HCP_t* hcp)
+void Hci_Proc(const Hcp_t* hcp)
 {
 	GetFunctionalStateRef(hcp);
 	GetChassisVelocityRef(hcp);

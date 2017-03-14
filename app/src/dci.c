@@ -26,29 +26,23 @@ void Dci_Init(void)
 {
 	Rci_Init();
 	Hci_Init();
-	DBUS_Rst(&dbus);
+	DBUS_Init(&dbus);
 }
 
 void Dci_Proc(const DBUS_t* dbus)
 {
-	//GetSwitchState(&dbus->rcp, SW_IDX_L);
-	//GetSwitchEvent(&dbus->rcp, SW_IDX_L);
-	// The right switch is used as mode switcher and should never be modified by other processes
-	//GetSwitchState(&dbus->rcp, SW_IDX_R);
-	//GetSwitchEvent(&dbus->rcp, SW_IDX_R);
-	GetSwitchStates(&dbus->rcp);
-	GetSwitchEvents(&dbus->rcp);
-	if (switchStates[SW_IDX_R] == SW_UP) {
-		if (lastSwitchStates[SW_IDX_R] != SW_UP) {
+	Rci_Mode(&dbus->rcp);
+	if (Rci_Sw(SW_IDX_R) == SW_UP) {
+		if (Rci_LastSw(SW_IDX_R) != SW_UP) {
 			Rci_Init();
 		}
 		Rci_Proc(&dbus->rcp);
-	} else if (switchStates[SW_IDX_R] == SW_MD) {
-		if (lastSwitchStates[SW_IDX_R] != SW_MD) {
+	} else if (Rci_Sw(SW_IDX_R) == SW_MD) {
+		if (Rci_LastSw(SW_IDX_R) != SW_MD) {
 			Hci_Init();
 		}
 		Hci_Proc(&dbus->hcp);
-	} else if (switchStates[SW_IDX_R] == SW_DN) {
+	} else if (Rci_Sw(SW_IDX_R) == SW_DN) {
 		// Other control interface
 	} else {
 		// Should never reach here

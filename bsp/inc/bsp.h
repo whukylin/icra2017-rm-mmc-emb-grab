@@ -26,6 +26,7 @@ extern "C" {
 #include "can1.h"
 #include "can2.h"
 #include "dbi.h"
+#include "key.h"
 #include "led.h"
 #include "pwm.h"
 #include "rcv.h"

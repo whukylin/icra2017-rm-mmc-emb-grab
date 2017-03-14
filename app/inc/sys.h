@@ -25,7 +25,7 @@ extern "C" {
 
 #include "fun.h"
 
-#define SYS_CTL_TMS 4 // System control period in millisecond
+#define SYS_CTL_TMS 4 // ms
 	
 typedef enum {
 	WORKING_STATE_STOP = 0x00,
@@ -38,7 +38,7 @@ typedef uint32_t PeriphsState_t; // Peripherals Functional State
 
 #define FS_LED_RED      (((uint32_t)1)<<0)
 #define FS_LED_GREEN    (((uint32_t)1)<<1)
-#define FS_ALL      		(FS_LED_GREEN|FS_LED_RED)
+#define FS_ALL      		(FS_LED_RED|FS_LED_GREEN)
 #define FS_NON       		((uint32_t)0)
 
 typedef struct

@@ -26,11 +26,11 @@ Motor_t motor[MOTOR_NUM];
 void ZGyro_Process(ZGyro_t* zgyro, uint32_t id, uint8_t* data)
 {
 	zgyro->id = id;
+	zgyro->frame_cnt++;
 	zgyro->angle_fdb[0] = zgyro->angle_fdb[1];
 	zgyro->angle_fdb[1] = ((int32_t)(data[0]<<24)|(int32_t)(data[1]<<16)|(int32_t)(data[2]<<8)|(int32_t)(data[3]));
-	if (zgyro->ini < ZGYRO_INI_CNT) {
+	if (zgyro->frame_cnt < ZGYRO_INIT_FRAME_CNT) {
 		zgyro->bias = zgyro->angle_fdb[1];
-		zgyro->ini++;
 	}
 	zgyro->rate = zgyro->angle_fdb[1] - zgyro->angle_fdb[0];
 	zgyro->rate_deg = ZGYRO_RATE_DEG_RECIP * zgyro->rate;
@@ -43,18 +43,18 @@ void ZGyro_Process(ZGyro_t* zgyro, uint32_t id, uint8_t* data)
 void Motor_Process(Motor_t* motor, uint32_t id, uint8_t* data)
 {
 	motor->id = id;
+	motor->frame_cnt++;
 	motor->angle_fdb[0] = motor->angle_fdb[1];
 	motor->angle_fdb[1] = (data[0] << 8) | data[1];
 	motor->current_fdb = (data[2] << 8) | data[3];
 	motor->current_ref = (data[4] << 8) | data[5];
-	if (motor->ini < MOTOR_INI_CNT) {
+	if (motor->frame_cnt < MOTOR_INIT_FRAME_CNT) {
 		Ekf_Init(&motor->rate_ekf, MOTOR_RATE_EKF_Q, MOTOR_RATE_EKF_R);
 		Ekf_SetE(&motor->rate_ekf, motor->rate_raw);
 		Ekf_Init(&motor->angle_ekf, MOTOR_ANGLE_EKF_Q, MOTOR_ANGLE_EKF_R);
 		Ekf_SetE(&motor->angle_ekf, motor->angle_raw);
 		motor->bias = motor->angle_fdb[1];
 		motor->round = 0;
-		motor->ini++;
 	}
 	motor->angle_diff = motor->angle_fdb[1] - motor->angle_fdb[0];
 	if (motor->angle_diff > MOTOR_ECD_GAP) {
@@ -79,48 +79,22 @@ void Motor_Process(Motor_t* motor, uint32_t id, uint8_t* data)
 
 uint8_t ZGyro_Ready(const ZGyro_t* zgyro)
 {
-	return zgyro->ini >= ZGYRO_INI_CNT;
+	return zgyro->frame_cnt >= ZGYRO_INIT_FRAME_CNT;
 }
 
 uint8_t Motor_Ready(const Motor_t* motor)
 {
-	return motor->ini >= MOTOR_INI_CNT;
+	return motor->frame_cnt >= MOTOR_INIT_FRAME_CNT;
 }
 
 void ZGyro_Reset(ZGyro_t* zgyro)
 {
-	zgyro->ini = 0;
-	zgyro->angle_fdb[0] = 0;
-	zgyro->angle_fdb[1] = 0;
-	zgyro->bias = 0;
-	zgyro->rate = 0;
-	zgyro->rate_deg = 0;
-	zgyro->rate_rad = 0;
-	zgyro->angle = 0;
-	zgyro->angle_deg = 0;
-	zgyro->angle_rad = 0;
+	memset(zgyro, 0, sizeof(ZGyro_t));
 }
 
 void Motor_Reset(Motor_t* motor)
 {
-	motor->ini = 0;
-	motor->angle_fdb[0] = 0;
-	motor->angle_fdb[1] = 0;
-	motor->current_fdb = 0;
-	motor->current_ref = 0;
-	motor->angle_diff = 0;
-	motor->bias = 0;
-	motor->round = 0;
-	motor->rate_raw = 0;
-	motor->rate_filtered = 0;
-	motor->rate_deg = 0;
-	motor->rate_rad = 0;
-	motor->angle_raw = 0;
-	motor->angle_filtered = 0;
-	motor->angle_deg = 0;
-	motor->angle_rad = 0;
-	Ekf_Reset(&motor->rate_ekf);
-	Ekf_Reset(&motor->angle_ekf);
+	memset(motor, 0, sizeof(Motor_t));
 }
 
 void Can_Init(void)

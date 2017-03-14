@@ -41,8 +41,10 @@
 .\objects\dnl.o: ..\..\asp\inc\mec.h
 .\objects\dnl.o: ..\..\app\inc\dci.h
 .\objects\dnl.o: ..\..\app\inc\rci.h
+.\objects\dnl.o: ..\..\asp\inc\rcf.h
 .\objects\dnl.o: ..\..\app\inc\cmd.h
 .\objects\dnl.o: ..\..\app\inc\hci.h
+.\objects\dnl.o: ..\..\asp\inc\hcf.h
 .\objects\dnl.o: ..\..\asp\inc\maf.h
 .\objects\dnl.o: ..\..\app\inc\wdg.h
 .\objects\dnl.o: ..\..\app\inc\cci.h

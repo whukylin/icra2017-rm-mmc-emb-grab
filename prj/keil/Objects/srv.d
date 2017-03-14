@@ -48,8 +48,10 @@
 .\objects\srv.o: ..\..\asp\inc\mec.h
 .\objects\srv.o: ..\..\app\inc\dci.h
 .\objects\srv.o: ..\..\app\inc\rci.h
+.\objects\srv.o: ..\..\asp\inc\rcf.h
 .\objects\srv.o: ..\..\app\inc\cmd.h
 .\objects\srv.o: ..\..\app\inc\hci.h
+.\objects\srv.o: ..\..\asp\inc\hcf.h
 .\objects\srv.o: ..\..\asp\inc\maf.h
 .\objects\srv.o: ..\..\app\inc\odo.h
 .\objects\srv.o: ..\..\bsp\inc\bsp.h
@@ -59,6 +61,7 @@
 .\objects\srv.o: ..\..\bsp\inc\can1.h
 .\objects\srv.o: ..\..\bsp\inc\can2.h
 .\objects\srv.o: ..\..\bsp\inc\dbi.h
+.\objects\srv.o: ..\..\bsp\inc\key.h
 .\objects\srv.o: ..\..\bsp\inc\led.h
 .\objects\srv.o: ..\..\bsp\inc\pwm.h
 .\objects\srv.o: ..\..\bsp\inc\rcv.h

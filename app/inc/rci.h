@@ -25,29 +25,16 @@
 extern "C" {
 #endif
 
-#include "rcp.h"
+#include "rcf.h"
 #include "cmd.h"
 
-typedef uint8_t SwitchState_t;
-typedef uint8_t SwitchEvent_t;
-
-#define SWITCH_CONFIRM_CNT 10
-
-#define SWITCH_EVENT(LAST,THIS) (((LAST)<<3)|(THIS))
-
-void GetSwitchState(const RCP_t* rcp, uint32_t i);
-void GetSwitchEvent(const RCP_t* rcp, uint32_t i);
-void GetSwitchStates(const RCP_t* rcp);
-void GetSwitchEvents(const RCP_t* rcp);
-
 void Rci_Init(void);
-void Rci_Proc(const RCP_t* rcp);
+void Rci_Proc(const Rcp_t* rcp);
 
-extern SwitchState_t switchStates[SW_CNT];
-extern SwitchEvent_t switchEvents[SW_CNT];
-
-extern SwitchState_t lastSwitchStates[SW_CNT];
-
+void Rci_Mode(const Rcp_t* rcp);
+uint8_t Rci_Sw(uint8_t i);
+uint8_t Rci_LastSw(uint8_t i);
+	
 #ifdef __cplusplus
 }
 #endif

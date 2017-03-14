@@ -43,8 +43,10 @@
 .\objects\upd.o: ..\..\asp\inc\rcp.h
 .\objects\upd.o: ..\..\asp\inc\hcp.h
 .\objects\upd.o: ..\..\app\inc\rci.h
+.\objects\upd.o: ..\..\asp\inc\rcf.h
 .\objects\upd.o: ..\..\app\inc\cmd.h
 .\objects\upd.o: ..\..\app\inc\hci.h
+.\objects\upd.o: ..\..\asp\inc\hcf.h
 .\objects\upd.o: ..\..\asp\inc\maf.h
 .\objects\upd.o: ..\..\app\inc\odo.h
 .\objects\upd.o: ..\..\bsp\inc\bsp.h
@@ -55,6 +57,7 @@
 .\objects\upd.o: ..\..\bsp\inc\can1.h
 .\objects\upd.o: ..\..\bsp\inc\can2.h
 .\objects\upd.o: ..\..\bsp\inc\dbi.h
+.\objects\upd.o: ..\..\bsp\inc\key.h
 .\objects\upd.o: ..\..\bsp\inc\led.h
 .\objects\upd.o: ..\..\bsp\inc\pwm.h
 .\objects\upd.o: ..\..\bsp\inc\rcv.h

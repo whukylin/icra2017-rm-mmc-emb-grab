@@ -25,26 +25,14 @@
 extern "C" {
 #endif
 
-#include "hcp.h"
-#include "cmd.h"
+#include "hcf.h"
 #include "maf.h"
+#include "cmd.h"
 
-typedef uint8_t MouseButtonState_t;
-typedef uint8_t MouseButtonEvent_t;
-
-#define KEY_CONTROL_MAF_LEN 10
-#define MOUSE_BUTTON_PRESSED_CNT 10
-
-#define GET_MOUSE_BUTTON_EVENT(LAST,THIS) ((LAST<<3)|THIS)
-#define MOUSE_BUTTON_EVENT_UP GET_MOUSE_BUTTON_EVENT(MOUSE_BUTTON_DOWM, MOUSE_BUTTON_UP)
-#define MOUSE_BUTTON_EVENT_DOWN GET_MOUSE_BUTTON_EVENT(MOUSE_BUTTON_UP, MOUSE_BUTTON_DOWM)
-#define MOUSE_BUTTON_EVENT_NONE 0
+#define HCI_KEY_CTL_MAF_LEN 10
 
 void Hci_Init(void);
-void Hci_Proc(const HCP_t* hcp);
-
-extern MouseButtonState_t mouseButtonStates[MOUSE_BTN_CNT];
-extern MouseButtonEvent_t mouseButtonEvents[MOUSE_BTN_CNT];
+void Hci_Proc(const Hcp_t* hcp);
 
 #ifdef __cplusplus
 }

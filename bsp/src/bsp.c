@@ -23,6 +23,7 @@ void Bsp_Config(void)
 	Btm_Config();
 	Btn_Config();
 	Dbi_Config();
+	Key_Config();
 	Led_Config();
 	Pwm_Config();
 	Rcv_Config();

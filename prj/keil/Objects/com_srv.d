@@ -43,8 +43,10 @@
 .\objects\com_srv.o: ..\..\asp\inc\mec.h
 .\objects\com_srv.o: ..\..\app\inc\dci.h
 .\objects\com_srv.o: ..\..\app\inc\rci.h
+.\objects\com_srv.o: ..\..\asp\inc\rcf.h
 .\objects\com_srv.o: ..\..\app\inc\cmd.h
 .\objects\com_srv.o: ..\..\app\inc\hci.h
+.\objects\com_srv.o: ..\..\asp\inc\hcf.h
 .\objects\com_srv.o: ..\..\asp\inc\maf.h
 .\objects\com_srv.o: ..\..\app\inc\wdg.h
 .\objects\com_srv.o: ..\..\app\inc\odo.h
@@ -55,6 +57,7 @@
 .\objects\com_srv.o: ..\..\bsp\inc\can1.h
 .\objects\com_srv.o: ..\..\bsp\inc\can2.h
 .\objects\com_srv.o: ..\..\bsp\inc\dbi.h
+.\objects\com_srv.o: ..\..\bsp\inc\key.h
 .\objects\com_srv.o: ..\..\bsp\inc\led.h
 .\objects\com_srv.o: ..\..\bsp\inc\pwm.h
 .\objects\com_srv.o: ..\..\bsp\inc\rcv.h

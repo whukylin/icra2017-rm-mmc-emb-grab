@@ -36,8 +36,10 @@
 .\objects\ctl.o: ..\..\asp\inc\rcp.h
 .\objects\ctl.o: ..\..\asp\inc\hcp.h
 .\objects\ctl.o: ..\..\app\inc\rci.h
+.\objects\ctl.o: ..\..\asp\inc\rcf.h
 .\objects\ctl.o: ..\..\app\inc\cmd.h
 .\objects\ctl.o: ..\..\app\inc\hci.h
+.\objects\ctl.o: ..\..\asp\inc\hcf.h
 .\objects\ctl.o: ..\..\asp\inc\maf.h
 .\objects\ctl.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\ctl.o: ..\..\app\inc\wdg.h
@@ -50,6 +52,7 @@
 .\objects\ctl.o: ..\..\bsp\inc\can1.h
 .\objects\ctl.o: ..\..\bsp\inc\can2.h
 .\objects\ctl.o: ..\..\bsp\inc\dbi.h
+.\objects\ctl.o: ..\..\bsp\inc\key.h
 .\objects\ctl.o: ..\..\bsp\inc\led.h
 .\objects\ctl.o: ..\..\bsp\inc\pwm.h
 .\objects\ctl.o: ..\..\bsp\inc\rcv.h

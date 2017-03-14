@@ -54,7 +54,6 @@ uint32_t Msg_Push(FIFO_t* fifo, const void* head, const void* body)
 	}
 }
 
-
 /**
  * Brief: Pop a single message from message buffer. 
  * @arg buf Message buffer

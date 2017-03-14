@@ -32,6 +32,7 @@
 .\objects\act.o: ..\..\bsp\inc\can1.h
 .\objects\act.o: ..\..\bsp\inc\can2.h
 .\objects\act.o: ..\..\bsp\inc\dbi.h
+.\objects\act.o: ..\..\bsp\inc\key.h
 .\objects\act.o: ..\..\bsp\inc\led.h
 .\objects\act.o: ..\..\bsp\inc\pwm.h
 .\objects\act.o: ..\..\bsp\inc\rcv.h
@@ -55,8 +56,10 @@
 .\objects\act.o: ..\..\asp\inc\rcp.h
 .\objects\act.o: ..\..\asp\inc\hcp.h
 .\objects\act.o: ..\..\app\inc\rci.h
+.\objects\act.o: ..\..\asp\inc\rcf.h
 .\objects\act.o: ..\..\app\inc\cmd.h
 .\objects\act.o: ..\..\app\inc\hci.h
+.\objects\act.o: ..\..\asp\inc\hcf.h
 .\objects\act.o: ..\..\asp\inc\maf.h
 .\objects\act.o: ..\..\app\inc\wdg.h
 .\objects\act.o: ..\..\app\inc\odo.h

@@ -35,8 +35,10 @@
 .\objects\cmd.o: ..\..\asp\inc\rcp.h
 .\objects\cmd.o: ..\..\asp\inc\hcp.h
 .\objects\cmd.o: ..\..\app\inc\rci.h
+.\objects\cmd.o: ..\..\asp\inc\rcf.h
 .\objects\cmd.o: ..\..\app\inc\cmd.h
 .\objects\cmd.o: ..\..\app\inc\hci.h
+.\objects\cmd.o: ..\..\asp\inc\hcf.h
 .\objects\cmd.o: ..\..\asp\inc\maf.h
 .\objects\cmd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\cmd.o: ..\..\app\inc\wdg.h

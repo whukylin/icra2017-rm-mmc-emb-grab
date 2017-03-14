@@ -40,7 +40,7 @@ static void Ini_Check(uint8_t cond, IniFlag_t mask)
 
 void Ini_Proc(void)
 {
-	Ini_Check(ZGyro_Ready(&zgyro),  INI_FLAG_ZGYRO);
+	Ini_Check(ZGyro_Ready(&zgyro),    INI_FLAG_ZGYRO);
 	Ini_Check(Motor_Ready(&motor[0]), INI_FLAG_MOTOR1);
 	Ini_Check(Motor_Ready(&motor[1]), INI_FLAG_MOTOR2);
 	Ini_Check(Motor_Ready(&motor[2]), INI_FLAG_MOTOR3);

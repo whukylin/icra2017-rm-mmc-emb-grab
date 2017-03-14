@@ -12,14 +12,19 @@
 .\objects\main.o: ..\..\asp\inc\cbus.h
 .\objects\main.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\main.o: ..\..\asp\inc\crc16.h
-.\objects\main.o: ..\..\asp\inc\dbus.h
+.\objects\main.o: ..\..\asp\inc\dbuf.h
+.\objects\main.o: ..\..\asp\inc\rcf.h
 .\objects\main.o: ..\..\asp\inc\rcp.h
+.\objects\main.o: ..\..\asp\inc\hcf.h
 .\objects\main.o: ..\..\asp\inc\hcp.h
+.\objects\main.o: ..\..\asp\inc\dbus.h
 .\objects\main.o: ..\..\asp\inc\ekf.h
 .\objects\main.o: ..\..\asp\inc\fifo.h
 .\objects\main.o: ..\..\asp\inc\fun.h
 .\objects\main.o: ..\..\asp\inc\gdf.h
 .\objects\main.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
+.\objects\main.o: ..\..\asp\inc\linkednode.h
+.\objects\main.o: ..\..\asp\inc\linkedlist.h
 .\objects\main.o: ..\..\asp\inc\maf.h
 .\objects\main.o: ..\..\asp\inc\mec.h
 .\objects\main.o: ..\..\asp\inc\pid.h
@@ -53,6 +58,7 @@
 .\objects\main.o: ..\..\bsp\inc\can1.h
 .\objects\main.o: ..\..\bsp\inc\can2.h
 .\objects\main.o: ..\..\bsp\inc\dbi.h
+.\objects\main.o: ..\..\bsp\inc\key.h
 .\objects\main.o: ..\..\bsp\inc\led.h
 .\objects\main.o: ..\..\bsp\inc\pwm.h
 .\objects\main.o: ..\..\bsp\inc\rcv.h

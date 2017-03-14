@@ -50,14 +50,17 @@
 .\objects\dbg.o: ..\..\asp\inc\mec.h
 .\objects\dbg.o: ..\..\app\inc\dci.h
 .\objects\dbg.o: ..\..\app\inc\rci.h
+.\objects\dbg.o: ..\..\asp\inc\rcf.h
 .\objects\dbg.o: ..\..\app\inc\cmd.h
 .\objects\dbg.o: ..\..\app\inc\hci.h
+.\objects\dbg.o: ..\..\asp\inc\hcf.h
 .\objects\dbg.o: ..\..\asp\inc\maf.h
 .\objects\dbg.o: ..\..\app\inc\odo.h
 .\objects\dbg.o: ..\..\bsp\inc\bsp.h
 .\objects\dbg.o: ..\..\bsp\inc\btn.h
 .\objects\dbg.o: ..\..\bsp\inc\can1.h
 .\objects\dbg.o: ..\..\bsp\inc\can2.h
+.\objects\dbg.o: ..\..\bsp\inc\key.h
 .\objects\dbg.o: ..\..\bsp\inc\led.h
 .\objects\dbg.o: ..\..\bsp\inc\pwm.h
 .\objects\dbg.o: ..\..\bsp\inc\rcv.h

@@ -33,88 +33,74 @@ extern "C" {
 
 #define CFG_FLAG_IMU                (1u<<0)
 #define CFG_FLAG_MAG                (1u<<1)
-#define CFG_FLAG_AHR                (1u<<2)
-#define CFG_FLAG_PID                (1u<<3)
+#define CFG_FLAG_PID                (1u<<2)
+#define CFG_FLAG_SPD                (1u<<3)
 #define CFG_FLAG_RMP                (1u<<4)
-#define CFG_FLAG_SPD                (1u<<5)
-#define CFG_FLAG_MEC                (1u<<6)
-#define CFG_FLAG_ELE                (1u<<7)
-#define CFG_FLAG_CLA                (1u<<8)
-#define CFG_FLAG_ALL (CFG_FLAG_IMU|CFG_FLAG_MAG|CFG_FLAG_AHR|CFG_FLAG_PID|CFG_FLAG_RMP|CFG_FLAG_SPD|CFG_FLAG_MEC|CFG_FLAG_ELE|CFG_FLAG_CLA)
+#define CFG_FLAG_MEC                (1u<<5)
+#define CFG_FLAG_ALL (CFG_FLAG_IMU|CFG_FLAG_MAG|CFG_FLAG_PID|CFG_FLAG_SPD|CFG_FLAG_RMP|CFG_FLAG_MEC)
 
 typedef uint32_t CfgVer_t;
 typedef uint32_t CfgFlg_t;
 
 typedef struct
 {
-	float ax;
-	float ay;
-	float az;
-	float gx;
-	float gy;
-	float gz;
+	int16_t ax_offset;
+	int16_t ay_offset;
+	int16_t az_offset;
+	int16_t gx_offset;
+	int16_t gy_offset;
+	int16_t gz_offset;
 }ImuCfg_t; // IMU offset Configuration
 
 typedef struct
 {
-	float mx;
-	float my;
-	float mz;
+	int16_t mx_offset;
+	int16_t my_offset;
+	int16_t mz_offset;
 }MagCfg_t; // MAG offset Configuration
 
+#define PID_CFG_RECIP 0.01f
 typedef struct
 {
-	float kp;
-	float ki;
-}AhrCfg_t; // Attitude Heading Reference System Configuration
-
-typedef struct
-{
-	float kp;
-	float ki;
-	float kd;
-	float it;
-	float Pmax;
-	float Imax;
-	float Dmax;
-	float Omax;
+	uint16_t kp;
+	uint16_t ki;
+	uint16_t kd;
+	uint16_t it;
+	uint16_t Pmax;
+	uint16_t Imax;
+	uint16_t Dmax;
+	uint16_t Omax;
 }PidCfg_t; // PID Configuration
 
 typedef struct
 {
-	uint16_t cnt;
+	uint16_t scale;
 }RmpCfg_t; // Ramp Configuration
 
 typedef struct
 {
-	float x;
-	float y;
-	float z;
-	float e;
-	float c;
+	uint16_t xm;
+	uint16_t ym;
+	uint16_t zm;
+	uint16_t em;
+	uint16_t cm;
 }SpdCfg_t; // Speed Configuration
 
 typedef struct
 {
-	float lx;
-	float ly;
-	float r1;
-	float r2;
+	int32_t el;
+	int32_t eh;
+	uint16_t pl;
+	uint16_t ph;
+}PosCfg_t; // Position Configuration
+
+typedef struct
+{
+	uint16_t lx; // mm
+	uint16_t ly; // mm
+	uint16_t r1; // mm
+	uint16_t r2; // mm
 }MecCfg_t; // Mecanum Wheel Configuration
-
-typedef struct
-{
-	float max;
-	float min;
-	float def;
-}EleCfg_t; // Elevator Position Configuration
-
-typedef struct
-{
-	float max; 
-	float min; 
-	float def; 
-}ClaCfg_t; // Claw Position Configuration
 
 typedef struct
 {
@@ -122,13 +108,10 @@ typedef struct
 	CfgFlg_t flg;
 	ImuCfg_t imu;
 	MagCfg_t mag;
-	AhrCfg_t ahr;
 	PidCfg_t pid;
 	RmpCfg_t rmp;
 	SpdCfg_t spd;
 	MecCfg_t mec;
-	EleCfg_t ele;
-	ClaCfg_t cla;
 }Cfg_t; // Application Configuration
 
 #define CFG_SIZE() sizeof(Cfg_t)

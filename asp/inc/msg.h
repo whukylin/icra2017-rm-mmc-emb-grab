@@ -51,14 +51,13 @@ typedef union MsgHead_t
 	}attr; // Message head attributes
 }MsgHead_t; // Message head union typedef
 
-typedef RCP_t VirtualRC_t;
-typedef HCP_t VirtualHC_t;
+typedef Rcp_t VirtualRC_t;
+typedef Hcp_t VirtualHC_t;
 typedef DBUS_t VirtualDBUS_t;
 typedef CBUS_t VirtualCBUS_t;
 
 #define ZGYRO_ANGLE_RECIP 1e-2f // To scale zgyro angle to deg
 #define ZGYRO_RATE_RECIP 1e-5f // To scale zgyro rate to deg/s
-
 typedef struct
 {
 	int32_t angle; // = (deg*100)
@@ -74,7 +73,6 @@ typedef struct
 #define MOTOR_ECD_ANGLE_MAX 8191
 #define MOTOR_ECD_ANGLE_MAX 8191
 #define MOTOR_ESC_CURRENT_MAX 13000
-
 typedef struct
 {
 	uint8_t id; // 0~5
@@ -94,24 +92,72 @@ typedef struct
 	int16_t vz; // Bot velocity (angular) in z-axis, unit: mm
 }OdomeMsg_t;
 
+#define PID_CALIB_TYPE_CHASSIS_VELOCITY 0x01
+#define PID_CALIB_TYPE_GRABBER_POSITION 0x02
+#define PID_CALIB_TYPE_GRABBER_VELOCITY 0x02
+#define PID_CALIB_VALUE_RECIP 0.01f
+typedef struct
+{
+	uint8_t type;
+	uint16_t kp;
+	uint16_t ki;
+	uint16_t kd;
+	uint16_t it;
+	uint16_t Pmax;
+	uint16_t Imax;
+	uint16_t Dmax;
+	uint16_t Omax;
+}PIDCalib_t; // PID Calibration
+
+typedef struct
+{
+	int16_t ax_offset;
+	int16_t ay_offset;
+	int16_t az_offset;
+	int16_t gx_offset;
+	int16_t gy_offset;
+	int16_t gz_offset;
+}IMUCalib_t; // IMU offset Calibration
+
+typedef struct
+{
+	int16_t mx_offset;
+	int16_t my_offset;
+	int16_t mz_offset;
+}MagCalib_t; // Mag offset Calibration
+
+#define MEC_CALIB_VALUE_RECIP 0.001f
+typedef struct
+{
+	uint16_t lx; // mm
+	uint16_t ly; // mm
+	uint16_t r1; // mm
+	uint16_t r2; // mm
+}MecCalib_t; // Mecanum Wheel Calibration
+
+#define VEL_CALIB_VALUE_RECIP 0.001f
+typedef struct
+{
+	uint16_t xm;
+	uint16_t ym;
+	uint16_t zm;
+	uint16_t em;
+	uint16_t cm;
+}VelCalib_t; // Velocity Calibration
+
+typedef struct
+{
+	int32_t el;
+	int32_t eh;
+	uint16_t pl;
+	uint16_t ph;
+}PosCalib_t; // Position Calibration
+
 #define CALIB_FLAG_BIT_IMU (1u<<0)
 #define CALIB_FLAG_BIT_MAG (1u<<1)
 typedef struct
 {
-	uint16_t ac; // Auto calibration control bits
-	struct
-	{
-		int16_t kp;
-		int16_t ki;
-		int16_t kd;
-	}pid;
-	struct
-	{
-		int32_t elevator_h;
-		int32_t elevator_l;
-		uint16_t pwm_h;
-		uint16_t pwm_l;
-	}pos;
+	uint16_t auto_cali_flag; // Auto calibration control bits
 }CalibMsg_t;
 
 typedef struct
@@ -149,7 +195,7 @@ typedef struct
 
 typedef struct
 {
-	uint32_t wdg; // Bot watchdog
+	uint32_t wdg; // Watchdog
 	uint32_t ini; // Initialization status
 }StatuMsg_t;
 

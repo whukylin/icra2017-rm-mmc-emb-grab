@@ -31,6 +31,8 @@ void Clk_Init(void)
 	us_tick = 0;
 	us_temp = 0;
 	ms_tick = 0;
+	ms_temp = 0;
+	sc_tick = 0;
 }
 
 void Clk_Spin(void)

@@ -39,6 +39,7 @@ void Upd_Proc(void)
 			Act_Proc();
 			break;
 		case WORKING_STATE_CONFIG:
+			Ctl_Proc();
 			Act_Init();
 			break;
 		default:

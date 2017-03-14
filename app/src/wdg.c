@@ -20,9 +20,9 @@
 /*            Watch Dog            */
 /***********************************/
 
-const uint32_t WDG[WDG_NUM] = WDG_OVERFLOW_CNT_ARRAY;
+static const uint32_t CNT[WDG_NUM] = WDG_OVERFLOW_CNT_DEFAULT;
 
-uint32_t wdg[WDG_NUM] = WDG_OVERFLOW_CNT_ARRAY;
+static uint32_t cnt[WDG_NUM] = WDG_OVERFLOW_CNT_DEFAULT;
 
 static uint32_t err = 0xFFFFFFFF;
 
@@ -31,36 +31,36 @@ void Wdg_Init(void)
 	int i = 0;
 	for(i = 0; i < WDG_NUM; i++)
 	{
-		wdg[i] = WDG[i];
+		cnt[i] = CNT[i];
 	}
 	err = 0xFFFFFFFF;
 }
 
 void Wdg_Proc(void)
 {
-	int i = 0;
+	uint32_t i = 0;
 	for(i = 0; i < WDG_NUM; i++)
 	{
-		if(wdg[i] >= WDG[i])
+		if(cnt[i] < CNT[i])
 		{
-			err |= (uint32_t)(1u << i); //set the error bit
+			err &= ~(uint32_t)(1u << i); //clear the error bit
+			cnt[i]++;			        //add 1 each time
 		}
 		else
 		{
-			err &= ~(uint32_t)(1u << i); //clear the error bit
-			wdg[i]++;			        //add 1 each time
+			err |= (uint32_t)(1u << i); //set the error bit
 		}
 	}
 }
 
 void Wdg_Feed(uint8_t i)
 {
-	wdg[i] = 0;
+	cnt[i] = 0;
 }
 
 void Wdg_Hang(uint8_t i)
 {
-	wdg[i] = WDG[i];
+	cnt[i] = CNT[i];
 }
 
 uint32_t Wdg_GetErr(void)

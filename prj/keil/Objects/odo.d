@@ -34,6 +34,7 @@
 .\objects\odo.o: ..\..\bsp\inc\can1.h
 .\objects\odo.o: ..\..\bsp\inc\can2.h
 .\objects\odo.o: ..\..\bsp\inc\dbi.h
+.\objects\odo.o: ..\..\bsp\inc\key.h
 .\objects\odo.o: ..\..\bsp\inc\led.h
 .\objects\odo.o: ..\..\bsp\inc\pwm.h
 .\objects\odo.o: ..\..\bsp\inc\rcv.h

@@ -41,8 +41,10 @@
 .\objects\upl.o: ..\..\asp\inc\mec.h
 .\objects\upl.o: ..\..\app\inc\dci.h
 .\objects\upl.o: ..\..\app\inc\rci.h
+.\objects\upl.o: ..\..\asp\inc\rcf.h
 .\objects\upl.o: ..\..\app\inc\cmd.h
 .\objects\upl.o: ..\..\app\inc\hci.h
+.\objects\upl.o: ..\..\asp\inc\hcf.h
 .\objects\upl.o: ..\..\asp\inc\maf.h
 .\objects\upl.o: ..\..\app\inc\wdg.h
 .\objects\upl.o: ..\..\app\inc\odo.h
@@ -53,6 +55,7 @@
 .\objects\upl.o: ..\..\bsp\inc\can1.h
 .\objects\upl.o: ..\..\bsp\inc\can2.h
 .\objects\upl.o: ..\..\bsp\inc\dbi.h
+.\objects\upl.o: ..\..\bsp\inc\key.h
 .\objects\upl.o: ..\..\bsp\inc\led.h
 .\objects\upl.o: ..\..\bsp\inc\pwm.h
 .\objects\upl.o: ..\..\bsp\inc\rcv.h

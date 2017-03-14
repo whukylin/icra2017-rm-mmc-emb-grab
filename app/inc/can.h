@@ -42,7 +42,7 @@ extern "C" {
 #define MOTOR_ECD_GAP 4096
 
 #define MOTOR_NUM 6
-#define MOTOR_INI_CNT 100
+#define MOTOR_INIT_FRAME_CNT 100
 #define MOTOR_RATE_EKF_Q 0.1f
 #define MOTOR_RATE_EKF_R 1.3f
 #define MOTOR_ANGLE_EKF_Q 0.01f
@@ -53,7 +53,7 @@ extern "C" {
 #define MOTOR_ANGLE_DEG_RECIP 0.04394531f
 #define MOTOR_ANGLE_RAD_RECIP 7.669904e-4f
 
-#define ZGYRO_INI_CNT 100
+#define ZGYRO_INIT_FRAME_CNT 100
 #define ZGYRO_RATE_DEG_RECIP 10.0f
 #define ZGYRO_RATE_RAD_RECIP 0.1745329f
 #define ZGYRO_ANGLE_DEG_RECIP 0.01f
@@ -62,7 +62,7 @@ extern "C" {
 typedef struct
 {
 	uint32_t id;
-	uint16_t ini;
+	uint32_t frame_cnt;
 	int32_t angle_fdb[2];
 	int32_t bias;
 	int32_t rate;
@@ -76,7 +76,7 @@ typedef struct
 typedef struct
 {
 	uint32_t id;
-	uint16_t ini;
+	uint32_t frame_cnt;
 	Ekf_t rate_ekf;
 	Ekf_t angle_ekf;
 	uint16_t angle_fdb[2];

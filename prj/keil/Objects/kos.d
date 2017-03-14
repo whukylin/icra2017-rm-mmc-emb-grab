@@ -11,14 +11,19 @@
 .\objects\kos.o: ..\..\asp\inc\cbus.h
 .\objects\kos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\kos.o: ..\..\asp\inc\crc16.h
-.\objects\kos.o: ..\..\asp\inc\dbus.h
+.\objects\kos.o: ..\..\asp\inc\dbuf.h
+.\objects\kos.o: ..\..\asp\inc\rcf.h
 .\objects\kos.o: ..\..\asp\inc\rcp.h
+.\objects\kos.o: ..\..\asp\inc\hcf.h
 .\objects\kos.o: ..\..\asp\inc\hcp.h
+.\objects\kos.o: ..\..\asp\inc\dbus.h
 .\objects\kos.o: ..\..\asp\inc\ekf.h
 .\objects\kos.o: ..\..\asp\inc\fifo.h
 .\objects\kos.o: ..\..\asp\inc\fun.h
 .\objects\kos.o: ..\..\asp\inc\gdf.h
 .\objects\kos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
+.\objects\kos.o: ..\..\asp\inc\linkednode.h
+.\objects\kos.o: ..\..\asp\inc\linkedlist.h
 .\objects\kos.o: ..\..\asp\inc\maf.h
 .\objects\kos.o: ..\..\asp\inc\mec.h
 .\objects\kos.o: ..\..\asp\inc\pid.h
@@ -52,6 +57,7 @@
 .\objects\kos.o: ..\..\bsp\inc\can1.h
 .\objects\kos.o: ..\..\bsp\inc\can2.h
 .\objects\kos.o: ..\..\bsp\inc\dbi.h
+.\objects\kos.o: ..\..\bsp\inc\key.h
 .\objects\kos.o: ..\..\bsp\inc\led.h
 .\objects\kos.o: ..\..\bsp\inc\pwm.h
 .\objects\kos.o: ..\..\bsp\inc\rcv.h

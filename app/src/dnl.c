@@ -31,8 +31,8 @@ static FIFO_t fifo;
 static void Dnl_ProcVRC(const VirtualRC_t* vrc)
 {
 	Wdg_Feed(WDG_IDX_VRC);
-	if (switchStates[SW_IDX_R] == SW_DN) {
-		if (lastSwitchStates[SW_IDX_R] != SW_DN) {
+	if (Rci_Sw(SW_IDX_R) == SW_DN) {
+		if (Rci_LastSw(SW_IDX_R) != SW_DN) {
 			Rci_Init();
 		}
 		Rci_Proc(vrc);
@@ -42,8 +42,8 @@ static void Dnl_ProcVRC(const VirtualRC_t* vrc)
 static void Dnl_ProcVHC(const VirtualHC_t* vhc)
 {
 	Wdg_Feed(WDG_IDX_VHC);
-	if (switchStates[SW_IDX_R] == SW_DN) {
-		if (lastSwitchStates[SW_IDX_R] != SW_DN) {
+	if (Rci_Sw(SW_IDX_R) == SW_DN) {
+		if (Rci_LastSw(SW_IDX_R) != SW_DN) {
 			Hci_Init();
 		}
 		Hci_Proc(vhc);
@@ -61,8 +61,8 @@ static void Dnl_ProcVDBUS(const VirtualDBUS_t* vdbus)
 static void Dnl_ProcVCBUS(const VirtualCBUS_t* vcbus)
 {
 	Wdg_Feed(WDG_IDX_VCBUS);
-	if (switchStates[SW_IDX_R] == SW_DN) {
-		if (lastSwitchStates[SW_IDX_R] != SW_DN) {
+	if (Rci_Sw(SW_IDX_R) == SW_DN) {
+		if (Rci_LastSw(SW_IDX_R) != SW_DN) {
 			Cci_Init();
 		}
 		Cci_Proc(vcbus);
@@ -84,8 +84,8 @@ static void Dnl_ProcCalibMsg(const CalibMsg_t* calibMsg)
 void Dnl_Init(void)
 {
 	FIFO_Init(&fifo, buf[0], DNL_BUF_SIZE);
-	DBUS_Rst(&vdbus);
-	CBUS_Rst(&vcbus);
+	DBUS_Init(&vdbus);
+	CBUS_Init(&vcbus);
 }
 
 void Dnl_Proc(void)
