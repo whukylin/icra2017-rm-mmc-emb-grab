@@ -3,18 +3,18 @@
 .\objects\com.o: ..\..\app\inc\upl.h
 .\objects\com.o: ..\..\asp\inc\msg.h
 .\objects\com.o: ..\..\asp\inc\cbus.h
-.\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\com.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\com.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\com.o: ..\..\asp\inc\dbus.h
 .\objects\com.o: ..\..\asp\inc\rcp.h
 .\objects\com.o: ..\..\asp\inc\hcp.h
 .\objects\com.o: ..\..\asp\inc\fifo.h
-.\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\com.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\com.o: ..\..\asp\inc\crc16.h
 .\objects\com.o: ..\..\app\inc\cmd.h
 .\objects\com.o: ..\..\app\inc\sys.h
 .\objects\com.o: ..\..\asp\inc\fun.h
-.\objects\com.o: ..\..\app\inc\tfx.h
+.\objects\com.o: ..\..\app\inc\mec.h
 .\objects\com.o: ..\..\app\inc\cfg.h
 .\objects\com.o: ..\..\app\inc\fos.h
 .\objects\com.o: ..\..\drv\inc\flash.h
@@ -39,15 +39,7 @@
 .\objects\com.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\objects\com.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\com.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
-.\objects\com.o: ..\..\asp\inc\mec.h
-.\objects\com.o: ..\..\app\inc\dci.h
-.\objects\com.o: ..\..\app\inc\rci.h
-.\objects\com.o: ..\..\asp\inc\rcf.h
-.\objects\com.o: ..\..\app\inc\cmd.h
-.\objects\com.o: ..\..\app\inc\hci.h
-.\objects\com.o: ..\..\asp\inc\hcf.h
-.\objects\com.o: ..\..\asp\inc\maf.h
-.\objects\com.o: ..\..\app\inc\wdg.h
+.\objects\com.o: ..\..\asp\inc\mecanum.h
 .\objects\com.o: ..\..\app\inc\odo.h
 .\objects\com.o: ..\..\bsp\inc\bsp.h
 .\objects\com.o: ..\..\bsp\inc\btm.h
@@ -64,8 +56,9 @@
 .\objects\com.o: ..\..\bsp\inc\tty.h
 .\objects\com.o: ..\..\app\inc\can.h
 .\objects\com.o: ..\..\asp\inc\ekf.h
+.\objects\com.o: ..\..\app\inc\wdg.h
 .\objects\com.o: ..\..\app\inc\ini.h
 .\objects\com.o: ..\..\app\inc\ios.h
-.\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\com.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\com.o: ..\..\app\inc\dnl.h
 .\objects\com.o: ..\..\app\inc\cci.h

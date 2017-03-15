@@ -1,12 +1,12 @@
 .\objects\wsm.o: ..\..\app\src\wsm.c
 .\objects\wsm.o: ..\..\app\inc\wsm.h
 .\objects\wsm.o: ..\..\app\inc\sys.h
-.\objects\wsm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\wsm.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\wsm.o: ..\..\asp\inc\fun.h
 .\objects\wsm.o: ..\..\app\inc\wdg.h
 .\objects\wsm.o: ..\..\app\inc\ini.h
 .\objects\wsm.o: ..\..\app\inc\cfg.h
-.\objects\wsm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\wsm.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\wsm.o: ..\..\app\inc\fos.h
 .\objects\wsm.o: ..\..\drv\inc\flash.h
 .\objects\wsm.o: ..\..\bsp\inc\platform.h
@@ -32,4 +32,4 @@
 .\objects\wsm.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
 .\objects\wsm.o: ..\..\app\inc\can.h
 .\objects\wsm.o: ..\..\asp\inc\ekf.h
-.\objects\wsm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\wsm.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

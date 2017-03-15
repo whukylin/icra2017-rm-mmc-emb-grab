@@ -32,8 +32,8 @@ typedef struct
 	uint32_t fn[MOUSE_BTN_CNT]; // confirm counter
 }Hcf_t; // Remote control protocol filtered frame structure
 
-void Hcf_Init(Hcf_t* rcf);
-void Hcf_Proc(Hcf_t* rcf, const Hcp_t* hcp);
+void Hcf_Init(Hcf_t* hcf);
+void Hcf_Proc(Hcf_t* hcf, const Hcp_t* hcp);
 
 #ifdef __cplusplus
 }

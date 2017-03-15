@@ -24,8 +24,10 @@ Odo_t odo;
 
 static void GetFunctionalStateFdb(void)
 {
-	FS_Det(LED_GREEN_IS_ON(), &odo.fs, FS_LED_GREEN);
+	FS_Det(KEY_H(), &odo.fs, FS_KEY_H);
+	FS_Det(KEY_L(), &odo.fs, FS_KEY_L);
 	FS_Det(LED_RED_IS_ON(), &odo.fs, FS_LED_RED);
+	FS_Det(LED_GREEN_IS_ON(), &odo.fs, FS_LED_GREEN);
 }
 
 static void GetMecanumPositionFdb(void)
@@ -64,13 +66,13 @@ static void GetChassisVelocityFdb(void)
 
 static void GetGrabberPositionFdb(void)
 {
-	odo.gp.e = motor[5].angle_filtered;
+	odo.gp.e = motor[5].angle_rad * SCREW_PITCH_RECIP;
 	odo.gp.c = CLAW_GET_PWM();
 }
 
 static void GetGrabberVelocityFdb(void)
 {
-	odo.gv.e = motor[5].rate_filtered;
+	odo.gv.e = motor[5].rate_rad * SCREW_PITCH_RECIP;
 	odo.gv.c = CLAW_GET_PWM();
 }
 

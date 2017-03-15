@@ -74,10 +74,10 @@ static void Dnl_ProcCalibMsg(const CalibMsg_t* calibMsg)
 	cfg.pid.kp = calibMsg->pid.kp;
 	cfg.pid.ki = calibMsg->pid.ki;
 	cfg.pid.kd = calibMsg->pid.kd;
-	cfg.ele.min = calibMsg->pos.elevator_l;
-	cfg.ele.max = calibMsg->pos.elevator_h;
-	cfg.cla.min = calibMsg->pos.pwm_l;
-	cfg.cla.max = calibMsg->pos.pwm_h;
+	cfg.pos.min = calibMsg->pos.elevator_l;
+	cfg.pos.max = calibMsg->pos.elevator_h;
+	cfg.pos.min = calibMsg->pos.pwm_l;
+	cfg.pos.max = calibMsg->pos.pwm_h;
 	cfg_sync_flag = 1;
 }
 

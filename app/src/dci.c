@@ -31,7 +31,7 @@ void Dci_Init(void)
 
 void Dci_Proc(const DBUS_t* dbus)
 {
-	Rci_Mode(&dbus->rcp);
+	Rci_PreProc(&dbus->rcp);
 	if (Rci_Sw(SW_IDX_R) == SW_UP) {
 		if (Rci_LastSw(SW_IDX_R) != SW_UP) {
 			Rci_Init();

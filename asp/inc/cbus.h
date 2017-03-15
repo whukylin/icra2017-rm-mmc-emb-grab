@@ -35,9 +35,9 @@ typedef struct
 	int16_t vx; // Bot linear velocity in x-axis, unit: mm/s
 	int16_t vy; // Bot linear velocity in y-axis, unit: mm/s
 	int16_t vz; // Bot angular velocity in z-axis, unit: rad/s
-	int32_t pe; // Elevator position (encoder angle)
-	int16_t pc; // Claw PWM position
-	uint32_t fs; // Functional state control bits
+	int16_t pe; // Bot elevator position, unit: 0.001*rad
+	int16_t pc; // Bot claw position, unit: 0.001*rad
+	uint32_t fs; // Functional state control bits, 0: off, 1: on
 }CBUS_t;
 #pragma pack()
 

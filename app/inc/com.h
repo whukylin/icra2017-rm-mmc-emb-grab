@@ -27,9 +27,6 @@ extern "C" {
 
 #include "upl.h"
 #include "dnl.h"
-#include "ios.h"
-#include "msg.h"
-#include "cfg.h"
 #include "wdg.h"
 
 void Com_Init(void);

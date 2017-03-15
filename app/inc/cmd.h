@@ -27,16 +27,16 @@ extern "C" {
 
 #include "sys.h"
 #include "mec.h"
-#include "dci.h"
 #include "cfg.h"
 #include "fun.h"
 
 typedef struct
 {
-	PeriphsState_t fs;
-	ChassisState_t cv;
-	MecanumState_t mv; // Auto-Wired
-	GrabberState_t gp; // Auto-Wired
+	PeriphsState_t fs; // Functional state control bits reference
+	ChassisState_t cv; // Chassis velocity reference
+	MecanumState_t mv; // Mecanum velocity reference (Auto-Wired)
+	GrabberState_t gv; // Grabber velocity dynamic reference
+	GrabberState_t gp; // Grabber position reference
 }Cmd_t;
 
 void Cmd_Init(void);

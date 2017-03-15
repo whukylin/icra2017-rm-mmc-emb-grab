@@ -64,9 +64,9 @@ uint8_t Cfg_IsSynced(void)
 	return cfg_sync_flag;
 }
 
-void Cfg_Sync(void)
+void Cfg_SetSyncFlag(uint8_t flag)
 {
-	cfg_sync_flag = 1;
+	cfg_sync_flag = flag;
 }
 
 void Cfg_Init(void)
@@ -78,9 +78,6 @@ void Cfg_Init(void)
 	}
 	if (!Cfg_GetFlag(CFG_FLAG_MAG)) {
 		memcpy(&cfg.mag, &tmp.mag, sizeof(MagCfg_t));
-	}
-	if (!Cfg_GetFlag(CFG_FLAG_AHR)) {
-		memcpy(&cfg.ahr, &tmp.ahr, sizeof(AhrCfg_t));
 	}
 	if (!Cfg_GetFlag(CFG_FLAG_PID)) {
 		memcpy(&cfg.pid, &tmp.pid, sizeof(PidCfg_t));
@@ -94,11 +91,8 @@ void Cfg_Init(void)
 	if (!Cfg_GetFlag(CFG_FLAG_MEC)) {
 		memcpy(&cfg.mec, &tmp.mec, sizeof(MecCfg_t));
 	}
-	if (!Cfg_GetFlag(CFG_FLAG_ELE)) {
-		memcpy(&cfg.ele, &tmp.ele, sizeof(EleCfg_t));
-	}
-	if (!Cfg_GetFlag(CFG_FLAG_CLA)) {
-		memcpy(&cfg.cla, &tmp.cla, sizeof(ClaCfg_t));
+	if (!Cfg_GetFlag(CFG_FLAG_POS)) {
+		memcpy(&cfg.pos, &tmp.pos, sizeof(PosCfg_t));
 	}
 	cfg_sync_flag = 0;
 }
@@ -106,11 +100,6 @@ void Cfg_Init(void)
 void Cfg_Proc(void)
 {
 	if (cfg_sync_flag == 1) {
-		Cfg_t tmp = CFG_DEF;
-		CHECK_NOT_ZERO(cfg.mec.lx, tmp.mec.lx);
-		CHECK_NOT_ZERO(cfg.mec.ly, tmp.mec.ly);
-		CHECK_NOT_ZERO(cfg.mec.r1, tmp.mec.r1);
-		CHECK_NOT_ZERO(cfg.mec.r2, tmp.mec.r2);
 		Cfg_Save(&cfg);
 		cfg_sync_flag = 0;
 	}
@@ -120,7 +109,7 @@ void Cfg_Reset(void)
 {
 	Cfg_t tmp = CFG_DEF;
 	Cfg_Save(&tmp);
-	Cfg_Load(&cfg);
+	Cfg_Init();
 }
 
 

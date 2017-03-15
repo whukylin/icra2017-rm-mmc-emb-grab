@@ -57,10 +57,9 @@ static void ChassisVelocityControl(void)
 
 static void GrabberPositionControl(void)
 {
-	ctl.gv.e = PID_Calc(&GMEAnglePID, cmd.gp.e, odo.gp.e);
-	ctl.gc.e = PID_Calc(&GMESpeedPID, ctl.gv.e, odo.gv.e) * Rmp_Calc(&GMESpeedRmp);
-	ctl.gv.c = cmd.gp.c - odo.gp.c;
-	ctl.gc.c = odo.gp.c + 0.001f * ctl.gv.c;
+	ctl.gv.e = PID_Calc(&GMEAnglePID, cmd.gp.e, odo.gp.e); // Elevator motor angle PID
+	ctl.gc.e = PID_Calc(&GMESpeedPID, ctl.gv.e, odo.gv.e) * Rmp_Calc(&GMESpeedRmp); // Elevator motor speed PID
+	ctl.gc.c = map(cmd.gp.c, cfg.pos.cl, cfg.pos.ch, 1000, 2000); // Direct PWM control (1000~2000)/2500, map rad to pwm duty cycle
 }
 
 static void PID_Init(PID_t* pid)

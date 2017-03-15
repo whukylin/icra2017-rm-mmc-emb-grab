@@ -27,21 +27,21 @@ void Hcf_Init(Hcf_t* hcf)
 	memset(hcf->fn, 0, sizeof(hcf->fn));
 }
 
-void Hcf_Proc(Hcf_t* rcf, const Hcp_t* hcp)
+void Hcf_Proc(Hcf_t* hcf, const Hcp_t* hcp)
 {
 	uint32_t i = 0;
 	for (; i < MOUSE_BTN_CNT; i++) {
-		if (rcf->b[i][0] == hcp->mouse.b[i]) {
-			if (rcf->fn[i] < MOUSE_BTN_PRESS_CONFIRM_CNT) {
-				rcf->fn[i]++;
+		if (hcf->b[i][0] == hcp->mouse.b[i]) {
+			if (hcf->fn[i] < MOUSE_BTN_PRESS_CONFIRM_CNT) {
+				hcf->fn[i]++;
 			} else {
-				rcf->b[i][1] = rcf->b[i][2];
-				rcf->b[i][2] = hcp->mouse.b[i];
+				hcf->b[i][1] = hcf->b[i][2];
+				hcf->b[i][2] = hcp->mouse.b[i];
 			}
 		} else {
-			rcf->fn[i] = 0;
+			hcf->fn[i] = 0;
 		}
-		rcf->b[i][0] = hcp->mouse.b[i];
+		hcf->b[i][0] = hcp->mouse.b[i];
 	}
 }
 

@@ -4,7 +4,7 @@
 .\objects\can1.o: ..\..\bsp\inc\platform.h
 .\objects\can1.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\can1.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\can1.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\can1.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\can1.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\can1.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\can1.o: ..\..\stl\CMSIS\core\core_cmSimd.h

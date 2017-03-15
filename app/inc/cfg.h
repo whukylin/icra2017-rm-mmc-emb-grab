@@ -34,10 +34,11 @@ extern "C" {
 #define CFG_FLAG_IMU                (1u<<0)
 #define CFG_FLAG_MAG                (1u<<1)
 #define CFG_FLAG_PID                (1u<<2)
-#define CFG_FLAG_SPD                (1u<<3)
-#define CFG_FLAG_RMP                (1u<<4)
+#define CFG_FLAG_RMP                (1u<<3)
+#define CFG_FLAG_SPD                (1u<<4)
 #define CFG_FLAG_MEC                (1u<<5)
-#define CFG_FLAG_ALL (CFG_FLAG_IMU|CFG_FLAG_MAG|CFG_FLAG_PID|CFG_FLAG_SPD|CFG_FLAG_RMP|CFG_FLAG_MEC)
+#define CFG_FLAG_POS                (1u<<6)
+#define CFG_FLAG_ALL (CFG_FLAG_IMU|CFG_FLAG_MAG|CFG_FLAG_PID|CFG_FLAG_RMP|CFG_FLAG_SPD|CFG_FLAG_MEC|CFG_FLAG_POS)
 	
 typedef uint32_t CfgVer_t;
 typedef uint32_t CfgFlg_t;
@@ -45,19 +46,19 @@ typedef uint32_t CfgFlg_t;
 #pragma pack(1)
 typedef struct
 {
-	int16_t ax_offset;
-	int16_t ay_offset;
-	int16_t az_offset;
-	int16_t gx_offset;
-	int16_t gy_offset;
-	int16_t gz_offset;
+	float ax_offset;
+	float ay_offset;
+	float az_offset;
+	float gx_offset;
+	float gy_offset;
+	float gz_offset;
 }ImuCfg_t; // IMU offset Configuration
 
 typedef struct
 {
-	int16_t mx_offset;
-	int16_t my_offset;
-	int16_t mz_offset;
+	float mx_offset;
+	float my_offset;
+	float mz_offset;
 }MagCfg_t; // MAG offset Configuration
 
 #define PID_CFG_RECIP 0.01f
@@ -75,34 +76,34 @@ typedef struct
 
 typedef struct
 {
-	uint16_t cnt;
+	uint16_t cnt; // unit: ${SYS_CTL_TMS} ms
 }RmpCfg_t; // Ramp Configuration
 
 #define SPD_CFG_RECIP 0.01f
 typedef struct
 {
-	float x;
-	float y;
-	float z;
-	float e;
-	float c;
+	float x; // Max chassis speed in x-axis, unit: m/s
+	float y; // Max chassis speed in y-axis, unit: m/s
+	float z; // Max chassis speed in z-axis, unit: rad/s
+	float e; // Max elevator speed, unit: m/s
+	float c; // Max claw speed, unit: rad/s
 }SpdCfg_t; // Speed Configuration
 
 typedef struct
 {
-	int32_t el;
-	int32_t eh;
-	uint16_t pl;
-	uint16_t ph;
-}PosCfg_t; // Position Configuration
+	float lx; // unit: m
+	float ly; // unit: m
+	float r1; // unit: m
+	float r2; // unit: m
+}MecCfg_t; // Mecanum Wheel Configuration
 
 typedef struct
 {
-	float lx;
-	float ly;
-	float r1;
-	float r2;
-}MecCfg_t; // Mecanum Wheel Configuration
+	float el; // unit: m
+	float eh; // unit: m
+	float cl; // unit: rad
+	float ch; // unit: rad
+}PosCfg_t; // Position Configuration
 
 typedef struct
 {
@@ -110,11 +111,11 @@ typedef struct
 	CfgFlg_t flg;
 	ImuCfg_t imu;
 	MagCfg_t mag;
-	SpdCfg_t spd;
-	PosCfg_t pos;
 	PidCfg_t pid;
 	RmpCfg_t rmp;
+	SpdCfg_t spd;
 	MecCfg_t mec;
+	PosCfg_t pos;
 }Cfg_t; // Application Configuration
 
 #pragma pack()
@@ -125,12 +126,8 @@ typedef struct
 #define CFG_VER_B 7u
 #define CFG_VER_C 1u
 #define CFG_VER_D 7u
-#define CFG_VER_MSK_A ((uint32_t)0x000000ff)
-#define CFG_VER_MSK_B ((uint32_t)0x0000ff00)
-#define CFG_VER_MSK_C ((uint32_t)0x00ff0000)
-#define CFG_VER_MSK_D ((uint32_t)0xff000000)
 #define CFG_VER_DEF ((CFG_VER_A<<24)|(CFG_VER_B<<16)|(CFG_VER_C<<8)|CFG_VER_D)
-#define CFG_FLG_DEF 0 //(CFG_FLAG_AHR|CFG_FLAG_PID|CFG_FLAG_RMP|CFG_FLAG_SPD|CFG_FLAG_MEC|CFG_FLAG_ELE|CFG_FLAG_CLA)
+#define CFG_FLG_DEF 0
 
 #define IMU_CFG_DEF \
 { \
@@ -149,12 +146,6 @@ typedef struct
 	.mz_offset = 0, \
 }
 
-#define ARH_CFG_DEF \
-{ \
-	.kp = 2.0f, \
-	.ki = 0.02f, \
-}
-
 #define PID_CFG_DEF \
 { \
 	.kp = 220, \
@@ -167,21 +158,21 @@ typedef struct
 	.Omax = 4950, \
 }
 
-#define RMP_CNT_DEF 250
-#define RMP_CFG_DEF \
-{ \
-	.cnt = RMP_CNT_DEF, \
-}
-
-#define SPD_TRA_DEF 3
-#define SPD_ROT_DEF 6
+#define SPD_TRA_DEF 3.0f
+#define SPD_ROT_DEF 6.0f
 #define SPD_CFG_DEF \
 { \
 	.x = SPD_TRA_DEF, \
 	.y = SPD_TRA_DEF, \
 	.z = SPD_ROT_DEF, \
-	.e = 10, \
-	.c = 10, \
+	.e = 0.01f, \
+	.c = 0.50f, \
+}
+
+#define RMP_CNT_DEF 250 //250*${SYS_CTL_TMS}
+#define RMP_CFG_DEF \
+{ \
+	.cnt = RMP_CNT_DEF, \
 }
 
 /*******************************************/
@@ -202,18 +193,12 @@ typedef struct
 	.r2 = 0.070f, \
 }
 
-#define ELE_CFG_DEF \
+#define POS_CFG_DEF \
 { \
-	.max = 81920, \
-	.min = 0, \
-	.def = 0, \
-}
-
-#define CLA_CFG_DEF \
-{ \
-	.max = 1700, \
-	.min = 1000, \
-	.def = 1300, \
+	.el = 0.0f, \
+	.eh = 0.620f, \
+	.cl = 0.0f, \
+	.ch = 2.0f, \
 }
 
 #define CFG_DEF \
@@ -222,13 +207,11 @@ typedef struct
 	CFG_FLG_DEF, \
 	IMU_CFG_DEF, \
 	MAG_CFG_DEF, \
-	ARH_CFG_DEF, \
 	PID_CFG_DEF, \
 	RMP_CFG_DEF, \
 	SPD_CFG_DEF, \
 	MEC_CFG_DEF, \
-	ELE_CFG_DEF, \
-	CLA_CFG_DEF, \
+	POS_CFG_DEF, \
 }
 
 CfgVer_t Cfg_GetVer(void);
@@ -239,7 +222,7 @@ void Cfg_SetFlag(CfgFlg_t flag);
 void Cfg_ClrFlag(CfgFlg_t flag);
 
 uint8_t Cfg_IsSynced(void);
-void Cfg_Sync(void);
+void Cfg_SetSyncFlag(uint8_t flag);
 
 void Cfg_Init(void);
 void Cfg_Proc(void);

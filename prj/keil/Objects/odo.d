@@ -1,7 +1,7 @@
 .\objects\odo.o: ..\..\app\src\odo.c
 .\objects\odo.o: ..\..\app\inc\odo.h
 .\objects\odo.o: ..\..\app\inc\sys.h
-.\objects\odo.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\odo.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\odo.o: ..\..\asp\inc\fun.h
 .\objects\odo.o: ..\..\bsp\inc\bsp.h
 .\objects\odo.o: ..\..\bsp\inc\btm.h
@@ -28,8 +28,8 @@
 .\objects\odo.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\odo.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
 .\objects\odo.o: ..\..\asp\inc\fifo.h
-.\objects\odo.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\odo.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\odo.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\odo.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\odo.o: ..\..\bsp\inc\btn.h
 .\objects\odo.o: ..\..\bsp\inc\can1.h
 .\objects\odo.o: ..\..\bsp\inc\can2.h
@@ -43,8 +43,8 @@
 .\objects\odo.o: ..\..\app\inc\can.h
 .\objects\odo.o: ..\..\asp\inc\ekf.h
 .\objects\odo.o: ..\..\app\inc\wdg.h
-.\objects\odo.o: ..\..\app\inc\tfx.h
+.\objects\odo.o: ..\..\app\inc\mec.h
 .\objects\odo.o: ..\..\app\inc\cfg.h
 .\objects\odo.o: ..\..\app\inc\fos.h
 .\objects\odo.o: ..\..\drv\inc\flash.h
-.\objects\odo.o: ..\..\asp\inc\mec.h
+.\objects\odo.o: ..\..\asp\inc\mecanum.h

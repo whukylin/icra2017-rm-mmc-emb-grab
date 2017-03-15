@@ -2,15 +2,15 @@
 .\objects\main.o: ..\..\usr\inc\main.h
 .\objects\main.o: ..\..\kos\inc\kos.h
 .\objects\main.o: ..\..\app\inc\app.h
-.\objects\main.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\main.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\main.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\main.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\main.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\main.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\main.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\main.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\main.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\main.o: ..\..\asp\inc\asp.h
 .\objects\main.o: ..\..\asp\inc\ahrs.h
 .\objects\main.o: ..\..\asp\inc\cbus.h
-.\objects\main.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\main.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\main.o: ..\..\asp\inc\crc16.h
 .\objects\main.o: ..\..\asp\inc\dbuf.h
 .\objects\main.o: ..\..\asp\inc\rcf.h
@@ -22,11 +22,11 @@
 .\objects\main.o: ..\..\asp\inc\fifo.h
 .\objects\main.o: ..\..\asp\inc\fun.h
 .\objects\main.o: ..\..\asp\inc\gdf.h
-.\objects\main.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
+.\objects\main.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
 .\objects\main.o: ..\..\asp\inc\linkednode.h
 .\objects\main.o: ..\..\asp\inc\linkedlist.h
 .\objects\main.o: ..\..\asp\inc\maf.h
-.\objects\main.o: ..\..\asp\inc\mec.h
+.\objects\main.o: ..\..\asp\inc\mecanum.h
 .\objects\main.o: ..\..\asp\inc\pid.h
 .\objects\main.o: ..\..\asp\inc\rmp.h
 .\objects\main.o: ..\..\asp\inc\stack.h
@@ -79,19 +79,18 @@
 .\objects\main.o: ..\..\asp\inc\msg.h
 .\objects\main.o: ..\..\app\inc\cmd.h
 .\objects\main.o: ..\..\app\inc\sys.h
-.\objects\main.o: ..\..\app\inc\tfx.h
+.\objects\main.o: ..\..\app\inc\mec.h
 .\objects\main.o: ..\..\app\inc\cfg.h
 .\objects\main.o: ..\..\app\inc\fos.h
-.\objects\main.o: ..\..\app\inc\dci.h
-.\objects\main.o: ..\..\app\inc\rci.h
-.\objects\main.o: ..\..\app\inc\cmd.h
-.\objects\main.o: ..\..\app\inc\hci.h
 .\objects\main.o: ..\..\app\inc\odo.h
 .\objects\main.o: ..\..\app\inc\ini.h
 .\objects\main.o: ..\..\app\inc\ios.h
 .\objects\main.o: ..\..\app\inc\dnl.h
 .\objects\main.o: ..\..\app\inc\cci.h
 .\objects\main.o: ..\..\srv\inc\rcv_srv.h
+.\objects\main.o: ..\..\app\inc\dci.h
+.\objects\main.o: ..\..\app\inc\rci.h
+.\objects\main.o: ..\..\app\inc\hci.h
 .\objects\main.o: ..\..\app\inc\act.h
 .\objects\main.o: ..\..\app\inc\ctl.h
 .\objects\main.o: ..\..\app\inc\clk.h

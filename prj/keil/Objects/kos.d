@@ -1,15 +1,15 @@
 .\objects\kos.o: ..\..\kos\src\kos.c
 .\objects\kos.o: ..\..\kos\inc\kos.h
 .\objects\kos.o: ..\..\app\inc\app.h
-.\objects\kos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\kos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\kos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\kos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\kos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\kos.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\kos.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\kos.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\kos.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\kos.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\kos.o: ..\..\asp\inc\asp.h
 .\objects\kos.o: ..\..\asp\inc\ahrs.h
 .\objects\kos.o: ..\..\asp\inc\cbus.h
-.\objects\kos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\kos.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\kos.o: ..\..\asp\inc\crc16.h
 .\objects\kos.o: ..\..\asp\inc\dbuf.h
 .\objects\kos.o: ..\..\asp\inc\rcf.h
@@ -21,11 +21,11 @@
 .\objects\kos.o: ..\..\asp\inc\fifo.h
 .\objects\kos.o: ..\..\asp\inc\fun.h
 .\objects\kos.o: ..\..\asp\inc\gdf.h
-.\objects\kos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
+.\objects\kos.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
 .\objects\kos.o: ..\..\asp\inc\linkednode.h
 .\objects\kos.o: ..\..\asp\inc\linkedlist.h
 .\objects\kos.o: ..\..\asp\inc\maf.h
-.\objects\kos.o: ..\..\asp\inc\mec.h
+.\objects\kos.o: ..\..\asp\inc\mecanum.h
 .\objects\kos.o: ..\..\asp\inc\pid.h
 .\objects\kos.o: ..\..\asp\inc\rmp.h
 .\objects\kos.o: ..\..\asp\inc\stack.h
@@ -78,19 +78,18 @@
 .\objects\kos.o: ..\..\asp\inc\msg.h
 .\objects\kos.o: ..\..\app\inc\cmd.h
 .\objects\kos.o: ..\..\app\inc\sys.h
-.\objects\kos.o: ..\..\app\inc\tfx.h
+.\objects\kos.o: ..\..\app\inc\mec.h
 .\objects\kos.o: ..\..\app\inc\cfg.h
 .\objects\kos.o: ..\..\app\inc\fos.h
-.\objects\kos.o: ..\..\app\inc\dci.h
-.\objects\kos.o: ..\..\app\inc\rci.h
-.\objects\kos.o: ..\..\app\inc\cmd.h
-.\objects\kos.o: ..\..\app\inc\hci.h
 .\objects\kos.o: ..\..\app\inc\odo.h
 .\objects\kos.o: ..\..\app\inc\ini.h
 .\objects\kos.o: ..\..\app\inc\ios.h
 .\objects\kos.o: ..\..\app\inc\dnl.h
 .\objects\kos.o: ..\..\app\inc\cci.h
 .\objects\kos.o: ..\..\srv\inc\rcv_srv.h
+.\objects\kos.o: ..\..\app\inc\dci.h
+.\objects\kos.o: ..\..\app\inc\rci.h
+.\objects\kos.o: ..\..\app\inc\hci.h
 .\objects\kos.o: ..\..\app\inc\act.h
 .\objects\kos.o: ..\..\app\inc\ctl.h
 .\objects\kos.o: ..\..\app\inc\clk.h

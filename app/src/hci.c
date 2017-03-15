@@ -44,8 +44,22 @@ static void GetChassisVelocityRef(const Hcp_t* hcp)
 
 static void GetGrabberVelocityRef(const Hcp_t* hcp)
 {
-	cmd.gv.e = map(hcp->mouse.z, -MOUSE_SPEED_MAX, MOUSE_SPEED_MAX, -cfg.spd.e, cfg.spd.e);
-	cmd.gv.c = 0;
+	cmd.gv.e = map(hcp->mouse.z, -MOUSE_SPEED_MAX, MOUSE_SPEED_MAX, -cfg.spd.e, cfg.spd.e); // m/s
+	cmd.gp.e += cmd.gv.e * SYS_CTL_TSC; // Integral velocity to get position, unit: m
+	CONSTRAIN(cmd.gp.e, cfg.pos.el, cfg.pos.eh); // Constrain elevator position
+	cmd.gv.c = Hci_MouseBtn(MOUSE_BTN_IDX_L) == MOUSE_BTN_UP ? cfg.spd.c : Hci_MouseBtn(MOUSE_BTN_IDX_R) == MOUSE_BTN_UP ? -cfg.spd.c : 0; // rad/s
+	cmd.gp.c += cmd.gv.c * SYS_CTL_TSC; // Integral velocity to get position, unit: rad
+	CONSTRAIN(cmd.gp.c, cfg.pos.cl, cfg.pos.ch); // Constrain grabber position
+}
+
+void Hci_PreProc(const Hcp_t* hcp)
+{
+	Hcf_Proc(&hcf, hcp);
+}
+
+uint8_t Hci_MouseBtn(uint8_t i)
+{
+	return hcf.b[i][2];
 }
 
 void Hci_Init(void)
@@ -58,6 +72,8 @@ void Hci_Init(void)
 
 void Hci_Proc(const Hcp_t* hcp)
 {
+	Hci_PreProc(hcp);
+	
 	GetFunctionalStateRef(hcp);
 	GetChassisVelocityRef(hcp);
 	GetGrabberVelocityRef(hcp);

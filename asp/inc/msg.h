@@ -107,9 +107,8 @@ typedef struct
 
 typedef struct
 {
-	int32_t pe; // Elevator position
-	int16_t ve; // Elevator velocity
-	uint16_t pc; // Claw PWM position
+	int16_t pe; // Elevator position
+	int16_t pc; // Claw position
 }GraspMsg_t;
 
 #define PID_CALIB_TYPE_CHASSIS_VELOCITY 0x01
@@ -158,19 +157,19 @@ typedef struct
 #define VEL_CALIB_VALUE_RECIP 0.001f
 typedef struct
 {
-	uint16_t xm;
-	uint16_t ym;
-	uint16_t zm;
-	uint16_t em;
-	uint16_t cm;
+	uint16_t x;
+	uint16_t y;
+	uint16_t z;
+	uint16_t e;
+	uint16_t c;
 }VelCalib_t; // Velocity Calibration
 
 typedef struct
 {
-	int32_t el;
-	int32_t eh;
-	uint16_t pl;
-	uint16_t ph;
+	int16_t el; // unit: mm
+	int16_t eh; // unit: mm
+	int16_t cl; // unit: 1000*rad
+	int16_t ch; // unit: 1000*rad
 }PosCalib_t; // Position Calibration
 
 #define CALIB_FLAG_BIT_IMU (1u<<0)

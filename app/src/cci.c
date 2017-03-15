@@ -22,11 +22,11 @@ void Cci_Init(void)
 
 void Cci_Proc(const CBUS_t* cbus)
 {
-	cmd.cv.x = constrain(cbus->vx * 1e-3f, -cfg.spd.x, cfg.spd.x);
-	cmd.cv.y = constrain(cbus->vy * 1e-3f, -cfg.spd.y, cfg.spd.y);
-	cmd.cv.z = constrain(cbus->vz * 1e-3f, -cfg.spd.z, cfg.spd.z);
-	cmd.gv.e = constrain(cbus->ve * 1e-3f, -cfg.spd.e, cfg.spd.e);
-	cmd.gv.c = constrain(cbus->vc * 1e-3f, -cfg.spd.c, cfg.spd.c);
+	cmd.cv.x = constrain(cbus->vx * CCI_VALUE_RECIP, -cfg.spd.x, cfg.spd.x);
+	cmd.cv.y = constrain(cbus->vy * CCI_VALUE_RECIP, -cfg.spd.y, cfg.spd.y);
+	cmd.cv.z = constrain(cbus->vz * CCI_VALUE_RECIP, -cfg.spd.z, cfg.spd.z);
+	cmd.gp.e = constrain(cbus->pe * CCI_VALUE_RECIP, cfg.pos.el, cfg.pos.eh);
+	cmd.gp.c = constrain(cbus->pc * CCI_VALUE_RECIP, cfg.pos.cl, cfg.pos.ch);
 	cmd.fs   = cbus->fs;
 }
 

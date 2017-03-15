@@ -34,6 +34,9 @@ extern "C" {
 void Hci_Init(void);
 void Hci_Proc(const Hcp_t* hcp);
 
+void Hci_PreProc(const Hcp_t* hcp); // Called by Hci_Proc, should not call in other location
+uint8_t Hci_MouseBtn(uint8_t i);
+
 #ifdef __cplusplus
 }
 #endif

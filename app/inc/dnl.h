@@ -25,12 +25,12 @@
 extern "C" {
 #endif
 
-#include "msg.h"
-#include "cmd.h"
-#include "cci.h"
-#include "cfg.h"
 #include "ios.h"
-
+#include "msg.h"
+#include "cfg.h"
+#include "dci.h"
+#include "cci.h"
+	
 #define DNL_BUF_SIZE 256u
 	
 void Dnl_Init(void);

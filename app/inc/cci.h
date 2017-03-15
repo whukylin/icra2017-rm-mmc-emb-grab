@@ -27,6 +27,8 @@ extern "C" {
 
 #include "cmd.h"
 #include "cbus.h"
+
+#define CCI_VALUE_RECIP 1e-3f
 	
 void Cci_Init(void);
 void Cci_Proc(const CBUS_t* cbus);

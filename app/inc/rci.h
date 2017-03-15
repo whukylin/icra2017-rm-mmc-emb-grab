@@ -31,7 +31,7 @@ extern "C" {
 void Rci_Init(void);
 void Rci_Proc(const Rcp_t* rcp);
 
-void Rci_Mode(const Rcp_t* rcp);
+void Rci_PreProc(const Rcp_t* rcp);
 uint8_t Rci_Sw(uint8_t i);
 uint8_t Rci_LastSw(uint8_t i);
 	

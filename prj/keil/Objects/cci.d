@@ -2,11 +2,11 @@
 .\objects\cci.o: ..\..\app\inc\cci.h
 .\objects\cci.o: ..\..\app\inc\cmd.h
 .\objects\cci.o: ..\..\app\inc\sys.h
-.\objects\cci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\cci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\cci.o: ..\..\asp\inc\fun.h
-.\objects\cci.o: ..\..\app\inc\tfx.h
+.\objects\cci.o: ..\..\app\inc\mec.h
 .\objects\cci.o: ..\..\app\inc\cfg.h
-.\objects\cci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\cci.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\cci.o: ..\..\app\inc\fos.h
 .\objects\cci.o: ..\..\drv\inc\flash.h
 .\objects\cci.o: ..\..\bsp\inc\platform.h
@@ -30,17 +30,5 @@
 .\objects\cci.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\objects\cci.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\cci.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
-.\objects\cci.o: ..\..\asp\inc\mec.h
-.\objects\cci.o: ..\..\app\inc\dci.h
-.\objects\cci.o: ..\..\asp\inc\dbus.h
-.\objects\cci.o: ..\..\asp\inc\rcp.h
-.\objects\cci.o: ..\..\asp\inc\hcp.h
-.\objects\cci.o: ..\..\app\inc\rci.h
-.\objects\cci.o: ..\..\asp\inc\rcf.h
-.\objects\cci.o: ..\..\app\inc\cmd.h
-.\objects\cci.o: ..\..\app\inc\hci.h
-.\objects\cci.o: ..\..\asp\inc\hcf.h
-.\objects\cci.o: ..\..\asp\inc\maf.h
-.\objects\cci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\cci.o: ..\..\app\inc\wdg.h
+.\objects\cci.o: ..\..\asp\inc\mecanum.h
 .\objects\cci.o: ..\..\asp\inc\cbus.h
