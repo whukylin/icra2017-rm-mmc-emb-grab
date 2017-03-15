@@ -33,14 +33,14 @@ static void ChassisStateAct(void)
 static void GrabberStateAct(void)
 {
 	GM_CMD(0, ctl.gc.e);
-	CLAW_SET_PWM((uint32_t)ctl.gc.c);
+	GP_CMD((uint32_t)ctl.gc.c);
 }
 
 void Act_Init(void)
 {
 	CM_CMD(0, 0, 0, 0);
 	GM_CMD(0, 0);
-	CLAW_SET_PWM(0);
+	GP_CMD(0);
 }
 
 void Act_Proc(void)

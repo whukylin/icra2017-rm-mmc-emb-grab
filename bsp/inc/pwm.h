@@ -51,6 +51,8 @@ extern "C" {
 #define CLAW_IS_CLOSE() (CLAW_PWM_1==CLAW_PWM_L)
 #define CLAW_TOG()      do { if(CLAW_IS_OPEN()) CLAW_CLOSE(); else CLAW_OPEN(); } while(0)
 
+#define GP_CMD(PWM) CLAW_SET_PWM(PWM)
+
 void Pwm_Config(void);
 
 #ifdef __cplusplus

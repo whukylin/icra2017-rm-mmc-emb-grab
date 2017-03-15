@@ -38,10 +38,11 @@ extern "C" {
 #define CFG_FLAG_RMP                (1u<<4)
 #define CFG_FLAG_MEC                (1u<<5)
 #define CFG_FLAG_ALL (CFG_FLAG_IMU|CFG_FLAG_MAG|CFG_FLAG_PID|CFG_FLAG_SPD|CFG_FLAG_RMP|CFG_FLAG_MEC)
-
+	
 typedef uint32_t CfgVer_t;
 typedef uint32_t CfgFlg_t;
 
+#pragma pack(1)
 typedef struct
 {
 	int16_t ax_offset;
@@ -62,28 +63,29 @@ typedef struct
 #define PID_CFG_RECIP 0.01f
 typedef struct
 {
-	uint16_t kp;
-	uint16_t ki;
-	uint16_t kd;
-	uint16_t it;
-	uint16_t Pmax;
-	uint16_t Imax;
-	uint16_t Dmax;
-	uint16_t Omax;
+	float kp;
+	float ki;
+	float kd;
+	float it;
+	float Pmax;
+	float Imax;
+	float Dmax;
+	float Omax;
 }PidCfg_t; // PID Configuration
 
 typedef struct
 {
-	uint16_t scale;
+	uint16_t cnt;
 }RmpCfg_t; // Ramp Configuration
 
+#define SPD_CFG_RECIP 0.01f
 typedef struct
 {
-	uint16_t xm;
-	uint16_t ym;
-	uint16_t zm;
-	uint16_t em;
-	uint16_t cm;
+	float x;
+	float y;
+	float z;
+	float e;
+	float c;
 }SpdCfg_t; // Speed Configuration
 
 typedef struct
@@ -96,10 +98,10 @@ typedef struct
 
 typedef struct
 {
-	uint16_t lx; // mm
-	uint16_t ly; // mm
-	uint16_t r1; // mm
-	uint16_t r2; // mm
+	float lx;
+	float ly;
+	float r1;
+	float r2;
 }MecCfg_t; // Mecanum Wheel Configuration
 
 typedef struct
@@ -108,11 +110,14 @@ typedef struct
 	CfgFlg_t flg;
 	ImuCfg_t imu;
 	MagCfg_t mag;
+	SpdCfg_t spd;
+	PosCfg_t pos;
 	PidCfg_t pid;
 	RmpCfg_t rmp;
-	SpdCfg_t spd;
 	MecCfg_t mec;
 }Cfg_t; // Application Configuration
+
+#pragma pack()
 
 #define CFG_SIZE() sizeof(Cfg_t)
 
@@ -129,19 +134,19 @@ typedef struct
 
 #define IMU_CFG_DEF \
 { \
-	.ax = 0, \
-	.ay = 0, \
-	.az = 0, \
-	.gx = 0, \
-	.gy = 0, \
-	.gz = 0, \
+	.ax_offset = 0, \
+	.ay_offset = 0, \
+	.az_offset = 0, \
+	.gx_offset = 0, \
+	.gy_offset = 0, \
+	.gz_offset = 0, \
 }
 
 #define MAG_CFG_DEF \
 { \
-	.mx = 0, \
-	.my = 0, \
-	.mz = 0, \
+	.mx_offset = 0, \
+	.my_offset = 0, \
+	.mz_offset = 0, \
 }
 
 #define ARH_CFG_DEF \

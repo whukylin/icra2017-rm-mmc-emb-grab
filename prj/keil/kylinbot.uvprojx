@@ -520,6 +520,11 @@
               <FilePath>..\..\app\inc\ios.h</FilePath>
             </File>
             <File>
+              <FileName>mec.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\app\inc\mec.h</FilePath>
+            </File>
+            <File>
               <FileName>odo.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\app\inc\odo.h</FilePath>
@@ -533,11 +538,6 @@
               <FileName>sys.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\app\inc\sys.h</FilePath>
-            </File>
-            <File>
-              <FileName>tfx.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\app\inc\tfx.h</FilePath>
             </File>
             <File>
               <FileName>upd.h</FileName>
@@ -645,6 +645,11 @@
               <FilePath>..\..\app\src\ios.c</FilePath>
             </File>
             <File>
+              <FileName>mec.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\app\src\mec.c</FilePath>
+            </File>
+            <File>
               <FileName>odo.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\app\src\odo.c</FilePath>
@@ -658,11 +663,6 @@
               <FileName>sys.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\app\src\sys.c</FilePath>
-            </File>
-            <File>
-              <FileName>tfx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\app\src\tfx.c</FilePath>
             </File>
             <File>
               <FileName>upd.c</FileName>
@@ -770,9 +770,9 @@
               <FilePath>..\..\asp\inc\maf.h</FilePath>
             </File>
             <File>
-              <FileName>mec.h</FileName>
+              <FileName>mecanum.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\asp\inc\mec.h</FilePath>
+              <FilePath>..\..\asp\inc\mecanum.h</FilePath>
             </File>
             <File>
               <FileName>msg.h</FileName>
@@ -885,9 +885,9 @@
               <FilePath>..\..\asp\src\maf.c</FilePath>
             </File>
             <File>
-              <FileName>mec.c</FileName>
+              <FileName>mecanum.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\asp\src\mec.c</FilePath>
+              <FilePath>..\..\asp\src\mecanum.c</FilePath>
             </File>
             <File>
               <FileName>msg.c</FileName>

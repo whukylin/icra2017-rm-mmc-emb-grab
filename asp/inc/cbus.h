@@ -29,6 +29,7 @@ extern "C" {
 #include <string.h>
 
 #define CBUS_CHASSIS_VELOCITY_RECIP 0.001f
+#pragma pack(1)
 typedef struct
 {
 	int16_t vx; // Bot linear velocity in x-axis, unit: mm/s
@@ -38,6 +39,7 @@ typedef struct
 	int16_t pc; // Claw PWM position
 	uint32_t fs; // Functional state control bits
 }CBUS_t;
+#pragma pack()
 
 void CBUS_Init(CBUS_t* cbus);
 

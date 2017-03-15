@@ -26,13 +26,15 @@ PID_t CM1SpeedPID;
 PID_t CM2SpeedPID;
 PID_t CM3SpeedPID;
 PID_t CM4SpeedPID;
-PID_t GMPSpeedPID;
+
+PID_t GMEAnglePID;
+PID_t GMESpeedPID;
 
 Rmp_t CM1SpeedRmp;
 Rmp_t CM2SpeedRmp;
 Rmp_t CM3SpeedRmp;
 Rmp_t CM4SpeedRmp;
-Rmp_t GMPSpeedRmp;
+Rmp_t GMESpeedRmp;
 
 /**********************************************/
 /*    Peripherals Functional State Control    */
@@ -53,10 +55,12 @@ static void ChassisVelocityControl(void)
 	ctl.mc.w4 = PID_Calc(&CM4SpeedPID, cmd.mv.w4, odo.mv.w4) * Rmp_Calc(&CM4SpeedRmp);
 }
 
-static void GrabberVelocityControl(void)
+static void GrabberPositionControl(void)
 {
-	ctl.gc.e = PID_Calc(&GMPSpeedPID, cmd.gv.e, odo.gv.e) * Rmp_Calc(&GMPSpeedRmp);
-	ctl.gc.c += cmd.gv.c;
+	ctl.gv.e = PID_Calc(&GMEAnglePID, cmd.gp.e, odo.gp.e);
+	ctl.gc.e = PID_Calc(&GMESpeedPID, ctl.gv.e, odo.gv.e) * Rmp_Calc(&GMESpeedRmp);
+	ctl.gv.c = cmd.gp.c - odo.gp.c;
+	ctl.gc.c = odo.gp.c + 0.001f * ctl.gv.c;
 }
 
 static void PID_Init(PID_t* pid)
@@ -91,13 +95,13 @@ void Ctl_Init(void)
 	PID_Init(&CM2SpeedPID);
 	PID_Init(&CM3SpeedPID);
 	PID_Init(&CM4SpeedPID);
-	PID_Init(&GMPSpeedPID);
+	PID_Init(&GMESpeedPID);
 	
 	Rmp_Init(&CM1SpeedRmp);
 	Rmp_Init(&CM2SpeedRmp);
 	Rmp_Init(&CM3SpeedRmp);
 	Rmp_Init(&CM4SpeedRmp);
-	Rmp_Init(&GMPSpeedRmp);
+	Rmp_Init(&GMESpeedRmp);
 	
 	FS_Clr(&ctl.fs, FS_ALL);
 	MS_Set(&ctl.mc, 0, 0, 0, 0);
@@ -114,6 +118,6 @@ void Ctl_Proc(void)
 	
 	FunctionalStateControl();
 	ChassisVelocityControl();
-	GrabberVelocityControl();
+	GrabberPositionControl();
 }
 

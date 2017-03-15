@@ -28,7 +28,7 @@ extern "C" {
 #include "sys.h"
 #include "bsp.h"
 #include "can.h"
-#include "tfx.h"
+#include "mec.h"
 
 typedef struct
 {

@@ -14,7 +14,14 @@
  * limitations under the License.
  */
  
-#include "mec.h"
+#ifndef __MECANUM_H__
+#define __MECANUM_H__
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <stdint.h>
 
 /*******************************************/
 /* Mecanum Wheel Power Transmission System */
@@ -27,28 +34,22 @@
 /*                                         */
 /*******************************************/
 
-void Mec_Config(Mec_t* mec, float lx, float ly, float r1, float r2)
+typedef struct
 {
-	mec->l = lx + ly;
-	mec->r = r1 + r2;
+	float l;
+	float r;
 
-	mec->cx = r1 / 4.0f;
-	mec->cy = r2 / 4.0f;
-	mec->cz = mec->r / 4.0f / mec->l;
+	float cx;
+	float cy;
+	float cz;
+}Mecanum_t;
+
+void Mecanum_Config(Mecanum_t* mecanum, float lx, float ly, float r1, float r2);
+void Mecanum_Synthe(const Mecanum_t* mecanum, const float* w, float* v);
+void Mecanum_Decomp(const Mecanum_t* mecanum, const float* v, float* w);
+
+#ifdef __cplusplus
 }
+#endif
 
-void Mec_Synthe(const Mec_t* mec, const float* w, float* v)
-{
-	v[0] = ( w[0] + w[1] - w[2] - w[3]) * mec->cx;
-	v[1] = (-w[0] + w[1] + w[2] - w[3]) * mec->cy;
-	v[2] = ( w[0] + w[1] + w[2] + w[3]) * mec->cz;
-}
-
-void Mec_Decomp(const Mec_t* mec, const float* v, float* w)
-{
-	w[0] = ( v[0] - v[1] + v[2] * mec->l) / mec->r;
-	w[1] = ( v[0] + v[1] + v[2] * mec->l) / mec->r;
-	w[2] = (-v[0] + v[1] + v[2] * mec->l) / mec->r;
-	w[3] = (-v[0] - v[1] + v[2] * mec->l) / mec->r;
-}
-
+#endif

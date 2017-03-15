@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-#ifndef __TFX_H__
-#define __TFX_H__
+#ifndef __MEC_H__
+#define __MEC_H__
 
 /*******************************************/
-/*     Coordinate Transforming System      */
 /* Mecanum Wheel Power Transmission System */
 /*******************************************/
 /*              2        1                 */
@@ -34,15 +33,15 @@ extern "C" {
 #endif
 
 #include "cfg.h"
-#include "mec.h"
+#include "mecanum.h"
 
-void Tfx_Config(float lx, float ly, float r1, float r2);
-void Tfx_Synthe(const float* w, float* v);
-void Tfx_Decomp(const float* v, float* w);
+void Mec_Config(float lx, float ly, float r1, float r2);
+void Mec_Synthe(const float* w, float* v);
+void Mec_Decomp(const float* v, float* w);
 
-void Tfx_Init(void);
+void Mec_Init(void);
 
-extern Mec_t mec;
+extern Mecanum_t mecanum;
 
 #ifdef __cplusplus
 }

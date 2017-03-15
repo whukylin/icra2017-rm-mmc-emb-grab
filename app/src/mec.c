@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "tfx.h"
+#include "mecanum.h"
 
 /*******************************************/
 /*     Coordinate Transforming System      */
@@ -28,26 +28,26 @@
 /*                                         */
 /*******************************************/
 
-Mec_t mec;
+Mecanum_t mecanum;
 
-void Tfx_Config(float lx, float ly, float r1, float r2)
+void Mec_Config(float lx, float ly, float r1, float r2)
 {
-	Mec_Config(&mec, lx, ly, r1, r2);
+	Mecanum_Config(&mecanum, lx, ly, r1, r2);
 }
 
-void Tfx_Synthe(const float* w, float* v)
+void Mec_Synthe(const float* w, float* v)
 {
-	Mec_Synthe(&mec, w, v);
+	Mecanum_Synthe(&mecanum, w, v);
 }
 
-void Tfx_Decomp(const float* v, float* w)
+void Mec_Decomp(const float* v, float* w)
 {
-	Mec_Decomp(&mec, v, w);
+	Mecanum_Decomp(&mecanum, v, w);
 }
 
-void Tfx_Init(void)
+void Mec_Init(void)
 {
-	Tfx_Config(cfg.mec.lx, cfg.mec.ly, cfg.mec.r1, cfg.mec.r2);
+	Mecanum_Config(cfg.mec.lx, cfg.mec.ly, cfg.mec.r1, cfg.mec.r2);
 }
 
 

@@ -54,12 +54,12 @@ static void GetMecanumCurrentsFdb(void)
 
 static void GetChassisPositionFdb(void)
 {
-	Tfx_Synthe((float*)&odo.mp, (float*)&odo.cp);
+	Mec_Synthe((float*)&odo.mp, (float*)&odo.cp);
 }
 
 static void GetChassisVelocityFdb(void)
 {
-	Tfx_Synthe((float*)&odo.mv, (float*)&odo.cv);
+	Mec_Synthe((float*)&odo.mv, (float*)&odo.cv);
 }
 
 static void GetGrabberPositionFdb(void)

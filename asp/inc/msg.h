@@ -84,6 +84,19 @@ typedef struct
 
 typedef struct
 {
+	int16_t ax;
+	int16_t ay;
+	int16_t az;
+	int16_t gx;
+	int16_t gy;
+	int16_t gz;
+	int16_t mx;
+	int16_t my;
+	int16_t mz;
+}IMU9XMsg_t;
+
+typedef struct
+{
 	int32_t px; // Bot position (linear) in x-axis, unit: mm
 	int32_t py; // Bot position (linear) in y-axis, unit: mm
 	int32_t pz; // Bot position (angular) in z-axis, unit: mm
@@ -91,6 +104,13 @@ typedef struct
 	int16_t vy; // Bot velocity (linear) in y-axis, unit: mm
 	int16_t vz; // Bot velocity (angular) in z-axis, unit: mm
 }OdomeMsg_t;
+
+typedef struct
+{
+	int32_t pe; // Elevator position
+	int16_t ve; // Elevator velocity
+	uint16_t pc; // Claw PWM position
+}GraspMsg_t;
 
 #define PID_CALIB_TYPE_CHASSIS_VELOCITY 0x01
 #define PID_CALIB_TYPE_GRABBER_POSITION 0x02
@@ -159,13 +179,6 @@ typedef struct
 {
 	uint16_t auto_cali_flag; // Auto calibration control bits
 }CalibMsg_t;
-
-typedef struct
-{
-	int32_t pe; // Elevator position
-	int16_t ve; // Elevator velocity
-	uint16_t pc; // Claw PWM position
-}GraspMsg_t;
 
 #define WDG_ERR_BIT_RCV			   (1u<<0)
 #define WDG_ERR_BIT_TTY			   (1u<<1)

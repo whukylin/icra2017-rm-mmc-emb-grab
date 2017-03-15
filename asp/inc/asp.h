@@ -39,8 +39,8 @@ extern "C" {
 #include "hcp.h"   // Host Control Protocol
 #include "linkednode.h"   // Linked Node Data Structure and Algorithm
 #include "linkedlist.h"   // Linked List Data Structure and Algorithm
-#include "maf.h"   // Moving Average Filter
-#include "mec.h"   // Mecanum Power Transmission System
+#include "maf.h"       // Moving Average Filter
+#include "mecanum.h"   // Mecanum Power Transmission System
 #include "pid.h"   // PID Regulator
 #include "rcf.h"   // Remote Control Filter
 #include "rcp.h"   // Remote Control Protocol
