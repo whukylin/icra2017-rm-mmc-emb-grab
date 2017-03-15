@@ -112,8 +112,8 @@ typedef struct
 }GraspMsg_t;
 
 #define PID_CALIB_TYPE_CHASSIS_VELOCITY 0x01
-#define PID_CALIB_TYPE_GRABBER_POSITION 0x02
 #define PID_CALIB_TYPE_GRABBER_VELOCITY 0x02
+#define PID_CALIB_TYPE_GRABBER_POSITION 0x03
 #define PID_CALIB_VALUE_RECIP 0.01f
 typedef struct
 {
@@ -122,12 +122,14 @@ typedef struct
 	uint16_t ki;
 	uint16_t kd;
 	uint16_t it;
+	uint16_t Emax;
 	uint16_t Pmax;
 	uint16_t Imax;
 	uint16_t Dmax;
 	uint16_t Omax;
 }PIDCalib_t; // PID Calibration
 
+#define IMU_CALIB_VALUE_RECIP 1.0f
 typedef struct
 {
 	int16_t ax_offset;
@@ -138,21 +140,13 @@ typedef struct
 	int16_t gz_offset;
 }IMUCalib_t; // IMU offset Calibration
 
+#define MAG_CALIB_VALUE_RECIP 1.0f
 typedef struct
 {
 	int16_t mx_offset;
 	int16_t my_offset;
 	int16_t mz_offset;
 }MagCalib_t; // Mag offset Calibration
-
-#define MEC_CALIB_VALUE_RECIP 0.001f
-typedef struct
-{
-	uint16_t lx; // mm
-	uint16_t ly; // mm
-	uint16_t r1; // mm
-	uint16_t r2; // mm
-}MecCalib_t; // Mecanum Wheel Calibration
 
 #define VEL_CALIB_VALUE_RECIP 0.001f
 typedef struct
@@ -164,6 +158,16 @@ typedef struct
 	uint16_t c;
 }VelCalib_t; // Velocity Calibration
 
+#define MEC_CALIB_VALUE_RECIP 0.001f
+typedef struct
+{
+	uint16_t lx; // mm
+	uint16_t ly; // mm
+	uint16_t r1; // mm
+	uint16_t r2; // mm
+}MecCalib_t; // Mecanum Wheel Calibration
+
+#define POS_CALIB_VALUE_RECIP 0.001f
 typedef struct
 {
 	int16_t el; // unit: mm
@@ -174,9 +178,10 @@ typedef struct
 
 #define CALIB_FLAG_BIT_IMU (1u<<0)
 #define CALIB_FLAG_BIT_MAG (1u<<1)
+#define CALIB_FLAG_BIT_POS (1u<<2)
 typedef struct
 {
-	uint16_t auto_cali_flag; // Auto calibration control bits
+	uint32_t auto_cali_flag; // Auto calibration control bits
 }CalibMsg_t;
 
 #define WDG_ERR_BIT_RCV			   (1u<<0)
@@ -248,30 +253,30 @@ typedef struct
 #define MSG_TOKEN_STATU WRAP_U16(0x9abc)
 #define MSG_TOKEN_CALIB WRAP_U16(0xabcd)
 
-#define MSG_HEADER_VALUE(ID,LEN,TOKEN) ((WRAP_U32(TOKEN)<<16) | (WRAP_U32(LEN)<<8) | WRAP_U32(ID))
-#define MSG_HEADER_VALUE_OF(NAME) MSG_HEADER_VALUE(MSG_ID_##NAME,MSG_LEN_##NAME,MSG_TOKEN_##NAME)
+#define MSG_HEAD_VALUE(ID,LEN,TOKEN) ((WRAP_U32(TOKEN)<<16) | (WRAP_U32(LEN)<<8) | WRAP_U32(ID))
+#define MSG_HEAD_VALUE_OF(NAME) MSG_HEAD_VALUE(MSG_ID_##NAME,MSG_LEN_##NAME,MSG_TOKEN_##NAME)
 
-#define MSG_HEADER_VALUE_VRC MSG_HEADER_VALUE_OF(VRC)
-#define MSG_HEADER_VALUE_VHC MSG_HEADER_VALUE_OF(VHC)
-#define MSG_HEADER_VALUE_VDBUS MSG_HEADER_VALUE_OF(VDBUS)
-#define MSG_HEADER_VALUE_VCBUS MSG_HEADER_VALUE_OF(VCBUS)
-#define MSG_HEADER_VALUE_ZGYRO MSG_HEADER_VALUE_OF(ZGYRO)
-#define MSG_HEADER_VALUE_MOTOR MSG_HEADER_VALUE_OF(MOTOR)
-#define MSG_HEADER_VALUE_ODOME MSG_HEADER_VALUE_OF(ODOME)
-#define MSG_HEADER_VALUE_GRASP MSG_HEADER_VALUE_OF(GRASP)
-#define MSG_HEADER_VALUE_STATU MSG_HEADER_VALUE_OF(STATU)
-#define MSG_HEADER_VALUE_CALIB MSG_HEADER_VALUE_OF(CALIB)
+#define MSG_HEAD_VALUE_VRC MSG_HEAD_VALUE_OF(VRC)
+#define MSG_HEAD_VALUE_VHC MSG_HEAD_VALUE_OF(VHC)
+#define MSG_HEAD_VALUE_VDBUS MSG_HEAD_VALUE_OF(VDBUS)
+#define MSG_HEAD_VALUE_VCBUS MSG_HEAD_VALUE_OF(VCBUS)
+#define MSG_HEAD_VALUE_ZGYRO MSG_HEAD_VALUE_OF(ZGYRO)
+#define MSG_HEAD_VALUE_MOTOR MSG_HEAD_VALUE_OF(MOTOR)
+#define MSG_HEAD_VALUE_ODOME MSG_HEAD_VALUE_OF(ODOME)
+#define MSG_HEAD_VALUE_GRASP MSG_HEAD_VALUE_OF(GRASP)
+#define MSG_HEAD_VALUE_STATU MSG_HEAD_VALUE_OF(STATU)
+#define MSG_HEAD_VALUE_CALIB MSG_HEAD_VALUE_OF(CALIB)
 
-#define MSG_HEADER_VRC { MSG_HEADER_VALUE_VRC }
-#define MSG_HEADER_VHC { MSG_HEADER_VALUE_VHC }
-#define MSG_HEADER_VDBUS { MSG_HEADER_VALUE_VDBUS }
-#define MSG_HEADER_VCBUS { MSG_HEADER_VALUE_VCBUS }
-#define MSG_HEADER_ZGYRO { MSG_HEADER_VALUE_ZGYRO }
-#define MSG_HEADER_MOTOR { MSG_HEADER_VALUE_MOTOR }
-#define MSG_HEADER_ODOME { MSG_HEADER_VALUE_ODOME }
-#define MSG_HEADER_GRASP { MSG_HEADER_VALUE_GRASP }
-#define MSG_HEADER_STATU { MSG_HEADER_VALUE_STATU }
-#define MSG_HEADER_CALIB { MSG_HEADER_VALUE_CALIB }
+#define MSG_HEAD_VRC { MSG_HEAD_VALUE_VRC }
+#define MSG_HEAD_VHC { MSG_HEAD_VALUE_VHC }
+#define MSG_HEAD_VDBUS { MSG_HEAD_VALUE_VDBUS }
+#define MSG_HEAD_VCBUS { MSG_HEAD_VALUE_VCBUS }
+#define MSG_HEAD_ZGYRO { MSG_HEAD_VALUE_ZGYRO }
+#define MSG_HEAD_MOTOR { MSG_HEAD_VALUE_MOTOR }
+#define MSG_HEAD_ODOME { MSG_HEAD_VALUE_ODOME }
+#define MSG_HEAD_GRASP { MSG_HEAD_VALUE_GRASP }
+#define MSG_HEAD_STATU { MSG_HEAD_VALUE_STATU }
+#define MSG_HEAD_CALIB { MSG_HEAD_VALUE_CALIB }
 
 typedef enum
 {
@@ -305,16 +310,16 @@ uint32_t Msg_Push(FIFO_t* fifo, const void* head, const void* body);
  */
 uint32_t Msg_Pop(FIFO_t* fifo, const void* head, void* body);
 
-extern const MsgHead_t msg_header_vrc;
-extern const MsgHead_t msg_header_vhc;
-extern const MsgHead_t msg_header_vdbus;
-extern const MsgHead_t msg_header_vcbus;
-extern const MsgHead_t msg_header_zgyro;
-extern const MsgHead_t msg_header_motor;
-extern const MsgHead_t msg_header_odome;
-extern const MsgHead_t msg_header_grasp;
-extern const MsgHead_t msg_header_statu;
-extern const MsgHead_t msg_header_calib;
+extern const MsgHead_t msg_head_vrc;
+extern const MsgHead_t msg_head_vhc;
+extern const MsgHead_t msg_head_vdbus;
+extern const MsgHead_t msg_head_vcbus;
+extern const MsgHead_t msg_head_zgyro;
+extern const MsgHead_t msg_head_motor;
+extern const MsgHead_t msg_head_odome;
+extern const MsgHead_t msg_head_grasp;
+extern const MsgHead_t msg_head_statu;
+extern const MsgHead_t msg_head_calib;
 
 #ifdef __cplusplus
 }

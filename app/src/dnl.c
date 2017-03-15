@@ -71,14 +71,22 @@ static void Dnl_ProcVCBUS(const VirtualCBUS_t* vcbus)
 
 static void Dnl_ProcCalibMsg(const CalibMsg_t* calibMsg)
 {
-	cfg.pid.kp = calibMsg->pid.kp;
-	cfg.pid.ki = calibMsg->pid.ki;
-	cfg.pid.kd = calibMsg->pid.kd;
-	cfg.pos.min = calibMsg->pos.elevator_l;
-	cfg.pos.max = calibMsg->pos.elevator_h;
-	cfg.pos.min = calibMsg->pos.pwm_l;
-	cfg.pos.max = calibMsg->pos.pwm_h;
-	cfg_sync_flag = 1;
+}
+
+static void Dnl_ProcPIDCalib(const PIDCalib_t* PIDCalib)
+{
+	if (PIDCalib->type == PID_CALIB_TYPE_CHASSIS_VELOCITY) {
+		Cal_PID(&cfg.cvl, PIDCalib);
+		cfg_sync_flag = 1;
+	}
+	else if (PIDCalib->type == PID_CALIB_TYPE_GRABBER_VELOCITY) {
+		Cal_PID(&cfg.gvl, PIDCalib);
+		cfg_sync_flag = 1;
+	}
+	else if (PIDCalib->type == PID_CALIB_TYPE_GRABBER_POSITION) {
+		Cal_PID(&cfg.gpl, PIDCalib);
+		cfg_sync_flag = 1;
+	}
 }
 
 void Dnl_Init(void)
@@ -102,15 +110,15 @@ void Dnl_Proc(void)
 	// Push stream into fifo
 	FIFO_Push(&fifo, buf[1], len);
 	// Check if any message received
-	if (Msg_Pop(&fifo, &msg_header_vrc, &vdbus.rcp)) {
+	if (Msg_Pop(&fifo, &msg_head_vrc, &vdbus.rcp)) {
 		Dnl_ProcVRC(&vdbus.rcp);
-	} else if (Msg_Pop(&fifo, &msg_header_vhc, &vdbus.hcp)) {
+	} else if (Msg_Pop(&fifo, &msg_head_vhc, &vdbus.hcp)) {
 		Dnl_ProcVHC(&vdbus.hcp);
-	} else if (Msg_Pop(&fifo, &msg_header_vdbus, &vdbus)) {
+	} else if (Msg_Pop(&fifo, &msg_head_vdbus, &vdbus)) {
 		Dnl_ProcVDBUS(&vdbus);
-	} else if (Msg_Pop(&fifo, &msg_header_vcbus, &vcbus)) {
+	} else if (Msg_Pop(&fifo, &msg_head_vcbus, &vcbus)) {
 		Dnl_ProcVCBUS(&vcbus);
-	} else if (Msg_Pop(&fifo, &msg_header_calib, &calibMsg)) {
+	} else if (Msg_Pop(&fifo, &msg_head_calib, &calibMsg)) {
 		Dnl_ProcCalibMsg(&calibMsg);
 	}
 }

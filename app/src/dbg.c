@@ -21,9 +21,19 @@ void Dbg_Mec(void)
 	printf("lx=%.3f,ly=%.3f,r1=%.3f,r2=%.3f\n", cfg.mec.lx, cfg.mec.ly, cfg.mec.r1, cfg.mec.r2);
 }
 
-void Dbg_Pid(void)
+void Dbg_Cvl(void)
 {
-	printf("kp=%.1f,ki=%.1f,kd=%.1f,it=%.1f\n", cfg.pid.kp, cfg.pid.ki, cfg.pid.kd, cfg.pid.it);
+	printf("kp=%.1f,ki=%.1f,kd=%.1f,it=%.1f\n", cfg.cvl.kp, cfg.cvl.ki, cfg.cvl.kd, cfg.cvl.it);
+}
+
+void Dbg_Gvl(void)
+{
+	printf("kp=%.1f,ki=%.1f,kd=%.1f,it=%.1f\n", cfg.gvl.kp, cfg.gvl.ki, cfg.gvl.kd, cfg.gvl.it);
+}
+
+void Dbg_Gpl(void)
+{
+	printf("kp=%.1f,ki=%.1f,kd=%.1f,it=%.1f\n", cfg.gpl.kp, cfg.gpl.ki, cfg.gpl.kd, cfg.gpl.it);
 }
 
 void Dbg_Rci(void)

@@ -57,8 +57,15 @@
 .\objects\com.o: ..\..\app\inc\can.h
 .\objects\com.o: ..\..\asp\inc\ekf.h
 .\objects\com.o: ..\..\app\inc\wdg.h
+.\objects\com.o: ..\..\app\inc\dci.h
+.\objects\com.o: ..\..\app\inc\rci.h
+.\objects\com.o: ..\..\asp\inc\rcf.h
+.\objects\com.o: ..\..\app\inc\hci.h
+.\objects\com.o: ..\..\asp\inc\hcf.h
+.\objects\com.o: ..\..\asp\inc\maf.h
 .\objects\com.o: ..\..\app\inc\ini.h
 .\objects\com.o: ..\..\app\inc\ios.h
 .\objects\com.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\com.o: ..\..\app\inc\dnl.h
+.\objects\com.o: ..\..\app\inc\cal.h
 .\objects\com.o: ..\..\app\inc\cci.h

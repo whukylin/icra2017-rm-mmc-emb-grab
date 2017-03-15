@@ -27,7 +27,7 @@ static MsgType_t msgType = MSG_TYPE_STATU;
 
 static void Upl_PushVDBUS(void)
 {
-	Msg_Push(&fifo, &msg_header_vdbus, &dbus);
+	Msg_Push(&fifo, &msg_head_vdbus, &dbus);
 }
 
 static void Upl_PushZGyroMsg(void)
@@ -35,7 +35,7 @@ static void Upl_PushZGyroMsg(void)
 	ZGyroMsg_t zgyroMsg;
 	zgyroMsg.angle = zgyro.angle_fdb[1];
 	zgyroMsg.rate = zgyro.rate;
-	Msg_Push(&fifo, &msg_header_zgyro, &zgyroMsg);
+	Msg_Push(&fifo, &msg_head_zgyro, &zgyroMsg);
 }
 
 static void Upl_PushMotorMsg(void)
@@ -48,7 +48,7 @@ static void Upl_PushMotorMsg(void)
 		motorMsg.angle = motor[i].angle_filtered;
 		motorMsg.rate = motor[i].rate_filtered;
 		motorMsg.current = motor[i].current_ref;
-		Msg_Push(&fifo, &msg_header_motor, &motorMsg);
+		Msg_Push(&fifo, &msg_head_motor, &motorMsg);
 	}
 }
 
@@ -61,7 +61,7 @@ static void Upl_PushOdomeMsg(void)
 	odomeMsg.vx = odo.cv.x * 1000;
 	odomeMsg.vy = odo.cv.y * 1000;
 	odomeMsg.vz = odo.cv.z * 1000;
-	Msg_Push(&fifo, &msg_header_odome, &odomeMsg);
+	Msg_Push(&fifo, &msg_head_odome, &odomeMsg);
 }
 
 static void Upl_PushStatuMsg(void)
@@ -69,20 +69,14 @@ static void Upl_PushStatuMsg(void)
 	StatuMsg_t statuMsg;
 	statuMsg.wdg = Wdg_GetErr();
 	statuMsg.ini = Ini_GetFlag();
-	Msg_Push(&fifo, &msg_header_statu, &statuMsg);
+	Msg_Push(&fifo, &msg_head_statu, &statuMsg);
 }
 
 static void Upl_PushCalibMsg(void)
 {
 	CalibMsg_t calibMsg;
-	calibMsg.pid.kp = cfg.pid.kp;
-	calibMsg.pid.ki = cfg.pid.ki;
-	calibMsg.pid.kd = cfg.pid.kd;
-	calibMsg.pos.elevator_h = cfg.ele.max;
-	calibMsg.pos.elevator_h = cfg.ele.min;
-	calibMsg.pos.pwm_h = cfg.cla.max;
-	calibMsg.pos.pwm_l = cfg.cla.min;
-	Msg_Push(&fifo, &msg_header_calib, &calibMsg);
+	calibMsg.auto_cali_flag = 0;
+	Msg_Push(&fifo, &msg_head_calib, &calibMsg);
 }
 
 static void Upl_SendMsg(void)

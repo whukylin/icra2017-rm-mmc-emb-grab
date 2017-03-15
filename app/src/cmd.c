@@ -32,9 +32,9 @@ void Cmd_Init(void)
 
 void Cmd_Proc(void)
 {
-	CONSTRAIN(cmd.cv.x, -cfg.spd.x, cfg.spd.x);
-	CONSTRAIN(cmd.cv.y, -cfg.spd.y, cfg.spd.y);
-	CONSTRAIN(cmd.cv.z, -cfg.spd.z, cfg.spd.z);
+	CONSTRAIN(cmd.cv.x, -cfg.vel.x, cfg.vel.x);
+	CONSTRAIN(cmd.cv.y, -cfg.vel.y, cfg.vel.y);
+	CONSTRAIN(cmd.cv.z, -cfg.vel.z, cfg.vel.z);
 	CONSTRAIN(cmd.gp.e, cfg.pos.el, cfg.pos.eh);
 	CONSTRAIN(cmd.gp.c, cfg.pos.cl, cfg.pos.ch);
 	

@@ -56,6 +56,12 @@
 .\objects\upl.o: ..\..\app\inc\can.h
 .\objects\upl.o: ..\..\asp\inc\ekf.h
 .\objects\upl.o: ..\..\app\inc\wdg.h
+.\objects\upl.o: ..\..\app\inc\dci.h
+.\objects\upl.o: ..\..\app\inc\rci.h
+.\objects\upl.o: ..\..\asp\inc\rcf.h
+.\objects\upl.o: ..\..\app\inc\hci.h
+.\objects\upl.o: ..\..\asp\inc\hcf.h
+.\objects\upl.o: ..\..\asp\inc\maf.h
 .\objects\upl.o: ..\..\app\inc\ini.h
 .\objects\upl.o: ..\..\app\inc\ios.h
 .\objects\upl.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

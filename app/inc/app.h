@@ -46,6 +46,7 @@ extern "C" {
 
 // Applications
 #include "act.h" // Action (Depend on BSP)
+#include "cal.h" // Calibration
 #include "can.h" // Controller Area Network
 #include "cci.h" // CBUS Control Interface
 #include "cfg.h" // System Configuration

@@ -62,17 +62,48 @@ static void GrabberPositionControl(void)
 	ctl.gc.c = map(cmd.gp.c, cfg.pos.cl, cfg.pos.ch, 1000, 2000); // Direct PWM control (1000~2000)/2500, map rad to pwm duty cycle
 }
 
-static void PID_Init(PID_t* pid)
+static void Cvl_Init(PID_t* pid)
 {
 	PID_Config(pid, 
-		 cfg.pid.kp, 
-		 cfg.pid.ki, 
-		 cfg.pid.kd, 
-		 cfg.pid.it,
-		 cfg.pid.Pmax, 
-		 cfg.pid.Imax, 
-		 cfg.pid.Dmax, 
-		 cfg.pid.Omax);
+		 cfg.cvl.kp, 
+		 cfg.cvl.ki, 
+		 cfg.cvl.kd, 
+		 cfg.cvl.it,
+		 cfg.cvl.Emax,
+		 cfg.cvl.Pmax, 
+		 cfg.cvl.Imax, 
+		 cfg.cvl.Dmax, 
+		 cfg.cvl.Omax);
+	PID_Reset(pid);
+}
+
+static void Gvl_Init(PID_t* pid)
+{
+	PID_Config(pid, 
+		 cfg.gvl.kp, 
+		 cfg.gvl.ki, 
+		 cfg.gvl.kd, 
+		 cfg.gvl.it,
+		 cfg.gvl.Emax,
+		 cfg.gvl.Pmax, 
+		 cfg.gvl.Imax, 
+		 cfg.gvl.Dmax, 
+		 cfg.gvl.Omax);
+	PID_Reset(pid);
+}
+
+static void Gpl_Init(PID_t* pid)
+{
+	PID_Config(pid, 
+		 cfg.gpl.kp, 
+		 cfg.gpl.ki, 
+		 cfg.gpl.kd, 
+		 cfg.gpl.it,
+		 cfg.gpl.Emax,
+		 cfg.gpl.Pmax, 
+		 cfg.gpl.Imax, 
+		 cfg.gpl.Dmax, 
+		 cfg.gpl.Omax);
 	PID_Reset(pid);
 }
 
@@ -90,11 +121,12 @@ void Ctl_Init(void)
 	Cmd_Init();
 	Odo_Init();
 	
-	PID_Init(&CM1SpeedPID);
-	PID_Init(&CM2SpeedPID);
-	PID_Init(&CM3SpeedPID);
-	PID_Init(&CM4SpeedPID);
-	PID_Init(&GMESpeedPID);
+	Cvl_Init(&CM1SpeedPID);
+	Cvl_Init(&CM2SpeedPID);
+	Cvl_Init(&CM3SpeedPID);
+	Cvl_Init(&CM4SpeedPID);
+	Gvl_Init(&GMESpeedPID);
+	Gpl_Init(&GMEAnglePID);
 	
 	Rmp_Init(&CM1SpeedRmp);
 	Rmp_Init(&CM2SpeedRmp);
@@ -104,6 +136,7 @@ void Ctl_Init(void)
 	
 	FS_Clr(&ctl.fs, FS_ALL);
 	MS_Set(&ctl.mc, 0, 0, 0, 0);
+	GS_Set(&ctl.gv, 0, 0);
 	GS_Set(&ctl.gc, 0, 0);
 }
 

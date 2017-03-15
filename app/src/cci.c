@@ -22,9 +22,9 @@ void Cci_Init(void)
 
 void Cci_Proc(const CBUS_t* cbus)
 {
-	cmd.cv.x = constrain(cbus->vx * CCI_VALUE_RECIP, -cfg.spd.x, cfg.spd.x);
-	cmd.cv.y = constrain(cbus->vy * CCI_VALUE_RECIP, -cfg.spd.y, cfg.spd.y);
-	cmd.cv.z = constrain(cbus->vz * CCI_VALUE_RECIP, -cfg.spd.z, cfg.spd.z);
+	cmd.cv.x = constrain(cbus->vx * CCI_VALUE_RECIP, -cfg.vel.x, cfg.vel.x);
+	cmd.cv.y = constrain(cbus->vy * CCI_VALUE_RECIP, -cfg.vel.y, cfg.vel.y);
+	cmd.cv.z = constrain(cbus->vz * CCI_VALUE_RECIP, -cfg.vel.z, cfg.vel.z);
 	cmd.gp.e = constrain(cbus->pe * CCI_VALUE_RECIP, cfg.pos.el, cfg.pos.eh);
 	cmd.gp.c = constrain(cbus->pc * CCI_VALUE_RECIP, cfg.pos.cl, cfg.pos.ch);
 	cmd.fs   = cbus->fs;

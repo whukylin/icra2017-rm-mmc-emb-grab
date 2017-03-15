@@ -16,16 +16,16 @@
  
 #include "msg.h"
 
-const MsgHead_t msg_header_vrc = MSG_HEADER_VRC;
-const MsgHead_t msg_header_vhc = MSG_HEADER_VHC;
-const MsgHead_t msg_header_vdbus = MSG_HEADER_VDBUS;
-const MsgHead_t msg_header_vcbus = MSG_HEADER_VCBUS;
-const MsgHead_t msg_header_zgyro = MSG_HEADER_ZGYRO;
-const MsgHead_t msg_header_motor = MSG_HEADER_MOTOR;
-const MsgHead_t msg_header_odome = MSG_HEADER_ODOME;
-const MsgHead_t msg_header_grasp = MSG_HEADER_GRASP;
-const MsgHead_t msg_header_statu = MSG_HEADER_STATU;
-const MsgHead_t msg_header_calib = MSG_HEADER_CALIB;
+const MsgHead_t msg_head_vrc = MSG_HEAD_VRC;
+const MsgHead_t msg_head_vhc = MSG_HEAD_VHC;
+const MsgHead_t msg_head_vdbus = MSG_HEAD_VDBUS;
+const MsgHead_t msg_head_vcbus = MSG_HEAD_VCBUS;
+const MsgHead_t msg_head_zgyro = MSG_HEAD_ZGYRO;
+const MsgHead_t msg_head_motor = MSG_HEAD_MOTOR;
+const MsgHead_t msg_head_odome = MSG_HEAD_ODOME;
+const MsgHead_t msg_head_grasp = MSG_HEAD_GRASP;
+const MsgHead_t msg_head_statu = MSG_HEAD_STATU;
+const MsgHead_t msg_head_calib = MSG_HEAD_CALIB;
 
 /**
  * Brief: Push a single message to message buffer. 

@@ -47,7 +47,8 @@ void Mec_Decomp(const float* v, float* w)
 
 void Mec_Init(void)
 {
-	Mecanum_Config(cfg.mec.lx, cfg.mec.ly, cfg.mec.r1, cfg.mec.r2);
+	Mecanum_Config(&mecanum, cfg.mec.lx, cfg.mec.ly, cfg.mec.r1, cfg.mec.r2);
+	
 }
 
 

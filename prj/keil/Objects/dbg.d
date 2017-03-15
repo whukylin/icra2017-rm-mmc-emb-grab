@@ -60,8 +60,15 @@
 .\objects\dbg.o: ..\..\bsp\inc\tim.h
 .\objects\dbg.o: ..\..\app\inc\can.h
 .\objects\dbg.o: ..\..\asp\inc\ekf.h
+.\objects\dbg.o: ..\..\app\inc\dci.h
+.\objects\dbg.o: ..\..\app\inc\rci.h
+.\objects\dbg.o: ..\..\asp\inc\rcf.h
+.\objects\dbg.o: ..\..\app\inc\hci.h
+.\objects\dbg.o: ..\..\asp\inc\hcf.h
+.\objects\dbg.o: ..\..\asp\inc\maf.h
 .\objects\dbg.o: ..\..\app\inc\ini.h
 .\objects\dbg.o: ..\..\app\inc\dnl.h
+.\objects\dbg.o: ..\..\app\inc\cal.h
 .\objects\dbg.o: ..\..\app\inc\cci.h
 .\objects\dbg.o: ..\..\app\inc\wsm.h
 .\objects\dbg.o: ..\..\app\inc\ctl.h

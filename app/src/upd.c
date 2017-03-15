@@ -18,7 +18,7 @@
 
 void Upd_Init(void)
 {
-	Tfx_Init();
+	Mec_Init();
 	Ctl_Init();
 }
 

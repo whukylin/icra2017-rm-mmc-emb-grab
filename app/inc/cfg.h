@@ -33,12 +33,14 @@ extern "C" {
 
 #define CFG_FLAG_IMU                (1u<<0)
 #define CFG_FLAG_MAG                (1u<<1)
-#define CFG_FLAG_PID                (1u<<2)
-#define CFG_FLAG_RMP                (1u<<3)
-#define CFG_FLAG_SPD                (1u<<4)
-#define CFG_FLAG_MEC                (1u<<5)
-#define CFG_FLAG_POS                (1u<<6)
-#define CFG_FLAG_ALL (CFG_FLAG_IMU|CFG_FLAG_MAG|CFG_FLAG_PID|CFG_FLAG_RMP|CFG_FLAG_SPD|CFG_FLAG_MEC|CFG_FLAG_POS)
+#define CFG_FLAG_RMP                (1u<<2)
+#define CFG_FLAG_VEL                (1u<<3)
+#define CFG_FLAG_MEC                (1u<<4)
+#define CFG_FLAG_POS                (1u<<5)
+#define CFG_FLAG_CVL                (1u<<6)
+#define CFG_FLAG_GVL                (1u<<7)
+#define CFG_FLAG_GPL                (1u<<8)
+#define CFG_FLAG_ALL (CFG_FLAG_IMU|CFG_FLAG_MAG|CFG_FLAG_RMP|CFG_FLAG_VEL|CFG_FLAG_MEC|CFG_FLAG_POS|CFG_FLAG_CVL|CFG_FLAG_GVL|CFG_FLAG_GPL)
 	
 typedef uint32_t CfgVer_t;
 typedef uint32_t CfgFlg_t;
@@ -52,7 +54,7 @@ typedef struct
 	float gx_offset;
 	float gy_offset;
 	float gz_offset;
-}ImuCfg_t; // IMU offset Configuration
+}IMUCfg_t; // IMU offset Configuration
 
 typedef struct
 {
@@ -61,33 +63,32 @@ typedef struct
 	float mz_offset;
 }MagCfg_t; // MAG offset Configuration
 
-#define PID_CFG_RECIP 0.01f
 typedef struct
 {
 	float kp;
 	float ki;
 	float kd;
 	float it;
+	float Emax;
 	float Pmax;
 	float Imax;
 	float Dmax;
 	float Omax;
-}PidCfg_t; // PID Configuration
+}PIDCfg_t; // PID Configuration
 
 typedef struct
 {
 	uint16_t cnt; // unit: ${SYS_CTL_TMS} ms
 }RmpCfg_t; // Ramp Configuration
 
-#define SPD_CFG_RECIP 0.01f
 typedef struct
 {
-	float x; // Max chassis speed in x-axis, unit: m/s
-	float y; // Max chassis speed in y-axis, unit: m/s
-	float z; // Max chassis speed in z-axis, unit: rad/s
-	float e; // Max elevator speed, unit: m/s
-	float c; // Max claw speed, unit: rad/s
-}SpdCfg_t; // Speed Configuration
+	float x; // Max chassis velocity in x-axis, unit: m/s
+	float y; // Max chassis velocity in y-axis, unit: m/s
+	float z; // Max chassis velocity in z-axis, unit: rad/s
+	float e; // Max elevator velocity, unit: m/s
+	float c; // Max claw velocity, unit: rad/s
+}VelCfg_t; // Velocity Configuration
 
 typedef struct
 {
@@ -107,15 +108,17 @@ typedef struct
 
 typedef struct
 {
-	CfgVer_t ver;
-	CfgFlg_t flg;
-	ImuCfg_t imu;
-	MagCfg_t mag;
-	PidCfg_t pid;
-	RmpCfg_t rmp;
-	SpdCfg_t spd;
-	MecCfg_t mec;
-	PosCfg_t pos;
+	CfgVer_t ver; // Firmware version
+	CfgFlg_t flg; // Configuration flags
+	IMUCfg_t imu; // IMU offset configuration
+	MagCfg_t mag; // Mag offset configuration
+	RmpCfg_t rmp; // Ramp configuration
+	VelCfg_t vel; // Velocity configuration
+	MecCfg_t mec; // Mecanum configuration
+	PosCfg_t pos; // Position configuration
+	PIDCfg_t cvl; // Chasis velocity loop
+	PIDCfg_t gvl; // Gimbal velocity loop
+	PIDCfg_t gpl; // Gimbal position loop
 }Cfg_t; // Application Configuration
 
 #pragma pack()
@@ -146,25 +149,13 @@ typedef struct
 	.mz_offset = 0, \
 }
 
-#define PID_CFG_DEF \
+#define VEL_TRA_DEF 3.0f
+#define VEL_ROT_DEF 6.0f
+#define VEL_CFG_DEF \
 { \
-	.kp = 220, \
-	.ki = 0, \
-	.kd = 0, \
-	.it = 0, \
-	.Pmax = 4900, \
-	.Imax = 3500, \
-	.Dmax = 1500, \
-	.Omax = 4950, \
-}
-
-#define SPD_TRA_DEF 3.0f
-#define SPD_ROT_DEF 6.0f
-#define SPD_CFG_DEF \
-{ \
-	.x = SPD_TRA_DEF, \
-	.y = SPD_TRA_DEF, \
-	.z = SPD_ROT_DEF, \
+	.x = VEL_TRA_DEF, \
+	.y = VEL_TRA_DEF, \
+	.z = VEL_ROT_DEF, \
 	.e = 0.01f, \
 	.c = 0.50f, \
 }
@@ -201,17 +192,59 @@ typedef struct
 	.ch = 2.0f, \
 }
 
+
+#define CVL_CFG_DEF \
+{ \
+	.kp = 220, \
+	.ki = 0, \
+	.kd = 0, \
+	.it = 0, \
+	.Emax = 4.0f, \
+	.Pmax = 4900, \
+	.Imax = 3500, \
+	.Dmax = 1500, \
+	.Omax = 4950, \
+}
+
+#define GVL_CFG_DEF \
+{ \
+	.kp = 20, \
+	.ki = 0, \
+	.kd = 0, \
+	.it = 0, \
+	.Emax = 4.0f, \
+	.Pmax = 4900, \
+	.Imax = 3500, \
+	.Dmax = 1500, \
+	.Omax = 4950, \
+}
+
+#define GPL_CFG_DEF \
+{ \
+	.kp = 20, \
+	.ki = 0, \
+	.kd = 0, \
+	.it = 0, \
+	.Emax = 0.5f, \
+	.Pmax = 4900, \
+	.Imax = 3500, \
+	.Dmax = 1500, \
+	.Omax = 4950, \
+}
+
 #define CFG_DEF \
 { \
 	CFG_VER_DEF, \
 	CFG_FLG_DEF, \
 	IMU_CFG_DEF, \
 	MAG_CFG_DEF, \
-	PID_CFG_DEF, \
 	RMP_CFG_DEF, \
-	SPD_CFG_DEF, \
+	VEL_CFG_DEF, \
 	MEC_CFG_DEF, \
 	POS_CFG_DEF, \
+	CVL_CFG_DEF, \
+	GVL_CFG_DEF, \
+	GPL_CFG_DEF, \
 }
 
 CfgVer_t Cfg_GetVer(void);

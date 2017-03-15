@@ -28,6 +28,7 @@ extern "C" {
 #include "msg.h"
 #include "cmd.h"
 #include "odo.h"
+#include "dci.h"
 #include "wdg.h"
 #include "ini.h"
 #include "ios.h"

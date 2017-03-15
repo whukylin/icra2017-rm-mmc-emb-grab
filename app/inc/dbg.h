@@ -31,7 +31,9 @@ extern "C" {
 #include "ctl.h"
 
 void Dbg_Mec(void);
-void Dbg_Pid(void);
+void Dbg_Cvl(void);
+void Dbg_Gvl(void);
+void Dbg_Gpl(void);
 void Dbg_Rci(void);
 void Dbg_Hci(void);
 void Dbg_Dci(void);

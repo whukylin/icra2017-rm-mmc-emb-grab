@@ -487,6 +487,11 @@
               <FilePath>..\..\app\inc\app.h</FilePath>
             </File>
             <File>
+              <FileName>cal.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\app\inc\cal.h</FilePath>
+            </File>
+            <File>
               <FileName>can.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\app\inc\can.h</FilePath>
@@ -610,6 +615,11 @@
               <FileName>app.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\app\src\app.c</FilePath>
+            </File>
+            <File>
+              <FileName>cal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\app\src\cal.c</FilePath>
             </File>
             <File>
               <FileName>can.c</FileName>

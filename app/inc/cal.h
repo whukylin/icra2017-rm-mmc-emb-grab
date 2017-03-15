@@ -14,34 +14,32 @@
  * limitations under the License.
  */
  
-#ifndef __DNL_H__
-#define __DNL_H__
+#ifndef __CAL_H__
+#define __CAL_H__
 
 /*****************************************/
-/*        Down-Link Communication        */
+/*              Calibration              */
 /*****************************************/
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "ios.h"
 #include "msg.h"
-#include "cal.h"
-#include "dci.h"
-#include "cci.h"
-	
-#define DNL_BUF_SIZE 256u
-	
-void Dnl_Init(void);
-void Dnl_Proc(void);
+#include "cfg.h"
 
-extern VirtualDBUS_t vdbus;
-extern VirtualCBUS_t vcbus;
-extern CalibMsg_t calibMsg;
+void Cal_IMU(IMUCfg_t* IMUCfg, const IMUCalib_t* IMUCalib);
+void Cal_Mag(MagCfg_t* MagCfg, const MagCalib_t* MagCalib);
+void Cal_Vel(VelCfg_t* VelCfg, const VelCalib_t* VelCalib);
+void Cal_Pos(PosCfg_t* PosCfg, const PosCalib_t* PosCalib);
+void Cal_PID(PIDCfg_t* PIDCfg, const PIDCalib_t* PIDCalib);
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif
+
+
+
+

@@ -28,17 +28,17 @@ static void GetFunctionalStateRef(const Rcp_t* rcp)
 
 static void GetChassisVelocityRef(const Rcp_t* rcp)
 {
-	cmd.cv.x = map(rcp->ch[0], CH_MIN, CH_MAX, -cfg.spd.x, cfg.spd.x); // m/s
-	cmd.cv.y = map(rcp->ch[1], CH_MIN, CH_MAX, -cfg.spd.y, cfg.spd.y); // m/s
-	cmd.cv.z = map(rcp->ch[2], CH_MIN, CH_MAX, -cfg.spd.z, cfg.spd.z); // rad/s
+	cmd.cv.x = map(rcp->ch[0], CH_MIN, CH_MAX, -cfg.vel.x, cfg.vel.x); // m/s
+	cmd.cv.y = map(rcp->ch[1], CH_MIN, CH_MAX, -cfg.vel.y, cfg.vel.y); // m/s
+	cmd.cv.z = map(rcp->ch[2], CH_MIN, CH_MAX, -cfg.vel.z, cfg.vel.z); // rad/s
 }
 
 static void GetGrabberVelocityRef(const Rcp_t* rcp)
 {
-	cmd.gv.e = map(rcp->ch[3], CH_MIN, CH_MAX, -cfg.spd.e, cfg.spd.e); // m/s
+	cmd.gv.e = map(rcp->ch[3], CH_MIN, CH_MAX, -cfg.vel.e, cfg.vel.e); // m/s
 	cmd.gp.e += cmd.gv.e * SYS_CTL_TSC; // Integral velocity to get position, unit: m
 	CONSTRAIN(cmd.gp.e, cfg.pos.el, cfg.pos.eh); // Constrain elevator position
-	cmd.gv.c = Rci_Sw(SW_IDX_L) == SW_UP ? cfg.spd.c : Rci_Sw(SW_IDX_L) == SW_DN ? -cfg.spd.c : 0; // rad/s
+	cmd.gv.c = Rci_Sw(SW_IDX_L) == SW_UP ? cfg.vel.c : Rci_Sw(SW_IDX_L) == SW_DN ? -cfg.vel.c : 0; // rad/s
 	cmd.gp.c += cmd.gv.c * SYS_CTL_TSC; // Integral velocity to get position, unit: rad
 	CONSTRAIN(cmd.gp.c, cfg.pos.cl, cfg.pos.ch); // Constrain grabber position
 }
