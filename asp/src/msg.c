@@ -77,9 +77,12 @@ uint32_t Msg_Pop(FIFO_t* fifo, const void* head, void* body)
 	if (mhead.attr.length != phead->attr.length) {
 		return 0;
 	}
+	if (mhead.attr.token != phead->attr.token) {
+		return 0;
+	}
 	FIFO_Peek(fifo, buf, len);
 	if (CRC16Check(buf, len, phead->attr.token)) {
-		memcpy(body, buf+sizeof(MsgHead_t), phead->attr.length);
+		memcpy(body, buf + sizeof(MsgHead_t), phead->attr.length);
 		FIFO_Pop(fifo, buf, len);
 		return len;
 	}

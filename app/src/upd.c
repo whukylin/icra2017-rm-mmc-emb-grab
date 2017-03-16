@@ -26,12 +26,13 @@ void Upd_Proc(void)
 {
 	switch (Wsm_GetWorkingState()) {
 		case WORKING_STATE_STOP:
-			Act_Init();
+			Act_Init(); // Stop any kind of movement
 			break;
 		case WORKING_STATE_PREPARE:
-			Act_Init();
+			Act_Init(); // Sensor data prefilter and auto-calibration
 			break;
 		case WORKING_STATE_NORMAL:
+			// Re-initialize system updater when recover to normal state from other working states
 			if (Wsm_GetLastWorkingState() != WORKING_STATE_NORMAL) {
 				Upd_Init();
 			}
@@ -39,8 +40,9 @@ void Upd_Proc(void)
 			Act_Proc();
 			break;
 		case WORKING_STATE_CONFIG:
+			Cmd_Init(); // Stand-by
 			Ctl_Proc();
-			Act_Init();
+			Act_Proc();
 			break;
 		default:
 			break;
