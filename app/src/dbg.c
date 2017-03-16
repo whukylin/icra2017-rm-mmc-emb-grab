@@ -16,6 +16,77 @@
  
 #include "dbg.h"
 
+void Dbg_Cfg(void)
+{
+	printf("****************** CFG ******************\n");
+	printf("size of cfg: %d\n", sizeof(Cfg_t));
+	printf("cfg.ver: %d\n", cfg.ver);
+	printf("\tA: %u\n", (uint8_t)((cfg.ver >> 24) & 0xff));
+	printf("\tB: %u\n", (uint8_t)((cfg.ver >> 16) & 0xff));
+	printf("\tC: %u\n", (uint8_t)((cfg.ver >> 8) & 0xff));
+	printf("\tD: %u\n", (uint8_t)(cfg.ver & 0xff));
+	printf("cfg.imu: \n");
+	printf("\tax_offset: %.3f\n", cfg.imu.ax_offset);
+	printf("\tay_offset: %.3f\n", cfg.imu.ay_offset);
+	printf("\taz_offset: %.3f\n", cfg.imu.az_offset);
+	printf("\tgx_offset: %.3f\n", cfg.imu.gx_offset);
+	printf("\tgy_offset: %.3f\n", cfg.imu.gy_offset);
+	printf("\tgz_offset: %.3f\n", cfg.imu.gz_offset);
+	printf("cfg.mag: \n");
+	printf("\tmx_offset: %.3f\n", cfg.mag.mx_offset);
+	printf("\tmy_offset: %.3f\n", cfg.mag.my_offset);
+	printf("\tmz_offset: %.3f\n", cfg.mag.mz_offset);
+	printf("cfg.rmp: \n");
+	printf("\tcnt: %d\n", cfg.rmp.cnt);
+	printf("cfg.vel: \n");
+	printf("\tx: %.3f\n", cfg.vel.x);
+	printf("\ty: %.3f\n", cfg.vel.y);
+	printf("\tz: %.3f\n", cfg.vel.z);
+	printf("\te: %.3f\n", cfg.vel.e);
+	printf("\tc: %.3f\n", cfg.vel.c);
+	printf("cfg.mec: \n");
+	printf("\tlx: %.3f\n", cfg.mec.lx);
+	printf("\tly: %.3f\n", cfg.mec.ly);
+	printf("\tr1: %.3f\n", cfg.mec.r1);
+	printf("\tr2: %.3f\n", cfg.mec.r2);
+	printf("cfg.pos: \n");
+	printf("\tel: %.3f\n", cfg.pos.el);
+	printf("\teh: %.3f\n", cfg.pos.eh);
+	printf("\tcl: %.3f\n", cfg.pos.cl);
+	printf("\tch: %.3f\n", cfg.pos.ch);
+	printf("cfg.cvl: \n");
+	printf("\tkp: %.3f\n", cfg.cvl.kp);
+	printf("\tki: %.3f\n", cfg.cvl.ki);
+	printf("\tkd: %.3f\n", cfg.cvl.kd);
+	printf("\tit: %.3f\n", cfg.cvl.it);
+	printf("\tEmax: %.3f\n", cfg.cvl.Emax);
+	printf("\tPmax: %.3f\n", cfg.cvl.Pmax);
+	printf("\tImax: %.3f\n", cfg.cvl.Imax);
+	printf("\tDmax: %.3f\n", cfg.cvl.Dmax);
+	printf("\tOmax: %.3f\n", cfg.cvl.Omax);
+	printf("cfg.gvl: \n");
+	printf("\tkp: %.3f\n", cfg.gvl.kp);
+	printf("\tki: %.3f\n", cfg.gvl.ki);
+	printf("\tkd: %.3f\n", cfg.gvl.kd);
+	printf("\tit: %.3f\n", cfg.gvl.it);
+	printf("\tEmax: %.3f\n", cfg.gvl.Emax);
+	printf("\tPmax: %.3f\n", cfg.gvl.Pmax);
+	printf("\tImax: %.3f\n", cfg.gvl.Imax);
+	printf("\tDmax: %.3f\n", cfg.gvl.Dmax);
+	printf("\tOmax: %.3f\n", cfg.gvl.Omax);
+	printf("cfg.gpl: \n");
+	printf("\tkp: %.3f\n", cfg.gpl.kp);
+	printf("\tki: %.3f\n", cfg.gpl.ki);
+	printf("\tkd: %.3f\n", cfg.gpl.kd);
+	printf("\tit: %.3f\n", cfg.gpl.it);
+	printf("\tEmax: %.3f\n", cfg.gpl.Emax);
+	printf("\tPmax: %.3f\n", cfg.gpl.Pmax);
+	printf("\tImax: %.3f\n", cfg.gpl.Imax);
+	printf("\tDmax: %.3f\n", cfg.gpl.Dmax);
+	printf("\tOmax: %.3f\n", cfg.gpl.Omax);
+	printf("\n");
+}
+
 void Dbg_Mec(void)
 {
 	printf("lx=%.3f,ly=%.3f,r1=%.3f,r2=%.3f\n", cfg.mec.lx, cfg.mec.ly, cfg.mec.r1, cfg.mec.r2);

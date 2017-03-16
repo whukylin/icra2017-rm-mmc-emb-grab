@@ -27,9 +27,11 @@ extern "C" {
 
 #include "ios.h"
 #include "com.h"
+#include "cfg.h"
 #include "wsm.h"
 #include "ctl.h"
 
+void Dbg_Cfg(void);
 void Dbg_Mec(void);
 void Dbg_Cvl(void);
 void Dbg_Gvl(void);
@@ -48,7 +50,7 @@ void Dbg_Vhc(void);
 void Dbg_Vdc(void);
 void Dbg_Vcc(void);
 void Dbg_Imu(void);
-	
+
 #ifdef __cplusplus
 }
 #endif

@@ -25,12 +25,13 @@
 extern "C" {
 #endif
 
-#include "msg.h"
 #include "cfg.h"
+#include "calib.h"
 
 void Cal_IMU(IMUCfg_t* IMUCfg, const IMUCalib_t* IMUCalib);
 void Cal_Mag(MagCfg_t* MagCfg, const MagCalib_t* MagCalib);
 void Cal_Vel(VelCfg_t* VelCfg, const VelCalib_t* VelCalib);
+void Cal_Mec(MecCfg_t* MecCfg, const MecCalib_t* MecCalib);
 void Cal_Pos(PosCfg_t* PosCfg, const PosCalib_t* PosCalib);
 void Cal_PID(PIDCfg_t* PIDCfg, const PIDCalib_t* PIDCalib);
 

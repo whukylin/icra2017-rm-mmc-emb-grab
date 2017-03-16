@@ -28,6 +28,7 @@ extern "C" {
 #include <stdint.h>
 #include <string.h>
 
+#include "cal.h"
 #include "fos.h"
 #include "fun.h"
 
@@ -45,7 +46,6 @@ extern "C" {
 typedef uint32_t CfgVer_t;
 typedef uint32_t CfgFlg_t;
 
-#pragma pack(1)
 typedef struct
 {
 	float ax_offset;
@@ -121,8 +121,6 @@ typedef struct
 	PIDCfg_t gpl; // Gimbal position loop
 }Cfg_t; // Application Configuration
 
-#pragma pack()
-
 #define CFG_SIZE() sizeof(Cfg_t)
 
 #define CFG_VER_A 1u
@@ -149,15 +147,17 @@ typedef struct
 	.mz_offset = 0, \
 }
 
-#define VEL_TRA_DEF 3.0f
-#define VEL_ROT_DEF 6.0f
+#define VEL_TRA_DEF 3.0f // m/s
+#define VEL_ROT_DEF 6.0f // rad/s
+#define VEL_ELE_DEF 0.01f // m/s
+#define VEL_CLA_DEF 0.50f // rad/s
 #define VEL_CFG_DEF \
 { \
 	.x = VEL_TRA_DEF, \
 	.y = VEL_TRA_DEF, \
 	.z = VEL_ROT_DEF, \
-	.e = 0.01f, \
-	.c = 0.50f, \
+	.e = VEL_ELE_DEF, \
+	.c = VEL_CLA_DEF, \
 }
 
 #define RMP_CNT_DEF 250 //250*${SYS_CTL_TMS}
@@ -186,12 +186,11 @@ typedef struct
 
 #define POS_CFG_DEF \
 { \
-	.el = 0.0f, \
-	.eh = 0.620f, \
-	.cl = 0.0f, \
+	.el = 0, \
+	.eh = 0.62f, \
+	.cl = 0, \
 	.ch = 2.0f, \
 }
-
 
 #define CVL_CFG_DEF \
 { \
@@ -199,7 +198,7 @@ typedef struct
 	.ki = 0, \
 	.kd = 0, \
 	.it = 0, \
-	.Emax = 4.0f, \
+	.Emax = 400, \
 	.Pmax = 4900, \
 	.Imax = 3500, \
 	.Dmax = 1500, \
@@ -212,7 +211,7 @@ typedef struct
 	.ki = 0, \
 	.kd = 0, \
 	.it = 0, \
-	.Emax = 4.0f, \
+	.Emax = 200, \
 	.Pmax = 4900, \
 	.Imax = 3500, \
 	.Dmax = 1500, \
@@ -225,7 +224,7 @@ typedef struct
 	.ki = 0, \
 	.kd = 0, \
 	.it = 0, \
-	.Emax = 0.5f, \
+	.Emax = 50, \
 	.Pmax = 4900, \
 	.Imax = 3500, \
 	.Dmax = 1500, \

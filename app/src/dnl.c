@@ -24,6 +24,12 @@ VirtualDBUS_t vdbus;
 VirtualCBUS_t vcbus;
 
 CalibMsg_t calibMsg;
+PIDCalib_t pidCalib;
+IMUCalib_t imuCalib;
+MagCalib_t magCalib;
+VelCalib_t velCalib;
+MecCalib_t mecCalib;
+PosCalib_t posCalib;
 
 static uint8_t buf[2][DNL_BUF_SIZE];
 static FIFO_t fifo;
@@ -73,6 +79,36 @@ static void Dnl_ProcCalibMsg(const CalibMsg_t* calibMsg)
 {
 }
 
+static void Dnl_ProcIMUCalib(const IMUCalib_t* IMUCalib)
+{
+	Cal_IMU(&cfg.imu, IMUCalib);
+	cfg_sync_flag = 1;
+}
+
+static void Dnl_ProcMagCalib(const MagCalib_t* MagCalib)
+{
+	Cal_Mag(&cfg.mag, MagCalib);
+	cfg_sync_flag = 1;
+}
+
+static void Dnl_ProcVelCalib(const VelCalib_t* VelCalib)
+{
+	Cal_Vel(&cfg.vel, VelCalib);
+	cfg_sync_flag = 1;
+}
+
+static void Dnl_ProcMecCalib(const MecCalib_t* MecCalib)
+{
+	Cal_Mec(&cfg.mec, MecCalib);
+	cfg_sync_flag = 1;
+}
+
+static void Dnl_ProcPosCalib(const PosCalib_t* PosCalib)
+{
+	Cal_Pos(&cfg.pos, PosCalib);
+	cfg_sync_flag = 1;
+}
+
 static void Dnl_ProcPIDCalib(const PIDCalib_t* PIDCalib)
 {
 	if (PIDCalib->type == PID_CALIB_TYPE_CHASSIS_VELOCITY) {
@@ -120,6 +156,18 @@ void Dnl_Proc(void)
 		Dnl_ProcVCBUS(&vcbus);
 	} else if (Msg_Pop(&fifo, &msg_head_calib, &calibMsg)) {
 		Dnl_ProcCalibMsg(&calibMsg);
+	} else if (Msg_Pop(&fifo, &msg_head_pid_calib, &pidCalib)) {
+		Dnl_ProcPIDCalib(&pidCalib);
+	} else if (Msg_Pop(&fifo, &msg_head_imu_calib, &imuCalib)) {
+		Dnl_ProcIMUCalib(&imuCalib);
+	} else if (Msg_Pop(&fifo, &msg_head_mag_calib, &magCalib)) {
+		Dnl_ProcMagCalib(&magCalib);
+	} else if (Msg_Pop(&fifo, &msg_head_vel_calib, &velCalib)) {
+		Dnl_ProcVelCalib(&velCalib);
+	} else if (Msg_Pop(&fifo, &msg_head_mec_calib, &mecCalib)) {
+		Dnl_ProcMecCalib(&mecCalib);
+	} else if (Msg_Pop(&fifo, &msg_head_pos_calib, &posCalib)) {
+		Dnl_ProcPosCalib(&posCalib);
 	}
 }
 

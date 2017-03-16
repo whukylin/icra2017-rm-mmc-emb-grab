@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "mecanum.h"
+#include "mec.h"
 
 /*******************************************/
 /*     Coordinate Transforming System      */
@@ -48,7 +48,6 @@ void Mec_Decomp(const float* v, float* w)
 void Mec_Init(void)
 {
 	Mecanum_Config(&mecanum, cfg.mec.lx, cfg.mec.ly, cfg.mec.r1, cfg.mec.r2);
-	
 }
 
 

@@ -38,9 +38,13 @@ void App_Proc(void)
 {
 	Wdg_Proc();
 	Ini_Proc();
-	Com_Proc();
-	Cfg_Proc();
+	//Com_Proc();
+	//Cfg_Proc();
 	Wsm_Proc();
 	Upd_Proc();
+}
+
+void App_Start(void)
+{
 }
 

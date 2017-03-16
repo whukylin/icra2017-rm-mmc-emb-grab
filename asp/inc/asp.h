@@ -27,6 +27,7 @@ extern "C" {
 #endif
 
 #include "ahrs.h"  // Attitude Heading Reference System
+#include "calib.h"  // Calibration
 #include "cbus.h"  // Control Bus
 #include "crc16.h" // 16bit CRC
 #include "dbuf.h"  // DBUS Filter

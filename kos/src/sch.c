@@ -16,10 +16,9 @@
 
 #include "sch.h"
 
-/**
- * Scheduler (Serial)
- *
- */
+/********************************************************/
+/*                    Task Scheduler                    */
+/********************************************************/
  
 static SchTask_t* first = NULL;
 static SchTask_t* last = NULL;

@@ -16,14 +16,22 @@
  
 #include "main.h"
 
+void task(void)
+{
+	LED_GREEN_TOG();
+}
+
 int main()
 {
+	Cfg_Reset();
 	KOS_Boot();
+	Sch_Arrange(task, 250);
 	while(1)
 	{
 		//KOS_Ward();
-		if (Clk_GetMsTick() % 4 == 0) {
-			Upl_Proc();
+		if (Clk_GetMsTick() % 1000 == 0) {
+			Dbg_Cfg();
+			//Upl_Proc();
 			//printf("%d\n", sizeof(Cfg_t));
 			//Upl_Proc();
 			//Dbg_Ecd();
