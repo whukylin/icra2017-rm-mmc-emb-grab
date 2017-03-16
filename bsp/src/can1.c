@@ -31,6 +31,20 @@ void Can1_Config(void)
 
 	CAN_ITConfig(CAN1, CAN_IT_FMP0, ENABLE);
 	CAN_ITConfig(CAN1, CAN_IT_TME, ENABLE);
+	
+	//Can1_DisableIT();
+}
+
+void Can1_EnableIT(void)
+{
+	CAN_ITConfig(CAN1, CAN_IT_FMP0, ENABLE);
+	CAN_ITConfig(CAN1, CAN_IT_TME, ENABLE);
+}
+
+void Can1_DisableIT(void)
+{
+	CAN_ITConfig(CAN1, CAN_IT_FMP0, DISABLE);
+	CAN_ITConfig(CAN1, CAN_IT_TME, DISABLE);
 }
 
 void CAN1_RX_IRQ_HANDLER(void)

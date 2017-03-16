@@ -19,12 +19,15 @@
 /********************************************************/
 /*                    Task Scheduler                    */
 /********************************************************/
- 
+
+static uint32_t tick = 0;
+
 static SchTask_t* first = NULL;
 static SchTask_t* last = NULL;
 
 void Sch_Init(void)
 {
+	tick = 0;
 	SchTask_t* curr = first;
 	for (; curr != NULL; curr = curr->next) {
 		curr->lastrun = 0;
@@ -33,8 +36,9 @@ void Sch_Init(void)
 
 void Sch_Proc(void)
 {
-	uint32_t tick = Clk_GetMsTick();
+	//uint32_t tick = Clk_GetMsTick();
 	SchTask_t* curr = first;
+	tick++;
 	for (; curr != NULL; curr = curr->next) {
 		//uint32_t interval = tick - curr->lastrun;
 		uint32_t interval = tick > curr->lastrun ? tick - curr->lastrun : (uint32_t)0xFFFFFFFF - curr->lastrun + tick;

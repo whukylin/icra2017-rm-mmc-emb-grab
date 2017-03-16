@@ -23,9 +23,16 @@ void Ini_Init(void)
 	iniFlag = 0;
 }
 
-IniFlag_t Ini_IsFlagSet(IniFlag_t mask)
+#define INI_DET(FLAG,COND) Flag_Det(&iniFlag, FLAG,  COND);
+void Ini_Proc(void)
 {
-	return Flag_Get(&iniFlag, mask);
+	INI_DET(INI_FLAG_ZGYRO,  ZGyro_Ready(&zgyro));
+	INI_DET(INI_FLAG_MOTOR1, Motor_Ready(&motor[0]));
+	INI_DET(INI_FLAG_MOTOR2, Motor_Ready(&motor[1]));
+	INI_DET(INI_FLAG_MOTOR3, Motor_Ready(&motor[2]));
+	INI_DET(INI_FLAG_MOTOR4, Motor_Ready(&motor[3]));
+	INI_DET(INI_FLAG_MOTOR5, Motor_Ready(&motor[4]));
+	INI_DET(INI_FLAG_MOTOR6, Motor_Ready(&motor[5]));
 }
 
 IniFlag_t Ini_GetFlag(void)
@@ -33,24 +40,18 @@ IniFlag_t Ini_GetFlag(void)
 	return iniFlag;
 }
 
-static void Ini_Check(uint8_t cond, IniFlag_t mask)
+IniFlag_t Ini_HasFlag(IniFlag_t mask)
 {
-	Flag_Det(cond, &iniFlag, mask);
+	return iniFlag & mask;
 }
 
-void Ini_Proc(void)
+IniFlag_t Ini_HitFlag(IniFlag_t mask)
 {
-	Ini_Check(ZGyro_Ready(&zgyro),    INI_FLAG_ZGYRO);
-	Ini_Check(Motor_Ready(&motor[0]), INI_FLAG_MOTOR1);
-	Ini_Check(Motor_Ready(&motor[1]), INI_FLAG_MOTOR2);
-	Ini_Check(Motor_Ready(&motor[2]), INI_FLAG_MOTOR3);
-	Ini_Check(Motor_Ready(&motor[3]), INI_FLAG_MOTOR4);
-	Ini_Check(Motor_Ready(&motor[4]), INI_FLAG_MOTOR5);
-	Ini_Check(Motor_Ready(&motor[5]), INI_FLAG_MOTOR6);
+	return (iniFlag & mask) == mask;
 }
 
 IniFlag_t Ini_IsDone(void)
 {
-	return Ini_IsFlagSet(INI_FLAG_VATAL);
+	return Ini_HitFlag(INI_FLAG_VATAL);
 }
 

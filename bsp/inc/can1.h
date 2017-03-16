@@ -34,7 +34,14 @@ extern "C" {
 #define CAN1_TX_NVIC_PRE_PRIORITY 1
 #define CAN1_TX_NVIC_SUB_PRIORITY 1
 
+#define CAN1_ENABLE_RX_IT() CAN_ITConfig(CAN1, CAN_IT_FMP0, ENABLE)
+#define CAN1_DISABLE_RX_IT() CAN_ITConfig(CAN1, CAN_IT_FMP0, DISABLE)
+#define CAN1_ENABLE_TXE_IT() CAN_ITConfig(CAN1, CAN_IT_TME, ENABLE)
+#define CAN1_DISABLE_TXE_IT() CAN_ITConfig(CAN1, CAN_IT_TME, DISABLE)
+
 void Can1_Config(void);
+void Can1_EnableIT(void);
+void Can1_DisableIT(void);
 
 void Can1RxCallback(uint32_t id, uint8_t* data);
 

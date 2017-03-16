@@ -8,8 +8,10 @@
 .\objects\kos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\kos.o: ..\..\asp\inc\asp.h
 .\objects\kos.o: ..\..\asp\inc\ahrs.h
-.\objects\kos.o: ..\..\asp\inc\cbus.h
+.\objects\kos.o: ..\..\asp\inc\calib.h
 .\objects\kos.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\kos.o: ..\..\asp\inc\pid.h
+.\objects\kos.o: ..\..\asp\inc\cbus.h
 .\objects\kos.o: ..\..\asp\inc\crc16.h
 .\objects\kos.o: ..\..\asp\inc\dbuf.h
 .\objects\kos.o: ..\..\asp\inc\rcf.h
@@ -26,7 +28,6 @@
 .\objects\kos.o: ..\..\asp\inc\linkedlist.h
 .\objects\kos.o: ..\..\asp\inc\maf.h
 .\objects\kos.o: ..\..\asp\inc\mecanum.h
-.\objects\kos.o: ..\..\asp\inc\pid.h
 .\objects\kos.o: ..\..\asp\inc\rmp.h
 .\objects\kos.o: ..\..\asp\inc\stack.h
 .\objects\kos.o: ..\..\bsp\inc\bsp.h

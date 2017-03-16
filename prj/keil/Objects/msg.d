@@ -8,4 +8,6 @@
 .\objects\msg.o: ..\..\asp\inc\hcp.h
 .\objects\msg.o: ..\..\asp\inc\fifo.h
 .\objects\msg.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\msg.o: ..\..\asp\inc\calib.h
+.\objects\msg.o: ..\..\asp\inc\pid.h
 .\objects\msg.o: ..\..\asp\inc\crc16.h

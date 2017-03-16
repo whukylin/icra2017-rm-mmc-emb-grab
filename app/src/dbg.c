@@ -89,12 +89,12 @@ void Dbg_Cfg(void)
 
 void Dbg_Mec(void)
 {
-	printf("lx=%.3f,ly=%.3f,r1=%.3f,r2=%.3f\n", cfg.mec.lx, cfg.mec.ly, cfg.mec.r1, cfg.mec.r2);
+	printf("lx=%.2f,ly=%.2f,r1=%.2f,r2=%.2f\n", cfg.mec.lx, cfg.mec.ly, cfg.mec.r1, cfg.mec.r2);
 }
 
 void Dbg_Cvl(void)
 {
-	printf("kp=%.1f,ki=%.1f,kd=%.1f,it=%.1f\n", cfg.cvl.kp, cfg.cvl.ki, cfg.cvl.kd, cfg.cvl.it);
+	printf("kp=%.2f,ki=%.2f,kd=%.2f,it=%.2f\n", cfg.cvl.kp, cfg.cvl.ki, cfg.cvl.kd, cfg.cvl.it);
 }
 
 void Dbg_Gvl(void)
@@ -130,7 +130,7 @@ void Dbg_Dci(void)
 
 void Dbg_Cmd(void)
 {
-	printf("vx=%.3f\tvy=%.3f\tvz=%.3f\n", cmd.cv.x, cmd.cv.y, cmd.cv.z);
+	printf("vx=%.3f,vy=%.3f,vz=%.3f,m1=%.3f,m2=%.3f,m3=%.3f,m4=%.3f\n", cmd.cv.x, cmd.cv.y, cmd.cv.z, cmd.mv.w1, cmd.mv.w2, cmd.mv.w4, cmd.mv.w4);
 }
 
 void Dbg_Odo(void)
@@ -140,12 +140,12 @@ void Dbg_Odo(void)
 
 void Dbg_Wsm(void)
 {
-	printf("ws=%d,prev=%d\n", Wsm_GetWorkingState(), Wsm_GetLastWorkingState());
+	printf("wdg=%x,ok=%d,ini=%x,ok=%d,ws=%d,lws=%d\n", Wdg_GetErr(), Wdg_IsOkay(), Ini_GetFlag(), Ini_IsDone(), Wsm_GetWorkingState(), Wsm_GetLastWorkingState());
 }
 
 void Dbg_Wdg(void)
 {
-	printf("wdg=%x,rcv=%d,fatal=%d\n", Wdg_GetErr(), Wdg_IsErrSet(WDG_ERR_RCV), Wdg_IsErrSet(WDG_ERR_FATAL));
+	printf("wdg=%x,rcv=%d,fatal=%d\n", Wdg_GetErr(), Wdg_HasErr(WDG_ERR_RCV), Wdg_HasErr(WDG_ERR_FATAL));
 }
 
 void Dbg_Can(void)
@@ -189,5 +189,9 @@ void Dbg_Imu(void)
 	printf("%d\t%d\n", zgyro.angle, zgyro.rate);
 }
 
+void Dbg_Ctl(void)
+{
+	printf("rw1=%.3f,rw2=%.3f,rw3=%.3f,rw4=%.3f,fw1=%.3f,fw2=%.3f,fw3=%.3f,fw4,c1=%.3f,c1=%.f,c2=%.f,c3=%.f,c4=%.f\n", cmd.mv.w1, cmd.mv.w2, cmd.mv.w3, cmd.mv.w4, odo.mv.w1, odo.mv.w2, odo.mv.w3, odo.mv.w4, ctl.mc.w1, ctl.mc.w2, ctl.mc.w3, ctl.mc.w4);
+}
 
 

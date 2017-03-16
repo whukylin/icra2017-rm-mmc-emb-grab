@@ -24,10 +24,10 @@ Odo_t odo;
 
 static void GetFunctionalStateFdb(void)
 {
-	FS_Det(KEY_H(), &odo.fs, FS_KEY_H);
-	FS_Det(KEY_L(), &odo.fs, FS_KEY_L);
-	FS_Det(LED_RED_IS_ON(), &odo.fs, FS_LED_RED);
-	FS_Det(LED_GREEN_IS_ON(), &odo.fs, FS_LED_GREEN);
+	FS_Det(&odo.fs, FS_KEY_H, KEY_H());
+	FS_Det(&odo.fs, FS_KEY_L, KEY_L());
+	FS_Det(&odo.fs, FS_LED_RED, LED_RED_IS_ON());
+	FS_Det(&odo.fs, FS_LED_GREEN, LED_GREEN_IS_ON());
 }
 
 static void GetMecanumPositionFdb(void)

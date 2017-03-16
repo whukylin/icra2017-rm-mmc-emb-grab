@@ -28,7 +28,6 @@ extern "C" {
 #include <stdint.h>
 #include <string.h>
 
-#include "cal.h"
 #include "fos.h"
 #include "fun.h"
 
@@ -42,7 +41,9 @@ extern "C" {
 #define CFG_FLAG_GVL                (1u<<7)
 #define CFG_FLAG_GPL                (1u<<8)
 #define CFG_FLAG_ALL (CFG_FLAG_IMU|CFG_FLAG_MAG|CFG_FLAG_RMP|CFG_FLAG_VEL|CFG_FLAG_MEC|CFG_FLAG_POS|CFG_FLAG_CVL|CFG_FLAG_GVL|CFG_FLAG_GPL)
-	
+
+#pragma pack(1)
+
 typedef uint32_t CfgVer_t;
 typedef uint32_t CfgFlg_t;
 
@@ -121,6 +122,8 @@ typedef struct
 	PIDCfg_t gpl; // Gimbal position loop
 }Cfg_t; // Application Configuration
 
+#pragma pack()
+
 #define CFG_SIZE() sizeof(Cfg_t)
 
 #define CFG_VER_A 1u
@@ -194,11 +197,11 @@ typedef struct
 
 #define CVL_CFG_DEF \
 { \
-	.kp = 220, \
+	.kp = 200, \
 	.ki = 0, \
 	.kd = 0, \
 	.it = 0, \
-	.Emax = 400, \
+	.Emax = 30, \
 	.Pmax = 4900, \
 	.Imax = 3500, \
 	.Dmax = 1500, \
@@ -211,7 +214,7 @@ typedef struct
 	.ki = 0, \
 	.kd = 0, \
 	.it = 0, \
-	.Emax = 200, \
+	.Emax = 0.5f, \
 	.Pmax = 4900, \
 	.Imax = 3500, \
 	.Dmax = 1500, \
@@ -224,7 +227,7 @@ typedef struct
 	.ki = 0, \
 	.kd = 0, \
 	.it = 0, \
-	.Emax = 50, \
+	.Emax = 0.5, \
 	.Pmax = 4900, \
 	.Imax = 3500, \
 	.Dmax = 1500, \

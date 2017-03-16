@@ -68,13 +68,18 @@ uint32_t Wdg_GetErr(void)
 	return err;
 }
 
-uint32_t Wdg_IsErrSet(uint32_t mask)
+uint32_t Wdg_HasErr(uint32_t mask)
 {
-	return (err & mask);
+	return err & mask;
+}
+
+uint32_t Wdg_HitErr(uint32_t mask)
+{
+	return (err & mask) == mask;
 }
 
 uint32_t Wdg_IsOkay(void)
 {
-	return (Wdg_IsErrSet(WDG_ERR_RCV) && Wdg_IsErrSet(WDG_ERR_VDBUS)) || Wdg_IsErrSet(WDG_ERR_MOTORS);
+	return !(Wdg_HitErr(WDG_ERR_SIGNAL) || Wdg_HasErr(WDG_ERR_MOTORS));
 }
 

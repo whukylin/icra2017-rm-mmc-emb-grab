@@ -31,7 +31,6 @@ typedef uint32_t IniFlag_t;
 #define INI_FLAG_MOTOR4     (1u<<4)
 #define INI_FLAG_MOTOR5     (1u<<5)
 #define INI_FLAG_MOTOR6     (1u<<6)
-#define INI_FLAG_CONFIG     (1u<<7)
 
 #define INI_FLAG_ALL (INI_FLAG_ZGYRO | INI_FLAG_MOTOR1 | INI_FLAG_MOTOR2 | INI_FLAG_MOTOR3 | \
                       INI_FLAG_MOTOR4 | INI_FLAG_MOTOR5 | INI_FLAG_MOTOR6)
@@ -40,8 +39,10 @@ typedef uint32_t IniFlag_t;
 void Ini_Init(void);
 void Ini_Proc(void);
 
-IniFlag_t Ini_IsFlagSet(IniFlag_t mask);
 IniFlag_t Ini_GetFlag(void);
+IniFlag_t Ini_HasFlag(IniFlag_t mask);
+IniFlag_t Ini_HitFlag(IniFlag_t mask);
+
 IniFlag_t Ini_IsDone(void);
 
 #endif

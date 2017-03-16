@@ -41,9 +41,9 @@ void FS_Cpy(PeriphsState_t* fs, PeriphsState_t src, PeriphsState_t mask)
 	Flag_Cpy(fs, src, mask);
 }
 
-void FS_Det(uint8_t cond, PeriphsState_t* fs, PeriphsState_t mask)
+void FS_Det(PeriphsState_t* fs, Flag_t mask, uint32_t condition)
 {
-	Flag_Det(cond, fs, mask);
+	Flag_Det(fs, mask, condition);
 }
 
 void CS_Set(ChassisState_t* cs, float x, float y, float z)

@@ -22,14 +22,14 @@
 
 void Com_Init(void)
 {
-	Upl_Init();
 	Dnl_Init();
+	Upl_Init();
 }
 
 void Com_Proc(void)
 {
-	Upl_Proc();
 	Dnl_Proc();
+	Upl_Proc();
 }
 
 void Tty_Proc(uint8_t data)

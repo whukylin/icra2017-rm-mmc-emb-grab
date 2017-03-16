@@ -30,7 +30,7 @@ void Wsm_Proc(void)
 	lastWorkingState = workingState;
 	switch (workingState) {
 	case WORKING_STATE_STOP:
-		if (!Wdg_IsOkay()) {
+		if (Wdg_IsOkay()) {
 			workingState = WORKING_STATE_PREPARE;
 		}
 		break;

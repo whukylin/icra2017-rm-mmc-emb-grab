@@ -44,8 +44,6 @@ void Mec_Decomp(const float* v, float* w);
 
 void Mec_Init(void);
 
-extern Mecanum_t mecanum;
-
 #ifdef __cplusplus
 }
 #endif

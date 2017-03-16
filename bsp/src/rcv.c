@@ -48,6 +48,16 @@ void Rcv_Config(void)
 
 }
 
+void Rcv_EnableIT(void)
+{
+	USART_Cmd(RCV_USART, ENABLE);
+}
+
+void Rcv_DisableIT(void)
+{
+	USART_Cmd(RCV_USART, DISABLE);
+}
+
 void RCV_IRQ_HANDLER(void)
 {
 	if(USART_GetITStatus(RCV_USART, USART_IT_IDLE) != RESET)

@@ -50,6 +50,7 @@ void Dbg_Vhc(void);
 void Dbg_Vdc(void);
 void Dbg_Vcc(void);
 void Dbg_Imu(void);
+void Dbg_Ctl(void);
 
 #ifdef __cplusplus
 }

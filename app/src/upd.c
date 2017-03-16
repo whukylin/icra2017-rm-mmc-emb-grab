@@ -32,17 +32,16 @@ void Upd_Proc(void)
 			Act_Init(); // Sensor data prefilter and auto-calibration
 			break;
 		case WORKING_STATE_NORMAL:
-			// Re-initialize system updater when recover to normal state from other working states
-			if (Wsm_GetLastWorkingState() != WORKING_STATE_NORMAL) {
+			// Re-initialize system updater when recovering from config state
+			if (Wsm_GetLastWorkingState() == WORKING_STATE_CONFIG) {
 				Upd_Init();
 			}
 			Ctl_Proc();
 			Act_Proc();
 			break;
 		case WORKING_STATE_CONFIG:
-			Cmd_Init(); // Stand-by
-			Ctl_Proc();
-			Act_Proc();
+			Act_Init();
+			Cfg_Proc();
 			break;
 		default:
 			break;

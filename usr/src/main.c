@@ -23,14 +23,18 @@ void task(void)
 
 int main()
 {
-	Cfg_Reset();
 	KOS_Boot();
-	Sch_Arrange(task, 250);
+	Sch_Arrange(task, 500);
 	while(1)
 	{
-		//KOS_Ward();
-		if (Clk_GetMsTick() % 1000 == 0) {
-			Dbg_Cfg();
+		Com_Proc();
+		if (Clk_GetMsTick() % 4 == 0) {
+			//Com_Proc();
+			//printf("%f\n", ctl.gc.c);
+			//Dbg_Cmd();
+			//Dbg_Ctl();
+			//printf("wdg: %x, ini: %x\n", Wdg_GetErr(), Ini_GetFlag());
+			//Dbg_Cfg();
 			//Upl_Proc();
 			//printf("%d\n", sizeof(Cfg_t));
 			//Upl_Proc();
@@ -41,6 +45,7 @@ int main()
 			//Dbg_Dci();
 			//Dbg_Odo();
 			//Dbg_Cmd();
+			//Dbg_Imu();
 			//Dbg_Wsm();
 			//Dbg_Wdg();
 		}

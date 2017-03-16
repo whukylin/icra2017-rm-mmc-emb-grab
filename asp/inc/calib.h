@@ -34,7 +34,7 @@ extern "C" {
 #define PID_CALIB_TYPE_CHASSIS_VELOCITY 0x01
 #define PID_CALIB_TYPE_GRABBER_VELOCITY 0x02
 #define PID_CALIB_TYPE_GRABBER_POSITION 0x03
-#define PID_CALIB_SCALE 0.1f
+#define PID_CALIB_VALUE_SCALE 0.1f
 typedef struct
 {
 	uint8_t type;
@@ -49,7 +49,20 @@ typedef struct
 	uint16_t Omax;
 }PIDCalib_t; // PID Calibration
 
-#define IMU_CALIB_SCALE 1.0f
+typedef struct
+{
+	float kp;
+	float ki;
+	float kd;
+	float it;
+	float Emax;
+	float Pmax;
+	float Imax;
+	float Dmax;
+	float Omax;
+}PIDParam_t; // PID Parameters
+
+#define IMU_CALIB_VALUE_SCALE 1.0f
 typedef struct
 {
 	int16_t ax_offset;
@@ -60,7 +73,17 @@ typedef struct
 	int16_t gz_offset;
 }IMUCalib_t; // IMU offset Calibration
 
-#define MAG_CALIB_SCALE 1.0f
+typedef struct
+{
+	float ax_offset;
+	float ay_offset;
+	float az_offset;
+	float gx_offset;
+	float gy_offset;
+	float gz_offset;
+}IMUParam_t; // IMU Parameters
+
+#define MAG_CALIB_VALUE_SCALE 1.0f
 typedef struct
 {
 	int16_t mx_offset;
@@ -68,7 +91,14 @@ typedef struct
 	int16_t mz_offset;
 }MagCalib_t; // Mag offset Calibration
 
-#define VEL_CALIB_SCALE 0.001f
+typedef struct
+{
+	float mx_offset;
+	float my_offset;
+	float mz_offset;
+}MagParam_t; // Mag offset Parameters
+
+#define VEL_CALIB_VALUE_SCALE 1e-3f
 typedef struct
 {
 	uint16_t x; // mm/s
@@ -78,7 +108,16 @@ typedef struct
 	uint16_t c; // 1e-3rad/s
 }VelCalib_t; // Velocity Calibration
 
-#define MEC_CALIB_SCALE 0.001f
+typedef struct
+{
+	float x; // m/s
+	float y; // m/s
+	float z; // rad/s
+	float e; // m/s
+	float c; // rad/s
+}VelParam_t; // Velocity Parameters
+
+#define MEC_CALIB_VALUE_SCALE 1e-3f
 typedef struct
 {
 	uint16_t lx; // mm
@@ -87,7 +126,15 @@ typedef struct
 	uint16_t r2; // mm
 }MecCalib_t; // Mecanum Wheel Calibration
 
-#define POS_CALIB_SCALE 0.001f
+typedef struct
+{
+	float lx; // m
+	float ly; // m
+	float r1; // m
+	float r2; // m
+}MecParam_t; // Mecanum Wheel Parameters
+
+#define POS_CALIB_VALUE_SCALE 1e-3f
 typedef struct
 {
 	int16_t el; // unit: mm
@@ -98,12 +145,33 @@ typedef struct
 
 typedef struct
 {
-	PIDCalib_t pid;
-	IMUCalib_t imu;
-	MagCalib_t mag;
-	MecCalib_t mec;
-	PosCalib_t pos;
+	float el; // unit: m
+	float eh; // unit: m
+	float cl; // unit: rad
+	float ch; // unit: rad
+}PosParam_t; // Position Parameters
+
+typedef struct
+{
+	PIDCalib_t cvl; // Chasis velocity loop calibration
+	PIDCalib_t gvl; // Gimbal velocity loop calibration
+	PIDCalib_t gpl; // Chasis position loop calibration
+	IMUCalib_t imu; // IMU calibration
+	MagCalib_t mag; // Mag calibration
+	MecCalib_t mec; // Mecanum wheel calibration
+	PosCalib_t pos; // Position calibration
 }Calib_t; // Calibration
+
+typedef struct
+{
+	PIDParam_t cvl; // Chasis velocity loop parameters
+	PIDParam_t gvl; // Gimbal velocity loop parameters
+	PIDParam_t gpl; // Chasis position loop parameters
+	IMUParam_t imu; // IMU calibration
+	MagParam_t mag; // Mag calibration
+	MecParam_t mec; // Mecanum wheel calibration
+	PosParam_t pos; // Position calibration
+}Param_t; // Parameters
 
 #pragma pack()
 

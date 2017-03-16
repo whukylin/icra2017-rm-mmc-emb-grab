@@ -29,7 +29,7 @@ extern "C" {
 #include <stdlib.h>
 #include <string.h>
 
-#include "clk.h"
+//#include "clk.h"
 	
 typedef void (*SchRun_t)(void);
 

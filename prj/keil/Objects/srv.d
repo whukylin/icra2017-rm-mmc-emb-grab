@@ -17,6 +17,8 @@
 .\objects\srv.o: ..\..\asp\inc\rcp.h
 .\objects\srv.o: ..\..\asp\inc\hcp.h
 .\objects\srv.o: ..\..\asp\inc\fifo.h
+.\objects\srv.o: ..\..\asp\inc\calib.h
+.\objects\srv.o: ..\..\asp\inc\pid.h
 .\objects\srv.o: ..\..\asp\inc\crc16.h
 .\objects\srv.o: ..\..\app\inc\cmd.h
 .\objects\srv.o: ..\..\app\inc\sys.h

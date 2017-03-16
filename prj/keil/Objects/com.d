@@ -10,6 +10,8 @@
 .\objects\com.o: ..\..\asp\inc\hcp.h
 .\objects\com.o: ..\..\asp\inc\fifo.h
 .\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\com.o: ..\..\asp\inc\calib.h
+.\objects\com.o: ..\..\asp\inc\pid.h
 .\objects\com.o: ..\..\asp\inc\crc16.h
 .\objects\com.o: ..\..\app\inc\cmd.h
 .\objects\com.o: ..\..\app\inc\sys.h

@@ -64,13 +64,13 @@ GETCHAR_PROTOTYPE
  */
 uint8_t Ios_ReadByte(void)
 {
-	if (!Wdg_IsErrSet(WDG_ERR_TTY)) {
+	if (!Wdg_HasErr(WDG_ERR_TTY)) {
 		return Tty_ReadByte();
 	}
-	if (!Wdg_IsErrSet(WDG_ERR_DBI)) {
+	if (!Wdg_HasErr(WDG_ERR_DBI)) {
 		return Dbi_ReadByte();
 	}
-	if (!Wdg_IsErrSet(WDG_ERR_BTM)) {
+	if (!Wdg_HasErr(WDG_ERR_BTM)) {
 		return Btm_ReadByte();
 	}
 	return 0;
@@ -99,17 +99,17 @@ void Ios_WriteByte(uint8_t data)
 uint32_t Ios_Read(uint8_t* buf, uint32_t len)
 {
 	uint32_t tmp_len = 0;
-	if (!Wdg_IsErrSet(WDG_ERR_TTY)) {
+	if (!Wdg_HasErr(WDG_ERR_TTY)) {
 		tmp_len = Tty_RxCnt();
-		LIMIT_UPPER_BOUND(len, tmp_len);
+		LIMIT_MAX(len, tmp_len);
 		Tty_Read(buf, len);
-	} else if (!Wdg_IsErrSet(WDG_ERR_DBI)) {
+	} else if (!Wdg_HasErr(WDG_ERR_DBI)) {
 		tmp_len = Dbi_RxCnt();
-		LIMIT_UPPER_BOUND(len, tmp_len);
+		LIMIT_MAX(len, tmp_len);
 		Dbi_Read(buf, len);
-	} else if (!Wdg_IsErrSet(WDG_ERR_BTM)) {
+	} else if (!Wdg_HasErr(WDG_ERR_BTM)) {
 		tmp_len = Btm_RxCnt();
-		LIMIT_UPPER_BOUND(len, tmp_len);
+		LIMIT_MAX(len, tmp_len);
 		Btm_Read(buf, len);
 	}
 	return len;

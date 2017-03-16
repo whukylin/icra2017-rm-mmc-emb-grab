@@ -22,15 +22,15 @@
 
 void Calib_PID(PID_t* pid, const PIDCalib_t* cal)
 {
-	pid->kp = PID_CALIB_SCALE * cal->kp;
-	pid->ki = PID_CALIB_SCALE * cal->ki;
-	pid->kd = PID_CALIB_SCALE * cal->kd;
-	pid->it = PID_CALIB_SCALE * cal->it;
-	pid->Emax = PID_CALIB_SCALE * cal->Emax;
-	pid->Pmax = PID_CALIB_SCALE * cal->Pmax;
-	pid->Imax = PID_CALIB_SCALE * cal->Imax;
-	pid->Dmax = PID_CALIB_SCALE * cal->Dmax;
-	pid->Omax = PID_CALIB_SCALE * cal->Omax;
+	pid->kp = PID_CALIB_VALUE_SCALE * cal->kp;
+	pid->ki = PID_CALIB_VALUE_SCALE * cal->ki;
+	pid->kd = PID_CALIB_VALUE_SCALE * cal->kd;
+	pid->it = PID_CALIB_VALUE_SCALE * cal->it;
+	pid->Emax = PID_CALIB_VALUE_SCALE * cal->Emax;
+	pid->Pmax = PID_CALIB_VALUE_SCALE * cal->Pmax;
+	pid->Imax = PID_CALIB_VALUE_SCALE * cal->Imax;
+	pid->Dmax = PID_CALIB_VALUE_SCALE * cal->Dmax;
+	pid->Omax = PID_CALIB_VALUE_SCALE * cal->Omax;
 }
 
 

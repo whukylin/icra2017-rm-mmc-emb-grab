@@ -42,7 +42,12 @@ extern "C" {
 #define RCV_FRAME_LEN 18u
 #define RCV_DMA_BUF_SIZE 36u
 
+#define RCV_ENABLE_IDLE_IT(RCV_USART, USART_IT_IDLE, ENABLE)
+#define RCV_DISABLE_IDLE_IT(RCV_USART, USART_IT_IDLE, DISABLE)
+
 void Rcv_Config(void);
+void Rcv_EnableIT(void);
+void Rcv_DisableIT(void);
 
 void RcvCallback(const uint8_t* dbuf);
 

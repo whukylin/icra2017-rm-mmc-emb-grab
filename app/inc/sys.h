@@ -37,10 +37,10 @@ typedef enum {
 
 typedef uint32_t PeriphsState_t; // Peripherals Functional State
 
-#define FS_KEY_H        (((uint32_t)1)<<0)
-#define FS_KEY_L        (((uint32_t)1)<<1)
-#define FS_LED_RED      (((uint32_t)1)<<2)
-#define FS_LED_GREEN    (((uint32_t)1)<<3)
+#define FS_KEY_H        (((uint32_t)1u)<<0)
+#define FS_KEY_L        (((uint32_t)1u)<<1)
+#define FS_LED_RED      (((uint32_t)1u)<<2)
+#define FS_LED_GREEN    (((uint32_t)1u)<<3)
 
 #define FS_ALL      		(FS_KEY_H|FS_KEY_L|FS_LED_RED|FS_LED_GREEN)
 #define FS_NON       		((uint32_t)0)
@@ -71,7 +71,7 @@ void FS_Set(PeriphsState_t* fs, PeriphsState_t mask);
 void FS_Clr(PeriphsState_t* fs, PeriphsState_t mask);
 void FS_Tog(PeriphsState_t* fs, PeriphsState_t mask);
 void FS_Cpy(PeriphsState_t* fs, PeriphsState_t src, PeriphsState_t mask);
-void FS_Det(uint8_t cond, Flag_t* flag, Flag_t mask);
+void FS_Det(PeriphsState_t* fs, Flag_t mask, uint32_t condition);
 
 void CS_Set(ChassisState_t* cs, float x, float y, float z);
 void MS_Set(MecanumState_t* ms, float w1, float w2, float w3, float w4);

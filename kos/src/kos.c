@@ -25,13 +25,16 @@ void KOS_Boot(void)
 	// Application initialization
 	App_Init();
 	
-	// Arrange scheduled tasks, @{SYS_CTL_TMS} ms/exec
-	//Sch_Arrange(App_Proc, SYS_CTL_TMS);
+	// Scheduler initialization 
+	Sch_Init();
 	
-	//Sch_Init();
+	// Arrange scheduled tasks, @{SYS_CTL_TMS} ms/exec
+	Sch_Arrange(App_Proc, SYS_CTL_TMS);
 	
 	// BSP configuration
 	Bsp_Config();
+	
+	Act_Init();
 	
 	// Start timer
 	Tim_Start();
@@ -39,13 +42,11 @@ void KOS_Boot(void)
 
 void KOS_Stop(void)
 {
-	Tim_Stop();
-	Sch_Init();
+	// Dismiss application process
+	Sch_Dismiss(App_Proc);
+	
+	//Reset all active peripherals
 	Act_Init();
 }
 
-void KOS_Ward(void)
-{
-	
-}
 

@@ -29,6 +29,7 @@
 ".\objects\wdg.o"
 ".\objects\wsm.o"
 ".\objects\ahrs.o"
+".\objects\calib.o"
 ".\objects\cbus.o"
 ".\objects\crc16.o"
 ".\objects\dbuf.o"

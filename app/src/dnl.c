@@ -60,7 +60,7 @@ static void Dnl_ProcVDBUS(const VirtualDBUS_t* vdbus)
 {
 	Wdg_Feed(WDG_IDX_VDBUS);
 	// To use this mode, the remote controller must be turned of.
-	if (!Wdg_IsErrSet(WDG_ERR_RCV)) return;
+	if (!Wdg_HasErr(WDG_ERR_RCV)) return;
 	Dci_Proc(vdbus);
 }
 

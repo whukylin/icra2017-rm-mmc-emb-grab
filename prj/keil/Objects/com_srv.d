@@ -11,6 +11,8 @@
 .\objects\com_srv.o: ..\..\asp\inc\hcp.h
 .\objects\com_srv.o: ..\..\asp\inc\fifo.h
 .\objects\com_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\com_srv.o: ..\..\asp\inc\calib.h
+.\objects\com_srv.o: ..\..\asp\inc\pid.h
 .\objects\com_srv.o: ..\..\asp\inc\crc16.h
 .\objects\com_srv.o: ..\..\app\inc\cmd.h
 .\objects\com_srv.o: ..\..\app\inc\sys.h

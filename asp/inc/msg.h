@@ -17,14 +17,16 @@
 #ifndef __MSG_H__
 #define __MSG_H__
 
-/*********************************************/
-/*             KylinBot Msg Type             */
-/* Basic frame structure:                    */
-/*      |id:8|length:8|token:16|data~|       */
-/*      |______________________|_____|       */
-/*                head          body~        */
-/*                                           */
-/*********************************************/
+/********************************************************/
+/*                 KylinBot Msg Type                    */
+/*     Basic frame structure:                           */
+/*       ________________________________________       */
+/*      |id:8|length:8|token:16|data~|checksum:16|      */
+/*      |______________________|_____|___________|      */
+/*      |         head         |body~|    crc    |      */
+/*      |________________________________________|      */
+/*                        Msg                           */
+/********************************************************/
 
 #ifdef __cplusplus
 extern "C" {
@@ -39,6 +41,8 @@ extern "C" {
 /* Message length minimum/maximum limit */
 #define MSG_LEN_MIN 4u
 #define MSG_LEN_MAX 256u
+
+#pragma pack(1)
 
 /* Message head union typedef */
 typedef union MsgHead_t
@@ -287,6 +291,8 @@ typedef enum
 	MSG_TYPE_MEC_CALIB = 1u << MSG_TYPE_IDX_MEC_CALIB,
 	MSG_TYPE_POS_CALIB = 1u << MSG_TYPE_IDX_POS_CALIB,
 }MsgType_t;
+
+#pragma pack()
 
 /**
  * Brief: Push a single message to message fifo. 

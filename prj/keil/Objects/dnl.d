@@ -38,6 +38,8 @@
 .\objects\dnl.o: ..\..\asp\inc\dbus.h
 .\objects\dnl.o: ..\..\asp\inc\rcp.h
 .\objects\dnl.o: ..\..\asp\inc\hcp.h
+.\objects\dnl.o: ..\..\asp\inc\calib.h
+.\objects\dnl.o: ..\..\asp\inc\pid.h
 .\objects\dnl.o: ..\..\asp\inc\crc16.h
 .\objects\dnl.o: ..\..\app\inc\cal.h
 .\objects\dnl.o: ..\..\app\inc\cfg.h

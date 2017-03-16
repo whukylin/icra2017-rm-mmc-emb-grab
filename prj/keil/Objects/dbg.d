@@ -40,6 +40,8 @@
 .\objects\dbg.o: ..\..\asp\inc\dbus.h
 .\objects\dbg.o: ..\..\asp\inc\rcp.h
 .\objects\dbg.o: ..\..\asp\inc\hcp.h
+.\objects\dbg.o: ..\..\asp\inc\calib.h
+.\objects\dbg.o: ..\..\asp\inc\pid.h
 .\objects\dbg.o: ..\..\asp\inc\crc16.h
 .\objects\dbg.o: ..\..\app\inc\cmd.h
 .\objects\dbg.o: ..\..\app\inc\sys.h
@@ -72,5 +74,4 @@
 .\objects\dbg.o: ..\..\app\inc\cci.h
 .\objects\dbg.o: ..\..\app\inc\wsm.h
 .\objects\dbg.o: ..\..\app\inc\ctl.h
-.\objects\dbg.o: ..\..\asp\inc\pid.h
 .\objects\dbg.o: ..\..\asp\inc\rmp.h

@@ -61,7 +61,7 @@ void Cfg_ClrFlag(CfgFlg_t flag)
 
 uint8_t Cfg_IsSynced(void)
 {
-	return cfg_sync_flag;
+	return cfg_sync_flag == 0;
 }
 
 void Cfg_SetSyncFlag(uint8_t flag)
