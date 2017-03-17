@@ -33,14 +33,8 @@ void Dci_Proc(const DBUS_t* dbus)
 {
 	Rci_PreProc(&dbus->rcp);
 	if (Rci_Sw(SW_IDX_R) == SW_UP) {
-		if (Rci_LastSw(SW_IDX_R) != SW_UP) {
-			Rci_Init();
-		}
 		Rci_Proc(&dbus->rcp);
 	} else if (Rci_Sw(SW_IDX_R) == SW_MD) {
-		if (Rci_LastSw(SW_IDX_R) != SW_MD) {
-			Hci_Init();
-		}
 		Hci_Proc(&dbus->hcp);
 	} else if (Rci_Sw(SW_IDX_R) == SW_DN) {
 		// Other control interface

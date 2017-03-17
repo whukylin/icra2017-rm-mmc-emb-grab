@@ -7,6 +7,7 @@
 .\objects\ctl.o: ..\..\app\inc\mec.h
 .\objects\ctl.o: ..\..\app\inc\cfg.h
 .\objects\ctl.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\ctl.o: ..\..\asp\inc\calib.h
 .\objects\ctl.o: ..\..\app\inc\fos.h
 .\objects\ctl.o: ..\..\drv\inc\flash.h
 .\objects\ctl.o: ..\..\bsp\inc\platform.h

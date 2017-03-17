@@ -89,12 +89,13 @@ int Ios_ReadByte(void)
  */
 int Ios_WriteByte(uint8_t data)
 {
-	int a = Tty_WriteByte(data);
-	int b = Dbi_WriteByte(data);
-	int c = Btm_WriteByte(data);
-	return a > 0 ? a : b > 0 ? b : c > 0 ? c : -1;
-	//while (USART_GetFlagStatus(USART3, USART_FLAG_TC) == RESET);
-	//USART3->DR = b;
+	//int a = Tty_WriteByte(data);
+	//int b = Dbi_WriteByte(data);
+	//int c = Btm_WriteByte(data);
+	//return a > 0 ? a : b > 0 ? b : c > 0 ? c : -1;
+	while (USART_GetFlagStatus(USART3, USART_FLAG_TC) == RESET);
+	USART3->DR = data;
+	return data;
 }
 
 /**

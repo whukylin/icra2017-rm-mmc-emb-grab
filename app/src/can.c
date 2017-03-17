@@ -48,11 +48,11 @@ void Motor_Process(Motor_t* motor, uint32_t id, uint8_t* data)
 	motor->angle_fdb[1] = (data[0] << 8) | data[1];
 	motor->current_fdb = (data[2] << 8) | data[3];
 	motor->current_ref = (data[4] << 8) | data[5];
-	if (motor->frame_cnt < MOTOR_INIT_FRAME_CNT) {
+	if (motor->frame_cnt < 2) {
 		Ekf_Init(&motor->rate_ekf, MOTOR_RATE_EKF_Q, MOTOR_RATE_EKF_R);
-		Ekf_SetE(&motor->rate_ekf, motor->rate_raw);
 		Ekf_Init(&motor->angle_ekf, MOTOR_ANGLE_EKF_Q, MOTOR_ANGLE_EKF_R);
-		Ekf_SetE(&motor->angle_ekf, motor->angle_raw);
+	}
+	if (motor->frame_cnt < MOTOR_INIT_FRAME_CNT) {
 		motor->bias = motor->angle_fdb[1];
 		motor->round = 0;
 	}

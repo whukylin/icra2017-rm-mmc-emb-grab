@@ -10,7 +10,6 @@
 .\objects\upl.o: ..\..\asp\inc\fifo.h
 .\objects\upl.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\upl.o: ..\..\asp\inc\calib.h
-.\objects\upl.o: ..\..\asp\inc\pid.h
 .\objects\upl.o: ..\..\asp\inc\crc16.h
 .\objects\upl.o: ..\..\app\inc\cmd.h
 .\objects\upl.o: ..\..\app\inc\sys.h
@@ -65,9 +64,5 @@
 .\objects\upl.o: ..\..\asp\inc\hcf.h
 .\objects\upl.o: ..\..\asp\inc\maf.h
 .\objects\upl.o: ..\..\app\inc\ini.h
-.\objects\upl.o: ..\..\drv\inc\drv.h
-.\objects\upl.o: ..\..\drv\inc\delay.h
-.\objects\upl.o: ..\..\drv\inc\motor.h
-.\objects\upl.o: ..\..\drv\inc\zgyro.h
 .\objects\upl.o: ..\..\app\inc\ios.h
 .\objects\upl.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

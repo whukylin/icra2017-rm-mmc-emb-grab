@@ -45,6 +45,7 @@
 .\objects\odo.o: ..\..\app\inc\wdg.h
 .\objects\odo.o: ..\..\app\inc\mec.h
 .\objects\odo.o: ..\..\app\inc\cfg.h
+.\objects\odo.o: ..\..\asp\inc\calib.h
 .\objects\odo.o: ..\..\app\inc\fos.h
 .\objects\odo.o: ..\..\drv\inc\flash.h
 .\objects\odo.o: ..\..\asp\inc\mecanum.h

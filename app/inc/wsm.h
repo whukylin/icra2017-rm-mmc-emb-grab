@@ -28,13 +28,14 @@ extern "C" {
 #include "sys.h"
 #include "wdg.h"
 #include "ini.h"
+#include "cal.h"
 #include "cfg.h"
 	
 void Wsm_Init(void);
 void Wsm_Proc(void);
 
-WorkingState_t Wsm_GetWorkingState(void);
-WorkingState_t Wsm_GetLastWorkingState(void);
+WorkingState_t Wsm_GetWs(void);
+WorkingState_t Wsm_GetLastWs(void);
 
 #ifdef __cplusplus
 }

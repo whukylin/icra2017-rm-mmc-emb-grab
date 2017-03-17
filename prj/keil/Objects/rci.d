@@ -9,6 +9,7 @@
 .\objects\rci.o: ..\..\asp\inc\fun.h
 .\objects\rci.o: ..\..\app\inc\mec.h
 .\objects\rci.o: ..\..\app\inc\cfg.h
+.\objects\rci.o: ..\..\asp\inc\calib.h
 .\objects\rci.o: ..\..\app\inc\fos.h
 .\objects\rci.o: ..\..\drv\inc\flash.h
 .\objects\rci.o: ..\..\bsp\inc\platform.h

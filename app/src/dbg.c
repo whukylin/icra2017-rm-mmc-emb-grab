@@ -140,7 +140,7 @@ void Dbg_Odo(void)
 
 void Dbg_Wsm(void)
 {
-	printf("wdg=%x,ok=%d,ini=%x,ok=%d,ws=%d,lws=%d\n", Wdg_GetErr(), Wdg_IsOkay(), Ini_GetFlag(), Ini_IsDone(), Wsm_GetWorkingState(), Wsm_GetLastWorkingState());
+	printf("wdg=%x,ok=%d,ini=%x,ok=%d,ws=%d,lws=%d\n", Wdg_GetErr(), Wdg_IsOkay(), Ini_GetFlag(), Ini_IsDone(), Wsm_GetWs(), Wsm_GetLastWs());
 }
 
 void Dbg_Wdg(void)

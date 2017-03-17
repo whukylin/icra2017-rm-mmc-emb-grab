@@ -48,10 +48,10 @@ static void GetMecanumVelocityFdb(void)
 
 static void GetMecanumCurrentsFdb(void)
 {
-	odo.mc.w1 = motor[0].current_fdb;
-	odo.mc.w2 = motor[1].current_fdb;
-	odo.mc.w3 = motor[2].current_fdb;
-	odo.mc.w4 = motor[3].current_fdb;
+	odo.mc.w1 = motor[0].current_ref;
+	odo.mc.w2 = motor[1].current_ref;
+	odo.mc.w3 = motor[2].current_ref;
+	odo.mc.w4 = motor[3].current_ref;
 }
 
 static void GetChassisPositionFdb(void)
@@ -64,22 +64,24 @@ static void GetChassisVelocityFdb(void)
 	Mec_Synthe((float*)&odo.mv, (float*)&odo.cv);
 }
 
+static float odo_gp_c = 0;
 static void GetGrabberPositionFdb(void)
 {
 	odo.gp.e = motor[5].angle_rad * SCREW_PITCH_RECIP;
-	odo.gp.c = CLAW_GET_PWM();
+	odo_gp_c = odo.gp.c; // 
+	odo.gp.c = map(CLAW_GET_PWM(), 1000, 2000, 0, PI);
 }
 
 static void GetGrabberVelocityFdb(void)
 {
 	odo.gv.e = motor[5].rate_rad * SCREW_PITCH_RECIP;
-	odo.gv.c = CLAW_GET_PWM();
+	odo.gv.c = (odo.gp.c - odo_gp_c) / SYS_CTL_TSC; // 
 }
 
 static void GetGrabberCurrentsFdb(void)
 {
-	odo.gc.e = motor[5].current_fdb;
-	odo.gc.c = CLAW_GET_PWM();
+	odo.gc.e = motor[5].current_ref;
+	odo.gc.c = odo.gv.c * odo.gv.c; // 
 }
 
 void Odo_Init(void)

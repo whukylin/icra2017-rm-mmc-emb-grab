@@ -3,6 +3,7 @@
 .\objects\mec.o: ..\..\app\inc\cfg.h
 .\objects\mec.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\mec.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\mec.o: ..\..\asp\inc\calib.h
 .\objects\mec.o: ..\..\app\inc\fos.h
 .\objects\mec.o: ..\..\drv\inc\flash.h
 .\objects\mec.o: ..\..\bsp\inc\platform.h

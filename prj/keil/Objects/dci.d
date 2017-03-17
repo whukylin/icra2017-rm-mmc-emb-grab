@@ -12,6 +12,7 @@
 .\objects\dci.o: ..\..\asp\inc\fun.h
 .\objects\dci.o: ..\..\app\inc\mec.h
 .\objects\dci.o: ..\..\app\inc\cfg.h
+.\objects\dci.o: ..\..\asp\inc\calib.h
 .\objects\dci.o: ..\..\app\inc\fos.h
 .\objects\dci.o: ..\..\drv\inc\flash.h
 .\objects\dci.o: ..\..\bsp\inc\platform.h

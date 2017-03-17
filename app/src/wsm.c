@@ -38,6 +38,15 @@ void Wsm_Proc(void)
 		if (!Wdg_IsOkay()) {
 			workingState = WORKING_STATE_STOP;
 		} else if (Ini_IsDone()){
+			workingState = WORKING_STATE_CALIB;
+		}
+		break;
+	case WORKING_STATE_CALIB:
+		if (!Wdg_IsOkay()) {
+			workingState = WORKING_STATE_STOP;
+		} else if (!Ini_IsDone()){
+			workingState = WORKING_STATE_PREPARE;
+		} else if (Cal_IsDone()) {
 			workingState = WORKING_STATE_NORMAL;
 		}
 		break;
@@ -46,6 +55,8 @@ void Wsm_Proc(void)
 			workingState = WORKING_STATE_STOP;
 		} else if (!Ini_IsDone()){
 			workingState = WORKING_STATE_PREPARE;
+		} else if (!Cal_IsDone()) {
+			workingState = WORKING_STATE_CALIB;
 		} else if (!Cfg_IsSynced()) {
 			workingState = WORKING_STATE_CONFIG;
 		}
@@ -55,6 +66,8 @@ void Wsm_Proc(void)
 			workingState = WORKING_STATE_STOP;
 		} else if (!Ini_IsDone()){
 			workingState = WORKING_STATE_PREPARE;
+		} else if (!Cal_IsDone()) {
+			workingState = WORKING_STATE_CALIB;
 		} else if (Cfg_IsSynced()) {
 			workingState = WORKING_STATE_NORMAL;
 		}
@@ -64,12 +77,12 @@ void Wsm_Proc(void)
 	}
 }
 
-WorkingState_t Wsm_GetWorkingState(void)
+WorkingState_t Wsm_GetWs(void)
 {
 	return workingState;
 }
 
-WorkingState_t Wsm_GetLastWorkingState(void)
+WorkingState_t Wsm_GetLastWs(void)
 {
 	return lastWorkingState;
 }

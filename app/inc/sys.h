@@ -25,14 +25,15 @@ extern "C" {
 
 #include "fun.h"
 
-#define SYS_CTL_TMS 4 // ms
-#define SYS_CTL_TSC 4e-3f // s
+#define SYS_CTL_TMS 2 // ms
+#define SYS_CTL_TSC 2e-3f // s
 	
 typedef enum {
 	WORKING_STATE_STOP = 0x00,
 	WORKING_STATE_PREPARE = 0x01,
-	WORKING_STATE_NORMAL = 0x02,
-	WORKING_STATE_CONFIG = 0x03,
+	WORKING_STATE_CALIB = 0x02,
+	WORKING_STATE_NORMAL = 0x03,
+	WORKING_STATE_CONFIG = 0x04,
 }WorkingState_t;
 
 typedef uint32_t PeriphsState_t; // Peripherals Functional State

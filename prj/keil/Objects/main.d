@@ -11,7 +11,6 @@
 .\objects\main.o: ..\..\asp\inc\ahrs.h
 .\objects\main.o: ..\..\asp\inc\calib.h
 .\objects\main.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\main.o: ..\..\asp\inc\pid.h
 .\objects\main.o: ..\..\asp\inc\cbus.h
 .\objects\main.o: ..\..\asp\inc\crc16.h
 .\objects\main.o: ..\..\asp\inc\dbuf.h
@@ -29,6 +28,7 @@
 .\objects\main.o: ..\..\asp\inc\linkedlist.h
 .\objects\main.o: ..\..\asp\inc\maf.h
 .\objects\main.o: ..\..\asp\inc\mecanum.h
+.\objects\main.o: ..\..\asp\inc\pid.h
 .\objects\main.o: ..\..\asp\inc\rmp.h
 .\objects\main.o: ..\..\asp\inc\stack.h
 .\objects\main.o: ..\..\bsp\inc\bsp.h

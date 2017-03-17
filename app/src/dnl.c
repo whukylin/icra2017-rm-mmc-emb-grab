@@ -38,9 +38,6 @@ static void Dnl_ProcVRC(const VirtualRC_t* vrc)
 {
 	Wdg_Feed(WDG_IDX_VRC);
 	if (Rci_Sw(SW_IDX_R) == SW_DN) {
-		if (Rci_LastSw(SW_IDX_R) != SW_DN) {
-			Rci_Init();
-		}
 		Rci_Proc(vrc);
 	}
 }
@@ -49,9 +46,6 @@ static void Dnl_ProcVHC(const VirtualHC_t* vhc)
 {
 	Wdg_Feed(WDG_IDX_VHC);
 	if (Rci_Sw(SW_IDX_R) == SW_DN) {
-		if (Rci_LastSw(SW_IDX_R) != SW_DN) {
-			Hci_Init();
-		}
 		Hci_Proc(vhc);
 	}
 }
@@ -60,17 +54,15 @@ static void Dnl_ProcVDBUS(const VirtualDBUS_t* vdbus)
 {
 	Wdg_Feed(WDG_IDX_VDBUS);
 	// To use this mode, the remote controller must be turned of.
-	if (!Wdg_HasErr(WDG_ERR_RCV)) return;
-	Dci_Proc(vdbus);
+	if (Wdg_HasErr(WDG_ERR_RCV)) {
+		Dci_Proc(vdbus);
+	}
 }
 
 static void Dnl_ProcVCBUS(const VirtualCBUS_t* vcbus)
 {
 	Wdg_Feed(WDG_IDX_VCBUS);
 	if (Rci_Sw(SW_IDX_R) == SW_DN) {
-		if (Rci_LastSw(SW_IDX_R) != SW_DN) {
-			Cci_Init();
-		}
 		Cci_Proc(vcbus);
 	}
 }
@@ -81,46 +73,46 @@ static void Dnl_ProcCalibMsg(const CalibMsg_t* calibMsg)
 
 static void Dnl_ProcIMUCalib(const IMUCalib_t* IMUCalib)
 {
-	Cal_IMU(&cfg.imu, IMUCalib);
+	Calib_SetIMU(&cfg.imu, IMUCalib);
 	cfg_sync_flag = 1;
 }
 
 static void Dnl_ProcMagCalib(const MagCalib_t* MagCalib)
 {
-	Cal_Mag(&cfg.mag, MagCalib);
+	Calib_SetMag(&cfg.mag, MagCalib);
 	cfg_sync_flag = 1;
 }
 
 static void Dnl_ProcVelCalib(const VelCalib_t* VelCalib)
 {
-	Cal_Vel(&cfg.vel, VelCalib);
+	Calib_SetVel(&cfg.vel, VelCalib);
 	cfg_sync_flag = 1;
 }
 
 static void Dnl_ProcMecCalib(const MecCalib_t* MecCalib)
 {
-	Cal_Mec(&cfg.mec, MecCalib);
+	Calib_SetMec(&cfg.mec, MecCalib);
 	cfg_sync_flag = 1;
 }
 
 static void Dnl_ProcPosCalib(const PosCalib_t* PosCalib)
 {
-	Cal_Pos(&cfg.pos, PosCalib);
+	Calib_SetPos(&cfg.pos, PosCalib);
 	cfg_sync_flag = 1;
 }
 
 static void Dnl_ProcPIDCalib(const PIDCalib_t* PIDCalib)
 {
 	if (PIDCalib->type == PID_CALIB_TYPE_CHASSIS_VELOCITY) {
-		Cal_PID(&cfg.cvl, PIDCalib);
+		Calib_SetPID(&cfg.cvl, PIDCalib);
 		cfg_sync_flag = 1;
 	}
 	else if (PIDCalib->type == PID_CALIB_TYPE_GRABBER_VELOCITY) {
-		Cal_PID(&cfg.gvl, PIDCalib);
+		Calib_SetPID(&cfg.gvl, PIDCalib);
 		cfg_sync_flag = 1;
 	}
 	else if (PIDCalib->type == PID_CALIB_TYPE_GRABBER_POSITION) {
-		Cal_PID(&cfg.gpl, PIDCalib);
+		Calib_SetPID(&cfg.gpl, PIDCalib);
 		cfg_sync_flag = 1;
 	}
 }

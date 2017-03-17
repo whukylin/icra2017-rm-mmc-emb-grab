@@ -13,6 +13,7 @@
 .\objects\rcv_srv.o: ..\..\asp\inc\fun.h
 .\objects\rcv_srv.o: ..\..\app\inc\mec.h
 .\objects\rcv_srv.o: ..\..\app\inc\cfg.h
+.\objects\rcv_srv.o: ..\..\asp\inc\calib.h
 .\objects\rcv_srv.o: ..\..\app\inc\fos.h
 .\objects\rcv_srv.o: ..\..\drv\inc\flash.h
 .\objects\rcv_srv.o: ..\..\bsp\inc\platform.h

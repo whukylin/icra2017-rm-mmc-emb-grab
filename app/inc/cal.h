@@ -25,16 +25,37 @@
 extern "C" {
 #endif
 
+#include "bsp.h"
+#include "drv.h"
+#include "odo.h"
+#include "maf.h"
 #include "cfg.h"
-#include "calib.h"
 
-void Cal_PID(PIDCfg_t* PIDCfg, const PIDCalib_t* PIDCalib);
-void Cal_IMU(IMUCfg_t* IMUCfg, const IMUCalib_t* IMUCalib);
-void Cal_Mag(MagCfg_t* MagCfg, const MagCalib_t* MagCalib);
-void Cal_Vel(VelCfg_t* VelCfg, const VelCalib_t* VelCalib);
-void Cal_Mec(MecCfg_t* MecCfg, const MecCalib_t* MecCalib);
-void Cal_Pos(PosCfg_t* PosCfg, const PosCalib_t* PosCalib);
+#define CAL_GM_UP_DIR 1
+#define CAL_GM_CURRENT 800
+#define CAL_GM_START_UP_DELAY 500
+#define CAL_GM_BANG_VEL_DET 1e-4f
+#define CAL_GM_MAF_BUF_LEN 10
 
+typedef uint32_t CalFlag_t;
+
+#define CAL_FLAG_GPH       ((CalFlag_t)(1u << 0))
+#define CAL_FLAG_GPL       ((CalFlag_t)(1u << 1))
+
+#define CAL_FLAG_GIM (CAL_FLAG_GPL | CAL_FLAG_GPL)
+
+void Cal_SetGpl(void);
+void Cal_SetGph(void);
+
+void Cal_Init(void);
+void Cal_Proc(void);
+
+
+CalFlag_t Cal_GetFlag(void);
+CalFlag_t Cal_HasFlag(CalFlag_t mask);
+CalFlag_t Cal_HitFlag(CalFlag_t mask);
+CalFlag_t Cal_IsDone(void);
+	
 #ifdef __cplusplus
 }
 #endif

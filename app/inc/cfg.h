@@ -28,6 +28,7 @@ extern "C" {
 #include <stdint.h>
 #include <string.h>
 
+#include "calib.h"
 #include "fos.h"
 #include "fun.h"
 
@@ -47,65 +48,17 @@ extern "C" {
 typedef uint32_t CfgVer_t;
 typedef uint32_t CfgFlg_t;
 
-typedef struct
-{
-	float ax_offset;
-	float ay_offset;
-	float az_offset;
-	float gx_offset;
-	float gy_offset;
-	float gz_offset;
-}IMUCfg_t; // IMU offset Configuration
-
-typedef struct
-{
-	float mx_offset;
-	float my_offset;
-	float mz_offset;
-}MagCfg_t; // MAG offset Configuration
-
-typedef struct
-{
-	float kp;
-	float ki;
-	float kd;
-	float it;
-	float Emax;
-	float Pmax;
-	float Imax;
-	float Dmax;
-	float Omax;
-}PIDCfg_t; // PID Configuration
+typedef IMUParam_t IMUCfg_t;
+typedef MagParam_t MagCfg_t;
+typedef PIDParam_t PIDCfg_t;
+typedef VelParam_t VelCfg_t;
+typedef MecParam_t MecCfg_t;
+typedef PosParam_t PosCfg_t;
 
 typedef struct
 {
 	uint16_t cnt; // unit: ${SYS_CTL_TMS} ms
 }RmpCfg_t; // Ramp Configuration
-
-typedef struct
-{
-	float x; // Max chassis velocity in x-axis, unit: m/s
-	float y; // Max chassis velocity in y-axis, unit: m/s
-	float z; // Max chassis velocity in z-axis, unit: rad/s
-	float e; // Max elevator velocity, unit: m/s
-	float c; // Max claw velocity, unit: rad/s
-}VelCfg_t; // Velocity Configuration
-
-typedef struct
-{
-	float lx; // unit: m
-	float ly; // unit: m
-	float r1; // unit: m
-	float r2; // unit: m
-}MecCfg_t; // Mecanum Wheel Configuration
-
-typedef struct
-{
-	float el; // unit: m
-	float eh; // unit: m
-	float cl; // unit: rad
-	float ch; // unit: rad
-}PosCfg_t; // Position Configuration
 
 typedef struct
 {
@@ -151,9 +104,9 @@ typedef struct
 }
 
 #define VEL_TRA_DEF 3.0f // m/s
-#define VEL_ROT_DEF 6.0f // rad/s
-#define VEL_ELE_DEF 0.01f // m/s
-#define VEL_CLA_DEF 0.50f // rad/s
+#define VEL_ROT_DEF 9.3f // rad/s
+#define VEL_ELE_DEF 1.0f // m/s
+#define VEL_CLA_DEF 10.0f // rad/s
 #define VEL_CFG_DEF \
 { \
 	.x = VEL_TRA_DEF, \
@@ -181,7 +134,7 @@ typedef struct
 /*******************************************/
 #define MEC_CFG_DEF \
 { \
-	.lx = 0.165f, \
+	.lx = 0.160f, \
 	.ly = 0.160f, \
 	.r1 = 0.009f, \
 	.r2 = 0.070f, \
@@ -197,7 +150,7 @@ typedef struct
 
 #define CVL_CFG_DEF \
 { \
-	.kp = 200, \
+	.kp = 220, \
 	.ki = 0, \
 	.kd = 0, \
 	.it = 0, \
@@ -210,11 +163,11 @@ typedef struct
 
 #define GVL_CFG_DEF \
 { \
-	.kp = 20, \
+	.kp = 800, \
 	.ki = 0, \
 	.kd = 0, \
 	.it = 0, \
-	.Emax = 0.5f, \
+	.Emax = 10, \
 	.Pmax = 4900, \
 	.Imax = 3500, \
 	.Dmax = 1500, \
@@ -223,11 +176,11 @@ typedef struct
 
 #define GPL_CFG_DEF \
 { \
-	.kp = 20, \
+	.kp = 600, \
 	.ki = 0, \
 	.kd = 0, \
 	.it = 0, \
-	.Emax = 0.5, \
+	.Emax = 1000, \
 	.Pmax = 4900, \
 	.Imax = 3500, \
 	.Dmax = 1500, \

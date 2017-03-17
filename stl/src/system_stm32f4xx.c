@@ -392,7 +392,7 @@
 #endif /* STM32F446xx */ 
 
 #if defined(STM32F427_437xx) || defined(STM32F429_439xx) || defined(STM32F446xx) || defined(STM32F469_479xx)
-#define PLL_N      336 // Modified by Jack Mo. org=360
+#define PLL_N      360 // Modified by Jack Mo. org=360
 /* SYSCLK = PLL_VCO / PLL_P */
 #define PLL_P      2
 #endif /* STM32F427_437x || STM32F429_439xx || STM32F446xx || STM32F469_479xx */
@@ -438,7 +438,7 @@
 #endif /* STM32F40_41xxx */
 
 #if defined(STM32F427_437xx) || defined(STM32F429_439xx) || defined(STM32F446xx) || defined(STM32F469_479xx)
-  uint32_t SystemCoreClock = 168000000;
+  uint32_t SystemCoreClock = 180000000;
 #endif /* STM32F427_437x || STM32F429_439xx || STM32F446xx || STM32F469_479xx */
 
 #if defined(STM32F401xx)

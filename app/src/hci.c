@@ -20,9 +20,11 @@
 /*          Host Control Interface          */
 /********************************************/
 
+#define MAF_NUM 4
+
 static Hcf_t hcf;
-static Maf_t fx, fy, fz;
-static float buf[3][HCI_KEY_CTL_MAF_LEN];
+static Maf_t maf[MAF_NUM];
+static float buf[MAF_NUM][HCI_KEY_CTL_MAF_LEN];
 
 static void GetFunctionalStateRef(const Hcp_t* hcp)
 {
@@ -37,17 +39,19 @@ static void GetChassisVelocityRef(const Hcp_t* hcp)
 	float vy = hcp->key.press.S ? -sy : hcp->key.press.W ? sy : 0;
 	float mx = constrain(hcp->mouse.x, -MOUSE_SPEED_MAX, MOUSE_SPEED_MAX);
 	float vz = map(mx, -MOUSE_SPEED_MAX, MOUSE_SPEED_MAX, -sz, sz);
-	cmd.cv.x = Maf_Proc(&fx, vx);
-	cmd.cv.y = Maf_Proc(&fy, vy);
-	cmd.cv.z = Maf_Proc(&fz, vz);
+	cmd.cv.x = Maf_Proc(&maf[0], vx);
+	cmd.cv.y = Maf_Proc(&maf[1], vy);
+	cmd.cv.z = Maf_Proc(&maf[2], vz);
 }
 
 static void GetGrabberVelocityRef(const Hcp_t* hcp)
 {
-	cmd.gv.e = map(hcp->mouse.z, -MOUSE_SPEED_MAX, MOUSE_SPEED_MAX, -cfg.vel.e, cfg.vel.e); // m/s
+	float se = hcp->key.press.Shift ? cfg.vel.e : cfg.vel.e / 2.f;
+	float ve = hcp->key.press.Q ? -se : hcp->key.press.E ? se : 0; // m/s
+	cmd.gv.e = Maf_Proc(&maf[3], ve);
 	cmd.gp.e += cmd.gv.e * SYS_CTL_TSC; // Integral velocity to get position, unit: m
 	CONSTRAIN(cmd.gp.e, cfg.pos.el, cfg.pos.eh); // Constrain elevator position
-	cmd.gv.c = Hci_MouseBtn(MOUSE_BTN_IDX_L) == MOUSE_BTN_UP ? cfg.vel.c : Hci_MouseBtn(MOUSE_BTN_IDX_R) == MOUSE_BTN_UP ? -cfg.vel.c : 0; // rad/s
+	cmd.gv.c = Hci_MouseBtn(MOUSE_BTN_IDX_L) == MOUSE_BTN_DN ? cfg.vel.c : Hci_MouseBtn(MOUSE_BTN_IDX_R) == MOUSE_BTN_DN ? -cfg.vel.c : 0; // rad/s
 	cmd.gp.c += cmd.gv.c * SYS_CTL_TSC; // Integral velocity to get position, unit: rad
 	CONSTRAIN(cmd.gp.c, cfg.pos.cl, cfg.pos.ch); // Constrain grabber position
 }
@@ -64,10 +68,11 @@ uint8_t Hci_MouseBtn(uint8_t i)
 
 void Hci_Init(void)
 {
+	uint32_t i = 0;
+	for (; i < MAF_NUM; i++) {
+		Maf_Init(&maf[i], buf[i], HCI_KEY_CTL_MAF_LEN);
+	}
 	Hcf_Init(&hcf);
-	Maf_Init(&fx, buf[0], HCI_KEY_CTL_MAF_LEN);
-	Maf_Init(&fy, buf[1], HCI_KEY_CTL_MAF_LEN);
-	Maf_Init(&fz, buf[2], HCI_KEY_CTL_MAF_LEN);
 }
 
 void Hci_Proc(const Hcp_t* hcp)

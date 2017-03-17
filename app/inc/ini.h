@@ -18,10 +18,6 @@
 #ifndef __INI_H__
 #define __INI_H__
 
-#include "bsp.h"
-#include "drv.h"
-#include "odo.h"
-#include "cfg.h"
 #include "can.h"
 #include "fun.h"
 

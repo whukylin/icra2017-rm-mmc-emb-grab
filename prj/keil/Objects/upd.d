@@ -6,6 +6,11 @@
 .\objects\upd.o: ..\..\asp\inc\fun.h
 .\objects\upd.o: ..\..\app\inc\wdg.h
 .\objects\upd.o: ..\..\app\inc\ini.h
+.\objects\upd.o: ..\..\app\inc\can.h
+.\objects\upd.o: ..\..\asp\inc\ekf.h
+.\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\upd.o: ..\..\app\inc\cal.h
 .\objects\upd.o: ..\..\bsp\inc\bsp.h
 .\objects\upd.o: ..\..\bsp\inc\btm.h
 .\objects\upd.o: ..\..\bsp\inc\stm32util.h
@@ -31,8 +36,6 @@
 .\objects\upd.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\upd.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
 .\objects\upd.o: ..\..\asp\inc\fifo.h
-.\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\upd.o: ..\..\bsp\inc\btn.h
 .\objects\upd.o: ..\..\bsp\inc\can1.h
 .\objects\upd.o: ..\..\bsp\inc\can2.h
@@ -49,12 +52,12 @@
 .\objects\upd.o: ..\..\drv\inc\motor.h
 .\objects\upd.o: ..\..\drv\inc\zgyro.h
 .\objects\upd.o: ..\..\app\inc\odo.h
-.\objects\upd.o: ..\..\app\inc\can.h
-.\objects\upd.o: ..\..\asp\inc\ekf.h
 .\objects\upd.o: ..\..\app\inc\mec.h
 .\objects\upd.o: ..\..\app\inc\cfg.h
+.\objects\upd.o: ..\..\asp\inc\calib.h
 .\objects\upd.o: ..\..\app\inc\fos.h
 .\objects\upd.o: ..\..\asp\inc\mecanum.h
+.\objects\upd.o: ..\..\asp\inc\maf.h
 .\objects\upd.o: ..\..\app\inc\ctl.h
 .\objects\upd.o: ..\..\app\inc\cmd.h
 .\objects\upd.o: ..\..\asp\inc\pid.h

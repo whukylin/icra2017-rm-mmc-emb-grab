@@ -27,15 +27,22 @@ int main()
 	Sch_Arrange(task, 500);
 	while(1)
 	{
-		Com_Proc();
-		if (Clk_GetMsTick() % 10 == 0) {
+		//Upl_Proc();
+		//Com_Proc();
+		if (Clk_GetMsTick() % 4 == 0) {
+			//printf("%f\n", odo.gv.e);
+			//printf("kl=%d,kh=%d,calFlag=%x\n", KEY_L_IS_PRESSED(), KEY_H_IS_PRESSED(), Cal_GetFlag());
+			//printf("ev=%.3f,ep=%.3f\n", cmd.gv.e, cmd.gp.e);
+			//printf("sw0=%d,sw1=%d,sw2=%d,gv=%.3f,gp=%.3f\n", rcf.sw[0][0], rcf.sw[0][1], rcf.sw[0][2], cmd.gv.c, cmd.gp.c);
+			//printf("gpl\t%.3f\t%.3f\t%.3f\n", cmd.gp.e, odo.gp.e, GMEAnglePID.error[1]);
+			//printf("pid\t%.3f\t%.3f\t%.3f\n", cmd.mv.w1, odo.mv.w1, CM1SpeedPID.error[1]);
 			//Upl_Proc();
 			//Com_Proc();
 			//printf("%f\n", ctl.gc.c);
 			//Dbg_Cmd();
 			//Dbg_Ctl();
 			//printf("wdg: %x, ini: %x\n", Wdg_GetErr(), Ini_GetFlag());
-			Dbg_Cfg();
+			//Dbg_Cfg();
 			//Upl_Proc();
 			//printf("%d\n", sizeof(Cfg_t));
 			//Upl_Proc();

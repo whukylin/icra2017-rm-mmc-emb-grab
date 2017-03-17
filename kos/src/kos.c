@@ -34,6 +34,7 @@ void KOS_Boot(void)
 	// BSP configuration
 	Bsp_Config();
 	
+	// Action initialization
 	Act_Init();
 	
 	// Start timer

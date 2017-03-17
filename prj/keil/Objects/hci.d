@@ -11,6 +11,7 @@
 .\objects\hci.o: ..\..\asp\inc\fun.h
 .\objects\hci.o: ..\..\app\inc\mec.h
 .\objects\hci.o: ..\..\app\inc\cfg.h
+.\objects\hci.o: ..\..\asp\inc\calib.h
 .\objects\hci.o: ..\..\app\inc\fos.h
 .\objects\hci.o: ..\..\drv\inc\flash.h
 .\objects\hci.o: ..\..\bsp\inc\platform.h

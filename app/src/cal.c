@@ -15,66 +15,103 @@
  */
  
 #include "cal.h"
+#include <stdio.h>
 
 /*****************************************/
 /*              Calibration              */
 /*****************************************/
 
-void Cal_PID(PIDCfg_t* PIDCfg, const PIDCalib_t* PIDCalib)
+static CalFlag_t calFlag = 0;
+
+static Maf_t maf;
+static float buf[CAL_GM_MAF_BUF_LEN];
+
+static uint32_t gm_startup_delay_cnt = 0;
+
+void Cal_Init(void)
 {
-	PIDCfg->kp = PID_CALIB_VALUE_SCALE * PIDCalib->kp;
-	PIDCfg->ki = PID_CALIB_VALUE_SCALE * PIDCalib->ki;
-	PIDCfg->kd = PID_CALIB_VALUE_SCALE * PIDCalib->kd;
-	PIDCfg->Emax = PID_CALIB_VALUE_SCALE * PIDCalib->Emax;
-	PIDCfg->Pmax = PID_CALIB_VALUE_SCALE * PIDCalib->Pmax;
-	PIDCfg->Imax = PID_CALIB_VALUE_SCALE * PIDCalib->Imax;
-	PIDCfg->Dmax = PID_CALIB_VALUE_SCALE * PIDCalib->Dmax;
-	PIDCfg->Omax = PID_CALIB_VALUE_SCALE * PIDCalib->Omax;
+	calFlag = 0;
+	gm_startup_delay_cnt = 0;
+	Maf_Init(&maf, buf, CAL_GM_MAF_BUF_LEN);
 }
 
-void Cal_IMU(IMUCfg_t* IMUCfg, const IMUCalib_t* IMUCalib)
+void Cal_SetGph(void)
 {
-	IMUCfg->ax_offset = IMU_CALIB_VALUE_SCALE * IMUCalib->ax_offset;
-	IMUCfg->ay_offset = IMU_CALIB_VALUE_SCALE * IMUCalib->ay_offset;
-	IMUCfg->az_offset = IMU_CALIB_VALUE_SCALE * IMUCalib->az_offset;
-	IMUCfg->gx_offset = IMU_CALIB_VALUE_SCALE * IMUCalib->gx_offset;
-	IMUCfg->gy_offset = IMU_CALIB_VALUE_SCALE * IMUCalib->gy_offset;
-	IMUCfg->gz_offset = IMU_CALIB_VALUE_SCALE * IMUCalib->gz_offset;
+	GM_CMD(0, 0);
+	Maf_Reset(&maf); // Reset maf
+	gm_startup_delay_cnt = 0;
+	cfg.pos.eh = odo.gp.e;
+	Flag_Set(&calFlag, CAL_FLAG_GPH);
 }
 
-void Cal_Mag(MagCfg_t* MagCfg, const MagCalib_t* MagCalib)
+void Cal_SetGpl(void)
 {
-	MagCfg->mx_offset = MAG_CALIB_VALUE_SCALE * MagCalib->mx_offset;
-	MagCfg->my_offset = MAG_CALIB_VALUE_SCALE * MagCalib->my_offset;
-	MagCfg->mz_offset = MAG_CALIB_VALUE_SCALE * MagCalib->mz_offset;
+	GM_CMD(0, 0);
+	Maf_Reset(&maf); // Reset maf
+	gm_startup_delay_cnt = 0;
+	cfg.pos.el = odo.gp.e;
+	Flag_Set(&calFlag, CAL_FLAG_GPL);
 }
 
-void Cal_Vel(VelCfg_t* VelCfg, const VelCalib_t* VelCalib)
+void Cal_Proc(void)
 {
-	VelCfg->x = VEL_CALIB_VALUE_SCALE * VelCalib->x;
-	VelCfg->y = VEL_CALIB_VALUE_SCALE * VelCalib->y;
-	VelCfg->z = VEL_CALIB_VALUE_SCALE * VelCalib->z;
-	VelCfg->e = VEL_CALIB_VALUE_SCALE * VelCalib->e;
-	VelCfg->c = VEL_CALIB_VALUE_SCALE * VelCalib->c;
+	if (!Cal_HasFlag(CAL_FLAG_GPH)) {
+		if (!KEY_H_IS_PRESSED()) {
+			GM_CMD(0, CAL_GM_CURRENT * CAL_GM_UP_DIR);
+			Maf_Proc(&maf, ABSVAL(odo.gv.e));
+			if (gm_startup_delay_cnt < CAL_GM_START_UP_DELAY) {
+				gm_startup_delay_cnt++;
+			} 
+			// Bang detection
+			else if (ABSVAL(maf.avg) <= CAL_GM_BANG_VEL_DET) {
+				Cal_SetGph();
+				printf("up_bang detected, gph=%f\n", cfg.pos.eh);
+			}
+			printf("gv=%f,maf=%f\n", odo.gv.e, maf.avg);
+		} else {
+			Cal_SetGph();
+			printf("key_h detected, gph=%f\n", cfg.pos.eh);
+		}
+	}
+	else if (!Cal_HasFlag(CAL_FLAG_GPL)) {
+		if (!KEY_L_IS_PRESSED()) {
+			GM_CMD(0, CAL_GM_CURRENT * (-CAL_GM_UP_DIR));
+			Maf_Proc(&maf, ABSVAL(odo.gv.e));
+			if (gm_startup_delay_cnt < CAL_GM_START_UP_DELAY) {
+				gm_startup_delay_cnt++;
+			} 
+			// Bang detection
+			else if (ABSVAL(maf.avg) <= CAL_GM_BANG_VEL_DET) {
+				Cal_SetGpl();
+				printf("dn_bang detected, gpl=%f\n", cfg.pos.el);
+			}
+			printf("gv=%f,maf=%f\n", odo.gv.e, maf.avg);
+		} else {
+			Cal_SetGpl();
+			printf("key_l detected, gpl=%f\n", cfg.pos.el);
+		}
+	}
 }
 
-void Cal_Mec(MecCfg_t* MecCfg, const MecCalib_t* MecCalib)
+CalFlag_t Cal_GetFlag(void)
 {
-	MecCfg->lx = MEC_CALIB_VALUE_SCALE * MecCalib->lx;
-	MecCfg->ly = MEC_CALIB_VALUE_SCALE * MecCalib->ly;
-	MecCfg->r1 = MEC_CALIB_VALUE_SCALE * MecCalib->r1;
-	MecCfg->r2 = MEC_CALIB_VALUE_SCALE * MecCalib->r2;
+	return calFlag;
 }
 
-void Cal_Pos(PosCfg_t* PosCfg, const PosCalib_t* PosCalib)
+CalFlag_t Cal_HasFlag(CalFlag_t mask)
 {
-	PosCfg->ch = POS_CALIB_VALUE_SCALE * PosCalib->ch;
-	PosCfg->cl = POS_CALIB_VALUE_SCALE * PosCalib->cl;
-	PosCfg->eh = POS_CALIB_VALUE_SCALE * PosCalib->eh;
-	PosCfg->el = POS_CALIB_VALUE_SCALE * PosCalib->el;
+	return calFlag & mask;
 }
 
+CalFlag_t Cal_HitFlag(CalFlag_t mask)
+{
+	return (calFlag & mask) == mask;
+}
 
+CalFlag_t Cal_IsDone(void)
+{
+	return Cal_HitFlag(CAL_FLAG_GIM);
+}
 
 
 

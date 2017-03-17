@@ -62,6 +62,7 @@ extern Rmp_t CM2SpeedRmp;
 extern Rmp_t CM3SpeedRmp;
 extern Rmp_t CM4SpeedRmp;
 extern Rmp_t GMESpeedRmp;
+extern Rmp_t GMCSpeedRmp;
 
 #ifdef __cplusplus
 }

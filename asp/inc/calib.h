@@ -27,14 +27,12 @@ extern "C" {
 
 #include <stdint.h>
 
-#include "pid.h"
-
 #pragma pack(1)
 	
 #define PID_CALIB_TYPE_CHASSIS_VELOCITY 0x01
 #define PID_CALIB_TYPE_GRABBER_VELOCITY 0x02
 #define PID_CALIB_TYPE_GRABBER_POSITION 0x03
-#define PID_CALIB_VALUE_SCALE 0.1f
+#define PID_CALIB_VALUE_SCALE 10.0f
 typedef struct
 {
 	uint8_t type;
@@ -98,7 +96,7 @@ typedef struct
 	float mz_offset;
 }MagParam_t; // Mag offset Parameters
 
-#define VEL_CALIB_VALUE_SCALE 1e-3f
+#define VEL_CALIB_VALUE_SCALE 1e3f
 typedef struct
 {
 	uint16_t x; // mm/s
@@ -117,7 +115,7 @@ typedef struct
 	float c; // rad/s
 }VelParam_t; // Velocity Parameters
 
-#define MEC_CALIB_VALUE_SCALE 1e-3f
+#define MEC_CALIB_VALUE_SCALE 1e3f
 typedef struct
 {
 	uint16_t lx; // mm
@@ -134,7 +132,7 @@ typedef struct
 	float r2; // m
 }MecParam_t; // Mecanum Wheel Parameters
 
-#define POS_CALIB_VALUE_SCALE 1e-3f
+#define POS_CALIB_VALUE_SCALE 1e3f
 typedef struct
 {
 	int16_t el; // unit: mm
@@ -175,7 +173,18 @@ typedef struct
 
 #pragma pack()
 
-void Calib_PID(PID_t* pid, const PIDCalib_t* cal);
+void Calib_GetPID(PIDCalib_t* PIDCalib, const PIDParam_t* PIDParam);
+void Calib_SetPID(PIDParam_t* PIDParam, const PIDCalib_t* PIDCalib);
+void Calib_GetIMU(IMUCalib_t* IMUCalib, const IMUParam_t* IMUParam);
+void Calib_SetIMU(IMUParam_t* IMUParam, const IMUCalib_t* IMUCalib);
+void Calib_GetMag(MagCalib_t* MagCalib, const MagParam_t* MagParam);
+void Calib_SetMag(MagParam_t* MagParam, const MagCalib_t* MagCalib);
+void Calib_GetVel(VelCalib_t* VelCalib, const VelParam_t* VelParam);
+void Calib_SetVel(VelParam_t* VelParam, const VelCalib_t* VelCalib);
+void Calib_GetMec(MecCalib_t* MecCalib, const MecParam_t* MecParam);
+void Calib_SetMec(MecParam_t* MecParam, const MecCalib_t* MecCalib);
+void Calib_GetPos(PosCalib_t* PosCalib, const PosParam_t* PosParam);
+void Calib_SetPos(PosParam_t* PosParam, const PosCalib_t* PosCalib);
 
 #ifdef __cplusplus
 }

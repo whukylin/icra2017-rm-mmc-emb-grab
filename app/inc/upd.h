@@ -26,6 +26,7 @@ extern "C" {
 #endif
 
 #include "wsm.h"
+#include "cal.h"
 #include "ctl.h"
 #include "act.h"
 

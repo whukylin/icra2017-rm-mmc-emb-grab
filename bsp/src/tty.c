@@ -125,11 +125,6 @@ int Tty_Write(const uint8_t* buf, uint32_t len)
 	}
 }
 
-void Tty_Print(const char* str)
-{
-	Tty_Write((const uint8_t*)str, strlen(str));
-}
-
 void TTY_IRQ_HANDLER(void)
 {  
 	if (USART_GetITStatus(TTY_USART, USART_IT_TXE) != RESET)

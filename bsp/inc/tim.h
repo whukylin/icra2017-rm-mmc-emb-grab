@@ -25,7 +25,7 @@ extern "C" {
 
 // Tick timer
 #define TICK_TIM TIM2
-#define TICK_TIM_PS 83
+#define TICK_TIM_PS 89
 #define TICK_TIM_PD 1
 #define TICK_TIM_NVIC IRQ(TIM2)
 #define TICK_TIM_NVIC_PRE_PRIORITY 0
@@ -34,7 +34,7 @@ extern "C" {
 
 // Sync timer
 #define SYNC_TIM TIM6
-#define SYNC_TIM_PS 83
+#define SYNC_TIM_PS 89
 #define SYNC_TIM_PD 1000
 #define SYNC_TIM_NVIC IRQ(TIM6_DAC)
 #define SYNC_TIM_NVIC_PRE_PRIORITY 1

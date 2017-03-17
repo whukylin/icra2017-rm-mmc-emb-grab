@@ -18,31 +18,35 @@
 
 void Upd_Init(void)
 {
+	Cal_Init();
 	Mec_Init();
 	Ctl_Init();
 }
 
 void Upd_Proc(void)
 {
-	switch (Wsm_GetWorkingState()) {
+	switch (Wsm_GetWs()) {
 		case WORKING_STATE_STOP:
 			Act_Init(); // Stop any kind of movement
 			break;
 		case WORKING_STATE_PREPARE:
-			//Ini_Proc(); // Sensor data prefilter and auto-calibration
-			Act_Init();
+			Act_Proc(); // Sensor data prefilter, stop any kind of movement
+			break;
+		case WORKING_STATE_CALIB:
+			Odo_Proc(); // Odometer process
+			Cal_Proc(); // Auto-calibration
 			break;
 		case WORKING_STATE_NORMAL:
 			// Re-initialize system updater when recovering from config state
-			if (Wsm_GetLastWorkingState() == WORKING_STATE_CONFIG) {
+			if (Wsm_GetLastWs() == WORKING_STATE_CONFIG) {
 				Upd_Init();
 			}
-			Ctl_Proc();
-			Act_Proc();
+			Ctl_Proc(); // Logic controller process
+			Act_Proc(); // Action process
 			break;
 		case WORKING_STATE_CONFIG:
-			Act_Init();
-			Cfg_Proc();
+			Act_Init(); // Stop movement before configuration
+			Cfg_Proc(); // Configuration process
 			break;
 		default:
 			break;

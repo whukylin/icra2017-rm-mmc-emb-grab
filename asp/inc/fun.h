@@ -36,6 +36,7 @@ extern "C" {
 #define LIMIT_MAX(V,M) do { if (V > M) V = M; } while (0)
 #define LIMIT_MIN(V,M) do { if (V < M) V = M; } while (0)
 #define CONSTRAIN(X,MIN,MAX) do { X = X > MAX ? MAX : X < MIN ? MIN : X; } while(0)
+#define ABSVAL(V) ( (V) < 0 ? (-V) : (V) )
 
 typedef uint32_t Flag_t;
 

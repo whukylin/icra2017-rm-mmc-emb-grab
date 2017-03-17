@@ -35,6 +35,7 @@ Rmp_t CM2SpeedRmp;
 Rmp_t CM3SpeedRmp;
 Rmp_t CM4SpeedRmp;
 Rmp_t GMESpeedRmp;
+Rmp_t GMCSpeedRmp;
 
 /**********************************************/
 /*    Peripherals Functional State Control    */
@@ -59,7 +60,9 @@ static void GrabberPositionControl(void)
 {
 	ctl.gv.e = PID_Calc(&GMEAnglePID, cmd.gp.e, odo.gp.e); // Elevator motor angle PID
 	ctl.gc.e = PID_Calc(&GMESpeedPID, ctl.gv.e, odo.gv.e) * Rmp_Calc(&GMESpeedRmp); // Elevator motor speed PID
-	ctl.gc.c = map(cmd.gp.c, cfg.pos.cl, cfg.pos.ch, 1000, 2000); // Direct PWM control (1000~2000)/2500, map rad to pwm duty cycle
+	//ctl.gv.c = 10 * (cmd.gp.c - odo.gp.c);
+	//ctl.gc.c = odo.gp.c + ctl.gv.c;
+	ctl.gc.c = map(cmd.gp.c, cfg.pos.cl, cfg.pos.ch, CLAW_PWM_L, CLAW_PWM_H); // Direct PWM control (1000~2000)/2500, map rad to pwm duty cycle
 }
 
 static void Cvl_Init(PID_t* pid)
@@ -133,6 +136,7 @@ void Ctl_Init(void)
 	Rmp_Init(&CM3SpeedRmp);
 	Rmp_Init(&CM4SpeedRmp);
 	Rmp_Init(&GMESpeedRmp);
+	Rmp_Init(&GMCSpeedRmp);
 	
 	FS_Clr(&ctl.fs, FS_ALL);
 	MS_Set(&ctl.mc, 0, 0, 0, 0);

@@ -23,28 +23,6 @@ void Ini_Init(void)
 	iniFlag = 0;
 }
 
-void Ini_Gimb(void)
-{
-	if (!Ini_HasFlag(INI_FLAG_GEPL)) {
-		if (!KEY_L_IS_PRESSED()) {
-			GM_CMD(0, 500);
-		} else {
-			cfg.pos.el = odo.gp.e;
-			Flag_Set(&iniFlag, INI_FLAG_GEPL);
-			GM_CMD(0, 0);
-		}
-	}
-	if (!Ini_HasFlag(INI_FLAG_GEPH)) {
-		if (!KEY_H_IS_PRESSED()) {
-			GM_CMD(0, -500);
-		} else {
-			cfg.pos.eh = odo.gp.e;
-			Flag_Set(&iniFlag, INI_FLAG_GEPH);
-			GM_CMD(0, 0);
-		}
-	}
-}
-
 #define INI_DET(FLAG,COND) Flag_Det(&iniFlag, FLAG,  COND);
 void Ini_Proc(void)
 {
