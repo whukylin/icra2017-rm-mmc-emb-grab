@@ -29,7 +29,8 @@ void Upd_Proc(void)
 			Act_Init(); // Stop any kind of movement
 			break;
 		case WORKING_STATE_PREPARE:
-			Act_Init(); // Sensor data prefilter and auto-calibration
+			//Ini_Proc(); // Sensor data prefilter and auto-calibration
+			Act_Init();
 			break;
 		case WORKING_STATE_NORMAL:
 			// Re-initialize system updater when recovering from config state

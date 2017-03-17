@@ -48,11 +48,16 @@ extern "C" {
 
 void Dbi_Config(void);
 
-uint32_t Dbi_RxCnt(void);
-uint8_t Dbi_ReadByte(void);
-void Dbi_WriteByte(uint8_t b);
-void Dbi_Read(uint8_t* buf, uint32_t len);
-void Dbi_Write(const uint8_t* buf, uint32_t len);
+uint32_t Dbi_GetRxFifoSize(void);
+uint32_t Dbi_GetRxFifoUsed(void);
+uint32_t Dbi_GetRxFifoFree(void);
+uint32_t Dbi_GetTxFifoSize(void);
+uint32_t Dbi_GetTxFifoUsed(void);
+uint32_t Dbi_GetTxFifoFree(void);
+int Dbi_ReadByte(void);
+int Dbi_WriteByte(uint8_t b);
+int Dbi_Read(uint8_t* buf, uint32_t len);
+int Dbi_Write(const uint8_t* buf, uint32_t len);
 void Dbi_Print(const char* str);
 
 void DbiRxCallback(uint8_t data);

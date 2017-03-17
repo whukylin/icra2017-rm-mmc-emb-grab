@@ -16,15 +16,15 @@
 
 #include "ios.h"
 
-uint8_t (*_in)(void); // Input stream pipe
-void (*_out)(uint8_t); // Output stream pipe
+int (*_in)(void); // Input stream pipe
+int (*_out)(uint8_t); // Output stream pipe
 
 /**
  * @brief Set input stream pipe.
  * @param in Input stream pipe.
  * @return None.
  */
-void Ios_SetIn(uint8_t (*in)(void))
+void Ios_SetIn(int (*in)(void))
 {
 	if (in) _in = in;
 }
@@ -34,7 +34,7 @@ void Ios_SetIn(uint8_t (*in)(void))
  * @param in Output stream pipe.
  * @return None.
  */
-void Ios_SetOut(void (*out)(uint8_t))
+void Ios_SetOut(int (*out)(uint8_t))
 {
 	if (out) _out = out;
 }
@@ -44,8 +44,11 @@ void Ios_SetOut(void (*out)(uint8_t))
  */
 PUTCHAR_PROTOTYPE
 {
-	if (_out) _out(c);
-	return c;
+	if (_out) { 
+		return _out(c);
+	} else {
+		return -1;
+	}
 }
 
 /**
@@ -53,8 +56,11 @@ PUTCHAR_PROTOTYPE
  */
 GETCHAR_PROTOTYPE
 {
-	if (_in) return _in();
-	return 0;
+	if (_in) {
+		return _in();
+	} else {
+		return -1;
+	}
 }
 
 /**
@@ -62,7 +68,7 @@ GETCHAR_PROTOTYPE
  * @param None.
  * @return A single byte.
  */
-uint8_t Ios_ReadByte(void)
+int Ios_ReadByte(void)
 {
 	if (!Wdg_HasErr(WDG_ERR_TTY)) {
 		return Tty_ReadByte();
@@ -73,7 +79,7 @@ uint8_t Ios_ReadByte(void)
 	if (!Wdg_HasErr(WDG_ERR_BTM)) {
 		return Btm_ReadByte();
 	}
-	return 0;
+	return -1;
 }
 
 /**
@@ -81,11 +87,12 @@ uint8_t Ios_ReadByte(void)
  * @param data Byte data.
  * @return None
  */
-void Ios_WriteByte(uint8_t data)
+int Ios_WriteByte(uint8_t data)
 {
-	Tty_WriteByte(data);
-	Dbi_WriteByte(data);
-	Btm_WriteByte(data);
+	int a = Tty_WriteByte(data);
+	int b = Dbi_WriteByte(data);
+	int c = Btm_WriteByte(data);
+	return a > 0 ? a : b > 0 ? b : c > 0 ? c : -1;
 	//while (USART_GetFlagStatus(USART3, USART_FLAG_TC) == RESET);
 	//USART3->DR = b;
 }
@@ -96,23 +103,16 @@ void Ios_WriteByte(uint8_t data)
  * @param len Stream length
  * @return Stream length
  */
-uint32_t Ios_Read(uint8_t* buf, uint32_t len)
+int Ios_Read(uint8_t* buf, uint32_t len)
 {
-	uint32_t tmp_len = 0;
 	if (!Wdg_HasErr(WDG_ERR_TTY)) {
-		tmp_len = Tty_RxCnt();
-		LIMIT_MAX(len, tmp_len);
-		Tty_Read(buf, len);
+		return Tty_Read(buf, len);
 	} else if (!Wdg_HasErr(WDG_ERR_DBI)) {
-		tmp_len = Dbi_RxCnt();
-		LIMIT_MAX(len, tmp_len);
-		Dbi_Read(buf, len);
+		return Dbi_Read(buf, len);
 	} else if (!Wdg_HasErr(WDG_ERR_BTM)) {
-		tmp_len = Btm_RxCnt();
-		LIMIT_MAX(len, tmp_len);
-		Btm_Read(buf, len);
+		return Btm_Read(buf, len);
 	}
-	return len;
+	return -1;
 }
 
 /**
@@ -121,13 +121,12 @@ uint32_t Ios_Read(uint8_t* buf, uint32_t len)
  * @param len Stream length
  * @return Stream length
  */
-uint32_t Ios_Write(const uint8_t* buf, uint32_t len)
+int Ios_Write(const uint8_t* buf, uint32_t len)
 {
-	uint32_t i = 0;
-	for (; i < len; i++) {
-		Ios_WriteByte(buf[i]);
-	}
-	return i;
+	int a = Tty_Write(buf, len);
+	int b = Dbi_Write(buf, len);
+	int c = Btm_Write(buf, len);
+	return a > 0 ? a : b > 0 ? b : c > 0 ? c : -1;
 }
 
 /**

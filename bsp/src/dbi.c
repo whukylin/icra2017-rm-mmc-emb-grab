@@ -42,42 +42,86 @@ void Dbi_Config(void)
     USART_Cmd(DBI_USART, ENABLE);
 }
 
-uint32_t Dbi_RxCnt(void)
+uint32_t Dbi_GetRxFifoSize(void)
+{
+	return FIFO_GetSize(&rx_fifo);
+}
+
+uint32_t Dbi_GetRxFifoUsed(void)
 {
 	return FIFO_GetUsed(&rx_fifo);
 }
 
-uint8_t Dbi_ReadByte(void)
+uint32_t Dbi_GetRxFifoFree(void)
 {
-	uint8_t data = 0;
-	while (FIFO_IsEmpty(&rx_fifo));
-	DBI_DISABLE_IT_RXNE();
-	FIFO_Pop(&rx_fifo, &data, 1);
-	DBI_ENABLE_IT_RXNE();
-	return data;
+	return FIFO_GetFree(&rx_fifo);
 }
 
-void Dbi_WriteByte(uint8_t b)
+uint32_t Dbi_GetTxFifoSize(void)
 {
-	while (FIFO_IsFull(&tx_fifo));
-	DBI_DISABLE_IT_TXE();
-	FIFO_Push(&tx_fifo, &b, 1);
-	DBI_ENABLE_IT_TXE();
+	return FIFO_GetSize(&tx_fifo);
 }
 
-void Dbi_Read(uint8_t* buf, uint32_t len)
+uint32_t Dbi_GetTxFifoUsed(void)
 {
-	uint8_t i = 0;
-	for (; i < len; i++) {
-		buf[i] = Dbi_ReadByte();
+	return FIFO_GetUsed(&tx_fifo);
+}
+
+uint32_t Dbi_GetTxFifoFree(void)
+{
+	return FIFO_GetFree(&tx_fifo);
+}
+
+int Dbi_ReadByte(void)
+{
+	if (FIFO_IsEmpty(&rx_fifo)) {
+		return -1;
+	} else {
+		uint8_t data = 0;
+		DBI_DISABLE_IT_RXNE();
+		FIFO_Pop(&rx_fifo, &data, 1);
+		DBI_ENABLE_IT_RXNE();
+		return data;
 	}
 }
 
-void Dbi_Write(const uint8_t* buf, uint32_t len)
+int Dbi_WriteByte(uint8_t b)
 {
-	uint8_t i = 0;
-	for (; i < len; i++) {
-		Dbi_WriteByte(buf[i]);
+	if (FIFO_IsFull(&tx_fifo)) {
+		return -1;
+	} else {
+		DBI_DISABLE_IT_TXE();
+		FIFO_Push(&tx_fifo, &b, 1);
+		DBI_ENABLE_IT_TXE();
+		return b;
+	}
+}
+
+int Dbi_Read(uint8_t* buf, uint32_t len)
+{
+	uint32_t available = FIFO_GetUsed(&rx_fifo);
+	if (!available) {
+		return -1;
+	} else {
+		if (len > available) len = available;
+		DBI_DISABLE_IT_RXNE();
+		FIFO_Pop(&rx_fifo, buf, len);
+		DBI_ENABLE_IT_RXNE();
+		return len;
+	}
+}
+
+int Dbi_Write(const uint8_t* buf, uint32_t len)
+{
+	uint32_t available = FIFO_GetFree(&tx_fifo);
+	if (!available) {
+		return -1;
+	} else {
+		if (len > available) len = available;
+		DBI_DISABLE_IT_TXE();
+		FIFO_Push(&tx_fifo, buf, len);
+		DBI_ENABLE_IT_TXE();
+		return len;
 	}
 }
 
@@ -90,8 +134,7 @@ void DBI_IRQ_HANDLER(void)
 {  
 	if (USART_GetITStatus(DBI_USART, USART_IT_TXE) != RESET)
 	{   
-		if (!FIFO_IsEmpty(&tx_fifo))
-		{
+		if (!FIFO_IsEmpty(&tx_fifo)) {
 			uint8_t tx_data = 0;
 			FIFO_Pop(&tx_fifo, &tx_data, 1);
 			USART_SendData(DBI_USART, tx_data);

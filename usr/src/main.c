@@ -28,13 +28,14 @@ int main()
 	while(1)
 	{
 		Com_Proc();
-		if (Clk_GetMsTick() % 4 == 0) {
+		if (Clk_GetMsTick() % 10 == 0) {
+			//Upl_Proc();
 			//Com_Proc();
 			//printf("%f\n", ctl.gc.c);
 			//Dbg_Cmd();
 			//Dbg_Ctl();
 			//printf("wdg: %x, ini: %x\n", Wdg_GetErr(), Ini_GetFlag());
-			//Dbg_Cfg();
+			Dbg_Cfg();
 			//Upl_Proc();
 			//printf("%d\n", sizeof(Cfg_t));
 			//Upl_Proc();

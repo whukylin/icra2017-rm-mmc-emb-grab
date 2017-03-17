@@ -5,10 +5,9 @@
 .\objects\wsm.o: ..\..\asp\inc\fun.h
 .\objects\wsm.o: ..\..\app\inc\wdg.h
 .\objects\wsm.o: ..\..\app\inc\ini.h
-.\objects\wsm.o: ..\..\app\inc\cfg.h
-.\objects\wsm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\wsm.o: ..\..\app\inc\fos.h
-.\objects\wsm.o: ..\..\drv\inc\flash.h
+.\objects\wsm.o: ..\..\bsp\inc\bsp.h
+.\objects\wsm.o: ..\..\bsp\inc\btm.h
+.\objects\wsm.o: ..\..\bsp\inc\stm32util.h
 .\objects\wsm.o: ..\..\bsp\inc\platform.h
 .\objects\wsm.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\wsm.o: ..\..\stl\CMSIS\core\core_cm4.h
@@ -30,6 +29,28 @@
 .\objects\wsm.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\objects\wsm.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\wsm.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
+.\objects\wsm.o: ..\..\asp\inc\fifo.h
+.\objects\wsm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\wsm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\wsm.o: ..\..\bsp\inc\btn.h
+.\objects\wsm.o: ..\..\bsp\inc\can1.h
+.\objects\wsm.o: ..\..\bsp\inc\can2.h
+.\objects\wsm.o: ..\..\bsp\inc\dbi.h
+.\objects\wsm.o: ..\..\bsp\inc\key.h
+.\objects\wsm.o: ..\..\bsp\inc\led.h
+.\objects\wsm.o: ..\..\bsp\inc\pwm.h
+.\objects\wsm.o: ..\..\bsp\inc\rcv.h
+.\objects\wsm.o: ..\..\bsp\inc\tim.h
+.\objects\wsm.o: ..\..\bsp\inc\tty.h
+.\objects\wsm.o: ..\..\drv\inc\drv.h
+.\objects\wsm.o: ..\..\drv\inc\delay.h
+.\objects\wsm.o: ..\..\drv\inc\flash.h
+.\objects\wsm.o: ..\..\drv\inc\motor.h
+.\objects\wsm.o: ..\..\drv\inc\zgyro.h
+.\objects\wsm.o: ..\..\app\inc\odo.h
 .\objects\wsm.o: ..\..\app\inc\can.h
 .\objects\wsm.o: ..\..\asp\inc\ekf.h
-.\objects\wsm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\wsm.o: ..\..\app\inc\mec.h
+.\objects\wsm.o: ..\..\app\inc\cfg.h
+.\objects\wsm.o: ..\..\app\inc\fos.h
+.\objects\wsm.o: ..\..\asp\inc\mecanum.h

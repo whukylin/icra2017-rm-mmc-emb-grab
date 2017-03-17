@@ -66,6 +66,10 @@
 .\objects\com.o: ..\..\asp\inc\hcf.h
 .\objects\com.o: ..\..\asp\inc\maf.h
 .\objects\com.o: ..\..\app\inc\ini.h
+.\objects\com.o: ..\..\drv\inc\drv.h
+.\objects\com.o: ..\..\drv\inc\delay.h
+.\objects\com.o: ..\..\drv\inc\motor.h
+.\objects\com.o: ..\..\drv\inc\zgyro.h
 .\objects\com.o: ..\..\app\inc\ios.h
 .\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\com.o: ..\..\app\inc\dnl.h

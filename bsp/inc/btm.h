@@ -48,11 +48,16 @@ extern "C" {
 
 void Btm_Config(void);
 
-uint32_t Btm_RxCnt(void);
-uint8_t Btm_ReadByte(void);
-void Btm_WriteByte(uint8_t b);
-void Btm_Read(uint8_t* buf, uint32_t len);
-void Btm_Write(const uint8_t* buf, uint32_t len);
+uint32_t Btm_GetRxFifoSize(void);
+uint32_t Btm_GetRxFifoUsed(void);
+uint32_t Btm_GetRxFifoFree(void);
+uint32_t Btm_GetTxFifoSize(void);
+uint32_t Btm_GetTxFifoUsed(void);
+uint32_t Btm_GetTxFifoFree(void);
+int Btm_ReadByte(void);
+int Btm_WriteByte(uint8_t b);
+int Btm_Read(uint8_t* buf, uint32_t len);
+int Btm_Write(const uint8_t* buf, uint32_t len);
 void Btm_Print(const char* str);
 
 void BtmRxCallback(uint8_t data);

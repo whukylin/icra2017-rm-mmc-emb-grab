@@ -1,13 +1,12 @@
 .\objects\ini.o: ..\..\app\src\ini.c
 .\objects\ini.o: ..\..\app\inc\ini.h
-.\objects\ini.o: ..\..\app\inc\cfg.h
-.\objects\ini.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\ini.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\ini.o: ..\..\app\inc\fos.h
-.\objects\ini.o: ..\..\drv\inc\flash.h
+.\objects\ini.o: ..\..\bsp\inc\bsp.h
+.\objects\ini.o: ..\..\bsp\inc\btm.h
+.\objects\ini.o: ..\..\bsp\inc\stm32util.h
 .\objects\ini.o: ..\..\bsp\inc\platform.h
 .\objects\ini.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\ini.o: ..\..\stl\CMSIS\core\core_cm4.h
+.\objects\ini.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\ini.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\ini.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\ini.o: ..\..\stl\CMSIS\core\core_cmSimd.h
@@ -26,8 +25,31 @@
 .\objects\ini.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\objects\ini.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\ini.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
+.\objects\ini.o: ..\..\asp\inc\fifo.h
+.\objects\ini.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\ini.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\ini.o: ..\..\bsp\inc\btn.h
+.\objects\ini.o: ..\..\bsp\inc\can1.h
+.\objects\ini.o: ..\..\bsp\inc\can2.h
+.\objects\ini.o: ..\..\bsp\inc\dbi.h
+.\objects\ini.o: ..\..\bsp\inc\key.h
+.\objects\ini.o: ..\..\bsp\inc\led.h
+.\objects\ini.o: ..\..\bsp\inc\pwm.h
+.\objects\ini.o: ..\..\bsp\inc\rcv.h
+.\objects\ini.o: ..\..\bsp\inc\tim.h
+.\objects\ini.o: ..\..\bsp\inc\tty.h
+.\objects\ini.o: ..\..\drv\inc\drv.h
+.\objects\ini.o: ..\..\drv\inc\delay.h
+.\objects\ini.o: ..\..\drv\inc\flash.h
+.\objects\ini.o: ..\..\drv\inc\motor.h
+.\objects\ini.o: ..\..\drv\inc\zgyro.h
+.\objects\ini.o: ..\..\app\inc\odo.h
+.\objects\ini.o: ..\..\app\inc\sys.h
 .\objects\ini.o: ..\..\asp\inc\fun.h
 .\objects\ini.o: ..\..\app\inc\can.h
 .\objects\ini.o: ..\..\asp\inc\ekf.h
-.\objects\ini.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\ini.o: ..\..\app\inc\wdg.h
+.\objects\ini.o: ..\..\app\inc\mec.h
+.\objects\ini.o: ..\..\app\inc\cfg.h
+.\objects\ini.o: ..\..\app\inc\fos.h
+.\objects\ini.o: ..\..\asp\inc\mecanum.h

@@ -143,3 +143,9 @@ void Can_Proc(uint32_t id, uint8_t* data)
 	
 }
 
+uint8_t Can_Ready(void)
+{
+	return ZGyro_Ready(&zgyro) && Motor_Ready(&motor[0]) && Motor_Ready(&motor[1])
+		&& Motor_Ready(&motor[2]) && Motor_Ready(&motor[3]);
+}
+

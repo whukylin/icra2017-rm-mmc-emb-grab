@@ -18,6 +18,9 @@
 #ifndef __INI_H__
 #define __INI_H__
 
+#include "bsp.h"
+#include "drv.h"
+#include "odo.h"
 #include "cfg.h"
 #include "can.h"
 #include "fun.h"
@@ -31,6 +34,8 @@ typedef uint32_t IniFlag_t;
 #define INI_FLAG_MOTOR4     (1u<<4)
 #define INI_FLAG_MOTOR5     (1u<<5)
 #define INI_FLAG_MOTOR6     (1u<<6)
+#define INI_FLAG_GEPL       (1u<<7)
+#define INI_FLAG_GEPH       (1u<<7)
 
 #define INI_FLAG_ALL (INI_FLAG_ZGYRO | INI_FLAG_MOTOR1 | INI_FLAG_MOTOR2 | INI_FLAG_MOTOR3 | \
                       INI_FLAG_MOTOR4 | INI_FLAG_MOTOR5 | INI_FLAG_MOTOR6)

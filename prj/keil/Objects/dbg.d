@@ -69,6 +69,10 @@
 .\objects\dbg.o: ..\..\asp\inc\hcf.h
 .\objects\dbg.o: ..\..\asp\inc\maf.h
 .\objects\dbg.o: ..\..\app\inc\ini.h
+.\objects\dbg.o: ..\..\drv\inc\drv.h
+.\objects\dbg.o: ..\..\drv\inc\delay.h
+.\objects\dbg.o: ..\..\drv\inc\motor.h
+.\objects\dbg.o: ..\..\drv\inc\zgyro.h
 .\objects\dbg.o: ..\..\app\inc\dnl.h
 .\objects\dbg.o: ..\..\app\inc\cal.h
 .\objects\dbg.o: ..\..\app\inc\cci.h

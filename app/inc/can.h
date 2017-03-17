@@ -104,6 +104,7 @@ void Motor_Reset(Motor_t* motor);
 
 void Can_Init(void);
 void Can_Proc(uint32_t id, uint8_t* data);
+uint8_t Can_Ready(void);
 
 extern ZGyro_t zgyro;
 extern Motor_t motor[MOTOR_NUM];

@@ -37,14 +37,14 @@ extern "C" {
 #define GETCHAR_PROTOTYPE int fgetc(FILE* f)
 #endif
 
-void Ios_SetIn(uint8_t (*in)(void));
-void Ios_SetOut(void (*out)(uint8_t));
+void Ios_SetIn(int (*in)(void));
+void Ios_SetOut(int (*out)(uint8_t));
 
-uint8_t Ios_ReadByte(void);
-void Ios_WriteByte(uint8_t data);
+int Ios_ReadByte(void);
+int Ios_WriteByte(uint8_t data);
 
-uint32_t Ios_Read(uint8_t* buf, uint32_t len);
-uint32_t Ios_Write(const uint8_t* buf, uint32_t len);
+int Ios_Read(uint8_t* buf, uint32_t len);
+int Ios_Write(const uint8_t* buf, uint32_t len);
 
 void Ios_Init(void);
 

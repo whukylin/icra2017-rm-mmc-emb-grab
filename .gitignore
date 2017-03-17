@@ -1,7 +1,7 @@
 # Prerequisites
 *.d
 *.crf
-###./prj/keil/Objects/*
+./prj/keil/Objects/*
 
 # Compiled Object files
 *.slo

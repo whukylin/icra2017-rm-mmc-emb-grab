@@ -28,8 +28,9 @@ void App_Init(void)
 	Com_Init();
 	Dci_Init();
 	
-	Wdg_Init();
 	Ini_Init();
+	
+	Wdg_Init();
 	Wsm_Init();
 	Upd_Init();
 }

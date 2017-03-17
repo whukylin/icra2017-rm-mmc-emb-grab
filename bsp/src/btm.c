@@ -42,42 +42,86 @@ void Btm_Config(void)
     USART_Cmd(BTM_USART, ENABLE);
 }
 
-uint32_t Btm_RxCnt(void)
+uint32_t Btm_GetRxFifoSize(void)
+{
+	return FIFO_GetSize(&rx_fifo);
+}
+
+uint32_t Btm_GetRxFifoUsed(void)
 {
 	return FIFO_GetUsed(&rx_fifo);
 }
 
-uint8_t Btm_ReadByte(void)
+uint32_t Btm_GetRxFifoFree(void)
 {
-	uint8_t data = 0;
-	while (FIFO_IsEmpty(&rx_fifo));
-	BTM_DISABLE_IT_RXNE();
-	FIFO_Pop(&rx_fifo, &data, 1);
-	BTM_ENABLE_IT_RXNE();
-	return data;
+	return FIFO_GetFree(&rx_fifo);
 }
 
-void Btm_WriteByte(uint8_t b)
+uint32_t Btm_GetTxFifoSize(void)
 {
-	while (FIFO_IsFull(&tx_fifo));
-	BTM_DISABLE_IT_TXE();
-	FIFO_Push(&tx_fifo, &b, 1);
-	BTM_ENABLE_IT_TXE();
+	return FIFO_GetSize(&tx_fifo);
 }
 
-void Btm_Read(uint8_t* buf, uint32_t len)
+uint32_t Btm_GetTxFifoUsed(void)
 {
-	uint8_t i = 0;
-	for (; i < len; i++) {
-		buf[i] = Btm_ReadByte();
+	return FIFO_GetUsed(&tx_fifo);
+}
+
+uint32_t Btm_GetTxFifoFree(void)
+{
+	return FIFO_GetFree(&tx_fifo);
+}
+
+int Btm_ReadByte(void)
+{
+	if (FIFO_IsEmpty(&rx_fifo)) {
+		return -1;
+	} else {
+		uint8_t data = 0;
+		BTM_DISABLE_IT_RXNE();
+		FIFO_Pop(&rx_fifo, &data, 1);
+		BTM_ENABLE_IT_RXNE();
+		return data;
 	}
 }
 
-void Btm_Write(const uint8_t* buf, uint32_t len)
+int Btm_WriteByte(uint8_t b)
 {
-	uint8_t i = 0;
-	for (; i < len; i++) {
-		Btm_WriteByte(buf[i]);
+	if (FIFO_IsFull(&tx_fifo)) {
+		return -1;
+	} else {
+		BTM_DISABLE_IT_TXE();
+		FIFO_Push(&tx_fifo, &b, 1);
+		BTM_ENABLE_IT_TXE();
+		return b;
+	}
+}
+
+int Btm_Read(uint8_t* buf, uint32_t len)
+{
+	uint32_t available = FIFO_GetUsed(&rx_fifo);
+	if (!available) {
+		return -1;
+	} else {
+		if (len > available) len = available;
+		BTM_DISABLE_IT_RXNE();
+		FIFO_Pop(&rx_fifo, buf, len);
+		BTM_ENABLE_IT_RXNE();
+		return len;
+	}
+}
+
+int Btm_Write(const uint8_t* buf, uint32_t len)
+{
+	uint32_t available = FIFO_GetFree(&tx_fifo);
+	if (!available) {
+		return -1;
+	} else {
+		if (len > available) len = available;
+		BTM_DISABLE_IT_TXE();
+		FIFO_Push(&tx_fifo, buf, len);
+		BTM_ENABLE_IT_TXE();
+		return len;
 	}
 }
 
@@ -90,8 +134,7 @@ void BTM_IRQ_HANDLER(void)
 {
     if (USART_GetITStatus(BTM_USART, USART_IT_TXE) != RESET)
     {
-			if (!FIFO_IsEmpty(&tx_fifo))
-			{
+			if (!FIFO_IsEmpty(&tx_fifo)) {
 				uint8_t tx_data = 0;
 				FIFO_Pop(&tx_fifo, &tx_data, 1);
 				USART_SendData(BTM_USART, tx_data);

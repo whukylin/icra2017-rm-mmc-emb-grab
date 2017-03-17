@@ -69,6 +69,10 @@
 .\objects\srv.o: ..\..\asp\inc\hcf.h
 .\objects\srv.o: ..\..\asp\inc\maf.h
 .\objects\srv.o: ..\..\app\inc\ini.h
+.\objects\srv.o: ..\..\drv\inc\drv.h
+.\objects\srv.o: ..\..\drv\inc\delay.h
+.\objects\srv.o: ..\..\drv\inc\motor.h
+.\objects\srv.o: ..\..\drv\inc\zgyro.h
 .\objects\srv.o: ..\..\app\inc\ios.h
 .\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\srv.o: ..\..\app\inc\dnl.h

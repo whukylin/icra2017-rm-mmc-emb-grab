@@ -42,42 +42,86 @@ void Tty_Config(void)
     USART_Cmd(TTY_USART, ENABLE);
 }
 
-uint32_t Tty_RxCnt(void)
+uint32_t Tty_GetRxFifoSize(void)
+{
+	return FIFO_GetSize(&rx_fifo);
+}
+
+uint32_t Tty_GetRxFifoUsed(void)
 {
 	return FIFO_GetUsed(&rx_fifo);
 }
 
-uint8_t Tty_ReadByte(void)
+uint32_t Tty_GetRxFifoFree(void)
 {
-	uint8_t data = 0;
-	while (FIFO_IsEmpty(&rx_fifo));
-	TTY_DISABLE_IT_RXNE();
-	FIFO_Pop(&rx_fifo, &data, 1);
-	TTY_ENABLE_IT_RXNE();
-	return data;
+	return FIFO_GetFree(&rx_fifo);
 }
 
-void Tty_WriteByte(uint8_t b)
+uint32_t Tty_GetTxFifoSize(void)
 {
-	while (FIFO_IsFull(&tx_fifo));
-	TTY_DISABLE_IT_TXE();
-	FIFO_Push(&tx_fifo, &b, 1);
-	TTY_ENABLE_IT_TXE();
+	return FIFO_GetSize(&tx_fifo);
 }
 
-void Tty_Read(uint8_t* buf, uint32_t len)
+uint32_t Tty_GetTxFifoUsed(void)
 {
-	uint8_t i = 0;
-	for (; i < len; i++) {
-		buf[i] = Tty_ReadByte();
+	return FIFO_GetUsed(&tx_fifo);
+}
+
+uint32_t Tty_GetTxFifoFree(void)
+{
+	return FIFO_GetFree(&tx_fifo);
+}
+
+int Tty_ReadByte(void)
+{
+	if (FIFO_IsEmpty(&rx_fifo)) {
+		return -1;
+	} else {
+		uint8_t data = 0;
+		TTY_DISABLE_IT_RXNE();
+		FIFO_Pop(&rx_fifo, &data, 1);
+		TTY_ENABLE_IT_RXNE();
+		return data;
 	}
 }
 
-void Tty_Write(const uint8_t* buf, uint32_t len)
+int Tty_WriteByte(uint8_t b)
 {
-	uint8_t i = 0;
-	for (; i < len; i++) {
-		Tty_WriteByte(buf[i]);
+	if (FIFO_IsFull(&tx_fifo)) {
+		return -1;
+	} else {
+		TTY_DISABLE_IT_TXE();
+		FIFO_Push(&tx_fifo, &b, 1);
+		TTY_ENABLE_IT_TXE();
+		return b;
+	}
+}
+
+int Tty_Read(uint8_t* buf, uint32_t len)
+{
+	uint32_t available = FIFO_GetUsed(&rx_fifo);
+	if (!available) {
+		return -1;
+	} else {
+		if (len > available) len = available;
+		TTY_DISABLE_IT_RXNE();
+		FIFO_Pop(&rx_fifo, buf, len);
+		TTY_ENABLE_IT_RXNE();
+		return len;
+	}
+}
+
+int Tty_Write(const uint8_t* buf, uint32_t len)
+{
+	uint32_t available = FIFO_GetFree(&tx_fifo);
+	if (!available) {
+		return -1;
+	} else {
+		if (len > available) len = available;
+		TTY_DISABLE_IT_TXE();
+		FIFO_Push(&tx_fifo, buf, len);
+		TTY_ENABLE_IT_TXE();
+		return len;
 	}
 }
 
@@ -90,8 +134,7 @@ void TTY_IRQ_HANDLER(void)
 {  
 	if (USART_GetITStatus(TTY_USART, USART_IT_TXE) != RESET)
 	{   
-		if (!FIFO_IsEmpty(&tx_fifo))
-		{
+		if (!FIFO_IsEmpty(&tx_fifo)) {
 			uint8_t tx_data = 0;
 			FIFO_Pop(&tx_fifo, &tx_data, 1);
 			USART_SendData(TTY_USART, tx_data);
