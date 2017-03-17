@@ -27,6 +27,8 @@ extern "C" {
 
 #include <stdint.h>
 
+typedef uint32_t WdgErr_t;
+	
 #define WDG_NUM              17u
 
 #define WDG_IDX_RCV          0u
@@ -86,7 +88,7 @@ extern "C" {
 		)
 
 #define WDG_ERR_SIGNAL (WDG_ERR_RCV | WDG_ERR_VDBUS)
-#define WDG_ERR_MOTORS (WDG_ERR_MOTOR1 | WDG_ERR_MOTOR2 | WDG_ERR_MOTOR3 | WDG_ERR_MOTOR4)
+#define WDG_ERR_MOTORS (WDG_ERR_MOTOR1 | WDG_ERR_MOTOR2 | WDG_ERR_MOTOR3 | WDG_ERR_MOTOR4 | WDG_ERR_MOTOR6)
 
 #define WDG_ERR_FATAL ( \
 		WDG_ERR_RCV | \
@@ -134,10 +136,10 @@ void Wdg_Init(void);
 void Wdg_Proc(void);
 void Wdg_Feed(uint8_t i);
 void Wdg_Hang(uint8_t i);
-uint32_t Wdg_GetErr(void);
-uint32_t Wdg_HasErr(uint32_t mask);
-uint32_t Wdg_HitErr(uint32_t mask);
-uint32_t Wdg_IsOkay(void);
+WdgErr_t Wdg_GetErr(void);
+WdgErr_t Wdg_HasErr(WdgErr_t mask);
+WdgErr_t Wdg_HitErr(WdgErr_t mask);
+WdgErr_t Wdg_IsOkay(void);
 
 #ifdef __cplusplus
 }

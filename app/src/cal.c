@@ -57,7 +57,7 @@ void Cal_Proc(void)
 {
 	if (!Cal_HasFlag(CAL_FLAG_GPH)) {
 		if (!KEY_H_IS_PRESSED()) {
-			GM_CMD(0, CAL_GM_CURRENT * CAL_GM_UP_DIR);
+			GM_CMD(0, CAL_GM_DRV_CURRENT * CAL_GM_UP_DIR);
 			Maf_Proc(&maf, ABSVAL(odo.gv.e));
 			if (gm_startup_delay_cnt < CAL_GM_START_UP_DELAY) {
 				gm_startup_delay_cnt++;
@@ -65,17 +65,17 @@ void Cal_Proc(void)
 			// Bang detection
 			else if (ABSVAL(maf.avg) <= CAL_GM_BANG_VEL_DET) {
 				Cal_SetGph();
-				printf("up_bang detected, gph=%f\n", cfg.pos.eh);
+				//printf("up_bang detected, gph=%f\n", cfg.pos.eh);
 			}
-			printf("gv=%f,maf=%f\n", odo.gv.e, maf.avg);
+			//printf("gv=%f,maf=%f\n", odo.gv.e, maf.avg);
 		} else {
 			Cal_SetGph();
-			printf("key_h detected, gph=%f\n", cfg.pos.eh);
+			//printf("key_h detected, gph=%f\n", cfg.pos.eh);
 		}
 	}
 	else if (!Cal_HasFlag(CAL_FLAG_GPL)) {
 		if (!KEY_L_IS_PRESSED()) {
-			GM_CMD(0, CAL_GM_CURRENT * (-CAL_GM_UP_DIR));
+			GM_CMD(0, CAL_GM_DRV_CURRENT * (-CAL_GM_UP_DIR));
 			Maf_Proc(&maf, ABSVAL(odo.gv.e));
 			if (gm_startup_delay_cnt < CAL_GM_START_UP_DELAY) {
 				gm_startup_delay_cnt++;
@@ -83,12 +83,12 @@ void Cal_Proc(void)
 			// Bang detection
 			else if (ABSVAL(maf.avg) <= CAL_GM_BANG_VEL_DET) {
 				Cal_SetGpl();
-				printf("dn_bang detected, gpl=%f\n", cfg.pos.el);
+				//printf("dn_bang detected, gpl=%f\n", cfg.pos.el);
 			}
-			printf("gv=%f,maf=%f\n", odo.gv.e, maf.avg);
+			//printf("gv=%f,maf=%f\n", odo.gv.e, maf.avg);
 		} else {
 			Cal_SetGpl();
-			printf("key_l detected, gpl=%f\n", cfg.pos.el);
+			//printf("key_l detected, gpl=%f\n", cfg.pos.el);
 		}
 	}
 }

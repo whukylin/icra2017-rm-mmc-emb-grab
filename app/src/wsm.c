@@ -82,6 +82,11 @@ WorkingState_t Wsm_GetWs(void)
 	return workingState;
 }
 
+void Wsm_SetWs(WorkingState_t ws)
+{
+	workingState = ws;
+}
+
 WorkingState_t Wsm_GetLastWs(void)
 {
 	return lastWorkingState;

@@ -63,22 +63,22 @@ void Wdg_Hang(uint8_t i)
 	cnt[i] = CNT[i];
 }
 
-uint32_t Wdg_GetErr(void)
+WdgErr_t Wdg_GetErr(void)
 {
 	return err;
 }
 
-uint32_t Wdg_HasErr(uint32_t mask)
+WdgErr_t Wdg_HasErr(WdgErr_t mask)
 {
 	return err & mask;
 }
 
-uint32_t Wdg_HitErr(uint32_t mask)
+WdgErr_t Wdg_HitErr(WdgErr_t mask)
 {
 	return (err & mask) == mask;
 }
 
-uint32_t Wdg_IsOkay(void)
+WdgErr_t Wdg_IsOkay(void)
 {
 	return !(Wdg_HitErr(WDG_ERR_SIGNAL) || Wdg_HasErr(WDG_ERR_MOTORS));
 }
