@@ -52,6 +52,7 @@ void Cal_Proc(void);
 
 
 CalFlag_t Cal_GetFlag(void);
+void Cal_SetFlag(CalFlag_t flag);
 CalFlag_t Cal_HasFlag(CalFlag_t mask);
 CalFlag_t Cal_HitFlag(CalFlag_t mask);
 CalFlag_t Cal_IsDone(void);

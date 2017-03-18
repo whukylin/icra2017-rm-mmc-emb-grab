@@ -98,8 +98,9 @@ int Ios_WriteByte(uint8_t data)
 		return Btm_WriteByte(data);
 	}
 	*/
-	while (USART_GetFlagStatus(DBI_USART, USART_FLAG_TC) == RESET);
-	DBI_USART->DR = data;
+	USART_TypeDef* USART = TTY_USART;
+	while (USART_GetFlagStatus(USART, USART_FLAG_TC) == RESET);
+	USART->DR = data;
 	return -1;
 }
 

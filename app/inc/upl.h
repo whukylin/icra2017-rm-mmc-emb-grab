@@ -26,6 +26,7 @@ extern "C" {
 #endif
 
 #include "msg.h"
+#include "cal.h"
 #include "cmd.h"
 #include "odo.h"
 #include "dci.h"

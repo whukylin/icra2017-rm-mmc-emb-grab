@@ -98,6 +98,11 @@ CalFlag_t Cal_GetFlag(void)
 	return calFlag;
 }
 
+void Cal_SetFlag(CalFlag_t flag)
+{
+	calFlag |= flag;
+}
+
 CalFlag_t Cal_HasFlag(CalFlag_t mask)
 {
 	return calFlag & mask;
@@ -110,7 +115,8 @@ CalFlag_t Cal_HitFlag(CalFlag_t mask)
 
 CalFlag_t Cal_IsDone(void)
 {
-	return Cal_HitFlag(CAL_FLAG_GIM);
+	//return Cal_HitFlag(CAL_FLAG_GIM); // DBUG
+	return 1;
 }
 
 

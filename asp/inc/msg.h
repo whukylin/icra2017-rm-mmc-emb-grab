@@ -41,6 +41,7 @@ extern "C" {
 /* Message length minimum/maximum limit */
 #define MSG_LEN_MIN 4u
 #define MSG_LEN_MAX 256u
+#define MSG_LEN_EXT 6u
 
 #pragma pack(1)
 

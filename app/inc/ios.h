@@ -86,10 +86,6 @@ int Ios_Read(uint8_t* buf, uint32_t len);
  */
 int Ios_Write(const uint8_t* buf, uint32_t len);
 
-int Ios_ReadDev(IosDev_t dev, uint8_t* buf, uint32_t len);
-
-int Ios_WriteDev(IosDev_t dev, const uint8_t* buf, uint32_t len);
-
 /**
  * @brief Initialize input/output stream
  * @return None

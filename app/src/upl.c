@@ -83,7 +83,7 @@ static void Upl_PushStatuMsg(void)
 static void Upl_PushCalibMsg(void)
 {
 	CalibMsg_t calibMsg;
-	calibMsg.auto_cali_flag = 0;
+	calibMsg.auto_cali_flag = Cal_GetFlag();
 	Msg_Push(&fifo, &msg_head_calib, &calibMsg);
 }
 

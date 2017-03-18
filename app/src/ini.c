@@ -40,6 +40,11 @@ IniFlag_t Ini_GetFlag(void)
 	return iniFlag;
 }
 
+void Ini_SetFlag(IniFlag_t flag)
+{
+	iniFlag |= flag;
+}
+
 IniFlag_t Ini_HasFlag(IniFlag_t mask)
 {
 	return iniFlag & mask;

@@ -39,11 +39,11 @@ typedef struct
 	uint16_t kp;
 	uint16_t ki;
 	uint16_t kd;
-	uint16_t it;
-	uint16_t Emax;
-	uint16_t Pmax;
-	uint16_t Imax;
-	uint16_t Dmax;
+	uint16_t it; // Integral threshold, compute integral when error < it
+	uint16_t Emax; // Error max
+	uint16_t Pmax; // Component P output max
+	uint16_t Imax; // Component I output max
+	uint16_t Dmax; // Component D output max
 	uint16_t Omax;
 }PIDCalib_t; // PID Calibration
 
@@ -52,11 +52,11 @@ typedef struct
 	float kp;
 	float ki;
 	float kd;
-	float it;
-	float Emax;
-	float Pmax;
-	float Imax;
-	float Dmax;
+	float it; // Integral threshold, compute integral when error < it
+	float Emax; // Error max
+	float Pmax; // Component P output max
+	float Imax; // Component I output max
+	float Dmax; // Component D output max
 	float Omax;
 }PIDParam_t; // PID Parameters
 
@@ -99,22 +99,33 @@ typedef struct
 #define VEL_CALIB_VALUE_SCALE 1e3f
 typedef struct
 {
-	uint16_t x; // mm/s
-	uint16_t y; // mm/s
-	uint16_t z; // 1e-3rad/s
-	uint16_t e; // mm/s
-	uint16_t c; // 1e-3rad/s
+	uint16_t x; // Chasis velocity x max, mm/s
+	uint16_t y; // Chasis velocity y max, mm/s
+	uint16_t z; // Chasis velocity z max, 1e-3rad/s
+	uint16_t e; // Elevator velocity max, mm/s
+	uint16_t c; // Claw velocity max, 1e-3rad/s
 }VelCalib_t; // Velocity Calibration
 
 typedef struct
 {
-	float x; // m/s
-	float y; // m/s
-	float z; // rad/s
-	float e; // m/s
-	float c; // rad/s
+	float x; // Chasis velocity x max, m/s
+	float y; // Chasis velocity y max, m/s
+	float z; // Chasis velocity z max, rad/s
+	float e; // Elevator velocity max, m/s
+	float c; // Claw velocity max, rad/s
 }VelParam_t; // Velocity Parameters
 
+/*******************************************/
+/*     Coordinate Transforming System      */
+/* Mecanum Wheel Power Transmission System */
+/*******************************************/
+/*              2        1                 */
+/*                  |y                     */
+/*                  |___x                  */
+/*               z                         */
+/*              3        4                 */
+/*                                         */
+/*******************************************/
 #define MEC_CALIB_VALUE_SCALE 1e3f
 typedef struct
 {
@@ -135,18 +146,18 @@ typedef struct
 #define POS_CALIB_VALUE_SCALE 1e3f
 typedef struct
 {
-	int16_t el; // unit: mm
-	int16_t eh; // unit: mm
-	int16_t cl; // unit: 1e-3*rad
-	int16_t ch; // unit: 1e-3*rad
+	int16_t el; // Elevator position high, unit: mm
+	int16_t eh; // Elevator position low, unit: mm
+	int16_t cl; // Claw position low, unit: 1e-3*rad
+	int16_t ch; // Calw position high, unit: 1e-3*rad
 }PosCalib_t; // Position Calibration
 
 typedef struct
 {
-	float el; // unit: m
-	float eh; // unit: m
-	float cl; // unit: rad
-	float ch; // unit: rad
+	float el; // Elevator position high, unit: m
+	float eh; // Elevator position low, unit: m
+	float cl; // Claw position low, unit: rad
+	float ch; // Calw position high, unit: rad
 }PosParam_t; // Position Parameters
 
 typedef struct
@@ -154,10 +165,10 @@ typedef struct
 	PIDCalib_t cvl; // Chasis velocity loop calibration
 	PIDCalib_t gvl; // Gimbal velocity loop calibration
 	PIDCalib_t gpl; // Chasis position loop calibration
-	IMUCalib_t imu; // IMU calibration
-	MagCalib_t mag; // Mag calibration
+	IMUCalib_t imu; // IMU offset calibration
+	MagCalib_t mag; // Mag offset calibration
 	MecCalib_t mec; // Mecanum wheel calibration
-	PosCalib_t pos; // Position calibration
+	PosCalib_t pos; // Position limit calibration
 }Calib_t; // Calibration
 
 typedef struct

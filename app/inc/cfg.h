@@ -105,7 +105,7 @@ typedef struct
 
 #define VEL_TRA_DEF 3.0f // m/s
 #define VEL_ROT_DEF 9.3f // rad/s
-#define VEL_ELE_DEF 1.0f // m/s
+#define VEL_ELE_DEF 0.5f // m/s
 #define VEL_CLA_DEF 10.0f // rad/s
 #define VEL_CFG_DEF \
 { \
@@ -184,7 +184,7 @@ typedef struct
 	.Pmax = 4900, \
 	.Imax = 3500, \
 	.Dmax = 1500, \
-	.Omax = 4950, \
+	.Omax = 1000, \
 }
 
 #define CFG_DEF \
