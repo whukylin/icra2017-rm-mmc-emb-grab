@@ -28,9 +28,8 @@ void App_Init(void)
 	Com_Init();
 	Dci_Init();
 	
-	Ini_Init();
-	
 	Wdg_Init();
+	Ini_Init();
 	Wsm_Init();
 	Upd_Init();
 }
@@ -39,7 +38,6 @@ void App_Proc(void)
 {
 	Wdg_Proc();
 	Ini_Proc();
-	//Com_Proc();
 	Wsm_Proc();
 	Upd_Proc();
 }

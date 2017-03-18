@@ -35,7 +35,6 @@ void Wsm_Init(void);
 void Wsm_Proc(void);
 
 WorkingState_t Wsm_GetWs(void);
-void Wsm_SetWs(WorkingState_t ws);
 WorkingState_t Wsm_GetLastWs(void);
 
 #ifdef __cplusplus

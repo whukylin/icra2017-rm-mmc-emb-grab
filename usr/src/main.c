@@ -27,9 +27,10 @@ int main()
 	Sch_Arrange(task, 500);
 	while(1)
 	{
-		//Upl_Proc();
+		Upl_Proc();
 		//Com_Proc();
 		if (Clk_GetMsTick() % 4 == 0) {
+			//Upl_Proc();
 			//printf("%f\n", odo.gv.e);
 			//printf("kl=%d,kh=%d,calFlag=%x\n", KEY_L_IS_PRESSED(), KEY_H_IS_PRESSED(), Cal_GetFlag());
 			//printf("ev=%.3f,ep=%.3f\n", cmd.gv.e, cmd.gp.e);

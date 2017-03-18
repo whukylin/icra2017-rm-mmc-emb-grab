@@ -70,13 +70,12 @@ GETCHAR_PROTOTYPE
  */
 int Ios_ReadByte(void)
 {
-	if (!Wdg_HasErr(WDG_ERR_TTY)) {
+	// Priority: TTY > DBI > BTM
+	if (Tty_GetRxFifoUsed() > 0) {
 		return Tty_ReadByte();
-	}
-	if (!Wdg_HasErr(WDG_ERR_DBI)) {
+	} else if (Dbi_GetRxFifoUsed() > 0) {
 		return Dbi_ReadByte();
-	}
-	if (!Wdg_HasErr(WDG_ERR_BTM)) {
+	} else if (Btm_GetRxFifoUsed() > 0) {
 		return Btm_ReadByte();
 	}
 	return -1;
@@ -89,13 +88,19 @@ int Ios_ReadByte(void)
  */
 int Ios_WriteByte(uint8_t data)
 {
-	//int a = Tty_WriteByte(data);
-	//int b = Dbi_WriteByte(data);
-	//int c = Btm_WriteByte(data);
-	//return a > 0 ? a : b > 0 ? b : c > 0 ? c : -1;
-	while (USART_GetFlagStatus(USART3, USART_FLAG_TC) == RESET);
-	USART3->DR = data;
-	return data;
+	// Priority: TTY > DBI > BTM
+	/*
+	if (Tty_GetTxFifoFree() > 0) {
+		return Tty_WriteByte(data);
+	} else if (Dbi_GetTxFifoFree() > 0) {
+		return Dbi_WriteByte(data);
+	} else if (Btm_GetTxFifoFree() > 0) {
+		return Btm_WriteByte(data);
+	}
+	*/
+	while (USART_GetFlagStatus(DBI_USART, USART_FLAG_TC) == RESET);
+	DBI_USART->DR = data;
+	return -1;
 }
 
 /**
@@ -106,11 +111,12 @@ int Ios_WriteByte(uint8_t data)
  */
 int Ios_Read(uint8_t* buf, uint32_t len)
 {
-	if (!Wdg_HasErr(WDG_ERR_TTY)) {
+	// Priority: TTY > DBI > BTM
+	if (Tty_GetRxFifoUsed() > 0) {
 		return Tty_Read(buf, len);
-	} else if (!Wdg_HasErr(WDG_ERR_DBI)) {
+	} else if (Dbi_GetRxFifoUsed() > 0) {
 		return Dbi_Read(buf, len);
-	} else if (!Wdg_HasErr(WDG_ERR_BTM)) {
+	} else if (Btm_GetRxFifoUsed() > 0) {
 		return Btm_Read(buf, len);
 	}
 	return -1;
@@ -124,10 +130,15 @@ int Ios_Read(uint8_t* buf, uint32_t len)
  */
 int Ios_Write(const uint8_t* buf, uint32_t len)
 {
-	int a = Tty_Write(buf, len);
-	int b = Dbi_Write(buf, len);
-	int c = Btm_Write(buf, len);
-	return a > 0 ? a : b > 0 ? b : c > 0 ? c : -1;
+	// Priority: TTY > DBI > BTM
+	if (Tty_GetTxFifoFree() > 0) {
+		return Tty_Write(buf, len);
+	} else if (Dbi_GetTxFifoFree() > 0) {
+		return Dbi_Write(buf, len);
+	} else if (Btm_GetTxFifoFree() > 0) {
+		return Btm_Write(buf, len);
+	}
+	return -1;
 }
 
 /**

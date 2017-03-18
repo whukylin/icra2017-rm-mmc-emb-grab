@@ -40,7 +40,7 @@ extern "C" {
 
 #define TTY_IRQ_HANDLER IRQ_HANDLER(USART6)
 #define TTY_NVIC IRQ(USART6)
-#define TTY_NVIC_PRE_PRIORITY 2
+#define TTY_NVIC_PRE_PRIORITY 1
 #define TTY_NVIC_SUB_PRIORITY 1
 
 #define TTY_RX_FIFO_SIZE 256u
@@ -58,6 +58,9 @@ int Tty_ReadByte(void);
 int Tty_WriteByte(uint8_t b);
 int Tty_Read(uint8_t* buf, uint32_t len);
 int Tty_Write(const uint8_t* buf, uint32_t len);
+
+void Tty_PutCh(uint8_t c);
+void Tty_Print(const char* str);
 
 void TtyRxCallback(uint8_t data);
 

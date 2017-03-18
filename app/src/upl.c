@@ -25,7 +25,7 @@ static FIFO_t fifo;
 
 static MsgType_t msgType = MSG_TYPE_STATU;
 
-static void Upl_PushVDBUS(void)
+static void Upl_PushVDBusMsg(void)
 {
 	Msg_Push(&fifo, &msg_head_vdbus, &dbus);
 }
@@ -55,13 +55,21 @@ static void Upl_PushMotorMsg(void)
 static void Upl_PushOdomeMsg(void)
 {
 	OdomeMsg_t odomeMsg;
-	odomeMsg.px = odo.cp.x * 1000;
-	odomeMsg.py = odo.cp.y * 1000;
-	odomeMsg.pz = odo.cp.z * 1000;
-	odomeMsg.vx = odo.cv.x * 1000;
-	odomeMsg.vy = odo.cv.y * 1000;
-	odomeMsg.vz = odo.cv.z * 1000;
+	odomeMsg.px = odo.cp.x * ODOME_MSG_VALUE_SCALE;
+	odomeMsg.py = odo.cp.y * ODOME_MSG_VALUE_SCALE;
+	odomeMsg.pz = odo.cp.z * ODOME_MSG_VALUE_SCALE;
+	odomeMsg.vx = odo.cv.x * ODOME_MSG_VALUE_SCALE;
+	odomeMsg.vy = odo.cv.y * ODOME_MSG_VALUE_SCALE;
+	odomeMsg.vz = odo.cv.z * ODOME_MSG_VALUE_SCALE;
 	Msg_Push(&fifo, &msg_head_odome, &odomeMsg);
+}
+
+static void Upl_PushGraspMsg(void)
+{
+	GraspMsg_t graspMsg;
+	graspMsg.pe = odo.gp.e * GRASP_MSG_VALUE_SCALE;
+	graspMsg.pc = odo.gp.c * GRASP_MSG_VALUE_SCALE;
+	Msg_Push(&fifo, &msg_head_grasp, &graspMsg);
 }
 
 static void Upl_PushStatuMsg(void)
@@ -101,7 +109,7 @@ void Upl_Proc(void)
 			msgType = MSG_TYPE_VDBUS;
 			break;
 		case MSG_TYPE_VDBUS:
-			Upl_PushVDBUS();
+			Upl_PushVDBusMsg();
 			msgType = MSG_TYPE_ZGYRO;
 			break;
 		case MSG_TYPE_ZGYRO:
@@ -114,6 +122,10 @@ void Upl_Proc(void)
 			break;
 		case MSG_TYPE_ODOME:
 			Upl_PushOdomeMsg();
+			msgType = MSG_TYPE_GRASP;
+			break;
+		case MSG_TYPE_GRASP:
+			Upl_PushGraspMsg();
 			msgType = MSG_TYPE_CALIB;
 			break;
 		case MSG_TYPE_CALIB:

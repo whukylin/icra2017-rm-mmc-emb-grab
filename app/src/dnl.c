@@ -23,6 +23,7 @@
 VirtualDBUS_t vdbus;
 VirtualCBUS_t vcbus;
 
+SubscMsg_t subscMsg;
 CalibMsg_t calibMsg;
 PIDCalib_t pidCalib;
 IMUCalib_t imuCalib;
@@ -67,37 +68,52 @@ static void Dnl_ProcVCBUS(const VirtualCBUS_t* vcbus)
 	}
 }
 
+static void Dnl_ProcSubscMsg(const SubscMsg_t* subscMsg)
+{
+	if (subscMsg->msg_type & MSG_TYPE_CALIB) {
+	}
+}
+
 static void Dnl_ProcCalibMsg(const CalibMsg_t* calibMsg)
 {
+	Wdg_Feed(WDG_IDX_CALIB);
+	if (calibMsg->auto_cali_flag & CALIB_FLAG_BIT_POS) {
+		Cal_Init();
+	}
 }
 
 static void Dnl_ProcIMUCalib(const IMUCalib_t* IMUCalib)
 {
 	Calib_SetIMU(&cfg.imu, IMUCalib);
+	Cfg_SetFlag(CFG_FLAG_IMU);
 	cfg_sync_flag = 1;
 }
 
 static void Dnl_ProcMagCalib(const MagCalib_t* MagCalib)
 {
 	Calib_SetMag(&cfg.mag, MagCalib);
+	Cfg_SetFlag(CFG_FLAG_MAG);
 	cfg_sync_flag = 1;
 }
 
 static void Dnl_ProcVelCalib(const VelCalib_t* VelCalib)
 {
 	Calib_SetVel(&cfg.vel, VelCalib);
+	Cfg_SetFlag(CFG_FLAG_VEL);
 	cfg_sync_flag = 1;
 }
 
 static void Dnl_ProcMecCalib(const MecCalib_t* MecCalib)
 {
 	Calib_SetMec(&cfg.mec, MecCalib);
+	Cfg_SetFlag(CFG_FLAG_MEC);
 	cfg_sync_flag = 1;
 }
 
 static void Dnl_ProcPosCalib(const PosCalib_t* PosCalib)
 {
 	Calib_SetPos(&cfg.pos, PosCalib);
+	Cfg_SetFlag(CFG_FLAG_POS);
 	cfg_sync_flag = 1;
 }
 
@@ -105,14 +121,17 @@ static void Dnl_ProcPIDCalib(const PIDCalib_t* PIDCalib)
 {
 	if (PIDCalib->type == PID_CALIB_TYPE_CHASSIS_VELOCITY) {
 		Calib_SetPID(&cfg.cvl, PIDCalib);
+		Cfg_SetFlag(CFG_FLAG_CVL);
 		cfg_sync_flag = 1;
 	}
 	else if (PIDCalib->type == PID_CALIB_TYPE_GRABBER_VELOCITY) {
 		Calib_SetPID(&cfg.gvl, PIDCalib);
+		Cfg_SetFlag(CFG_FLAG_GVL);
 		cfg_sync_flag = 1;
 	}
 	else if (PIDCalib->type == PID_CALIB_TYPE_GRABBER_POSITION) {
 		Calib_SetPID(&cfg.gpl, PIDCalib);
+		Cfg_SetFlag(CFG_FLAG_GPL);
 		cfg_sync_flag = 1;
 	}
 }
@@ -129,12 +148,16 @@ void Dnl_Proc(void)
 	// Get fifo free space
 	uint32_t len = FIFO_GetFree(&fifo);
 	// If fifo free space insufficient, pop one element out
-	if (!len) {
+	if (len < 1) {
 		uint8_t b;
 		len = FIFO_Pop(&fifo, &b, 1);
 	}
 	// Read input stream according to the fifo free space left
 	len = Ios_Read(buf[1], len);
+	// If input stream not available, abort
+	if (len < 1) {
+		return;
+	}
 	// Push stream into fifo
 	FIFO_Push(&fifo, buf[1], len);
 	// Check if any message received
@@ -146,6 +169,8 @@ void Dnl_Proc(void)
 		Dnl_ProcVDBUS(&vdbus);
 	} else if (Msg_Pop(&fifo, &msg_head_vcbus, &vcbus)) {
 		Dnl_ProcVCBUS(&vcbus);
+	} else if (Msg_Pop(&fifo, &msg_head_subsc, &subscMsg)) {
+		Dnl_ProcSubscMsg(&subscMsg);
 	} else if (Msg_Pop(&fifo, &msg_head_calib, &calibMsg)) {
 		Dnl_ProcCalibMsg(&calibMsg);
 	} else if (Msg_Pop(&fifo, &msg_head_pid_calib, &pidCalib)) {

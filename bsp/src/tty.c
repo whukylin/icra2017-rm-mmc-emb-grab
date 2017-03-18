@@ -125,6 +125,21 @@ int Tty_Write(const uint8_t* buf, uint32_t len)
 	}
 }
 
+void Tty_PutCh(uint8_t c)
+{
+	while (USART_GetFlagStatus(TTY_USART, USART_FLAG_TC) == RESET);
+	TTY_USART->DR = c;
+}
+
+void Tty_Print(const char* str)
+{
+	const uint32_t len = strlen(str);
+	uint32_t i = 0;
+	for (; i < len; i++) {
+		Tty_PutCh(str[i]);
+	}
+}
+
 void TTY_IRQ_HANDLER(void)
 {  
 	if (USART_GetITStatus(TTY_USART, USART_IT_TXE) != RESET)

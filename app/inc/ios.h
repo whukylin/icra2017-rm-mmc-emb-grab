@@ -29,6 +29,13 @@ extern "C" {
 #include "fun.h"
 #include "wdg.h"
 
+typedef enum
+{
+	IOS_DEV_TTY = 0x01,
+	IOS_DEV_DBI = 0x02,
+	IOS_DEV_BTM = 0x04,
+}IosDev_t;
+
 #ifdef __GNUC__
 #define PUTCHAR_PROTOTYPE int __io_putchar(int c)
 #define GETCHAR_PROTOTYPE int __io_getchar(void)
@@ -37,15 +44,56 @@ extern "C" {
 #define GETCHAR_PROTOTYPE int fgetc(FILE* f)
 #endif
 
+/**
+ * @brief Set input streamer
+ * @param in Input streamer
+ * @return None
+ */
 void Ios_SetIn(int (*in)(void));
+
+/**
+ * @brief Set output streamer
+ * @param out Output streamer
+ * @return None
+ */
 void Ios_SetOut(int (*out)(uint8_t));
 
+/**
+ * @brief Read one byte from input stream
+ * @return Read data, -1 if not available
+ */
 int Ios_ReadByte(void);
+
+/**
+ * @brief Write one byte to output stream
+ * @return Written data count, -1 if not available
+ */
 int Ios_WriteByte(uint8_t data);
 
+/**
+ * @brief Read buffer from input stream fifo
+ * @param buf Data buffer
+ * @param len Data buffer length
+ * @return Read data length, -1 if not available
+ */
 int Ios_Read(uint8_t* buf, uint32_t len);
+
+/**
+ * @brief Write buffer to output stream fifo
+ * @param buf Data buffer
+ * @param len Data buffer length
+ * @return Written data length, -1 if not available
+ */
 int Ios_Write(const uint8_t* buf, uint32_t len);
 
+int Ios_ReadDev(IosDev_t dev, uint8_t* buf, uint32_t len);
+
+int Ios_WriteDev(IosDev_t dev, const uint8_t* buf, uint32_t len);
+
+/**
+ * @brief Initialize input/output stream
+ * @return None
+ */
 void Ios_Init(void);
 
 #ifdef __cplusplus

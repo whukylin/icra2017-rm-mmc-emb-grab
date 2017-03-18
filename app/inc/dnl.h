@@ -36,6 +36,7 @@ extern "C" {
 void Dnl_Init(void);
 void Dnl_Proc(void);
 
+extern SubscMsg_t subscMsg;
 extern VirtualDBUS_t vdbus;
 extern VirtualCBUS_t vcbus;
 extern CalibMsg_t calibMsg;

@@ -125,9 +125,19 @@ int Btm_Write(const uint8_t* buf, uint32_t len)
 	}
 }
 
+void Btm_PutCh(uint8_t c)
+{
+	while (USART_GetFlagStatus(BTM_USART, USART_FLAG_TC) == RESET);
+	BTM_USART->DR = c;
+}
+
 void Btm_Print(const char* str)
 {
-	Btm_Write((const uint8_t*)str, strlen(str));
+	const uint32_t len = strlen(str);
+	uint32_t i = 0;
+	for (; i < len; i++) {
+		Btm_PutCh(str[i]);
+	}
 }
 
 void BTM_IRQ_HANDLER(void)

@@ -87,6 +87,7 @@ typedef struct
 	int32_t current; // Motor current, max to 13000
 }MotorMsg_t;
 
+#define IMU9X_MSG_VALUE_SCALE 1.0f
 typedef struct
 {
 	int16_t ax;
@@ -100,6 +101,7 @@ typedef struct
 	int16_t mz;
 }IMU9XMsg_t;
 
+#define ODOME_MSG_VALUE_SCALE 1e3f
 typedef struct
 {
 	int32_t px; // Bot position (linear) in x-axis, unit: mm
@@ -110,6 +112,7 @@ typedef struct
 	int16_t vz; // Bot velocity (angular) in z-axis, unit: mm
 }OdomeMsg_t;
 
+#define GRASP_MSG_VALUE_SCALE 1e3f
 typedef struct
 {
 	int16_t pe; // Elevator position
@@ -124,23 +127,23 @@ typedef struct
 	uint32_t auto_cali_flag; // Auto calibration control bits
 }CalibMsg_t;
 
-#define WDG_ERR_BIT_RCV			   (1u<<0)
-#define WDG_ERR_BIT_TTY			   (1u<<1)
-#define WDG_ERR_BIT_BTM			   (1u<<2)
-#define WDG_ERR_BIT_DBI			   (1u<<3)
-#define WDG_ERR_BIT_IMU			   (1u<<4)
-#define WDG_ERR_BIT_VRC			   (1u<<5)
-#define WDG_ERR_BIT_VHC			   (1u<<6)
-#define WDG_ERR_BIT_VDBUS			 (1u<<7)
-#define WDG_ERR_BIT_VCBUS			 (1u<<8)
-#define WDG_ERR_BIT_CALIB		   (1u<<9)
-#define WDG_ERR_BIT_ZGYRO		   (1u<<10)
-#define WDG_ERR_BIT_MOTOR1		 (1u<<11)
-#define WDG_ERR_BIT_MOTOR2		 (1u<<12)
-#define WDG_ERR_BIT_MOTOR3		 (1u<<13)
-#define WDG_ERR_BIT_MOTOR4		 (1u<<14)
-#define WDG_ERR_BIT_MOTOR5		 (1u<<15)
-#define WDG_ERR_BIT_MOTOR6		 (1u<<16)
+#define WDG_ERR_BIT_RCV         (1u<<0)
+#define WDG_ERR_BIT_TTY         (1u<<1)
+#define WDG_ERR_BIT_BTM         (1u<<2)
+#define WDG_ERR_BIT_DBI         (1u<<3)
+#define WDG_ERR_BIT_IMU         (1u<<4)
+#define WDG_ERR_BIT_VRC         (1u<<5)
+#define WDG_ERR_BIT_VHC         (1u<<6)
+#define WDG_ERR_BIT_VDBUS       (1u<<7)
+#define WDG_ERR_BIT_VCBUS       (1u<<8)
+#define WDG_ERR_BIT_CALIB       (1u<<9)
+#define WDG_ERR_BIT_ZGYRO       (1u<<10)
+#define WDG_ERR_BIT_MOTOR1      (1u<<11)
+#define WDG_ERR_BIT_MOTOR2      (1u<<12)
+#define WDG_ERR_BIT_MOTOR3      (1u<<13)
+#define WDG_ERR_BIT_MOTOR4      (1u<<14)
+#define WDG_ERR_BIT_MOTOR5      (1u<<15)
+#define WDG_ERR_BIT_MOTOR6      (1u<<16)
 
 #define INI_FLAG_BIT_ZGYRO      (1u<<0)
 #define INI_FLAG_BIT_MOTOR1     (1u<<1)
@@ -156,6 +159,11 @@ typedef struct
 	uint32_t ini; // Initialization status
 }StatuMsg_t;
 
+typedef struct
+{
+	uint32_t msg_type;
+}SubscMsg_t;
+
 #define WRAP_U8(V) ((uint8_t)V)
 #define WRAP_U16(V) ((uint16_t)V)
 #define WRAP_U32(V) ((uint32_t)V)
@@ -170,13 +178,14 @@ typedef struct
 #define MSG_ID_ODOME WRAP_U8(0x08)
 #define MSG_ID_GRASP WRAP_U8(0x09)
 #define MSG_ID_STATU WRAP_U8(0x0a)
-#define MSG_ID_CALIB WRAP_U8(0x0b)
-#define MSG_ID_PID_CALIB WRAP_U8(0x0c)
-#define MSG_ID_IMU_CALIB WRAP_U8(0x0d)
-#define MSG_ID_MAG_CALIB WRAP_U8(0x0e)
-#define MSG_ID_VEL_CALIB WRAP_U8(0x0f)
-#define MSG_ID_MEC_CALIB WRAP_U8(0x10)
-#define MSG_ID_POS_CALIB WRAP_U8(0x11)
+#define MSG_ID_SUBSC WRAP_U8(0x0b)
+#define MSG_ID_CALIB WRAP_U8(0x0c)
+#define MSG_ID_PID_CALIB WRAP_U8(0x0d)
+#define MSG_ID_IMU_CALIB WRAP_U8(0x0e)
+#define MSG_ID_MAG_CALIB WRAP_U8(0x0f)
+#define MSG_ID_VEL_CALIB WRAP_U8(0x10)
+#define MSG_ID_MEC_CALIB WRAP_U8(0x11)
+#define MSG_ID_POS_CALIB WRAP_U8(0x12)
 
 #define MSG_LEN_VRC sizeof(VirtualRC_t)
 #define MSG_LEN_VHC sizeof(VirtualHC_t)
@@ -188,6 +197,7 @@ typedef struct
 #define MSG_LEN_ODOME sizeof(OdomeMsg_t)
 #define MSG_LEN_GRASP sizeof(GraspMsg_t)
 #define MSG_LEN_STATU sizeof(StatuMsg_t)
+#define MSG_LEN_SUBSC sizeof(SubscMsg_t)
 #define MSG_LEN_CALIB sizeof(CalibMsg_t)
 #define MSG_LEN_PID_CALIB sizeof(PIDCalib_t)
 #define MSG_LEN_IMU_CALIB sizeof(IMUCalib_t)
@@ -206,13 +216,14 @@ typedef struct
 #define MSG_TOKEN_ODOME WRAP_U16(0x89ab)
 #define MSG_TOKEN_GRASP WRAP_U16(0x9abc)
 #define MSG_TOKEN_STATU WRAP_U16(0xabcd)
-#define MSG_TOKEN_CALIB WRAP_U16(0xbcde)
-#define MSG_TOKEN_PID_CALIB WRAP_U16(0xcdef)
-#define MSG_TOKEN_IMU_CALIB WRAP_U16(0xfedc)
-#define MSG_TOKEN_MAG_CALIB WRAP_U16(0xedcb)
-#define MSG_TOKEN_VEL_CALIB WRAP_U16(0xdcba)
-#define MSG_TOKEN_MEC_CALIB WRAP_U16(0xcba9)
-#define MSG_TOKEN_POS_CALIB WRAP_U16(0xba98)
+#define MSG_TOKEN_SUBSC WRAP_U16(0xbcde)
+#define MSG_TOKEN_CALIB WRAP_U16(0xcdef)
+#define MSG_TOKEN_PID_CALIB WRAP_U16(0xfedc)
+#define MSG_TOKEN_IMU_CALIB WRAP_U16(0xedcb)
+#define MSG_TOKEN_MAG_CALIB WRAP_U16(0xdcba)
+#define MSG_TOKEN_VEL_CALIB WRAP_U16(0xcba9)
+#define MSG_TOKEN_MEC_CALIB WRAP_U16(0xba98)
+#define MSG_TOKEN_POS_CALIB WRAP_U16(0xa987)
 
 #define MSG_HEAD_VALUE(ID,LEN,TOKEN) ((WRAP_U32(TOKEN)<<16) | (WRAP_U32(LEN)<<8) | WRAP_U32(ID))
 #define MSG_HEAD_VALUE_OF(NAME) MSG_HEAD_VALUE(MSG_ID_##NAME,MSG_LEN_##NAME,MSG_TOKEN_##NAME)
@@ -227,6 +238,7 @@ typedef struct
 #define MSG_HEAD_VALUE_ODOME MSG_HEAD_VALUE_OF(ODOME)
 #define MSG_HEAD_VALUE_GRASP MSG_HEAD_VALUE_OF(GRASP)
 #define MSG_HEAD_VALUE_STATU MSG_HEAD_VALUE_OF(STATU)
+#define MSG_HEAD_VALUE_SUBSC MSG_HEAD_VALUE_OF(SUBSC)
 #define MSG_HEAD_VALUE_CALIB MSG_HEAD_VALUE_OF(CALIB)
 #define MSG_HEAD_VALUE_PID_CALIB MSG_HEAD_VALUE_OF(PID_CALIB)
 #define MSG_HEAD_VALUE_IMU_CALIB MSG_HEAD_VALUE_OF(IMU_CALIB)
@@ -245,6 +257,7 @@ typedef struct
 #define MSG_HEAD_ODOME { MSG_HEAD_VALUE_ODOME }
 #define MSG_HEAD_GRASP { MSG_HEAD_VALUE_GRASP }
 #define MSG_HEAD_STATU { MSG_HEAD_VALUE_STATU }
+#define MSG_HEAD_SUBSC { MSG_HEAD_VALUE_SUBSC }
 #define MSG_HEAD_CALIB { MSG_HEAD_VALUE_CALIB }
 #define MSG_HEAD_PID_CALIB { MSG_HEAD_VALUE_PID_CALIB }
 #define MSG_HEAD_IMU_CALIB { MSG_HEAD_VALUE_IMU_CALIB }
@@ -263,13 +276,14 @@ typedef struct
 #define MSG_TYPE_IDX_ODOME 7u
 #define MSG_TYPE_IDX_GRASP 8u
 #define MSG_TYPE_IDX_STATU 9u
-#define MSG_TYPE_IDX_CALIB 10u
-#define MSG_TYPE_IDX_PID_CALIB 11u
-#define MSG_TYPE_IDX_IMU_CALIB 12u
-#define MSG_TYPE_IDX_MAG_CALIB 13u
-#define MSG_TYPE_IDX_VEL_CALIB 14u
-#define MSG_TYPE_IDX_MEC_CALIB 15u
-#define MSG_TYPE_IDX_POS_CALIB 16u
+#define MSG_TYPE_IDX_SUBSC 10u
+#define MSG_TYPE_IDX_CALIB 11u
+#define MSG_TYPE_IDX_PID_CALIB 12u
+#define MSG_TYPE_IDX_IMU_CALIB 13u
+#define MSG_TYPE_IDX_MAG_CALIB 14u
+#define MSG_TYPE_IDX_VEL_CALIB 15u
+#define MSG_TYPE_IDX_MEC_CALIB 16u
+#define MSG_TYPE_IDX_POS_CALIB 17u
 
 typedef enum
 {
@@ -283,6 +297,7 @@ typedef enum
 	MSG_TYPE_ODOME = 1u << MSG_TYPE_IDX_ODOME,
 	MSG_TYPE_GRASP = 1u << MSG_TYPE_IDX_GRASP,
 	MSG_TYPE_STATU = 1u << MSG_TYPE_IDX_STATU,
+	MSG_TYPE_SUBSC = 1u << MSG_TYPE_IDX_SUBSC,
 	MSG_TYPE_CALIB = 1u << MSG_TYPE_IDX_CALIB,
 	MSG_TYPE_PID_CALIB = 1u << MSG_TYPE_IDX_PID_CALIB,
 	MSG_TYPE_IMU_CALIB = 1u << MSG_TYPE_IDX_IMU_CALIB,
@@ -322,6 +337,7 @@ extern const MsgHead_t msg_head_motor;
 extern const MsgHead_t msg_head_odome;
 extern const MsgHead_t msg_head_grasp;
 extern const MsgHead_t msg_head_statu;
+extern const MsgHead_t msg_head_subsc;
 extern const MsgHead_t msg_head_calib;
 extern const MsgHead_t msg_head_pid_calib;
 extern const MsgHead_t msg_head_imu_calib;

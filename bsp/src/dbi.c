@@ -125,9 +125,19 @@ int Dbi_Write(const uint8_t* buf, uint32_t len)
 	}
 }
 
+void Dbi_PutCh(uint8_t c)
+{
+	while (USART_GetFlagStatus(DBI_USART, USART_FLAG_TC) == RESET);
+	DBI_USART->DR = c;
+}
+
 void Dbi_Print(const char* str)
 {
-	Dbi_Write((const uint8_t*)str, strlen(str));
+	const uint32_t len = strlen(str);
+	uint32_t i = 0;
+	for (; i < len; i++) {
+		Dbi_PutCh(str[i]);
+	}
 }
 
 void DBI_IRQ_HANDLER(void)

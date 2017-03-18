@@ -58,6 +58,8 @@ int Btm_ReadByte(void);
 int Btm_WriteByte(uint8_t b);
 int Btm_Read(uint8_t* buf, uint32_t len);
 int Btm_Write(const uint8_t* buf, uint32_t len);
+
+void Btm_PutCh(uint8_t c);
 void Btm_Print(const char* str);
 
 void BtmRxCallback(uint8_t data);

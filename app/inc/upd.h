@@ -32,7 +32,8 @@ extern "C" {
 
 void Upd_Init(void);
 void Upd_Proc(void);
-	
+void Upd_Stop(void);
+
 #ifdef __cplusplus
 }
 #endif

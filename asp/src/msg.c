@@ -26,6 +26,7 @@ const MsgHead_t msg_head_motor = MSG_HEAD_MOTOR;
 const MsgHead_t msg_head_odome = MSG_HEAD_ODOME;
 const MsgHead_t msg_head_grasp = MSG_HEAD_GRASP;
 const MsgHead_t msg_head_statu = MSG_HEAD_STATU;
+const MsgHead_t msg_head_subsc = MSG_HEAD_SUBSC;
 const MsgHead_t msg_head_calib = MSG_HEAD_CALIB;
 const MsgHead_t msg_head_pid_calib = MSG_HEAD_PID_CALIB;
 const MsgHead_t msg_head_imu_calib = MSG_HEAD_IMU_CALIB;
