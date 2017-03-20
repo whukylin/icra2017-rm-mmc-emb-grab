@@ -27,10 +27,10 @@ int main()
 	Sch_Arrange(task, 500);
 	while(1)
 	{
-		//Upl_Proc();
+		Upl_Proc();
 		//Com_Proc();
 		if (Clk_GetMsTick() % 20 == 0) {
-			printf("px=%.3f\tpy=%.3f\tpz=%.3f\r\n", odo.cp.x, odo.cp.y, odo.cp.z);
+			//printf("px=%.3f\tpy=%.3f\tpz=%.3f\r\n", odo.cp.x, odo.cp.y, odo.cp.z);
 			//Dbg_Odo();
 			//Upl_Proc();
 			//printf("%f\n", odo.gv.e);

@@ -29,8 +29,11 @@ static void GetFunctionalStateRef(const Rcp_t* rcp)
 static void GetChassisVelocityRef(const Rcp_t* rcp)
 {
 	cmd.cv.x = map(rcp->ch[0], CH_MIN, CH_MAX, -cfg.vel.x, cfg.vel.x); // m/s
+	cmd.cp.x += cmd.cv.x * SYS_CTL_TSC;
 	cmd.cv.y = map(rcp->ch[1], CH_MIN, CH_MAX, -cfg.vel.y, cfg.vel.y); // m/s
+	cmd.cp.y += cmd.cv.y * SYS_CTL_TSC;
 	cmd.cv.z = map(rcp->ch[2], CH_MIN, CH_MAX, -cfg.vel.z, cfg.vel.z); // rad/s
+	cmd.cp.z += cmd.cv.z * SYS_CTL_TSC;
 }
 
 static void GetGrabberVelocityRef(const Rcp_t* rcp)

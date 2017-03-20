@@ -23,11 +23,7 @@ Cmd_t cmd;
 
 void Cmd_Init(void)
 {
-	FS_Clr(&cmd.fs, FS_ALL);
-	CS_Set(&cmd.cv, 0, 0, 0);
-	MS_Set(&cmd.mv, 0, 0, 0, 0);
-	GS_Set(&cmd.gv, 0, 0);
-	GS_Set(&cmd.gp, 0, 0);
+	memset(&cmd, 0, sizeof(Cmd_t));
 }
 
 void Cmd_Proc(void)
@@ -39,6 +35,7 @@ void Cmd_Proc(void)
 	CONSTRAIN(cmd.gp.c, cfg.pos.cl, cfg.pos.ch);
 	
 	Mec_Decomp((float*)&cmd.cv, (float*)&cmd.mv);
+	Mec_Decomp((float*)&cmd.cp, (float*)&cmd.mp);
 }
 
 

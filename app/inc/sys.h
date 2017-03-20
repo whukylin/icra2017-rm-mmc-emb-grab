@@ -25,8 +25,8 @@ extern "C" {
 
 #include "fun.h"
 
-#define SYS_CTL_TMS 2 // ms
-#define SYS_CTL_TSC 2e-3f // s
+#define SYS_CTL_TMS 1 // ms
+#define SYS_CTL_TSC 1e-3f // s
 	
 typedef enum {
 	WORKING_STATE_STOP = 0x00,

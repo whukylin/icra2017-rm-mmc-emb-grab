@@ -103,11 +103,8 @@ void Upl_Init(void)
 
 void Upl_Proc(void)
 {
-	uint32_t available = 0; //Ios_Get
-	//uint32_t full_msg_len = 0;
 	switch(msgType) {
 		case MSG_TYPE_STATU:
-			if (available < Msg_GetFullLen(&msg_head_statu)) break;
 			Upl_PushStatuMsg();
 			msgType = MSG_TYPE_VDBUS;
 			break;

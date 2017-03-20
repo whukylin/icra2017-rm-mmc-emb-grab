@@ -63,40 +63,13 @@ void Ios_SetOut(int (*out)(uint8_t));
  * @param c Character
  * @return None
  */
-void Ios_PutCh(uint8_t c);
+int Ios_PutCh(uint8_t c);
 
 /**
  * @brief Get a character from the input stream.
  * @return Character
  */
-uint8_t Ios_GetCh(void);
-
-/*
-uint32_t Ios_GetRxFifoSize(void)
-{
-	
-}
-
-uint32_t Ios_GetRxFifoUsed(void)
-{
-}
-
-uint32_t Ios_GetRxFifoFree(void)
-{
-}
-
-uint32_t Ios_GetTxFifoSize(void)
-{
-}
-
-uint32_t Ios_GetTxFifoUsed(void)
-{
-}
-
-uint32_t Ios_GetTxFifoFree(void)
-{
-}
-*/
+int Ios_GetCh(void);
 
 /**
  * @brief Read one byte from input stream

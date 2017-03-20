@@ -36,6 +36,7 @@ extern "C" {
 typedef struct
 {
 	PeriphsState_t fs;
+	MecanumState_t mv;
 	MecanumState_t mc;
 	GrabberState_t gv;
 	GrabberState_t gc;
@@ -50,9 +51,13 @@ void Ctl_Proc(void);
 
 extern Ctl_t ctl;
 
+extern PID_t CM1AnglePID;
 extern PID_t CM1SpeedPID;
+extern PID_t CM2AnglePID;
 extern PID_t CM2SpeedPID;
+extern PID_t CM3AnglePID;
 extern PID_t CM3SpeedPID;
+extern PID_t CM4AnglePID;
 extern PID_t CM4SpeedPID;
 extern PID_t GMEAnglePID;
 extern PID_t GMESpeedPID;

@@ -39,9 +39,10 @@ extern "C" {
 #define CFG_FLAG_MEC                (1u<<4)
 #define CFG_FLAG_POS                (1u<<5)
 #define CFG_FLAG_CVL                (1u<<6)
-#define CFG_FLAG_GVL                (1u<<7)
-#define CFG_FLAG_GPL                (1u<<8)
-#define CFG_FLAG_ALL (CFG_FLAG_IMU|CFG_FLAG_MAG|CFG_FLAG_RMP|CFG_FLAG_VEL|CFG_FLAG_MEC|CFG_FLAG_POS|CFG_FLAG_CVL|CFG_FLAG_GVL|CFG_FLAG_GPL)
+#define CFG_FLAG_CPL                (1u<<7)
+#define CFG_FLAG_GVL                (1u<<8)
+#define CFG_FLAG_GPL                (1u<<9)
+#define CFG_FLAG_ALL (CFG_FLAG_IMU|CFG_FLAG_MAG|CFG_FLAG_RMP|CFG_FLAG_VEL|CFG_FLAG_MEC|CFG_FLAG_POS|CFG_FLAG_CVL|CFG_FLAG_CPL|CFG_FLAG_GVL|CFG_FLAG_GPL)
 
 #pragma pack(1)
 
@@ -71,6 +72,7 @@ typedef struct
 	MecCfg_t mec; // Mecanum configuration
 	PosCfg_t pos; // Position configuration
 	PIDCfg_t cvl; // Chasis velocity loop
+	PIDCfg_t cpl; // Chasis position loop
 	PIDCfg_t gvl; // Gimbal velocity loop
 	PIDCfg_t gpl; // Gimbal position loop
 }Cfg_t; // Application Configuration
@@ -161,6 +163,19 @@ typedef struct
 	.Omax = 4950, \
 }
 
+#define CPL_CFG_DEF \
+{ \
+	.kp = 20, \
+	.ki = 0, \
+	.kd = 0, \
+	.it = 0, \
+	.Emax = 30, \
+	.Pmax = 4900, \
+	.Imax = 3500, \
+	.Dmax = 1500, \
+	.Omax = 4950, \
+}
+
 #define GVL_CFG_DEF \
 { \
 	.kp = 800, \
@@ -198,6 +213,7 @@ typedef struct
 	MEC_CFG_DEF, \
 	POS_CFG_DEF, \
 	CVL_CFG_DEF, \
+	CPL_CFG_DEF, \
 	GVL_CFG_DEF, \
 	GPL_CFG_DEF, \
 }

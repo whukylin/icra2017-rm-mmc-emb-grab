@@ -28,7 +28,7 @@ void Bsp_Config(void)
 	Pwm_Config();
 	Rcv_Config();
 	Tim_Config();
-	//Tty_Config();
+	Tty_Config();
 	Can1_Config();
 	Can2_Config();
 	LED_GREEN_ON();

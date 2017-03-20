@@ -34,7 +34,9 @@ typedef struct
 {
 	PeriphsState_t fs; // Functional state control bits reference
 	ChassisState_t cv; // Chassis velocity reference
+	ChassisState_t cp; // Chassis position reference
 	MecanumState_t mv; // Mecanum velocity reference (Auto-Wired)
+	MecanumState_t mp; // Mecanum position reference (Auto-Wired)
 	GrabberState_t gv; // Grabber velocity dynamic reference
 	GrabberState_t gp; // Grabber position reference
 }Cmd_t;

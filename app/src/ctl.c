@@ -22,11 +22,14 @@
 
 Ctl_t ctl;
 
+PID_t CM1AnglePID;
 PID_t CM1SpeedPID;
+PID_t CM2AnglePID;
 PID_t CM2SpeedPID;
+PID_t CM3AnglePID;
 PID_t CM3SpeedPID;
+PID_t CM4AnglePID;
 PID_t CM4SpeedPID;
-
 PID_t GMEAnglePID;
 PID_t GMESpeedPID;
 
@@ -50,10 +53,17 @@ static void FunctionalStateControl(void)
 /**********************************************/
 static void ChassisVelocityControl(void)
 {
-	ctl.mc.w1 = PID_Calc(&CM1SpeedPID, cmd.mv.w1, odo.mv.w1) * Rmp_Calc(&CM1SpeedRmp);
-	ctl.mc.w2 = PID_Calc(&CM2SpeedPID, cmd.mv.w2, odo.mv.w2) * Rmp_Calc(&CM2SpeedRmp);
-	ctl.mc.w3 = PID_Calc(&CM3SpeedPID, cmd.mv.w3, odo.mv.w3) * Rmp_Calc(&CM3SpeedRmp);
-	ctl.mc.w4 = PID_Calc(&CM4SpeedPID, cmd.mv.w4, odo.mv.w4) * Rmp_Calc(&CM4SpeedRmp);
+	ctl.mv.w1 = PID_Calc(&CM1AnglePID, cmd.mp.w1, odo.mp.w1);
+	ctl.mc.w1 = PID_Calc(&CM1SpeedPID, ctl.mv.w1, odo.mv.w1) * Rmp_Calc(&CM1SpeedRmp);
+	
+	ctl.mv.w2 = PID_Calc(&CM2AnglePID, cmd.mp.w2, odo.mp.w2);
+	ctl.mc.w2 = PID_Calc(&CM2SpeedPID, ctl.mv.w2, odo.mv.w2) * Rmp_Calc(&CM2SpeedRmp);
+	
+	ctl.mv.w3 = PID_Calc(&CM3AnglePID, cmd.mp.w3, odo.mp.w3);
+	ctl.mc.w3 = PID_Calc(&CM3SpeedPID, ctl.mv.w3, odo.mv.w3) * Rmp_Calc(&CM3SpeedRmp);
+	
+	ctl.mv.w4 = PID_Calc(&CM4AnglePID, cmd.mp.w4, odo.mp.w4);
+	ctl.mc.w4 = PID_Calc(&CM4SpeedPID, ctl.mv.w4, odo.mv.w4) * Rmp_Calc(&CM4SpeedRmp);
 }
 
 static void GrabberPositionControl(void)
@@ -63,6 +73,21 @@ static void GrabberPositionControl(void)
 	//ctl.gv.c = 10 * (cmd.gp.c - odo.gp.c);
 	//ctl.gc.c = odo.gp.c + ctl.gv.c;
 	ctl.gc.c = map(cmd.gp.c, cfg.pos.cl, cfg.pos.ch, CLAW_PWM_L, CLAW_PWM_H); // Direct PWM control (1000~2000)/2500, map rad to pwm duty cycle
+}
+
+static void Cpl_Init(PID_t* pid)
+{
+	PID_Config(pid, 
+		 cfg.cpl.kp, 
+		 cfg.cpl.ki, 
+		 cfg.cpl.kd, 
+		 cfg.cpl.it,
+		 cfg.cpl.Emax,
+		 cfg.cpl.Pmax, 
+		 cfg.cpl.Imax, 
+		 cfg.cpl.Dmax, 
+		 cfg.cpl.Omax);
+	PID_Reset(pid);
 }
 
 static void Cvl_Init(PID_t* pid)
@@ -128,6 +153,12 @@ void Ctl_Init(void)
 	Cvl_Init(&CM2SpeedPID);
 	Cvl_Init(&CM3SpeedPID);
 	Cvl_Init(&CM4SpeedPID);
+	
+	Cpl_Init(&CM1AnglePID);
+	Cpl_Init(&CM2AnglePID);
+	Cpl_Init(&CM3AnglePID);
+	Cpl_Init(&CM4AnglePID);
+	
 	Gvl_Init(&GMESpeedPID);
 	Gpl_Init(&GMEAnglePID);
 	

@@ -94,6 +94,9 @@ void Cfg_Init(void)
 	if (!Cfg_GetFlag(CFG_FLAG_CVL)) {
 		memcpy(&cfg.cvl, &tmp.cvl, sizeof(PIDCfg_t));
 	}
+	if (!Cfg_GetFlag(CFG_FLAG_CPL)) {
+		memcpy(&cfg.cpl, &tmp.cpl, sizeof(PIDCfg_t));
+	}
 	if (!Cfg_GetFlag(CFG_FLAG_GVL)) {
 		memcpy(&cfg.gvl, &tmp.gvl, sizeof(PIDCfg_t));
 	}

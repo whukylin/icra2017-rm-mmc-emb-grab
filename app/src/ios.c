@@ -44,19 +44,20 @@ void Ios_SetOut(int (*out)(uint8_t))
  * @param c Character
  * @return None
  */
-void Ios_PutCh(uint8_t c)
+int Ios_PutCh(uint8_t c)
 {
 	Dbi_PutCh(c);
 	Btm_PutCh(c);
+	return c;
 }
 
 /**
  * @brief Get a character from the input stream.
  * @return Character
  */
-uint8_t Ios_GetCh(void)
+int Ios_GetCh(void)
 {
-	
+	return Dbi_GetCh();
 }
 
 /**
@@ -109,9 +110,11 @@ int Ios_ReadByte(void)
 int Ios_WriteByte(uint8_t data)
 {
 	// Priority: TTY > DBI > BTM
-	while (Dbi_GetTxFifoFree() < 1);
-	return Dbi_WriteByte(data);
-	/*
+	//while (Tty_GetTxFifoFree() < 1);
+	//return Tty_WriteByte(data);
+	//while (Dbi_GetTxFifoFree() < 1);
+	//return Dbi_WriteByte(data);
+	
 	if (Tty_GetTxFifoFree() > 0) {
 		return Tty_WriteByte(data);
 	} else if (Dbi_GetTxFifoFree() > 0) {
@@ -120,7 +123,7 @@ int Ios_WriteByte(uint8_t data)
 		return Btm_WriteByte(data);
 	}
 	return -1;
-	*/
+	
 	//USART_TypeDef* USART = TTY_USART;
 	//while (USART_GetFlagStatus(USART, USART_FLAG_TC) == RESET);
 	//USART->DR = data;
@@ -171,8 +174,8 @@ int Ios_Write(const uint8_t* buf, uint32_t len)
  */
 void Ios_Init(void)
 {
-	Ios_SetIn(Ios_ReadByte);
-	Ios_SetOut(Ios_WriteByte);
+	Ios_SetIn(Ios_GetCh);
+	Ios_SetOut(Ios_PutCh);
 }
 
 
