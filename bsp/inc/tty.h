@@ -60,6 +60,7 @@ int Tty_Read(uint8_t* buf, uint32_t len);
 int Tty_Write(const uint8_t* buf, uint32_t len);
 
 void Tty_PutCh(uint8_t c);
+uint8_t Tty_GetCh(void);
 void Tty_Print(const char* str);
 
 void TtyRxCallback(uint8_t data);

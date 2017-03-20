@@ -127,8 +127,20 @@ int Dbi_Write(const uint8_t* buf, uint32_t len)
 
 void Dbi_PutCh(uint8_t c)
 {
-	while (USART_GetFlagStatus(DBI_USART, USART_FLAG_TC) == RESET);
-	DBI_USART->DR = c;
+	while (FIFO_IsFull(&tx_fifo));
+	DBI_DISABLE_IT_TXE();
+	FIFO_Push(&tx_fifo, &c, 1);
+	DBI_ENABLE_IT_TXE();
+}
+
+uint8_t Dbi_GetCh(void)
+{
+	uint8_t c = 0;
+	while (FIFO_IsEmpty(&rx_fifo));
+	DBI_DISABLE_IT_RXNE();
+	FIFO_Pop(&rx_fifo, &c, 1);
+	DBI_ENABLE_IT_RXNE();
+	return c;
 }
 
 void Dbi_Print(const char* str)

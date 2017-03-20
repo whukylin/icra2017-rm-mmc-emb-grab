@@ -165,6 +165,12 @@ typedef struct
 	uint32_t msg_type;
 }SubscMsg_t;
 
+typedef struct
+{
+	uint32_t sys_sta;
+	
+}KylinMsg_t;
+
 #define WRAP_U8(V) ((uint8_t)V)
 #define WRAP_U16(V) ((uint16_t)V)
 #define WRAP_U32(V) ((uint32_t)V)
@@ -311,22 +317,29 @@ typedef enum
 #pragma pack()
 
 /**
- * Brief: Push a single message to message fifo. 
- * @arg fifo Message fifo
- * @arg head Message head
- * @arg body Message body
- * @ret Message length (num of bytes)
+ * @brief: Push a single message to message fifo. 
+ * @param fifo Message fifo
+ * @param head Message head
+ * @param body Message body
+ * @return Message length (num of bytes)
  */
 uint32_t Msg_Push(FIFO_t* fifo, const void* head, const void* body);
 
 /**
- * Brief: Pop a single message from message fifo. 
- * @arg fifo Message fifo
- * @arg head Message head
- * @arg body Message body
- * @ret Message length (num of bytes)
+ * @brief Pop a single message from message fifo. 
+ * @param fifo Message fifo
+ * @param head Message head
+ * @param body Message body
+ * @return Message length (num of bytes)
  */
 uint32_t Msg_Pop(FIFO_t* fifo, const void* head, void* body);
+
+/**
+ * @brief Get the full length of a specific message head. 
+ * @param head Message head
+ * @return Full (head + body + crc) message length (num of bytes)
+ */
+uint32_t Msg_GetFullLen(const void* head);
 
 extern const MsgHead_t msg_head_vrc;
 extern const MsgHead_t msg_head_vhc;

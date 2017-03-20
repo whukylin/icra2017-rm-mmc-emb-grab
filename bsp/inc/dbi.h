@@ -40,7 +40,7 @@ extern "C" {
 
 #define DBI_IRQ_HANDLER IRQ_HANDLER(USART3)
 #define DBI_NVIC IRQ(USART3)
-#define DBI_NVIC_PRE_PRIORITY 2
+#define DBI_NVIC_PRE_PRIORITY 1
 #define DBI_NVIC_SUB_PRIORITY 1
 
 #define DBI_RX_FIFO_SIZE 256u
@@ -60,6 +60,7 @@ int Dbi_Read(uint8_t* buf, uint32_t len);
 int Dbi_Write(const uint8_t* buf, uint32_t len);
 
 void Dbi_PutCh(uint8_t c);
+uint8_t Dbi_GetCh(void);
 void Dbi_Print(const char* str);
 
 void DbiRxCallback(uint8_t data);

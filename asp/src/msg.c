@@ -97,5 +97,9 @@ uint32_t Msg_Pop(FIFO_t* fifo, const void* head, void* body)
 	return 0;
 }
 
-
+uint32_t Msg_GetFullLen(const void* head)
+{
+	const MsgHead_t* phead = (MsgHead_t*)head;
+	return phead->attr.length + MSG_LEN_EXT;
+}
 

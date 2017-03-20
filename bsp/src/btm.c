@@ -127,8 +127,20 @@ int Btm_Write(const uint8_t* buf, uint32_t len)
 
 void Btm_PutCh(uint8_t c)
 {
-	while (USART_GetFlagStatus(BTM_USART, USART_FLAG_TC) == RESET);
-	BTM_USART->DR = c;
+	while (FIFO_IsFull(&tx_fifo));
+	BTM_DISABLE_IT_TXE();
+	FIFO_Push(&tx_fifo, &c, 1);
+	BTM_ENABLE_IT_TXE();
+}
+
+uint8_t Btm_GetCh(void)
+{
+	uint8_t c = 0;
+	while (FIFO_IsEmpty(&rx_fifo));
+	BTM_DISABLE_IT_RXNE();
+	FIFO_Pop(&rx_fifo, &c, 1);
+	BTM_ENABLE_IT_RXNE();
+	return c;
 }
 
 void Btm_Print(const char* str)

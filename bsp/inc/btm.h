@@ -40,7 +40,7 @@ extern "C" {
 
 #define BTM_IRQ_HANDLER IRQ_HANDLER(USART2)
 #define BTM_NVIC IRQ(USART2)
-#define BTM_NVIC_PRE_PRIORITY 2
+#define BTM_NVIC_PRE_PRIORITY 1
 #define BTM_NVIC_SUB_PRIORITY 1
 
 #define BTM_RX_FIFO_SIZE 256u
@@ -60,6 +60,7 @@ int Btm_Read(uint8_t* buf, uint32_t len);
 int Btm_Write(const uint8_t* buf, uint32_t len);
 
 void Btm_PutCh(uint8_t c);
+uint8_t Btm_GetCh(void);
 void Btm_Print(const char* str);
 
 void BtmRxCallback(uint8_t data);

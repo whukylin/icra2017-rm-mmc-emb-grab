@@ -127,8 +127,20 @@ int Tty_Write(const uint8_t* buf, uint32_t len)
 
 void Tty_PutCh(uint8_t c)
 {
-	while (USART_GetFlagStatus(TTY_USART, USART_FLAG_TC) == RESET);
-	TTY_USART->DR = c;
+	while (FIFO_IsFull(&tx_fifo));
+	TTY_DISABLE_IT_TXE();
+	FIFO_Push(&tx_fifo, &c, 1);
+	TTY_ENABLE_IT_TXE();
+}
+
+uint8_t Tty_GetCh(void)
+{
+	uint8_t c = 0;
+	while (FIFO_IsEmpty(&rx_fifo));
+	TTY_DISABLE_IT_RXNE();
+	FIFO_Pop(&rx_fifo, &c, 1);
+	TTY_ENABLE_IT_RXNE();
+	return c;
 }
 
 void Tty_Print(const char* str)

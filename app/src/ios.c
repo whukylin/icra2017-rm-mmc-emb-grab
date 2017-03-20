@@ -40,6 +40,26 @@ void Ios_SetOut(int (*out)(uint8_t))
 }
 
 /**
+ * @brief Put a character to the output stream.
+ * @param c Character
+ * @return None
+ */
+void Ios_PutCh(uint8_t c)
+{
+	Dbi_PutCh(c);
+	Btm_PutCh(c);
+}
+
+/**
+ * @brief Get a character from the input stream.
+ * @return Character
+ */
+uint8_t Ios_GetCh(void)
+{
+	
+}
+
+/**
  * @brief Stdio stream write function implementation.
  */
 PUTCHAR_PROTOTYPE
@@ -89,6 +109,8 @@ int Ios_ReadByte(void)
 int Ios_WriteByte(uint8_t data)
 {
 	// Priority: TTY > DBI > BTM
+	while (Dbi_GetTxFifoFree() < 1);
+	return Dbi_WriteByte(data);
 	/*
 	if (Tty_GetTxFifoFree() > 0) {
 		return Tty_WriteByte(data);
@@ -97,11 +119,12 @@ int Ios_WriteByte(uint8_t data)
 	} else if (Btm_GetTxFifoFree() > 0) {
 		return Btm_WriteByte(data);
 	}
-	*/
-	USART_TypeDef* USART = TTY_USART;
-	while (USART_GetFlagStatus(USART, USART_FLAG_TC) == RESET);
-	USART->DR = data;
 	return -1;
+	*/
+	//USART_TypeDef* USART = TTY_USART;
+	//while (USART_GetFlagStatus(USART, USART_FLAG_TC) == RESET);
+	//USART->DR = data;
+	//return data;
 }
 
 /**
