@@ -25,12 +25,12 @@ static FIFO_t fifo;
 
 static MsgType_t msgType = MSG_TYPE_STATU;
 
-static void Upl_PushVDBusMsg(void)
+void Upl_PushVDBusMsg(void)
 {
 	Msg_Push(&fifo, &msg_head_vdbus, &dbus);
 }
 
-static void Upl_PushZGyroMsg(void)
+void Upl_PushZGyroMsg(void)
 {
 	ZGyroMsg_t zgyroMsg;
 	zgyroMsg.angle = zgyro.angle_fdb[1];
@@ -38,7 +38,7 @@ static void Upl_PushZGyroMsg(void)
 	Msg_Push(&fifo, &msg_head_zgyro, &zgyroMsg);
 }
 
-static void Upl_PushMotorMsg(void)
+void Upl_PushMotorMsg(void)
 {
 	uint8_t i = 0;
 	MotorMsg_t motorMsg;
@@ -52,7 +52,7 @@ static void Upl_PushMotorMsg(void)
 	}
 }
 
-static void Upl_PushOdomeMsg(void)
+void Upl_PushOdomeMsg(void)
 {
 	OdomeMsg_t odomeMsg;
 	odomeMsg.px = odo.cp.x * ODOME_MSG_VALUE_SCALE;
@@ -64,7 +64,7 @@ static void Upl_PushOdomeMsg(void)
 	Msg_Push(&fifo, &msg_head_odome, &odomeMsg);
 }
 
-static void Upl_PushGraspMsg(void)
+void Upl_PushGraspMsg(void)
 {
 	GraspMsg_t graspMsg;
 	graspMsg.pe = odo.gp.e * GRASP_MSG_VALUE_SCALE;
@@ -72,7 +72,7 @@ static void Upl_PushGraspMsg(void)
 	Msg_Push(&fifo, &msg_head_grasp, &graspMsg);
 }
 
-static void Upl_PushStatuMsg(void)
+void Upl_PushStatuMsg(void)
 {
 	StatuMsg_t statuMsg;
 	statuMsg.wdg = Wdg_GetErr();
@@ -80,14 +80,14 @@ static void Upl_PushStatuMsg(void)
 	Msg_Push(&fifo, &msg_head_statu, &statuMsg);
 }
 
-static void Upl_PushCalibMsg(void)
+void Upl_PushCalibMsg(void)
 {
 	CalibMsg_t calibMsg;
 	calibMsg.auto_cali_flag = Cal_GetFlag();
 	Msg_Push(&fifo, &msg_head_calib, &calibMsg);
 }
 
-static void Upl_PushKylinMsg(void)
+void Upl_PushKylinMsg(void)
 {
 	KylinMsg_t kylinMsg;
 	kylinMsg.fs = odo.fs;
@@ -104,7 +104,7 @@ static void Upl_PushKylinMsg(void)
 	Msg_Push(&fifo, &msg_head_kylin, &kylinMsg);
 }
 
-static void Upl_SendMsg(void)
+void Upl_SendMsg(void)
 {
 	uint8_t data;
 	while (!FIFO_IsEmpty(&fifo)) {

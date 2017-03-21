@@ -21,15 +21,30 @@ void task(void)
 	LED_GREEN_TOG();
 }
 
+void dbg_kylin(void)
+{
+	printf("fs=%x,px=%d,py=%d,pz=%d,pe=%d,pc=%d,vx=%d,vy=%d,vz=%d,ve=%d,vc=%d\n", kylinMsg.fs, 
+		  kylinMsg.cp.x, kylinMsg.cp.y, kylinMsg.cp.z, kylinMsg.gp.e, kylinMsg.gp.c, 
+		  kylinMsg.cv.x, kylinMsg.cv.y, kylinMsg.cv.z, kylinMsg.gv.e, kylinMsg.gv.c);
+}
+
 int main()
 {
 	KOS_Boot();
-	Sch_Arrange(task, 500);
+	//Sch_Arrange(task, 500);
 	while(1)
 	{
-		Upl_Proc();
+		//if (Dbi_GetRxFifoUsed() > 0) {
+		//	Dbi_WriteByte(Dbi_ReadByte());
+		//}
+		//Upl_Proc();
+		
+		int len = Dnl_Proc();
+		printf("%d\n", len);
 		//Com_Proc();
 		if (Clk_GetMsTick() % 20 == 0) {
+			//Upl_PushKylinMsg();
+			//dbg_kylin();
 			//printf("px=%.3f\tpy=%.3f\tpz=%.3f\r\n", odo.cp.x, odo.cp.y, odo.cp.z);
 			//Dbg_Odo();
 			//Upl_Proc();

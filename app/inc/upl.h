@@ -35,10 +35,13 @@ extern "C" {
 #include "ios.h"
 
 #define UPL_BUF_SIZE 256u
-	
+
+void Upl_PushKylinMsg(void);
+void Upl_SendMsg(void);
+
 void Upl_Init(void);
 void Upl_Proc(void);
-	
+
 #ifdef __cplusplus
 }
 #endif

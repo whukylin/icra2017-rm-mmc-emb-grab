@@ -110,10 +110,10 @@ int Ios_ReadByte(void)
 int Ios_WriteByte(uint8_t data)
 {
 	// Priority: TTY > DBI > BTM
-	while (Tty_GetTxFifoFree() < 1);
-	return Tty_WriteByte(data);
-	//while (Dbi_GetTxFifoFree() < 1);
-	//return Dbi_WriteByte(data);
+	//while (Tty_GetTxFifoFree() < 1);
+	//return Tty_WriteByte(data);
+	while (Dbi_GetTxFifoFree() < 1);
+	return Dbi_WriteByte(data);
 	
 	/*
 	if (Tty_GetTxFifoFree() > 0) {
@@ -140,6 +140,7 @@ int Ios_WriteByte(uint8_t data)
 int Ios_Read(uint8_t* buf, uint32_t len)
 {
 	// Priority: TTY > DBI > BTM
+	/*
 	if (Tty_GetRxFifoUsed() > 0) {
 		return Tty_Read(buf, len);
 	} else if (Dbi_GetRxFifoUsed() > 0) {
@@ -148,6 +149,8 @@ int Ios_Read(uint8_t* buf, uint32_t len)
 		return Btm_Read(buf, len);
 	}
 	return -1;
+	*/
+	return Dbi_Read(buf, len);
 }
 
 /**

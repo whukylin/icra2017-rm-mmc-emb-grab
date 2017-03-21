@@ -15,16 +15,20 @@
  */
  
 #include "dnl.h"
+#include "upl.h"
 
 /*****************************************/
 /*        Down-Link Communication        */
 /*****************************************/
+
+uint8_t kylin_msg_rx = 0;
 
 VirtualDBUS_t vdbus;
 VirtualCBUS_t vcbus;
 
 SubscMsg_t subscMsg;
 CalibMsg_t calibMsg;
+KylinMsg_t kylinMsg;
 PIDCalib_t pidCalib;
 IMUCalib_t imuCalib;
 MagCalib_t magCalib;
@@ -80,6 +84,17 @@ static void Dnl_ProcCalibMsg(const CalibMsg_t* calibMsg)
 	if (calibMsg->auto_cali_flag & CALIB_FLAG_BIT_POS) {
 		Cal_Init();
 	}
+}
+
+static void Dnl_ProcKylinMsg(const KylinMsg_t* kylinMsg)
+{
+	//printf("*************************************KYLIN********************************************\n");
+	/*
+	printf("fs=%x,px=%d,py=%d,pz=%d,pe=%d,pc=%d,vx=%d,vy=%d,vz=%d,ve=%d,vc=%d\n", kylinMsg->fs, 
+		kylinMsg->cp.x, kylinMsg->cp.y, kylinMsg->cp.z, kylinMsg->gp.e, kylinMsg->gp.c, 
+		kylinMsg->cv.x, kylinMsg->cv.y, kylinMsg->cv.z, kylinMsg->gv.e, kylinMsg->gv.c);
+	*/
+	kylin_msg_rx = 1;
 }
 
 static void Dnl_ProcIMUCalib(const IMUCalib_t* IMUCalib)
@@ -143,7 +158,7 @@ void Dnl_Init(void)
 	CBUS_Init(&vcbus);
 }
 
-void Dnl_Proc(void)
+int Dnl_Proc(void)
 {
 	// Get fifo free space
 	uint32_t len = FIFO_GetFree(&fifo);
@@ -151,12 +166,13 @@ void Dnl_Proc(void)
 	if (len < 1) {
 		uint8_t b;
 		len = FIFO_Pop(&fifo, &b, 1);
+		//LED_GREEN_TOG();
 	}
 	// Read input stream according to the fifo free space left
-	len = Ios_Read(buf[1], len);
+	len = Dbi_Read(buf[1], len);
 	// If input stream not available, abort
 	if (len < 1) {
-		return;
+		return len;
 	}
 	// Push stream into fifo
 	FIFO_Push(&fifo, buf[1], len);
@@ -169,10 +185,14 @@ void Dnl_Proc(void)
 		Dnl_ProcVDBUS(&vdbus);
 	} else if (Msg_Pop(&fifo, &msg_head_vcbus, &vcbus)) {
 		Dnl_ProcVCBUS(&vcbus);
+		LED_GREEN_TOG();
 	} else if (Msg_Pop(&fifo, &msg_head_subsc, &subscMsg)) {
 		Dnl_ProcSubscMsg(&subscMsg);
 	} else if (Msg_Pop(&fifo, &msg_head_calib, &calibMsg)) {
 		Dnl_ProcCalibMsg(&calibMsg);
+	} else if (Msg_Pop(&fifo, &msg_head_kylin, &kylinMsg)) {
+		Dnl_ProcKylinMsg(&kylinMsg);
+		//LED_GREEN_TOG();
 	} else if (Msg_Pop(&fifo, &msg_head_pid_calib, &pidCalib)) {
 		Dnl_ProcPIDCalib(&pidCalib);
 	} else if (Msg_Pop(&fifo, &msg_head_imu_calib, &imuCalib)) {
@@ -185,7 +205,10 @@ void Dnl_Proc(void)
 		Dnl_ProcMecCalib(&mecCalib);
 	} else if (Msg_Pop(&fifo, &msg_head_pos_calib, &posCalib)) {
 		Dnl_ProcPosCalib(&posCalib);
+	} else {
+		//LED_GREEN_TOG();
 	}
+	return len;
 }
 
 

@@ -34,18 +34,21 @@ extern "C" {
 #define DNL_BUF_SIZE 256u
 	
 void Dnl_Init(void);
-void Dnl_Proc(void);
+int Dnl_Proc(void);
 
 extern SubscMsg_t subscMsg;
 extern VirtualDBUS_t vdbus;
 extern VirtualCBUS_t vcbus;
 extern CalibMsg_t calibMsg;
+extern KylinMsg_t kylinMsg;
 extern PIDCalib_t pidCalib;
 extern IMUCalib_t imuCalib;
 extern MagCalib_t magCalib;
 extern VelCalib_t velCalib;
 extern MecCalib_t mecCalib;
 extern PosCalib_t posCalib;
+
+extern uint8_t kylin_msg_rx;
 
 #ifdef __cplusplus
 }
