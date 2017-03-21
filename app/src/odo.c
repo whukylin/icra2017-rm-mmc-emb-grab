@@ -57,11 +57,13 @@ static void GetMecanumCurrentsFdb(void)
 static void GetChassisPositionFdb(void)
 {
 	Mec_Synthe((float*)&odo.mp, (float*)&odo.cp);
+	//odo.cp.z = zgyro.angle_rad;
 }
 
 static void GetChassisVelocityFdb(void)
 {
 	Mec_Synthe((float*)&odo.mv, (float*)&odo.cv);
+	//odo.cp.z = zgyro.angle_rad;
 }
 
 static float odo_gp_c = 0;
@@ -88,15 +90,8 @@ void Odo_Init(void)
 {
 	Can_Init();
 
-	FS_Clr(&odo.fs, FS_ALL);
-	CS_Set(&odo.cp, 0, 0, 0);
-	CS_Set(&odo.cv, 0, 0, 0);
-	MS_Set(&odo.mp, 0, 0, 0, 0);
-	MS_Set(&odo.mv, 0, 0, 0, 0);
-	MS_Set(&odo.mc, 0, 0, 0, 0);
-	GS_Set(&odo.gp, 0, 0);
-	GS_Set(&odo.gv, 0, 0);
-	GS_Set(&odo.gc, 0, 0);
+	odo_gp_c = 0;
+	memset(&odo, 0, sizeof(Odo_t));
 }
 
 void Odo_Proc(void)

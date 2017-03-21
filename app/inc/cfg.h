@@ -156,7 +156,7 @@ typedef struct
 	.ki = 0, \
 	.kd = 0, \
 	.it = 0, \
-	.Emax = 30, \
+	.Emax = 300, \
 	.Pmax = 4900, \
 	.Imax = 3500, \
 	.Dmax = 1500, \
@@ -165,11 +165,11 @@ typedef struct
 
 #define CPL_CFG_DEF \
 { \
-	.kp = 20, \
+	.kp = 30, \
 	.ki = 0, \
 	.kd = 0, \
 	.it = 0, \
-	.Emax = 30, \
+	.Emax = 300, \
 	.Pmax = 4900, \
 	.Imax = 3500, \
 	.Dmax = 1500, \

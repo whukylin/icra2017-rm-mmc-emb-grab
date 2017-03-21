@@ -87,6 +87,23 @@ static void Upl_PushCalibMsg(void)
 	Msg_Push(&fifo, &msg_head_calib, &calibMsg);
 }
 
+static void Upl_PushKylinMsg(void)
+{
+	KylinMsg_t kylinMsg;
+	kylinMsg.fs = odo.fs;
+	kylinMsg.cv.x = odo.cv.x * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.cv.y = odo.cv.y * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.cv.z = odo.cv.z * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.cp.x = odo.cp.x * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.cp.y = odo.cp.y * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.cp.z = odo.cp.z * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.gv.e = odo.gv.e * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.gv.e = odo.gv.e * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.gp.c = odo.gp.c * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.gp.c = odo.gp.c * KYLIN_MSG_VALUE_SCALE;
+	Msg_Push(&fifo, &msg_head_kylin, &kylinMsg);
+}
+
 static void Upl_SendMsg(void)
 {
 	uint8_t data;
@@ -130,6 +147,10 @@ void Upl_Proc(void)
 			break;
 		case MSG_TYPE_CALIB:
 			Upl_PushCalibMsg();
+			msgType = MSG_TYPE_KYLIN;
+			break;
+		case MSG_TYPE_KYLIN:
+			Upl_PushKylinMsg();
 			msgType = MSG_TYPE_STATU;
 			break;
 		default:

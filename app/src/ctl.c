@@ -49,26 +49,43 @@ static void FunctionalStateControl(void)
 }
 
 /**********************************************/
+/*          Chassis Position Control          */
+/**********************************************/
+static void ChassisPositionControl(void)
+{
+	ctl.mv.w1 = PID_Calc(&CM1AnglePID, cmd.mp.w1, odo.mp.w1);
+	ctl.mv.w2 = PID_Calc(&CM2AnglePID, cmd.mp.w2, odo.mp.w2);
+	ctl.mv.w3 = PID_Calc(&CM3AnglePID, cmd.mp.w3, odo.mp.w3);
+	ctl.mv.w4 = PID_Calc(&CM4AnglePID, cmd.mp.w4, odo.mp.w4);
+}
+
+/**********************************************/
 /*          Chassis Velocity Control          */
 /**********************************************/
 static void ChassisVelocityControl(void)
 {
-	ctl.mv.w1 = PID_Calc(&CM1AnglePID, cmd.mp.w1, odo.mp.w1);
 	ctl.mc.w1 = PID_Calc(&CM1SpeedPID, ctl.mv.w1, odo.mv.w1) * Rmp_Calc(&CM1SpeedRmp);
-	
-	ctl.mv.w2 = PID_Calc(&CM2AnglePID, cmd.mp.w2, odo.mp.w2);
 	ctl.mc.w2 = PID_Calc(&CM2SpeedPID, ctl.mv.w2, odo.mv.w2) * Rmp_Calc(&CM2SpeedRmp);
-	
-	ctl.mv.w3 = PID_Calc(&CM3AnglePID, cmd.mp.w3, odo.mp.w3);
 	ctl.mc.w3 = PID_Calc(&CM3SpeedPID, ctl.mv.w3, odo.mv.w3) * Rmp_Calc(&CM3SpeedRmp);
-	
-	ctl.mv.w4 = PID_Calc(&CM4AnglePID, cmd.mp.w4, odo.mp.w4);
 	ctl.mc.w4 = PID_Calc(&CM4SpeedPID, ctl.mv.w4, odo.mv.w4) * Rmp_Calc(&CM4SpeedRmp);
 }
 
+/**********************************************/
+/*          Grabber Position Control          */
+/**********************************************/
 static void GrabberPositionControl(void)
 {
 	ctl.gv.e = PID_Calc(&GMEAnglePID, cmd.gp.e, odo.gp.e); // Elevator motor angle PID
+	//ctl.gv.c = 10 * (cmd.gp.c - odo.gp.c);
+	//ctl.gc.c = odo.gp.c + ctl.gv.c;
+	//ctl.gc.c = map(cmd.gp.c, cfg.pos.cl, cfg.pos.ch, CLAW_PWM_L, CLAW_PWM_H); // Direct PWM control (1000~2000)/2500, map rad to pwm duty cycle
+}
+
+/**********************************************/
+/*          Grabber Velocity Control          */
+/**********************************************/
+static void GrabberVelocityControl(void)
+{
 	ctl.gc.e = PID_Calc(&GMESpeedPID, ctl.gv.e, odo.gv.e) * Rmp_Calc(&GMESpeedRmp); // Elevator motor speed PID
 	//ctl.gv.c = 10 * (cmd.gp.c - odo.gp.c);
 	//ctl.gc.c = odo.gp.c + ctl.gv.c;
@@ -169,10 +186,7 @@ void Ctl_Init(void)
 	Rmp_Init(&GMESpeedRmp);
 	Rmp_Init(&GMCSpeedRmp);
 	
-	FS_Clr(&ctl.fs, FS_ALL);
-	MS_Set(&ctl.mc, 0, 0, 0, 0);
-	GS_Set(&ctl.gv, 0, 0);
-	GS_Set(&ctl.gc, 0, 0);
+	memset(&ctl, 0, sizeof(Ctl_t));
 }
 
 /**********************************************/
@@ -184,7 +198,9 @@ void Ctl_Proc(void)
 	Odo_Proc();
 	
 	FunctionalStateControl();
+	ChassisPositionControl();
 	ChassisVelocityControl();
 	GrabberPositionControl();
+	GrabberVelocityControl();
 }
 

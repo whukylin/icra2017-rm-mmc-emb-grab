@@ -165,11 +165,30 @@ typedef struct
 	uint32_t msg_type;
 }SubscMsg_t;
 
+#define AXIS3_MSG_VALUE_SCALE 1e3f
 typedef struct
 {
-	uint32_t sys_sta;
-	
-}KylinMsg_t;
+	int16_t x;
+	int16_t y;
+	int16_t z;
+}Axis3Msg_t;
+
+#define AXIS2_MSG_VALUE_SCALE 1e3f
+typedef struct
+{
+	int16_t e;
+	int16_t c;
+}Axis2Msg_t;
+
+#define KYLIN_MSG_VALUE_SCALE AXIS3_MSG_VALUE_SCALE
+typedef struct
+{
+	uint32_t fs; // Functional state flag bits
+	Axis3Msg_t cv; // Chassis velocity, unit: linear: mm/s, angular: 1e-3rad/s
+	Axis3Msg_t cp; // Chassis position, unit: linear: mm, angular: 1e-3rad
+	Axis2Msg_t gv; // Grabber velocity, unit: linear: mm/s, angular: 1e-3rad/s
+	Axis2Msg_t gp; // Grabber position, unit: linear: mm, angular: rad
+}KylinMsg_t; // Length unit: mm, time unit: s
 
 #define WRAP_U8(V) ((uint8_t)V)
 #define WRAP_U16(V) ((uint16_t)V)
@@ -187,12 +206,13 @@ typedef struct
 #define MSG_ID_STATU WRAP_U8(0x0a)
 #define MSG_ID_SUBSC WRAP_U8(0x0b)
 #define MSG_ID_CALIB WRAP_U8(0x0c)
-#define MSG_ID_PID_CALIB WRAP_U8(0x0d)
-#define MSG_ID_IMU_CALIB WRAP_U8(0x0e)
-#define MSG_ID_MAG_CALIB WRAP_U8(0x0f)
-#define MSG_ID_VEL_CALIB WRAP_U8(0x10)
-#define MSG_ID_MEC_CALIB WRAP_U8(0x11)
-#define MSG_ID_POS_CALIB WRAP_U8(0x12)
+#define MSG_ID_KYLIN WRAP_U8(0x0d)
+#define MSG_ID_PID_CALIB WRAP_U8(0x0e)
+#define MSG_ID_IMU_CALIB WRAP_U8(0x0f)
+#define MSG_ID_MAG_CALIB WRAP_U8(0x10)
+#define MSG_ID_VEL_CALIB WRAP_U8(0x11)
+#define MSG_ID_MEC_CALIB WRAP_U8(0x12)
+#define MSG_ID_POS_CALIB WRAP_U8(0x13)
 
 #define MSG_LEN_VRC sizeof(VirtualRC_t)
 #define MSG_LEN_VHC sizeof(VirtualHC_t)
@@ -206,6 +226,7 @@ typedef struct
 #define MSG_LEN_STATU sizeof(StatuMsg_t)
 #define MSG_LEN_SUBSC sizeof(SubscMsg_t)
 #define MSG_LEN_CALIB sizeof(CalibMsg_t)
+#define MSG_LEN_KYLIN sizeof(KylinMsg_t)
 #define MSG_LEN_PID_CALIB sizeof(PIDCalib_t)
 #define MSG_LEN_IMU_CALIB sizeof(IMUCalib_t)
 #define MSG_LEN_MAG_CALIB sizeof(MagCalib_t)
@@ -225,12 +246,13 @@ typedef struct
 #define MSG_TOKEN_STATU WRAP_U16(0xabcd)
 #define MSG_TOKEN_SUBSC WRAP_U16(0xbcde)
 #define MSG_TOKEN_CALIB WRAP_U16(0xcdef)
-#define MSG_TOKEN_PID_CALIB WRAP_U16(0xfedc)
-#define MSG_TOKEN_IMU_CALIB WRAP_U16(0xedcb)
-#define MSG_TOKEN_MAG_CALIB WRAP_U16(0xdcba)
-#define MSG_TOKEN_VEL_CALIB WRAP_U16(0xcba9)
-#define MSG_TOKEN_MEC_CALIB WRAP_U16(0xba98)
-#define MSG_TOKEN_POS_CALIB WRAP_U16(0xa987)
+#define MSG_TOKEN_KYLIN WRAP_U16(0xfedc)
+#define MSG_TOKEN_PID_CALIB WRAP_U16(0xedcb)
+#define MSG_TOKEN_IMU_CALIB WRAP_U16(0xdcba)
+#define MSG_TOKEN_MAG_CALIB WRAP_U16(0xcba9)
+#define MSG_TOKEN_VEL_CALIB WRAP_U16(0xba98)
+#define MSG_TOKEN_MEC_CALIB WRAP_U16(0xa987)
+#define MSG_TOKEN_POS_CALIB WRAP_U16(0x9876)
 
 #define MSG_HEAD_VALUE(ID,LEN,TOKEN) ((WRAP_U32(TOKEN)<<16) | (WRAP_U32(LEN)<<8) | WRAP_U32(ID))
 #define MSG_HEAD_VALUE_OF(NAME) MSG_HEAD_VALUE(MSG_ID_##NAME,MSG_LEN_##NAME,MSG_TOKEN_##NAME)
@@ -247,6 +269,7 @@ typedef struct
 #define MSG_HEAD_VALUE_STATU MSG_HEAD_VALUE_OF(STATU)
 #define MSG_HEAD_VALUE_SUBSC MSG_HEAD_VALUE_OF(SUBSC)
 #define MSG_HEAD_VALUE_CALIB MSG_HEAD_VALUE_OF(CALIB)
+#define MSG_HEAD_VALUE_KYLIN MSG_HEAD_VALUE_OF(KYLIN)
 #define MSG_HEAD_VALUE_PID_CALIB MSG_HEAD_VALUE_OF(PID_CALIB)
 #define MSG_HEAD_VALUE_IMU_CALIB MSG_HEAD_VALUE_OF(IMU_CALIB)
 #define MSG_HEAD_VALUE_MAG_CALIB MSG_HEAD_VALUE_OF(MAG_CALIB)
@@ -266,6 +289,7 @@ typedef struct
 #define MSG_HEAD_STATU { MSG_HEAD_VALUE_STATU }
 #define MSG_HEAD_SUBSC { MSG_HEAD_VALUE_SUBSC }
 #define MSG_HEAD_CALIB { MSG_HEAD_VALUE_CALIB }
+#define MSG_HEAD_KYLIN { MSG_HEAD_VALUE_KYLIN }
 #define MSG_HEAD_PID_CALIB { MSG_HEAD_VALUE_PID_CALIB }
 #define MSG_HEAD_IMU_CALIB { MSG_HEAD_VALUE_IMU_CALIB }
 #define MSG_HEAD_MAG_CALIB { MSG_HEAD_VALUE_MAG_CALIB }
@@ -285,12 +309,13 @@ typedef struct
 #define MSG_TYPE_IDX_STATU 9u
 #define MSG_TYPE_IDX_SUBSC 10u
 #define MSG_TYPE_IDX_CALIB 11u
-#define MSG_TYPE_IDX_PID_CALIB 12u
-#define MSG_TYPE_IDX_IMU_CALIB 13u
-#define MSG_TYPE_IDX_MAG_CALIB 14u
-#define MSG_TYPE_IDX_VEL_CALIB 15u
-#define MSG_TYPE_IDX_MEC_CALIB 16u
-#define MSG_TYPE_IDX_POS_CALIB 17u
+#define MSG_TYPE_IDX_KYLIN 12u
+#define MSG_TYPE_IDX_PID_CALIB 13u
+#define MSG_TYPE_IDX_IMU_CALIB 14u
+#define MSG_TYPE_IDX_MAG_CALIB 15u
+#define MSG_TYPE_IDX_VEL_CALIB 16u
+#define MSG_TYPE_IDX_MEC_CALIB 17u
+#define MSG_TYPE_IDX_POS_CALIB 18u
 
 typedef enum
 {
@@ -306,6 +331,7 @@ typedef enum
 	MSG_TYPE_STATU = 1u << MSG_TYPE_IDX_STATU,
 	MSG_TYPE_SUBSC = 1u << MSG_TYPE_IDX_SUBSC,
 	MSG_TYPE_CALIB = 1u << MSG_TYPE_IDX_CALIB,
+	MSG_TYPE_KYLIN = 1u << MSG_TYPE_IDX_KYLIN,
 	MSG_TYPE_PID_CALIB = 1u << MSG_TYPE_IDX_PID_CALIB,
 	MSG_TYPE_IMU_CALIB = 1u << MSG_TYPE_IDX_IMU_CALIB,
 	MSG_TYPE_MAG_CALIB = 1u << MSG_TYPE_IDX_MAG_CALIB,
@@ -353,6 +379,7 @@ extern const MsgHead_t msg_head_grasp;
 extern const MsgHead_t msg_head_statu;
 extern const MsgHead_t msg_head_subsc;
 extern const MsgHead_t msg_head_calib;
+extern const MsgHead_t msg_head_kylin;
 extern const MsgHead_t msg_head_pid_calib;
 extern const MsgHead_t msg_head_imu_calib;
 extern const MsgHead_t msg_head_mag_calib;
