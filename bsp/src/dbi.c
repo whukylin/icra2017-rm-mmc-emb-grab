@@ -16,6 +16,8 @@
  
 #include "dbi.h"
 
+const VIOS_t dbi = VIOS_GEN(Dbi);
+
 static FIFO_t rx_fifo;
 static FIFO_t tx_fifo;
 static uint8_t rx_buf[DBI_RX_FIFO_SIZE];

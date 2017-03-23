@@ -29,6 +29,7 @@
 .\objects\dnl.o: ..\..\asp\inc\fifo.h
 .\objects\dnl.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\dnl.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\dnl.o: ..\..\asp\inc\vios.h
 .\objects\dnl.o: ..\..\bsp\inc\dbi.h
 .\objects\dnl.o: ..\..\bsp\inc\btm.h
 .\objects\dnl.o: ..\..\asp\inc\fun.h

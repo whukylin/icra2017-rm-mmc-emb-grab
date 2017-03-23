@@ -26,3 +26,4 @@
 .\objects\tty.o: ..\..\asp\inc\fifo.h
 .\objects\tty.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\tty.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\tty.o: ..\..\asp\inc\vios.h

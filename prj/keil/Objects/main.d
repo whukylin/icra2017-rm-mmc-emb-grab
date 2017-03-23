@@ -31,6 +31,7 @@
 .\objects\main.o: ..\..\asp\inc\pid.h
 .\objects\main.o: ..\..\asp\inc\rmp.h
 .\objects\main.o: ..\..\asp\inc\stack.h
+.\objects\main.o: ..\..\asp\inc\vios.h
 .\objects\main.o: ..\..\bsp\inc\bsp.h
 .\objects\main.o: ..\..\bsp\inc\btm.h
 .\objects\main.o: ..\..\bsp\inc\stm32util.h

@@ -13,36 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-#ifndef __UPL_H__
-#define __UPL_H__
 
-/*****************************************/
-/*         Up-Link Communication         */
-/*****************************************/
+#include "vios.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+/*************************************************/
+/*          Virtual Input/Output Stream          */
+/*************************************************/
 
-#include "msg.h"
-#include "cal.h"
-#include "cmd.h"
-#include "odo.h"
-#include "dci.h"
-#include "wdg.h"
-#include "ini.h"
-#include "ios.h"
-
-#define UPL_BUF_SIZE 256u
-
-void Upl_Init(void);
-void Upl_Proc(void);
-
-#ifdef __cplusplus
+void VIOS_Init(VIOS_t* vios)
+{
+	memset(vios, 0, sizeof(VIOS_t));
 }
-#endif
-
-#endif
 
 

@@ -27,6 +27,6 @@ void Cci_Proc(const CBUS_t* cbus)
 	cmd.cv.z = constrain(cbus->vz * CCI_VALUE_RECIP, -cfg.vel.z, cfg.vel.z);
 	cmd.gp.e = constrain(cbus->pe * CCI_VALUE_RECIP, cfg.pos.el, cfg.pos.eh);
 	cmd.gp.c = constrain(cbus->pc * CCI_VALUE_RECIP, cfg.pos.cl, cfg.pos.ch);
-	cmd.fs   = cbus->fs;
+	//cmd.fs   = cbus->fs;
 }
 

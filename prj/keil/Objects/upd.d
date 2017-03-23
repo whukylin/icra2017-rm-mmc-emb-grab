@@ -36,6 +36,7 @@
 .\objects\upd.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\upd.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
 .\objects\upd.o: ..\..\asp\inc\fifo.h
+.\objects\upd.o: ..\..\asp\inc\vios.h
 .\objects\upd.o: ..\..\bsp\inc\btn.h
 .\objects\upd.o: ..\..\bsp\inc\can1.h
 .\objects\upd.o: ..\..\bsp\inc\can2.h

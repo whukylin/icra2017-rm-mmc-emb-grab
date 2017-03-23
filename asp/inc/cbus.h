@@ -28,6 +28,9 @@ extern "C" {
 #include <stdint.h>
 #include <string.h>
 
+#define CBUS_ID 0x88
+#define CBUS_TOKEN 0x8191
+
 #define CBUS_CHASSIS_VELOCITY_RECIP 0.001f
 #pragma pack(1)
 typedef struct
@@ -37,7 +40,7 @@ typedef struct
 	int16_t vz; // Bot angular velocity in z-axis, unit: rad/s
 	int16_t pe; // Bot elevator position, unit: 0.001*rad
 	int16_t pc; // Bot claw position, unit: 0.001*rad
-	uint32_t fs; // Functional state control bits, 0: off, 1: on
+	//uint32_t fs; // Functional state control bits, 0: off, 1: on
 }CBUS_t;
 #pragma pack()
 

@@ -23,7 +23,8 @@ extern "C" {
 	
 #include "stm32util.h"
 #include "fifo.h"
-
+#include "vios.h"
+	
 #define TTY_TX_PIN PG9
 #define TTY_RX_PIN PG14
 #define TTY_USART USART6
@@ -46,6 +47,7 @@ extern "C" {
 #define TTY_RX_FIFO_SIZE 256u
 #define TTY_TX_FIFO_SIZE 256u
 
+void Tty_InitIO(void);
 void Tty_Config(void);
 
 uint32_t Tty_GetRxFifoSize(void);
@@ -64,6 +66,8 @@ uint8_t Tty_GetCh(void);
 void Tty_Print(const char* str);
 
 void TtyRxCallback(uint8_t data);
+
+extern const VIOS_t tty;
 
 #ifdef __cplusplus
 }

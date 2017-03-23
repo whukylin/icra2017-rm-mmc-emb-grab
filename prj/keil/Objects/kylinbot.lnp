@@ -51,6 +51,7 @@
 ".\objects\rcp.o"
 ".\objects\rmp.o"
 ".\objects\stack.o"
+".\objects\vios.o"
 ".\objects\can_srv.o"
 ".\objects\com_srv.o"
 ".\objects\rcv_srv.o"

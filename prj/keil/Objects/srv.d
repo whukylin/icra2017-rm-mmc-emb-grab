@@ -44,6 +44,7 @@
 .\objects\srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\objects\srv.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
+.\objects\srv.o: ..\..\asp\inc\vios.h
 .\objects\srv.o: ..\..\bsp\inc\btn.h
 .\objects\srv.o: ..\..\bsp\inc\can1.h
 .\objects\srv.o: ..\..\bsp\inc\can2.h

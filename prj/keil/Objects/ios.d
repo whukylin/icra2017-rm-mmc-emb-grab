@@ -28,6 +28,7 @@
 .\objects\ios.o: ..\..\asp\inc\fifo.h
 .\objects\ios.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\ios.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\ios.o: ..\..\asp\inc\vios.h
 .\objects\ios.o: ..\..\bsp\inc\dbi.h
 .\objects\ios.o: ..\..\bsp\inc\btm.h
 .\objects\ios.o: ..\..\asp\inc\fun.h

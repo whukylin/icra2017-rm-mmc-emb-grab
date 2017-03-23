@@ -28,6 +28,7 @@
 .\objects\act.o: ..\..\asp\inc\fifo.h
 .\objects\act.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\act.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\act.o: ..\..\asp\inc\vios.h
 .\objects\act.o: ..\..\bsp\inc\btn.h
 .\objects\act.o: ..\..\bsp\inc\can1.h
 .\objects\act.o: ..\..\bsp\inc\can2.h

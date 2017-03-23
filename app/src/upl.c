@@ -20,143 +20,47 @@
 /*         Up-Link Communication         */
 /*****************************************/
 
-static uint8_t buf[UPL_BUF_SIZE];
+static uint8_t buf[2][UPL_BUF_SIZE];
 static FIFO_t fifo;
 
-static MsgType_t msgType = MSG_TYPE_STATU;
+static KylinMsg_t kylinMsg;
 
-void Upl_PushVDBusMsg(void)
+static void Upl_PushKylinMsg(void)
 {
-	Msg_Push(&fifo, &msg_head_vdbus, &dbus);
-}
-
-void Upl_PushZGyroMsg(void)
-{
-	ZGyroMsg_t zgyroMsg;
-	zgyroMsg.angle = zgyro.angle_fdb[1];
-	zgyroMsg.rate = zgyro.rate;
-	Msg_Push(&fifo, &msg_head_zgyro, &zgyroMsg);
-}
-
-void Upl_PushMotorMsg(void)
-{
-	uint8_t i = 0;
-	MotorMsg_t motorMsg;
-	for (; i < MOTOR_NUM; i++) {
-		motorMsg.id = i;
-		motorMsg.ecd_angle = motor[i].angle_fdb[1];
-		motorMsg.angle = motor[i].angle_filtered;
-		motorMsg.rate = motor[i].rate_filtered;
-		motorMsg.current = motor[i].current_ref;
-		Msg_Push(&fifo, &msg_head_motor, &motorMsg);
+	if (IOS_COM_DEV.GetTxFifoFree() >= msg_head_kylin.attr.length + MSG_LEN_EXT) {
+		kylinMsg.fs = odo.fs;
+		kylinMsg.cv.x = odo.cv.x * KYLIN_MSG_VALUE_SCALE;
+		kylinMsg.cv.y = odo.cv.y * KYLIN_MSG_VALUE_SCALE;
+		kylinMsg.cv.z = odo.cv.z * KYLIN_MSG_VALUE_SCALE;
+		kylinMsg.cp.x = odo.cp.x * KYLIN_MSG_VALUE_SCALE;
+		kylinMsg.cp.y = odo.cp.y * KYLIN_MSG_VALUE_SCALE;
+		kylinMsg.cp.z = odo.cp.z * KYLIN_MSG_VALUE_SCALE;
+		kylinMsg.gv.e = odo.gv.e * KYLIN_MSG_VALUE_SCALE;
+		kylinMsg.gv.e = odo.gv.e * KYLIN_MSG_VALUE_SCALE;
+		kylinMsg.gp.c = odo.gp.c * KYLIN_MSG_VALUE_SCALE;
+		kylinMsg.gp.c = odo.gp.c * KYLIN_MSG_VALUE_SCALE;
+		Msg_Push(&fifo, buf[1], &msg_head_kylin, &kylinMsg);
 	}
 }
 
-void Upl_PushOdomeMsg(void)
+static void Upl_SendMsg(void)
 {
-	OdomeMsg_t odomeMsg;
-	odomeMsg.px = odo.cp.x * ODOME_MSG_VALUE_SCALE;
-	odomeMsg.py = odo.cp.y * ODOME_MSG_VALUE_SCALE;
-	odomeMsg.pz = odo.cp.z * ODOME_MSG_VALUE_SCALE;
-	odomeMsg.vx = odo.cv.x * ODOME_MSG_VALUE_SCALE;
-	odomeMsg.vy = odo.cv.y * ODOME_MSG_VALUE_SCALE;
-	odomeMsg.vz = odo.cv.z * ODOME_MSG_VALUE_SCALE;
-	Msg_Push(&fifo, &msg_head_odome, &odomeMsg);
-}
-
-void Upl_PushGraspMsg(void)
-{
-	GraspMsg_t graspMsg;
-	graspMsg.pe = odo.gp.e * GRASP_MSG_VALUE_SCALE;
-	graspMsg.pc = odo.gp.c * GRASP_MSG_VALUE_SCALE;
-	Msg_Push(&fifo, &msg_head_grasp, &graspMsg);
-}
-
-void Upl_PushStatuMsg(void)
-{
-	StatuMsg_t statuMsg;
-	statuMsg.wdg = Wdg_GetErr();
-	statuMsg.ini = Ini_GetFlag();
-	Msg_Push(&fifo, &msg_head_statu, &statuMsg);
-}
-
-void Upl_PushCalibMsg(void)
-{
-	CalibMsg_t calibMsg;
-	calibMsg.auto_cali_flag = Cal_GetFlag();
-	Msg_Push(&fifo, &msg_head_calib, &calibMsg);
-}
-
-void Upl_PushKylinMsg(void)
-{
-	KylinMsg_t kylinMsg;
-	kylinMsg.fs = odo.fs;
-	kylinMsg.cv.x = odo.cv.x * KYLIN_MSG_VALUE_SCALE;
-	kylinMsg.cv.y = odo.cv.y * KYLIN_MSG_VALUE_SCALE;
-	kylinMsg.cv.z = odo.cv.z * KYLIN_MSG_VALUE_SCALE;
-	kylinMsg.cp.x = odo.cp.x * KYLIN_MSG_VALUE_SCALE;
-	kylinMsg.cp.y = odo.cp.y * KYLIN_MSG_VALUE_SCALE;
-	kylinMsg.cp.z = odo.cp.z * KYLIN_MSG_VALUE_SCALE;
-	kylinMsg.gv.e = odo.gv.e * KYLIN_MSG_VALUE_SCALE;
-	kylinMsg.gv.e = odo.gv.e * KYLIN_MSG_VALUE_SCALE;
-	kylinMsg.gp.c = odo.gp.c * KYLIN_MSG_VALUE_SCALE;
-	kylinMsg.gp.c = odo.gp.c * KYLIN_MSG_VALUE_SCALE;
-	Msg_Push(&fifo, &msg_head_kylin, &kylinMsg);
-}
-
-void Upl_SendMsg(void)
-{
+	
 	uint8_t data;
 	while (!FIFO_IsEmpty(&fifo)) {
 		FIFO_Pop(&fifo, &data, 1);
-		Ios_WriteByte(data);
+		IOS_COM_DEV.WriteByte(data);
 	}
 }
 
 void Upl_Init(void)
 {
-	FIFO_Init(&fifo, buf, UPL_BUF_SIZE);
+	FIFO_Init(&fifo, buf[0], UPL_BUF_SIZE);
 }
 
 void Upl_Proc(void)
 {
-	switch(msgType) {
-		case MSG_TYPE_STATU:
-			Upl_PushStatuMsg();
-			msgType = MSG_TYPE_VDBUS;
-			break;
-		case MSG_TYPE_VDBUS:
-			Upl_PushVDBusMsg();
-			msgType = MSG_TYPE_ZGYRO;
-			break;
-		case MSG_TYPE_ZGYRO:
-			Upl_PushZGyroMsg();
-			msgType = MSG_TYPE_MOTOR;
-			break;
-		case MSG_TYPE_MOTOR:
-			Upl_PushMotorMsg();
-			msgType = MSG_TYPE_ODOME;
-			break;
-		case MSG_TYPE_ODOME:
-			Upl_PushOdomeMsg();
-			msgType = MSG_TYPE_GRASP;
-			break;
-		case MSG_TYPE_GRASP:
-			Upl_PushGraspMsg();
-			msgType = MSG_TYPE_CALIB;
-			break;
-		case MSG_TYPE_CALIB:
-			Upl_PushCalibMsg();
-			msgType = MSG_TYPE_KYLIN;
-			break;
-		case MSG_TYPE_KYLIN:
-			Upl_PushKylinMsg();
-			msgType = MSG_TYPE_STATU;
-			break;
-		default:
-			msgType = MSG_TYPE_STATU;
-			break;
-	}
+	Upl_PushKylinMsg();
 	Upl_SendMsg();
 }
 

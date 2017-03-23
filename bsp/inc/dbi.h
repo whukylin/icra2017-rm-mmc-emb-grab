@@ -23,7 +23,8 @@ extern "C" {
 	
 #include "stm32util.h"
 #include "fifo.h"
-
+#include "vios.h"
+	
 #define DBI_TX_PIN PD8
 #define DBI_RX_PIN PD9
 #define DBI_USART USART3
@@ -64,6 +65,8 @@ uint8_t Dbi_GetCh(void);
 void Dbi_Print(const char* str);
 
 void DbiRxCallback(uint8_t data);
+
+extern const VIOS_t dbi;
 
 #ifdef __cplusplus
 }

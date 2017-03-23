@@ -29,6 +29,7 @@
 .\objects\app.o: ..\..\asp\inc\pid.h
 .\objects\app.o: ..\..\asp\inc\rmp.h
 .\objects\app.o: ..\..\asp\inc\stack.h
+.\objects\app.o: ..\..\asp\inc\vios.h
 .\objects\app.o: ..\..\bsp\inc\bsp.h
 .\objects\app.o: ..\..\bsp\inc\btm.h
 .\objects\app.o: ..\..\bsp\inc\stm32util.h

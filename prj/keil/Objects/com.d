@@ -37,6 +37,7 @@
 .\objects\com.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\objects\com.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\com.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
+.\objects\com.o: ..\..\asp\inc\vios.h
 .\objects\com.o: ..\..\bsp\inc\btn.h
 .\objects\com.o: ..\..\bsp\inc\can1.h
 .\objects\com.o: ..\..\bsp\inc\can2.h

@@ -29,12 +29,8 @@ extern "C" {
 #include "fun.h"
 #include "wdg.h"
 
-typedef enum
-{
-	IOS_DEV_TTY = 0x01,
-	IOS_DEV_DBI = 0x02,
-	IOS_DEV_BTM = 0x04,
-}IosDev_t;
+#define IOS_DBG_DEV dbi
+#define IOS_COM_DEV tty
 
 #ifdef __GNUC__
 #define PUTCHAR_PROTOTYPE int __io_putchar(int c)

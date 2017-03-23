@@ -31,18 +31,29 @@ void dbg_kylin(void)
 int main()
 {
 	KOS_Boot();
-	//Sch_Arrange(task, 500);
+	Sch_Arrange(task, 500);
 	while(1)
 	{
-		//if (Dbi_GetRxFifoUsed() > 0) {
-		//	Dbi_WriteByte(Dbi_ReadByte());
-		//}
-		//Upl_Proc();
+		Dnl_Proc();
 		
-		int len = Dnl_Proc();
-		printf("%d\n", len);
-		//Com_Proc();
-		if (Clk_GetMsTick() % 20 == 0) {
+		if (Wdg_HasErr(WDG_ERR_KYLIN)) {
+			LED_GREEN_OFF();
+		} else {
+			LED_GREEN_ON();
+		}
+		
+		if (Clk_GetMsTick() % 4 == 0) {
+			//Dnl_Proc();
+		}
+		if (Clk_GetMsTick() % 50 == 0) {
+			//Dnl_Proc();
+			Upl_Proc();
+			//printf("size: %d, used: %d, free: %d, dnl: %d\n", IOS_COM_DEV.GetRxFifoSize(), IOS_COM_DEV.GetRxFifoUsed(), IOS_COM_DEV.GetRxFifoFree(), DNL_len);
+			
+			//printf("fifo
+			//Dnl_Proc();
+			//Upl_Proc();
+			//dbi.Print("Hello From DBI\n");
 			//Upl_PushKylinMsg();
 			//dbg_kylin();
 			//printf("px=%.3f\tpy=%.3f\tpz=%.3f\r\n", odo.cp.x, odo.cp.y, odo.cp.z);

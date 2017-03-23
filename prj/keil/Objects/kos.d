@@ -30,6 +30,7 @@
 .\objects\kos.o: ..\..\asp\inc\pid.h
 .\objects\kos.o: ..\..\asp\inc\rmp.h
 .\objects\kos.o: ..\..\asp\inc\stack.h
+.\objects\kos.o: ..\..\asp\inc\vios.h
 .\objects\kos.o: ..\..\bsp\inc\bsp.h
 .\objects\kos.o: ..\..\bsp\inc\btm.h
 .\objects\kos.o: ..\..\bsp\inc\stm32util.h

@@ -39,7 +39,7 @@ extern "C" {
 #include "crc16.h"
 	
 /* Message length minimum/maximum limit */
-#define MSG_LEN_MIN 4u
+#define MSG_LEN_MIN 6u
 #define MSG_LEN_MAX 256u
 #define MSG_LEN_EXT 6u
 
@@ -345,20 +345,22 @@ typedef enum
 /**
  * @brief: Push a single message to message fifo. 
  * @param fifo Message fifo
+ * @param buf Message buffer
  * @param head Message head
  * @param body Message body
  * @return Message length (num of bytes)
  */
-uint32_t Msg_Push(FIFO_t* fifo, const void* head, const void* body);
+uint32_t Msg_Push(FIFO_t* fifo, void* buf, const void* head, const void* body);
 
 /**
  * @brief Pop a single message from message fifo. 
  * @param fifo Message fifo
+ * @param buf Message buffer
  * @param head Message head
  * @param body Message body
  * @return Message length (num of bytes)
  */
-uint32_t Msg_Pop(FIFO_t* fifo, const void* head, void* body);
+uint32_t Msg_Pop(FIFO_t* fifo, void* buf, const void* head, void* body);
 
 /**
  * @brief Get the full length of a specific message head. 

@@ -35,6 +35,7 @@
 .\objects\wsm.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\wsm.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
 .\objects\wsm.o: ..\..\asp\inc\fifo.h
+.\objects\wsm.o: ..\..\asp\inc\vios.h
 .\objects\wsm.o: ..\..\bsp\inc\btn.h
 .\objects\wsm.o: ..\..\bsp\inc\can1.h
 .\objects\wsm.o: ..\..\bsp\inc\can2.h

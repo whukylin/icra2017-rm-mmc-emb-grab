@@ -819,6 +819,11 @@
               <FileType>5</FileType>
               <FilePath>..\..\asp\inc\stack.h</FilePath>
             </File>
+            <File>
+              <FileName>vios.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\asp\inc\vios.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -938,6 +943,11 @@
               <FileName>stack.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\asp\src\stack.c</FilePath>
+            </File>
+            <File>
+              <FileName>vios.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\asp\src\vios.c</FilePath>
             </File>
           </Files>
         </Group>

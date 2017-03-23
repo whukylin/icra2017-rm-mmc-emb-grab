@@ -23,6 +23,7 @@ extern "C" {
 	
 #include "stm32util.h"
 #include "fifo.h"
+#include "vios.h"
 
 #define BTM_TX_PIN PD5
 #define BTM_RX_PIN PD6
@@ -64,6 +65,8 @@ uint8_t Btm_GetCh(void);
 void Btm_Print(const char* str);
 
 void BtmRxCallback(uint8_t data);
+
+extern const VIOS_t btm;
 
 #ifdef __cplusplus
 }

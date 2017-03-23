@@ -158,6 +158,7 @@ void Dbg_Ecd(void)
 	printf("%d\t%d\t%d\t%d\n", motor[0].angle_raw, motor[1].angle_raw, motor[2].angle_raw, motor[3].angle_raw);
 }
 
+/*
 void Dbg_Vrc(void)
 {
 	printf("ch0=%d,ch1=%d,ch2=%d,ch3=%d,s1=%d,s2=%d\n", 
@@ -178,10 +179,11 @@ void Dbg_Vdc(void)
 		vdbus.rcp.sw[1], vdbus.hcp.key.val, vdbus.hcp.mouse.x, vdbus.hcp.mouse.y, vdbus.hcp.mouse.z,
 		vdbus.hcp.mouse.b[0], vdbus.hcp.mouse.b[1]);
 }
+*/
 
 void Dbg_Vcc(void)
 {
-	printf("vx=%d,vy=%d,vz=%d,ve=%d,vc=%d,fs=%x\n", vcbus.vx, vcbus.vy, vcbus.vz, vcbus.pe, vcbus.pc, vcbus.fs);
+	//printf("vx=%d,vy=%d,vz=%d,ve=%d,vc=%d,fs=%x\n", vcbus.vx, vcbus.vy, vcbus.vz, vcbus.pe, vcbus.pc, vcbus.fs);
 }
 
 void Dbg_Imu(void)

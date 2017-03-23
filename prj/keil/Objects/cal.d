@@ -28,6 +28,7 @@
 .\objects\cal.o: ..\..\asp\inc\fifo.h
 .\objects\cal.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\cal.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\cal.o: ..\..\asp\inc\vios.h
 .\objects\cal.o: ..\..\bsp\inc\btn.h
 .\objects\cal.o: ..\..\bsp\inc\can1.h
 .\objects\cal.o: ..\..\bsp\inc\can2.h

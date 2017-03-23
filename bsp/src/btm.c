@@ -16,6 +16,8 @@
 
 #include "btm.h"
 
+const VIOS_t btm = VIOS_GEN(Btm);
+
 static FIFO_t rx_fifo;
 static FIFO_t tx_fifo;
 static uint8_t rx_buf[BTM_RX_FIFO_SIZE];
