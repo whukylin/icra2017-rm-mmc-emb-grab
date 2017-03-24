@@ -115,8 +115,7 @@ CalFlag_t Cal_HitFlag(CalFlag_t mask)
 
 CalFlag_t Cal_IsDone(void)
 {
-	//return Cal_HitFlag(CAL_FLAG_GIM); // DBUG
-	return 1;
+	return Cal_HitFlag(CAL_FLAG_GIM);
 }
 
 

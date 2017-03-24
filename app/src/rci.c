@@ -39,7 +39,7 @@ static void GetChassisVelocityRef(const Rcp_t* rcp)
 static void GetGrabberVelocityRef(const Rcp_t* rcp)
 {
 	cmd.gv.e = map(rcp->ch[3], CH_MIN, CH_MAX, -cfg.vel.e, cfg.vel.e); // m/s
-	cmd.gp.e += cmd.gv.e * SYS_CTL_TSC; // Integral velocity to get position, unit: m
+	cmd.gp.e -= cmd.gv.e * SYS_CTL_TSC; // Integral velocity to get position, unit: m
 	CONSTRAIN(cmd.gp.e, cfg.pos.el, cfg.pos.eh); // Constrain elevator position
 	cmd.gv.c = Rci_Sw(SW_IDX_L) == SW_UP ? cfg.vel.c : Rci_Sw(SW_IDX_L) == SW_DN ? -cfg.vel.c : 0; // rad/s
 	cmd.gp.c += cmd.gv.c * SYS_CTL_TSC; // Integral velocity to get position, unit: rad

@@ -107,8 +107,8 @@ typedef struct
 
 #define VEL_TRA_DEF 12.0f // m/s // 3
 #define VEL_ROT_DEF 37.2f // rad/s  // 9.3
-#define VEL_ELE_DEF 0.5f // m/s
-#define VEL_CLA_DEF 10.0f // rad/s
+#define VEL_ELE_DEF 3.0f // m/s
+#define VEL_CLA_DEF 40.0f // rad/s
 #define VEL_CFG_DEF \
 { \
 	.x = VEL_TRA_DEF, \
@@ -144,8 +144,8 @@ typedef struct
 
 #define POS_CFG_DEF \
 { \
-	.el = 0, \
-	.eh = 0.62f, \
+	.el = -1.21f, \
+	.eh = 0.0f, \
 	.cl = 0, \
 	.ch = 2.0f, \
 }

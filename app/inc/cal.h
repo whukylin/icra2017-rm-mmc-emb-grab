@@ -32,10 +32,10 @@ extern "C" {
 #include "cfg.h"
 
 #define CAL_GM_UP_DIR 1
-#define CAL_GM_DRV_CURRENT 800
+#define CAL_GM_DRV_CURRENT 5000
 #define CAL_GM_START_UP_DELAY 500
-#define CAL_GM_BANG_VEL_DET 1e-4f
-#define CAL_GM_MAF_BUF_LEN 10
+#define CAL_GM_BANG_VEL_DET 1e-2f
+#define CAL_GM_MAF_BUF_LEN 3
 
 typedef uint32_t CalFlag_t;
 

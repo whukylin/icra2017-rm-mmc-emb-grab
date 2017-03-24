@@ -16,75 +16,14 @@
  
 #include "main.h"
 
-void task(void)
-{
-	LED_GREEN_TOG();
-}
-
-void dbg_kylin(void)
-{
-	printf("fs=%x,px=%d,py=%d,pz=%d,pe=%d,pc=%d,vx=%d,vy=%d,vz=%d,ve=%d,vc=%d\n", kylinMsg.fs, 
-		  kylinMsg.cp.x, kylinMsg.cp.y, kylinMsg.cp.z, kylinMsg.gp.e, kylinMsg.gp.c, 
-		  kylinMsg.cv.x, kylinMsg.cv.y, kylinMsg.cv.z, kylinMsg.gv.e, kylinMsg.gv.c);
-}
-
 int main()
 {
 	KOS_Boot();
-	Sch_Arrange(task, 500);
 	while(1)
 	{
 		Dnl_Proc();
-		
-		if (Wdg_HasErr(WDG_ERR_KYLIN)) {
-			LED_GREEN_OFF();
-		} else {
-			LED_GREEN_ON();
-		}
-		
-		if (Clk_GetMsTick() % 4 == 0) {
-			//Dnl_Proc();
-		}
 		if (Clk_GetMsTick() % 50 == 0) {
-			//Dnl_Proc();
 			Upl_Proc();
-			//printf("size: %d, used: %d, free: %d, dnl: %d\n", IOS_COM_DEV.GetRxFifoSize(), IOS_COM_DEV.GetRxFifoUsed(), IOS_COM_DEV.GetRxFifoFree(), DNL_len);
-			
-			//printf("fifo
-			//Dnl_Proc();
-			//Upl_Proc();
-			//dbi.Print("Hello From DBI\n");
-			//Upl_PushKylinMsg();
-			//dbg_kylin();
-			//printf("px=%.3f\tpy=%.3f\tpz=%.3f\r\n", odo.cp.x, odo.cp.y, odo.cp.z);
-			//Dbg_Odo();
-			//Upl_Proc();
-			//printf("%f\n", odo.gv.e);
-			//printf("kl=%d,kh=%d,calFlag=%x\n", KEY_L_IS_PRESSED(), KEY_H_IS_PRESSED(), Cal_GetFlag());
-			//printf("ev=%.3f,ep=%.3f\n", cmd.gv.e, cmd.gp.e);
-			//printf("sw0=%d,sw1=%d,sw2=%d,gv=%.3f,gp=%.3f\n", rcf.sw[0][0], rcf.sw[0][1], rcf.sw[0][2], cmd.gv.c, cmd.gp.c);
-			//printf("gpl\t%.3f\t%.3f\t%.3f\n", cmd.gp.e, odo.gp.e, GMEAnglePID.error[1]);
-			//printf("pid\t%.3f\t%.3f\t%.3f\n", cmd.mv.w1, odo.mv.w1, CM1SpeedPID.error[1]);
-			//Upl_Proc();
-			//Com_Proc();
-			//printf("%f\n", ctl.gc.c);
-			//Dbg_Cmd();
-			//Dbg_Ctl();
-			//printf("wdg: %x, ini: %x\n", Wdg_GetErr(), Ini_GetFlag());
-			//Dbg_Cfg();
-			//Upl_Proc();
-			//printf("%d\n", sizeof(Cfg_t));
-			//Upl_Proc();
-			//Dbg_Ecd();
-			//LED_GREEN_TOG();
-			//Dbg_Mec();
-			//Dbg_Pid();
-			//Dbg_Dci();
-			//Dbg_Odo();
-			//Dbg_Cmd();
-			//Dbg_Imu();
-			//Dbg_Wsm();
-			//Dbg_Wdg();
 		}
   }
 }
