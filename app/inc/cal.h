@@ -33,7 +33,7 @@ extern "C" {
 
 #define CAL_GM_UP_DIR 1
 #define CAL_GM_DRV_CURRENT 5000
-#define CAL_GM_START_UP_DELAY 500
+#define CAL_GM_START_UP_DELAY 100
 #define CAL_GM_BANG_VEL_DET 1e-2f
 #define CAL_GM_MAF_BUF_LEN 3
 
@@ -44,12 +44,8 @@ typedef uint32_t CalFlag_t;
 
 #define CAL_FLAG_GIM (CAL_FLAG_GPL | CAL_FLAG_GPL)
 
-void Cal_SetGpl(void);
-void Cal_SetGph(void);
-
 void Cal_Init(void);
 void Cal_Proc(void);
-
 
 CalFlag_t Cal_GetFlag(void);
 void Cal_SetFlag(CalFlag_t flag);

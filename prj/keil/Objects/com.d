@@ -71,6 +71,7 @@
 .\objects\com.o: ..\..\app\inc\hci.h
 .\objects\com.o: ..\..\asp\inc\hcf.h
 .\objects\com.o: ..\..\app\inc\ini.h
+.\objects\com.o: ..\..\app\inc\wsm.h
 .\objects\com.o: ..\..\app\inc\ios.h
 .\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\com.o: ..\..\app\inc\dnl.h

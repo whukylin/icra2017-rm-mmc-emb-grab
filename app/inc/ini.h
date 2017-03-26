@@ -18,6 +18,14 @@
 #ifndef __INI_H__
 #define __INI_H__
 
+/*********************************************************/
+/*          Initialization Information Provider          */
+/*********************************************************/
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "can.h"
 #include "fun.h"
 
@@ -46,5 +54,9 @@ IniFlag_t Ini_HasFlag(IniFlag_t mask);
 IniFlag_t Ini_HitFlag(IniFlag_t mask);
 
 IniFlag_t Ini_IsDone(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

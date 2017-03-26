@@ -16,11 +16,15 @@
  
 #include "upd.h"
 
+/**********************************************/
+/*               System Updater               */
+/**********************************************/
+
 void Upd_Init(void)
 {
-	Cal_Init();
-	Mec_Init();
-	Ctl_Init();
+	Cal_Init(); // Calibration initialization
+	Mec_Init(); // Mechanical parameters initialization
+	Ctl_Init(); // Logic controller initialization
 }
 
 void Upd_Proc(void)
@@ -31,6 +35,9 @@ void Upd_Proc(void)
 			break;
 		case WORKING_STATE_PREPARE:
 			Act_Init(); // Sensor data prefilter, stop any kind of movement
+			if (Wsm_GetLastWs() != WORKING_STATE_PREPARE) {
+				Upd_Init(); // Initialize updater
+			}
 			break;
 		case WORKING_STATE_CALIB:
 			Odo_Proc(); // Odometer process

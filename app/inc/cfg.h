@@ -107,7 +107,7 @@ typedef struct
 
 #define VEL_TRA_DEF 12.0f // m/s // 3
 #define VEL_ROT_DEF 37.2f // rad/s  // 9.3
-#define VEL_ELE_DEF 3.0f // m/s
+#define VEL_ELE_DEF 1.50f // m/s
 #define VEL_CLA_DEF 40.0f // rad/s
 #define VEL_CFG_DEF \
 { \
@@ -144,7 +144,7 @@ typedef struct
 
 #define POS_CFG_DEF \
 { \
-	.el = -1.21f, \
+	.el = -0.610f, \
 	.eh = 0.0f, \
 	.cl = 0, \
 	.ch = 2.0f, \
@@ -156,7 +156,7 @@ typedef struct
 	.ki = 0, \
 	.kd = 0, \
 	.it = 0, \
-	.Emax = 300, \
+	.Emax = 3000, \
 	.Pmax = 4900, \
 	.Imax = 3500, \
 	.Dmax = 1500, \
@@ -169,7 +169,7 @@ typedef struct
 	.ki = 0, \
 	.kd = 0, \
 	.it = 0, \
-	.Emax = 300, \
+	.Emax = 3000, \
 	.Pmax = 4900, \
 	.Imax = 3500, \
 	.Dmax = 1500, \
@@ -182,7 +182,7 @@ typedef struct
 	.ki = 0, \
 	.kd = 0, \
 	.it = 0, \
-	.Emax = 10, \
+	.Emax = 1000, \
 	.Pmax = 4900, \
 	.Imax = 3500, \
 	.Dmax = 1500, \

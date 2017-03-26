@@ -94,53 +94,101 @@ static void Dnl_ProcCalibMsg(const CalibMsg_t* calibMsg)
 }
 */
 
-#define DPT_MAX 1.0f
-#define DPR_MAX 3.0f
-#define DPT_KP 1.0f
-#define DPR_KP 10.0f
+
 static void Dnl_ProcKylinMsg(const KylinMsg_t* kylinMsg)
 {
 	Wdg_Feed(WDG_IDX_KYLIN);
-	if (Rci_Sw(1) == SW_DN) {
+	if (Rci_Sw(1) == SW_DN && Wsm_GetWs() == WORKING_STATE_NORMAL) {
+		Cci_Proc(kylinMsg);
+	}
+}
+
+
+/*
+#define DPCT_MAX 3.0f
+#define DPCR_MAX 3.0f
+#define DPGE_MAX 3.0f
+#define DPGC_MAX 3.0f
+#define DPCT_KP 10.0f
+#define DPCR_KP 10.0f
+#define DPGE_KP 10.0f 
+#define DPGC_KP 10.0f
+static void Dnl_ProcKylinMsg(const KylinMsg_t* kylinMsg)
+{
+	Wdg_Feed(WDG_IDX_KYLIN);
+	if (Rci_Sw(1) == SW_DN && Wsm_GetWs() == WORKING_STATE_NORMAL) {
+		// Accept re-initialization request
+		//if (Flag_Get(&kylinMsg->fs, MYLIN_MSG_FLAG_BIT_INI)) {
+		//}
+		// Accept reset odometer request
+		//if (Flag_Get(&kylinMsg->fs, MYLIN_MSG_FLAG_BIT_ODO)) {
+			//Motor_Reset(motor[
+		//}
 		float pxr = kylinMsg->cp.x / KYLIN_MSG_VALUE_SCALE;
 		float pyr = kylinMsg->cp.y / KYLIN_MSG_VALUE_SCALE;
 		float pzr = kylinMsg->cp.z / KYLIN_MSG_VALUE_SCALE;
+		float per = kylinMsg->gp.e / KYLIN_MSG_VALUE_SCALE;
+		float pcr = kylinMsg->gp.c / KYLIN_MSG_VALUE_SCALE;
 		float vxr = kylinMsg->cv.x / KYLIN_MSG_VALUE_SCALE;
 		float vyr = kylinMsg->cv.y / KYLIN_MSG_VALUE_SCALE;
 		float vzr = kylinMsg->cv.z / KYLIN_MSG_VALUE_SCALE;
+		float ver = kylinMsg->gv.e / KYLIN_MSG_VALUE_SCALE;
+		float vcr = kylinMsg->gv.c / KYLIN_MSG_VALUE_SCALE;
 		
 		LIMIT_ABS(vxr, cfg.vel.x);
 		LIMIT_ABS(vyr, cfg.vel.y);
 		LIMIT_ABS(vzr, cfg.vel.z);
+		LIMIT_ABS(ver, cfg.vel.e);
+		LIMIT_ABS(vcr, cfg.vel.c);
 		
-		float dpx = (pxr - odo.cp.x) * DPT_KP;
-		float dpy = (pyr - odo.cp.y) * DPT_KP;
-		float dpz = (pzr - odo.cp.z) * DPR_KP;
+		float dpx = (pxr - odo.cp.x) * DPCT_KP;
+		float dpy = (pyr - odo.cp.y) * DPCT_KP;
+		float dpz = (pzr - odo.cp.z) * DPCR_KP;
+		float dpe = (per - odo.gp.e) * DPGE_KP;
+		float dpc = (pcr - odo.gp.c) * DPGC_KP;
 		
-		LIMIT_ABS(dpx, DPT_MAX);
-		LIMIT_ABS(dpy, DPT_MAX);
-		LIMIT_ABS(dpz, DPR_MAX);
+		LIMIT_ABS(dpx, DPCT_MAX);
+		LIMIT_ABS(dpy, DPCT_MAX);
+		LIMIT_ABS(dpz, DPCR_MAX);
+		LIMIT_ABS(dpe, DPGE_MAX);
+		LIMIT_ABS(dpc, DPGC_MAX);
 		
-		float vxc = map(dpx, -DPT_MAX, DPT_MAX, -1, 1);
-		float vyc = map(dpy, -DPT_MAX, DPT_MAX, -1, 1);
-		float vzc = map(dpz, -DPR_MAX, DPR_MAX, -1, 1);
+		float vxc = map(dpx, -DPCT_MAX, DPCT_MAX, -1, 1);
+		float vyc = map(dpy, -DPCT_MAX, DPCT_MAX, -1, 1);
+		float vzc = map(dpz, -DPCR_MAX, DPCR_MAX, -1, 1);
+		float vec = map(dpe, -DPGE_MAX, DPGE_MAX, -1, 1);
+		float vcc = map(dpc, -DPGC_MAX, DPGC_MAX, -1, 1);
 		
 		cmd.cv.x = vxc * vxr;
 		cmd.cv.y = vyc * vyr;
 		cmd.cv.z = vzc * vzr;
+		cmd.gv.e = vec * ver;
+		cmd.gv.c = vcc * vcr;
 		
 		//cmd.cv.x = kylinMsg->cv.x / KYLIN_MSG_VALUE_SCALE;
+		LIMIT(cmd.cv.x, -cfg.vel.x, cfg.vel.x);
 		cmd.cp.x += cmd.cv.x * SYS_CTL_TSC;
+		
 		//cmd.cv.y = kylinMsg->cv.y / KYLIN_MSG_VALUE_SCALE;
+		LIMIT(cmd.cv.y, -cfg.vel.y, cfg.vel.y);
 		cmd.cp.y += cmd.cv.y * SYS_CTL_TSC;
+		
 		//cmd.cv.z = kylinMsg->cv.z / KYLIN_MSG_VALUE_SCALE;
+		LIMIT(cmd.cv.z, -cfg.vel.z, cfg.vel.z);
 		cmd.cp.z += cmd.cv.z * SYS_CTL_TSC;
-		cmd.gv.e = kylinMsg->gv.e / KYLIN_MSG_VALUE_SCALE;
+		
+		//cmd.gv.e = kylinMsg->gv.e / KYLIN_MSG_VALUE_SCALE;
+		LIMIT(cmd.gv.e, -cfg.vel.e, cfg.vel.e);
 		cmd.gp.e += cmd.gv.e * SYS_CTL_TSC;
-		cmd.gv.c = kylinMsg->gv.c / KYLIN_MSG_VALUE_SCALE;
+		LIMIT(cmd.gp.e, cfg.pos.el, cfg.pos.eh);
+		
+		//cmd.gv.c = kylinMsg->gv.c / KYLIN_MSG_VALUE_SCALE;
+		LIMIT(cmd.gv.c, -cfg.vel.c, cfg.vel.c);
 		cmd.gp.c += cmd.gv.c * SYS_CTL_TSC;
+		LIMIT(cmd.gp.c, cfg.pos.cl, cfg.pos.ch);
 	}
 }
+*/
 
 /*
 static void Dnl_ProcIMUCalib(const IMUCalib_t* IMUCalib)

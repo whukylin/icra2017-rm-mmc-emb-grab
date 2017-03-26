@@ -26,11 +26,11 @@ static Hcf_t hcf;
 static Maf_t maf[MAF_NUM];
 static float buf[MAF_NUM][HCI_KEY_CTL_MAF_LEN];
 
-static void GetFunctionalStateRef(const Hcp_t* hcp)
+static void GetPeriphsStateRef(const Hcp_t* hcp)
 {
 }
 
-static void GetChassisVelocityRef(const Hcp_t* hcp)
+static void GetChassisStateRef(const Hcp_t* hcp)
 {
 	float sx = hcp->key.press.Shift ? cfg.vel.x : cfg.vel.x / 2.f;
 	float sy = hcp->key.press.Shift ? cfg.vel.y : cfg.vel.y / 2.f;
@@ -44,16 +44,16 @@ static void GetChassisVelocityRef(const Hcp_t* hcp)
 	cmd.cv.z = Maf_Proc(&maf[2], vz);
 }
 
-static void GetGrabberVelocityRef(const Hcp_t* hcp)
+static void GetGrabberStateRef(const Hcp_t* hcp)
 {
 	float se = hcp->key.press.Shift ? cfg.vel.e : cfg.vel.e / 2.f;
 	float ve = hcp->key.press.Q ? -se : hcp->key.press.E ? se : 0; // m/s
 	cmd.gv.e = Maf_Proc(&maf[3], ve);
 	cmd.gp.e += cmd.gv.e * SYS_CTL_TSC; // Integral velocity to get position, unit: m
-	CONSTRAIN(cmd.gp.e, cfg.pos.el, cfg.pos.eh); // Constrain elevator position
+	LIMIT(cmd.gp.e, cfg.pos.el, cfg.pos.eh); // Constrain elevator position
 	cmd.gv.c = Hci_MouseBtn(MOUSE_BTN_IDX_L) == MOUSE_BTN_DN ? cfg.vel.c : Hci_MouseBtn(MOUSE_BTN_IDX_R) == MOUSE_BTN_DN ? -cfg.vel.c : 0; // rad/s
 	cmd.gp.c += cmd.gv.c * SYS_CTL_TSC; // Integral velocity to get position, unit: rad
-	CONSTRAIN(cmd.gp.c, cfg.pos.cl, cfg.pos.ch); // Constrain grabber position
+	LIMIT(cmd.gp.c, cfg.pos.cl, cfg.pos.ch); // Constrain grabber position
 }
 
 void Hci_PreProc(const Hcp_t* hcp)
@@ -79,7 +79,9 @@ void Hci_Proc(const Hcp_t* hcp)
 {
 	Hci_PreProc(hcp);
 	
-	GetFunctionalStateRef(hcp);
-	GetChassisVelocityRef(hcp);
-	GetGrabberVelocityRef(hcp);
+	GetPeriphsStateRef(hcp);
+	GetChassisStateRef(hcp);
+	GetGrabberStateRef(hcp);
 }
+
+

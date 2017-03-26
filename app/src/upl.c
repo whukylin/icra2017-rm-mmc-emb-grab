@@ -29,6 +29,7 @@ static void Upl_PushKylinMsg(void)
 {
 	if (IOS_COM_DEV.GetTxFifoFree() >= msg_head_kylin.attr.length + MSG_LEN_EXT) {
 		kylinMsg.fs = odo.fs;
+		Flag_Det(&kylinMsg.fs, MYLIN_MSG_FLAG_BIT_INI, Ini_IsDone());
 		kylinMsg.cv.x = odo.cv.x * KYLIN_MSG_VALUE_SCALE;
 		kylinMsg.cv.y = odo.cv.y * KYLIN_MSG_VALUE_SCALE;
 		kylinMsg.cv.z = odo.cv.z * KYLIN_MSG_VALUE_SCALE;
@@ -36,8 +37,8 @@ static void Upl_PushKylinMsg(void)
 		kylinMsg.cp.y = odo.cp.y * KYLIN_MSG_VALUE_SCALE;
 		kylinMsg.cp.z = odo.cp.z * KYLIN_MSG_VALUE_SCALE;
 		kylinMsg.gv.e = odo.gv.e * KYLIN_MSG_VALUE_SCALE;
-		kylinMsg.gv.e = odo.gv.e * KYLIN_MSG_VALUE_SCALE;
-		kylinMsg.gp.c = odo.gp.c * KYLIN_MSG_VALUE_SCALE;
+		kylinMsg.gp.e = odo.gp.e * KYLIN_MSG_VALUE_SCALE;
+		kylinMsg.gv.c = odo.gv.c * KYLIN_MSG_VALUE_SCALE;
 		kylinMsg.gp.c = odo.gp.c * KYLIN_MSG_VALUE_SCALE;
 		Msg_Push(&fifo, buf[1], &msg_head_kylin, &kylinMsg);
 	}

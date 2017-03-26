@@ -16,7 +16,11 @@
 
 #include "ini.h"
 
-static IniFlag_t iniFlag = 0;
+/*********************************************************/
+/*          Initialization Information Provider          */
+/*********************************************************/
+
+static IniFlag_t iniFlag = 0; // Initialization flag bits
 
 void Ini_Init(void)
 {
@@ -26,13 +30,13 @@ void Ini_Init(void)
 #define INI_DET(FLAG,COND) Flag_Det(&iniFlag, FLAG,  COND);
 void Ini_Proc(void)
 {
-	INI_DET(INI_FLAG_ZGYRO,  ZGyro_Ready(&zgyro));
-	INI_DET(INI_FLAG_MOTOR1, Motor_Ready(&motor[0]));
-	INI_DET(INI_FLAG_MOTOR2, Motor_Ready(&motor[1]));
-	INI_DET(INI_FLAG_MOTOR3, Motor_Ready(&motor[2]));
-	INI_DET(INI_FLAG_MOTOR4, Motor_Ready(&motor[3]));
-	INI_DET(INI_FLAG_MOTOR5, Motor_Ready(&motor[4]));
-	INI_DET(INI_FLAG_MOTOR6, Motor_Ready(&motor[5]));
+	INI_DET(INI_FLAG_ZGYRO,  ZGyro_Ready(&zgyro));    // Detect zgyro initialization status
+	INI_DET(INI_FLAG_MOTOR1, Motor_Ready(&motor[0])); // Detect motor 1 initialization status
+	INI_DET(INI_FLAG_MOTOR2, Motor_Ready(&motor[1])); // Detect motor 2 initialization status
+	INI_DET(INI_FLAG_MOTOR3, Motor_Ready(&motor[2])); // Detect motor 3 initialization status
+	INI_DET(INI_FLAG_MOTOR4, Motor_Ready(&motor[3])); // Detect motor 4 initialization status
+	INI_DET(INI_FLAG_MOTOR5, Motor_Ready(&motor[4])); // Detect motor 5 initialization status
+	INI_DET(INI_FLAG_MOTOR6, Motor_Ready(&motor[5])); // Detect motor 6 initialization status
 }
 
 IniFlag_t Ini_GetFlag(void)

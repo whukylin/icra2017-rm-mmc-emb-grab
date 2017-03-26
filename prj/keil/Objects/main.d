@@ -90,6 +90,7 @@
 .\objects\main.o: ..\..\app\inc\rci.h
 .\objects\main.o: ..\..\app\inc\hci.h
 .\objects\main.o: ..\..\app\inc\ini.h
+.\objects\main.o: ..\..\app\inc\wsm.h
 .\objects\main.o: ..\..\app\inc\ios.h
 .\objects\main.o: ..\..\app\inc\dnl.h
 .\objects\main.o: ..\..\app\inc\cci.h
@@ -98,6 +99,5 @@
 .\objects\main.o: ..\..\app\inc\ctl.h
 .\objects\main.o: ..\..\app\inc\clk.h
 .\objects\main.o: ..\..\app\inc\dbg.h
-.\objects\main.o: ..\..\app\inc\wsm.h
 .\objects\main.o: ..\..\app\inc\upd.h
 .\objects\main.o: ..\..\kos\inc\sch.h

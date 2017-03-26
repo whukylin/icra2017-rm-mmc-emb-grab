@@ -74,9 +74,9 @@
 .\objects\dbg.o: ..\..\app\inc\hci.h
 .\objects\dbg.o: ..\..\asp\inc\hcf.h
 .\objects\dbg.o: ..\..\app\inc\ini.h
+.\objects\dbg.o: ..\..\app\inc\wsm.h
 .\objects\dbg.o: ..\..\app\inc\dnl.h
 .\objects\dbg.o: ..\..\app\inc\cci.h
-.\objects\dbg.o: ..\..\app\inc\wsm.h
 .\objects\dbg.o: ..\..\app\inc\ctl.h
 .\objects\dbg.o: ..\..\asp\inc\pid.h
 .\objects\dbg.o: ..\..\asp\inc\rmp.h

@@ -21,12 +21,12 @@
 /*              Calibration              */
 /*****************************************/
 
-static CalFlag_t calFlag = 0;
+static CalFlag_t calFlag = 0; // Clibration flag bits
 
-static Maf_t maf;
-static float buf[CAL_GM_MAF_BUF_LEN];
+static Maf_t maf; // Moving average filter
+static float buf[CAL_GM_MAF_BUF_LEN]; // Static buffer for moving average filter
 
-static uint32_t gm_startup_delay_cnt = 0;
+static uint32_t gm_startup_delay_cnt = 0; // Gimbal motor startup delay counter
 
 void Cal_Init(void)
 {
@@ -35,7 +35,8 @@ void Cal_Init(void)
 	Maf_Init(&maf, buf, CAL_GM_MAF_BUF_LEN);
 }
 
-void Cal_SetGph(void)
+// Set gimbal position high
+static void Cal_SetGph(void)
 {
 	GM_CMD(0, 0);
 	Maf_Reset(&maf); // Reset maf
@@ -44,7 +45,8 @@ void Cal_SetGph(void)
 	Flag_Set(&calFlag, CAL_FLAG_GPH);
 }
 
-void Cal_SetGpl(void)
+// Set gimbal position low
+static void Cal_SetGpl(void)
 {
 	GM_CMD(0, 0);
 	Maf_Reset(&maf); // Reset maf

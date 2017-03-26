@@ -83,7 +83,7 @@ typedef struct
 	int32_t current_fdb;
 	int32_t current_ref;
 	int16_t angle_diff;
-	uint16_t bias;
+	int32_t bias;
 	int32_t round;
 	int16_t rate_raw;
 	int32_t angle_raw;

@@ -32,6 +32,7 @@ extern "C" {
 #include "dci.h"
 #include "wdg.h"
 #include "ini.h"
+#include "wsm.h"
 #include "ios.h"
 
 #define UPL_BUF_SIZE 256u

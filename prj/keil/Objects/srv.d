@@ -74,6 +74,7 @@
 .\objects\srv.o: ..\..\app\inc\hci.h
 .\objects\srv.o: ..\..\asp\inc\hcf.h
 .\objects\srv.o: ..\..\app\inc\ini.h
+.\objects\srv.o: ..\..\app\inc\wsm.h
 .\objects\srv.o: ..\..\app\inc\ios.h
 .\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\srv.o: ..\..\app\inc\dnl.h

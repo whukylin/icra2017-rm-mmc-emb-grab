@@ -70,5 +70,6 @@
 .\objects\upl.o: ..\..\app\inc\hci.h
 .\objects\upl.o: ..\..\asp\inc\hcf.h
 .\objects\upl.o: ..\..\app\inc\ini.h
+.\objects\upl.o: ..\..\app\inc\wsm.h
 .\objects\upl.o: ..\..\app\inc\ios.h
 .\objects\upl.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

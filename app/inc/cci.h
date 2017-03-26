@@ -17,18 +17,25 @@
 #ifndef __CCI_H__
 #define __CCI_H__
 
-/*************************************/
-/*      CBUS Control Interface       */
-/*************************************/
+/*************************************************/
+/*            CBUS Control Interface             */
+/*************************************************/
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include "cmd.h"
+#include "odo.h"
+#include "dci.h"
+#include "wdg.h"
+#include "wsm.h"
 #include "cbus.h"
 
-#define CCI_VALUE_RECIP 1e-3f
+#define CCI_DPT_TH 0.3f // Chassis translation position difference threshold
+#define CCI_DPR_TH 0.3f // Chassis rotation position difference threshold
+#define CCI_DPE_TH 0.3f // Grabber elevator position difference threshold
+#define CCI_DPC_TH 0.1f // Grabber claw position difference threshold
 	
 void Cci_Init(void);
 void Cci_Proc(const CBUS_t* cbus);

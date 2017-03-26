@@ -77,7 +77,6 @@ typedef struct
 #define MOTOR5_ID 4
 #define MOTOR6_ID 5
 #define MOTOR_ECD_ANGLE_MAX 8191
-#define MOTOR_ECD_ANGLE_MAX 8191
 #define MOTOR_ESC_CURRENT_MAX 13000
 typedef struct
 {
@@ -165,30 +164,10 @@ typedef struct
 	uint32_t msg_type;
 }SubscMsg_t;
 
-#define AXIS3_MSG_VALUE_SCALE 1e3f
-typedef struct
-{
-	int16_t x;
-	int16_t y;
-	int16_t z;
-}Axis3Msg_t;
-
-#define AXIS2_MSG_VALUE_SCALE 1e3f
-typedef struct
-{
-	int16_t e;
-	int16_t c;
-}Axis2Msg_t;
-
-#define KYLIN_MSG_VALUE_SCALE AXIS3_MSG_VALUE_SCALE
-typedef struct
-{
-	uint32_t fs; // Functional state flag bits
-	Axis3Msg_t cv; // Chassis velocity, unit: linear: mm/s, angular: 1e-3rad/s
-	Axis3Msg_t cp; // Chassis position, unit: linear: mm, angular: 1e-3rad
-	Axis2Msg_t gv; // Grabber velocity, unit: linear: mm/s, angular: 1e-3rad/s
-	Axis2Msg_t gp; // Grabber position, unit: linear: mm, angular: rad
-}KylinMsg_t; // Length unit: mm, time unit: s
+#define KYLIN_MSG_VALUE_SCALE CBUS_VALUE_SCALE
+#define MYLIN_MSG_FLAG_BIT_INI (1u<<31u)
+#define MYLIN_MSG_FLAG_BIT_MOD (1u<<30u)
+typedef CBUS_t KylinMsg_t;
 
 #define WRAP_U8(V) ((uint8_t)V)
 #define WRAP_U16(V) ((uint16_t)V)

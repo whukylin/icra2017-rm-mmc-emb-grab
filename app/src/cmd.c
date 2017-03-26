@@ -28,11 +28,11 @@ void Cmd_Init(void)
 
 void Cmd_Proc(void)
 {
-	CONSTRAIN(cmd.cv.x, -cfg.vel.x, cfg.vel.x);
-	CONSTRAIN(cmd.cv.y, -cfg.vel.y, cfg.vel.y);
-	CONSTRAIN(cmd.cv.z, -cfg.vel.z, cfg.vel.z);
-	CONSTRAIN(cmd.gp.e, cfg.pos.el, cfg.pos.eh);
-	CONSTRAIN(cmd.gp.c, cfg.pos.cl, cfg.pos.ch);
+	LIMIT(cmd.cv.x, -cfg.vel.x, cfg.vel.x);
+	LIMIT(cmd.cv.y, -cfg.vel.y, cfg.vel.y);
+	LIMIT(cmd.cv.z, -cfg.vel.z, cfg.vel.z);
+	LIMIT(cmd.gp.e, cfg.pos.el, cfg.pos.eh);
+	LIMIT(cmd.gp.c, cfg.pos.cl, cfg.pos.ch);
 	
 	Mec_Decomp((float*)&cmd.cv, (float*)&cmd.mv);
 	Mec_Decomp((float*)&cmd.cp, (float*)&cmd.mp);

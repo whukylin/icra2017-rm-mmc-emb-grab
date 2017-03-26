@@ -30,6 +30,7 @@ extern "C" {
 #include "cal.h"
 #include "dci.h"
 #include "cci.h"
+#include "fun.h"
 	
 #define DNL_BUF_SIZE 256u
 	

@@ -36,7 +36,7 @@ typedef enum {
 	WORKING_STATE_CONFIG = 0x04,
 }WorkingState_t;
 
-typedef uint32_t PeriphsState_t; // Peripherals Functional State
+typedef uint32_t PeriphsState_t; // Peripherals state flag bits
 
 #define FS_KEY_H        (((uint32_t)1u)<<0)
 #define FS_KEY_L        (((uint32_t)1u)<<1)
