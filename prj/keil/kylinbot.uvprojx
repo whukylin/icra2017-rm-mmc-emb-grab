@@ -540,6 +540,11 @@
               <FilePath>..\..\app\inc\rci.h</FilePath>
             </File>
             <File>
+              <FileName>srs.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\app\inc\srs.h</FilePath>
+            </File>
+            <File>
               <FileName>sys.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\app\inc\sys.h</FilePath>
@@ -668,6 +673,11 @@
               <FileName>rci.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\app\src\rci.c</FilePath>
+            </File>
+            <File>
+              <FileName>srs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\app\src\srs.c</FilePath>
             </File>
             <File>
               <FileName>sys.c</FileName>
@@ -1070,6 +1080,11 @@
               <FilePath>..\..\bsp\inc\rcv.h</FilePath>
             </File>
             <File>
+              <FileName>sr04.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\bsp\inc\sr04.h</FilePath>
+            </File>
+            <File>
               <FileName>stm32util.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\bsp\inc\stm32util.h</FilePath>
@@ -1138,6 +1153,11 @@
               <FileName>rcv.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\bsp\src\rcv.c</FilePath>
+            </File>
+            <File>
+              <FileName>sr04.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\bsp\src\sr04.c</FilePath>
             </File>
             <File>
               <FileName>stm32util.c</FileName>

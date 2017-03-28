@@ -14,31 +14,30 @@
  * limitations under the License.
  */
  
-#ifndef __BSP_H__
-#define __BSP_H__
+#ifndef __SRS_H__
+#define __SRS_H__
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "btm.h"
-#include "btn.h"
-#include "can1.h"
-#include "can2.h"
-#include "dbi.h"
-#include "key.h"
-#include "led.h"
-#include "pwm.h"
-#include "rcv.h"
-#include "sr04.h"
-#include "tim.h"
-#include "tty.h"
+#include <stdint.h>
 
-void Bsp_Config(void);
+typedef struct
+{
+	uint32_t frame_cnt;
+	uint32_t endPulse;
+	uint32_t lastUpdate;
+	
+}Srs_t;
+
+void Srs_Init(void);
+void Srs_Proc(void);
+
+void Srs_Mm(uint32_t i);
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif
-

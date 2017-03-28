@@ -43,6 +43,8 @@ void TICK_TIM_IRQ_HANDLER(void)
 		TIM_ClearITPendingBit(TICK_TIM, TIM_IT_Update);
 		TIM_ClearFlag(TICK_TIM, TIM_FLAG_Update);
 
+		tickTimTick++;
+		
 		TickTimCallback();
 	}
 }
@@ -74,6 +76,8 @@ void SYNC_TIM_IRQ_HANDLER()
 		TIM_ClearITPendingBit(SYNC_TIM, TIM_IT_Update);
 		TIM_ClearFlag(SYNC_TIM, TIM_FLAG_Update);
 
+		syncTimTick++;
+		
 		SyncTimCallback();
 	}
 }

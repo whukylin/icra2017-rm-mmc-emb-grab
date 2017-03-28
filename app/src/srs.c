@@ -14,31 +14,17 @@
  * limitations under the License.
  */
  
-#ifndef __BSP_H__
-#define __BSP_H__
+#include "srs.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+static uint32_t sri = 0;
 
-#include "btm.h"
-#include "btn.h"
-#include "can1.h"
-#include "can2.h"
-#include "dbi.h"
-#include "key.h"
-#include "led.h"
-#include "pwm.h"
-#include "rcv.h"
-#include "sr04.h"
-#include "tim.h"
-#include "tty.h"
-
-void Bsp_Config(void);
-
-#ifdef __cplusplus
+void Srs_Init(void)
+{
+	sri = 0;
 }
-#endif
 
-#endif
+void Srs_Proc(void)
+{
+	
+}
 

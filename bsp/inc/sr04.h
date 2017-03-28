@@ -14,31 +14,49 @@
  * limitations under the License.
  */
  
-#ifndef __BSP_H__
-#define __BSP_H__
+#ifndef __SR04_H__
+#define __SR04_H__
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+	
+#include "stm32util.h"
+	
+typedef struct
+{
+	GPIO trigPin;
+	GPIO echoPin;
+}SR04_t;
 
-#include "btm.h"
-#include "btn.h"
-#include "can1.h"
-#include "can2.h"
-#include "dbi.h"
-#include "key.h"
-#include "led.h"
-#include "pwm.h"
-#include "rcv.h"
-#include "sr04.h"
-#include "tim.h"
-#include "tty.h"
+#define SR04_NUM 2
 
-void Bsp_Config(void);
+#define SR04_FIXED \
+{ \
+	.trigPin = PA4, \
+	.echoPin = PA5, \
+}
+
+#define SR04_MOBILE \
+{ \
+	.trigPin = PI9, \
+	.echoPin = PF10, \
+}
+
+#define SR04_GROUP \
+{ \
+	SR04_FIXED, \
+	SR04_MOBILE, \
+}
+
+void SR04_Bind(const SR04_t* sr04);
+
+void SR04_Config(void);
+
+extern const SR04_t sr04[SR04_NUM];
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif
-

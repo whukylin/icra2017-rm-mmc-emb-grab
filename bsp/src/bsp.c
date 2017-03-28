@@ -31,6 +31,7 @@ void Bsp_Config(void)
 	Tty_Config();
 	Can1_Config();
 	Can2_Config();
+	SR04_Config();
 	LED_GREEN_ON();
 }
 

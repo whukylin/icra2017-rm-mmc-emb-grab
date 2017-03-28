@@ -56,6 +56,9 @@ void Tim_Stop(void);
 void TickTimCallback(void);
 void SyncTimCallback(void);
 
+extern uint32_t tickTimTick;
+extern uint32_t syncTimTick;
+
 #ifdef __cplusplus
 }
 #endif

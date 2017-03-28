@@ -14,31 +14,22 @@
  * limitations under the License.
  */
  
-#ifndef __BSP_H__
-#define __BSP_H__
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "btm.h"
-#include "btn.h"
-#include "can1.h"
-#include "can2.h"
-#include "dbi.h"
-#include "key.h"
-#include "led.h"
-#include "pwm.h"
-#include "rcv.h"
 #include "sr04.h"
-#include "tim.h"
-#include "tty.h"
 
-void Bsp_Config(void);
+const SR04_t sr04[SR04_NUM] = SR04_GROUP;
 
-#ifdef __cplusplus
+void SR04_Bind(const SR04_t* sr04)
+{
+	GPIO_In(sr04->echoPin);
+	GPIO_Out(sr04->trigPin);
 }
-#endif
 
-#endif
+void SR04_Config(void)
+{
+	uint32_t i = 0;
+	for (; i < SR04_NUM; i++) {
+		SR04_Bind(&sr04[i]);
+	}
+}
+
 
