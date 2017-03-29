@@ -18,10 +18,17 @@
 
 const SR04_t sr04[SR04_NUM] = SR04_GROUP;
 
+void SR04_IRQHandler(void)
+{
+}
+
 void SR04_Bind(const SR04_t* sr04)
 {
 	GPIO_In(sr04->echoPin);
 	GPIO_Out(sr04->trigPin);
+	EXTI_Bind(sr04->echoPin, EXTI_Trigger_Rising);
+	EXTI_SetHandler(GPIO_PIN_NUM(sr04->echoPin), SR04_IRQHandler);
+	NVIC_Config(EXTI1_IRQn, SR04_NVIC_PRE_PRIORITY, SR04_NVIC_SUB_PRIORITY);
 }
 
 void SR04_Config(void)
@@ -31,5 +38,4 @@ void SR04_Config(void)
 		SR04_Bind(&sr04[i]);
 	}
 }
-
 

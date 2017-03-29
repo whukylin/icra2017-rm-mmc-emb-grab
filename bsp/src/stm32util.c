@@ -1,6 +1,53 @@
 #include "stm32util.h"
 
+ExtiHandler extiHandlers[EXTI_LINE_NUM];
+
 #define CHECK_EQ(a,v1,v2) ((a) == (v1) || (a) == (v2))
+
+GPIO_TypeDef* GPIO_GetGroup(GPIO gpio)
+{
+	return GPIO_PIN_GRP(gpio);
+}
+
+uint16_t GPIO_GetMask(GPIO gpio)
+{
+	return GPIO_PIN_MSK(gpio);
+}
+
+uint8_t GPIO_GetNum(GPIO gpio)
+{
+	return GPIO_PIN_NUM(gpio);
+}
+
+uint8_t GPIO_ReadIn(GPIO gpio)
+{
+	GPIO_READ_IN(gpio);
+}
+
+uint8_t GPIO_ReadOut(GPIO gpio)
+{
+	GPIO_READ_OUT(gpio);
+}
+
+void GPIO_WriteOut(GPIO gpio, uint8_t newState)
+{
+	GPIO_WRITE(gpio, newState);
+}
+
+void GPIO_Set(GPIO gpio)
+{
+	GPIO_SET(gpio);
+}
+
+void GPIO_Rst(GPIO gpio)
+{
+	GPIO_RST(gpio);
+}
+
+void GPIO_Tog(GPIO gpio)
+{
+	GPIO_TOG(gpio);
+}
 
 void GPIO_Config(GPIO gpio, GPIOMode_TypeDef mode, GPIOSpeed_TypeDef speed, GPIOOType_TypeDef otype, GPIOPuPd_TypeDef pupd)
 {
@@ -468,5 +515,56 @@ void EXTI_Config(u32 line, EXTIMode_TypeDef mode, EXTITrigger_TypeDef trig)
 	exti.EXTI_Trigger = trig;
 	exti.EXTI_LineCmd = ENABLE;
 	EXTI_Init(&exti);
+}
+
+void EXTI_SetHandler(uint8_t line, ExtiHandler handler)
+{
+	if (line < EXTI_LINE_NUM) {
+		extiHandlers[line] = handler;
+	}
+}
+
+void EXTI0_IRQHandler(void)
+{
+	EXIT_N_IRQ_HANDLER(0);
+}
+
+void EXTI1_IRQHandler(void)
+{
+	EXIT_N_IRQ_HANDLER(1);
+}
+
+void EXTI2_IRQHandler(void)
+{
+	EXIT_N_IRQ_HANDLER(2);
+}
+
+void EXTI3_IRQHandler(void)
+{
+	EXIT_N_IRQ_HANDLER(3);
+}
+
+void EXTI4_IRQHandler(void)
+{
+	EXIT_N_IRQ_HANDLER(4);
+}
+
+void EXTI9_5_IRQHandler(void)
+{
+	EXIT_N_IRQ_HANDLER(5);
+	EXIT_N_IRQ_HANDLER(6);
+	EXIT_N_IRQ_HANDLER(7);
+	EXIT_N_IRQ_HANDLER(8);
+	EXIT_N_IRQ_HANDLER(9);
+}
+
+void EXTI15_10_IRQHandler(void)
+{
+	EXIT_N_IRQ_HANDLER(10);
+	EXIT_N_IRQ_HANDLER(11);
+	EXIT_N_IRQ_HANDLER(12);
+	EXIT_N_IRQ_HANDLER(13);
+	EXIT_N_IRQ_HANDLER(14);
+	EXIT_N_IRQ_HANDLER(15);
 }
 

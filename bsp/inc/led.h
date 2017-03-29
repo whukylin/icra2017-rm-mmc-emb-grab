@@ -22,7 +22,8 @@ extern "C" {
 #endif
 	
 #include "stm32util.h"
-
+#include "hal_gpio.h"
+	
 #define LED_GREEN_PIN PF14
 #define LED_RED_PIN   PE7
 
@@ -41,6 +42,17 @@ extern "C" {
 #define LED_RED_TOG()       GPIO_TOG(LED_RED_PIN)
 
 void Led_Config(void);
+
+uint8_t LedRed_ReadIn(void);
+uint8_t LedRed_ReadOut(void);
+void LedRed_Write(uint8_t newState);
+
+uint8_t LedGreen_ReadIn(void);
+uint8_t LedGreen_ReadOut(void);
+void LedGreen_Write(uint8_t newState);
+
+extern const Hal_Gpio_t ledR;
+extern const Hal_Gpio_t ledG;
 
 #ifdef __cplusplus
 }

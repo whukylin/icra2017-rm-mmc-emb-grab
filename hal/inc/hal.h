@@ -14,15 +14,26 @@
  * limitations under the License.
  */
 
-#include "vios.h"
+#ifndef __HAL_H__
+#define __HAL_H__
 
-/*************************************************/
-/*          Virtual Input/Output Stream          */
-/*************************************************/
+/****************************************************/
+/*             Hardware Abstract Layer              */
+/****************************************************/
 
-void VIOS_Init(VIOS_t* vios)
-{
-	memset(vios, 0, sizeof(VIOS_t));
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <stdint.h>
+#include <string.h>
+
+typedef uint32_t HalHandle_t;
+
+#ifdef __cplusplus
 }
+#endif
+
+#endif
 
 

@@ -13,35 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-#ifndef __SRS_H__
-#define __SRS_H__
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include "hal.h"
 
-#include <stdint.h>
-#include <string.h>
-	
-#include "sr04.h"
-#include "clk.h"
-	
-typedef struct
-{
-	uint32_t frame_cnt;
-	uint32_t endPulse;
-}Srs_t;
+/****************************************************/
+/*             Hardware Abstract Layer              */
+/****************************************************/
 
-void Srs_Init(void);
-void Srs_Proc(void);
 
-void Srs_Mm(uint32_t i);
 
-extern Srs_t srs[SR04_NUM];
 
-#ifdef __cplusplus
-}
-#endif
-
-#endif

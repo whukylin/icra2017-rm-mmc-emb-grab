@@ -13,61 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-#ifndef __SR04_H__
-#define __SR04_H__
+
+#ifndef __HAL_SR04_H__
+#define __HAL_SR04_H__
+
+/****************************************************/
+/*          Hardware Abstract Layer - SR04          */
+/****************************************************/
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-	
-#include "stm32util.h"
-	
+
+#include <stdint.h>
+#include <string.h>
+
+#include "hal_gpio.h"
+
 typedef struct
 {
-	GPIO trigPin;
-	GPIO echoPin;
-}SR04_t;
+	Hal_Gpio_t trig;
+	Hal_Gpio_t echo;
+}Hal_Sr04_t;
 
-#define SR04_NUM 2
-
-#define SR04_FIXED \
-{ \
-	.trigPin = PA4, \
-	.echoPin = PA5, \
-}
-
-#define SR04_MOBLE \
-{ \
-	.trigPin = PI9, \
-	.echoPin = PF10, \
-}
-
-#define SR04_GROUP \
-{ \
-	SR04_FIXED, \
-	SR04_MOBLE, \
-}
-
-#define SR04_NVIC_PRE_PRIORITY 1
-#define SR04_NVIC_SUB_PRIORITY 0
-
-#define SR04_FIXED_EXTI EXTI5_IRQn
-#define SR04_MOBLE_EXTI EXTI15_10_IRQn
-
-#define SR04_FIXED_EXTI_LINE EXTI_Line5
-#define SR04_MOBLE_EXTI_LINE EXTI_Line10
-
-#define SR04_MOBLE_EXTI_LINE EXTI_Line10
-
-void SR04_Bind(const SR04_t* sr04);
-
-void SR04_Config(void);
-
-extern const SR04_t sr04[SR04_NUM];
+void Hal_Sr04_Init(Hal_Sr04_t* sr04);
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif
+
+

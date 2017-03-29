@@ -16,6 +16,9 @@
  
 #include "led.h"
 
+const Hal_Gpio_t ledR = HAL_GPIO_DEF(LedRed);
+const Hal_Gpio_t ledG = HAL_GPIO_DEF(LedGreen);
+
 void Led_Config(void)
 {
     GPIO_Out(LED_GREEN_PIN);
@@ -24,3 +27,34 @@ void Led_Config(void)
     LED_GREEN_OFF();
     LED_RED_OFF();
 }
+
+uint8_t LedRed_ReadIn(void)
+{
+	return GPIO_READ_IN(LED_RED_PIN);
+}
+
+uint8_t LedRed_ReadOut(void)
+{
+	return GPIO_READ_OUT(LED_RED_PIN);
+}
+
+void LedRed_Write(uint8_t newState)
+{
+	return GPIO_WRITE(LED_RED_PIN, newState);
+}
+
+uint8_t LedGreen_ReadIn(void)
+{
+	return GPIO_READ_IN(LED_GREEN_PIN);
+}
+
+uint8_t LedGreen_ReadOut(void)
+{
+	return GPIO_READ_OUT(LED_GREEN_PIN);
+}
+
+void LedGreen_Write(uint8_t newState)
+{
+	return GPIO_WRITE(LED_GREEN_PIN, newState);
+}
+

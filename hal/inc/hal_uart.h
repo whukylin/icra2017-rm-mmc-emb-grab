@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-#ifndef __VIOS_H__
-#define __VIOS_H__
+#ifndef __HAL_UART_H__
+#define __HAL_UART_H__
 
-/*************************************************/
-/*          Virtual Input/Output Stream          */
-/*************************************************/
+/****************************************************/
+/*          Hardware Abstract Layer - UART          */
+/****************************************************/
 
 #ifdef __cplusplus
 extern "C" {
@@ -27,7 +27,7 @@ extern "C" {
 
 #include <stdint.h>
 #include <string.h>
-	
+
 typedef struct
 {
 	uint32_t (*GetRxFifoSize)(void);
@@ -43,9 +43,9 @@ typedef struct
 	void (*PutCh)(uint8_t);
 	uint8_t (*GetCh)(void);
 	void (*Print)(const char* str);
-}VIOS_t;
+}Hal_Uart_t;
 	
-#define VIOS_GEN(DEV) \
+#define HAL_UART_DEF(DEV) \
 { \
 	.GetRxFifoSize = &DEV##_GetRxFifoSize, \
 	.GetRxFifoUsed = &DEV##_GetRxFifoUsed, \
@@ -62,7 +62,7 @@ typedef struct
 	.Print         = &DEV##_Print,         \
 }
 
-void VIOS_Init(VIOS_t* vios);
+void Hal_Uart_Init(Hal_Uart_t* uart);
 
 #ifdef __cplusplus
 }

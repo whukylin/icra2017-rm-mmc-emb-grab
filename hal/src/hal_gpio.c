@@ -13,35 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-#ifndef __SRS_H__
-#define __SRS_H__
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include "hal_gpio.h"
 
-#include <stdint.h>
-#include <string.h>
-	
-#include "sr04.h"
-#include "clk.h"
-	
-typedef struct
+/****************************************************/
+/*          Hardware Abstract Layer - GPIO          */
+/****************************************************/
+
+void Hal_Gpio_ReadOnly_Init(Hal_Gpio_ReadOnly_t* gpio)
 {
-	uint32_t frame_cnt;
-	uint32_t endPulse;
-}Srs_t;
-
-void Srs_Init(void);
-void Srs_Proc(void);
-
-void Srs_Mm(uint32_t i);
-
-extern Srs_t srs[SR04_NUM];
-
-#ifdef __cplusplus
+	memset(gpio, 0, sizeof(Hal_Gpio_ReadOnly_t));
 }
-#endif
 
-#endif
+void Hal_Gpio_WriteOnly_Init(Hal_Gpio_WriteOnly_t* gpio)
+{
+	memset(gpio, 0, sizeof(Hal_Gpio_WriteOnly_t));
+}
+
+void Hal_Gpio_Init(Hal_Gpio_t* gpio)
+{
+	memset(gpio, 0, sizeof(Hal_Gpio_t));
+}
+
+
+

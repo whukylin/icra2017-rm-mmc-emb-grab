@@ -335,7 +335,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F427X,STM32F427xx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\stl\CMSIS\core;..\..\stl\CMSIS\device;..\..\stl\StdPeriph_Driver\inc;..\..\stl\inc;..\..\bsp\inc;..\..\srv\inc;..\..\asp\inc;..\..\app\inc;..\..\usr\inc;..\..\kos\inc;..\..\drv\inc;..\..\stl\inc</IncludePath>
+              <IncludePath>..\..\stl\CMSIS\core;..\..\stl\CMSIS\device;..\..\stl\StdPeriph_Driver\inc;..\..\stl\inc;..\..\bsp\inc;..\..\srv\inc;..\..\asp\inc;..\..\app\inc;..\..\usr\inc;..\..\kos\inc;..\..\drv\inc;..\..\stl\inc;..\..\hal\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -829,11 +829,6 @@
               <FileType>5</FileType>
               <FilePath>..\..\asp\inc\stack.h</FilePath>
             </File>
-            <File>
-              <FileName>vios.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\asp\inc\vios.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -953,11 +948,6 @@
               <FileName>stack.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\asp\src\stack.c</FilePath>
-            </File>
-            <File>
-              <FileName>vios.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\asp\src\vios.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1233,6 +1223,56 @@
               <FileName>drv.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\drv\src\drv.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>hal/inc</GroupName>
+          <Files>
+            <File>
+              <FileName>hal.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\hal\inc\hal.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_gpio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\hal\inc\hal_gpio.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_sr04.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\hal\inc\hal_sr04.h</FilePath>
+            </File>
+            <File>
+              <FileName>hal_uart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\hal\inc\hal_uart.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>hal/src</GroupName>
+          <Files>
+            <File>
+              <FileName>hal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\hal\src\hal.c</FilePath>
+            </File>
+            <File>
+              <FileName>hal_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\hal\src\hal_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>hal_sr04.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\hal\src\hal_sr04.c</FilePath>
+            </File>
+            <File>
+              <FileName>hal_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\hal\src\hal_uart.c</FilePath>
             </File>
           </Files>
         </Group>

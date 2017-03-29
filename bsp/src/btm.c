@@ -16,7 +16,7 @@
 
 #include "btm.h"
 
-const VIOS_t btm = VIOS_GEN(Btm);
+const Hal_Uart_t btm = HAL_UART_DEF(Btm);
 
 static FIFO_t rx_fifo;
 static FIFO_t tx_fifo;

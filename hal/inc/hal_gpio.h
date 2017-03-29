@@ -13,9 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-#ifndef __SRS_H__
-#define __SRS_H__
+
+#ifndef __HAL_GPIO_H__
+#define __HAL_GPIO_H__
+
+/****************************************************/
+/*          Hardware Abstract Layer - GPIO          */
+/****************************************************/
 
 #ifdef __cplusplus
 extern "C" {
@@ -23,25 +27,40 @@ extern "C" {
 
 #include <stdint.h>
 #include <string.h>
-	
-#include "sr04.h"
-#include "clk.h"
-	
+
 typedef struct
 {
-	uint32_t frame_cnt;
-	uint32_t endPulse;
-}Srs_t;
+	uint8_t (*ReadIn)(void);
+}Hal_Gpio_ReadOnly_t;
 
-void Srs_Init(void);
-void Srs_Proc(void);
+typedef struct
+{
+	uint8_t (*ReadOut)(void);
+	void (*Write)(uint8_t newState);
+}Hal_Gpio_WriteOnly_t;
 
-void Srs_Mm(uint32_t i);
+typedef struct
+{
+	uint8_t (*ReadIn)(void);
+	uint8_t (*ReadOut)(void);
+	void (*Write)(uint8_t newState);
+}Hal_Gpio_t;
+	
+#define HAL_GPIO_DEF(DEV) \
+{ \
+	.ReadIn = &DEV##_ReadIn, \
+	.ReadOut = &DEV##_ReadOut, \
+	.Write = &DEV##_Write, \
+}
 
-extern Srs_t srs[SR04_NUM];
+void Hal_Gpio_ReadOnly_Init(Hal_Gpio_ReadOnly_t* gpio);
+void Hal_Gpio_WriteOnly_Init(Hal_Gpio_WriteOnly_t* gpio);
+void Hal_Gpio_Init(Hal_Gpio_t* gpio);
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif
+
+

@@ -23,7 +23,7 @@ extern "C" {
 	
 #include "stm32util.h"
 #include "fifo.h"
-#include "vios.h"
+#include "hal_uart.h"
 	
 #define TTY_TX_PIN PG9
 #define TTY_RX_PIN PG14
@@ -67,7 +67,7 @@ void Tty_Print(const char* str);
 
 void TtyRxCallback(uint8_t data);
 
-extern const VIOS_t tty;
+extern const Hal_Uart_t tty;
 
 #ifdef __cplusplus
 }

@@ -20,11 +20,15 @@ static uint32_t sri = 0;
 
 void Srs_Init(void)
 {
+	for (sri = 0; sri < SR04_NUM; sri++) {
+		memset(&srs[sri], 0, sizeof(Srs_t));
+	}
 	sri = 0;
 }
 
 void Srs_Proc(void)
 {
+	uint32_t tick = Clk_GetUsTick();
 	
 }
 

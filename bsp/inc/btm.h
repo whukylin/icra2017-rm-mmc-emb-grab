@@ -23,7 +23,7 @@ extern "C" {
 	
 #include "stm32util.h"
 #include "fifo.h"
-#include "vios.h"
+#include "hal_uart.h"
 
 #define BTM_TX_PIN PD5
 #define BTM_RX_PIN PD6
@@ -66,7 +66,7 @@ void Btm_Print(const char* str);
 
 void BtmRxCallback(uint8_t data);
 
-extern const VIOS_t btm;
+extern const Hal_Uart_t btm;
 
 #ifdef __cplusplus
 }

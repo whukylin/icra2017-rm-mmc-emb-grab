@@ -169,6 +169,12 @@ typedef struct
 #define MYLIN_MSG_FLAG_BIT_MOD (1u<<30u)
 typedef CBUS_t KylinMsg_t;
 
+typedef struct
+{
+	uint16_t fixed;
+	uint16_t moble;
+}Sr04sMsg_t;
+
 #define WRAP_U8(V) ((uint8_t)V)
 #define WRAP_U16(V) ((uint16_t)V)
 #define WRAP_U32(V) ((uint32_t)V)

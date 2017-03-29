@@ -16,7 +16,7 @@
  
 #include "dbi.h"
 
-const VIOS_t dbi = VIOS_GEN(Dbi);
+const Hal_Uart_t dbi = HAL_UART_DEF(Dbi);
 
 static FIFO_t rx_fifo;
 static FIFO_t tx_fifo;
@@ -26,7 +26,7 @@ static uint8_t tx_buf[DBI_TX_FIFO_SIZE];
 void Dbi_Config(void)
 {
     USART_Bind(DBI_RX_PIN, DBI_TX_PIN,
-    		 DBI_USART,
+			   DBI_USART,
 			   DBI_USART_BR,
 			   DBI_USART_WL,
 			   DBI_USART_PA,

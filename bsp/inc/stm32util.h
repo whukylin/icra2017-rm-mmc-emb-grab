@@ -267,16 +267,37 @@ typedef uint32_t GPIO;
 	TIM_ARRPreloadConfig(TIM, ENABLE); \
 } while(0)
 
-/*
-#define EXTI_BIND(PIN) do { \
-	\
-while(0)
-*/
-
 #define IRQ(NAME) NAME##_IRQn
 #define IRQ_HANDLER(NAME) NAME##_IRQHandler
 
-// typedef void* (*Callback)(void* p);
+#define EXTI_LINE_NUM 16
+
+typedef void (*ExtiHandler)(void);
+
+extern ExtiHandler extiHandlers[EXTI_LINE_NUM];
+
+void EXTI_SetHandler(uint8_t line, ExtiHandler handler);
+
+// For private use only
+#define EXIT_N_IRQ_HANDLER(N) \
+do { \
+	if (EXTI_GetITStatus(EXTI_Line##N) != RESET) { \
+		EXTI_ClearITPendingBit(EXTI_Line##N); \
+		EXTI_ClearFlag(EXTI_Line##N); \
+		if (extiHandlers[N]) extiHandlers[N](); \
+	} \
+} while (0)
+
+GPIO_TypeDef* GPIO_GetGroup(GPIO gpio);
+uint16_t GPIO_GetMask(GPIO gpio);
+uint8_t GPIO_GetNum(GPIO gpio);
+
+uint8_t GPIO_ReadIn(GPIO gpio);
+uint8_t GPIO_ReadOut(GPIO gpio);
+void GPIO_WriteOut(GPIO gpio, uint8_t newState);
+void GPIO_Set(GPIO gpio);
+void GPIO_Rst(GPIO gpio);
+void GPIO_Tog(GPIO gpio);
 
 void GPIO_Config(GPIO gpio, GPIOMode_TypeDef mode, GPIOSpeed_TypeDef speed, GPIOOType_TypeDef otype, GPIOPuPd_TypeDef pupd);
 void GPIO_In(GPIO gpio);

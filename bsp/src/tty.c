@@ -16,7 +16,7 @@
  
 #include "tty.h"
 
-const VIOS_t tty = VIOS_GEN(Tty);
+const Hal_Uart_t tty = HAL_UART_DEF(Tty);
 
 static FIFO_t rx_fifo;
 static FIFO_t tx_fifo;
