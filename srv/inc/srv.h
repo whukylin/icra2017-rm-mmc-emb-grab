@@ -19,6 +19,7 @@
 
 #include "can_srv.h"
 #include "com_srv.h"
+#include "ext_srv.h"
 #include "rcv_srv.h"
 
 #endif

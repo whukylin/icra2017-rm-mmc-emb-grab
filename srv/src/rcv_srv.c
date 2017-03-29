@@ -16,7 +16,7 @@
 
 #include "rcv_srv.h"
 
-void RcvCallback(uint8_t* dbuf)
+void RcvCallback(const uint8_t* dbuf)
 {
 	Rcv_Proc(dbuf);
 }

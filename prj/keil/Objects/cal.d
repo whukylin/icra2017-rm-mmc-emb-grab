@@ -28,15 +28,17 @@
 .\objects\cal.o: ..\..\asp\inc\fifo.h
 .\objects\cal.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\cal.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\cal.o: ..\..\asp\inc\vios.h
+.\objects\cal.o: ..\..\hal\inc\hal_uart.h
 .\objects\cal.o: ..\..\bsp\inc\btn.h
 .\objects\cal.o: ..\..\bsp\inc\can1.h
 .\objects\cal.o: ..\..\bsp\inc\can2.h
 .\objects\cal.o: ..\..\bsp\inc\dbi.h
 .\objects\cal.o: ..\..\bsp\inc\key.h
 .\objects\cal.o: ..\..\bsp\inc\led.h
+.\objects\cal.o: ..\..\hal\inc\hal_gpio.h
 .\objects\cal.o: ..\..\bsp\inc\pwm.h
 .\objects\cal.o: ..\..\bsp\inc\rcv.h
+.\objects\cal.o: ..\..\bsp\inc\sr04.h
 .\objects\cal.o: ..\..\bsp\inc\tim.h
 .\objects\cal.o: ..\..\bsp\inc\tty.h
 .\objects\cal.o: ..\..\drv\inc\drv.h

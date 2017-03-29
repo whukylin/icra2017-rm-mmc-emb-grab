@@ -32,9 +32,9 @@ static void GetChassisStateRef(const CBUS_t* cbus)
 	float vxr = cbus->cv.x / CBUS_VALUE_SCALE;
 	float vyr = cbus->cv.y / CBUS_VALUE_SCALE;
 	float vzr = cbus->cv.z / CBUS_VALUE_SCALE;
-	float dpx = Flag_Get(&cbus->fs, CBUS_FLAG_BIT_ABS) ? pxr - odo.cp.x : pxr;
-	float dpy = Flag_Get(&cbus->fs, CBUS_FLAG_BIT_ABS) ? pyr - odo.cp.y : pyr;
-	float dpz = Flag_Get(&cbus->fs, CBUS_FLAG_BIT_ABS) ? pzr - odo.cp.z : pzr;
+	float dpx = Flag_Get(&cbus->fs, CBUS_FLAG_BIT_MOD) ? pxr - odo.cp.x : pxr;
+	float dpy = Flag_Get(&cbus->fs, CBUS_FLAG_BIT_MOD) ? pyr - odo.cp.y : pyr;
+	float dpz = Flag_Get(&cbus->fs, CBUS_FLAG_BIT_MOD) ? pzr - odo.cp.z : pzr;
 	
 	LIMIT_ABS(vxr, cfg.vel.x);
 	LIMIT_ABS(vyr, cfg.vel.y);
@@ -63,8 +63,8 @@ static void GetGrabberStateRef(const CBUS_t* cbus)
 	float pcr = cbus->gp.c / CBUS_VALUE_SCALE;
 	float ver = cbus->gv.e / CBUS_VALUE_SCALE;
 	float vcr = cbus->gv.c / CBUS_VALUE_SCALE;
-	float dpe = Flag_Get(&cbus->fs, CBUS_FLAG_BIT_ABS) ? per - odo.gp.e : per;
-	float dpc = Flag_Get(&cbus->fs, CBUS_FLAG_BIT_ABS) ? per - odo.gp.c : pcr;
+	float dpe = Flag_Get(&cbus->fs, CBUS_FLAG_BIT_MOD) ? per - odo.gp.e : per;
+	float dpc = Flag_Get(&cbus->fs, CBUS_FLAG_BIT_MOD) ? per - odo.gp.c : pcr;
 	
 	LIMIT(per, cfg.pos.el, cfg.pos.eh);
 	LIMIT(pcr, cfg.pos.cl, cfg.pos.ch);

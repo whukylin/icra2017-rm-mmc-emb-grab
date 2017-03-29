@@ -44,15 +44,17 @@
 .\objects\srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\objects\srv.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
-.\objects\srv.o: ..\..\asp\inc\vios.h
+.\objects\srv.o: ..\..\hal\inc\hal_uart.h
 .\objects\srv.o: ..\..\bsp\inc\btn.h
 .\objects\srv.o: ..\..\bsp\inc\can1.h
 .\objects\srv.o: ..\..\bsp\inc\can2.h
 .\objects\srv.o: ..\..\bsp\inc\dbi.h
 .\objects\srv.o: ..\..\bsp\inc\key.h
 .\objects\srv.o: ..\..\bsp\inc\led.h
+.\objects\srv.o: ..\..\hal\inc\hal_gpio.h
 .\objects\srv.o: ..\..\bsp\inc\pwm.h
 .\objects\srv.o: ..\..\bsp\inc\rcv.h
+.\objects\srv.o: ..\..\bsp\inc\sr04.h
 .\objects\srv.o: ..\..\bsp\inc\tim.h
 .\objects\srv.o: ..\..\bsp\inc\tty.h
 .\objects\srv.o: ..\..\drv\inc\drv.h
@@ -73,10 +75,13 @@
 .\objects\srv.o: ..\..\asp\inc\rcf.h
 .\objects\srv.o: ..\..\app\inc\hci.h
 .\objects\srv.o: ..\..\asp\inc\hcf.h
+.\objects\srv.o: ..\..\app\inc\srs.h
+.\objects\srv.o: ..\..\app\inc\clk.h
 .\objects\srv.o: ..\..\app\inc\ini.h
 .\objects\srv.o: ..\..\app\inc\wsm.h
 .\objects\srv.o: ..\..\app\inc\ios.h
 .\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\srv.o: ..\..\app\inc\dnl.h
 .\objects\srv.o: ..\..\app\inc\cci.h
+.\objects\srv.o: ..\..\srv\inc\ext_srv.h
 .\objects\srv.o: ..\..\srv\inc\rcv_srv.h

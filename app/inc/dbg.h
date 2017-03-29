@@ -25,12 +25,17 @@
 extern "C" {
 #endif
 
+#define DBUG 0
+
+#if DBUG
+
 #include "ios.h"
 #include "com.h"
 #include "cfg.h"
 #include "wsm.h"
 #include "ctl.h"
-
+#include "srs.h"
+	
 void Dbg_Cfg(void);
 void Dbg_Mec(void);
 void Dbg_Cvl(void);
@@ -51,6 +56,9 @@ void Dbg_Vdc(void);
 void Dbg_Vcc(void);
 void Dbg_Imu(void);
 void Dbg_Ctl(void);
+void Dbg_Srs(void);
+
+#endif
 
 #ifdef __cplusplus
 }

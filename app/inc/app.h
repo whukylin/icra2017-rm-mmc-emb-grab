@@ -64,6 +64,7 @@ extern "C" {
 #include "mec.h" // Mecanum Power Transmission System
 #include "odo.h" // Odometer (Sensor Message Feedback)
 #include "rci.h" // Remote Control Interface
+#include "srs.h" // HC-SR04 Sonar Sensors
 #include "sys.h" // System-wide Variable Types and Functions
 #include "upd.h" // System Updater
 #include "wdg.h" // Watch Dog

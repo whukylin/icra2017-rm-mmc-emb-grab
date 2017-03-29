@@ -47,7 +47,6 @@ extern "C" {
 #include "rcp.h"   // Remote Control Protocol
 #include "rmp.h"   // Ramp Generator
 #include "stack.h" // Stack Data Structure and Algorithm
-#include "vios.h"  // Virtual Input/Output Stream
 
 #ifdef __cplusplus
 }

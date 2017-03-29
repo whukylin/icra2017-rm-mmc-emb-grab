@@ -272,11 +272,11 @@ typedef uint32_t GPIO;
 
 #define EXTI_LINE_NUM 16
 
-typedef void (*ExtiHandler)(void);
+typedef void (*ExtiHandler)(uint8_t line);
 
 extern ExtiHandler extiHandlers[EXTI_LINE_NUM];
 
-void EXTI_SetHandler(uint8_t line, ExtiHandler handler);
+void EXTI_SetHandler(uint8_t num, ExtiHandler handler);
 
 // For private use only
 #define EXIT_N_IRQ_HANDLER(N) \
@@ -284,7 +284,7 @@ do { \
 	if (EXTI_GetITStatus(EXTI_Line##N) != RESET) { \
 		EXTI_ClearITPendingBit(EXTI_Line##N); \
 		EXTI_ClearFlag(EXTI_Line##N); \
-		if (extiHandlers[N]) extiHandlers[N](); \
+		if (extiHandlers[N]) extiHandlers[N](N); \
 	} \
 } while (0)
 
@@ -303,7 +303,6 @@ void GPIO_Config(GPIO gpio, GPIOMode_TypeDef mode, GPIOSpeed_TypeDef speed, GPIO
 void GPIO_In(GPIO gpio);
 void GPIO_Out(GPIO gpio);
 void GPIO_AF(GPIO gpio, u8 af);
-void EXTI_Bind(GPIO gpio, EXTITrigger_TypeDef trig);
 void Encoder_Bind(GPIO A, GPIO B, TIM_TypeDef* timx, u16 mode, u16 p1, u16 p2);
 void USART_Bind(GPIO rx, GPIO tx, USART_TypeDef* usartx, u32 br, u8 wl, s8 parity, float sb, s8 fc);
 void USART_Config(USART_TypeDef* usartx, s8 mode, u32 br, u8 wl, s8 parity, float sb, s8 fc);
@@ -314,7 +313,8 @@ void NVIC_Config(u8 channel, u8 pre, u8 sub);
 void CAN_Config(CAN_TypeDef* canx, u16 ps, u8 mode, u8 sjw, u8 bs1, u8 bs2);
 void CAN_Filter_Config(u16 id_h, u16 id_l, u16 msk_h, u16 msk_l, u16 fifo, u8 num);
 void DMA_Config(DMA_Stream_TypeDef* DMAy_Streamx, u32 channel, u32 pba, u32 mba, u32 dir, u32 bs);
-void EXTI_Config(u32 line, EXTIMode_TypeDef mode, EXTITrigger_TypeDef trig);
+void EXTI_Config(u32 line, EXTIMode_TypeDef mode, EXTITrigger_TypeDef trigger);
+void EXTI_Bind(GPIO gpio, uint8_t pre_priority, uint8_t sub_priority, EXTITrigger_TypeDef trigger, ExtiHandler handler);
 
 #ifdef __cplusplus
 }

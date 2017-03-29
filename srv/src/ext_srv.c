@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2011-2016, Jack Mo (mobangjack@foxmail.com).
+ * Copyright (c) 2016, Jack Mo (mobangjack@foxmail.com).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,18 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-#include "main.h"
 
-int main()
+#include "ext_srv.h"
+
+void SR04Callback(uint8_t i, uint8_t trigger)
 {
-	KOS_Boot();
-	while(1)
-	{
-		Srs_Proc();
-		Dnl_Proc();
-		if (Clk_GetMsTick() % 20 == 0) {
-			Upl_Proc();
-		}
-  }
+	Sr04_Proc(i, trigger);
 }
+
+

@@ -49,20 +49,17 @@ typedef struct
 	SR04_MOBLE, \
 }
 
+#define SR04_IDX_FIXED 0
+#define SR04_IDX_MOBLE 1
+
 #define SR04_NVIC_PRE_PRIORITY 1
 #define SR04_NVIC_SUB_PRIORITY 0
-
-#define SR04_FIXED_EXTI EXTI5_IRQn
-#define SR04_MOBLE_EXTI EXTI15_10_IRQn
-
-#define SR04_FIXED_EXTI_LINE EXTI_Line5
-#define SR04_MOBLE_EXTI_LINE EXTI_Line10
-
-#define SR04_MOBLE_EXTI_LINE EXTI_Line10
 
 void SR04_Bind(const SR04_t* sr04);
 
 void SR04_Config(void);
+
+extern void SR04Callback(uint8_t i, uint8_t trigger);
 
 extern const SR04_t sr04[SR04_NUM];
 

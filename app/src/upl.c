@@ -23,30 +23,48 @@
 static uint8_t buf[2][UPL_BUF_SIZE];
 static FIFO_t fifo;
 
+static MsgType_t msgType = MSG_TYPE_KYLIN;
+
 static KylinMsg_t kylinMsg;
+static Sr04sMsg_t sr04sMsg;
+static ZGyroMsg_t zgyroMsg;
 
 static void Upl_PushKylinMsg(void)
 {
-	if (IOS_COM_DEV.GetTxFifoFree() >= msg_head_kylin.attr.length + MSG_LEN_EXT) {
-		kylinMsg.fs = odo.fs;
-		Flag_Det(&kylinMsg.fs, MYLIN_MSG_FLAG_BIT_INI, Ini_IsDone());
-		kylinMsg.cv.x = odo.cv.x * KYLIN_MSG_VALUE_SCALE;
-		kylinMsg.cv.y = odo.cv.y * KYLIN_MSG_VALUE_SCALE;
-		kylinMsg.cv.z = odo.cv.z * KYLIN_MSG_VALUE_SCALE;
-		kylinMsg.cp.x = odo.cp.x * KYLIN_MSG_VALUE_SCALE;
-		kylinMsg.cp.y = odo.cp.y * KYLIN_MSG_VALUE_SCALE;
-		kylinMsg.cp.z = odo.cp.z * KYLIN_MSG_VALUE_SCALE;
-		kylinMsg.gv.e = odo.gv.e * KYLIN_MSG_VALUE_SCALE;
-		kylinMsg.gp.e = odo.gp.e * KYLIN_MSG_VALUE_SCALE;
-		kylinMsg.gv.c = odo.gv.c * KYLIN_MSG_VALUE_SCALE;
-		kylinMsg.gp.c = odo.gp.c * KYLIN_MSG_VALUE_SCALE;
-		Msg_Push(&fifo, buf[1], &msg_head_kylin, &kylinMsg);
-	}
+	kylinMsg.fs = odo.fs;
+	Flag_Det(&kylinMsg.fs, MYLIN_MSG_FLAG_BIT_INI, Cal_IsDone());
+	Flag_Cpy(&kylinMsg.fs, WDG_ERR_ALL, 0x000fffff);
+	kylinMsg.cv.x = odo.cv.x * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.cv.y = odo.cv.y * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.cv.z = odo.cv.z * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.cp.x = odo.cp.x * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.cp.y = odo.cp.y * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.cp.z = odo.cp.z * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.gv.e = odo.gv.e * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.gp.e = odo.gp.e * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.gv.c = odo.gv.c * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.gp.c = odo.gp.c * KYLIN_MSG_VALUE_SCALE;
+	Msg_Push(&fifo, buf[1], &msg_head_kylin, &kylinMsg);
+}
+
+static void Upl_PushSr04sMsg(void)
+{
+	sr04sMsg.frame_id++;
+	sr04sMsg.fixed = srs[SR04_IDX_FIXED].mm;
+	sr04sMsg.moble = srs[SR04_IDX_MOBLE].mm;
+	Msg_Push(&fifo, buf[1], &msg_head_sr04s, &sr04sMsg);
+}
+
+static void Upl_PushZGyroMsg(void)
+{
+	zgyroMsg.frame_id++;
+	zgyroMsg.angle = zgyro.angle;
+	zgyroMsg.rate = zgyro.rate;
+	Msg_Push(&fifo, buf[1], &msg_head_zgyro, &zgyroMsg);
 }
 
 static void Upl_SendMsg(void)
 {
-	
 	uint8_t data;
 	while (!FIFO_IsEmpty(&fifo)) {
 		FIFO_Pop(&fifo, &data, 1);
@@ -61,8 +79,28 @@ void Upl_Init(void)
 
 void Upl_Proc(void)
 {
-	Upl_PushKylinMsg();
-	Upl_SendMsg();
+	switch (msgType) {
+		case MSG_TYPE_KYLIN:
+			if (IOS_COM_DEV.GetTxFifoFree() >= msg_head_kylin.attr.length + MSG_LEN_EXT) {
+				Upl_PushKylinMsg();
+				Upl_SendMsg();
+				msgType = MSG_TYPE_SR04S;
+			}
+		case MSG_TYPE_SR04S:
+			if (IOS_COM_DEV.GetTxFifoFree() >= msg_head_sr04s.attr.length + MSG_LEN_EXT) {
+				Upl_PushSr04sMsg();
+				Upl_SendMsg();
+				msgType = MSG_TYPE_ZGYRO;
+			}
+		case MSG_TYPE_ZGYRO:
+			if (IOS_COM_DEV.GetTxFifoFree() >= msg_head_zgyro.attr.length + MSG_LEN_EXT) {
+				Upl_PushZGyroMsg();
+				Upl_SendMsg();
+				msgType = MSG_TYPE_KYLIN;
+			}
+		default:
+			msgType = MSG_TYPE_KYLIN;
+	}
 }
 
 

@@ -51,17 +51,20 @@ void Clk_Spin(void)
 
 uint32_t Clk_GetUsTick(void)
 {
-	return us_tick;
+	//return us_tick;
+	return TICK_TIM->CNT;
 }
 
 uint32_t Clk_GetMsTick(void)
 {
-	return ms_tick;
+	//return ms_tick;
+	return TICK_TIM->CNT / 1000;
 }
 
 uint32_t Clk_GetScTick(void)
 {
-	return sc_tick;
+	//return sc_tick;
+	return TICK_TIM->CNT / 1000000;
 }
 
 

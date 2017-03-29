@@ -27,6 +27,8 @@ extern "C" {
 
 #include <stdint.h>
 
+#include "tim.h"
+	
 void Clk_Init(void);
 void Clk_Spin(void);
 

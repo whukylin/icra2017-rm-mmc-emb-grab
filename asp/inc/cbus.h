@@ -42,7 +42,7 @@ typedef struct
 }GrabberState_c; // Grabber state control typedef
 
 #define CBUS_FLAG_BIT_INI (1u<<31) // Initialization flag bit
-#define CBUS_FLAG_BIT_ABS (1u<<30) // Absolute control mode flag bit
+#define CBUS_FLAG_BIT_MOD (1u<<30) // Control mode flag bit
 #define CBUS_VALUE_SCALE 1e3f
 #pragma pack(1)
 typedef struct

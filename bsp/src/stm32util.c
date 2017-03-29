@@ -21,12 +21,12 @@ uint8_t GPIO_GetNum(GPIO gpio)
 
 uint8_t GPIO_ReadIn(GPIO gpio)
 {
-	GPIO_READ_IN(gpio);
+	return GPIO_READ_IN(gpio);
 }
 
 uint8_t GPIO_ReadOut(GPIO gpio)
 {
-	GPIO_READ_OUT(gpio);
+	return GPIO_READ_OUT(gpio);
 }
 
 void GPIO_WriteOut(GPIO gpio, uint8_t newState)
@@ -108,17 +108,6 @@ void GPIO_AF(GPIO gpio, u8 af)
 {
 	GPIO_Config(gpio, GPIO_Mode_AF, GPIO_Fast_Speed, GPIO_OType_PP, GPIO_PuPd_NOPULL);
 	GPIO_PinAFConfig(GPIO_PIN_GRP(gpio), GPIO_PIN_NUM(gpio), af);
-}
-
-void EXTI_Bind(GPIO gpio, EXTITrigger_TypeDef trig)
-{
-	uint32_t pinGrp = GPIO_PIN_GRP_NUM(gpio);
-	uint32_t pinNum = GPIO_PIN_NUM(gpio);
-	uint32_t pinMsk = GPIO_PIN_MSK(gpio);
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
-	GPIO_In(gpio);
-	SYSCFG_EXTILineConfig(pinGrp, pinNum);
-	EXTI_Config(pinMsk, EXTI_Mode_Interrupt, trig);
 }
 
 void Encoder_Bind(GPIO A, GPIO B, TIM_TypeDef* timx, u16 mode, u16 p1, u16 p2)
@@ -504,7 +493,7 @@ void DMA_Config(DMA_Stream_TypeDef* DMAy_Streamx, u32 channel, u32 pba, u32 mba,
 	DMA_Init(DMAy_Streamx, &dma);
 }
 
-void EXTI_Config(u32 line, EXTIMode_TypeDef mode, EXTITrigger_TypeDef trig)
+void EXTI_Config(u32 line, EXTIMode_TypeDef mode, EXTITrigger_TypeDef trigger)
 {
 	EXTI_InitTypeDef exti;
 
@@ -512,15 +501,15 @@ void EXTI_Config(u32 line, EXTIMode_TypeDef mode, EXTITrigger_TypeDef trig)
 
 	exti.EXTI_Line = line;
 	exti.EXTI_Mode = mode;
-	exti.EXTI_Trigger = trig;
+	exti.EXTI_Trigger = trigger;
 	exti.EXTI_LineCmd = ENABLE;
 	EXTI_Init(&exti);
 }
 
-void EXTI_SetHandler(uint8_t line, ExtiHandler handler)
+void EXTI_SetHandler(uint8_t num, ExtiHandler handler)
 {
-	if (line < EXTI_LINE_NUM) {
-		extiHandlers[line] = handler;
+	if (num < EXTI_LINE_NUM) {
+		extiHandlers[num] = handler;
 	}
 }
 
@@ -567,4 +556,39 @@ void EXTI15_10_IRQHandler(void)
 	EXIT_N_IRQ_HANDLER(14);
 	EXIT_N_IRQ_HANDLER(15);
 }
+
+void EXTI_Bind(GPIO gpio, uint8_t pre_priority, uint8_t sub_priority, EXTITrigger_TypeDef trigger, ExtiHandler handler)
+{
+	uint32_t pinGrp = GPIO_PIN_GRP_NUM(gpio);
+	uint32_t pinNum = GPIO_PIN_NUM(gpio);
+	uint32_t pinMsk = GPIO_PIN_MSK(gpio);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+	GPIO_In(gpio);
+	SYSCFG_EXTILineConfig(pinGrp, pinNum);
+	EXTI_Config(pinMsk, EXTI_Mode_Interrupt, trigger);
+	
+	EXTI_SetHandler(pinNum, handler);
+	if (pinNum == 0) {
+		NVIC_Config(EXTI0_IRQn, pre_priority, sub_priority);
+	}
+	else if (pinNum == 1) {
+		NVIC_Config(EXTI1_IRQn, pre_priority, sub_priority);
+	}
+	else if (pinNum == 2) {
+		NVIC_Config(EXTI2_IRQn, pre_priority, sub_priority);
+	}
+	else if (pinNum == 3) {
+		NVIC_Config(EXTI2_IRQn, pre_priority, sub_priority);
+	}
+	else if (pinNum == 4) {
+		NVIC_Config(EXTI2_IRQn, pre_priority, sub_priority);
+	}
+	else if (pinNum < 10) {
+		NVIC_Config(EXTI9_5_IRQn, pre_priority, sub_priority);
+	}
+	else if (pinNum < 16) {
+		NVIC_Config(EXTI15_10_IRQn, pre_priority, sub_priority);
+	}
+}
+
 

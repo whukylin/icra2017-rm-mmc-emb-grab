@@ -26,17 +26,38 @@ extern "C" {
 	
 #include "sr04.h"
 #include "clk.h"
+#include "wdg.h"
+
+#define SR04_ECHO_RECIP 0.172f // 344/2/1e3 , mm
+#define SR04_TRIG_PULSE_WIDTH 15 // > 10us
+#define SR04_TRIG_INTERVAL 2000  // us
+#define SR04_ECHO_PULSE_WIDTH_MAX 26162 // Range: 4500mm
+#define SR04_WAIT_ECHO_TIMEOUT SR04_ECHO_PULSE_WIDTH_MAX
 	
+typedef enum
+{
+	SR04_STATE_IDLE = 0x00,
+	SR04_STATE_TRIG = 0x01,
+	SR04_STATE_WAIT = 0x02,
+	SR04_STATE_ECHO = 0x03,
+}SR04State_t;
+
 typedef struct
 {
+	SR04State_t state;
 	uint32_t frame_cnt;
-	uint32_t endPulse;
+	uint32_t startTrig;
+	uint32_t endTrig;
+	uint32_t startEcho;
+	uint32_t endEcho;
+	uint32_t echo;
+	uint16_t mm;
 }Srs_t;
 
 void Srs_Init(void);
 void Srs_Proc(void);
 
-void Srs_Mm(uint32_t i);
+void Sr04_Proc(uint8_t i, uint8_t trigger);
 
 extern Srs_t srs[SR04_NUM];
 

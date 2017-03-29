@@ -18,6 +18,8 @@
 
 static uint32_t sri = 0;
 
+Srs_t srs[SR04_NUM];
+
 void Srs_Init(void)
 {
 	for (sri = 0; sri < SR04_NUM; sri++) {
@@ -28,7 +30,58 @@ void Srs_Init(void)
 
 void Srs_Proc(void)
 {
-	uint32_t tick = Clk_GetUsTick();
-	
+	uint8_t i = 0;
+	for (; i < SR04_NUM; i++) {
+		// Idle
+		if (srs[sri].state == SR04_STATE_IDLE) {
+			uint32_t interval = Clk_GetUsTick() - srs[sri].endEcho;
+			if (interval > SR04_TRIG_INTERVAL) {
+				GPIO_RST(sr04[i].trigPin);
+				GPIO_SET(sr04[i].trigPin);
+				srs[sri].startTrig = Clk_GetUsTick();
+				srs[sri].state = SR04_STATE_TRIG;
+			}
+		}
+		else if (srs[sri].state == SR04_STATE_TRIG) {
+			uint32_t interval = Clk_GetUsTick() - srs[sri].startTrig;
+			if (interval > SR04_TRIG_PULSE_WIDTH) {
+				GPIO_RST(sr04[i].trigPin);
+				srs[sri].endTrig = Clk_GetUsTick();
+				srs[sri].state = SR04_STATE_WAIT;
+			}
+		}
+		else if (srs[sri].state == SR04_STATE_WAIT) {
+			uint32_t interval = Clk_GetUsTick() - srs[sri].endTrig;
+			if (interval > SR04_WAIT_ECHO_TIMEOUT) {
+				GPIO_RST(sr04[i].trigPin);
+				GPIO_SET(sr04[i].trigPin);
+				srs[sri].startTrig = Clk_GetUsTick();
+			}
+		}
+	}
+}
+
+void Sr04_Proc(uint8_t i, uint8_t trigger)
+{
+	if (i == SR04_IDX_FIXED) {
+		Wdg_Feed(WDG_IDX_SR04F);
+	} else if (i == SR04_IDX_MOBLE) {
+		Wdg_Feed(WDG_IDX_SR04M);
+	}
+	if (i < SR04_NUM) {
+		// Rising edge trigger -> start echo
+		if (trigger == 1) {
+			srs[i].startEcho = Clk_GetUsTick();
+			srs[i].state = SR04_STATE_ECHO;
+		}
+		// Falling edge trigger -> end echo
+		else if (trigger == 0) {
+			srs[i].endEcho = Clk_GetUsTick();
+			srs[i].echo = srs[i].endEcho - srs[i].startEcho;
+			srs[i].mm = (uint16_t)(srs[i].echo * SR04_ECHO_RECIP);
+			srs[i].frame_cnt++;
+			srs[i].state = SR04_STATE_IDLE;
+		}
+	}
 }
 

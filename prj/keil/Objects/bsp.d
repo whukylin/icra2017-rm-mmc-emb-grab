@@ -27,14 +27,16 @@
 .\objects\bsp.o: ..\..\asp\inc\fifo.h
 .\objects\bsp.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\bsp.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\bsp.o: ..\..\asp\inc\vios.h
+.\objects\bsp.o: ..\..\hal\inc\hal_uart.h
 .\objects\bsp.o: ..\..\bsp\inc\btn.h
 .\objects\bsp.o: ..\..\bsp\inc\can1.h
 .\objects\bsp.o: ..\..\bsp\inc\can2.h
 .\objects\bsp.o: ..\..\bsp\inc\dbi.h
 .\objects\bsp.o: ..\..\bsp\inc\key.h
 .\objects\bsp.o: ..\..\bsp\inc\led.h
+.\objects\bsp.o: ..\..\hal\inc\hal_gpio.h
 .\objects\bsp.o: ..\..\bsp\inc\pwm.h
 .\objects\bsp.o: ..\..\bsp\inc\rcv.h
+.\objects\bsp.o: ..\..\bsp\inc\sr04.h
 .\objects\bsp.o: ..\..\bsp\inc\tim.h
 .\objects\bsp.o: ..\..\bsp\inc\tty.h

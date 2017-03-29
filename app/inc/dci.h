@@ -25,6 +25,7 @@
 #include "rci.h"
 #include "hci.h"
 #include "wdg.h"
+#include "cal.h"
 
 void Dci_Init(void);
 void Dci_Proc(const DBUS_t* dbus);

@@ -29,7 +29,7 @@
 .\objects\dnl.o: ..\..\asp\inc\fifo.h
 .\objects\dnl.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\dnl.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\dnl.o: ..\..\asp\inc\vios.h
+.\objects\dnl.o: ..\..\hal\inc\hal_uart.h
 .\objects\dnl.o: ..\..\bsp\inc\dbi.h
 .\objects\dnl.o: ..\..\bsp\inc\btm.h
 .\objects\dnl.o: ..\..\asp\inc\fun.h
@@ -48,8 +48,10 @@
 .\objects\dnl.o: ..\..\bsp\inc\can2.h
 .\objects\dnl.o: ..\..\bsp\inc\key.h
 .\objects\dnl.o: ..\..\bsp\inc\led.h
+.\objects\dnl.o: ..\..\hal\inc\hal_gpio.h
 .\objects\dnl.o: ..\..\bsp\inc\pwm.h
 .\objects\dnl.o: ..\..\bsp\inc\rcv.h
+.\objects\dnl.o: ..\..\bsp\inc\sr04.h
 .\objects\dnl.o: ..\..\bsp\inc\tim.h
 .\objects\dnl.o: ..\..\drv\inc\drv.h
 .\objects\dnl.o: ..\..\drv\inc\delay.h
@@ -75,3 +77,5 @@
 .\objects\dnl.o: ..\..\app\inc\wsm.h
 .\objects\dnl.o: ..\..\app\inc\ini.h
 .\objects\dnl.o: ..\..\app\inc\upl.h
+.\objects\dnl.o: ..\..\app\inc\srs.h
+.\objects\dnl.o: ..\..\app\inc\clk.h

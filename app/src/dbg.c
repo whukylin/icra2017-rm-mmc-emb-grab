@@ -16,6 +16,8 @@
  
 #include "dbg.h"
 
+#if DBUG
+
 void Dbg_Cfg(void)
 {
 	printf("****************** CFG ******************\n");
@@ -196,4 +198,11 @@ void Dbg_Ctl(void)
 	printf("rw1=%.3f,rw2=%.3f,rw3=%.3f,rw4=%.3f,fw1=%.3f,fw2=%.3f,fw3=%.3f,fw4,c1=%.3f,c1=%.f,c2=%.f,c3=%.f,c4=%.f\n", cmd.mv.w1, cmd.mv.w2, cmd.mv.w3, cmd.mv.w4, odo.mv.w1, odo.mv.w2, odo.mv.w3, odo.mv.w4, ctl.mc.w1, ctl.mc.w2, ctl.mc.w3, ctl.mc.w4);
 }
 
+void Dbg_Srs(void)
+{
+	uint32_t tmp = 1 << 10;
+	printf("%d, %d, %d, %d, %d, %d, %d\n", Wdg_HasErr(WDG_ERR_SR04M), srs[1].frame_cnt, srs[1].echo, srs[1].mm, srs[1].state, EXTI->RTSR & tmp, EXTI->FTSR & tmp);
+}
+
+#endif
 

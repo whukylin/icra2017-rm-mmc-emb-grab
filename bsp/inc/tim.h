@@ -26,16 +26,17 @@ extern "C" {
 // Tick timer
 #define TICK_TIM TIM2
 #define TICK_TIM_PS 89
-#define TICK_TIM_PD 1
+#define TICK_TIM_PD 0xffffffff //1
 #define TICK_TIM_NVIC IRQ(TIM2)
 #define TICK_TIM_NVIC_PRE_PRIORITY 0
 #define TICK_TIM_NVIC_SUB_PRIORITY 0
 #define TICK_TIM_IRQ_HANDLER IRQ_HANDLER(TIM2)
+#define TICK_US() TICK_TIM->CNT
 
 // Sync timer
 #define SYNC_TIM TIM6
 #define SYNC_TIM_PS 89
-#define SYNC_TIM_PD 1000
+#define SYNC_TIM_PD 999
 #define SYNC_TIM_NVIC IRQ(TIM6_DAC)
 #define SYNC_TIM_NVIC_PRE_PRIORITY 1
 #define SYNC_TIM_NVIC_SUB_PRIORITY 0
@@ -55,9 +56,6 @@ void Tim_Stop(void);
 
 void TickTimCallback(void);
 void SyncTimCallback(void);
-
-extern uint32_t tickTimTick;
-extern uint32_t syncTimTick;
 
 #ifdef __cplusplus
 }

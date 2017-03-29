@@ -38,15 +38,17 @@
 .\objects\com_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\objects\com_srv.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\com_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
-.\objects\com_srv.o: ..\..\asp\inc\vios.h
+.\objects\com_srv.o: ..\..\hal\inc\hal_uart.h
 .\objects\com_srv.o: ..\..\bsp\inc\btn.h
 .\objects\com_srv.o: ..\..\bsp\inc\can1.h
 .\objects\com_srv.o: ..\..\bsp\inc\can2.h
 .\objects\com_srv.o: ..\..\bsp\inc\dbi.h
 .\objects\com_srv.o: ..\..\bsp\inc\key.h
 .\objects\com_srv.o: ..\..\bsp\inc\led.h
+.\objects\com_srv.o: ..\..\hal\inc\hal_gpio.h
 .\objects\com_srv.o: ..\..\bsp\inc\pwm.h
 .\objects\com_srv.o: ..\..\bsp\inc\rcv.h
+.\objects\com_srv.o: ..\..\bsp\inc\sr04.h
 .\objects\com_srv.o: ..\..\bsp\inc\tim.h
 .\objects\com_srv.o: ..\..\bsp\inc\tty.h
 .\objects\com_srv.o: ..\..\drv\inc\drv.h
@@ -71,6 +73,8 @@
 .\objects\com_srv.o: ..\..\asp\inc\rcf.h
 .\objects\com_srv.o: ..\..\app\inc\hci.h
 .\objects\com_srv.o: ..\..\asp\inc\hcf.h
+.\objects\com_srv.o: ..\..\app\inc\srs.h
+.\objects\com_srv.o: ..\..\app\inc\clk.h
 .\objects\com_srv.o: ..\..\app\inc\ini.h
 .\objects\com_srv.o: ..\..\app\inc\wsm.h
 .\objects\com_srv.o: ..\..\app\inc\ios.h

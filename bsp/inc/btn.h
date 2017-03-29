@@ -25,9 +25,7 @@ extern "C" {
 
 #define BTN_PIN PD10
 
-#define BTN_STATE GPIO_READ_IN(BTN_PIN)
-#define BTN_STATE_UP 1
-#define BTN_STATE_DN 0
+#define BTN_IS_PRESSED() (GPIO_READ_IN(BTN_PIN) == 0)
 
 void Btn_Config(void);
 

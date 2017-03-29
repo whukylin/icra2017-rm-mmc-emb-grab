@@ -31,15 +31,17 @@ void Dci_Init(void)
 
 void Dci_Proc(const DBUS_t* dbus)
 {
-	Rci_PreProc(&dbus->rcp);
-	if (Rci_Sw(SW_IDX_R) == SW_UP) {
-		Rci_Proc(&dbus->rcp);
-	} else if (Rci_Sw(SW_IDX_R) == SW_MD) {
-		Hci_Proc(&dbus->hcp);
-	} else if (Rci_Sw(SW_IDX_R) == SW_DN) {
-		// Other control interface
-	} else {
-		// Should never reach here
+	if (Cal_IsDone()) {
+		Rci_PreProc(&dbus->rcp);
+		if (Rci_Sw(SW_IDX_R) == SW_UP) {
+			Rci_Proc(&dbus->rcp);
+		} else if (Rci_Sw(SW_IDX_R) == SW_MD) {
+			Hci_Proc(&dbus->hcp);
+		} else if (Rci_Sw(SW_IDX_R) == SW_DN) {
+			// Other control interface
+		} else {
+			// Should never reach here
+		}
 	}
 }
 

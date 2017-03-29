@@ -38,15 +38,17 @@
 .\objects\cci.o: ..\..\bsp\inc\stm32util.h
 .\objects\cci.o: ..\..\asp\inc\fifo.h
 .\objects\cci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\cci.o: ..\..\asp\inc\vios.h
+.\objects\cci.o: ..\..\hal\inc\hal_uart.h
 .\objects\cci.o: ..\..\bsp\inc\btn.h
 .\objects\cci.o: ..\..\bsp\inc\can1.h
 .\objects\cci.o: ..\..\bsp\inc\can2.h
 .\objects\cci.o: ..\..\bsp\inc\dbi.h
 .\objects\cci.o: ..\..\bsp\inc\key.h
 .\objects\cci.o: ..\..\bsp\inc\led.h
+.\objects\cci.o: ..\..\hal\inc\hal_gpio.h
 .\objects\cci.o: ..\..\bsp\inc\pwm.h
 .\objects\cci.o: ..\..\bsp\inc\rcv.h
+.\objects\cci.o: ..\..\bsp\inc\sr04.h
 .\objects\cci.o: ..\..\bsp\inc\tim.h
 .\objects\cci.o: ..\..\bsp\inc\tty.h
 .\objects\cci.o: ..\..\app\inc\can.h
@@ -61,11 +63,11 @@
 .\objects\cci.o: ..\..\app\inc\hci.h
 .\objects\cci.o: ..\..\asp\inc\hcf.h
 .\objects\cci.o: ..\..\asp\inc\maf.h
-.\objects\cci.o: ..\..\app\inc\wsm.h
-.\objects\cci.o: ..\..\app\inc\ini.h
 .\objects\cci.o: ..\..\app\inc\cal.h
 .\objects\cci.o: ..\..\drv\inc\drv.h
 .\objects\cci.o: ..\..\drv\inc\delay.h
 .\objects\cci.o: ..\..\drv\inc\motor.h
 .\objects\cci.o: ..\..\drv\inc\zgyro.h
+.\objects\cci.o: ..\..\app\inc\wsm.h
+.\objects\cci.o: ..\..\app\inc\ini.h
 .\objects\cci.o: ..\..\asp\inc\cbus.h

@@ -37,15 +37,17 @@
 .\objects\com.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\objects\com.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\com.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
-.\objects\com.o: ..\..\asp\inc\vios.h
+.\objects\com.o: ..\..\hal\inc\hal_uart.h
 .\objects\com.o: ..\..\bsp\inc\btn.h
 .\objects\com.o: ..\..\bsp\inc\can1.h
 .\objects\com.o: ..\..\bsp\inc\can2.h
 .\objects\com.o: ..\..\bsp\inc\dbi.h
 .\objects\com.o: ..\..\bsp\inc\key.h
 .\objects\com.o: ..\..\bsp\inc\led.h
+.\objects\com.o: ..\..\hal\inc\hal_gpio.h
 .\objects\com.o: ..\..\bsp\inc\pwm.h
 .\objects\com.o: ..\..\bsp\inc\rcv.h
+.\objects\com.o: ..\..\bsp\inc\sr04.h
 .\objects\com.o: ..\..\bsp\inc\tim.h
 .\objects\com.o: ..\..\bsp\inc\tty.h
 .\objects\com.o: ..\..\drv\inc\drv.h
@@ -70,6 +72,8 @@
 .\objects\com.o: ..\..\asp\inc\rcf.h
 .\objects\com.o: ..\..\app\inc\hci.h
 .\objects\com.o: ..\..\asp\inc\hcf.h
+.\objects\com.o: ..\..\app\inc\srs.h
+.\objects\com.o: ..\..\app\inc\clk.h
 .\objects\com.o: ..\..\app\inc\ini.h
 .\objects\com.o: ..\..\app\inc\wsm.h
 .\objects\com.o: ..\..\app\inc\ios.h

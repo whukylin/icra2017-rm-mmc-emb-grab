@@ -30,6 +30,7 @@ extern "C" {
 #include "cmd.h"
 #include "odo.h"
 #include "dci.h"
+#include "srs.h"
 #include "wdg.h"
 #include "ini.h"
 #include "wsm.h"

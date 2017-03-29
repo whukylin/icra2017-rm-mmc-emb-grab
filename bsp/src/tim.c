@@ -19,6 +19,7 @@
 void TickTim_Config(void)
 {
 	TIM_Config(TICK_TIM, TICK_TIM_PS, TIM_CounterMode_Up, TICK_TIM_PD, TIM_CKD_DIV1, 0);
+	TIM_ARRPreloadConfig(TICK_TIM, ENABLE);
 	NVIC_Config(TICK_TIM_NVIC, TICK_TIM_NVIC_PRE_PRIORITY, TICK_TIM_NVIC_SUB_PRIORITY);
 }
 
@@ -43,8 +44,6 @@ void TICK_TIM_IRQ_HANDLER(void)
 		TIM_ClearITPendingBit(TICK_TIM, TIM_IT_Update);
 		TIM_ClearFlag(TICK_TIM, TIM_FLAG_Update);
 
-		tickTimTick++;
-		
 		TickTimCallback();
 	}
 }
@@ -76,8 +75,6 @@ void SYNC_TIM_IRQ_HANDLER()
 		TIM_ClearITPendingBit(SYNC_TIM, TIM_IT_Update);
 		TIM_ClearFlag(SYNC_TIM, TIM_FLAG_Update);
 
-		syncTimTick++;
-		
 		SyncTimCallback();
 	}
 }

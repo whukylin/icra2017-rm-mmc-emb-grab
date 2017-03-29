@@ -140,7 +140,6 @@ void Can_Proc(uint32_t id, uint8_t* data)
 	default:
 		break;
 	}
-	
 }
 
 uint8_t Can_Ready(void)

@@ -18,17 +18,38 @@
 
 const SR04_t sr04[SR04_NUM] = SR04_GROUP;
 
-void SR04_IRQHandler(void)
+static void SR04_IRQHandler(uint8_t num)
 {
+	uint8_t i = 0;
+	uint32_t tmp = 1u << num;
+	uint8_t trigger = 0;
+	for (; i < SR04_NUM; i++) {
+		if (num == GPIO_PIN_NUM(sr04[i].echoPin)) {
+		  // Toggle trigger
+			if (EXTI->RTSR & tmp) {
+				EXTI->RTSR &= ~tmp;
+				EXTI->FTSR |= tmp;
+				trigger = 1;
+			} else if (EXTI->FTSR & tmp) {
+				EXTI->FTSR &= ~tmp;
+				EXTI->RTSR |= tmp;
+				trigger = 0;
+			}
+			SR04Callback(i, trigger);
+		}
+	}
 }
 
 void SR04_Bind(const SR04_t* sr04)
 {
-	GPIO_In(sr04->echoPin);
 	GPIO_Out(sr04->trigPin);
-	EXTI_Bind(sr04->echoPin, EXTI_Trigger_Rising);
-	EXTI_SetHandler(GPIO_PIN_NUM(sr04->echoPin), SR04_IRQHandler);
-	NVIC_Config(EXTI1_IRQn, SR04_NVIC_PRE_PRIORITY, SR04_NVIC_SUB_PRIORITY);
+	EXTI_Bind(sr04->echoPin, 
+	          SR04_NVIC_PRE_PRIORITY, 
+	          SR04_NVIC_SUB_PRIORITY, 
+	          EXTI_Trigger_Rising, 
+	          SR04_IRQHandler
+	          );
+	
 }
 
 void SR04_Config(void)

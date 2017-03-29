@@ -30,15 +30,17 @@
 .\objects\odo.o: ..\..\asp\inc\fifo.h
 .\objects\odo.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\odo.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\odo.o: ..\..\asp\inc\vios.h
+.\objects\odo.o: ..\..\hal\inc\hal_uart.h
 .\objects\odo.o: ..\..\bsp\inc\btn.h
 .\objects\odo.o: ..\..\bsp\inc\can1.h
 .\objects\odo.o: ..\..\bsp\inc\can2.h
 .\objects\odo.o: ..\..\bsp\inc\dbi.h
 .\objects\odo.o: ..\..\bsp\inc\key.h
 .\objects\odo.o: ..\..\bsp\inc\led.h
+.\objects\odo.o: ..\..\hal\inc\hal_gpio.h
 .\objects\odo.o: ..\..\bsp\inc\pwm.h
 .\objects\odo.o: ..\..\bsp\inc\rcv.h
+.\objects\odo.o: ..\..\bsp\inc\sr04.h
 .\objects\odo.o: ..\..\bsp\inc\tim.h
 .\objects\odo.o: ..\..\bsp\inc\tty.h
 .\objects\odo.o: ..\..\app\inc\can.h

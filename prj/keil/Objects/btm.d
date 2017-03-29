@@ -26,4 +26,4 @@
 .\objects\btm.o: ..\..\asp\inc\fifo.h
 .\objects\btm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\btm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\btm.o: ..\..\asp\inc\vios.h
+.\objects\btm.o: ..\..\hal\inc\hal_uart.h

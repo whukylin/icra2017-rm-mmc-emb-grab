@@ -38,15 +38,17 @@
 .\objects\ctl.o: ..\..\bsp\inc\stm32util.h
 .\objects\ctl.o: ..\..\asp\inc\fifo.h
 .\objects\ctl.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\ctl.o: ..\..\asp\inc\vios.h
+.\objects\ctl.o: ..\..\hal\inc\hal_uart.h
 .\objects\ctl.o: ..\..\bsp\inc\btn.h
 .\objects\ctl.o: ..\..\bsp\inc\can1.h
 .\objects\ctl.o: ..\..\bsp\inc\can2.h
 .\objects\ctl.o: ..\..\bsp\inc\dbi.h
 .\objects\ctl.o: ..\..\bsp\inc\key.h
 .\objects\ctl.o: ..\..\bsp\inc\led.h
+.\objects\ctl.o: ..\..\hal\inc\hal_gpio.h
 .\objects\ctl.o: ..\..\bsp\inc\pwm.h
 .\objects\ctl.o: ..\..\bsp\inc\rcv.h
+.\objects\ctl.o: ..\..\bsp\inc\sr04.h
 .\objects\ctl.o: ..\..\bsp\inc\tim.h
 .\objects\ctl.o: ..\..\bsp\inc\tty.h
 .\objects\ctl.o: ..\..\app\inc\can.h

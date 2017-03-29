@@ -965,6 +965,11 @@
               <FilePath>..\..\srv\inc\com_srv.h</FilePath>
             </File>
             <File>
+              <FileName>ext_srv.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\srv\inc\ext_srv.h</FilePath>
+            </File>
+            <File>
               <FileName>rcv_srv.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\srv\inc\rcv_srv.h</FilePath>
@@ -993,6 +998,11 @@
               <FileName>com_srv.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\srv\src\com_srv.c</FilePath>
+            </File>
+            <File>
+              <FileName>ext_srv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\srv\src\ext_srv.c</FilePath>
             </File>
             <File>
               <FileName>rcv_srv.c</FileName>

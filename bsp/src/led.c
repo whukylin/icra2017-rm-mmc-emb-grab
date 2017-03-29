@@ -40,7 +40,7 @@ uint8_t LedRed_ReadOut(void)
 
 void LedRed_Write(uint8_t newState)
 {
-	return GPIO_WRITE(LED_RED_PIN, newState);
+	GPIO_WRITE(LED_RED_PIN, newState);
 }
 
 uint8_t LedGreen_ReadIn(void)
@@ -55,6 +55,6 @@ uint8_t LedGreen_ReadOut(void)
 
 void LedGreen_Write(uint8_t newState)
 {
-	return GPIO_WRITE(LED_GREEN_PIN, newState);
+	GPIO_WRITE(LED_GREEN_PIN, newState);
 }
 

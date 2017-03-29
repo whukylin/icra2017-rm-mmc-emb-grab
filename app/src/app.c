@@ -27,6 +27,7 @@ void App_Init(void)
 	Clk_Init();
 	Com_Init();
 	Dci_Init();
+	Srs_Init();
 	
 	Wdg_Init();
 	Ini_Init();

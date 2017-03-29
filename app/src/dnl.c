@@ -28,7 +28,8 @@ KylinMsg_t kylinMsg;
 
 /*
 VirtualDBUS_t vdbus;
-VirtualCBUS_t vcbus;
+
+CBUS_t cbus;
 
 SubscMsg_t subscMsg;
 CalibMsg_t calibMsg;
@@ -71,11 +72,11 @@ static void Dnl_ProcVDBUS(const VirtualDBUS_t* vdbus)
 	}
 }
 
-static void Dnl_ProcVCBUS(const VirtualCBUS_t* vcbus)
+static void Dnl_ProcCBUS(const CBUS_t* cbus)
 {
-	Wdg_Feed(WDG_IDX_VCBUS);
+	Wdg_Feed(WDG_IDX_CBUS);
 	if (Rci_Sw(SW_IDX_R) == SW_DN) {
-		Cci_Proc(vcbus);
+		Cci_Proc(cbus);
 	}
 }
 

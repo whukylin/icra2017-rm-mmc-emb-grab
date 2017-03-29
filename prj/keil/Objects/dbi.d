@@ -26,4 +26,4 @@
 .\objects\dbi.o: ..\..\asp\inc\fifo.h
 .\objects\dbi.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\dbi.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\dbi.o: ..\..\asp\inc\vios.h
+.\objects\dbi.o: ..\..\hal\inc\hal_uart.h

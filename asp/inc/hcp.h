@@ -19,6 +19,8 @@
 
 #include <stdint.h>
 
+#define HCP_FRAME_LEN 12
+
 /* ----------------------- PC Mouse Value Definition------------------------------ */
 #define MOUSE_SPEED_MAX		       ((int16_t)100    ) // Modified @ 32768
 #define MOUSE_BTN_UP         	   ((uint8_t)0      )

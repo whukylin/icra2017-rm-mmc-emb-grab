@@ -18,7 +18,7 @@
 
 void TickTimCallback(void)
 {
-	Clk_Spin();
+	//Clk_Spin();
 }
 
 void SyncTimCallback(void)
