@@ -31,19 +31,20 @@ static ZGyroMsg_t zgyroMsg;
 
 static void Upl_PushKylinMsg(void)
 {
-	kylinMsg.fs = odo.fs;
-	Flag_Det(&kylinMsg.fs, MYLIN_MSG_FLAG_BIT_INI, Cal_IsDone());
-	Flag_Cpy(&kylinMsg.fs, WDG_ERR_ALL, 0x000fffff);
-	kylinMsg.cv.x = odo.cv.x * KYLIN_MSG_VALUE_SCALE;
-	kylinMsg.cv.y = odo.cv.y * KYLIN_MSG_VALUE_SCALE;
-	kylinMsg.cv.z = odo.cv.z * KYLIN_MSG_VALUE_SCALE;
-	kylinMsg.cp.x = odo.cp.x * KYLIN_MSG_VALUE_SCALE;
-	kylinMsg.cp.y = odo.cp.y * KYLIN_MSG_VALUE_SCALE;
-	kylinMsg.cp.z = odo.cp.z * KYLIN_MSG_VALUE_SCALE;
-	kylinMsg.gv.e = odo.gv.e * KYLIN_MSG_VALUE_SCALE;
-	kylinMsg.gp.e = odo.gp.e * KYLIN_MSG_VALUE_SCALE;
-	kylinMsg.gv.c = odo.gv.c * KYLIN_MSG_VALUE_SCALE;
-	kylinMsg.gp.c = odo.gp.c * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.frame_id++;
+	kylinMsg.cbus.fs = odo.fs;
+	Flag_Det(&kylinMsg.cbus.fs, MYLIN_MSG_FLAG_BIT_INI, Cal_IsDone());
+	Flag_Cpy(&kylinMsg.cbus.fs, WDG_ERR_ALL, 0x000fffff);
+	kylinMsg.cbus.cv.x = odo.cv.x * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.cbus.cv.y = odo.cv.y * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.cbus.cv.z = odo.cv.z * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.cbus.cp.x = odo.cp.x * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.cbus.cp.y = odo.cp.y * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.cbus.cp.z = odo.cp.z * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.cbus.gv.e = odo.gv.e * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.cbus.gp.e = odo.gp.e * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.cbus.gv.c = odo.gv.c * KYLIN_MSG_VALUE_SCALE;
+	kylinMsg.cbus.gp.c = odo.gp.c * KYLIN_MSG_VALUE_SCALE;
 	Msg_Push(&fifo, buf[1], &msg_head_kylin, &kylinMsg);
 }
 

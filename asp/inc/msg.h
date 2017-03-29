@@ -171,7 +171,11 @@ typedef struct
 #define KYLIN_MSG_VALUE_SCALE CBUS_VALUE_SCALE
 #define MYLIN_MSG_FLAG_BIT_INI (1u<<31u)
 #define MYLIN_MSG_FLAG_BIT_MOD (1u<<30u)
-typedef CBUS_t KylinMsg_t;
+typedef struct
+{
+	uint32_t frame_id;
+	CBUS_t cbus;
+}KylinMsg_t;
 
 #define WRAP_U8(V) ((uint8_t)V)
 #define WRAP_U16(V) ((uint16_t)V)

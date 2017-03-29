@@ -28,6 +28,7 @@
 .\objects\main.o: ..\..\asp\inc\linkedlist.h
 .\objects\main.o: ..\..\asp\inc\maf.h
 .\objects\main.o: ..\..\asp\inc\mecanum.h
+.\objects\main.o: ..\..\asp\inc\msg.h
 .\objects\main.o: ..\..\asp\inc\pid.h
 .\objects\main.o: ..\..\asp\inc\rmp.h
 .\objects\main.o: ..\..\asp\inc\stack.h
@@ -80,7 +81,6 @@
 .\objects\main.o: ..\..\srv\inc\com_srv.h
 .\objects\main.o: ..\..\app\inc\com.h
 .\objects\main.o: ..\..\app\inc\upl.h
-.\objects\main.o: ..\..\asp\inc\msg.h
 .\objects\main.o: ..\..\app\inc\cal.h
 .\objects\main.o: ..\..\app\inc\odo.h
 .\objects\main.o: ..\..\app\inc\sys.h

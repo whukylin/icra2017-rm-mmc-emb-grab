@@ -27,6 +27,7 @@
 .\objects\kos.o: ..\..\asp\inc\linkedlist.h
 .\objects\kos.o: ..\..\asp\inc\maf.h
 .\objects\kos.o: ..\..\asp\inc\mecanum.h
+.\objects\kos.o: ..\..\asp\inc\msg.h
 .\objects\kos.o: ..\..\asp\inc\pid.h
 .\objects\kos.o: ..\..\asp\inc\rmp.h
 .\objects\kos.o: ..\..\asp\inc\stack.h
@@ -79,7 +80,6 @@
 .\objects\kos.o: ..\..\srv\inc\com_srv.h
 .\objects\kos.o: ..\..\app\inc\com.h
 .\objects\kos.o: ..\..\app\inc\upl.h
-.\objects\kos.o: ..\..\asp\inc\msg.h
 .\objects\kos.o: ..\..\app\inc\cal.h
 .\objects\kos.o: ..\..\app\inc\odo.h
 .\objects\kos.o: ..\..\app\inc\sys.h

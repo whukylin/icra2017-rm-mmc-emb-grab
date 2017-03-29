@@ -100,7 +100,7 @@ static void Dnl_ProcKylinMsg(const KylinMsg_t* kylinMsg)
 {
 	Wdg_Feed(WDG_IDX_KYLIN);
 	if (Rci_Sw(1) == SW_DN && Wsm_GetWs() == WORKING_STATE_NORMAL) {
-		Cci_Proc(kylinMsg);
+		Cci_Proc(&kylinMsg->cbus);
 	}
 }
 

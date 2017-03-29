@@ -23,7 +23,7 @@ int main()
 	{
 		Srs_Proc();
 		Dnl_Proc();
-		if (Clk_GetMsTick() % 20 == 0) {
+		if (Clk_GetMsTick() % 50 == 0) {
 			Upl_Proc();
 		}
   }
