@@ -91,7 +91,7 @@ void Odo_Init(void)
 	Can_Init();
 
 	odo_gp_c = 0;
-	memset(&odo, 0, sizeof(Odo_t));
+	memset((void*)&odo, 0, sizeof(Odo_t));
 }
 
 void Odo_Proc(void)

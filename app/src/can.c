@@ -89,12 +89,12 @@ uint8_t Motor_Ready(const Motor_t* motor)
 
 void ZGyro_Reset(ZGyro_t* zgyro)
 {
-	memset(zgyro, 0, sizeof(ZGyro_t));
+	memset((void*)zgyro, 0, sizeof(ZGyro_t));
 }
 
 void Motor_Reset(Motor_t* motor)
 {
-	memset(motor, 0, sizeof(Motor_t));
+	memset((void*)motor, 0, sizeof(Motor_t));
 }
 
 void Can_Init(void)

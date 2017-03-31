@@ -98,26 +98,31 @@ void Upl_Proc(void)
 				Upl_SendMsg();
 				msgType = MSG_TYPE_SR04S;
 			}
+			break;
 		case MSG_TYPE_SR04S:
 			if (IOS_COM_DEV.GetTxFifoFree() >= msg_head_sr04s.attr.length + MSG_LEN_EXT) {
 				Upl_PushSr04sMsg();
 				Upl_SendMsg();
 				msgType = MSG_TYPE_ZGYRO;
 			}
+			break;
 		case MSG_TYPE_ZGYRO:
 			if (IOS_COM_DEV.GetTxFifoFree() >= msg_head_zgyro.attr.length + MSG_LEN_EXT) {
 				Upl_PushZGyroMsg();
 				Upl_SendMsg();
 				msgType = MSG_TYPE_POS_CALIB;
 			}
+			break;
 		case MSG_TYPE_POS_CALIB:
 			if (IOS_COM_DEV.GetTxFifoFree() >= msg_head_pos_calib.attr.length + MSG_LEN_EXT) {
 				Upl_PushPosCalib();
 				Upl_SendMsg();
 				msgType = MSG_TYPE_KYLIN;
 			}
+			break;
 		default:
 			msgType = MSG_TYPE_KYLIN;
+		break;
 	}
 }
 
