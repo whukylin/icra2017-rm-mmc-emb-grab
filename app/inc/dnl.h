@@ -37,8 +37,8 @@ extern "C" {
 void Dnl_Init(void);
 void Dnl_Proc(void);
 
-extern KylinMsg_t kylinMsg;
 /*
+extern KylinMsg_t kylinMsg;
 extern SubscMsg_t subscMsg;
 extern VirtualDBUS_t vdbus;
 extern VirtualCBUS_t vcbus;

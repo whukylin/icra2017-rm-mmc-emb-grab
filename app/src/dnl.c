@@ -24,13 +24,15 @@
 /*        Down-Link Communication        */
 /*****************************************/
 
-KylinMsg_t kylinMsg;
+static KylinMsg_t kylinMsg;
+
+static VirtualRC_t vrc;
+static VirtualHC_t vhc;
+static VirtualDBUS_t vdbus;
+
+static CBUS_t cbus;
 
 /*
-VirtualDBUS_t vdbus;
-
-CBUS_t cbus;
-
 SubscMsg_t subscMsg;
 CalibMsg_t calibMsg;
 
@@ -45,13 +47,13 @@ PosCalib_t posCalib;
 static uint8_t buf[2][DNL_BUF_SIZE];
 static FIFO_t fifo;
 
-/*
 static void Dnl_ProcVRC(const VirtualRC_t* vrc)
 {
 	Wdg_Feed(WDG_IDX_VRC);
 	LED_GREEN_TOG();
 	if (Rci_Sw(SW_IDX_R) == SW_DN) {
-		Rci_Proc(vrc);
+		Rcp_Dec(&dbus.rcp, vrc->buf);
+		Rci_Proc(&dbus.rcp);
 	}
 }
 
@@ -59,7 +61,8 @@ static void Dnl_ProcVHC(const VirtualHC_t* vhc)
 {
 	Wdg_Feed(WDG_IDX_VHC);
 	if (Rci_Sw(SW_IDX_R) == SW_DN) {
-		Hci_Proc(vhc);
+		Hcp_Dec(&dbus.hcp, vhc->buf);
+		Hci_Proc(&dbus.hcp);
 	}
 }
 
@@ -68,18 +71,20 @@ static void Dnl_ProcVDBUS(const VirtualDBUS_t* vdbus)
 	Wdg_Feed(WDG_IDX_VDBUS);
 	// To use this mode, the remote controller must be turned of.
 	if (Wdg_HasErr(WDG_ERR_RCV)) {
-		Dci_Proc(vdbus);
+		DBUS_Dec(&dbus, vdbus->buf);
+		Dci_Proc(&dbus);
 	}
 }
 
-static void Dnl_ProcCBUS(const CBUS_t* cbus)
+static void Dnl_ProcCBUS(const CBUS_t* vcbus)
 {
 	Wdg_Feed(WDG_IDX_CBUS);
 	if (Rci_Sw(SW_IDX_R) == SW_DN) {
-		Cci_Proc(cbus);
+		Cci_Proc(vcbus);
 	}
 }
 
+/*
 static void Dnl_ProcSubscMsg(const SubscMsg_t* subscMsg)
 {
 	if (subscMsg->msg_type & MSG_TYPE_CALIB) {
@@ -118,13 +123,6 @@ static void Dnl_ProcKylinMsg(const KylinMsg_t* kylinMsg)
 {
 	Wdg_Feed(WDG_IDX_KYLIN);
 	if (Rci_Sw(1) == SW_DN && Wsm_GetWs() == WORKING_STATE_NORMAL) {
-		// Accept re-initialization request
-		//if (Flag_Get(&kylinMsg->fs, MYLIN_MSG_FLAG_BIT_INI)) {
-		//}
-		// Accept reset odometer request
-		//if (Flag_Get(&kylinMsg->fs, MYLIN_MSG_FLAG_BIT_ODO)) {
-			//Motor_Reset(motor[
-		//}
 		float pxr = kylinMsg->cp.x / KYLIN_MSG_VALUE_SCALE;
 		float pyr = kylinMsg->cp.y / KYLIN_MSG_VALUE_SCALE;
 		float pzr = kylinMsg->cp.z / KYLIN_MSG_VALUE_SCALE;
@@ -250,8 +248,8 @@ static void Dnl_ProcPIDCalib(const PIDCalib_t* PIDCalib)
 void Dnl_Init(void)
 {
 	FIFO_Init(&fifo, buf[0], DNL_BUF_SIZE);
-	//DBUS_Init(&vdbus);
-	//CBUS_Init(&vcbus);
+	//DBUS_Init(&dbus);
+	CBUS_Init(&cbus);
 }
 
 void Dnl_Proc(void)
@@ -273,17 +271,17 @@ void Dnl_Proc(void)
 	// Check if any message received
 	if (Msg_Pop(&fifo, buf[1], &msg_head_kylin, &kylinMsg)) {
 		Dnl_ProcKylinMsg(&kylinMsg);
-	}
-	/*
-	if (Msg_Pop(&fifo, buf[1], &msg_head_vrc, &vdbus.rcp)) {
-		Dnl_ProcVRC(&vdbus.rcp);
-	} else if (Msg_Pop(&fifo, buf[1], &msg_head_vhc, &vdbus.hcp)) {
-		Dnl_ProcVHC(&vdbus.hcp);
+	} else if (Msg_Pop(&fifo, buf[1], &msg_head_vrc, &vrc)) {
+		Dnl_ProcVRC(&vrc);
+	} else if (Msg_Pop(&fifo, buf[1], &msg_head_vhc, &vhc)) {
+		Dnl_ProcVHC(&vhc);
 	} else if (Msg_Pop(&fifo, buf[1], &msg_head_vdbus, &vdbus)) {
 		Dnl_ProcVDBUS(&vdbus);
-	} else if (Msg_Pop(&fifo, buf[1], &msg_head_vcbus, &vcbus)) {
-		Dnl_ProcVCBUS(&vcbus);
-	} else if (Msg_Pop(&fifo, buf[1], &msg_head_subsc, &subscMsg)) {
+	} else if (Msg_Pop(&fifo, buf[1], &msg_head_vcbus, &cbus)) {
+		Dnl_ProcCBUS(&cbus);
+	}
+	/*
+	else if (Msg_Pop(&fifo, buf[1], &msg_head_subsc, &subscMsg)) {
 		Dnl_ProcSubscMsg(&subscMsg);
 	} else if (Msg_Pop(&fifo, buf[1], &msg_head_calib, &calibMsg)) {
 		Dnl_ProcCalibMsg(&calibMsg);
