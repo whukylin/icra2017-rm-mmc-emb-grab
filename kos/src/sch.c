@@ -40,8 +40,8 @@ void Sch_Proc(void)
 	SchTask_t* curr = first;
 	tick++;
 	for (; curr != NULL; curr = curr->next) {
-		//uint32_t interval = tick - curr->lastrun;
-		uint32_t interval = tick > curr->lastrun ? tick - curr->lastrun : (uint32_t)0xFFFFFFFF - curr->lastrun + tick;
+		uint32_t interval = tick - curr->lastrun;
+		//uint32_t interval = tick > curr->lastrun ? tick - curr->lastrun : (uint32_t)0xFFFFFFFF - curr->lastrun + tick;
 		if (interval >= curr->interval) {
 			curr->run();
 			curr->lastrun = tick;

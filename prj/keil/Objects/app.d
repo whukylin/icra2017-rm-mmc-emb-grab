@@ -96,9 +96,9 @@
 .\objects\app.o: ..\..\app\inc\ios.h
 .\objects\app.o: ..\..\app\inc\dnl.h
 .\objects\app.o: ..\..\app\inc\cci.h
+.\objects\app.o: ..\..\app\inc\ctl.h
 .\objects\app.o: ..\..\srv\inc\ext_srv.h
 .\objects\app.o: ..\..\srv\inc\rcv_srv.h
 .\objects\app.o: ..\..\app\inc\act.h
-.\objects\app.o: ..\..\app\inc\ctl.h
 .\objects\app.o: ..\..\app\inc\dbg.h
 .\objects\app.o: ..\..\app\inc\upd.h

@@ -98,10 +98,10 @@
 .\objects\main.o: ..\..\app\inc\ios.h
 .\objects\main.o: ..\..\app\inc\dnl.h
 .\objects\main.o: ..\..\app\inc\cci.h
+.\objects\main.o: ..\..\app\inc\ctl.h
 .\objects\main.o: ..\..\srv\inc\ext_srv.h
 .\objects\main.o: ..\..\srv\inc\rcv_srv.h
 .\objects\main.o: ..\..\app\inc\act.h
-.\objects\main.o: ..\..\app\inc\ctl.h
 .\objects\main.o: ..\..\app\inc\dbg.h
 .\objects\main.o: ..\..\app\inc\upd.h
 .\objects\main.o: ..\..\kos\inc\sch.h

@@ -74,6 +74,9 @@
 .\objects\dnl.o: ..\..\app\inc\hci.h
 .\objects\dnl.o: ..\..\asp\inc\hcf.h
 .\objects\dnl.o: ..\..\app\inc\cci.h
+.\objects\dnl.o: ..\..\app\inc\ctl.h
+.\objects\dnl.o: ..\..\asp\inc\pid.h
+.\objects\dnl.o: ..\..\asp\inc\rmp.h
 .\objects\dnl.o: ..\..\app\inc\wsm.h
 .\objects\dnl.o: ..\..\app\inc\ini.h
 .\objects\dnl.o: ..\..\app\inc\upl.h

@@ -36,7 +36,7 @@ extern "C" {
 // Sync timer
 #define SYNC_TIM TIM6
 #define SYNC_TIM_PS 89
-#define SYNC_TIM_PD 999
+#define SYNC_TIM_PD 1000
 #define SYNC_TIM_NVIC IRQ(TIM6_DAC)
 #define SYNC_TIM_NVIC_PRE_PRIORITY 1
 #define SYNC_TIM_NVIC_SUB_PRIORITY 0

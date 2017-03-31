@@ -24,6 +24,7 @@ static Rcf_t rcf;
 
 static void GetPeriphsStateRef(const Rcp_t* rcp)
 {
+	
 }
 
 static void GetChassisStateRef(const Rcp_t* rcp)

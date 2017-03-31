@@ -22,6 +22,7 @@
 
 static void GetPeriphsStateRef(const CBUS_t* cbus)
 {
+
 }
 
 static void GetChassisStateRef(const CBUS_t* cbus)

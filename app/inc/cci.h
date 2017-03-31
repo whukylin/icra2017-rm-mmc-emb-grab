@@ -27,6 +27,7 @@ extern "C" {
 
 #include "cmd.h"
 #include "odo.h"
+#include "ctl.h"
 #include "dci.h"
 #include "wdg.h"
 #include "wsm.h"

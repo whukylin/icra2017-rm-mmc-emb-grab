@@ -81,3 +81,6 @@
 .\objects\com_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\com_srv.o: ..\..\app\inc\dnl.h
 .\objects\com_srv.o: ..\..\app\inc\cci.h
+.\objects\com_srv.o: ..\..\app\inc\ctl.h
+.\objects\com_srv.o: ..\..\asp\inc\pid.h
+.\objects\com_srv.o: ..\..\asp\inc\rmp.h

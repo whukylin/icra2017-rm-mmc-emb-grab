@@ -54,6 +54,9 @@
 .\objects\cci.o: ..\..\app\inc\can.h
 .\objects\cci.o: ..\..\asp\inc\ekf.h
 .\objects\cci.o: ..\..\app\inc\wdg.h
+.\objects\cci.o: ..\..\app\inc\ctl.h
+.\objects\cci.o: ..\..\asp\inc\pid.h
+.\objects\cci.o: ..\..\asp\inc\rmp.h
 .\objects\cci.o: ..\..\app\inc\dci.h
 .\objects\cci.o: ..\..\asp\inc\dbus.h
 .\objects\cci.o: ..\..\asp\inc\rcp.h

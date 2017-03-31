@@ -97,10 +97,10 @@
 .\objects\kos.o: ..\..\app\inc\ios.h
 .\objects\kos.o: ..\..\app\inc\dnl.h
 .\objects\kos.o: ..\..\app\inc\cci.h
+.\objects\kos.o: ..\..\app\inc\ctl.h
 .\objects\kos.o: ..\..\srv\inc\ext_srv.h
 .\objects\kos.o: ..\..\srv\inc\rcv_srv.h
 .\objects\kos.o: ..\..\app\inc\act.h
-.\objects\kos.o: ..\..\app\inc\ctl.h
 .\objects\kos.o: ..\..\app\inc\dbg.h
 .\objects\kos.o: ..\..\app\inc\upd.h
 .\objects\kos.o: ..\..\kos\inc\sch.h

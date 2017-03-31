@@ -25,7 +25,7 @@
 extern "C" {
 #endif
 
-#define DBUG 0
+#define DBUG 1
 
 #if DBUG
 

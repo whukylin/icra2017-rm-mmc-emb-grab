@@ -63,7 +63,7 @@ void Cal_Proc(void)
 			Maf_Proc(&maf, ABSVAL(odo.gv.e));
 			if (gm_startup_delay_cnt < CAL_GM_START_UP_DELAY) {
 				gm_startup_delay_cnt++;
-			} 
+			}
 			// Bang detection
 			else if (ABSVAL(maf.avg) <= CAL_GM_BANG_VEL_DET) {
 				Cal_SetGph();
@@ -103,6 +103,11 @@ CalFlag_t Cal_GetFlag(void)
 void Cal_SetFlag(CalFlag_t flag)
 {
 	calFlag |= flag;
+}
+
+void Cal_ClrFlag(CalFlag_t flag)
+{
+	calFlag &= ~flag;
 }
 
 CalFlag_t Cal_HasFlag(CalFlag_t mask)

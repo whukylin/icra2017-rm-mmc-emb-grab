@@ -23,8 +23,11 @@ int main()
 	{
 		Srs_Proc();
 		Dnl_Proc();
-		if (Clk_GetMsTick() % 50 == 0) {
+		if (Clk_GetUsTick() % 10000 == 0) {
 			Upl_Proc();
+		}
+		if (Clk_GetUsTick() % 10000 == 0) {
+			Dbg_Odo();
 		}
   }
 }

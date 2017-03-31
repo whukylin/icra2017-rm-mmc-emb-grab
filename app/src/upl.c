@@ -28,6 +28,7 @@ static MsgType_t msgType = MSG_TYPE_KYLIN;
 static KylinMsg_t kylinMsg;
 static Sr04sMsg_t sr04sMsg;
 static ZGyroMsg_t zgyroMsg;
+static PosCalibMsg_t posCalibMsg;
 
 static void Upl_PushKylinMsg(void)
 {
@@ -64,6 +65,16 @@ static void Upl_PushZGyroMsg(void)
 	Msg_Push(&fifo, buf[1], &msg_head_zgyro, &zgyroMsg);
 }
 
+static void Upl_PushPosCalib(void)
+{
+	posCalibMsg.frame_id++;
+	posCalibMsg.data.ch = map(CLAW_PWM_H, 1000, 2000, 0, PI) * POS_CALIB_VALUE_SCALE;
+	posCalibMsg.data.cl = map(CLAW_PWM_L, 1000, 2000, 0, PI) * POS_CALIB_VALUE_SCALE;
+	posCalibMsg.data.eh = cfg.pos.eh * POS_CALIB_VALUE_SCALE;
+	posCalibMsg.data.el = cfg.pos.el * POS_CALIB_VALUE_SCALE;
+	Msg_Push(&fifo, buf[1], &msg_head_pos_calib, &posCalibMsg);
+}
+
 static void Upl_SendMsg(void)
 {
 	uint8_t data;
@@ -96,6 +107,12 @@ void Upl_Proc(void)
 		case MSG_TYPE_ZGYRO:
 			if (IOS_COM_DEV.GetTxFifoFree() >= msg_head_zgyro.attr.length + MSG_LEN_EXT) {
 				Upl_PushZGyroMsg();
+				Upl_SendMsg();
+				msgType = MSG_TYPE_POS_CALIB;
+			}
+		case MSG_TYPE_POS_CALIB:
+			if (IOS_COM_DEV.GetTxFifoFree() >= msg_head_pos_calib.attr.length + MSG_LEN_EXT) {
+				Upl_PushPosCalib();
 				Upl_SendMsg();
 				msgType = MSG_TYPE_KYLIN;
 			}
