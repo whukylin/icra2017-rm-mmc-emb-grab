@@ -72,5 +72,5 @@ void Pwr_ClrOLFlag(PwrOLFlag_t flag)
 
 PwrOLFlag_t Pwr_IsOkay(void)
 {
-	return (!Pwr_HitOLFlag(PWR_OL_FLAG_ALL));
+	return (!Pwr_HasOLFlag(PWR_OL_FLAG_ALL));
 }

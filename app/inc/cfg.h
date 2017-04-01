@@ -105,10 +105,10 @@ typedef struct
 	.mz_offset = 0, \
 }
 
-#define VEL_TRA_DEF 13.0f // m/s // 3
-#define VEL_ROT_DEF 37.2f // rad/s  // 9.3
-#define VEL_ELE_DEF 1.50f // m/s
-#define VEL_CLA_DEF 40.0f // rad/s
+#define VEL_TRA_DEF 10.0f // m/s // 3
+#define VEL_ROT_DEF 30.0f // rad/s  // 9.3
+#define VEL_ELE_DEF 1.00f // m/s
+#define VEL_CLA_DEF 30.0f // rad/s
 #define VEL_CFG_DEF \
 { \
 	.x = VEL_TRA_DEF, \
@@ -118,7 +118,7 @@ typedef struct
 	.c = VEL_CLA_DEF, \
 }
 
-#define RMP_CNT_DEF 250 //250*${SYS_CTL_TMS}
+#define RMP_CNT_DEF 500 //250*${SYS_CTL_TMS}
 #define RMP_CFG_DEF \
 { \
 	.cnt = RMP_CNT_DEF, \
@@ -157,7 +157,7 @@ typedef struct
 	.kd = 0, \
 	.it = 0, \
 	.Emax = 3000, \
-	.Pmax = 4900, \
+	.Pmax = 4950, \
 	.Imax = 3500, \
 	.Dmax = 1500, \
 	.Omax = 4950, \
@@ -170,7 +170,7 @@ typedef struct
 	.kd = 0, \
 	.it = 0, \
 	.Emax = 3000, \
-	.Pmax = 4900, \
+	.Pmax = 4950, \
 	.Imax = 3500, \
 	.Dmax = 1500, \
 	.Omax = 4950, \
@@ -183,7 +183,7 @@ typedef struct
 	.kd = 0, \
 	.it = 0, \
 	.Emax = 1000, \
-	.Pmax = 4900, \
+	.Pmax = 4950, \
 	.Imax = 3500, \
 	.Dmax = 1500, \
 	.Omax = 4950, \

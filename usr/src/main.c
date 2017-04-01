@@ -35,10 +35,5 @@ int main()
 		if (Clk_GetUsTick() % 2000 == 0) {
 			Upl_Proc();
 		}
-		/*
-		if (Clk_GetUsTick() % 5000 == 0) {
-			printf("v=%d,c=%d\n", motor[0].rate_filtered, motor[0].current_ref);
-		}
-		*/
   }
 }

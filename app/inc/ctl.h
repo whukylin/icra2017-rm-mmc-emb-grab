@@ -25,8 +25,6 @@
 extern "C" {
 #endif
 
-#define CTL_TMS 4 // ms
-
 #include "sys.h"
 #include "cmd.h"
 #include "odo.h"
@@ -36,11 +34,33 @@ extern "C" {
 typedef struct
 {
 	PeriphsState_t fs;
+	ChassisState_t cv;
+	ChassisState_t cc;
 	MecanumState_t mv;
 	MecanumState_t mc;
 	GrabberState_t gv;
 	GrabberState_t gc;
 }Ctl_t;
+
+typedef struct
+{
+	PID_t x;
+	PID_t y;
+	PID_t z;
+}Ccl_t; // Chassis control loop
+
+typedef struct
+{
+	PID_t e;
+}Gcl_t; // Grabber control loop
+
+typedef struct
+{
+	Ccl_t cp;
+	Ccl_t cv;
+	Gcl_t gp;
+	Gcl_t gv;
+}Pid_t;
 
 void Ctl_Init(void);
 void Ctl_Proc(void);
@@ -50,24 +70,8 @@ void Ctl_Proc(void);
 /**********************************************/
 
 extern Ctl_t ctl;
-
-extern PID_t CM1AnglePID;
-extern PID_t CM1SpeedPID;
-extern PID_t CM2AnglePID;
-extern PID_t CM2SpeedPID;
-extern PID_t CM3AnglePID;
-extern PID_t CM3SpeedPID;
-extern PID_t CM4AnglePID;
-extern PID_t CM4SpeedPID;
-extern PID_t GMEAnglePID;
-extern PID_t GMESpeedPID;
-
-extern Rmp_t CM1SpeedRmp;
-extern Rmp_t CM2SpeedRmp;
-extern Rmp_t CM3SpeedRmp;
-extern Rmp_t CM4SpeedRmp;
-extern Rmp_t GMESpeedRmp;
-extern Rmp_t GMCSpeedRmp;
+extern Pid_t pid;
+extern Rmp_t rmp;
 
 #ifdef __cplusplus
 }

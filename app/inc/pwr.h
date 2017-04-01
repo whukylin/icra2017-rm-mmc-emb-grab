@@ -24,7 +24,7 @@ extern "C" {
 #include "can.h"
 #include "maf.h"
 
-#define PWR_SAMPLE_TMS 100
+#define PWR_SAMPLE_TMS 500
 
 #define PWR_MOTOR_MAF_LEN 10
 #define PWR_MOTOR_DEAD_LOCK_SPEED_TH 2

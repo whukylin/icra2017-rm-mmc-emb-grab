@@ -24,12 +24,17 @@ void App_Init(void)
 {
 	Ios_Init(); // Input/output stream initialization
 	Cfg_Init(); // Configuration initialization
-	Mec_Init(); // Mechanical parameters initialization
 	Clk_Init(); // Clock initialization
+	Mec_Init(); // Mechanical parameters initialization
+	Can_Init(); // Can bus initialization
+	Odo_Init(); // Odometry initialization
+	Cmd_Init(); // Command initialization
+	Ctl_Init(); // Logic controller initialization
+	Upl_Init(); // Up-link communication initialization
+	Dnl_Init(); // Down-link communication initialization
 	Com_Init(); // Communication initialization
 	Dci_Init(); // DBUS control interface initialization
 	Cal_Init(); // Calibration initialization
-	Ctl_Init(); // Logic controller initialization
 	Pwr_Init(); // Power manager initialization
 	Srs_Init(); // SR04 sonar system initialization
 	Snd_Init(); // Sound initialization

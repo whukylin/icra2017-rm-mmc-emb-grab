@@ -21,24 +21,13 @@
 /**********************************************/
 
 Ctl_t ctl;
+Pid_t pid;
+Rmp_t rmp;
 
-PID_t CM1AnglePID;
-PID_t CM1SpeedPID;
-PID_t CM2AnglePID;
-PID_t CM2SpeedPID;
-PID_t CM3AnglePID;
-PID_t CM3SpeedPID;
-PID_t CM4AnglePID;
-PID_t CM4SpeedPID;
-PID_t GMEAnglePID;
-PID_t GMESpeedPID;
-
-Rmp_t CM1SpeedRmp;
-Rmp_t CM2SpeedRmp;
-Rmp_t CM3SpeedRmp;
-Rmp_t CM4SpeedRmp;
-Rmp_t GMESpeedRmp;
-Rmp_t GMCSpeedRmp;
+static void RmpGeneraterCtl(void)
+{
+	Rmp_Calc(&rmp);
+}
 
 static void PeriphsStateCtl(void)
 {
@@ -47,22 +36,28 @@ static void PeriphsStateCtl(void)
 
 static void ChassisStateCtl(void)
 {
-	ctl.mv.w1 = PID_Calc(&CM1AnglePID, cmd.mp.w1, odo.mp.w1);
-	ctl.mv.w2 = PID_Calc(&CM2AnglePID, cmd.mp.w2, odo.mp.w2);
-	ctl.mv.w3 = PID_Calc(&CM3AnglePID, cmd.mp.w3, odo.mp.w3);
-	ctl.mv.w4 = PID_Calc(&CM4AnglePID, cmd.mp.w4, odo.mp.w4);
-	ctl.mc.w1 = PID_Calc(&CM1SpeedPID, ctl.mv.w1, odo.mv.w1) * Rmp_Calc(&CM1SpeedRmp);
-	ctl.mc.w2 = PID_Calc(&CM2SpeedPID, ctl.mv.w2, odo.mv.w2) * Rmp_Calc(&CM2SpeedRmp);
-	ctl.mc.w3 = PID_Calc(&CM3SpeedPID, ctl.mv.w3, odo.mv.w3) * Rmp_Calc(&CM3SpeedRmp);
-	ctl.mc.w4 = PID_Calc(&CM4SpeedPID, ctl.mv.w4, odo.mv.w4) * Rmp_Calc(&CM4SpeedRmp);
+	ctl.cv.x = PID_Calc(&pid.cp.x, cmd.cp.x, odo.cp.x);
+	ctl.cv.y = PID_Calc(&pid.cp.y, cmd.cp.y, odo.cp.y);
+	ctl.cv.z = PID_Calc(&pid.cp.z, cmd.cp.z, odo.cp.z);
+	ctl.cc.x = PID_Calc(&pid.cv.x, ctl.cv.x, odo.cv.x);
+	ctl.cc.y = PID_Calc(&pid.cv.y, ctl.cv.y, odo.cv.y);
+	ctl.cc.z = PID_Calc(&pid.cv.z, ctl.cv.z, odo.cv.z);
 	
+	Mec_Decomp((float*)&ctl.cv, (float*)&ctl.mv);
+	Mec_Decomp((float*)&ctl.cc, (float*)&ctl.mc);
 }
 
 static void GrabberStateCtl(void)
 {
-	ctl.gv.e = PID_Calc(&GMEAnglePID, cmd.gp.e, odo.gp.e); // Elevator motor angle PID
-	ctl.gc.e = PID_Calc(&GMESpeedPID, ctl.gv.e, odo.gv.e) * Rmp_Calc(&GMESpeedRmp); // Elevator motor speed PID
+	ctl.gv.e = PID_Calc(&pid.gp.e, cmd.gp.e, odo.gp.e);
+	ctl.gc.e = PID_Calc(&pid.gv.e, ctl.gv.e, odo.gv.e);
 	ctl.gc.c = map(cmd.gp.c, cfg.pos.cl, cfg.pos.ch, CLAW_PWM_L, CLAW_PWM_H); // Direct PWM control (1000~2000)/2500, map rad to pwm duty cycle
+}
+
+static void Rmp_Init(Rmp_t* rmp)
+{
+	Rmp_Config(rmp, cfg.rmp.cnt);
+	Rmp_Reset(rmp);
 }
 
 static void Cpl_Init(PID_t* pid)
@@ -125,36 +120,23 @@ static void Gpl_Init(PID_t* pid)
 	PID_Reset(pid);
 }
 
-static void Rmp_Init(Rmp_t* rmp)
-{
-	Rmp_Config(rmp, cfg.rmp.cnt);
-	Rmp_Reset(rmp);
-}
-
 /**********************************************/
 /*       Logic Controller Initialization      */
 /**********************************************/
 void Ctl_Init(void)
 {
-	Cvl_Init(&CM1SpeedPID);
-	Cvl_Init(&CM2SpeedPID);
-	Cvl_Init(&CM3SpeedPID);
-	Cvl_Init(&CM4SpeedPID);
+	Rmp_Init(&rmp);
 	
-	Cpl_Init(&CM1AnglePID);
-	Cpl_Init(&CM2AnglePID);
-	Cpl_Init(&CM3AnglePID);
-	Cpl_Init(&CM4AnglePID);
+	Cvl_Init(&pid.cv.x);
+	Cvl_Init(&pid.cv.y);
+	Cvl_Init(&pid.cv.z);
 	
-	Gvl_Init(&GMESpeedPID);
-	Gpl_Init(&GMEAnglePID);
+	Cpl_Init(&pid.cp.x);
+	Cpl_Init(&pid.cp.y);
+	Cpl_Init(&pid.cp.z);
 	
-	Rmp_Init(&CM1SpeedRmp);
-	Rmp_Init(&CM2SpeedRmp);
-	Rmp_Init(&CM3SpeedRmp);
-	Rmp_Init(&CM4SpeedRmp);
-	Rmp_Init(&GMESpeedRmp);
-	Rmp_Init(&GMCSpeedRmp);
+	Gvl_Init(&pid.gv.e);
+	Gpl_Init(&pid.gp.e);
 	
 	memset(&ctl, 0, sizeof(Ctl_t));
 }
@@ -164,6 +146,7 @@ void Ctl_Init(void)
 /**********************************************/
 void Ctl_Proc(void)
 {
+	RmpGeneraterCtl();
 	PeriphsStateCtl();
 	ChassisStateCtl();
 	GrabberStateCtl();

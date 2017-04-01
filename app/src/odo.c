@@ -63,7 +63,7 @@ static void GetChassisPositionFdb(void)
 static void GetChassisVelocityFdb(void)
 {
 	Mec_Synthe((float*)&odo.mv, (float*)&odo.cv);
-	//odo.cp.z = zgyro.angle_rad;
+	//odo.cv.z = zgyro.rate_rad;
 }
 
 static float odo_gp_c = 0;
@@ -88,8 +88,6 @@ static void GetGrabberCurrentsFdb(void)
 
 void Odo_Init(void)
 {
-	Can_Init();
-
 	odo_gp_c = 0;
 	memset((void*)&odo, 0, sizeof(Odo_t));
 }
@@ -105,10 +103,5 @@ void Odo_Proc(void)
 	GetGrabberPositionFdb();
 	GetGrabberVelocityFdb();
 	GetGrabberCurrentsFdb();
-}
-
-void Odo_Zero(void)
-{
-	Can_Zero();
 }
 
