@@ -43,6 +43,7 @@
 .\objects\dnl.o: ..\..\asp\inc\crc16.h
 .\objects\dnl.o: ..\..\app\inc\cal.h
 .\objects\dnl.o: ..\..\bsp\inc\bsp.h
+.\objects\dnl.o: ..\..\bsp\inc\beep.h
 .\objects\dnl.o: ..\..\bsp\inc\btn.h
 .\objects\dnl.o: ..\..\bsp\inc\can1.h
 .\objects\dnl.o: ..\..\bsp\inc\can2.h
@@ -53,8 +54,12 @@
 .\objects\dnl.o: ..\..\bsp\inc\rcv.h
 .\objects\dnl.o: ..\..\bsp\inc\sr04.h
 .\objects\dnl.o: ..\..\bsp\inc\tim.h
-.\objects\dnl.o: ..\..\drv\inc\drv.h
+.\objects\dnl.o: ..\..\bsp\inc\mpu6500.h
+.\objects\dnl.o: ..\..\bsp\inc\mpu6500_i2c.h
+.\objects\dnl.o: ..\..\bsp\inc\mpu6500_drv.h
 .\objects\dnl.o: ..\..\drv\inc\delay.h
+.\objects\dnl.o: ..\..\bsp\inc\mpu6500_int.h
+.\objects\dnl.o: ..\..\drv\inc\drv.h
 .\objects\dnl.o: ..\..\drv\inc\flash.h
 .\objects\dnl.o: ..\..\drv\inc\motor.h
 .\objects\dnl.o: ..\..\drv\inc\zgyro.h
@@ -79,6 +84,7 @@
 .\objects\dnl.o: ..\..\asp\inc\rmp.h
 .\objects\dnl.o: ..\..\app\inc\wsm.h
 .\objects\dnl.o: ..\..\app\inc\ini.h
+.\objects\dnl.o: ..\..\app\inc\pwr.h
 .\objects\dnl.o: ..\..\app\inc\upl.h
 .\objects\dnl.o: ..\..\app\inc\srs.h
 .\objects\dnl.o: ..\..\app\inc\clk.h

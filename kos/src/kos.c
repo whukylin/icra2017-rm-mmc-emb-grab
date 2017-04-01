@@ -30,6 +30,8 @@ void KOS_Boot(void)
 	
 	// Arrange scheduled tasks, @{SYS_CTL_TMS} ms/exec
 	Sch_Arrange(App_Proc, SYS_CTL_TMS);
+	Sch_Arrange(Snd_Proc, SND_PLAY_TMS / 2);
+	Sch_Arrange(Pwr_Proc, PWR_SAMPLE_TMS);
 	
 	// BSP configuration
 	Bsp_Config();

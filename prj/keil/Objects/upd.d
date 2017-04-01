@@ -10,9 +10,11 @@
 .\objects\upd.o: ..\..\asp\inc\ekf.h
 .\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\upd.o: ..\..\app\inc\pwr.h
+.\objects\upd.o: ..\..\asp\inc\maf.h
 .\objects\upd.o: ..\..\app\inc\cal.h
 .\objects\upd.o: ..\..\bsp\inc\bsp.h
-.\objects\upd.o: ..\..\bsp\inc\btm.h
+.\objects\upd.o: ..\..\bsp\inc\beep.h
 .\objects\upd.o: ..\..\bsp\inc\stm32util.h
 .\objects\upd.o: ..\..\bsp\inc\platform.h
 .\objects\upd.o: ..\..\stl\CMSIS\device\stm32f4xx.h
@@ -35,6 +37,7 @@
 .\objects\upd.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\objects\upd.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\upd.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
+.\objects\upd.o: ..\..\bsp\inc\btm.h
 .\objects\upd.o: ..\..\asp\inc\fifo.h
 .\objects\upd.o: ..\..\hal\inc\hal_uart.h
 .\objects\upd.o: ..\..\bsp\inc\btn.h
@@ -49,8 +52,12 @@
 .\objects\upd.o: ..\..\bsp\inc\sr04.h
 .\objects\upd.o: ..\..\bsp\inc\tim.h
 .\objects\upd.o: ..\..\bsp\inc\tty.h
-.\objects\upd.o: ..\..\drv\inc\drv.h
+.\objects\upd.o: ..\..\bsp\inc\mpu6500.h
+.\objects\upd.o: ..\..\bsp\inc\mpu6500_i2c.h
+.\objects\upd.o: ..\..\bsp\inc\mpu6500_drv.h
 .\objects\upd.o: ..\..\drv\inc\delay.h
+.\objects\upd.o: ..\..\bsp\inc\mpu6500_int.h
+.\objects\upd.o: ..\..\drv\inc\drv.h
 .\objects\upd.o: ..\..\drv\inc\flash.h
 .\objects\upd.o: ..\..\drv\inc\motor.h
 .\objects\upd.o: ..\..\drv\inc\zgyro.h
@@ -60,7 +67,6 @@
 .\objects\upd.o: ..\..\asp\inc\calib.h
 .\objects\upd.o: ..\..\app\inc\fos.h
 .\objects\upd.o: ..\..\asp\inc\mecanum.h
-.\objects\upd.o: ..\..\asp\inc\maf.h
 .\objects\upd.o: ..\..\app\inc\ctl.h
 .\objects\upd.o: ..\..\app\inc\cmd.h
 .\objects\upd.o: ..\..\asp\inc\pid.h

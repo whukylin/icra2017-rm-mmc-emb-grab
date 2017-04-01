@@ -34,15 +34,20 @@ extern "C" {
 #define CAL_GM_UP_DIR 1
 #define CAL_GM_DRV_CURRENT 5000
 #define CAL_GM_START_UP_DELAY 100
-#define CAL_GM_BANG_VEL_DET 1e-2f
+#define CAL_GM_BANG_VEL_TH 5e-2f
 #define CAL_GM_MAF_BUF_LEN 3
 
 typedef uint32_t CalFlag_t;
 
-#define CAL_FLAG_GPH       ((CalFlag_t)(1u << 0))
-#define CAL_FLAG_GPL       ((CalFlag_t)(1u << 1))
+#define CAL_FLAG_GPEH       ((CalFlag_t)(1u << 0))
+#define CAL_FLAG_GPEL       ((CalFlag_t)(1u << 1))
+#define CAL_FLAG_GPCH       ((CalFlag_t)(1u << 2))
+#define CAL_FLAG_GPCL       ((CalFlag_t)(1u << 3))
 
-#define CAL_FLAG_GIM (CAL_FLAG_GPL | CAL_FLAG_GPL)
+#define CAL_FLAG_GPE (CAL_FLAG_GPEH | CAL_FLAG_GPEL)
+#define CAL_FLAG_GPC (CAL_FLAG_GPCH | CAL_FLAG_GPCL)
+#define CAL_FLAG_GIM (CAL_FLAG_GPE | CAL_FLAG_GPC)
+#define CAL_FLAG_ALL (CAL_FLAG_GIM)
 
 void Cal_Init(void);
 void Cal_Proc(void);

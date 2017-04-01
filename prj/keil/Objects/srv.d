@@ -21,7 +21,7 @@
 .\objects\srv.o: ..\..\asp\inc\crc16.h
 .\objects\srv.o: ..\..\app\inc\cal.h
 .\objects\srv.o: ..\..\bsp\inc\bsp.h
-.\objects\srv.o: ..\..\bsp\inc\btm.h
+.\objects\srv.o: ..\..\bsp\inc\beep.h
 .\objects\srv.o: ..\..\bsp\inc\stm32util.h
 .\objects\srv.o: ..\..\bsp\inc\platform.h
 .\objects\srv.o: ..\..\stl\CMSIS\device\stm32f4xx.h
@@ -44,6 +44,7 @@
 .\objects\srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\objects\srv.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
+.\objects\srv.o: ..\..\bsp\inc\btm.h
 .\objects\srv.o: ..\..\hal\inc\hal_uart.h
 .\objects\srv.o: ..\..\bsp\inc\btn.h
 .\objects\srv.o: ..\..\bsp\inc\can1.h
@@ -57,8 +58,12 @@
 .\objects\srv.o: ..\..\bsp\inc\sr04.h
 .\objects\srv.o: ..\..\bsp\inc\tim.h
 .\objects\srv.o: ..\..\bsp\inc\tty.h
-.\objects\srv.o: ..\..\drv\inc\drv.h
+.\objects\srv.o: ..\..\bsp\inc\mpu6500.h
+.\objects\srv.o: ..\..\bsp\inc\mpu6500_i2c.h
+.\objects\srv.o: ..\..\bsp\inc\mpu6500_drv.h
 .\objects\srv.o: ..\..\drv\inc\delay.h
+.\objects\srv.o: ..\..\bsp\inc\mpu6500_int.h
+.\objects\srv.o: ..\..\drv\inc\drv.h
 .\objects\srv.o: ..\..\drv\inc\flash.h
 .\objects\srv.o: ..\..\drv\inc\motor.h
 .\objects\srv.o: ..\..\drv\inc\zgyro.h
@@ -79,6 +84,7 @@
 .\objects\srv.o: ..\..\app\inc\clk.h
 .\objects\srv.o: ..\..\app\inc\ini.h
 .\objects\srv.o: ..\..\app\inc\wsm.h
+.\objects\srv.o: ..\..\app\inc\pwr.h
 .\objects\srv.o: ..\..\app\inc\ios.h
 .\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\srv.o: ..\..\app\inc\dnl.h

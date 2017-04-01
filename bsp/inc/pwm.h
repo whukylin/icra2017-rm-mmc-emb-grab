@@ -29,7 +29,7 @@ extern "C" {
 #define CLAW_PWM_PIN_4 PD15
 
 #define CLAW_PWM_TIM TIM4
-#define CLAW_PWM_TIM_PS 83
+#define CLAW_PWM_TIM_PS 89
 #define CLAW_PWM_TIM_PD 2500
 #define CLAW_PWM_TIM_PW 1000
 
@@ -40,8 +40,8 @@ extern "C" {
 
 #define CLAW_PWM CLAW_PWM_1
 	
-#define CLAW_PWM_H 1700
-#define CLAW_PWM_L 1100
+#define CLAW_PWM_H 1800
+#define CLAW_PWM_L 1000
 
 #define CLAW_GET_PWM() CLAW_PWM
 #define CLAW_SET_PWM(PWM) do { CLAW_PWM_1 = CLAW_PWM_2 = CLAW_PWM_3 = CLAW_PWM_4 = PWM; } while(0)

@@ -9,9 +9,11 @@
 .\objects\wsm.o: ..\..\asp\inc\ekf.h
 .\objects\wsm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\wsm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\wsm.o: ..\..\app\inc\pwr.h
+.\objects\wsm.o: ..\..\asp\inc\maf.h
 .\objects\wsm.o: ..\..\app\inc\cal.h
 .\objects\wsm.o: ..\..\bsp\inc\bsp.h
-.\objects\wsm.o: ..\..\bsp\inc\btm.h
+.\objects\wsm.o: ..\..\bsp\inc\beep.h
 .\objects\wsm.o: ..\..\bsp\inc\stm32util.h
 .\objects\wsm.o: ..\..\bsp\inc\platform.h
 .\objects\wsm.o: ..\..\stl\CMSIS\device\stm32f4xx.h
@@ -34,6 +36,7 @@
 .\objects\wsm.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\objects\wsm.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\wsm.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
+.\objects\wsm.o: ..\..\bsp\inc\btm.h
 .\objects\wsm.o: ..\..\asp\inc\fifo.h
 .\objects\wsm.o: ..\..\hal\inc\hal_uart.h
 .\objects\wsm.o: ..\..\bsp\inc\btn.h
@@ -48,8 +51,12 @@
 .\objects\wsm.o: ..\..\bsp\inc\sr04.h
 .\objects\wsm.o: ..\..\bsp\inc\tim.h
 .\objects\wsm.o: ..\..\bsp\inc\tty.h
-.\objects\wsm.o: ..\..\drv\inc\drv.h
+.\objects\wsm.o: ..\..\bsp\inc\mpu6500.h
+.\objects\wsm.o: ..\..\bsp\inc\mpu6500_i2c.h
+.\objects\wsm.o: ..\..\bsp\inc\mpu6500_drv.h
 .\objects\wsm.o: ..\..\drv\inc\delay.h
+.\objects\wsm.o: ..\..\bsp\inc\mpu6500_int.h
+.\objects\wsm.o: ..\..\drv\inc\drv.h
 .\objects\wsm.o: ..\..\drv\inc\flash.h
 .\objects\wsm.o: ..\..\drv\inc\motor.h
 .\objects\wsm.o: ..\..\drv\inc\zgyro.h
@@ -59,4 +66,3 @@
 .\objects\wsm.o: ..\..\asp\inc\calib.h
 .\objects\wsm.o: ..\..\app\inc\fos.h
 .\objects\wsm.o: ..\..\asp\inc\mecanum.h
-.\objects\wsm.o: ..\..\asp\inc\maf.h

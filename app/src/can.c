@@ -148,3 +148,12 @@ uint8_t Can_Ready(void)
 		&& Motor_Ready(&motor[2]) && Motor_Ready(&motor[3]) && Motor_Ready(&motor[5]);
 }
 
+void Can_Zero(void)
+{
+	uint8_t i = 0;
+	for (; i < 4; i++) {
+		motor[i].frame_cnt = 0;
+	}
+}
+
+

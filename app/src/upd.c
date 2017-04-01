@@ -22,9 +22,11 @@
 
 void Upd_Init(void)
 {
-	Cal_Init(); // Calibration initialization
-	Mec_Init(); // Mechanical parameters initialization
-	Ctl_Init(); // Logic controller initialization
+	memcpy(&cmd.cp, &odo.cp, sizeof(ChassisState_t));
+	memcpy(&cmd.cv, &odo.cv, sizeof(ChassisState_t));
+	memcpy(&cmd.gp, &odo.gp, sizeof(GrabberState_t));
+	memcpy(&cmd.gv, &odo.gv, sizeof(GrabberState_t));
+	memcpy(&cmd.fs, &odo.fs, sizeof(PeriphsState_t));
 }
 
 void Upd_Proc(void)
@@ -35,21 +37,30 @@ void Upd_Proc(void)
 			break;
 		case WORKING_STATE_PREPARE:
 			Act_Init(); // Sensor data prefilter, stop any kind of movement
-			if (Wsm_GetLastWs() != WORKING_STATE_PREPARE) {
-				Upd_Init(); // Initialize updater
-			}
 			break;
 		case WORKING_STATE_CALIB:
 			Odo_Proc(); // Odometer process
 			Cal_Proc(); // Auto-calibration
 			break;
 		case WORKING_STATE_NORMAL:
-			Ctl_Proc(); // Logic controller process
-			Act_Proc(); // Action process
+			if (Wsm_GetLastWs() != WORKING_STATE_NORMAL) {
+				Odo_Proc(); // Odometry process
+				Upd_Init(); // Initialize updater
+			} else {
+				Cmd_Proc(); // Command process
+				Odo_Proc(); // Odometry process
+				Ctl_Proc(); // Logic controller process
+				Act_Proc(); // Action process
+			}
 			break;
 		case WORKING_STATE_CONFIG:
 			Act_Init(); // Stop movement before configuration
 			Cfg_Proc(); // Configuration process
+			Mec_Init(); // Mechanical parameters initialization
+			Ctl_Init(); // Logic controller initialization
+			break;
+		case WORKING_STATE_OVERLOAD:
+			Act_Init(); // Stop any kind of movement
 			break;
 		default:
 			break;

@@ -107,3 +107,8 @@ void Odo_Proc(void)
 	GetGrabberCurrentsFdb();
 }
 
+void Odo_Zero(void)
+{
+	Can_Zero();
+}
+

@@ -271,13 +271,17 @@ void Dnl_Proc(void)
 	// Check if any message received
 	if (Msg_Pop(&fifo, buf[1], &msg_head_kylin, &kylinMsg)) {
 		Dnl_ProcKylinMsg(&kylinMsg);
-	} else if (Msg_Pop(&fifo, buf[1], &msg_head_vrc, &vrc)) {
+	}
+	if (Msg_Pop(&fifo, buf[1], &msg_head_vrc, &vrc)) {
 		Dnl_ProcVRC(&vrc);
-	} else if (Msg_Pop(&fifo, buf[1], &msg_head_vhc, &vhc)) {
+	}
+	if (Msg_Pop(&fifo, buf[1], &msg_head_vhc, &vhc)) {
 		Dnl_ProcVHC(&vhc);
-	} else if (Msg_Pop(&fifo, buf[1], &msg_head_vdbus, &vdbus)) {
+	}
+	if (Msg_Pop(&fifo, buf[1], &msg_head_vdbus, &vdbus)) {
 		Dnl_ProcVDBUS(&vdbus);
-	} else if (Msg_Pop(&fifo, buf[1], &msg_head_vcbus, &cbus)) {
+	}
+	if (Msg_Pop(&fifo, buf[1], &msg_head_vcbus, &cbus)) {
 		Dnl_ProcCBUS(&cbus);
 	}
 	/*

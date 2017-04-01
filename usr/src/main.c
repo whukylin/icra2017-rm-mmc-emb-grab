@@ -18,7 +18,16 @@
 
 int main()
 {
+	// Boot KOS
 	KOS_Boot();
+	
+	// Play startup music
+	Snd_Play();
+	// Wait for startup music
+	Delay_Ms(1000);
+	// Stop startup music
+	Snd_Stop();
+	
 	while(1)
 	{
 		Srs_Proc();
@@ -26,5 +35,10 @@ int main()
 		if (Clk_GetUsTick() % 2000 == 0) {
 			Upl_Proc();
 		}
+		/*
+		if (Clk_GetUsTick() % 5000 == 0) {
+			printf("v=%d,c=%d\n", motor[0].rate_filtered, motor[0].current_ref);
+		}
+		*/
   }
 }

@@ -45,8 +45,9 @@
 .\objects\rcv_srv.o: ..\..\app\inc\wdg.h
 .\objects\rcv_srv.o: ..\..\app\inc\cal.h
 .\objects\rcv_srv.o: ..\..\bsp\inc\bsp.h
-.\objects\rcv_srv.o: ..\..\bsp\inc\btm.h
+.\objects\rcv_srv.o: ..\..\bsp\inc\beep.h
 .\objects\rcv_srv.o: ..\..\bsp\inc\stm32util.h
+.\objects\rcv_srv.o: ..\..\bsp\inc\btm.h
 .\objects\rcv_srv.o: ..\..\asp\inc\fifo.h
 .\objects\rcv_srv.o: ..\..\hal\inc\hal_uart.h
 .\objects\rcv_srv.o: ..\..\bsp\inc\btn.h
@@ -61,8 +62,12 @@
 .\objects\rcv_srv.o: ..\..\bsp\inc\sr04.h
 .\objects\rcv_srv.o: ..\..\bsp\inc\tim.h
 .\objects\rcv_srv.o: ..\..\bsp\inc\tty.h
-.\objects\rcv_srv.o: ..\..\drv\inc\drv.h
+.\objects\rcv_srv.o: ..\..\bsp\inc\mpu6500.h
+.\objects\rcv_srv.o: ..\..\bsp\inc\mpu6500_i2c.h
+.\objects\rcv_srv.o: ..\..\bsp\inc\mpu6500_drv.h
 .\objects\rcv_srv.o: ..\..\drv\inc\delay.h
+.\objects\rcv_srv.o: ..\..\bsp\inc\mpu6500_int.h
+.\objects\rcv_srv.o: ..\..\drv\inc\drv.h
 .\objects\rcv_srv.o: ..\..\drv\inc\motor.h
 .\objects\rcv_srv.o: ..\..\drv\inc\zgyro.h
 .\objects\rcv_srv.o: ..\..\app\inc\odo.h

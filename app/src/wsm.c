@@ -30,19 +30,25 @@ void Wsm_Proc(void)
 	lastWorkingState = workingState;
 	switch (workingState) {
 	case WORKING_STATE_STOP:
-		if (Wdg_IsOkay()) {
+		if (!Pwr_IsOkay()) {
+			workingState = WORKING_STATE_OVERLOAD;
+		} else if (Wdg_IsOkay()) {
 			workingState = WORKING_STATE_PREPARE;
 		}
 		break;
 	case WORKING_STATE_PREPARE:
-		if (!Wdg_IsOkay()) {
+		if (!Pwr_IsOkay()) {
+			workingState = WORKING_STATE_OVERLOAD;
+		} else if (!Wdg_IsOkay()) {
 			workingState = WORKING_STATE_STOP;
 		} else if (Ini_IsDone()){
 			workingState = WORKING_STATE_CALIB;
 		}
 		break;
 	case WORKING_STATE_CALIB:
-		if (!Wdg_IsOkay()) {
+		if (!Pwr_IsOkay()) {
+			workingState = WORKING_STATE_OVERLOAD;
+		} else if (!Wdg_IsOkay()) {
 			workingState = WORKING_STATE_STOP;
 		} else if (!Ini_IsDone()){
 			workingState = WORKING_STATE_PREPARE;
@@ -51,7 +57,9 @@ void Wsm_Proc(void)
 		}
 		break;
 	case WORKING_STATE_NORMAL:
-		if (!Wdg_IsOkay()) {
+		if (!Pwr_IsOkay()) {
+			workingState = WORKING_STATE_OVERLOAD;
+		} else if (!Wdg_IsOkay()) {
 			workingState = WORKING_STATE_STOP;
 		} else if (!Ini_IsDone()){
 			workingState = WORKING_STATE_PREPARE;
@@ -62,7 +70,9 @@ void Wsm_Proc(void)
 		}
 		break;
 	case WORKING_STATE_CONFIG:
-		if (!Wdg_IsOkay()) {
+		if (!Pwr_IsOkay()) {
+			workingState = WORKING_STATE_OVERLOAD;
+		} else if (!Wdg_IsOkay()) {
 			workingState = WORKING_STATE_STOP;
 		} else if (!Ini_IsDone()){
 			workingState = WORKING_STATE_PREPARE;
@@ -71,6 +81,8 @@ void Wsm_Proc(void)
 		} else if (Cfg_IsSynced()) {
 			workingState = WORKING_STATE_NORMAL;
 		}
+		break;
+	case WORKING_STATE_OVERLOAD:
 		break;
 	default:
 		break;

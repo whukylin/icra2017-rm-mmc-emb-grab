@@ -22,17 +22,22 @@
 
 void App_Init(void)
 {
-	Ios_Init();
-	Cfg_Init();
-	Clk_Init();
-	Com_Init();
-	Dci_Init();
-	Srs_Init();
+	Ios_Init(); // Input/output stream initialization
+	Cfg_Init(); // Configuration initialization
+	Mec_Init(); // Mechanical parameters initialization
+	Clk_Init(); // Clock initialization
+	Com_Init(); // Communication initialization
+	Dci_Init(); // DBUS control interface initialization
+	Cal_Init(); // Calibration initialization
+	Ctl_Init(); // Logic controller initialization
+	Pwr_Init(); // Power manager initialization
+	Srs_Init(); // SR04 sonar system initialization
+	Snd_Init(); // Sound initialization
 	
-	Wdg_Init();
-	Ini_Init();
-	Wsm_Init();
-	Upd_Init();
+	Wdg_Init(); // Watch dog initialization
+	Ini_Init(); // Sensor prefilter information provider initialization
+	Wsm_Init(); // Work state machine initialization
+	Upd_Init(); // System updater initialization
 }
 
 void App_Proc(void)

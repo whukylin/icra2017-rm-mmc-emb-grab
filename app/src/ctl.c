@@ -136,9 +136,6 @@ static void Rmp_Init(Rmp_t* rmp)
 /**********************************************/
 void Ctl_Init(void)
 {
-	Cmd_Init();
-	Odo_Init();
-	
 	Cvl_Init(&CM1SpeedPID);
 	Cvl_Init(&CM2SpeedPID);
 	Cvl_Init(&CM3SpeedPID);
@@ -167,9 +164,6 @@ void Ctl_Init(void)
 /**********************************************/
 void Ctl_Proc(void)
 {
-	Cmd_Proc();
-	Odo_Proc();
-	
 	PeriphsStateCtl();
 	ChassisStateCtl();
 	GrabberStateCtl();

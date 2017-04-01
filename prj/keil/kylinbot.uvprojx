@@ -535,9 +535,19 @@
               <FilePath>..\..\app\inc\odo.h</FilePath>
             </File>
             <File>
+              <FileName>pwr.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\app\inc\pwr.h</FilePath>
+            </File>
+            <File>
               <FileName>rci.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\app\inc\rci.h</FilePath>
+            </File>
+            <File>
+              <FileName>snd.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\app\inc\snd.h</FilePath>
             </File>
             <File>
               <FileName>srs.h</FileName>
@@ -670,9 +680,19 @@
               <FilePath>..\..\app\src\odo.c</FilePath>
             </File>
             <File>
+              <FileName>pwr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\app\src\pwr.c</FilePath>
+            </File>
+            <File>
               <FileName>rci.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\app\src\rci.c</FilePath>
+            </File>
+            <File>
+              <FileName>snd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\app\src\snd.c</FilePath>
             </File>
             <File>
               <FileName>srs.c</FileName>
@@ -1025,6 +1045,11 @@
           <GroupName>bsp/inc</GroupName>
           <Files>
             <File>
+              <FileName>beep.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\bsp\inc\beep.h</FilePath>
+            </File>
+            <File>
               <FileName>bsp.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\bsp\inc\bsp.h</FilePath>
@@ -1063,6 +1088,26 @@
               <FileName>led.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\bsp\inc\led.h</FilePath>
+            </File>
+            <File>
+              <FileName>mpu6500.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\bsp\inc\mpu6500.h</FilePath>
+            </File>
+            <File>
+              <FileName>mpu6500_drv.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\bsp\inc\mpu6500_drv.h</FilePath>
+            </File>
+            <File>
+              <FileName>mpu6500_i2c.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\bsp\inc\mpu6500_i2c.h</FilePath>
+            </File>
+            <File>
+              <FileName>mpu6500_int.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\bsp\inc\mpu6500_int.h</FilePath>
             </File>
             <File>
               <FileName>platform.h</FileName>
@@ -1105,6 +1150,11 @@
           <GroupName>bsp/src</GroupName>
           <Files>
             <File>
+              <FileName>beep.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\bsp\src\beep.c</FilePath>
+            </File>
+            <File>
               <FileName>bsp.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\bsp\src\bsp.c</FilePath>
@@ -1143,6 +1193,26 @@
               <FileName>led.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\bsp\src\led.c</FilePath>
+            </File>
+            <File>
+              <FileName>mpu6500.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\bsp\src\mpu6500.c</FilePath>
+            </File>
+            <File>
+              <FileName>mpu6500_drv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\bsp\src\mpu6500_drv.c</FilePath>
+            </File>
+            <File>
+              <FileName>mpu6500_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\bsp\src\mpu6500_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>mpu6500_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\bsp\src\mpu6500_int.c</FilePath>
             </File>
             <File>
               <FileName>pwm.c</FileName>

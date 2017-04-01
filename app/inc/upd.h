@@ -29,7 +29,7 @@ extern "C" {
 #include "cal.h"
 #include "ctl.h"
 #include "act.h"
-
+	
 void Upd_Init(void);
 void Upd_Proc(void);
 

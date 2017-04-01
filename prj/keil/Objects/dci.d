@@ -44,8 +44,9 @@
 .\objects\dci.o: ..\..\app\inc\wdg.h
 .\objects\dci.o: ..\..\app\inc\cal.h
 .\objects\dci.o: ..\..\bsp\inc\bsp.h
-.\objects\dci.o: ..\..\bsp\inc\btm.h
+.\objects\dci.o: ..\..\bsp\inc\beep.h
 .\objects\dci.o: ..\..\bsp\inc\stm32util.h
+.\objects\dci.o: ..\..\bsp\inc\btm.h
 .\objects\dci.o: ..\..\asp\inc\fifo.h
 .\objects\dci.o: ..\..\hal\inc\hal_uart.h
 .\objects\dci.o: ..\..\bsp\inc\btn.h
@@ -60,8 +61,12 @@
 .\objects\dci.o: ..\..\bsp\inc\sr04.h
 .\objects\dci.o: ..\..\bsp\inc\tim.h
 .\objects\dci.o: ..\..\bsp\inc\tty.h
-.\objects\dci.o: ..\..\drv\inc\drv.h
+.\objects\dci.o: ..\..\bsp\inc\mpu6500.h
+.\objects\dci.o: ..\..\bsp\inc\mpu6500_i2c.h
+.\objects\dci.o: ..\..\bsp\inc\mpu6500_drv.h
 .\objects\dci.o: ..\..\drv\inc\delay.h
+.\objects\dci.o: ..\..\bsp\inc\mpu6500_int.h
+.\objects\dci.o: ..\..\drv\inc\drv.h
 .\objects\dci.o: ..\..\drv\inc\motor.h
 .\objects\dci.o: ..\..\drv\inc\zgyro.h
 .\objects\dci.o: ..\..\app\inc\odo.h

@@ -34,8 +34,9 @@
 .\objects\ctl.o: ..\..\asp\inc\mecanum.h
 .\objects\ctl.o: ..\..\app\inc\odo.h
 .\objects\ctl.o: ..\..\bsp\inc\bsp.h
-.\objects\ctl.o: ..\..\bsp\inc\btm.h
+.\objects\ctl.o: ..\..\bsp\inc\beep.h
 .\objects\ctl.o: ..\..\bsp\inc\stm32util.h
+.\objects\ctl.o: ..\..\bsp\inc\btm.h
 .\objects\ctl.o: ..\..\asp\inc\fifo.h
 .\objects\ctl.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\ctl.o: ..\..\hal\inc\hal_uart.h
@@ -51,6 +52,11 @@
 .\objects\ctl.o: ..\..\bsp\inc\sr04.h
 .\objects\ctl.o: ..\..\bsp\inc\tim.h
 .\objects\ctl.o: ..\..\bsp\inc\tty.h
+.\objects\ctl.o: ..\..\bsp\inc\mpu6500.h
+.\objects\ctl.o: ..\..\bsp\inc\mpu6500_i2c.h
+.\objects\ctl.o: ..\..\bsp\inc\mpu6500_drv.h
+.\objects\ctl.o: ..\..\drv\inc\delay.h
+.\objects\ctl.o: ..\..\bsp\inc\mpu6500_int.h
 .\objects\ctl.o: ..\..\app\inc\can.h
 .\objects\ctl.o: ..\..\asp\inc\ekf.h
 .\objects\ctl.o: ..\..\app\inc\wdg.h

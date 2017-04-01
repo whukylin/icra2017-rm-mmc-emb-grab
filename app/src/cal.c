@@ -35,29 +35,30 @@ void Cal_Init(void)
 	Maf_Init(&maf, buf, CAL_GM_MAF_BUF_LEN);
 }
 
-// Set gimbal position high
-static void Cal_SetGph(void)
+// Set gimbal position elevator high
+static void Cal_SetGpeh(void)
 {
 	GM_CMD(0, 0);
 	Maf_Reset(&maf); // Reset maf
 	gm_startup_delay_cnt = 0;
 	cfg.pos.eh = odo.gp.e;
-	Flag_Set(&calFlag, CAL_FLAG_GPH);
+	Flag_Set(&calFlag, CAL_FLAG_GPEH);
 }
 
-// Set gimbal position low
-static void Cal_SetGpl(void)
+// Set gimbal position elevator low
+static void Cal_SetGpel(void)
 {
 	GM_CMD(0, 0);
 	Maf_Reset(&maf); // Reset maf
 	gm_startup_delay_cnt = 0;
 	cfg.pos.el = odo.gp.e;
-	Flag_Set(&calFlag, CAL_FLAG_GPL);
+	Flag_Set(&calFlag, CAL_FLAG_GPEL);
 }
 
-void Cal_Proc(void)
+// Set gimbal position elevator
+static void Cal_ProcGpe(void)
 {
-	if (!Cal_HasFlag(CAL_FLAG_GPH)) {
+	if (!Cal_HasFlag(CAL_FLAG_GPEH)) {
 		if (!KEY_H_IS_PRESSED()) {
 			GM_CMD(0, CAL_GM_DRV_CURRENT * CAL_GM_UP_DIR);
 			Maf_Proc(&maf, ABSVAL(odo.gv.e));
@@ -65,17 +66,17 @@ void Cal_Proc(void)
 				gm_startup_delay_cnt++;
 			}
 			// Bang detection
-			else if (ABSVAL(maf.avg) <= CAL_GM_BANG_VEL_DET) {
-				Cal_SetGph();
+			else if (ABSVAL(maf.avg) <= CAL_GM_BANG_VEL_TH) {
+				Cal_SetGpeh();
 				//printf("up_bang detected, gph=%f\n", cfg.pos.eh);
 			}
 			//printf("gv=%f,maf=%f\n", odo.gv.e, maf.avg);
 		} else {
-			Cal_SetGph();
+			Cal_SetGpeh();
 			//printf("key_h detected, gph=%f\n", cfg.pos.eh);
 		}
 	}
-	else if (!Cal_HasFlag(CAL_FLAG_GPL)) {
+	else if (!Cal_HasFlag(CAL_FLAG_GPEL)) {
 		if (!KEY_L_IS_PRESSED()) {
 			GM_CMD(0, CAL_GM_DRV_CURRENT * (-CAL_GM_UP_DIR));
 			Maf_Proc(&maf, ABSVAL(odo.gv.e));
@@ -83,16 +84,49 @@ void Cal_Proc(void)
 				gm_startup_delay_cnt++;
 			} 
 			// Bang detection
-			else if (ABSVAL(maf.avg) <= CAL_GM_BANG_VEL_DET) {
-				Cal_SetGpl();
+			else if (ABSVAL(maf.avg) <= CAL_GM_BANG_VEL_TH) {
+				Cal_SetGpel();
 				//printf("dn_bang detected, gpl=%f\n", cfg.pos.el);
 			}
 			//printf("gv=%f,maf=%f\n", odo.gv.e, maf.avg);
 		} else {
-			Cal_SetGpl();
+			Cal_SetGpel();
 			//printf("key_l detected, gpl=%f\n", cfg.pos.el);
 		}
 	}
+}
+
+static void Cal_SetGpch(void)
+{
+	cfg.pos.ch = map(CLAW_PWM_H, 1000, 2000, 0, PI);
+	Cal_SetFlag(CAL_FLAG_GPCH);
+}
+
+static void Cal_SetGpcl(void)
+{
+	cfg.pos.cl = map(CLAW_PWM_L, 1000, 2000, 0, PI);
+	Cal_SetFlag(CAL_FLAG_GPCL);
+}
+
+static void Cal_ProcGpc(void)
+{
+	if (!Cal_HasFlag(CAL_FLAG_GPCH)) {
+		Cal_SetGpch();
+	}
+	else if (!Cal_HasFlag(CAL_FLAG_GPCL)) {
+		Cal_SetGpcl();
+	}
+}
+
+static void Cal_ProcGim(void)
+{
+	Cal_ProcGpe();
+	Cal_ProcGpc();
+}
+
+void Cal_Proc(void)
+{
+	Cal_ProcGim();
 }
 
 CalFlag_t Cal_GetFlag(void)
@@ -122,7 +156,7 @@ CalFlag_t Cal_HitFlag(CalFlag_t mask)
 
 CalFlag_t Cal_IsDone(void)
 {
-	return Cal_HitFlag(CAL_FLAG_GIM);
+	return Cal_HitFlag(CAL_FLAG_ALL);
 }
 
 

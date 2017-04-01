@@ -20,6 +20,7 @@ void Bsp_Config(void)
 {
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	
+	Beep_Config();
 	Btm_Config();
 	Btn_Config();
 	Dbi_Config();
@@ -32,6 +33,7 @@ void Bsp_Config(void)
 	Can1_Config();
 	Can2_Config();
 	SR04_Config();
+	//MPU6500_Config();
 	LED_GREEN_ON();
 }
 

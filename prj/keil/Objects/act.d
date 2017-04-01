@@ -1,7 +1,7 @@
 .\objects\act.o: ..\..\app\src\act.c
 .\objects\act.o: ..\..\app\inc\act.h
 .\objects\act.o: ..\..\bsp\inc\bsp.h
-.\objects\act.o: ..\..\bsp\inc\btm.h
+.\objects\act.o: ..\..\bsp\inc\beep.h
 .\objects\act.o: ..\..\bsp\inc\stm32util.h
 .\objects\act.o: ..\..\bsp\inc\platform.h
 .\objects\act.o: ..\..\stl\CMSIS\device\stm32f4xx.h
@@ -25,6 +25,7 @@
 .\objects\act.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\objects\act.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\act.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
+.\objects\act.o: ..\..\bsp\inc\btm.h
 .\objects\act.o: ..\..\asp\inc\fifo.h
 .\objects\act.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\act.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
@@ -41,8 +42,12 @@
 .\objects\act.o: ..\..\bsp\inc\sr04.h
 .\objects\act.o: ..\..\bsp\inc\tim.h
 .\objects\act.o: ..\..\bsp\inc\tty.h
-.\objects\act.o: ..\..\drv\inc\drv.h
+.\objects\act.o: ..\..\bsp\inc\mpu6500.h
+.\objects\act.o: ..\..\bsp\inc\mpu6500_i2c.h
+.\objects\act.o: ..\..\bsp\inc\mpu6500_drv.h
 .\objects\act.o: ..\..\drv\inc\delay.h
+.\objects\act.o: ..\..\bsp\inc\mpu6500_int.h
+.\objects\act.o: ..\..\drv\inc\drv.h
 .\objects\act.o: ..\..\drv\inc\flash.h
 .\objects\act.o: ..\..\drv\inc\motor.h
 .\objects\act.o: ..\..\drv\inc\zgyro.h

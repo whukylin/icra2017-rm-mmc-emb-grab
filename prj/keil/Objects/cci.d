@@ -34,8 +34,9 @@
 .\objects\cci.o: ..\..\asp\inc\mecanum.h
 .\objects\cci.o: ..\..\app\inc\odo.h
 .\objects\cci.o: ..\..\bsp\inc\bsp.h
-.\objects\cci.o: ..\..\bsp\inc\btm.h
+.\objects\cci.o: ..\..\bsp\inc\beep.h
 .\objects\cci.o: ..\..\bsp\inc\stm32util.h
+.\objects\cci.o: ..\..\bsp\inc\btm.h
 .\objects\cci.o: ..\..\asp\inc\fifo.h
 .\objects\cci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\cci.o: ..\..\hal\inc\hal_uart.h
@@ -51,6 +52,11 @@
 .\objects\cci.o: ..\..\bsp\inc\sr04.h
 .\objects\cci.o: ..\..\bsp\inc\tim.h
 .\objects\cci.o: ..\..\bsp\inc\tty.h
+.\objects\cci.o: ..\..\bsp\inc\mpu6500.h
+.\objects\cci.o: ..\..\bsp\inc\mpu6500_i2c.h
+.\objects\cci.o: ..\..\bsp\inc\mpu6500_drv.h
+.\objects\cci.o: ..\..\drv\inc\delay.h
+.\objects\cci.o: ..\..\bsp\inc\mpu6500_int.h
 .\objects\cci.o: ..\..\app\inc\can.h
 .\objects\cci.o: ..\..\asp\inc\ekf.h
 .\objects\cci.o: ..\..\app\inc\wdg.h
@@ -68,9 +74,9 @@
 .\objects\cci.o: ..\..\asp\inc\maf.h
 .\objects\cci.o: ..\..\app\inc\cal.h
 .\objects\cci.o: ..\..\drv\inc\drv.h
-.\objects\cci.o: ..\..\drv\inc\delay.h
 .\objects\cci.o: ..\..\drv\inc\motor.h
 .\objects\cci.o: ..\..\drv\inc\zgyro.h
 .\objects\cci.o: ..\..\app\inc\wsm.h
 .\objects\cci.o: ..\..\app\inc\ini.h
+.\objects\cci.o: ..\..\app\inc\pwr.h
 .\objects\cci.o: ..\..\asp\inc\cbus.h

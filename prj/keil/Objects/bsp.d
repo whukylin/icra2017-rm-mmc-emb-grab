@@ -1,6 +1,6 @@
 .\objects\bsp.o: ..\..\bsp\src\bsp.c
 .\objects\bsp.o: ..\..\bsp\inc\bsp.h
-.\objects\bsp.o: ..\..\bsp\inc\btm.h
+.\objects\bsp.o: ..\..\bsp\inc\beep.h
 .\objects\bsp.o: ..\..\bsp\inc\stm32util.h
 .\objects\bsp.o: ..\..\bsp\inc\platform.h
 .\objects\bsp.o: ..\..\stl\CMSIS\device\stm32f4xx.h
@@ -24,6 +24,7 @@
 .\objects\bsp.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\objects\bsp.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\bsp.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
+.\objects\bsp.o: ..\..\bsp\inc\btm.h
 .\objects\bsp.o: ..\..\asp\inc\fifo.h
 .\objects\bsp.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\bsp.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
@@ -40,3 +41,8 @@
 .\objects\bsp.o: ..\..\bsp\inc\sr04.h
 .\objects\bsp.o: ..\..\bsp\inc\tim.h
 .\objects\bsp.o: ..\..\bsp\inc\tty.h
+.\objects\bsp.o: ..\..\bsp\inc\mpu6500.h
+.\objects\bsp.o: ..\..\bsp\inc\mpu6500_i2c.h
+.\objects\bsp.o: ..\..\bsp\inc\mpu6500_drv.h
+.\objects\bsp.o: ..\..\drv\inc\delay.h
+.\objects\bsp.o: ..\..\bsp\inc\mpu6500_int.h

@@ -63,7 +63,9 @@ extern "C" {
 #include "ios.h" // Input/Output Stream Pipe
 #include "mec.h" // Mecanum Power Transmission System
 #include "odo.h" // Odometer (Sensor Message Feedback)
+#include "pwr.h" // Power Management
 #include "rci.h" // Remote Control Interface
+#include "snd.h" // Sound System
 #include "srs.h" // HC-SR04 Sonar Sensors
 #include "sys.h" // System-wide Variable Types and Functions
 #include "upd.h" // System Updater

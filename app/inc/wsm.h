@@ -28,9 +28,19 @@ extern "C" {
 #include "sys.h"
 #include "wdg.h"
 #include "ini.h"
+#include "pwr.h"
 #include "cal.h"
 #include "cfg.h"
-	
+
+typedef enum {
+	WORKING_STATE_STOP = 0x00,
+	WORKING_STATE_PREPARE = 0x01,
+	WORKING_STATE_CALIB = 0x02,
+	WORKING_STATE_NORMAL = 0x03,
+	WORKING_STATE_CONFIG = 0x04,
+	WORKING_STATE_OVERLOAD = 0x05,
+}WorkingState_t;
+
 void Wsm_Init(void);
 void Wsm_Proc(void);
 

@@ -21,6 +21,7 @@
 extern "C" {
 #endif
 
+#include "beep.h"
 #include "btm.h"
 #include "btn.h"
 #include "can1.h"
@@ -33,6 +34,7 @@ extern "C" {
 #include "sr04.h"
 #include "tim.h"
 #include "tty.h"
+#include "mpu6500.h"
 
 void Bsp_Config(void);
 

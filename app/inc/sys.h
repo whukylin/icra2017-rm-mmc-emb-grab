@@ -27,14 +27,6 @@ extern "C" {
 
 #define SYS_CTL_TMS 1 // ms
 #define SYS_CTL_TSC 1e-3f // s
-	
-typedef enum {
-	WORKING_STATE_STOP = 0x00,
-	WORKING_STATE_PREPARE = 0x01,
-	WORKING_STATE_CALIB = 0x02,
-	WORKING_STATE_NORMAL = 0x03,
-	WORKING_STATE_CONFIG = 0x04,
-}WorkingState_t;
 
 typedef uint32_t PeriphsState_t; // Peripherals state flag bits
 

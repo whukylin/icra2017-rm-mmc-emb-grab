@@ -1,7 +1,7 @@
 .\objects\cal.o: ..\..\app\src\cal.c
 .\objects\cal.o: ..\..\app\inc\cal.h
 .\objects\cal.o: ..\..\bsp\inc\bsp.h
-.\objects\cal.o: ..\..\bsp\inc\btm.h
+.\objects\cal.o: ..\..\bsp\inc\beep.h
 .\objects\cal.o: ..\..\bsp\inc\stm32util.h
 .\objects\cal.o: ..\..\bsp\inc\platform.h
 .\objects\cal.o: ..\..\stl\CMSIS\device\stm32f4xx.h
@@ -25,6 +25,7 @@
 .\objects\cal.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\objects\cal.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\cal.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
+.\objects\cal.o: ..\..\bsp\inc\btm.h
 .\objects\cal.o: ..\..\asp\inc\fifo.h
 .\objects\cal.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\cal.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
@@ -41,8 +42,12 @@
 .\objects\cal.o: ..\..\bsp\inc\sr04.h
 .\objects\cal.o: ..\..\bsp\inc\tim.h
 .\objects\cal.o: ..\..\bsp\inc\tty.h
-.\objects\cal.o: ..\..\drv\inc\drv.h
+.\objects\cal.o: ..\..\bsp\inc\mpu6500.h
+.\objects\cal.o: ..\..\bsp\inc\mpu6500_i2c.h
+.\objects\cal.o: ..\..\bsp\inc\mpu6500_drv.h
 .\objects\cal.o: ..\..\drv\inc\delay.h
+.\objects\cal.o: ..\..\bsp\inc\mpu6500_int.h
+.\objects\cal.o: ..\..\drv\inc\drv.h
 .\objects\cal.o: ..\..\drv\inc\flash.h
 .\objects\cal.o: ..\..\drv\inc\motor.h
 .\objects\cal.o: ..\..\drv\inc\zgyro.h
