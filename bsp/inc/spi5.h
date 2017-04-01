@@ -14,16 +14,26 @@
  * limitations under the License.
  */
 
-#ifndef __MPU6500_H__
-#define __MPU6500_H__
+#ifndef __SPI5_H__
+#define __SPI5_H__
 
-#include "mpu6500_i2c.h"
-#include "mpu6500_drv.h"
-#include "mpu6500_int.h"
+#ifdef __cplusplus
+extern "C" {
+#endif
+	
+#include "stm32util.h"
 
-void MPU6500_Config(void);
+#define SPI5_NSS_PIN PF6
+#define SPI5_SCK_PIN PF7
+#define SPI5_MISO_PIN PF8
+#define SPI5_MOSI_PIN PF9
 
-extern void MPU6500Callback(float* buf);
+void Spi5_Config(void);
+	
+#ifdef __cplusplus
+}
+#endif
 
 #endif
+
 

@@ -14,16 +14,26 @@
  * limitations under the License.
  */
 
-#ifndef __IST8310_H__
-#define __IST8310_H__
+#ifndef __IST8310_INT_H__
+#define __IST8310_INT_H__
 
-#include "ist8310_i2c.h"
-#include "ist8310_drv.h"
-#include "ist8310_int.h"
+#ifdef __cplusplus
+extern "C" {
+#endif
+	
+#include "stm32util.h"
 
-void IST8310_Config(void);
+#define IST8310_INT_PIN PA4
+#define IST8310_NVIC_PRE_PRIORITY 2
+#define IST8310_NVIC_SUB_PRIORITY 0
 
-extern void IST8310Callback(float* buf);
+void IST8310_INT_Config(void);
 
+//void IST8310INTCallback(void);
+
+	
+#ifdef __cplusplus
+}
 #endif
 
+#endif

@@ -14,16 +14,15 @@
  * limitations under the License.
  */
 
-#ifndef __IST8310_H__
-#define __IST8310_H__
-
-#include "ist8310_i2c.h"
-#include "ist8310_drv.h"
 #include "ist8310_int.h"
 
-void IST8310_Config(void);
+static void IST8310INTHandler(uint8_t num)
+{
+	//IST8310INTCallback();
+}
 
-extern void IST8310Callback(float* buf);
-
-#endif
+void IST8310_INT_Config(void)
+{
+   EXTI_Bind(IST8310_INT_PIN, IST8310_NVIC_PRE_PRIORITY, IST8310_NVIC_SUB_PRIORITY, EXTI_Trigger_Falling, IST8310INTHandler);
+}
 

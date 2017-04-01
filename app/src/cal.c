@@ -58,25 +58,7 @@ static void Cal_SetGpel(void)
 // Set gimbal position elevator
 static void Cal_ProcGpe(void)
 {
-	if (!Cal_HasFlag(CAL_FLAG_GPEH)) {
-		if (!KEY_H_IS_PRESSED()) {
-			GM_CMD(0, CAL_GM_DRV_CURRENT * CAL_GM_UP_DIR);
-			Maf_Proc(&maf, ABSVAL(odo.gv.e));
-			if (gm_startup_delay_cnt < CAL_GM_START_UP_DELAY) {
-				gm_startup_delay_cnt++;
-			}
-			// Bang detection
-			else if (ABSVAL(maf.avg) <= CAL_GM_BANG_VEL_TH) {
-				Cal_SetGpeh();
-				//printf("up_bang detected, gph=%f\n", cfg.pos.eh);
-			}
-			//printf("gv=%f,maf=%f\n", odo.gv.e, maf.avg);
-		} else {
-			Cal_SetGpeh();
-			//printf("key_h detected, gph=%f\n", cfg.pos.eh);
-		}
-	}
-	else if (!Cal_HasFlag(CAL_FLAG_GPEL)) {
+	if (!Cal_HasFlag(CAL_FLAG_GPEL)) {
 		if (!KEY_L_IS_PRESSED()) {
 			GM_CMD(0, CAL_GM_DRV_CURRENT * (-CAL_GM_UP_DIR));
 			Maf_Proc(&maf, ABSVAL(odo.gv.e));
@@ -92,6 +74,24 @@ static void Cal_ProcGpe(void)
 		} else {
 			Cal_SetGpel();
 			//printf("key_l detected, gpl=%f\n", cfg.pos.el);
+		}
+	}
+	else if (!Cal_HasFlag(CAL_FLAG_GPEH)) {
+		if (!KEY_H_IS_PRESSED()) {
+			GM_CMD(0, CAL_GM_DRV_CURRENT * CAL_GM_UP_DIR);
+			Maf_Proc(&maf, ABSVAL(odo.gv.e));
+			if (gm_startup_delay_cnt < CAL_GM_START_UP_DELAY) {
+				gm_startup_delay_cnt++;
+			}
+			// Bang detection
+			else if (ABSVAL(maf.avg) <= CAL_GM_BANG_VEL_TH) {
+				Cal_SetGpeh();
+				//printf("up_bang detected, gph=%f\n", cfg.pos.eh);
+			}
+			//printf("gv=%f,maf=%f\n", odo.gv.e, maf.avg);
+		} else {
+			Cal_SetGpeh();
+			//printf("key_h detected, gph=%f\n", cfg.pos.eh);
 		}
 	}
 }

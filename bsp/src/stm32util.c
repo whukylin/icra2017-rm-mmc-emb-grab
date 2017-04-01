@@ -591,4 +591,23 @@ void EXTI_Bind(GPIO gpio, uint8_t pre_priority, uint8_t sub_priority, EXTITrigge
 	}
 }
 
+void SPI_Config(SPI_TypeDef* spix, uint16_t mode, uint16_t dir, uint16_t ds, uint16_t cpol, uint16_t cpha, uint16_t nss, uint16_t ps, uint16_t fb, uint16_t crcp)
+{
+	SPI_InitTypeDef spi;
+	
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI5, ENABLE);
+	
+	spi.SPI_Mode = mode;
+	spi.SPI_Direction = dir;
+	spi.SPI_DataSize = ds;
+	spi.SPI_CPOL = cpol;
+	spi.SPI_CPHA = cpha;
+	spi.SPI_NSS = nss;
+	spi.SPI_BaudRatePrescaler = ps;
+	spi.SPI_FirstBit = fb;
+	spi.SPI_CRCPolynomial = crcp;
+	
+	SPI_Init(SPI1, &spi);
+}
+
 

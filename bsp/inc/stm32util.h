@@ -225,6 +225,8 @@ typedef uint32_t GPIO;
 #define GPIO_READ_OUT(gpio) GPIO_ReadOutputDataBit(GPIO_PIN_GRP(gpio), GPIO_PIN_MSK(gpio))
 #define GPIO_WRITE(gpio,v) GPIO_WriteBit(GPIO_PIN_GRP(gpio), GPIO_PIN_MSK(gpio), (v) > 0 ? Bit_SET : Bit_RESET)
 
+#define RCC_EN_CLK(NUM,NAME) RCC_APB##NUM##PeriphClockCmd(RCC_APB##NUM##Periph_##NAME, ENABLE)
+
 // TO DO
 #define GPIO_BIND(PIN,TO) do { \
 	GPIO_AF(PIN,GPIO_AF_##TO); \
@@ -315,6 +317,7 @@ void CAN_Filter_Config(u16 id_h, u16 id_l, u16 msk_h, u16 msk_l, u16 fifo, u8 nu
 void DMA_Config(DMA_Stream_TypeDef* DMAy_Streamx, u32 channel, u32 pba, u32 mba, u32 dir, u32 bs);
 void EXTI_Config(u32 line, EXTIMode_TypeDef mode, EXTITrigger_TypeDef trigger);
 void EXTI_Bind(GPIO gpio, uint8_t pre_priority, uint8_t sub_priority, EXTITrigger_TypeDef trigger, ExtiHandler handler);
+void SPI_Config(SPI_TypeDef* spix, uint16_t mode, uint16_t dir, uint16_t ds, uint16_t cpol, uint16_t cpha, uint16_t nss, uint16_t ps, uint16_t fb, uint16_t crcp);
 
 #ifdef __cplusplus
 }
