@@ -104,7 +104,7 @@ void GPIO_Out(GPIO gpio)
 	GPIO_Config(gpio, GPIO_Mode_OUT, GPIO_Fast_Speed, GPIO_OType_PP, GPIO_PuPd_NOPULL);
 }
 
-void GPIO_AF(GPIO gpio, u8 af)
+void GPIO_Af(GPIO gpio, u8 af)
 {
 	GPIO_Config(gpio, GPIO_Mode_AF, GPIO_Fast_Speed, GPIO_OType_PP, GPIO_PuPd_NOPULL);
 	GPIO_PinAFConfig(GPIO_PIN_GRP(gpio), GPIO_PIN_NUM(gpio), af);
@@ -114,77 +114,77 @@ void Encoder_Bind(GPIO A, GPIO B, TIM_TypeDef* timx, u16 mode, u16 p1, u16 p2)
 {
 	if (timx == TIM1) {
 		RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);
-		GPIO_AF(A, GPIO_AF_TIM1);
-		GPIO_AF(B, GPIO_AF_TIM1);
+		GPIO_Af(A, GPIO_AF_TIM1);
+		GPIO_Af(B, GPIO_AF_TIM1);
 	}
 	if (timx == TIM2) {
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
-		GPIO_AF(A, GPIO_AF_TIM2);
-		GPIO_AF(B, GPIO_AF_TIM2);
+		GPIO_Af(A, GPIO_AF_TIM2);
+		GPIO_Af(B, GPIO_AF_TIM2);
 	}
 	if (timx == TIM3) {
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
-		GPIO_AF(A, GPIO_AF_TIM3);
-		GPIO_AF(B, GPIO_AF_TIM3);
+		GPIO_Af(A, GPIO_AF_TIM3);
+		GPIO_Af(B, GPIO_AF_TIM3);
 	}
 	if (timx == TIM4) {
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
-		GPIO_AF(A, GPIO_AF_TIM4);
-		GPIO_AF(B, GPIO_AF_TIM4);
+		GPIO_Af(A, GPIO_AF_TIM4);
+		GPIO_Af(B, GPIO_AF_TIM4);
 	}
 	if (timx == TIM5) {
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM5, ENABLE);
-		GPIO_AF(A, GPIO_AF_TIM5);
-		GPIO_AF(B, GPIO_AF_TIM5);
+		GPIO_Af(A, GPIO_AF_TIM5);
+		GPIO_Af(B, GPIO_AF_TIM5);
 	}
 	/*
 	if (timx == TIM6) {
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM6, ENABLE);
-		GPIO_AF(A, GPIO_AF_TIM6);
-		GPIO_AF(B, GPIO_AF_TIM6);
+		GPIO_Af(A, GPIO_AF_TIM6);
+		GPIO_Af(B, GPIO_AF_TIM6);
 	}
 	*/
 	/*
 	if (timx == TIM7) {
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM7, ENABLE);
-		GPIO_AF(A, GPIO_AF_TIM7);
-		GPIO_AF(B, GPIO_AF_TIM7);
+		GPIO_Af(A, GPIO_AF_TIM7);
+		GPIO_Af(B, GPIO_AF_TIM7);
 	}
 	*/
 	if (timx == TIM8) {
 		RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM8, ENABLE);
-		GPIO_AF(A, GPIO_AF_TIM8);
-		GPIO_AF(B, GPIO_AF_TIM8);
+		GPIO_Af(A, GPIO_AF_TIM8);
+		GPIO_Af(B, GPIO_AF_TIM8);
 	}
 	if (timx == TIM9) {
 		RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM9, ENABLE);
-		GPIO_AF(A, GPIO_AF_TIM9);
-		GPIO_AF(B, GPIO_AF_TIM9);
+		GPIO_Af(A, GPIO_AF_TIM9);
+		GPIO_Af(B, GPIO_AF_TIM9);
 	}
 	if (timx == TIM10) {
 		RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM10, ENABLE);
-		GPIO_AF(A, GPIO_AF_TIM10);
-		GPIO_AF(B, GPIO_AF_TIM10);
+		GPIO_Af(A, GPIO_AF_TIM10);
+		GPIO_Af(B, GPIO_AF_TIM10);
 	}
 	if (timx == TIM11) {
 		RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM11, ENABLE);
-		GPIO_AF(A, GPIO_AF_TIM11);
-		GPIO_AF(B, GPIO_AF_TIM11);
+		GPIO_Af(A, GPIO_AF_TIM11);
+		GPIO_Af(B, GPIO_AF_TIM11);
 	}
 	if (timx == TIM12) {
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM12, ENABLE);
-		GPIO_AF(A, GPIO_AF_TIM12);
-		GPIO_AF(B, GPIO_AF_TIM12);
+		GPIO_Af(A, GPIO_AF_TIM12);
+		GPIO_Af(B, GPIO_AF_TIM12);
 	}
 	if (timx == TIM13) {
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM13, ENABLE);
-		GPIO_AF(A, GPIO_AF_TIM13);
-		GPIO_AF(B, GPIO_AF_TIM13);
+		GPIO_Af(A, GPIO_AF_TIM13);
+		GPIO_Af(B, GPIO_AF_TIM13);
 	}
 	if (timx == TIM14) {
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM14, ENABLE);
-		GPIO_AF(A, GPIO_AF_TIM14);
-		GPIO_AF(B, GPIO_AF_TIM14);
+		GPIO_Af(A, GPIO_AF_TIM14);
+		GPIO_Af(B, GPIO_AF_TIM14);
 	}
 	TIM_EncoderInterfaceConfig(timx, mode, p1, p2);
 }
@@ -394,13 +394,13 @@ void TIM_OC_Config(TIM_TypeDef* timx, u8 channel, u16 mode, u32 pulse)
 {
 	TIM_OCInitTypeDef oc;
 	oc.TIM_OCMode = mode;
-    oc.TIM_OutputState = TIM_OutputState_Enable;
-    oc.TIM_OutputNState = TIM_OutputState_Disable;
-    oc.TIM_Pulse = pulse;
-    oc.TIM_OCPolarity = TIM_OCPolarity_Low;
-    oc.TIM_OCNPolarity = TIM_OCPolarity_High;
-    oc.TIM_OCIdleState = TIM_OCIdleState_Reset;
-    oc.TIM_OCNIdleState = TIM_OCIdleState_Set;
+	oc.TIM_OutputState = TIM_OutputState_Enable;
+	oc.TIM_OutputNState = TIM_OutputState_Disable;
+	oc.TIM_Pulse = pulse;
+	oc.TIM_OCPolarity = TIM_OCPolarity_Low;
+	oc.TIM_OCNPolarity = TIM_OCPolarity_High;
+	oc.TIM_OCIdleState = TIM_OCIdleState_Reset;
+	oc.TIM_OCNIdleState = TIM_OCIdleState_Set;
 	if(channel & 0x01){
 		TIM_OC1Init(timx,&oc);
 		TIM_OC1PreloadConfig(timx,TIM_OCPreload_Enable);
@@ -595,7 +595,24 @@ void SPI_Config(SPI_TypeDef* spix, uint16_t mode, uint16_t dir, uint16_t ds, uin
 {
 	SPI_InitTypeDef spi;
 	
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI5, ENABLE);
+	if (spix == SPI1) {
+		RCC_CLK_ENABLE(APB2, SPI1);
+	}
+	if (spix == SPI2) {
+		RCC_CLK_ENABLE(APB1, SPI2);
+	}
+	if (spix == SPI3) {
+		RCC_CLK_ENABLE(APB1, SPI3);
+	}
+	if (spix == SPI4) {
+		RCC_CLK_ENABLE(APB2, SPI4);
+	}
+	if (spix == SPI5) {
+		RCC_CLK_ENABLE(APB2, SPI5);
+	}
+	if (spix == SPI6) {
+		RCC_CLK_ENABLE(APB2, SPI6);
+	}
 	
 	spi.SPI_Mode = mode;
 	spi.SPI_Direction = dir;
@@ -607,7 +624,49 @@ void SPI_Config(SPI_TypeDef* spix, uint16_t mode, uint16_t dir, uint16_t ds, uin
 	spi.SPI_FirstBit = fb;
 	spi.SPI_CRCPolynomial = crcp;
 	
-	SPI_Init(SPI1, &spi);
+	SPI_Init(spix, &spi);
 }
 
+void SPI_Bind(GPIO nssPin, GPIO sckPin, GPIO misoPin, GPIO mosiPin, SPI_TypeDef* spix, uint16_t mode, uint16_t dir, uint16_t ds, uint16_t cpol, uint16_t cpha, uint16_t nss, uint16_t ps, uint16_t fb, uint16_t crcp)
+{
+	if (spix == SPI1) {
+		SPI_BIND(nssPin, sckPin, misoPin, mosiPin, SPI1, mode, dir, ds, cpol, cpha, nss, ps, fb, crcp);
+	}
+	if (spix == SPI2) {
+		SPI_BIND(nssPin, sckPin, misoPin, mosiPin, SPI2, mode, dir, ds, cpol, cpha, nss, ps, fb, crcp);
+	}
+	if (spix == SPI3) {
+		SPI_BIND(nssPin, sckPin, misoPin, mosiPin, SPI3, mode, dir, ds, cpol, cpha, nss, ps, fb, crcp);
+	}
+	if (spix == SPI4) {
+		SPI_BIND(nssPin, sckPin, misoPin, mosiPin, SPI4, mode, dir, ds, cpol, cpha, nss, ps, fb, crcp);
+	}
+	if (spix == SPI5) {
+		SPI_BIND(nssPin, sckPin, misoPin, mosiPin, SPI5, mode, dir, ds, cpol, cpha, nss, ps, fb, crcp);
+	}
+	if (spix == SPI6) {
+		SPI_BIND(nssPin, sckPin, misoPin, mosiPin, SPI6, mode, dir, ds, cpol, cpha, nss, ps, fb, crcp);
+	}
+}
+
+uint8_t SPI_TxRxByte(SPI_TypeDef* spix, uint8_t txData, uint8_t* rxData, uint32_t timeout)
+{
+	SPI_SendData(spix, txData);
+	while (!(spix->SR & SPI_SR_RXNE)) {
+		if (--timeout < 1) return 0;
+	}
+	*rxData = spix->DR;
+	return 1;
+}
+
+uint32_t SPI_TxRx(SPI_TypeDef* spix, const uint8_t* txData, uint8_t* rxData, uint32_t len, uint32_t timeout)
+{
+	uint32_t i = 0;
+	uint8_t tmp = 0;
+	for (; i < len; i++) {
+		tmp = SPI_TxRxByte(spix, txData[i], &rxData[i], timeout);
+		if (!tmp) break;
+	}
+	return i;
+}
 

@@ -28,8 +28,14 @@ extern "C" {
 #define SPI5_MISO_PIN PF8
 #define SPI5_MOSI_PIN PF9
 
-void Spi5_Config(void);
+#define SPI5_NSS_H() GPIO_SET(SPI5_NSS_PIN)
+#define SPI5_NSS_L() GPIO_RST(SPI5_NSS_PIN)
+
+#define SPI5_TXRX_BYTE(TXD,RXD,TIMEOUT) SPI_TxRxByte(SPI5,TXD,RXD,TIMEOUT)
+#define SPI5_TXRX(TXD,RXD,LEN,TIMEOUT) SPI_TxRx(SPI5,TXD,RXD,LEN,TIMEOUT)
 	
+void Spi5_Config(void);
+
 #ifdef __cplusplus
 }
 #endif

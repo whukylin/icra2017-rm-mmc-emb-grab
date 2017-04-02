@@ -18,28 +18,21 @@
 
 void Spi5_Config(void)
 {
-	SPI_InitTypeDef spi;
+	SPI_Bind(SPI5_NSS_PIN,
+	         SPI5_SCK_PIN,
+	         SPI5_MISO_PIN,
+	         SPI5_MOSI_PIN,
+	         SPI5,
+	         SPI_Mode_Master,
+	         SPI_Direction_2Lines_FullDuplex,
+	         SPI_DataSize_8b,
+	         SPI_CPOL_Low,
+	         SPI_CPHA_1Edge,
+	         SPI_NSS_Soft,
+	         SPI_BaudRatePrescaler_128,
+	         SPI_FirstBit_MSB,
+	         10);
 	
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI5, ENABLE);
-	
-	GPIO_AF(SPI5_NSS_PIN, GPIO_AF_SPI5);
-	GPIO_AF(SPI5_SCK_PIN, GPIO_AF_SPI5);
-	GPIO_AF(SPI5_MISO_PIN, GPIO_AF_SPI5);
-	GPIO_AF(SPI5_MOSI_PIN, GPIO_AF_SPI5);
-	
-	spi.SPI_Mode = SPI_Mode_Master;
-	spi.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
-	spi.SPI_DataSize = SPI_DataSize_8b;
-	spi.SPI_CPOL = SPI_CPOL_Low;
-	spi.SPI_CPHA = SPI_CPHA_1Edge;
-	spi.SPI_NSS = SPI_NSS_Soft;
-	spi.SPI_BaudRatePrescaler=SPI_BaudRatePrescaler_128;
-	spi.SPI_FirstBit=SPI_FirstBit_MSB;
-	spi.SPI_CRCPolynomial = 10;
-	
-	SPI_Init(SPI1, &spi);
 	SPI_Cmd(SPI5, ENABLE);
 	
 }
-
-

@@ -23,7 +23,7 @@ extern "C" {
 	
 #include "stm32util.h"
 
-#define MPU6500_INT_PIN PA4
+#define MPU6500_INT_PIN PE1
 #define MPU6500_NVIC_PRE_PRIORITY 2
 #define MPU6500_NVIC_SUB_PRIORITY 0
 

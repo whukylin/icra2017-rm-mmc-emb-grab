@@ -27,14 +27,16 @@ extern "C" {
 #include "can1.h"
 #include "can2.h"
 #include "dbi.h"
+#include "ist8310.h"
 #include "key.h"
 #include "led.h"
+#include "mpu6500.h"
 #include "pwm.h"
 #include "rcv.h"
+#include "spi5.h"
 #include "sr04.h"
 #include "tim.h"
 #include "tty.h"
-#include "mpu6500.h"
 
 void Bsp_Config(void);
 

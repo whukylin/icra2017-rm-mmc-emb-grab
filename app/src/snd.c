@@ -22,7 +22,7 @@ static uint32_t lastSingTick = 0;
 
 void Snd_Init(void)
 {
-	state = 0;
+	state = SND_STATE_STOP;
 	index = 0;
 }
 

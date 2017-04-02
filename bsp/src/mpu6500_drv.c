@@ -16,89 +16,72 @@
 
 #include "mpu6500_drv.h"
 
-#define ABORT_IF_ASSERT_FAILED(FLAG) if(!(FLAG)) return 0
-uint8_t MPU6500_Init(void)
+uint8_t MPU6500_CheckDevice(void)
 {
-    uint8_t data = 0;
-    uint8_t flag = 0;
-
-    flag = MPU6500_IIC_Read(MPU6500_DEVICE_ADDRESS, MPU6500_WHO_AM_I, &data,1);
-    ABORT_IF_ASSERT_FAILED(flag && data == MPU6500_ID);
-
-    flag = MPU6500_IIC_Write(MPU6500_DEVICE_ADDRESS, MPU6500_PWR_MGMT_1, 0x01);
-    ABORT_IF_ASSERT_FAILED(flag);
-
-    flag = MPU6500_IIC_Write(MPU6500_DEVICE_ADDRESS, MPU6500_CONFIG, 0x03);
-    ABORT_IF_ASSERT_FAILED(flag);
-
-    flag = MPU6500_IIC_Write(MPU6500_DEVICE_ADDRESS, MPU6500_GYRO_CONFIG, 0x10);
-    ABORT_IF_ASSERT_FAILED(flag);
-
-    flag = MPU6500_IIC_Write(MPU6500_DEVICE_ADDRESS, MPU6500_ACCEL_CONFIG, 0x00);
-    ABORT_IF_ASSERT_FAILED(flag);
-
-    flag = MPU6500_IIC_Write(MPU6500_DEVICE_ADDRESS, MPU6500_INT_PIN_CFG, 0x02);
-    ABORT_IF_ASSERT_FAILED(flag);
-
-    flag = MPU6500_IIC_Write(MPU6500_DEVICE_ADDRESS, MPU6500_INT_ENABLE, 0x00);
-    ABORT_IF_ASSERT_FAILED(flag);
-
-    flag = MPU6500_IIC_Write(MPU6500_DEVICE_ADDRESS, MPU6500_RA_USER_CTRL, 0x00);
-    ABORT_IF_ASSERT_FAILED(flag);
-
-    // flag = HMC5883_Init();
-    // ABORT_IF_ASSERT_FAILED(flag);
-
-    return 1;
+	uint8_t data = 0;
+	uint8_t flag = MPU6500_SPI_Read_Reg(MPU6500_WHO_AM_I, &data);
+	flag &= (data == MPU6500_ID);
+	RETURN_ZERO_IF_ASSERT_FAILED(flag);
+	return 1;
 }
 
-uint8_t HMC5883_Init(void)
+uint8_t MPU6500_Init(void)
 {
-    uint8_t data = 0;
-    uint8_t flag = 0;
+  uint8_t MPU6500_Init_Data[10][2] = 
+  {
+    {MPU6500_PWR_MGMT_1,    0x80},      // Reset Device
+    {MPU6500_PWR_MGMT_1,    0x03},      // Clock Source - Gyro-Z
+    {MPU6500_PWR_MGMT_2,    0x00},      // Enable Acc & Gyro
+    {MPU6500_CONFIG,        0x02},      // LPF 98Hz
+    {MPU6500_GYRO_CONFIG,   0x18},      // +-2000dps
+    {MPU6500_ACCEL_CONFIG,  0x10},      // +-8G
+    {MPU6500_ACCEL_CONFIG_2,0x02},      // enable LowPassFilter  Set Acc LPF
+    {MPU6500_USER_CTRL,     0x20},      // Enable AUX
+  };
+	uint8_t flag = 0;
+	uint8_t i = 0;
+	
+	flag = MPU6500_CheckDevice();
+	RETURN_ZERO_IF_ASSERT_FAILED(flag);
+	
+	for(i = 0; i < 10; i++)
+  {
+    flag = MPU6500_SPI_Write_Reg(MPU6500_Init_Data[i][0], MPU6500_Init_Data[i][1]);
+		RETURN_ZERO_IF_ASSERT_FAILED(flag);
+  }
 
-    flag = MPU6500_IIC_Read(HMC5883_ADDRESS, HMC58X3_R_IDA, &data, 1);
-    ABORT_IF_ASSERT_FAILED(flag && data == HMC5883_DEVICE_ID_A);
-
-    MPU6500_IIC_Write(HMC5883_ADDRESS, HMC58X3_R_CONFA, 0x70);
-    Delay_Ms(5);
-    MPU6500_IIC_Write(HMC5883_ADDRESS, HMC58X3_R_CONFB, 0xA0);
-    Delay_Ms(5);
-    MPU6500_IIC_Write(HMC5883_ADDRESS, HMC58X3_R_MODE, 0x00);
-    Delay_Ms(5);
-    MPU6500_IIC_Write(HMC5883_ADDRESS, HMC58X3_R_CONFA, 6<<2);   //75HZ
-    Delay_Ms(5);
-
-    return 1;
+	return 1;
 }
 
 uint8_t MPU6500_INT_Enable(void)
 {
 	uint8_t flag = 0;
 
-	flag = MPU6500_IIC_Write(MPU6500_DEVICE_ADDRESS, MPU6500_SMPLRT_DIV, 0x01);
-	ABORT_IF_ASSERT_FAILED(flag);
+	flag = MPU6500_SPI_Write_Reg(MPU6500_SMPLRT_DIV, 0x01);
+	RETURN_ZERO_IF_ASSERT_FAILED(flag);
 
-	Delay_Ms(10);
-
-	flag = MPU6500_IIC_Write(MPU6500_DEVICE_ADDRESS, MPU6500_INT_ENABLE, 0x01);
-	ABORT_IF_ASSERT_FAILED(flag);
+	flag = MPU6500_SPI_Write_Reg(MPU6500_INT_ENABLE, 0x01);
+	RETURN_ZERO_IF_ASSERT_FAILED(flag);
 
 	return 1;
 }
 
 uint8_t MPU6500_Read(int16_t* data)
 {
-	uint8_t buf[14];
+	uint8_t buf[MPU6500_DATA_SIZE];
 	uint8_t flag = 0;
-
-	flag = MPU6500_IIC_Read(MPU6500_DEVICE_ADDRESS, MPU6500_DATA_START, buf, 14);
-	ABORT_IF_ASSERT_FAILED(flag);
-
+	uint8_t i = 0;
+	for (i = 0; i < MPU6500_DATA_SIZE; i++) {
+		flag = MPU6500_SPI_Read_Reg(MPU6500_ACCEL_XOUT_H, &buf[i]);
+		RETURN_ZERO_IF_ASSERT_FAILED(flag);
+	}
+	
 	data[0] = (((int16_t)buf[0]) << 8) | buf[1];
 	data[1] = (((int16_t)buf[2]) << 8) | buf[3];
 	data[2] = (((int16_t)buf[4]) << 8) | buf[5];
+	
 	data[3] = (((int16_t)buf[6]) << 8) | buf[7];
+	
 	data[4] = (((int16_t)buf[8]) << 8) | buf[9];
 	data[5] = (((int16_t)buf[10]) << 8) | buf[11];
 	data[6] = (((int16_t)buf[12]) << 8) | buf[13];
@@ -106,32 +89,4 @@ uint8_t MPU6500_Read(int16_t* data)
 	return 1;
 }
 
-uint8_t HMC5883_Read(int16_t* data)
-{
-	uint8_t buf[6];
-	uint8_t flag = 0;
 
-	flag = MPU6500_IIC_Read(HMC5883_ADDRESS, HMC58X3_R_XM, buf, 6);
-	ABORT_IF_ASSERT_FAILED(flag);
-
-	data[0] = (((int16_t)buf[0]) << 8) | buf[1];
-	data[1] = (((int16_t)buf[2]) << 8) | buf[3];
-	data[2] = (((int16_t)buf[4]) << 8) | buf[5];
-
-	return 1;
-}
-
-uint8_t IST8310_Read(int16_t* data)
-{
-	uint8_t buf[6];
-	uint8_t flag = 0;
-
-	flag = MPU6500_IIC_Read(IST8310_ADDRESS, IST8310_R_XM, buf, 6);
-	ABORT_IF_ASSERT_FAILED(flag);
-
-	data[0] = (((int16_t)buf[0]) << 8) | buf[1];
-	data[1] = (((int16_t)buf[2]) << 8) | buf[3];
-	data[2] = (((int16_t)buf[4]) << 8) | buf[5];
-
-	return 1;
-}

@@ -21,163 +21,120 @@
 extern "C" {
 #endif
 
-#include "delay.h"
-#include "platform.h"
-#include "mpu6500_i2c.h"
+#include "mpu6500_spi.h"
 
-#define	MPU6500_SMPLRT_DIV		          		0x19	// 0X07 125Hz
-#define	MPU6500_CONFIG			          		  0x1A	// 0x00
-#define	MPU6500_GYRO_CONFIG		          		0x1B	// 0x18  2000deg/s
-#define	MPU6500_ACCEL_CONFIG	          		0x1C	//2G 5Hz
-#define MPU6500_INT_PIN_CFG               	0x37
-#define MPU6500_INT_ENABLE                	0x38
-#define MPU6500_INT_STATUS                	0x3A
-#define	MPU6500_ACCEL_XOUT_H	          		0x3B
-#define	MPU6500_ACCEL_XOUT_L	          		0x3C
-#define	MPU6500_ACCEL_YOUT_H	          		0x3D
-#define	MPU6500_ACCEL_YOUT_L	          		0x3E
-#define	MPU6500_ACCEL_ZOUT_H	          		0x3F
-#define	MPU6500_ACCEL_ZOUT_L	          		0x40
-#define	MPU6500_TEMP_OUT_H		          		0x41
-#define	MPU6500_TEMP_OUT_L		          		0x42
-#define	MPU6500_GYRO_XOUT_H		          		0x43
-#define	MPU6500_GYRO_XOUT_L		          		0x44
-#define	MPU6500_GYRO_YOUT_H		          		0x45
-#define	MPU6500_GYRO_YOUT_L		          		0x46
-#define	MPU6500_GYRO_ZOUT_H		          		0x47
-#define	MPU6500_GYRO_ZOUT_L		          		0x48
-#define	MPU6500_PWR_MGMT_1		          		0x6B
-#define	MPU6500_WHO_AM_I		          		  0x75
-#define MPU6500_ID                		  		0x68
-#define MPU6500_DEVICE_ADDRESS            	0xD0
+#define MPU6500_SELF_TEST_XG        (0x00)
+#define MPU6500_SELF_TEST_YG        (0x01)
+#define MPU6500_SELF_TEST_ZG        (0x02)
+#define MPU6500_SELF_TEST_XA        (0x0D)
+#define MPU6500_SELF_TEST_YA        (0x0E)
+#define MPU6500_SELF_TEST_ZA        (0x0F)
+#define MPU6500_XG_OFFSET_H         (0x13)
+#define MPU6500_XG_OFFSET_L         (0x14)
+#define MPU6500_YG_OFFSET_H         (0x15)
+#define MPU6500_YG_OFFSET_L         (0x16)
+#define MPU6500_ZG_OFFSET_H         (0x17)
+#define MPU6500_ZG_OFFSET_L         (0x18)
+#define MPU6500_SMPLRT_DIV          (0x19)
+#define MPU6500_CONFIG              (0x1A)
+#define MPU6500_GYRO_CONFIG         (0x1B)
+#define MPU6500_ACCEL_CONFIG        (0x1C)
+#define MPU6500_ACCEL_CONFIG_2      (0x1D)
+#define MPU6500_LP_ACCEL_ODR        (0x1E)
+#define MPU6500_MOT_THR             (0x1F)
+#define MPU6500_FIFO_EN             (0x23)
+#define MPU6500_I2C_MST_CTRL        (0x24)
+#define MPU6500_I2C_SLV0_ADDR       (0x25)
+#define MPU6500_I2C_SLV0_REG        (0x26)
+#define MPU6500_I2C_SLV0_CTRL       (0x27)
+#define MPU6500_I2C_SLV1_ADDR       (0x28)
+#define MPU6500_I2C_SLV1_REG        (0x29)
+#define MPU6500_I2C_SLV1_CTRL       (0x2A)
+#define MPU6500_I2C_SLV2_ADDR       (0x2B)
+#define MPU6500_I2C_SLV2_REG        (0x2C)
+#define MPU6500_I2C_SLV2_CTRL       (0x2D)
+#define MPU6500_I2C_SLV3_ADDR       (0x2E)
+#define MPU6500_I2C_SLV3_REG        (0x2F)
+#define MPU6500_I2C_SLV3_CTRL       (0x30)
+#define MPU6500_I2C_SLV4_ADDR       (0x31)
+#define MPU6500_I2C_SLV4_REG        (0x32)
+#define MPU6500_I2C_SLV4_DO         (0x33)
+#define MPU6500_I2C_SLV4_CTRL       (0x34)
+#define MPU6500_I2C_SLV4_DI         (0x35)
+#define MPU6500_I2C_MST_STATUS      (0x36)
+#define MPU6500_INT_PIN_CFG         (0x37)
+#define MPU6500_INT_ENABLE          (0x38)
+#define MPU6500_INT_STATUS          (0x3A)
+#define MPU6500_ACCEL_XOUT_H        (0x3B)
+#define MPU6500_ACCEL_XOUT_L        (0x3C)
+#define MPU6500_ACCEL_YOUT_H        (0x3D)
+#define MPU6500_ACCEL_YOUT_L        (0x3E)
+#define MPU6500_ACCEL_ZOUT_H        (0x3F)
+#define MPU6500_ACCEL_ZOUT_L        (0x40)
+#define MPU6500_TEMP_OUT_H          (0x41)
+#define MPU6500_TEMP_OUT_L          (0x42)
+#define MPU6500_GYRO_XOUT_H         (0x43)
+#define MPU6500_GYRO_XOUT_L         (0x44)
+#define MPU6500_GYRO_YOUT_H         (0x45)
+#define MPU6500_GYRO_YOUT_L         (0x46)
+#define MPU6500_GYRO_ZOUT_H         (0x47)
+#define MPU6500_GYRO_ZOUT_L         (0x48)
+#define MPU6500_EXT_SENS_DATA_00    (0x49)
+#define MPU6500_EXT_SENS_DATA_01    (0x4A)
+#define MPU6500_EXT_SENS_DATA_02    (0x4B)
+#define MPU6500_EXT_SENS_DATA_03    (0x4C)
+#define MPU6500_EXT_SENS_DATA_04    (0x4D)
+#define MPU6500_EXT_SENS_DATA_05    (0x4E)
+#define MPU6500_EXT_SENS_DATA_06    (0x4F)
+#define MPU6500_EXT_SENS_DATA_07    (0x50)
+#define MPU6500_EXT_SENS_DATA_08    (0x51)
+#define MPU6500_EXT_SENS_DATA_09    (0x52)
+#define MPU6500_EXT_SENS_DATA_10    (0x53)
+#define MPU6500_EXT_SENS_DATA_11    (0x54)
+#define MPU6500_EXT_SENS_DATA_12    (0x55)
+#define MPU6500_EXT_SENS_DATA_13    (0x56)
+#define MPU6500_EXT_SENS_DATA_14    (0x57)
+#define MPU6500_EXT_SENS_DATA_15    (0x58)
+#define MPU6500_EXT_SENS_DATA_16    (0x59)
+#define MPU6500_EXT_SENS_DATA_17    (0x5A)
+#define MPU6500_EXT_SENS_DATA_18    (0x5B)
+#define MPU6500_EXT_SENS_DATA_19    (0x5C)
+#define MPU6500_EXT_SENS_DATA_20    (0x5D)
+#define MPU6500_EXT_SENS_DATA_21    (0x5E)
+#define MPU6500_EXT_SENS_DATA_22    (0x5F)
+#define MPU6500_EXT_SENS_DATA_23    (0x60)
+#define MPU6500_I2C_SLV0_DO         (0x63)
+#define MPU6500_I2C_SLV1_DO         (0x64)
+#define MPU6500_I2C_SLV2_DO         (0x65)
+#define MPU6500_I2C_SLV3_DO         (0x66)
+#define MPU6500_I2C_MST_DELAY_CTRL  (0x67)
+#define MPU6500_SIGNAL_PATH_RESET   (0x68)
+#define MPU6500_MOT_DETECT_CTRL     (0x69)
+#define MPU6500_USER_CTRL           (0x6A)
+#define MPU6500_PWR_MGMT_1          (0x6B)
+#define MPU6500_PWR_MGMT_2          (0x6C)
+#define MPU6500_FIFO_COUNTH         (0x72)
+#define MPU6500_FIFO_COUNTL         (0x73)
+#define MPU6500_FIFO_R_W            (0x74)
+#define MPU6500_WHO_AM_I            (0x75)	// mpu6500 id = 0x71
+#define MPU6500_XA_OFFSET_H         (0x77)
+#define MPU6500_XA_OFFSET_L         (0x78)
+#define MPU6500_YA_OFFSET_H         (0x7A)
+#define MPU6500_YA_OFFSET_L         (0x7B)
+#define MPU6500_ZA_OFFSET_H         (0x7D)
+#define MPU6500_ZA_OFFSET_L         (0x7E)
+	
+#define MPU6050_ID									(0x68)
+#define MPU6500_ID									(0x71)	// mpu6500 id = 0x70
 
-#define MPU6500_DATA_START        				MPU6500_ACCEL_XOUT_H
-#define MPU6500_RA_SELF_TEST_X                  0x0D
-#define MPU6500_RA_SLEF_TEST_Y                  0x0E
-#define MPU6500_RA_SELF_TEST_Z                  0x0F
-#define MPU6500_RA_SELF_TEST_A                  0x10
-#define MPU6500_RA_SMPLRT_DIV                   0x19
-#define MPU6500_RA_CONFIG                       0x1A
-#define MPU6500_RA_GYRO_CONFIG                  0x1B
-#define MPU6500_RA_ACCEL_CONFIG                 0x1C
-#define MPU6500_RA_FIFO_EN                      0x23
-#define MPU6500_RA_I2C_MST_CTRL                 0x24
-#define MPU6500_RA_I2C_MST_STATUS               0x36
-#define MPU6500_RA_INT_PIN_CFG                  0x37
-#define MPU6500_RA_INT_ENABLE                   0x38
-#define MPU6500_RA_INT_STATUS                   0x3A
-#define MPU6500_RA_ACCEL_XOUT_H                 0x3B
-#define MPU6500_RA_ACCEL_XOUT_L                 0x3C
-#define MPU6500_RA_ACCEL_YOUT_H                 0x3D
-#define MPU6500_RA_ACCEL_YOUT_L                 0x3E
-#define MPU6500_RA_ACCEL_ZOUT_H                 0x3F
-#define MPU6500_RA_ACCEL_ZOUT_L                 0x40
-#define MPU6500_RA_TEMP_OUT_H                   0x41 
-#define MPU6500_RA_TEMP_OUT_L                   0x42
-#define MPU6500_RA_GYRO_XOUT_H                  0x43
-#define MPU6500_RA_GYRO_XOUT_L                  0x44
-#define MPU6500_RA_GYRO_YOUT_H                  0x45
-#define MPU6500_RA_GYRO_YOUT_L                  0x46
-#define MPU6500_RA_GYRO_ZOUT_H                  0x47
-#define MPU6500_RA_GYRO_ZOUT_L                  0x48       
-#define MPU6500_RA_I2C_MST_DELAY_CTRL           0x67
-#define MPU6500_RA_SIGNAL_PATH_RESET            0x68
-#define MPU6500_RA_USER_CTRL                    0x6A
-#define MPU6500_RA_PWR_MGMT_1                   0x6B
-#define MPU6500_RA_PWR_MGMT_2                   0x6C
-#define MPU6500_RA_FIFO_COUNTH                  0x72
-#define MPU6500_RA_FIFO_COUNTL                  0x73
-#define MPU6500_RA_FIFO_R_W                     0x74
-#define MPU6500_RA_WHO_AM_I                     0x75 
-#define MPU6500_RA_SLV0_ADDR                    0x25
-#define MPU6500_RA_SLV0_REG                     0x26
-#define MPU6500_RA_SLV0_CTRL                    0x27 
-#define MPU6500_RA_SLV0_DO                      0x63 
-#define MPU6500_RA_SLV1_ADDR                    0x28
-#define MPU6500_RA_SLV1_REG                     0x29
-#define MPU6500_RA_SLV1_CTRL                    0x2A
-#define MPU6500_RA_SLV1_DO                      0x64 
-#define MPU6500_RA_SLV4_CTRL                    0x34 
-#define MPU6500_RA_ES_DATA00                    0x49
-#define MPU6500_RA_ES_DATA01                    0x4A
-#define MPU6500_RA_ES_DATA02                    0x4B
-#define MPU6500_RA_ES_DATA03                    0x4C
-#define MPU6500_RA_ES_DATA04                    0x4D
-#define MPU6500_RA_ES_DATA05                    0x4E
-#define MPU6500_RA_ES_DATA06                    0x4F
-#define MPU6500_RA_ES_DATA07                    0x50
+#define MPU_IIC_ADDR								(0x68)
 
-/* Magnetometer HMC5883 register address */
+#define MPU6500_DATA_SIZE 14
 
-#define HMC5883_ADDRESS                         0x3C
-
-// HMC58X3 register map. For details see HMC58X3 datasheet
-#define HMC58X3_R_CONFA 0
-#define HMC58X3_R_CONFB 1
-#define HMC58X3_R_MODE  2
-#define HMC58X3_R_XM    3
-#define HMC58X3_R_XL    4
-
-#define HMC58X3_R_YM (7)  //!< Register address for YM.
-#define HMC58X3_R_YL (8)  //!< Register address for YL.
-#define HMC58X3_R_ZM (5)  //!< Register address for ZM.
-#define HMC58X3_R_ZL (6)  //!< Register address for ZL.
-
-#define HMC58X3_R_STATUS 9
-#define HMC58X3_R_IDA    10
-#define HMC58X3_R_IDB    11
-#define HMC58X3_R_IDC    12
-
-#define IST8310_ADDRESS           0x0E
-#define IST8310_DEVICE_ID_A       0x10
-
-//refer to IST8310 datasheet for more informations
-#define IST8310_WHO_AM_I          0x00
-#define IST8310_R_CONFA           0x0A
-#define IST8310_R_CONFB           0x0B
-#define IST8310_R_MODE            0x02
-
-#define IST8310_R_XL              0x03
-#define IST8310_R_XM              0x04
-#define IST8310_R_YL              0x05
-#define IST8310_R_YM              0x06
-#define IST8310_R_ZL              0x07
-#define IST8310_R_ZM              0x08
-
-#define IST8310_AVGCNTL           0x41
-#define IST8310_PDCNTL            0x42
-
-#define IST8310_ODR_MODE          0x01
-
-/* Sensitivities */
-  
-#define MPU6500_GYRO_DEG_RECIP_INV              32.8f          //LSB/(deg/s)    +-2000    16-bit ADC   16.4
-                                                               //LSB/(deg/s)    +-1000    16-bit ADC   32.8
-#define MPU6500_GYRO_DEG_RECIP                  0.0304878f     //65.5           +-500
-
-#define MPU6500_GYRO_RAD_RECIP_INV              1.8793015ef
-
-#define MPU6500_GYRO_RAD_RECIP                  5.3211255e-04f
-
-#define MPU6500_ACC_G_RECIP_INV                 8192.0f     //LSB/g          +-4g      16-bit ADC
-                                                            //4096           +-8g
-#define MPU6500_ACC_G_RECIP                     1.22e-4f
-
-#define MPU6500_MAG_UT_RECIP                    0.3f        //uT/LSB         +-1200    13-bit ADC
-
-
-/* MPU6500 ID value */
-
-#define MPU6500_DEVICE_ID                       0x68
-#define HMC5883_DEVICE_ID_A                     0x48
-
+uint8_t MPU6500_CheckDevice(void);
 uint8_t MPU6500_Init(void);
-uint8_t HMC5883_Init(void);
 uint8_t MPU6500_INT_Enable(void);
 uint8_t MPU6500_Read(int16_t* data);
-uint8_t HMC5883_Read(int16_t* data);
-uint8_t IST8310_Read(int16_t* data);
-
 
 #ifdef __cplusplus
 }

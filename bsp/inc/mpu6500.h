@@ -21,15 +21,12 @@
 extern "C" {
 #endif
 
-#include "mpu6500_i2c.h"
 #include "mpu6500_drv.h"
 #include "mpu6500_int.h"
-
+#include "mpu6500_spi.h"
+	
 void MPU6500_Config(void);
 
-extern void MPU6500Callback(float* buf);
-
-	
 #ifdef __cplusplus
 }
 #endif

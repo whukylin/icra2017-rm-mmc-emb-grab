@@ -19,29 +19,7 @@
 void MPU6500_Config(void)
 {
 	while(!MPU6500_Init());
-	while(!HMC5883_Init());
-	MPU6500_INT_Config();
-	MPU6500_INT_Enable();
+	//MPU6500_INT_Config();
+	//MPU6500_INT_Enable();
 }
 
-#define PI 3.1415926f
-void MPU6500INTCallback()
-{
-	/*
-	float buf[9];
-	int16_t raw[17];
-	MPU6500_Read(raw);
-	HMC5883_Read(raw + 14);
-	buf[0] = raw[0] * MPU6500_ACC_G_RECIP; // Convert to m/s^2
-	buf[1] = raw[1] * MPU6500_ACC_G_RECIP; // Convert to m/s^2
-	buf[2] = raw[2] * MPU6500_ACC_G_RECIP; // Convert to m/s^2
-	// buf[3] = raw[3] / 340.0f + 36.53f; // Ignore temperature measurement
-	buf[3] = raw[4] * MPU6500_GYRO_RAD_RECIP; // Convert to rad/s
-	buf[4] = raw[5] * MPU6500_GYRO_RAD_RECIP; // Convert to rad/s
-	buf[5] = raw[6] * MPU6500_GYRO_RAD_RECIP; // Convert to rad/s
-	buf[6] = raw[7] * MPU6500_MAG_UT_RECIP;
-	buf[7] = raw[8] * MPU6500_MAG_UT_RECIP;
-	buf[8] = raw[9] * MPU6500_MAG_UT_RECIP;
-	//MPU6500Callback(buf);
-	*/
-}

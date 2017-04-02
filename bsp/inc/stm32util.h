@@ -225,23 +225,29 @@ typedef uint32_t GPIO;
 #define GPIO_READ_OUT(gpio) GPIO_ReadOutputDataBit(GPIO_PIN_GRP(gpio), GPIO_PIN_MSK(gpio))
 #define GPIO_WRITE(gpio,v) GPIO_WriteBit(GPIO_PIN_GRP(gpio), GPIO_PIN_MSK(gpio), (v) > 0 ? Bit_SET : Bit_RESET)
 
-#define RCC_EN_CLK(NUM,NAME) RCC_APB##NUM##PeriphClockCmd(RCC_APB##NUM##Periph_##NAME, ENABLE)
+#define RCC_CLK_ENABLE(BUS,NAME) RCC_##BUS##PeriphClockCmd(RCC_##BUS##Periph_##NAME, ENABLE)
+
+#define RETURN_ZERO_IF_ASSERT_FAILED(FLAG) if(!(FLAG)) return 0
+	
+#define GPIO_AF(PIN,TO) do { \
+	GPIO_Af(PIN,GPIO_AF_##TO); \
+} while(0)
 
 // TO DO
 #define GPIO_BIND(PIN,TO) do { \
-	GPIO_AF(PIN,GPIO_AF_##TO); \
+	GPIO_Af(PIN,GPIO_AF_##TO); \
 } while(0)
 
 #define USART_BIND(RX,TX,USART,BR,WL,PR,SB,FC) do { \
 	if (IS_VALID_GPIO(RX) && IS_VALID_GPIO(TX)) { \
-		GPIO_AF(RX,GPIO_AF_##USART); \
-		GPIO_AF(TX,GPIO_AF_##USART); \
+		GPIO_Af(RX,GPIO_AF_##USART); \
+		GPIO_Af(TX,GPIO_AF_##USART); \
 		USART_Config(USART, ' ', BR, WL, PR, SB, FC); \
 	} else if (IS_VALID_GPIO(RX)) { \
-		GPIO_AF(RX,GPIO_AF_##USART); \
+		GPIO_Af(RX,GPIO_AF_##USART); \
 		USART_Config(USART, 'r', BR, WL, PR, SB, FC); \
 	} else if (IS_VALID_GPIO(TX)) { \
-		GPIO_AF(TX,GPIO_AF_##USART); \
+		GPIO_Af(TX,GPIO_AF_##USART); \
 		USART_Config(USART, 't', BR, WL, PR, SB, FC); \
 	} \
 } while(0)
@@ -249,25 +255,41 @@ typedef uint32_t GPIO;
 #define PWM_BIND(A,B,C,D,TIM,PS,PD,PW) do { \
 	uint8_t channel = 0; \
 	if (IS_VALID_GPIO(A)) { \
-		GPIO_AF(A, GPIO_AF_##TIM); \
+		GPIO_Af(A, GPIO_AF_##TIM); \
 		channel |= 0x01; \
 	} \
 	if (IS_VALID_GPIO(B)) { \
-		GPIO_AF(B, GPIO_AF_##TIM); \
+		GPIO_Af(B, GPIO_AF_##TIM); \
 		channel |= 0x02; \
 	} \
 	if (IS_VALID_GPIO(C)) { \
-		GPIO_AF(C, GPIO_AF_##TIM); \
+		GPIO_Af(C, GPIO_AF_##TIM); \
 		channel |= 0x04; \
 	} \
 	if (IS_VALID_GPIO(D)) { \
-		GPIO_AF(D, GPIO_AF_##TIM); \
+		GPIO_Af(D, GPIO_AF_##TIM); \
 		channel |= 0x08; \
 	} \
 	TIM_Config(TIM, PS, TIM_CounterMode_Up, PD, TIM_CKD_DIV1, 0); \
 	TIM_OC_Config(TIM, channel, TIM_OCMode_PWM2, PW); \
 	TIM_ARRPreloadConfig(TIM, ENABLE); \
 } while(0)
+
+#define SPI_BIND(NSSPIN,SCKPIN,MISOPIN,MOSIPIN,SPIX,MODE,DIR,DS,CPOL,SPHA,NSS,PS,FB,CRCP) do { \
+	if (IS_VALID_GPIO(NSSPIN)) { \
+		GPIO_Af(NSSPIN, GPIO_AF_##SPIX); \
+	} \
+	if (IS_VALID_GPIO(SCKPIN)) { \
+		GPIO_Af(SCKPIN, GPIO_AF_##SPIX); \
+	} \
+	if (IS_VALID_GPIO(MISOPIN)) { \
+		GPIO_Af(MISOPIN, GPIO_AF_##SPIX); \
+	} \
+	if (IS_VALID_GPIO(MOSIPIN)) { \
+		GPIO_Af(MOSIPIN, GPIO_AF_##SPIX); \
+	} \
+	SPI_Config(SPIX, MODE, DIR, DS, CPOL, SPHA, NSS, PS, FB, CRCP); \
+} while (0)
 
 #define IRQ(NAME) NAME##_IRQn
 #define IRQ_HANDLER(NAME) NAME##_IRQHandler
@@ -304,13 +326,13 @@ void GPIO_Tog(GPIO gpio);
 void GPIO_Config(GPIO gpio, GPIOMode_TypeDef mode, GPIOSpeed_TypeDef speed, GPIOOType_TypeDef otype, GPIOPuPd_TypeDef pupd);
 void GPIO_In(GPIO gpio);
 void GPIO_Out(GPIO gpio);
-void GPIO_AF(GPIO gpio, u8 af);
-void Encoder_Bind(GPIO A, GPIO B, TIM_TypeDef* timx, u16 mode, u16 p1, u16 p2);
-void USART_Bind(GPIO rx, GPIO tx, USART_TypeDef* usartx, u32 br, u8 wl, s8 parity, float sb, s8 fc);
+void GPIO_Af(GPIO gpio, u8 af);
 void USART_Config(USART_TypeDef* usartx, s8 mode, u32 br, u8 wl, s8 parity, float sb, s8 fc);
-void PWM_Bind(GPIO A, GPIO B, GPIO C, GPIO D, TIM_TypeDef* timx, u16 ps, u32 pd, u32 pw);
+void USART_Bind(GPIO rx, GPIO tx, USART_TypeDef* usartx, u32 br, u8 wl, s8 parity, float sb, s8 fc);
 void TIM_Config(TIM_TypeDef* timx, u16 ps, u16 mode, u32 period, u16 div, u8 re);
+void Encoder_Bind(GPIO A, GPIO B, TIM_TypeDef* timx, u16 mode, u16 p1, u16 p2);
 void TIM_OC_Config(TIM_TypeDef* timx, u8 channel, u16 mode, u32 pulse);
+void PWM_Bind(GPIO A, GPIO B, GPIO C, GPIO D, TIM_TypeDef* timx, u16 ps, u32 pd, u32 pw);
 void NVIC_Config(u8 channel, u8 pre, u8 sub);
 void CAN_Config(CAN_TypeDef* canx, u16 ps, u8 mode, u8 sjw, u8 bs1, u8 bs2);
 void CAN_Filter_Config(u16 id_h, u16 id_l, u16 msk_h, u16 msk_l, u16 fifo, u8 num);
@@ -318,6 +340,9 @@ void DMA_Config(DMA_Stream_TypeDef* DMAy_Streamx, u32 channel, u32 pba, u32 mba,
 void EXTI_Config(u32 line, EXTIMode_TypeDef mode, EXTITrigger_TypeDef trigger);
 void EXTI_Bind(GPIO gpio, uint8_t pre_priority, uint8_t sub_priority, EXTITrigger_TypeDef trigger, ExtiHandler handler);
 void SPI_Config(SPI_TypeDef* spix, uint16_t mode, uint16_t dir, uint16_t ds, uint16_t cpol, uint16_t cpha, uint16_t nss, uint16_t ps, uint16_t fb, uint16_t crcp);
+void SPI_Bind(GPIO nssPin, GPIO sckPin, GPIO misoPin, GPIO mosiPin, SPI_TypeDef* spix, uint16_t mode, uint16_t dir, uint16_t ds, uint16_t cpol, uint16_t cpha, uint16_t nss, uint16_t ps, uint16_t fb, uint16_t crcp);
+uint8_t SPI_TxRxByte(SPI_TypeDef* spix, uint8_t txData, uint8_t* rxData, uint32_t timeout);
+uint32_t SPI_TxRx(SPI_TypeDef* spix, const uint8_t* txData, uint8_t* rxData, uint32_t len, uint32_t timeout);
 
 #ifdef __cplusplus
 }
