@@ -45,14 +45,14 @@ typedef struct
 
 #define SR04_LEFT \
 { \
-	.trigPin = PC0, \
-	.echoPin = PC4, \
+	.trigPin = PE12, \
+	.echoPin = PE6, \
 }
 
 #define SR04_RIGHT \
 { \
-	.trigPin = PC1, \
-	.echoPin = PC5, \
+	.trigPin = PF0, \
+	.echoPin = PF1, \
 }
 
 #define SR04_GROUP \

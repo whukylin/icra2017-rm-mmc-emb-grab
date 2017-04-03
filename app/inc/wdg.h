@@ -29,7 +29,7 @@ extern "C" {
 
 typedef uint32_t WdgErr_t;
 	
-#define WDG_NUM              20u
+#define WDG_NUM              22u
 
 #define WDG_IDX_RCV          0u
 #define WDG_IDX_TTY          1u
@@ -51,6 +51,8 @@ typedef uint32_t WdgErr_t;
 #define WDG_IDX_KYLIN        17u
 #define WDG_IDX_SR04F        18u
 #define WDG_IDX_SR04M        19u
+#define WDG_IDX_SR04L        20u
+#define WDG_IDX_SR04R        21u
 
 #define WDG_ERR_RCV			   (1u<<WDG_IDX_RCV)
 #define WDG_ERR_TTY			   (1u<<WDG_IDX_TTY)
@@ -72,6 +74,8 @@ typedef uint32_t WdgErr_t;
 #define WDG_ERR_KYLIN      (1u<<WDG_IDX_KYLIN)
 #define WDG_ERR_SR04F      (1u<<WDG_IDX_SR04F)
 #define WDG_ERR_SR04M      (1u<<WDG_IDX_SR04M)
+#define WDG_ERR_SR04L      (1u<<WDG_IDX_SR04L)
+#define WDG_ERR_SR04R      (1u<<WDG_IDX_SR04R)
 
 #define WDG_ERR_ALL ( \
 		WDG_ERR_RCV | \
@@ -93,7 +97,9 @@ typedef uint32_t WdgErr_t;
 		WDG_ERR_MOTOR6 | \
 		WDG_ERR_KYLIN | \
 		WDG_ERR_SR04F | \
-		WDG_ERR_SR04M \
+		WDG_ERR_SR04M | \
+		WDG_ERR_SR04L | \
+		WDG_ERR_SR04R \
 		)
 
 #define WDG_ERR_SIGNAL (WDG_ERR_RCV | WDG_ERR_VDBUS)
@@ -142,6 +148,8 @@ typedef uint32_t WdgErr_t;
 		WDG_OVERFLOW_CNT_MOTOR, \
 		WDG_OVERFLOW_CNT_MOTOR, \
 	  WDG_OVERFLOW_CNT_KYLIN, \
+	  WDG_OVERFLOW_CNT_SR04, \
+	  WDG_OVERFLOW_CNT_SR04, \
 	  WDG_OVERFLOW_CNT_SR04, \
 	  WDG_OVERFLOW_CNT_SR04, \
 }
