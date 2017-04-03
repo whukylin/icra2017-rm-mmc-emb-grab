@@ -29,6 +29,7 @@ static KylinMsg_t kylinMsg;
 static Sr04sMsg_t sr04sMsg;
 static ZGyroMsg_t zgyroMsg;
 static PosCalibMsg_t posCalibMsg;
+static VirtualRC_t virtualRC;
 
 static void Upl_PushKylinMsg(void)
 {
@@ -77,6 +78,13 @@ static void Upl_PushPosCalib(void)
 	Msg_Push(&fifo, buf[1], &msg_head_pos_calib, &posCalibMsg);
 }
 
+static void Upl_PushVirtualRC(void)
+{
+	virtualRC.frame_id++;
+	Rcp_Enc(&dbus.rcp, virtualRC.buf);
+	Msg_Push(&fifo, buf[1], &msg_head_vrc, &virtualRC);
+}
+
 static void Upl_SendMsg(void)
 {
 	uint8_t data;
@@ -118,6 +126,13 @@ void Upl_Proc(void)
 		case MSG_TYPE_POS_CALIB:
 			if (IOS_COM_DEV.GetTxFifoFree() >= msg_head_pos_calib.attr.length + MSG_LEN_EXT) {
 				Upl_PushPosCalib();
+				Upl_SendMsg();
+				msgType = MSG_TYPE_VRC;
+			}
+			break;
+		case MSG_TYPE_VRC:
+			if (IOS_COM_DEV.GetTxFifoFree() >= msg_head_vrc.attr.length + MSG_LEN_EXT) {
+				Upl_PushVirtualRC();
 				Upl_SendMsg();
 				msgType = MSG_TYPE_KYLIN;
 			}

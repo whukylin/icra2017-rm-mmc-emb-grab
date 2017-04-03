@@ -50,7 +50,6 @@ static FIFO_t fifo;
 static void Dnl_ProcVRC(const VirtualRC_t* vrc)
 {
 	Wdg_Feed(WDG_IDX_VRC);
-	LED_GREEN_TOG();
 	if (Rci_Sw(SW_IDX_R) == SW_DN) {
 		Rcp_Dec(&dbus.rcp, vrc->buf);
 		Rci_Proc(&dbus.rcp);
