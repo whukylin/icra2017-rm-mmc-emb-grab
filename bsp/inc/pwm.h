@@ -40,7 +40,7 @@ extern "C" {
 
 #define CLAW_PWM CLAW_PWM_1
 	
-#define CLAW_PWM_H 1800
+#define CLAW_PWM_H 1700
 #define CLAW_PWM_L 1000
 
 #define CLAW_GET_PWM() CLAW_PWM

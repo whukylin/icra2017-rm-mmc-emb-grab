@@ -47,6 +47,8 @@ void KOS_Stop(void)
 {
 	// Dismiss application process
 	Sch_Dismiss(App_Proc);
+	Sch_Dismiss(Snd_Proc);
+	//Sch_Dismiss(Pwr_Proc);
 	
 	//Reset all active peripherals
 	Act_Init();

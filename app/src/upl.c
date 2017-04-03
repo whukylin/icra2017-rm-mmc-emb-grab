@@ -54,6 +54,8 @@ static void Upl_PushSr04sMsg(void)
 	sr04sMsg.frame_id++;
 	sr04sMsg.fixed = srs[SR04_IDX_FIXED].mm;
 	sr04sMsg.moble = srs[SR04_IDX_MOBLE].mm;
+	sr04sMsg.left = srs[SR04_IDX_LEFT].mm;
+	sr04sMsg.right = srs[SR04_IDX_RIGHT].mm;
 	Msg_Push(&fifo, buf[1], &msg_head_sr04s, &sr04sMsg);
 }
 

@@ -29,7 +29,7 @@ typedef struct
 	GPIO echoPin;
 }SR04_t;
 
-#define SR04_NUM 2
+#define SR04_NUM 4
 
 #define SR04_FIXED \
 { \
@@ -43,14 +43,30 @@ typedef struct
 	.echoPin = PF10, \
 }
 
+#define SR04_LEFT \
+{ \
+	.trigPin = PC0, \
+	.echoPin = PC4, \
+}
+
+#define SR04_RIGHT \
+{ \
+	.trigPin = PC1, \
+	.echoPin = PC5, \
+}
+
 #define SR04_GROUP \
 { \
 	SR04_FIXED, \
 	SR04_MOBLE, \
+	SR04_LEFT, \
+	SR04_RIGHT, \
 }
 
 #define SR04_IDX_FIXED 0
 #define SR04_IDX_MOBLE 1
+#define SR04_IDX_LEFT 2
+#define SR04_IDX_RIGHT 3
 
 #define SR04_NVIC_PRE_PRIORITY 1
 #define SR04_NVIC_SUB_PRIORITY 0

@@ -166,6 +166,8 @@ typedef struct
 	uint32_t frame_id;
 	uint16_t fixed;
 	uint16_t moble;
+	uint16_t left;
+	uint16_t right;
 }Sr04sMsg_t;
 
 #define KYLIN_MSG_VALUE_SCALE CBUS_VALUE_SCALE
