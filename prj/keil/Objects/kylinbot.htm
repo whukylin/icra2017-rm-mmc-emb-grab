@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\kylinbot.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\kylinbot.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Mon Apr 03 22:37:08 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue Apr 04 21:10:47 2017
 <BR><P>
 <H3>Maximum Stack Usage =        280 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1690,6 +1690,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Maf_Reset
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hci_Init
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Srs_Init
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pwr_Init
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cal_Init
 </UL>
@@ -1698,6 +1699,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetGrabberStateRef
 <LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetChassisStateRef
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cal_ProcGpe
+<LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sr04_Proc
 </UL>
 
 <P><STRONG><a name="[d5]"></a>Maf_Reset</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, maf.o(i.Maf_Reset))
@@ -2090,24 +2092,26 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[15e]"></a>Sr04_Proc</STRONG> (Thumb, 118 bytes, Stack size 16 bytes, srs.o(i.Sr04_Proc))
+<P><STRONG><a name="[15e]"></a>Sr04_Proc</STRONG> (Thumb, 156 bytes, Stack size 16 bytes, srs.o(i.Sr04_Proc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Sr04_Proc
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wdg_Feed
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Maf_Proc
 <LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Clk_GetUsTick
 </UL>
 <BR>[Called By]<UL><LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SR04Callback
 </UL>
 
-<P><STRONG><a name="[91]"></a>Srs_Init</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, srs.o(i.Srs_Init))
+<P><STRONG><a name="[91]"></a>Srs_Init</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, srs.o(i.Srs_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Srs_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
+<BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Maf_Init
+<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;App_Init
 </UL>
 
-<P><STRONG><a name="[164]"></a>Srs_Proc</STRONG> (Thumb, 264 bytes, Stack size 24 bytes, srs.o(i.Srs_Proc))
+<P><STRONG><a name="[164]"></a>Srs_Proc</STRONG> (Thumb, 300 bytes, Stack size 24 bytes, srs.o(i.Srs_Proc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Srs_Proc
 </UL>
 <BR>[Calls]<UL><LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Clk_GetUsTick
@@ -2612,7 +2616,7 @@ Global Symbols
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;App_Init
 </UL>
 
-<P><STRONG><a name="[188]"></a>Upl_Proc</STRONG> (Thumb, 276 bytes, Stack size 24 bytes, upl.o(i.Upl_Proc))
+<P><STRONG><a name="[188]"></a>Upl_Proc</STRONG> (Thumb, 280 bytes, Stack size 24 bytes, upl.o(i.Upl_Proc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = Upl_Proc &rArr; Upl_PushPosCalib &rArr; Msg_Push &rArr; FIFO_Push
 </UL>
 <BR>[Calls]<UL><LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Rcp_Enc

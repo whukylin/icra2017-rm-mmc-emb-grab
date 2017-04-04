@@ -99,7 +99,6 @@ static void Dnl_ProcCalibMsg(const CalibMsg_t* calibMsg)
 }
 */
 
-
 static void Dnl_ProcKylinMsg(const KylinMsg_t* kylinMsg)
 {
 	Wdg_Feed(WDG_IDX_KYLIN);

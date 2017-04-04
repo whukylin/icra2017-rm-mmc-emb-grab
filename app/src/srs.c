@@ -24,6 +24,7 @@ void Srs_Init(void)
 {
 	for (sri = 0; sri < SR04_NUM; sri++) {
 		memset(&srs[sri], 0, sizeof(Srs_t));
+		Maf_Init(&srs[sri].maf, srs[sri].buf, SR04_MAF_LEN);
 	}
 	sri = 0;
 }
@@ -80,10 +81,11 @@ void Sr04_Proc(uint8_t i, uint8_t trigger)
 		}
 		// Falling edge trigger -> end echo
 		else if (trigger == 0) {
+			srs[i].frame_cnt++;
 			srs[i].endEcho = Clk_GetUsTick();
 			srs[i].echo = srs[i].endEcho - srs[i].startEcho;
 			srs[i].mm = (uint16_t)(srs[i].echo * SR04_ECHO_RECIP);
-			srs[i].frame_cnt++;
+		  srs[i].mm_filtered = Maf_Proc(&srs[i].maf, srs[i].mm);
 			srs[i].state = SR04_STATE_IDLE;
 		}
 	}

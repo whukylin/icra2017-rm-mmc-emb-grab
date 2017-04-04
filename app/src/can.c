@@ -152,7 +152,7 @@ void Can_Zero(void)
 {
 	uint8_t i = 0;
 	for (; i < 4; i++) {
-		motor[i].frame_cnt = 0;
+		Motor_Reset(&motor[i]);
 	}
 }
 

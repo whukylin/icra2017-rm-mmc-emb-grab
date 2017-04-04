@@ -26,6 +26,7 @@ extern "C" {
 	
 #include "sr04.h"
 #include "clk.h"
+#include "maf.h"
 #include "wdg.h"
 
 #define SR04_ECHO_RECIP 0.172f // 344/2/1e3 , mm
@@ -33,7 +34,9 @@ extern "C" {
 #define SR04_TRIG_INTERVAL 2000  // us
 #define SR04_ECHO_PULSE_WIDTH_MAX 26162 // Range: 4500mm
 #define SR04_WAIT_ECHO_TIMEOUT SR04_ECHO_PULSE_WIDTH_MAX
-	
+
+#define SR04_MAF_LEN 6
+
 typedef enum
 {
 	SR04_STATE_IDLE = 0x00,
@@ -44,6 +47,8 @@ typedef enum
 
 typedef struct
 {
+	Maf_t maf;
+	float buf[SR04_MAF_LEN];
 	SR04State_t state;
 	uint32_t frame_cnt;
 	uint32_t startTrig;
@@ -52,6 +57,7 @@ typedef struct
 	uint32_t endEcho;
 	uint32_t echo;
 	uint16_t mm;
+	uint16_t mm_filtered;
 }Srs_t;
 
 void Srs_Init(void);

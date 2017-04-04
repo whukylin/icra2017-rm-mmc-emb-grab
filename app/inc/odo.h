@@ -45,6 +45,7 @@ typedef struct
 
 void Odo_Init(void);
 void Odo_Proc(void);
+void Odo_Zero(void);
 
 extern Odo_t odo;
 
