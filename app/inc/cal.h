@@ -33,7 +33,7 @@ extern "C" {
 
 #define CAL_GM_UP_DIR 1
 #define CAL_GM_DRV_CURRENT 5000
-#define CAL_GM_START_UP_DELAY 100
+#define CAL_GM_START_UP_DELAY 200
 #define CAL_GM_BANG_VEL_TH 5e-2f
 #define CAL_GM_MAF_BUF_LEN 3
 
