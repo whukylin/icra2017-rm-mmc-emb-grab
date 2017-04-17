@@ -35,8 +35,8 @@ extern "C" {
 
 #define CCI_DPT_TH 0.2f //0.5f // Chassis translation position difference threshold
 #define CCI_DPR_TH 0.1f //0.3f // Chassis rotation position difference threshold
-#define CCI_DPE_TH 0.2f //0.3f // Grabber elevator position difference threshold
-#define CCI_DPC_TH 0.1f //0.3f // Grabber claw position difference threshold
+#define CCI_DPE_TH 0.1f //0.3f // Grabber elevator position difference threshold
+#define CCI_DPC_TH 1e-6f //0.3f // Grabber claw position difference threshold
 	
 void Cci_Init(void);
 void Cci_Proc(const CBUS_t* cbus);

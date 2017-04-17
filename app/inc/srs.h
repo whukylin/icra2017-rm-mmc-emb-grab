@@ -35,7 +35,7 @@ extern "C" {
 #define SR04_ECHO_PULSE_WIDTH_MAX 26162 // Range: 4500mm
 #define SR04_WAIT_ECHO_TIMEOUT SR04_ECHO_PULSE_WIDTH_MAX
 
-#define SR04_MAF_LEN 6
+#define SR04_MAF_LEN 10
 
 typedef enum
 {

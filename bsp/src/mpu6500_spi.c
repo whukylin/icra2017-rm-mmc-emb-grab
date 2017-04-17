@@ -58,4 +58,3 @@ uint8_t MPU6500_SPI_Read_Reg(uint8_t reg, uint8_t* data)
   return 1;
 }
 
-
