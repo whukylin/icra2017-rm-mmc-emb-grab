@@ -651,9 +651,13 @@ void SPI_Bind(GPIO nssPin, GPIO sckPin, GPIO misoPin, GPIO mosiPin, SPI_TypeDef*
 
 uint8_t SPI_TxRxByte(SPI_TypeDef* spix, uint8_t txData, uint8_t* rxData, uint32_t timeout)
 {
-	SPI_SendData(spix, txData);
+	spix->DR = txData;
 	while (!(spix->SR & SPI_SR_RXNE)) {
-		if (--timeout < 1) return 0;
+		if (timeout == 0) {
+			return 0;
+		} else {
+			timeout--;
+		}
 	}
 	*rxData = spix->DR;
 	return 1;

@@ -36,6 +36,7 @@ static void SR04_IRQHandler(uint8_t num)
 				trigger = 0;
 			}
 			SR04Callback(i, trigger);
+			break; // Jump out
 		}
 	}
 }

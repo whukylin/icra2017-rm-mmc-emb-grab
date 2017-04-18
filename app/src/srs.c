@@ -37,7 +37,6 @@ void Srs_Proc(void)
 		if (srs[sri].state == SR04_STATE_IDLE) {
 			uint32_t interval = Clk_GetUsTick() - srs[sri].endEcho;
 			if (interval > SR04_TRIG_TUS) {
-				
 				GPIO_RST(sr04[i].trigPin);
 				GPIO_SET(sr04[i].trigPin);
 				srs[sri].startTrig = Clk_GetUsTick();

@@ -18,7 +18,7 @@
 
 void MPU6500_Config(void)
 {
-	while(!MPU6500_Init());
+	//while(!MPU6500_Init());
 	//MPU6500_INT_Config();
 	//MPU6500_INT_Enable();
 }

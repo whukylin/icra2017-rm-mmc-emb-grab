@@ -16,7 +16,7 @@
  
 #include "main.h"
 
-uint32_t frame_cnt = 0;
+//uint32_t frame_cnt = 0;
 
 int main()
 {
@@ -37,5 +37,18 @@ int main()
 		if (Clk_GetUsTick() % 2000 == 0) {
 			Upl_Proc();
 		}
+		/*
+		if (Clk_GetUsTick() % 5000 == 0) {
+			uint8_t data = 0;
+			uint8_t flag = MPU6500_SPI_Read_Reg(MPU6500_WHO_AM_I, &data);
+			if (flag) {
+				LED_GREEN_ON();
+			} else {
+				LED_GREEN_OFF();
+			}
+			printf("flag=%x, data=%x\n", flag, data);
+			
+		}
+		*/
   }
 }

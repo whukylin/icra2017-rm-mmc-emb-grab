@@ -18,7 +18,8 @@
 
 void Spi5_Config(void)
 {
-	SPI_Bind(SPI5_NSS_PIN,
+	GPIO_Out(SPI5_NSS_PIN);
+	SPI_Bind(0,
 	         SPI5_SCK_PIN,
 	         SPI5_MISO_PIN,
 	         SPI5_MOSI_PIN,
