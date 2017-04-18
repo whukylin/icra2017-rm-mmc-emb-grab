@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\kylinbot.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\kylinbot.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue Apr 18 14:53:05 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue Apr 18 22:25:58 2017
 <BR><P>
 <H3>Maximum Stack Usage =        280 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -762,7 +762,6 @@ Global Symbols
 <P><STRONG><a name="[10e]"></a>Cal_IsDone</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, cal.o(i.Cal_IsDone))
 <BR><BR>[Called By]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Dci_Proc
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wsm_Proc
-<LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Upl_PushKylinMsg
 </UL>
 
 <P><STRONG><a name="[18b]"></a>Cal_Proc</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, cal.o(i.Cal_Proc))
@@ -1407,12 +1406,10 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = Flag_Cpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FS_Cpy
-<LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Upl_PushKylinMsg
 </UL>
 
 <P><STRONG><a name="[12a]"></a>Flag_Det</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, fun.o(i.Flag_Det))
 <BR><BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ini_Proc
-<LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Upl_PushKylinMsg
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FS_Det
 </UL>
 
@@ -1672,7 +1669,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a5]"></a>Key_Config</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, key.o(i.Key_Config))
+<P><STRONG><a name="[a5]"></a>Key_Config</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, key.o(i.Key_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = Key_Config &rArr; GPIO_In &rArr; GPIO_Config &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_In
@@ -1830,7 +1827,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[152]"></a>Odo_Proc</STRONG> (Thumb, 268 bytes, Stack size 24 bytes, odo.o(i.Odo_Proc))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Odo_Proc &rArr; GetFunctionalStateFdb
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = Odo_Proc &rArr; GetFunctionalStateFdb
 </UL>
 <BR>[Calls]<UL><LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Mec_Synthe
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;map
@@ -2822,7 +2819,7 @@ Local Symbols
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cal_ProcGpe
 </UL>
 
-<P><STRONG><a name="[cf]"></a>Cal_ProcGpe</STRONG> (Thumb, 202 bytes, Stack size 24 bytes, cal.o(i.Cal_ProcGpe), UNUSED)
+<P><STRONG><a name="[cf]"></a>Cal_ProcGpe</STRONG> (Thumb, 204 bytes, Stack size 24 bytes, cal.o(i.Cal_ProcGpe), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Maf_Proc
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 <LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cal_SetGpel
@@ -2939,8 +2936,8 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hci_Proc
 </UL>
 
-<P><STRONG><a name="[138]"></a>GetFunctionalStateFdb</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, odo.o(i.GetFunctionalStateFdb))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = GetFunctionalStateFdb
+<P><STRONG><a name="[138]"></a>GetFunctionalStateFdb</STRONG> (Thumb, 160 bytes, Stack size 16 bytes, odo.o(i.GetFunctionalStateFdb))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = GetFunctionalStateFdb
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadOutputDataBit
@@ -2966,13 +2963,10 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Rci_Proc
 </UL>
 
-<P><STRONG><a name="[18f]"></a>Upl_PushKylinMsg</STRONG> (Thumb, 246 bytes, Stack size 16 bytes, upl.o(i.Upl_PushKylinMsg))
-<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = Upl_PushKylinMsg &rArr; Msg_Push &rArr; FIFO_Push
+<P><STRONG><a name="[18f]"></a>Upl_PushKylinMsg</STRONG> (Thumb, 212 bytes, Stack size 0 bytes, upl.o(i.Upl_PushKylinMsg))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Upl_PushKylinMsg &rArr; Msg_Push &rArr; FIFO_Push
 </UL>
-<BR>[Calls]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Flag_Det
-<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cal_IsDone
-<LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Msg_Push
-<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Flag_Cpy
+<BR>[Calls]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Msg_Push
 </UL>
 <BR>[Called By]<UL><LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Upl_Proc
 </UL>

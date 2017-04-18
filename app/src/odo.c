@@ -26,6 +26,8 @@ static void GetFunctionalStateFdb(void)
 {
 	FS_Det(&odo.fs, FS_KEY_H, KEY_H_IS_PRESSED());
 	FS_Det(&odo.fs, FS_KEY_L, KEY_L_IS_PRESSED());
+	FS_Det(&odo.fs, FS_KEY_M, KEY_M_IS_PRESSED());
+	FS_Det(&odo.fs, FS_KEY_N, KEY_N_IS_PRESSED());
 	FS_Det(&odo.fs, FS_LED_RED, LED_RED_IS_ON());
 	FS_Det(&odo.fs, FS_LED_GREEN, LED_GREEN_IS_ON());
 }
