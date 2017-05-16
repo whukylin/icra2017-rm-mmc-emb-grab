@@ -40,7 +40,7 @@ void Act_Init(void)
 {
 	CM_CMD(0, 0, 0, 0);
 	GM_CMD(0, 0);
-	GP_CMD(0);
+	//GP_CMD(0);
 }
 
 void Act_Proc(void)

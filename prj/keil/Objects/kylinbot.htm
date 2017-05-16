@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\kylinbot.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\kylinbot.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue Apr 18 22:25:58 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue May 16 20:12:51 2017
 <BR><P>
 <H3>Maximum Stack Usage =        280 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -456,7 +456,7 @@ Global Symbols
 
 <P><STRONG><a name="[1a7]"></a>__decompress1</STRONG> (Thumb, 86 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
 
-<P><STRONG><a name="[7e]"></a>Act_Init</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, act.o(i.Act_Init))
+<P><STRONG><a name="[7e]"></a>Act_Init</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, act.o(i.Act_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = Act_Init &rArr; GM_Cmd &rArr; CAN_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GM_Cmd
@@ -466,7 +466,7 @@ Global Symbols
 <LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KOS_Boot
 </UL>
 
-<P><STRONG><a name="[81]"></a>Act_Proc</STRONG> (Thumb, 122 bytes, Stack size 16 bytes, act.o(i.Act_Proc))
+<P><STRONG><a name="[81]"></a>Act_Proc</STRONG> (Thumb, 160 bytes, Stack size 16 bytes, act.o(i.Act_Proc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = Act_Proc &rArr; GM_Cmd &rArr; CAN_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GM_Cmd
@@ -1406,6 +1406,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = Flag_Cpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FS_Cpy
+<LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Upl_PushKylinMsg
 </UL>
 
 <P><STRONG><a name="[12a]"></a>Flag_Det</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, fun.o(i.Flag_Det))
@@ -1870,7 +1871,7 @@ Global Symbols
 <P><STRONG><a name="[9]"></a>PendSV_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.PendSV_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f427xx.o(RESET)
 </UL>
-<P><STRONG><a name="[a7]"></a>Pwm_Config</STRONG> (Thumb, 66 bytes, Stack size 24 bytes, pwm.o(i.Pwm_Config))
+<P><STRONG><a name="[a7]"></a>Pwm_Config</STRONG> (Thumb, 82 bytes, Stack size 24 bytes, pwm.o(i.Pwm_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 172<LI>Call Chain = Pwm_Config &rArr; PWM_Bind &rArr; GPIO_Af &rArr; GPIO_Config &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
@@ -2963,10 +2964,11 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Rci_Proc
 </UL>
 
-<P><STRONG><a name="[18f]"></a>Upl_PushKylinMsg</STRONG> (Thumb, 212 bytes, Stack size 0 bytes, upl.o(i.Upl_PushKylinMsg))
-<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Upl_PushKylinMsg &rArr; Msg_Push &rArr; FIFO_Push
+<P><STRONG><a name="[18f]"></a>Upl_PushKylinMsg</STRONG> (Thumb, 232 bytes, Stack size 16 bytes, upl.o(i.Upl_PushKylinMsg))
+<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = Upl_PushKylinMsg &rArr; Msg_Push &rArr; FIFO_Push
 </UL>
 <BR>[Calls]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Msg_Push
+<LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Flag_Cpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Upl_Proc
 </UL>
