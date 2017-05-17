@@ -41,6 +41,7 @@ void Act_Init(void)
 	CM_CMD(0, 0, 0, 0);
 	GM_CMD(0, 0);
 	//GP_CMD(0);
+	CLAW_PWM_1 = CLAW_PWM_2 = CLAW_PWM_3 = CLAW_PWM_4 = 0;
 }
 
 void Act_Proc(void)

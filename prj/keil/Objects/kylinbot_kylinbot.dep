@@ -287,7 +287,7 @@ F (..\..\app\inc\upd.h)(0x58F0CF7F)()
 F (..\..\app\inc\upl.h)(0x58F0CF7F)()
 F (..\..\app\inc\wdg.h)(0x58F0CF7F)()
 F (..\..\app\inc\wsm.h)(0x58F0CF7F)()
-F (..\..\app\src\act.c)(0x591AECC0)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\..\stl\CMSIS\core -I ..\..\stl\CMSIS\device -I ..\..\stl\StdPeriph_Driver\inc -I ..\..\stl\inc -I ..\..\bsp\inc -I ..\..\srv\inc -I ..\..\asp\inc -I ..\..\app\inc -I ..\..\usr\inc -I ..\..\kos\inc -I ..\..\drv\inc -I ..\..\stl\inc -I ..\..\hal\inc --C99-I.\RTE\_kylinbot-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="523" -DSTM32F427xx -DUSE_STDPERIPH_DRIVER -DSTM32F427X -DSTM32F427xx --C99-o .\objects\act.o --omf_browse .\objects\act.crf --depend .\objects\act.d)
+F (..\..\app\src\act.c)(0x591C5B6A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ..\..\stl\CMSIS\core -I ..\..\stl\CMSIS\device -I ..\..\stl\StdPeriph_Driver\inc -I ..\..\stl\inc -I ..\..\bsp\inc -I ..\..\srv\inc -I ..\..\asp\inc -I ..\..\app\inc -I ..\..\usr\inc -I ..\..\kos\inc -I ..\..\drv\inc -I ..\..\stl\inc -I ..\..\hal\inc --C99-I.\RTE\_kylinbot-I"D:\Program Files (x86)\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-I"D:\Program Files (x86)\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="523" -DSTM32F427xx -DUSE_STDPERIPH_DRIVER -DSTM32F427X -DSTM32F427xx --C99-o .\objects\act.o --omf_browse .\objects\act.crf --depend .\objects\act.d)
 I (..\..\app\inc\act.h)(0x58F0CF7F)
 I (..\..\bsp\inc\bsp.h)(0x58F0CF80)
 I (..\..\bsp\inc\beep.h)(0x58F0CF80)
