@@ -30,6 +30,10 @@ static void GetFunctionalStateFdb(void)
 	FS_Det(&odo.fs, FS_KEY_N, KEY_N_IS_PRESSED());
 	FS_Det(&odo.fs, FS_LED_RED, LED_RED_IS_ON());
 	FS_Det(&odo.fs, FS_LED_GREEN, LED_GREEN_IS_ON());
+	FS_Det(&odo.fs, FS_SONAR_F, srs[SR04_IDX_FIXED].state != SR04_STATE_STOP);
+	FS_Det(&odo.fs, FS_SONAR_M, srs[SR04_IDX_MOBLE].state != SR04_STATE_STOP);
+	FS_Det(&odo.fs, FS_SONAR_L, srs[SR04_IDX_LEFT].state != SR04_STATE_STOP);
+	FS_Det(&odo.fs, FS_SONAR_R, srs[SR04_IDX_RIGHT].state != SR04_STATE_STOP);
 }
 
 static void GetMecanumPositionFdb(void)

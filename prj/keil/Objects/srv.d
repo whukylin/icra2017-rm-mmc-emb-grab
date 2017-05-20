@@ -75,6 +75,8 @@
 .\objects\srv.o: ..\..\app\inc\cfg.h
 .\objects\srv.o: ..\..\app\inc\fos.h
 .\objects\srv.o: ..\..\asp\inc\mecanum.h
+.\objects\srv.o: ..\..\app\inc\srs.h
+.\objects\srv.o: ..\..\app\inc\clk.h
 .\objects\srv.o: ..\..\asp\inc\maf.h
 .\objects\srv.o: ..\..\app\inc\cmd.h
 .\objects\srv.o: ..\..\app\inc\dci.h
@@ -82,8 +84,6 @@
 .\objects\srv.o: ..\..\asp\inc\rcf.h
 .\objects\srv.o: ..\..\app\inc\hci.h
 .\objects\srv.o: ..\..\asp\inc\hcf.h
-.\objects\srv.o: ..\..\app\inc\srs.h
-.\objects\srv.o: ..\..\app\inc\clk.h
 .\objects\srv.o: ..\..\app\inc\ini.h
 .\objects\srv.o: ..\..\app\inc\wsm.h
 .\objects\srv.o: ..\..\app\inc\pwr.h

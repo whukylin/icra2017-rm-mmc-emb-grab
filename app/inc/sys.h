@@ -36,8 +36,12 @@ typedef uint32_t PeriphsState_t; // Peripherals state flag bits
 #define FS_KEY_N        (((uint32_t)1u)<<3)
 #define FS_LED_RED      (((uint32_t)1u)<<4)
 #define FS_LED_GREEN    (((uint32_t)1u)<<5)
+#define FS_SONAR_F      (((uint32_t)1u)<<6)
+#define FS_SONAR_M      (((uint32_t)1u)<<7)
+#define FS_SONAR_L      (((uint32_t)1u)<<8)
+#define FS_SONAR_R      (((uint32_t)1u)<<9)
 
-#define FS_ALL      		(FS_KEY_H|FS_KEY_L|FS_KEY_M|FS_LED_RED|FS_LED_GREEN)
+#define FS_ALL      		(FS_KEY_H|FS_KEY_L|FS_KEY_M|FS_LED_RED|FS_LED_GREEN|FS_SONAR_F|FS_SONAR_M|FS_SONAR_L|FS_SONAR_R)
 #define FS_NON       		((uint32_t)0)
 
 typedef struct

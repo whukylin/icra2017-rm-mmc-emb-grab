@@ -24,7 +24,10 @@ static Rcf_t rcf;
 
 static void GetPeriphsStateRef(const Rcp_t* rcp)
 {
-	
+	FS_Set(&cmd.fs, FS_SONAR_F);
+	FS_Set(&cmd.fs, FS_SONAR_M);
+	FS_Set(&cmd.fs, FS_SONAR_L);
+	FS_Set(&cmd.fs, FS_SONAR_R);
 }
 
 static void GetChassisStateRef(const Rcp_t* rcp)

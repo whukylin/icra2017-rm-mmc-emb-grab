@@ -35,8 +35,8 @@ static void Upl_PushKylinMsg(void)
 {
 	kylinMsg.frame_id++;
 	kylinMsg.cbus.fs = odo.fs;
-	//Flag_Det(&kylinMsg.cbus.fs, MYLIN_MSG_FLAG_BIT_INI, Cal_IsDone());
-	Flag_Cpy(&kylinMsg.cbus.fs, Wdg_GetErr() << WDG_NUM, 0xffffff00);
+	Flag_Cpy(&kylinMsg.cbus.fs, odo.fs, 0x000003ff);
+	Flag_Cpy(&kylinMsg.cbus.fs, Wdg_GetErr() << (32 - WDG_NUM), 0xfffffc00);
 	kylinMsg.cbus.cv.x = odo.cv.x * KYLIN_MSG_VALUE_SCALE;
 	kylinMsg.cbus.cv.y = odo.cv.y * KYLIN_MSG_VALUE_SCALE;
 	kylinMsg.cbus.cv.z = odo.cv.z * KYLIN_MSG_VALUE_SCALE;

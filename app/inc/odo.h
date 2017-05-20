@@ -29,6 +29,7 @@ extern "C" {
 #include "bsp.h"
 #include "can.h"
 #include "mec.h"
+#include "srs.h"
 
 typedef struct
 {

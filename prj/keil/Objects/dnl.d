@@ -73,6 +73,8 @@
 .\objects\dnl.o: ..\..\app\inc\cfg.h
 .\objects\dnl.o: ..\..\app\inc\fos.h
 .\objects\dnl.o: ..\..\asp\inc\mecanum.h
+.\objects\dnl.o: ..\..\app\inc\srs.h
+.\objects\dnl.o: ..\..\app\inc\clk.h
 .\objects\dnl.o: ..\..\asp\inc\maf.h
 .\objects\dnl.o: ..\..\app\inc\dci.h
 .\objects\dnl.o: ..\..\app\inc\rci.h
@@ -88,5 +90,3 @@
 .\objects\dnl.o: ..\..\app\inc\ini.h
 .\objects\dnl.o: ..\..\app\inc\pwr.h
 .\objects\dnl.o: ..\..\app\inc\upl.h
-.\objects\dnl.o: ..\..\app\inc\srs.h
-.\objects\dnl.o: ..\..\app\inc\clk.h

@@ -28,6 +28,10 @@ static float buf[MAF_NUM][HCI_KEY_CTL_MAF_LEN];
 
 static void GetPeriphsStateRef(const Hcp_t* hcp)
 {
+	FS_Set(&cmd.fs, FS_SONAR_F);
+	FS_Set(&cmd.fs, FS_SONAR_M);
+	FS_Set(&cmd.fs, FS_SONAR_L);
+	FS_Set(&cmd.fs, FS_SONAR_R);
 }
 
 static void GetChassisStateRef(const Hcp_t* hcp)

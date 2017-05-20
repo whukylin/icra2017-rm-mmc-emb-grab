@@ -71,6 +71,8 @@
 .\objects\upl.o: ..\..\app\inc\cfg.h
 .\objects\upl.o: ..\..\app\inc\fos.h
 .\objects\upl.o: ..\..\asp\inc\mecanum.h
+.\objects\upl.o: ..\..\app\inc\srs.h
+.\objects\upl.o: ..\..\app\inc\clk.h
 .\objects\upl.o: ..\..\asp\inc\maf.h
 .\objects\upl.o: ..\..\app\inc\cmd.h
 .\objects\upl.o: ..\..\app\inc\dci.h
@@ -78,8 +80,6 @@
 .\objects\upl.o: ..\..\asp\inc\rcf.h
 .\objects\upl.o: ..\..\app\inc\hci.h
 .\objects\upl.o: ..\..\asp\inc\hcf.h
-.\objects\upl.o: ..\..\app\inc\srs.h
-.\objects\upl.o: ..\..\app\inc\clk.h
 .\objects\upl.o: ..\..\app\inc\ini.h
 .\objects\upl.o: ..\..\app\inc\wsm.h
 .\objects\upl.o: ..\..\app\inc\pwr.h

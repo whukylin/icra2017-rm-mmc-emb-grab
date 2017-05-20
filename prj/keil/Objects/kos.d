@@ -93,12 +93,12 @@
 .\objects\kos.o: ..\..\app\inc\mec.h
 .\objects\kos.o: ..\..\app\inc\cfg.h
 .\objects\kos.o: ..\..\app\inc\fos.h
+.\objects\kos.o: ..\..\app\inc\srs.h
+.\objects\kos.o: ..\..\app\inc\clk.h
 .\objects\kos.o: ..\..\app\inc\cmd.h
 .\objects\kos.o: ..\..\app\inc\dci.h
 .\objects\kos.o: ..\..\app\inc\rci.h
 .\objects\kos.o: ..\..\app\inc\hci.h
-.\objects\kos.o: ..\..\app\inc\srs.h
-.\objects\kos.o: ..\..\app\inc\clk.h
 .\objects\kos.o: ..\..\app\inc\ini.h
 .\objects\kos.o: ..\..\app\inc\wsm.h
 .\objects\kos.o: ..\..\app\inc\pwr.h

@@ -69,6 +69,8 @@
 .\objects\upd.o: ..\..\asp\inc\calib.h
 .\objects\upd.o: ..\..\app\inc\fos.h
 .\objects\upd.o: ..\..\asp\inc\mecanum.h
+.\objects\upd.o: ..\..\app\inc\srs.h
+.\objects\upd.o: ..\..\app\inc\clk.h
 .\objects\upd.o: ..\..\app\inc\ctl.h
 .\objects\upd.o: ..\..\app\inc\cmd.h
 .\objects\upd.o: ..\..\asp\inc\pid.h

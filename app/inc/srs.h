@@ -35,7 +35,7 @@ extern "C" {
 #define SR04_ECHO_PULSE_WIDTH_MAX 26162 // Range: 4500mm
 #define SR04_WAIT_ECHO_TIMEOUT SR04_ECHO_PULSE_WIDTH_MAX
 
-#define SR04_MAF_LEN 10
+#define SR04_MAF_LEN 7
 
 typedef enum
 {
@@ -43,6 +43,7 @@ typedef enum
 	SR04_STATE_TRIG = 0x01,
 	SR04_STATE_WAIT = 0x02,
 	SR04_STATE_ECHO = 0x03,
+	SR04_STATE_STOP = 0x04,
 }SR04State_t;
 
 typedef struct
@@ -59,6 +60,9 @@ typedef struct
 	uint16_t mm;
 	uint16_t mm_filtered;
 }Srs_t;
+
+void Srs_Start(uint32_t i);
+void Srs_Stop(uint32_t i);
 
 void Srs_Init(void);
 void Srs_Proc(void);

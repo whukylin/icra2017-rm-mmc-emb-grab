@@ -59,3 +59,6 @@
 .\objects\odo.o: ..\..\app\inc\fos.h
 .\objects\odo.o: ..\..\drv\inc\flash.h
 .\objects\odo.o: ..\..\asp\inc\mecanum.h
+.\objects\odo.o: ..\..\app\inc\srs.h
+.\objects\odo.o: ..\..\app\inc\clk.h
+.\objects\odo.o: ..\..\asp\inc\maf.h

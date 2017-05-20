@@ -20,9 +20,20 @@
 /*             Action             */
 /**********************************/
 
+#define SRS_ACT(FS,ID) do { \
+	if (FS_Get(&ctl.fs, FS) && srs[ID].state == SR04_STATE_STOP) { \
+		Srs_Start(ID); \
+	} else if ((!FS_Get(&ctl.fs, FS)) && srs[ID].state != SR04_STATE_STOP) { \
+		Srs_Stop(ID); \
+	} \
+} while (0)
+		
 static void PeriphsStateAct(void)
 {
-	
+	SRS_ACT(FS_SONAR_F,SR04_IDX_FIXED);
+	SRS_ACT(FS_SONAR_M,SR04_IDX_MOBLE);
+	SRS_ACT(FS_SONAR_L,SR04_IDX_LEFT);
+	SRS_ACT(FS_SONAR_R,SR04_IDX_RIGHT);
 }
 
 static void ChassisStateAct(void)

@@ -68,3 +68,5 @@
 .\objects\wsm.o: ..\..\asp\inc\calib.h
 .\objects\wsm.o: ..\..\app\inc\fos.h
 .\objects\wsm.o: ..\..\asp\inc\mecanum.h
+.\objects\wsm.o: ..\..\app\inc\srs.h
+.\objects\wsm.o: ..\..\app\inc\clk.h

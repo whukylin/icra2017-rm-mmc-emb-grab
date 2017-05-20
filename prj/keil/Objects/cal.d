@@ -64,5 +64,7 @@
 .\objects\cal.o: ..\..\asp\inc\calib.h
 .\objects\cal.o: ..\..\app\inc\fos.h
 .\objects\cal.o: ..\..\asp\inc\mecanum.h
+.\objects\cal.o: ..\..\app\inc\srs.h
+.\objects\cal.o: ..\..\app\inc\clk.h
 .\objects\cal.o: ..\..\asp\inc\maf.h
 .\objects\cal.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

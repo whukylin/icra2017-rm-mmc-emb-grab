@@ -71,9 +71,9 @@ void Flag_Cpy(Flag_t* flag, Flag_t src, Flag_t mask)
 	uint8_t n = sizeof(Flag_t) * 8;
 	uint8_t i = 0;
 	Flag_t tmp = 0;
-	for (; i < n; i++) {
+	for (i = 0; i < n; i++) {
 		tmp =  (((uint32_t)0x01) << i) & mask;
-		if (Flag_Get(flag, tmp)) {
+		if (Flag_Get(&src, tmp)) {
 			Flag_Set(flag, tmp);
 		} else {
 			Flag_Clr(flag, tmp);

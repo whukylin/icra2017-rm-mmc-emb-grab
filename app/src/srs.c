@@ -16,48 +16,73 @@
  
 #include "srs.h"
 
-static uint32_t sri = 0;
-
 Srs_t srs[SR04_NUM];
+
+void Srs_Start(uint32_t i)
+{
+	memset(&srs[i], 0, sizeof(Srs_t));
+	Maf_Init(&srs[i].maf, srs[i].buf, SR04_MAF_LEN);
+	srs[i].state = SR04_STATE_IDLE;
+}
+
+void Srs_Stop(uint32_t i)
+{
+	srs[i].state = SR04_STATE_STOP;
+}
 
 void Srs_Init(void)
 {
-	for (sri = 0; sri < SR04_NUM; sri++) {
-		memset(&srs[sri], 0, sizeof(Srs_t));
-		Maf_Init(&srs[sri].maf, srs[sri].buf, SR04_MAF_LEN);
+	uint32_t i = 0;
+	for (i = 0; i < SR04_NUM; i++) {
+		Srs_Start(i);
 	}
-	sri = 0;
 }
 
 void Srs_Proc(void)
 {
+	uint32_t interval = 0;
 	uint8_t i = 0;
 	for (; i < SR04_NUM; i++) {
-		// Idle
-		if (srs[sri].state == SR04_STATE_IDLE) {
-			uint32_t interval = Clk_GetUsTick() - srs[sri].endEcho;
-			if (interval > SR04_TRIG_TUS) {
-				GPIO_RST(sr04[i].trigPin);
-				GPIO_SET(sr04[i].trigPin);
-				srs[sri].startTrig = Clk_GetUsTick();
-				srs[sri].state = SR04_STATE_TRIG;
-			}
-		}
-		else if (srs[sri].state == SR04_STATE_TRIG) {
-			uint32_t interval = Clk_GetUsTick() - srs[sri].startTrig;
-			if (interval > SR04_TRIG_PULSE_WIDTH) {
-				GPIO_RST(sr04[i].trigPin);
-				srs[sri].endTrig = Clk_GetUsTick();
-				srs[sri].state = SR04_STATE_WAIT;
-			}
-		}
-		else if (srs[sri].state == SR04_STATE_WAIT) {
-			uint32_t interval = Clk_GetUsTick() - srs[sri].endTrig;
-			if (interval > SR04_WAIT_ECHO_TIMEOUT) {
-				GPIO_RST(sr04[i].trigPin);
-				GPIO_SET(sr04[i].trigPin);
-				srs[sri].startTrig = Clk_GetUsTick();
-			}
+		switch (srs[i].state) {
+			case SR04_STATE_IDLE:
+				interval = Clk_GetUsTick() - srs[i].endEcho;
+				if (interval > SR04_TRIG_TUS) {
+					GPIO_RST(sr04[i].trigPin);
+					GPIO_SET(sr04[i].trigPin);
+					srs[i].startTrig = Clk_GetUsTick();
+					srs[i].state = SR04_STATE_TRIG;
+				}
+				break;
+			case SR04_STATE_TRIG:
+				interval = Clk_GetUsTick() - srs[i].startTrig;
+				if (interval > SR04_TRIG_PULSE_WIDTH) {
+					GPIO_RST(sr04[i].trigPin);
+					srs[i].endTrig = Clk_GetUsTick();
+					srs[i].state = SR04_STATE_WAIT;
+				}
+				break;
+			case SR04_STATE_WAIT:
+				interval = Clk_GetUsTick() - srs[i].endTrig;
+				if (interval > SR04_WAIT_ECHO_TIMEOUT) {
+					GPIO_RST(sr04[i].trigPin);
+					GPIO_SET(sr04[i].trigPin);
+					srs[i].startTrig = Clk_GetUsTick();
+					srs[i].state = SR04_STATE_TRIG;
+				}
+				break;
+			case SR04_STATE_ECHO:
+				interval = Clk_GetUsTick() - srs[i].startEcho;
+				if (interval > SR04_WAIT_ECHO_TIMEOUT) {
+					GPIO_RST(sr04[i].trigPin);
+					GPIO_SET(sr04[i].trigPin);
+					srs[i].startTrig = Clk_GetUsTick();
+					srs[i].state = SR04_STATE_TRIG;
+				}
+				break;
+			case SR04_STATE_STOP:
+				break;
+			default:
+				break;
 		}
 	}
 }

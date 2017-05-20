@@ -94,12 +94,12 @@
 .\objects\main.o: ..\..\app\inc\mec.h
 .\objects\main.o: ..\..\app\inc\cfg.h
 .\objects\main.o: ..\..\app\inc\fos.h
+.\objects\main.o: ..\..\app\inc\srs.h
+.\objects\main.o: ..\..\app\inc\clk.h
 .\objects\main.o: ..\..\app\inc\cmd.h
 .\objects\main.o: ..\..\app\inc\dci.h
 .\objects\main.o: ..\..\app\inc\rci.h
 .\objects\main.o: ..\..\app\inc\hci.h
-.\objects\main.o: ..\..\app\inc\srs.h
-.\objects\main.o: ..\..\app\inc\clk.h
 .\objects\main.o: ..\..\app\inc\ini.h
 .\objects\main.o: ..\..\app\inc\wsm.h
 .\objects\main.o: ..\..\app\inc\pwr.h
