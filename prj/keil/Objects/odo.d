@@ -62,3 +62,4 @@
 .\objects\odo.o: ..\..\app\inc\srs.h
 .\objects\odo.o: ..\..\app\inc\clk.h
 .\objects\odo.o: ..\..\asp\inc\maf.h
+.\objects\odo.o: ..\..\asp\inc\med.h

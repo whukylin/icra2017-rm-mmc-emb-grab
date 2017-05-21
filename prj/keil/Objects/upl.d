@@ -74,6 +74,7 @@
 .\objects\upl.o: ..\..\app\inc\srs.h
 .\objects\upl.o: ..\..\app\inc\clk.h
 .\objects\upl.o: ..\..\asp\inc\maf.h
+.\objects\upl.o: ..\..\asp\inc\med.h
 .\objects\upl.o: ..\..\app\inc\cmd.h
 .\objects\upl.o: ..\..\app\inc\dci.h
 .\objects\upl.o: ..\..\app\inc\rci.h

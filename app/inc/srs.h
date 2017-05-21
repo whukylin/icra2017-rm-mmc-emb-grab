@@ -27,15 +27,16 @@ extern "C" {
 #include "sr04.h"
 #include "clk.h"
 #include "maf.h"
+#include "med.h"
 #include "wdg.h"
 
-#define SR04_TRIG_TUS 60000  // us
+#define SR04_TRIG_TUS 8000  // us
 #define SR04_ECHO_RECIP 0.172f // 344/2/1e3 , mm
 #define SR04_TRIG_PULSE_WIDTH 10 // > 10us
 #define SR04_WAIT_ECHO_TIMEOUT 1000
-#define SR04_ECHO_PULSE_WIDTH_MAX 26471 // 26471 // Range: 4500mm
+#define SR04_ECHO_PULSE_WIDTH_MAX 26500 // 26471 // Range: 4500mm
 
-#define SR04_MAF_LEN 10
+#define SR04_MAF_LEN 3
 
 typedef enum
 {
@@ -48,6 +49,7 @@ typedef enum
 
 typedef struct
 {
+	Med_t med;
 	Maf_t maf;
 	float buf[SR04_MAF_LEN];
 	SR04State_t state;

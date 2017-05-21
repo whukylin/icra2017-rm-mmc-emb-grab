@@ -76,3 +76,4 @@
 .\objects\dci.o: ..\..\asp\inc\ekf.h
 .\objects\dci.o: ..\..\app\inc\srs.h
 .\objects\dci.o: ..\..\app\inc\clk.h
+.\objects\dci.o: ..\..\asp\inc\med.h

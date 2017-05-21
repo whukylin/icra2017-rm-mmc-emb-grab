@@ -69,5 +69,6 @@
 .\objects\act.o: ..\..\app\inc\srs.h
 .\objects\act.o: ..\..\app\inc\clk.h
 .\objects\act.o: ..\..\asp\inc\maf.h
+.\objects\act.o: ..\..\asp\inc\med.h
 .\objects\act.o: ..\..\asp\inc\pid.h
 .\objects\act.o: ..\..\asp\inc\rmp.h

@@ -23,6 +23,7 @@ static uint32_t id = 0;
 void Srs_Start(uint32_t i)
 {
 	memset(&srs[i], 0, sizeof(Srs_t));
+	Med_Init(&srs[i].med);
 	Maf_Init(&srs[i].maf, srs[i].buf, SR04_MAF_LEN);
 	srs[i].state = SR04_STATE_IDLE;
 }
@@ -56,8 +57,6 @@ void Srs_Func(uint32_t i)
 			interval = Clk_GetUsTick() - srs[i].endEcho;
 			if (interval > SR04_TRIG_TUS) {
 				Srs_Trig(i);
-			} else if (++id >= SR04_NUM) {
-				id = 0;
 			}
 			break;
 		case SR04_STATE_TRIG:
@@ -89,6 +88,14 @@ void Srs_Func(uint32_t i)
 
 void Srs_Proc(void)
 {
+	// Check if current sonar module is idle
+	if (srs[id].state == SR04_STATE_IDLE) {
+		// Wait for silence
+		uint32_t interval = Clk_GetUsTick() - srs[id].endEcho;
+		if (interval > SR04_TRIG_TUS) {
+			if (++id >= SR04_NUM) id = 0;
+		}
+	}
 	Srs_Func(id);
 }
 
@@ -107,7 +114,8 @@ void Srs_Fall(uint32_t i)
 		srs[i].endEcho = Clk_GetUsTick();
 		srs[i].echo = srs[i].endEcho - srs[i].startEcho;
 		srs[i].mm = (uint16_t)(srs[i].echo * SR04_ECHO_RECIP);
-		srs[i].mm_filtered = Maf_Proc(&srs[i].maf, srs[i].mm);
+		Med_Proc(&srs[i].med, srs[i].mm);
+		srs[i].mm_filtered = Maf_Proc(&srs[i].maf, srs[i].med.val);
 		srs[i].state = SR04_STATE_IDLE;
 	}
 }

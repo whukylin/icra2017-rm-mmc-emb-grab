@@ -76,6 +76,7 @@
 .\objects\com_srv.o: ..\..\app\inc\srs.h
 .\objects\com_srv.o: ..\..\app\inc\clk.h
 .\objects\com_srv.o: ..\..\asp\inc\maf.h
+.\objects\com_srv.o: ..\..\asp\inc\med.h
 .\objects\com_srv.o: ..\..\app\inc\cmd.h
 .\objects\com_srv.o: ..\..\app\inc\dci.h
 .\objects\com_srv.o: ..\..\app\inc\rci.h

@@ -77,3 +77,4 @@
 .\objects\rcv_srv.o: ..\..\asp\inc\ekf.h
 .\objects\rcv_srv.o: ..\..\app\inc\srs.h
 .\objects\rcv_srv.o: ..\..\app\inc\clk.h
+.\objects\rcv_srv.o: ..\..\asp\inc\med.h

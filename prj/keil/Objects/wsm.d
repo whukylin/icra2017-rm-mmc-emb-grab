@@ -70,3 +70,4 @@
 .\objects\wsm.o: ..\..\asp\inc\mecanum.h
 .\objects\wsm.o: ..\..\app\inc\srs.h
 .\objects\wsm.o: ..\..\app\inc\clk.h
+.\objects\wsm.o: ..\..\asp\inc\med.h

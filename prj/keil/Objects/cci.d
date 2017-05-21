@@ -64,6 +64,7 @@
 .\objects\cci.o: ..\..\app\inc\srs.h
 .\objects\cci.o: ..\..\app\inc\clk.h
 .\objects\cci.o: ..\..\asp\inc\maf.h
+.\objects\cci.o: ..\..\asp\inc\med.h
 .\objects\cci.o: ..\..\app\inc\ctl.h
 .\objects\cci.o: ..\..\asp\inc\pid.h
 .\objects\cci.o: ..\..\asp\inc\rmp.h
