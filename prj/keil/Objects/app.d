@@ -26,6 +26,7 @@
 .\objects\app.o: ..\..\asp\inc\linkedlist.h
 .\objects\app.o: ..\..\asp\inc\maf.h
 .\objects\app.o: ..\..\asp\inc\mecanum.h
+.\objects\app.o: ..\..\asp\inc\med.h
 .\objects\app.o: ..\..\asp\inc\msg.h
 .\objects\app.o: ..\..\asp\inc\pid.h
 .\objects\app.o: ..\..\asp\inc\rmp.h

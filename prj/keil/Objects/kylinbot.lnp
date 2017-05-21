@@ -48,6 +48,7 @@
 ".\objects\linkednode.o"
 ".\objects\maf.o"
 ".\objects\mecanum.o"
+".\objects\med.o"
 ".\objects\msg.o"
 ".\objects\pid.o"
 ".\objects\rcf.o"

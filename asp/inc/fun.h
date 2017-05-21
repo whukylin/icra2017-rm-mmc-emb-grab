@@ -41,8 +41,6 @@ extern "C" {
 
 typedef uint32_t Flag_t;
 
-float min(float v1, float v2);
-float max(float v1, float v2);
 float map(float val, float min1, float max1, float min2, float max2);
 float constrain(float val, float min, float max);
 
@@ -53,6 +51,9 @@ void Flag_Clr(Flag_t* flag, Flag_t mask);
 void Flag_Tog(Flag_t* flag, Flag_t mask);
 void Flag_Cpy(Flag_t* flag, Flag_t src, Flag_t mask);
 void Flag_Det(Flag_t* flag, Flag_t mask, uint32_t condition);
+
+void InsertSort(float* dst, uint32_t len, float val);
+void Sort(const float* arr, float* dst, uint32_t len);
 
 #ifdef __cplusplus
 }

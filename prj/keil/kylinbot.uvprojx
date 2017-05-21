@@ -820,6 +820,11 @@
               <FilePath>..\..\asp\inc\mecanum.h</FilePath>
             </File>
             <File>
+              <FileName>med.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\asp\inc\med.h</FilePath>
+            </File>
+            <File>
               <FileName>msg.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\asp\inc\msg.h</FilePath>
@@ -938,6 +943,11 @@
               <FileName>mecanum.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\asp\src\mecanum.c</FilePath>
+            </File>
+            <File>
+              <FileName>med.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\asp\src\med.c</FilePath>
             </File>
             <File>
               <FileName>msg.c</FileName>

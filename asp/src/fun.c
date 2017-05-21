@@ -20,16 +20,6 @@
 /*                  Helper Functions                  */
 /******************************************************/
 
-float min(float v1, float v2)
-{
-	return v1 < v2 ? v1 : v2;
-}
-
-float max(float v1, float v2)
-{
-	return v1 > v2 ? v1 : v2;
-}
-
 float map(float val, float min1, float max1, float min2, float max2)
 {
 	LIMIT(val, min1, max1);
@@ -87,6 +77,30 @@ void Flag_Det(Flag_t* flag, Flag_t mask, uint32_t condition)
 		Flag_Set(flag, mask);
 	} else {
 		Flag_Clr(flag, mask);
+	}
+}
+
+void InsertSort(float* dst, uint32_t len, float val)
+{
+	uint32_t i = 0;
+	for (; i < len; i++) {
+		if (val < dst[i]) {
+			uint32_t j = len;
+			for (; j > i; j--) {
+				dst[j] = dst[j-1];
+			}
+			break;
+		}
+	}
+	dst[i] = val;
+}
+
+void Sort(const float* arr, float* dst, uint32_t len)
+{
+	uint32_t i = 1;
+	dst[0] = arr[0];
+	for (; i < len; i++) {
+		InsertSort(dst, i, arr[i]);
 	}
 }
 

@@ -27,6 +27,7 @@
 .\objects\kos.o: ..\..\asp\inc\linkedlist.h
 .\objects\kos.o: ..\..\asp\inc\maf.h
 .\objects\kos.o: ..\..\asp\inc\mecanum.h
+.\objects\kos.o: ..\..\asp\inc\med.h
 .\objects\kos.o: ..\..\asp\inc\msg.h
 .\objects\kos.o: ..\..\asp\inc\pid.h
 .\objects\kos.o: ..\..\asp\inc\rmp.h
