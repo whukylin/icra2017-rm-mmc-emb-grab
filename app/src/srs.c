@@ -99,12 +99,12 @@ void Sr04_Proc(uint8_t i, uint8_t trigger)
 	}
 	if (i < SR04_NUM) {
 		// Rising edge trigger -> start echo
-		if (trigger == 1) {
+		if (trigger == 1 && srs[i].state == SR04_STATE_WAIT) {
 			srs[i].startEcho = Clk_GetUsTick();
 			srs[i].state = SR04_STATE_ECHO;
 		}
 		// Falling edge trigger -> end echo
-		else if (trigger == 0) {
+		else if (trigger == 0 && srs[i].state == SR04_STATE_ECHO) {
 			srs[i].frame_cnt++;
 			srs[i].endEcho = Clk_GetUsTick();
 			srs[i].echo = srs[i].endEcho - srs[i].startEcho;
