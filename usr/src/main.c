@@ -16,6 +16,8 @@
  
 #include "main.h"
 
+//static uint32_t frame_id = 0;
+
 int main()
 {
 	// Boot KOS
@@ -35,6 +37,12 @@ int main()
 		if (Clk_GetUsTick() % 2000 == 0) {
 			Upl_Proc();
 		}
+		
+		//if (Clk_GetUsTick() % 1000 == 0) {
+		//	printf("%f\t%f\t%f\n", cmd.gv.c * 1000, odo.gv.c * 1000, (cmd.gv.c - odo.gv.c) * 1000);
+			//frame_id = motor[0].frame_cnt;
+		//}
+		
 		/*
 		if (Clk_GetUsTick() % 5000 == 0) {
 			uint8_t data = 0;

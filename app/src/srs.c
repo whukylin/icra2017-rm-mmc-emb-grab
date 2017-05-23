@@ -86,6 +86,9 @@ void Srs_Func(uint32_t i)
 	}
 }
 
+#define ID_MAX (SR04_NUM - 1)
+#define LAST_ID (id == 0 ? ID_MAX : id == ID_MAX ? 0 : (id - 1))
+
 void Srs_Proc(void)
 {
 	// Check if current sonar module is idle
@@ -104,6 +107,7 @@ void Srs_Rise(uint32_t i)
 	if (srs[i].state == SR04_STATE_WAIT) {
 		srs[i].startEcho = Clk_GetUsTick();
 		srs[i].state = SR04_STATE_ECHO;
+		GPIO_RST(sr04[i].trigPin);
 	}
 }
 
@@ -117,6 +121,7 @@ void Srs_Fall(uint32_t i)
 		Med_Proc(&srs[i].med, srs[i].mm);
 		srs[i].mm_filtered = Maf_Proc(&srs[i].maf, srs[i].med.val);
 		srs[i].state = SR04_STATE_IDLE;
+		GPIO_RST(sr04[i].trigPin);
 	}
 }
 

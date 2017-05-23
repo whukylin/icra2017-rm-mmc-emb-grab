@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\kylinbot.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\kylinbot.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Sun May 21 22:03:11 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue May 23 19:53:01 2017
 <BR><P>
 <H3>Maximum Stack Usage =        280 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1563,7 +1563,9 @@ Global Symbols
 <P><STRONG><a name="[b0]"></a>GPIO_ResetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_ResetBits))
 <BR><BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Bsp_Config
 <LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Srs_Trig
+<LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Srs_Rise
 <LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Srs_Func
+<LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Srs_Fall
 </UL>
 
 <P><STRONG><a name="[14b]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_SetBits))
@@ -2093,7 +2095,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[168]"></a>SR04Callback</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, ext_srv.o(i.SR04Callback))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = SR04Callback &rArr; Sr04_Proc &rArr; Srs_Fall &rArr; Med_Proc &rArr; Sort
+<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = SR04Callback &rArr; Sr04_Proc &rArr; Srs_Fall &rArr; Med_Proc &rArr; Sort
 </UL>
 <BR>[Calls]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sr04_Proc
 </UL>
@@ -2185,7 +2187,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[169]"></a>Sr04_Proc</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, srs.o(i.Sr04_Proc))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = Sr04_Proc &rArr; Srs_Fall &rArr; Med_Proc &rArr; Sort
+<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = Sr04_Proc &rArr; Srs_Fall &rArr; Med_Proc &rArr; Sort
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Wdg_Feed
 <LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Srs_Rise
@@ -2194,12 +2196,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SR04Callback
 </UL>
 
-<P><STRONG><a name="[170]"></a>Srs_Fall</STRONG> (Thumb, 118 bytes, Stack size 8 bytes, srs.o(i.Srs_Fall))
-<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = Srs_Fall &rArr; Med_Proc &rArr; Sort
+<P><STRONG><a name="[170]"></a>Srs_Fall</STRONG> (Thumb, 148 bytes, Stack size 16 bytes, srs.o(i.Srs_Fall))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Srs_Fall &rArr; Med_Proc &rArr; Sort
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Maf_Proc
 <LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Clk_GetUsTick
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Med_Proc
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 </UL>
 <BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sr04_Proc
 </UL>
@@ -2231,10 +2234,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[171]"></a>Srs_Rise</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, srs.o(i.Srs_Rise))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Srs_Rise
+<P><STRONG><a name="[171]"></a>Srs_Rise</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, srs.o(i.Srs_Rise))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Srs_Rise
 </UL>
 <BR>[Calls]<UL><LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Clk_GetUsTick
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 </UL>
 <BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sr04_Proc
 </UL>
@@ -3108,7 +3112,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[6a]"></a>SR04_IRQHandler</STRONG> (Thumb, 94 bytes, Stack size 8 bytes, sr04.o(i.SR04_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = SR04_IRQHandler &rArr; SR04Callback &rArr; Sr04_Proc &rArr; Srs_Fall &rArr; Med_Proc &rArr; Sort
+<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = SR04_IRQHandler &rArr; SR04Callback &rArr; Sr04_Proc &rArr; Srs_Fall &rArr; Med_Proc &rArr; Sort
 </UL>
 <BR>[Calls]<UL><LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SR04Callback
 </UL>
