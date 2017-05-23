@@ -19,6 +19,7 @@
 Srs_t srs[SR04_NUM];
 
 static uint32_t id = 0;
+static uint32_t tc = 0;
 
 void Srs_Start(uint32_t i)
 {
@@ -89,6 +90,8 @@ void Srs_Func(uint32_t i)
 #define ID_MAX (SR04_NUM - 1)
 #define LAST_ID (id == 0 ? ID_MAX : id == ID_MAX ? 0 : (id - 1))
 
+#define RING_ID() do { if (++id >= SR04_NUM) id = 0; } while (0)
+
 void Srs_Proc(void)
 {
 	// Check if current sonar module is idle
@@ -96,9 +99,17 @@ void Srs_Proc(void)
 		// Wait for silence
 		uint32_t interval = Clk_GetUsTick() - srs[id].endEcho;
 		if (interval > SR04_TRIG_TUS) {
-			if (++id >= SR04_NUM) id = 0;
+			RING_ID();
 		}
-	}
+		// clear time counter
+		tc = Clk_GetUsTick();
+	} else {
+		uint32_t dt = Clk_GetUsTick() - tc;
+		if (dt > SR04_ECHO_PULSE_WIDTH_MAX + SR04_TRIG_TUS) {
+			RING_ID();
+			tc = Clk_GetUsTick();
+		}
+	} 
 	Srs_Func(id);
 }
 
