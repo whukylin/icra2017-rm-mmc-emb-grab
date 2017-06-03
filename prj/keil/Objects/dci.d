@@ -2,11 +2,11 @@
 .\objects\dci.o: ..\..\app\inc\dci.h
 .\objects\dci.o: ..\..\asp\inc\dbus.h
 .\objects\dci.o: ..\..\asp\inc\rcp.h
-.\objects\dci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\dci.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\dci.o: ..\..\asp\inc\hcp.h
 .\objects\dci.o: ..\..\app\inc\rci.h
 .\objects\dci.o: ..\..\asp\inc\rcf.h
-.\objects\dci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\dci.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\dci.o: ..\..\app\inc\cmd.h
 .\objects\dci.o: ..\..\app\inc\sys.h
 .\objects\dci.o: ..\..\asp\inc\fun.h
@@ -40,7 +40,7 @@
 .\objects\dci.o: ..\..\app\inc\hci.h
 .\objects\dci.o: ..\..\asp\inc\hcf.h
 .\objects\dci.o: ..\..\asp\inc\maf.h
-.\objects\dci.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\dci.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\dci.o: ..\..\app\inc\wdg.h
 .\objects\dci.o: ..\..\app\inc\cal.h
 .\objects\dci.o: ..\..\bsp\inc\bsp.h
@@ -74,6 +74,6 @@
 .\objects\dci.o: ..\..\app\inc\odo.h
 .\objects\dci.o: ..\..\app\inc\can.h
 .\objects\dci.o: ..\..\asp\inc\ekf.h
+.\objects\dci.o: ..\..\asp\inc\med.h
 .\objects\dci.o: ..\..\app\inc\srs.h
 .\objects\dci.o: ..\..\app\inc\clk.h
-.\objects\dci.o: ..\..\asp\inc\med.h

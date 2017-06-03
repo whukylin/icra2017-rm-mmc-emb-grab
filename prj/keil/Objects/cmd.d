@@ -1,11 +1,11 @@
 .\objects\cmd.o: ..\..\app\src\cmd.c
 .\objects\cmd.o: ..\..\app\inc\cmd.h
 .\objects\cmd.o: ..\..\app\inc\sys.h
-.\objects\cmd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\cmd.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\cmd.o: ..\..\asp\inc\fun.h
 .\objects\cmd.o: ..\..\app\inc\mec.h
 .\objects\cmd.o: ..\..\app\inc\cfg.h
-.\objects\cmd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\cmd.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\cmd.o: ..\..\asp\inc\calib.h
 .\objects\cmd.o: ..\..\app\inc\fos.h
 .\objects\cmd.o: ..\..\drv\inc\flash.h

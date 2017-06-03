@@ -3,13 +3,13 @@
 .\objects\com.o: ..\..\app\inc\upl.h
 .\objects\com.o: ..\..\asp\inc\msg.h
 .\objects\com.o: ..\..\asp\inc\cbus.h
-.\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\com.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\com.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\com.o: ..\..\asp\inc\dbus.h
 .\objects\com.o: ..\..\asp\inc\rcp.h
 .\objects\com.o: ..\..\asp\inc\hcp.h
 .\objects\com.o: ..\..\asp\inc\fifo.h
-.\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\com.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\com.o: ..\..\asp\inc\calib.h
 .\objects\com.o: ..\..\asp\inc\crc16.h
 .\objects\com.o: ..\..\app\inc\cal.h
@@ -67,6 +67,8 @@
 .\objects\com.o: ..\..\asp\inc\fun.h
 .\objects\com.o: ..\..\app\inc\can.h
 .\objects\com.o: ..\..\asp\inc\ekf.h
+.\objects\com.o: ..\..\asp\inc\med.h
+.\objects\com.o: ..\..\asp\inc\maf.h
 .\objects\com.o: ..\..\app\inc\wdg.h
 .\objects\com.o: ..\..\app\inc\mec.h
 .\objects\com.o: ..\..\app\inc\cfg.h
@@ -74,8 +76,6 @@
 .\objects\com.o: ..\..\asp\inc\mecanum.h
 .\objects\com.o: ..\..\app\inc\srs.h
 .\objects\com.o: ..\..\app\inc\clk.h
-.\objects\com.o: ..\..\asp\inc\maf.h
-.\objects\com.o: ..\..\asp\inc\med.h
 .\objects\com.o: ..\..\app\inc\cmd.h
 .\objects\com.o: ..\..\app\inc\dci.h
 .\objects\com.o: ..\..\app\inc\rci.h
@@ -86,7 +86,7 @@
 .\objects\com.o: ..\..\app\inc\wsm.h
 .\objects\com.o: ..\..\app\inc\pwr.h
 .\objects\com.o: ..\..\app\inc\ios.h
-.\objects\com.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\com.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\com.o: ..\..\app\inc\dnl.h
 .\objects\com.o: ..\..\app\inc\cci.h
 .\objects\com.o: ..\..\app\inc\ctl.h

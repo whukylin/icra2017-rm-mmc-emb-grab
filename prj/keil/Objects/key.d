@@ -4,7 +4,7 @@
 .\objects\key.o: ..\..\bsp\inc\platform.h
 .\objects\key.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\key.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\key.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\key.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\key.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\key.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\key.o: ..\..\stl\CMSIS\core\core_cmSimd.h

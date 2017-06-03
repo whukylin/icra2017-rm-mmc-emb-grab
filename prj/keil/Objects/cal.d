@@ -6,7 +6,7 @@
 .\objects\cal.o: ..\..\bsp\inc\platform.h
 .\objects\cal.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\cal.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\cal.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\cal.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\cal.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\cal.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\cal.o: ..\..\stl\CMSIS\core\core_cmSimd.h
@@ -27,8 +27,8 @@
 .\objects\cal.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
 .\objects\cal.o: ..\..\bsp\inc\btm.h
 .\objects\cal.o: ..\..\asp\inc\fifo.h
-.\objects\cal.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\cal.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\cal.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\cal.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\cal.o: ..\..\hal\inc\hal_uart.h
 .\objects\cal.o: ..\..\bsp\inc\btn.h
 .\objects\cal.o: ..\..\bsp\inc\can1.h
@@ -58,6 +58,8 @@
 .\objects\cal.o: ..\..\asp\inc\fun.h
 .\objects\cal.o: ..\..\app\inc\can.h
 .\objects\cal.o: ..\..\asp\inc\ekf.h
+.\objects\cal.o: ..\..\asp\inc\med.h
+.\objects\cal.o: ..\..\asp\inc\maf.h
 .\objects\cal.o: ..\..\app\inc\wdg.h
 .\objects\cal.o: ..\..\app\inc\mec.h
 .\objects\cal.o: ..\..\app\inc\cfg.h
@@ -66,6 +68,4 @@
 .\objects\cal.o: ..\..\asp\inc\mecanum.h
 .\objects\cal.o: ..\..\app\inc\srs.h
 .\objects\cal.o: ..\..\app\inc\clk.h
-.\objects\cal.o: ..\..\asp\inc\maf.h
-.\objects\cal.o: ..\..\asp\inc\med.h
-.\objects\cal.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\cal.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

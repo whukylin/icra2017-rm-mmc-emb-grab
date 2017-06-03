@@ -4,7 +4,7 @@
 .\objects\btn.o: ..\..\bsp\inc\platform.h
 .\objects\btn.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\btn.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\btn.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\btn.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\btn.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\btn.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\btn.o: ..\..\stl\CMSIS\core\core_cmSimd.h

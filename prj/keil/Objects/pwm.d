@@ -4,7 +4,7 @@
 .\objects\pwm.o: ..\..\bsp\inc\platform.h
 .\objects\pwm.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\pwm.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\pwm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\pwm.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\pwm.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\pwm.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\pwm.o: ..\..\stl\CMSIS\core\core_cmSimd.h

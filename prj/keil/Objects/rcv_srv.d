@@ -3,11 +3,11 @@
 .\objects\rcv_srv.o: ..\..\app\inc\dci.h
 .\objects\rcv_srv.o: ..\..\asp\inc\dbus.h
 .\objects\rcv_srv.o: ..\..\asp\inc\rcp.h
-.\objects\rcv_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\rcv_srv.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\rcv_srv.o: ..\..\asp\inc\hcp.h
 .\objects\rcv_srv.o: ..\..\app\inc\rci.h
 .\objects\rcv_srv.o: ..\..\asp\inc\rcf.h
-.\objects\rcv_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\rcv_srv.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\rcv_srv.o: ..\..\app\inc\cmd.h
 .\objects\rcv_srv.o: ..\..\app\inc\sys.h
 .\objects\rcv_srv.o: ..\..\asp\inc\fun.h
@@ -41,7 +41,7 @@
 .\objects\rcv_srv.o: ..\..\app\inc\hci.h
 .\objects\rcv_srv.o: ..\..\asp\inc\hcf.h
 .\objects\rcv_srv.o: ..\..\asp\inc\maf.h
-.\objects\rcv_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\rcv_srv.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\rcv_srv.o: ..\..\app\inc\wdg.h
 .\objects\rcv_srv.o: ..\..\app\inc\cal.h
 .\objects\rcv_srv.o: ..\..\bsp\inc\bsp.h
@@ -75,6 +75,6 @@
 .\objects\rcv_srv.o: ..\..\app\inc\odo.h
 .\objects\rcv_srv.o: ..\..\app\inc\can.h
 .\objects\rcv_srv.o: ..\..\asp\inc\ekf.h
+.\objects\rcv_srv.o: ..\..\asp\inc\med.h
 .\objects\rcv_srv.o: ..\..\app\inc\srs.h
 .\objects\rcv_srv.o: ..\..\app\inc\clk.h
-.\objects\rcv_srv.o: ..\..\asp\inc\med.h

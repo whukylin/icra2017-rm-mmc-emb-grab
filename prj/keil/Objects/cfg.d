@@ -1,7 +1,7 @@
 .\objects\cfg.o: ..\..\app\src\cfg.c
 .\objects\cfg.o: ..\..\app\inc\cfg.h
-.\objects\cfg.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\cfg.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\cfg.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\cfg.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\cfg.o: ..\..\asp\inc\calib.h
 .\objects\cfg.o: ..\..\app\inc\fos.h
 .\objects\cfg.o: ..\..\drv\inc\flash.h

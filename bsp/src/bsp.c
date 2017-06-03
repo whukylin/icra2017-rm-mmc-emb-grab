@@ -33,7 +33,7 @@ void Bsp_Config(void)
 	Can1_Config();
 	Can2_Config();
 	SR04_Config();
-	Spi5_Config();
+	//Spi5_Config();
 	//MPU6500_Config();
 	LED_GREEN_ON();
 }

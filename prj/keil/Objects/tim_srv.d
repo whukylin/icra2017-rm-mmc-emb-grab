@@ -1,7 +1,7 @@
 .\objects\tim_srv.o: ..\..\srv\src\tim_srv.c
 .\objects\tim_srv.o: ..\..\srv\inc\tim_srv.h
 .\objects\tim_srv.o: ..\..\app\inc\clk.h
-.\objects\tim_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\tim_srv.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\tim_srv.o: ..\..\bsp\inc\tim.h
 .\objects\tim_srv.o: ..\..\bsp\inc\stm32util.h
 .\objects\tim_srv.o: ..\..\bsp\inc\platform.h
@@ -26,5 +26,5 @@
 .\objects\tim_srv.o: ..\..\stl\StdPeriph_Driver\inc\misc.h
 .\objects\tim_srv.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
 .\objects\tim_srv.o: ..\..\kos\inc\sch.h
-.\objects\tim_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\tim_srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\tim_srv.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\tim_srv.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

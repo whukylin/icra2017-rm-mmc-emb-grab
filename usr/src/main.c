@@ -38,8 +38,17 @@ int main()
 			Upl_Proc();
 		}
 		
-		//if (Clk_GetUsTick() % 1000 == 0) {
-		//	printf("%f\t%f\t%f\n", cmd.gv.c * 1000, odo.gv.c * 1000, (cmd.gv.c - odo.gv.c) * 1000);
+		
+		//if (Clk_GetUsTick() % 2000 == 0) {
+			//printf("m:\t%f\t%f\t%f\t%f\n", odo.mp.w1, odo.mp.w2, odo.mp.w3, odo.mp.w4);
+			//printf("m:\t%d\t%d\t%d\t%d\n", motor[0].angle_filtered, motor[1].angle_filtered, motor[2].angle_filtered, motor[3].angle_filtered);
+			//printf("m:\t%f\t%f\t%f\t%f\n", motor[0].angle_rad, motor[1].angle_rad, motor[2].angle_rad, motor[3].angle_rad);
+			//rintf("m1: %d\t%d\t%d\n", motor[0].rate_raw, motor[0].rate_filtered, motor[0].rate_filtered - motor[0].rate_raw);
+			//Dbg_Cfg();
+			//printf("ex:\t%f\t%f\t%f\n", cmd.cp.x, odo.cp.x, (cmd.cp.x - odo.cp.x));
+			//printf("ey:\t%f\t%f\t%f\n", cmd.cp.y, odo.cp.y, (cmd.cp.y - odo.cp.y));
+			//printf("ez:\t%f\t%f\t%f\n", cmd.cp.z, odo.cp.z, (cmd.cp.z - odo.cp.z));
+			//printf("%f\n", cfg.vel.x);
 			//frame_id = motor[0].frame_cnt;
 		//}
 		

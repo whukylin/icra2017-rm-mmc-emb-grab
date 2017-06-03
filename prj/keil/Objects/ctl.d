@@ -1,12 +1,12 @@
 .\objects\ctl.o: ..\..\app\src\ctl.c
 .\objects\ctl.o: ..\..\app\inc\ctl.h
 .\objects\ctl.o: ..\..\app\inc\sys.h
-.\objects\ctl.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\ctl.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\ctl.o: ..\..\asp\inc\fun.h
 .\objects\ctl.o: ..\..\app\inc\cmd.h
 .\objects\ctl.o: ..\..\app\inc\mec.h
 .\objects\ctl.o: ..\..\app\inc\cfg.h
-.\objects\ctl.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\ctl.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\ctl.o: ..\..\asp\inc\calib.h
 .\objects\ctl.o: ..\..\app\inc\fos.h
 .\objects\ctl.o: ..\..\drv\inc\flash.h
@@ -38,7 +38,7 @@
 .\objects\ctl.o: ..\..\bsp\inc\stm32util.h
 .\objects\ctl.o: ..\..\bsp\inc\btm.h
 .\objects\ctl.o: ..\..\asp\inc\fifo.h
-.\objects\ctl.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\ctl.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\ctl.o: ..\..\hal\inc\hal_uart.h
 .\objects\ctl.o: ..\..\bsp\inc\btn.h
 .\objects\ctl.o: ..\..\bsp\inc\can1.h
@@ -60,10 +60,10 @@
 .\objects\ctl.o: ..\..\bsp\inc\tty.h
 .\objects\ctl.o: ..\..\app\inc\can.h
 .\objects\ctl.o: ..\..\asp\inc\ekf.h
+.\objects\ctl.o: ..\..\asp\inc\med.h
+.\objects\ctl.o: ..\..\asp\inc\maf.h
 .\objects\ctl.o: ..\..\app\inc\wdg.h
 .\objects\ctl.o: ..\..\app\inc\srs.h
 .\objects\ctl.o: ..\..\app\inc\clk.h
-.\objects\ctl.o: ..\..\asp\inc\maf.h
-.\objects\ctl.o: ..\..\asp\inc\med.h
 .\objects\ctl.o: ..\..\asp\inc\pid.h
 .\objects\ctl.o: ..\..\asp\inc\rmp.h

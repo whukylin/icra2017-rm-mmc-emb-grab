@@ -22,10 +22,12 @@
 
 static void GetPeriphsStateRef(const CBUS_t* cbus)
 {
+	/*
 	FS_Det(&cmd.fs, FS_SONAR_F, FS_Get(&cbus->fs, FS_SONAR_F));
 	FS_Det(&cmd.fs, FS_SONAR_M, FS_Get(&cbus->fs, FS_SONAR_M));
 	FS_Det(&cmd.fs, FS_SONAR_L, FS_Get(&cbus->fs, FS_SONAR_L));
 	FS_Det(&cmd.fs, FS_SONAR_R, FS_Get(&cbus->fs, FS_SONAR_R));
+	*/
 }
 
 static void GetChassisStateRef(const CBUS_t* cbus)

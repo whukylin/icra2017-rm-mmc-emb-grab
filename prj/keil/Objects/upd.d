@@ -2,16 +2,17 @@
 .\objects\upd.o: ..\..\app\inc\upd.h
 .\objects\upd.o: ..\..\app\inc\wsm.h
 .\objects\upd.o: ..\..\app\inc\sys.h
-.\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\upd.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\upd.o: ..\..\asp\inc\fun.h
 .\objects\upd.o: ..\..\app\inc\wdg.h
 .\objects\upd.o: ..\..\app\inc\ini.h
 .\objects\upd.o: ..\..\app\inc\can.h
 .\objects\upd.o: ..\..\asp\inc\ekf.h
-.\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\upd.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\upd.o: ..\..\app\inc\pwr.h
+.\objects\upd.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\upd.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\upd.o: ..\..\asp\inc\med.h
 .\objects\upd.o: ..\..\asp\inc\maf.h
+.\objects\upd.o: ..\..\app\inc\pwr.h
 .\objects\upd.o: ..\..\app\inc\cal.h
 .\objects\upd.o: ..\..\bsp\inc\bsp.h
 .\objects\upd.o: ..\..\bsp\inc\beep.h
@@ -71,7 +72,6 @@
 .\objects\upd.o: ..\..\asp\inc\mecanum.h
 .\objects\upd.o: ..\..\app\inc\srs.h
 .\objects\upd.o: ..\..\app\inc\clk.h
-.\objects\upd.o: ..\..\asp\inc\med.h
 .\objects\upd.o: ..\..\app\inc\ctl.h
 .\objects\upd.o: ..\..\app\inc\cmd.h
 .\objects\upd.o: ..\..\asp\inc\pid.h

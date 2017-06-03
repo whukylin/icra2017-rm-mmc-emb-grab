@@ -2,15 +2,15 @@
 .\objects\main.o: ..\..\usr\inc\main.h
 .\objects\main.o: ..\..\kos\inc\kos.h
 .\objects\main.o: ..\..\app\inc\app.h
-.\objects\main.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\main.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\main.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\main.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\main.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\main.o: ..\..\asp\inc\asp.h
 .\objects\main.o: ..\..\asp\inc\ahrs.h
 .\objects\main.o: ..\..\asp\inc\calib.h
-.\objects\main.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\main.o: ..\..\asp\inc\cbus.h
 .\objects\main.o: ..\..\asp\inc\crc16.h
 .\objects\main.o: ..\..\asp\inc\dbuf.h
@@ -23,7 +23,7 @@
 .\objects\main.o: ..\..\asp\inc\fifo.h
 .\objects\main.o: ..\..\asp\inc\fun.h
 .\objects\main.o: ..\..\asp\inc\gdf.h
-.\objects\main.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
 .\objects\main.o: ..\..\asp\inc\linkednode.h
 .\objects\main.o: ..\..\asp\inc\linkedlist.h
 .\objects\main.o: ..\..\asp\inc\maf.h

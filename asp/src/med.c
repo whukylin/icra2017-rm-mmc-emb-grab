@@ -41,7 +41,7 @@ float Med_Proc(Med_t* med, float v)
 	} else {
 		med->buf[med->i++] = v;
 		if (med->i >= 3) med->i = 0;
-		Sort(med->buf, med->dst, 3);
+		sort(med->buf, med->dst, 3);
 		med->val = med->dst[1];
 		return med->val;
 	}

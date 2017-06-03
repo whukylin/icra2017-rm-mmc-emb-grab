@@ -3,10 +3,12 @@
 .\objects\srv.o: ..\..\srv\inc\can_srv.h
 .\objects\srv.o: ..\..\app\inc\can.h
 .\objects\srv.o: ..\..\asp\inc\ekf.h
-.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\srv.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\srv.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\srv.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\srv.o: ..\..\asp\inc\med.h
 .\objects\srv.o: ..\..\asp\inc\fun.h
+.\objects\srv.o: ..\..\asp\inc\maf.h
 .\objects\srv.o: ..\..\app\inc\wdg.h
 .\objects\srv.o: ..\..\srv\inc\com_srv.h
 .\objects\srv.o: ..\..\app\inc\com.h
@@ -77,8 +79,6 @@
 .\objects\srv.o: ..\..\asp\inc\mecanum.h
 .\objects\srv.o: ..\..\app\inc\srs.h
 .\objects\srv.o: ..\..\app\inc\clk.h
-.\objects\srv.o: ..\..\asp\inc\maf.h
-.\objects\srv.o: ..\..\asp\inc\med.h
 .\objects\srv.o: ..\..\app\inc\cmd.h
 .\objects\srv.o: ..\..\app\inc\dci.h
 .\objects\srv.o: ..\..\app\inc\rci.h
@@ -89,7 +89,7 @@
 .\objects\srv.o: ..\..\app\inc\wsm.h
 .\objects\srv.o: ..\..\app\inc\pwr.h
 .\objects\srv.o: ..\..\app\inc\ios.h
-.\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\srv.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\srv.o: ..\..\app\inc\dnl.h
 .\objects\srv.o: ..\..\app\inc\cci.h
 .\objects\srv.o: ..\..\app\inc\ctl.h

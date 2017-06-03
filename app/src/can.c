@@ -51,6 +51,10 @@ void Motor_Process(Motor_t* motor, uint32_t id, uint8_t* data)
 	if (motor->frame_cnt < 2) {
 		Ekf_Init(&motor->rate_ekf, MOTOR_RATE_EKF_Q, MOTOR_RATE_EKF_R);
 		Ekf_Init(&motor->angle_ekf, MOTOR_ANGLE_EKF_Q, MOTOR_ANGLE_EKF_R);
+		//Med_Init(&motor->rate_med);
+		//Med_Init(&motor->angle_med);
+		//Maf_Init(&motor->rate_maf, motor->rate_buf, MOTOR_RATE_BUF_LEN);
+		//Maf_Init(&motor->angle_maf, motor->angle_buf, MOTOR_ANGLE_BUF_LEN);
 	}
 	if (motor->frame_cnt < MOTOR_INIT_FRAME_CNT) {
 		motor->bias = motor->angle_fdb[1];
@@ -67,12 +71,20 @@ void Motor_Process(Motor_t* motor, uint32_t id, uint8_t* data)
 		motor->rate_raw = motor->angle_diff;
 	}
 	Ekf_Proc(&motor->rate_ekf, motor->rate_raw);
-	motor->rate_filtered = (int32_t)motor->rate_ekf.e;
+	//Med_Proc(&motor->rate_med, motor->rate_raw);
+	//Maf_Proc(&motor->rate_maf, motor->rate_med.val);
+	//motor->rate_filtered = (int32_t)motor->rate_maf.avg;
+	motor->rate_filtered = (int16_t)motor->rate_ekf.e;
+	//motor->rate_filtered = motor->rate_ekf.e;
 	motor->rate_deg = MOTOR_RATE_DEG_RECIP * motor->rate_filtered;
 	motor->rate_rad = MOTOR_RATE_RAD_RECIP * motor->rate_filtered;
 	motor->angle_raw = (motor->angle_fdb[1] - motor->bias) + motor->round * MOTOR_ECD_MOD;
 	Ekf_Proc(&motor->angle_ekf, motor->angle_raw);
+	//Med_Proc(&motor->angle_med, motor->angle_raw);
+	//Maf_Proc(&motor->angle_maf, motor->angle_med.val);
+	//motor->angle_filtered = (int32_t)motor->angle_maf.avg;
 	motor->angle_filtered = (int32_t)motor->angle_ekf.e;
+	//motor->angle_filtered = motor->angle_ekf.e;
 	motor->angle_deg = MOTOR_ANGLE_DEG_RECIP * motor->angle_filtered;
 	motor->angle_rad = MOTOR_ANGLE_RAD_RECIP * motor->angle_filtered;
 }

@@ -6,7 +6,7 @@
 .\objects\act.o: ..\..\bsp\inc\platform.h
 .\objects\act.o: ..\..\stl\CMSIS\device\stm32f4xx.h
 .\objects\act.o: ..\..\stl\CMSIS\core\core_cm4.h
-.\objects\act.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\act.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\act.o: ..\..\stl\CMSIS\core\core_cmInstr.h
 .\objects\act.o: ..\..\stl\CMSIS\core\core_cmFunc.h
 .\objects\act.o: ..\..\stl\CMSIS\core\core_cmSimd.h
@@ -27,8 +27,8 @@
 .\objects\act.o: ..\..\stl\StdPeriph_Driver\inc\stm32f4xx_can.h
 .\objects\act.o: ..\..\bsp\inc\btm.h
 .\objects\act.o: ..\..\asp\inc\fifo.h
-.\objects\act.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\act.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\act.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\act.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\act.o: ..\..\hal\inc\hal_uart.h
 .\objects\act.o: ..\..\bsp\inc\btn.h
 .\objects\act.o: ..\..\bsp\inc\can1.h
@@ -65,10 +65,10 @@
 .\objects\act.o: ..\..\app\inc\odo.h
 .\objects\act.o: ..\..\app\inc\can.h
 .\objects\act.o: ..\..\asp\inc\ekf.h
+.\objects\act.o: ..\..\asp\inc\med.h
+.\objects\act.o: ..\..\asp\inc\maf.h
 .\objects\act.o: ..\..\app\inc\wdg.h
 .\objects\act.o: ..\..\app\inc\srs.h
 .\objects\act.o: ..\..\app\inc\clk.h
-.\objects\act.o: ..\..\asp\inc\maf.h
-.\objects\act.o: ..\..\asp\inc\med.h
 .\objects\act.o: ..\..\asp\inc\pid.h
 .\objects\act.o: ..\..\asp\inc\rmp.h
