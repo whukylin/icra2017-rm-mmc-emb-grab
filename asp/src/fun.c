@@ -80,7 +80,7 @@ void Flag_Det(Flag_t* flag, Flag_t mask, uint32_t condition)
 	}
 }
 
-void InsertSort(float* dst, uint32_t len, float val)
+void isort(float* dst, uint32_t len, float val)
 {
 	uint32_t i = 0;
 	for (; i < len; i++) {
@@ -95,12 +95,12 @@ void InsertSort(float* dst, uint32_t len, float val)
 	dst[i] = val;
 }
 
-void Sort(const float* arr, float* dst, uint32_t len)
+void sort(const float* arr, float* dst, uint32_t len)
 {
 	uint32_t i = 1;
 	dst[0] = arr[0];
 	for (; i < len; i++) {
-		InsertSort(dst, i, arr[i]);
+		isort(dst, i, arr[i]);
 	}
 }
 

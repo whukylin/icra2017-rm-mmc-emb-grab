@@ -52,8 +52,8 @@ void Flag_Tog(Flag_t* flag, Flag_t mask);
 void Flag_Cpy(Flag_t* flag, Flag_t src, Flag_t mask);
 void Flag_Det(Flag_t* flag, Flag_t mask, uint32_t condition);
 
-void InsertSort(float* dst, uint32_t len, float val);
-void Sort(const float* arr, float* dst, uint32_t len);
+void isort(float* dst, uint32_t len, float val);
+void sort(const float* arr, float* dst, uint32_t len);
 
 #ifdef __cplusplus
 }

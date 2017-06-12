@@ -66,6 +66,8 @@
 .\objects\upl.o: ..\..\asp\inc\fun.h
 .\objects\upl.o: ..\..\app\inc\can.h
 .\objects\upl.o: ..\..\asp\inc\ekf.h
+.\objects\upl.o: ..\..\asp\inc\med.h
+.\objects\upl.o: ..\..\asp\inc\maf.h
 .\objects\upl.o: ..\..\app\inc\wdg.h
 .\objects\upl.o: ..\..\app\inc\mec.h
 .\objects\upl.o: ..\..\app\inc\cfg.h
@@ -73,8 +75,6 @@
 .\objects\upl.o: ..\..\asp\inc\mecanum.h
 .\objects\upl.o: ..\..\app\inc\srs.h
 .\objects\upl.o: ..\..\app\inc\clk.h
-.\objects\upl.o: ..\..\asp\inc\maf.h
-.\objects\upl.o: ..\..\asp\inc\med.h
 .\objects\upl.o: ..\..\app\inc\cmd.h
 .\objects\upl.o: ..\..\app\inc\dci.h
 .\objects\upl.o: ..\..\app\inc\rci.h

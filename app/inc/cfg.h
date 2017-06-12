@@ -105,8 +105,8 @@ typedef struct
 	.mz_offset = 0, \
 }
 
-#define VEL_TRA_DEF 10.0f //10.0f // m/s // 3
-#define VEL_ROT_DEF 25.0f //30.0f // rad/s  // 9.3
+#define VEL_TRA_DEF 3.0f //10.0f // m/s // 3
+#define VEL_ROT_DEF 9.3f //30.0f // rad/s  // 9.3
 #define VEL_ELE_DEF 1.00f // m/s
 #define VEL_CLA_DEF 30.0f // rad/s
 #define VEL_CFG_DEF \

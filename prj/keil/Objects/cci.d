@@ -60,11 +60,11 @@
 .\objects\cci.o: ..\..\bsp\inc\tty.h
 .\objects\cci.o: ..\..\app\inc\can.h
 .\objects\cci.o: ..\..\asp\inc\ekf.h
+.\objects\cci.o: ..\..\asp\inc\med.h
+.\objects\cci.o: ..\..\asp\inc\maf.h
 .\objects\cci.o: ..\..\app\inc\wdg.h
 .\objects\cci.o: ..\..\app\inc\srs.h
 .\objects\cci.o: ..\..\app\inc\clk.h
-.\objects\cci.o: ..\..\asp\inc\maf.h
-.\objects\cci.o: ..\..\asp\inc\med.h
 .\objects\cci.o: ..\..\app\inc\ctl.h
 .\objects\cci.o: ..\..\asp\inc\pid.h
 .\objects\cci.o: ..\..\asp\inc\rmp.h

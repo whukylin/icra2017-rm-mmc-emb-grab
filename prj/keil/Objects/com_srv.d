@@ -68,6 +68,8 @@
 .\objects\com_srv.o: ..\..\asp\inc\fun.h
 .\objects\com_srv.o: ..\..\app\inc\can.h
 .\objects\com_srv.o: ..\..\asp\inc\ekf.h
+.\objects\com_srv.o: ..\..\asp\inc\med.h
+.\objects\com_srv.o: ..\..\asp\inc\maf.h
 .\objects\com_srv.o: ..\..\app\inc\wdg.h
 .\objects\com_srv.o: ..\..\app\inc\mec.h
 .\objects\com_srv.o: ..\..\app\inc\cfg.h
@@ -75,8 +77,6 @@
 .\objects\com_srv.o: ..\..\asp\inc\mecanum.h
 .\objects\com_srv.o: ..\..\app\inc\srs.h
 .\objects\com_srv.o: ..\..\app\inc\clk.h
-.\objects\com_srv.o: ..\..\asp\inc\maf.h
-.\objects\com_srv.o: ..\..\asp\inc\med.h
 .\objects\com_srv.o: ..\..\app\inc\cmd.h
 .\objects\com_srv.o: ..\..\app\inc\dci.h
 .\objects\com_srv.o: ..\..\app\inc\rci.h

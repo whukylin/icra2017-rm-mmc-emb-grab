@@ -9,8 +9,9 @@
 .\objects\wsm.o: ..\..\asp\inc\ekf.h
 .\objects\wsm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\wsm.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\wsm.o: ..\..\app\inc\pwr.h
+.\objects\wsm.o: ..\..\asp\inc\med.h
 .\objects\wsm.o: ..\..\asp\inc\maf.h
+.\objects\wsm.o: ..\..\app\inc\pwr.h
 .\objects\wsm.o: ..\..\app\inc\cal.h
 .\objects\wsm.o: ..\..\bsp\inc\bsp.h
 .\objects\wsm.o: ..\..\bsp\inc\beep.h
@@ -70,4 +71,3 @@
 .\objects\wsm.o: ..\..\asp\inc\mecanum.h
 .\objects\wsm.o: ..\..\app\inc\srs.h
 .\objects\wsm.o: ..\..\app\inc\clk.h
-.\objects\wsm.o: ..\..\asp\inc\med.h

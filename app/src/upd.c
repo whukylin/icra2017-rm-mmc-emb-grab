@@ -56,8 +56,8 @@ void Upd_Proc(void)
 				Upd_Init(); // Initialize updater
 				Cmd_Proc(); // Command process
 			} else {
-				Cmd_Proc(); // Command process
 				Odo_Proc(); // Odometry process
+				Cmd_Proc(); // Command process
 				Ctl_Proc(); // Logic controller process
 				Act_Proc(); // Action process
 			}

@@ -75,6 +75,6 @@
 .\objects\rcv_srv.o: ..\..\app\inc\odo.h
 .\objects\rcv_srv.o: ..\..\app\inc\can.h
 .\objects\rcv_srv.o: ..\..\asp\inc\ekf.h
+.\objects\rcv_srv.o: ..\..\asp\inc\med.h
 .\objects\rcv_srv.o: ..\..\app\inc\srs.h
 .\objects\rcv_srv.o: ..\..\app\inc\clk.h
-.\objects\rcv_srv.o: ..\..\asp\inc\med.h

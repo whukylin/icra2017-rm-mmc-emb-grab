@@ -26,6 +26,8 @@ extern "C" {
 #endif
 
 #include "ekf.h"
+#include "med.h"
+#include "maf.h"
 #include "fun.h"
 #include "wdg.h"
 
@@ -45,8 +47,10 @@ extern "C" {
 #define MOTOR_INIT_FRAME_CNT 100
 #define MOTOR_RATE_EKF_Q 0.1f
 #define MOTOR_RATE_EKF_R 1.3f
+#define MOTOR_RATE_BUF_LEN 3
 #define MOTOR_ANGLE_EKF_Q 0.01f
 #define MOTOR_ANGLE_EKF_R 0.9f
+#define MOTOR_ANGLE_BUF_LEN 3
 
 #define MOTOR_RATE_DEG_RECIP 43.94531f
 #define MOTOR_RATE_RAD_RECIP 0.7669904f
@@ -80,6 +84,12 @@ typedef struct
 	uint32_t frame_cnt;
 	Ekf_t rate_ekf;
 	Ekf_t angle_ekf;
+	//Med_t rate_med;
+	//Med_t angle_med;
+	//Maf_t rate_maf;
+	//Maf_t angle_maf;
+	//float rate_buf[MOTOR_RATE_BUF_LEN];
+	//float angle_buf[MOTOR_ANGLE_BUF_LEN];
 	uint16_t angle_fdb[2];
 	int32_t current_fdb;
 	int32_t current_ref;
@@ -89,7 +99,9 @@ typedef struct
 	int16_t rate_raw;
 	int32_t angle_raw;
 	int16_t rate_filtered;
+	//float rate_filtered;
 	int32_t angle_filtered;
+	//float angle_filtered;
 	float rate_deg;
 	float rate_rad;
 	float angle_deg;

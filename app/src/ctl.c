@@ -36,6 +36,9 @@ static void PeriphsStateCtl(void)
 
 static void ChassisStateCtl(void)
 {
+	//ctl.cv.x = cmd.cv.x;
+	//ctl.cv.y = cmd.cv.y;
+	//ctl.cv.z = cmd.cv.z;
 	ctl.cv.x = PID_Calc(&pid.cp.x, cmd.cp.x, odo.cp.x);
 	ctl.cv.y = PID_Calc(&pid.cp.y, cmd.cp.y, odo.cp.y);
 	ctl.cv.z = PID_Calc(&pid.cp.z, cmd.cp.z, odo.cp.z);

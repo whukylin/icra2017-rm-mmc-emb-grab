@@ -52,6 +52,8 @@
 .\objects\odo.o: ..\..\bsp\inc\tty.h
 .\objects\odo.o: ..\..\app\inc\can.h
 .\objects\odo.o: ..\..\asp\inc\ekf.h
+.\objects\odo.o: ..\..\asp\inc\med.h
+.\objects\odo.o: ..\..\asp\inc\maf.h
 .\objects\odo.o: ..\..\app\inc\wdg.h
 .\objects\odo.o: ..\..\app\inc\mec.h
 .\objects\odo.o: ..\..\app\inc\cfg.h
@@ -61,5 +63,3 @@
 .\objects\odo.o: ..\..\asp\inc\mecanum.h
 .\objects\odo.o: ..\..\app\inc\srs.h
 .\objects\odo.o: ..\..\app\inc\clk.h
-.\objects\odo.o: ..\..\asp\inc\maf.h
-.\objects\odo.o: ..\..\asp\inc\med.h

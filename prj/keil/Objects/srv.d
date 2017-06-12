@@ -6,7 +6,9 @@
 .\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\srv.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\srv.o: ..\..\asp\inc\med.h
 .\objects\srv.o: ..\..\asp\inc\fun.h
+.\objects\srv.o: ..\..\asp\inc\maf.h
 .\objects\srv.o: ..\..\app\inc\wdg.h
 .\objects\srv.o: ..\..\srv\inc\com_srv.h
 .\objects\srv.o: ..\..\app\inc\com.h
@@ -77,8 +79,6 @@
 .\objects\srv.o: ..\..\asp\inc\mecanum.h
 .\objects\srv.o: ..\..\app\inc\srs.h
 .\objects\srv.o: ..\..\app\inc\clk.h
-.\objects\srv.o: ..\..\asp\inc\maf.h
-.\objects\srv.o: ..\..\asp\inc\med.h
 .\objects\srv.o: ..\..\app\inc\cmd.h
 .\objects\srv.o: ..\..\app\inc\dci.h
 .\objects\srv.o: ..\..\app\inc\rci.h
