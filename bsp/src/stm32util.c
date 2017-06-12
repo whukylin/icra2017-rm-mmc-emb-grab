@@ -649,15 +649,19 @@ void SPI_Bind(GPIO nssPin, GPIO sckPin, GPIO misoPin, GPIO mosiPin, SPI_TypeDef*
 	}
 }
 
+#define CHECK_TIMEOUT(timeout) do { if (timeout == 0) return 0; else timeout--; } while (0)
+
 uint8_t SPI_TxRxByte(SPI_TypeDef* spix, uint8_t txData, uint8_t* rxData, uint32_t timeout)
 {
+	// Check if tx block empty
+	while (!(spix->SR & SPI_SR_TXE)) {
+		CHECK_TIMEOUT(timeout);
+	}
+	// Load data and send
 	spix->DR = txData;
+	// Check if rx block not empty
 	while (!(spix->SR & SPI_SR_RXNE)) {
-		if (timeout == 0) {
-			return 0;
-		} else {
-			timeout--;
-		}
+		CHECK_TIMEOUT(timeout);
 	}
 	*rxData = spix->DR;
 	return 1;

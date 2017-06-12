@@ -16,8 +16,9 @@
  
 #include "main.h"
 
-//static uint32_t frame_id = 0;
+MPU_Data_t imu_data;
 
+static uint32_t last_time = 0;
 int main()
 {
 	// Boot KOS
@@ -32,29 +33,16 @@ int main()
 	
 	while(1)
 	{
-		Srs_Proc();
-		Dnl_Proc();
-		if (Clk_GetUsTick() % 2000 == 0) {
-			Upl_Proc();
-		}
-		
-		//if (Clk_GetUsTick() % 1000 == 0) {
-		//	printf("%f\t%f\t%f\n", cmd.gv.c * 1000, odo.gv.c * 1000, (cmd.gv.c - odo.gv.c) * 1000);
-			//frame_id = motor[0].frame_cnt;
+		//Srs_Proc();
+		//Dnl_Proc();
+		//if (Clk_GetUsTick() % 2000 == 0) {
+		//	Upl_Proc();
 		//}
-		
-		/*
-		if (Clk_GetUsTick() % 5000 == 0) {
-			uint8_t data = 0;
-			uint8_t flag = MPU6500_SPI_Read_Reg(MPU6500_WHO_AM_I, &data);
-			if (flag) {
-				LED_GREEN_ON();
-			} else {
-				LED_GREEN_OFF();
+		if (Clk_GetUsTick() - last_time > 2000) {
+			last_time = Clk_GetUsTick();
+			if (MPU6500_Read(&imu_data)) {
+				printf("%d\t%d\t%d\t%d\t%d\t%d\t%d\n", imu_data.ax, imu_data.ay, imu_data.az, imu_data.temp, imu_data.gx, imu_data.gy, imu_data.gz);
 			}
-			printf("flag=%x, data=%x\n", flag, data);
-			
 		}
-		*/
   }
 }

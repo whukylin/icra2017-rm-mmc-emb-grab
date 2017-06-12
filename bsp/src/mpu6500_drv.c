@@ -68,25 +68,25 @@ uint8_t MPU6500_INT_Enable(void)
 	return 1;
 }
 
-uint8_t MPU6500_Read(int16_t* data)
+uint8_t MPU6500_Read(MPU_Data_t* data)
 {
 	uint8_t buf[MPU6500_DATA_SIZE];
 	uint8_t flag = 0;
 	uint8_t i = 0;
 	for (i = 0; i < MPU6500_DATA_SIZE; i++) {
-		flag = MPU6500_SPI_Read_Reg(MPU6500_ACCEL_XOUT_H, &buf[i]);
+		flag = MPU6500_SPI_Read_Reg(MPU6500_ACCEL_XOUT_H + i, &buf[i]);
 		RETURN_ZERO_IF_ASSERT_FAILED(flag);
 	}
 	
-	data[0] = (((int16_t)buf[0]) << 8) | buf[1];
-	data[1] = (((int16_t)buf[2]) << 8) | buf[3];
-	data[2] = (((int16_t)buf[4]) << 8) | buf[5];
+	data->ax = (buf[0] << 8) | buf[1];
+	data->ay = (buf[2] << 8) | buf[3];
+	data->az= (buf[4] << 8) | buf[5];
 	
-	data[3] = (((int16_t)buf[6]) << 8) | buf[7];
+	data->temp = (buf[6] << 8) | buf[7];
 	
-	data[4] = (((int16_t)buf[8]) << 8) | buf[9];
-	data[5] = (((int16_t)buf[10]) << 8) | buf[11];
-	data[6] = (((int16_t)buf[12]) << 8) | buf[13];
+	data->gx = (buf[8] << 8) | buf[9];
+	data->gy = (buf[10] << 8) | buf[11];
+	data->gz = (buf[12] << 8) | buf[13];
 
 	return 1;
 }

@@ -227,7 +227,7 @@ typedef uint32_t GPIO;
 
 #define RCC_CLK_ENABLE(BUS,NAME) RCC_##BUS##PeriphClockCmd(RCC_##BUS##Periph_##NAME, ENABLE)
 
-#define RETURN_ZERO_IF_ASSERT_FAILED(FLAG) if(!(FLAG)) return 0
+#define RETURN_ZERO_IF_ASSERT_FAILED(FLAG) do { if(!(FLAG)) return 0; } while (0)
 	
 #define GPIO_AF(PIN,TO) do { \
 	GPIO_Af(PIN,GPIO_AF_##TO); \

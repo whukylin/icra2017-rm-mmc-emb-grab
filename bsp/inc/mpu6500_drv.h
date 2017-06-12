@@ -125,16 +125,27 @@ extern "C" {
 #define MPU6500_ZA_OFFSET_L         (0x7E)
 	
 #define MPU6050_ID									(0x68)
-#define MPU6500_ID									(0x71)	// mpu6500 id = 0x70
+#define MPU6500_ID									(0x70)	// mpu6500 id = 0x70
 
 #define MPU_IIC_ADDR								(0x68)
+
+typedef struct
+{
+	int16_t ax;
+	int16_t ay;
+	int16_t az;
+	int16_t temp;
+	int16_t gx;
+	int16_t gy;
+	int16_t gz;
+}MPU_Data_t;
 
 #define MPU6500_DATA_SIZE 14
 
 uint8_t MPU6500_CheckDevice(void);
 uint8_t MPU6500_Init(void);
 uint8_t MPU6500_INT_Enable(void);
-uint8_t MPU6500_Read(int16_t* data);
+uint8_t MPU6500_Read(MPU_Data_t* data);
 
 #ifdef __cplusplus
 }

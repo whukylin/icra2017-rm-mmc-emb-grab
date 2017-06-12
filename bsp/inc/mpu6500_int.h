@@ -22,15 +22,16 @@ extern "C" {
 #endif
 	
 #include "stm32util.h"
+#include "mpu6500_drv.h"
 
 #define MPU6500_INT_PIN PE1
-#define MPU6500_NVIC_PRE_PRIORITY 2
+#define MPU6500_NVIC_PRE_PRIORITY 1
 #define MPU6500_NVIC_SUB_PRIORITY 0
 
 void MPU6500_INT_Config(void);
 
-//void MPU6500INTCallback(void);
-
+//extern MPU6500INTCallback(void);
+extern uint8_t MPU6500_INT_Flag;
 	
 #ifdef __cplusplus
 }

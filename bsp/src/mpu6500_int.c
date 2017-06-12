@@ -16,13 +16,18 @@
 
 #include "mpu6500_int.h"
 
-static void MPU6500INTHandler(uint8_t num)
+uint8_t MPU6500_INT_Flag = 0;
+
+static void MPU6500_INT_Handler(uint8_t num)
 {
+	MPU6500_INT_Flag = 1;
+	//static MPU_Data_t data;
+	//MPU6500_Read(&data);
 	//MPU6500INTCallback();
 }
 
 void MPU6500_INT_Config(void)
 {
-    EXTI_Bind(MPU6500_INT_PIN, MPU6500_NVIC_PRE_PRIORITY, MPU6500_NVIC_SUB_PRIORITY, EXTI_Trigger_Falling, MPU6500INTHandler);
+    EXTI_Bind(MPU6500_INT_PIN, MPU6500_NVIC_PRE_PRIORITY, MPU6500_NVIC_SUB_PRIORITY, EXTI_Trigger_Falling, MPU6500_INT_Handler);
 }
 
