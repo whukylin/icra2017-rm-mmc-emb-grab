@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\kylinbot.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\kylinbot.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue Jun 27 11:45:51 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue Jun 27 12:41:06 2017
 <BR><P>
 <H3>Maximum Stack Usage =        280 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -404,7 +404,6 @@ Global Symbols
 
 <P><STRONG><a name="[e5]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cfg_Init
-<LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6500_Init
 </UL>
 
 <P><STRONG><a name="[1b2]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
@@ -1717,17 +1716,16 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Bsp_Config
 </UL>
 
-<P><STRONG><a name="[14d]"></a>MPU6500_Init</STRONG> (Thumb, 60 bytes, Stack size 32 bytes, mpu6500_drv.o(i.MPU6500_Init))
+<P><STRONG><a name="[14d]"></a>MPU6500_Init</STRONG> (Thumb, 56 bytes, Stack size 32 bytes, mpu6500_drv.o(i.MPU6500_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = MPU6500_Init &rArr; MPU6500_CheckDevice &rArr; MPU6500_SPI_Read_Reg &rArr; SPI_TxRxByte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6500_SPI_Write_Reg
 <LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6500_CheckDevice
-<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6500_Config
 </UL>
 
-<P><STRONG><a name="[14c]"></a>MPU6500_SPI_Read_Reg</STRONG> (Thumb, 80 bytes, Stack size 32 bytes, mpu6500_spi.o(i.MPU6500_SPI_Read_Reg))
+<P><STRONG><a name="[14c]"></a>MPU6500_SPI_Read_Reg</STRONG> (Thumb, 82 bytes, Stack size 32 bytes, mpu6500_spi.o(i.MPU6500_SPI_Read_Reg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = MPU6500_SPI_Read_Reg &rArr; SPI_TxRxByte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
@@ -1737,7 +1735,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU6500_CheckDevice
 </UL>
 
-<P><STRONG><a name="[14e]"></a>MPU6500_SPI_Write_Reg</STRONG> (Thumb, 66 bytes, Stack size 24 bytes, mpu6500_spi.o(i.MPU6500_SPI_Write_Reg))
+<P><STRONG><a name="[14e]"></a>MPU6500_SPI_Write_Reg</STRONG> (Thumb, 68 bytes, Stack size 24 bytes, mpu6500_spi.o(i.MPU6500_SPI_Write_Reg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = MPU6500_SPI_Write_Reg &rArr; SPI_TxRxByte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits

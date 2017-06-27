@@ -28,6 +28,7 @@ static MsgType_t msgType = MSG_TYPE_KYLIN;
 static KylinMsg_t kylinMsg;
 static Sr04sMsg_t sr04sMsg;
 static ZGyroMsg_t zgyroMsg;
+//static IMU9XMsg_t imu9xMsg;
 static PosCalibMsg_t posCalibMsg;
 static VirtualRC_t virtualRC;
 
@@ -84,6 +85,14 @@ static void Upl_PushVirtualRC(void)
 	Rcp_Enc(&dbus.rcp, virtualRC.buf);
 	Msg_Push(&fifo, buf[1], &msg_head_vrc, &virtualRC);
 }
+
+/*
+static void Upl_PushIMU9X(void)
+{
+	imu9xMsg.frame_id++;
+	//imu9xMsg.ax = 
+}
+*/
 
 static void Upl_SendMsg(void)
 {

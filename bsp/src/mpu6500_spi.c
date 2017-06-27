@@ -15,14 +15,13 @@
  */
 
 #include "mpu6500_spi.h"
-#include <stdio.h>
 
 uint8_t MPU6500_SPI_Write_Reg(uint8_t reg, uint8_t data)
 {
   uint8_t txData, rxData, flag;
   
   MPU6500_SPI_NSS_L(); // select device
-  
+	
   txData = reg & 0x7f; // MSB first and LSB last, first bit of MSB indicates R(1)/W(0) flag
 	
 	flag = MPU6500_SPI_TXRX_BYTE(txData, &rxData);
@@ -45,7 +44,7 @@ uint8_t MPU6500_SPI_Read_Reg(uint8_t reg, uint8_t* data)
   uint8_t txData, rxData, flag;
   
   MPU6500_SPI_NSS_L();
-  
+	
   txData = reg | 0x80;
 	
 	flag = MPU6500_SPI_TXRX_BYTE(txData, &rxData);

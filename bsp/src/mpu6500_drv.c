@@ -15,6 +15,7 @@
  */
 
 #include "mpu6500_drv.h"
+#include "delay.h"
 
 uint8_t MPU6500_CheckDevice(void)
 {
@@ -27,7 +28,7 @@ uint8_t MPU6500_CheckDevice(void)
 
 uint8_t MPU6500_Init(void)
 {
-	#define MPU6500_INIT_DATA_CNT 10
+	#define MPU6500_INIT_DATA_CNT 8
   uint8_t MPU6500_Init_Data[MPU6500_INIT_DATA_CNT][2] = 
   {
     {MPU6500_PWR_MGMT_1,     0x80},      // Reset Device
@@ -70,12 +71,13 @@ uint8_t MPU6500_INT_Enable(void)
 
 uint8_t MPU6500_Read(MPU_Data_t* data)
 {
-	uint8_t buf[MPU6500_DATA_SIZE];
+	static uint8_t buf[MPU6500_DATA_SIZE];
 	uint8_t flag = 0;
 	uint8_t i = 0;
-	for (i = 0; i < MPU6500_DATA_SIZE; i++) {
+	for (; i < MPU6500_DATA_SIZE; i++) {
 		flag = MPU6500_SPI_Read_Reg(MPU6500_ACCEL_XOUT_H + i, &buf[i]);
 		RETURN_ZERO_IF_ASSERT_FAILED(flag);
+		Delay_Ms(1);
 	}
 	
 	data->ax = (buf[0] << 8) | buf[1];
