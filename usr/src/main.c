@@ -16,9 +16,9 @@
  
 #include "main.h"
 
-MPU_Data_t imu_data;
+//MPU_Data_t imu_data;
 
-static uint32_t last_time = 0;
+//static uint32_t last_time = 0;
 int main()
 {
 	// Boot KOS
@@ -51,11 +51,13 @@ int main()
 			//printf("ez:\t%f\t%f\t%f\n", cmd.cp.z, odo.cp.z, (cmd.cp.z - odo.cp.z));
 			//printf("%f\n", cfg.vel.x);
 			//frame_id = motor[0].frame_cnt;
+		/*
 		if (Clk_GetUsTick() - last_time > 2000) {
 			last_time = Clk_GetUsTick();
 			if (MPU6500_Read(&imu_data)) {
 				printf("%d\t%d\t%d\t%d\t%d\t%d\t%d\n", imu_data.ax, imu_data.ay, imu_data.az, imu_data.temp, imu_data.gx, imu_data.gy, imu_data.gz);
 			}
 		}
+		*/
   }
 }

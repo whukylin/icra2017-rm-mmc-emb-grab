@@ -37,6 +37,8 @@ void KOS_Boot(void)
 	// BSP configuration
 	Bsp_Config();
 	
+	ZGYRO_RST();
+	
 	// Action initialization
 	Act_Init();
 	

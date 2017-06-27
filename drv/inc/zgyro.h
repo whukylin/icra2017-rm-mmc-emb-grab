@@ -14,8 +14,8 @@
  * limitations under the License.
  */
  
-#ifndef __MOTOR_H__
-#define __MOTOR_H__
+#ifndef __ZGYRO_H__
+#define __ZGYRO_H__
 
 #ifdef __cplusplus
 extern "C" {
