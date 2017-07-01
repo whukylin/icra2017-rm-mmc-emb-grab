@@ -31,8 +31,6 @@ extern "C" {
 #define PI 3.1415926f
 #define DEG2RAD_RECIP 7.669904e-4f
 #define MAP(val,min1,max1,min2,max2) ((val-min1)*(max2-min2)/(max1-min1)+min2)
-#define MIN(V1,V2) (V1<V2?V1:V2)
-#define MAX(V1,V2) (V1>V2?V1:V2)
 #define LIMIT_MAX(V,M) do { if (V > M) V = M; } while (0)
 #define LIMIT_MIN(V,M) do { if (V < M) V = M; } while (0)
 #define LIMIT(X,MIN,MAX) do { X = X > MAX ? MAX : X < MIN ? MIN : X; } while(0)

@@ -18,6 +18,9 @@
 #define __MAIN_H__
 
 #include "kos.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
 
 #endif 
 

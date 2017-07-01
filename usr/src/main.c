@@ -16,11 +16,58 @@
  
 #include "main.h"
 
+static void vLedThreadFun(void* pvParam)
+{
+	while (1) {
+		LED_GREEN_TOG();
+		vTaskDelay(500);
+	}
+}
+
+static void vSrsThreadFun(void* pvParam)
+{
+	while (1) {
+		Srs_Proc();
+		//vTaskDelay(2);
+	}
+}
+
+static void vDnlThreadFun(void* pvParam)
+{
+	while (1) {
+		//Dnl_Proc();
+		vTaskDelay(1000);
+	}
+}
+
+static void vUplThreadFun(void* pvParam)
+{
+	while (1) {
+		Upl_Proc();
+		vTaskDelay(10);
+	}
+}
+
+static TaskHandle_t xLedTaskHandle = NULL;
+static TaskHandle_t xSrsTaskHandle = NULL;
+static TaskHandle_t xDnlTaskHandle = NULL;
+static TaskHandle_t xUplTaskHandle = NULL;
+
+static void vAppTaskCreate(void)
+{
+	xTaskCreate(vLedThreadFun, "vLedThreadFun", 512, NULL, 1, &xLedTaskHandle);
+	xTaskCreate(vSrsThreadFun, "vSrsThreadFun", 512, NULL, 2, &xSrsTaskHandle);
+	//xTaskCreate(vDnlThreadFun, "vDnlThreadFun", 512, NULL, 2, &xDnlTaskHandle);
+	xTaskCreate(vUplThreadFun, "vUplThreadFun", 512, NULL, 2, &xUplTaskHandle);
+}
+
 //MPU_Data_t imu_data;
 
 //static uint32_t last_time = 0;
 int main()
 {
+	//__set_PRIMASK(1); // Close global interrupt
+	
 	// Boot KOS
 	KOS_Boot();
 	
@@ -31,20 +78,23 @@ int main()
 	// Stop startup music
 	Snd_Stop();
 	
+	vAppTaskCreate();
+	vTaskStartScheduler();
+	
 	while(1)
 	{
-		Srs_Proc();
-		Dnl_Proc();
-		if (Clk_GetUsTick() % 2000 == 0) {
-			Upl_Proc();
-		}
+		//Srs_Proc();
+		//Dnl_Proc();
+		//if (Clk_GetUsTick() % 2000 == 0) {
+		//	Upl_Proc();
+		//}
 		
 		
 		//if (Clk_GetUsTick() % 2000 == 0) {
 			//printf("m:\t%f\t%f\t%f\t%f\n", odo.mp.w1, odo.mp.w2, odo.mp.w3, odo.mp.w4);
 			//printf("m:\t%d\t%d\t%d\t%d\n", motor[0].angle_filtered, motor[1].angle_filtered, motor[2].angle_filtered, motor[3].angle_filtered);
 			//printf("m:\t%f\t%f\t%f\t%f\n", motor[0].angle_rad, motor[1].angle_rad, motor[2].angle_rad, motor[3].angle_rad);
-			//rintf("m1: %d\t%d\t%d\n", motor[0].rate_raw, motor[0].rate_filtered, motor[0].rate_filtered - motor[0].rate_raw);
+			//printf("m1: %d\t%d\t%d\n", motor[0].rate_raw, motor[0].rate_filtered, motor[0].rate_filtered - motor[0].rate_raw);
 			//Dbg_Cfg();
 			//printf("ex:\t%f\t%f\t%f\n", cmd.cp.x, odo.cp.x, (cmd.cp.x - odo.cp.x));
 			//printf("ey:\t%f\t%f\t%f\n", cmd.cp.y, odo.cp.y, (cmd.cp.y - odo.cp.y));
@@ -61,3 +111,4 @@ int main()
 		
   }
 }
+

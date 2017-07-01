@@ -115,3 +115,14 @@
 .\objects\main.o: ..\..\app\inc\snd.h
 .\objects\main.o: ..\..\app\inc\upd.h
 .\objects\main.o: ..\..\kos\inc\sch.h
+.\objects\main.o: ..\..\rtx\inc\FreeRTOS.h
+.\objects\main.o: D:\Program Files (x86)\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\main.o: ..\..\rtx\inc\FreeRTOSConfig.h
+.\objects\main.o: ..\..\rtx\inc\projdefs.h
+.\objects\main.o: ..\..\rtx\inc\portable.h
+.\objects\main.o: ..\..\rtx\inc\deprecated_definitions.h
+.\objects\main.o: ..\..\rtx\inc\arm\portmacro.h
+.\objects\main.o: ..\..\rtx\inc\mpu_wrappers.h
+.\objects\main.o: ..\..\rtx\inc\task.h
+.\objects\main.o: ..\..\rtx\inc\list.h
+.\objects\main.o: ..\..\rtx\inc\queue.h

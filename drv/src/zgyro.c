@@ -18,23 +18,23 @@
 
 void ZGyro_RST(CAN_TypeDef* CANx)
 {
-    CanTxMsg tx_message;
+    CanTxMsg msg;
     
-    tx_message.StdId = ZGYRO_CMD_CAN_MSG_ID;
-    tx_message.IDE = CAN_Id_Standard;
-    tx_message.RTR = CAN_RTR_Data;
-    tx_message.DLC = 0x08;
+    msg.StdId = ZGYRO_CMD_CAN_MSG_ID;
+    msg.IDE = CAN_Id_Standard;
+    msg.RTR = CAN_RTR_Data;
+    msg.DLC = 0x08;
     
-    tx_message.Data[0] = 0x00;
-    tx_message.Data[1] = 0x01;
-    tx_message.Data[2] = 0x02;
-    tx_message.Data[3] = 0x03;
-    tx_message.Data[4] = 0x04;
-    tx_message.Data[5] = 0x05;
-    tx_message.Data[6] = 0x06;
-    tx_message.Data[7] = 0x07;
+    msg.Data[0] = 0x00;
+    msg.Data[1] = 0x01;
+    msg.Data[2] = 0x02;
+    msg.Data[3] = 0x03;
+    msg.Data[4] = 0x04;
+    msg.Data[5] = 0x05;
+    msg.Data[6] = 0x06;
+    msg.Data[7] = 0x07;
     
-    CAN_Transmit(CANx, &tx_message);
+    CAN_Transmit(CANx, &msg);
 }
 
 
