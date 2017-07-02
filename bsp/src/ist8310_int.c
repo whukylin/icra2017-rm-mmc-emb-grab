@@ -16,6 +16,8 @@
 
 #include "ist8310_int.h"
 
+uint8_t IST8310_INT_Flag = 0;
+
 static void IST8310_INT_Handler(uint8_t num)
 {
 	IST8310_INT_Flag = 1;

@@ -18,5 +18,5 @@
 
 void IST8310_Config(void)
 {
-	//while (!IST8310_Init());
+	while (!IST8310_Init());
 }

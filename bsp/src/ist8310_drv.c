@@ -16,7 +16,7 @@
 
 #include "ist8310_drv.h"
 
-uint8_t IST8310_AuxSlvCfg(void) {
+uint8_t IST8310_AuxCfg(void) {
 	uint8_t flag = 0;
 
 	flag = IST8310_I2C_MASTER_WRITE(MPU6500_I2C_SLV1_ADDR, IST8310_ADDRESS);
@@ -95,7 +95,7 @@ uint8_t IST8310_Init(void) {
 	flag = IST8310_I2C_Write_Reg(IST8310_R_CONFB, 0x01);
 	RETURN_ZERO_IF_ASSERT_FAILED(flag);
 
-	IST8310_I2C_DELAY(50);
+	IST8310_I2C_DELAY(10);
 
 	flag = IST8310_I2C_Read_Reg(IST8310_WHO_AM_I, &data);
 	flag &= (data == IST8310_DEVICE_ID_A);
@@ -149,11 +149,22 @@ uint8_t IST8310_Init(void) {
 
 	IST8310_I2C_DELAY(10);
 
-	flag = IST8310_AuxSlvCfg();
+	flag = IST8310_AuxCfg();
 	RETURN_ZERO_IF_ASSERT_FAILED(flag);
 
-	IST8310_I2C_DELAY(100);
+	IST8310_I2C_DELAY(10);
 
-	return 0;
+	return flag;
+}
+
+uint8_t IST8310_Read(uint8_t* buf)
+{
+	uint8_t i = 0, flag = 0;
+	for (i = 0; i < IST8310_BUF_SIZE; i++) {
+		flag = IST8310_I2C_MASTER_READ(IST8310_R_XL + i, buf + i);
+		RETURN_ZERO_IF_ASSERT_FAILED(flag);
+		IST8310_I2C_DELAY(2);
+	}
+	return 1;
 }
 

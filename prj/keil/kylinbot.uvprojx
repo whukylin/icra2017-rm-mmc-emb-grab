@@ -1095,6 +1095,21 @@
               <FilePath>..\..\bsp\inc\ist8310.h</FilePath>
             </File>
             <File>
+              <FileName>ist8310_drv.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\bsp\inc\ist8310_drv.h</FilePath>
+            </File>
+            <File>
+              <FileName>ist8310_i2c.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\bsp\inc\ist8310_i2c.h</FilePath>
+            </File>
+            <File>
+              <FileName>ist8310_int.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\bsp\inc\ist8310_int.h</FilePath>
+            </File>
+            <File>
               <FileName>key.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\bsp\inc\key.h</FilePath>
@@ -1208,6 +1223,21 @@
               <FileName>ist8310.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\bsp\src\ist8310.c</FilePath>
+            </File>
+            <File>
+              <FileName>ist8310_drv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\bsp\src\ist8310_drv.c</FilePath>
+            </File>
+            <File>
+              <FileName>ist8310_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\bsp\src\ist8310_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>ist8310_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\bsp\src\ist8310_int.c</FilePath>
             </File>
             <File>
               <FileName>key.c</FileName>

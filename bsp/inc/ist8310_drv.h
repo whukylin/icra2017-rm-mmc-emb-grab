@@ -39,8 +39,11 @@
 
 #define IST8310_ODR_MODE          0x01
 
-uint8_t IST8310_AuxSlvCfg(void);
+#define IST8310_BUF_SIZE 6
+
+uint8_t IST8310_AuxCfg(void);
 uint8_t IST8310_Init(void);
+uint8_t IST8310_Read(uint8_t* buf);
 
 #endif
 

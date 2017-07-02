@@ -130,26 +130,14 @@ extern "C" {
 
 #define MPU_IIC_ADDR								(0x68)
 
-typedef struct
-{
-	int16_t ax;
-	int16_t ay;
-	int16_t az;
-	int16_t temp;
-	int16_t gx;
-	int16_t gy;
-	int16_t gz;
-	int16_t mx;
-	int16_t my;
-	int16_t mz;
-}MPU_Data_t;
-
-#define MPU6500_DATA_SIZE 20 //sizeof(MPU_Data_t) //14
+#define MPU6500_BUF_SIZE 16
 
 uint8_t MPU6500_CheckDevice(void);
 uint8_t MPU6500_Init(void);
+uint8_t MPU6500_Set_Accel_Fsr(uint8_t fsr);
+uint8_t MPU6500_Set_Gyro_Fsr(uint8_t fsr);
 uint8_t MPU6500_INT_Enable(void);
-uint8_t MPU6500_Read(MPU_Data_t* data);
+uint8_t MPU6500_Read(uint8_t* buf);
 
 #ifdef __cplusplus
 }

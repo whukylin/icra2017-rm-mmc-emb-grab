@@ -4,6 +4,6 @@
     <name>STM32F427</name>
     <mcuId>stm32f427iihx</mcuId>
     <dbgIF>SWD</dbgIF>
-    <dbgDEV>ST-LinkV2</dbgDEV>
+    <dbgDEV>ST-Link</dbgDEV>
   </board>
 </targetDefinitions>
