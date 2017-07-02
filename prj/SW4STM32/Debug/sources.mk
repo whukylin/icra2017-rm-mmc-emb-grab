@@ -18,9 +18,15 @@ SUBDIRS := \
 app/src \
 asp/src \
 bsp/src \
+drv/src \
+hal/src \
+kos/src \
+rtx/src \
+rtx/src/gcc \
+src \
 srv/src \
 stl/StdPeriph_Driver/src \
-stl \
-. \
+stl/src/gcc \
+stl/src \
 usr/src \
 

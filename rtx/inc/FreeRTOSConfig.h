@@ -90,6 +90,9 @@
 #elif defined (__ICCARM__)
 	#include <stdint.h>
 	extern uint32_t SystemCoreClock;
+#elif defined (__GNUC__)
+	#include <stdint.h>
+	extern uint32_t SystemCoreClock;
 #endif
 
 #define configUSE_PREEMPTION			1

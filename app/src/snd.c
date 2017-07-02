@@ -17,21 +17,21 @@
 #include "snd.h"
 
 static SndState_t state = SND_STATE_STOP;
-static uint32_t index = 0;
+static uint32_t idx = 0;
 static uint32_t lastSingTick = 0;
 
 void Snd_Init(void)
 {
 	state = SND_STATE_STOP;
-	index = 0;
+	idx = 0;
 }
 
 void Snd_Proc(void)
 {
 	if (state == SND_STATE_PLAY) {
 		if (Clk_GetMsTick() > lastSingTick) {
-			Beep_SingStartupMusic(index++);
-			if (index >= BEEP_START_UP_MUSIC_LEN) index = 0;
+			Beep_SingStartupMusic(idx++);
+			if (idx >= BEEP_START_UP_MUSIC_LEN) idx = 0;
 			lastSingTick = Clk_GetMsTick();
 		}
 	} else {

@@ -27,8 +27,8 @@ static void vLedThreadFun(void* pvParam)
 static void vSrsThreadFun(void* pvParam)
 {
 	while (1) {
-		Srs_Proc();
-		//vTaskDelay(2);
+		//Srs_Proc();
+		vTaskDelay(2000);
 	}
 }
 
@@ -36,15 +36,23 @@ static void vDnlThreadFun(void* pvParam)
 {
 	while (1) {
 		//Dnl_Proc();
-		vTaskDelay(1000);
+		vTaskDelay(10000);
 	}
 }
 
 static void vUplThreadFun(void* pvParam)
 {
 	while (1) {
-		Upl_Proc();
-		vTaskDelay(10);
+		//Upl_Proc();
+		vTaskDelay(10000);
+	}
+}
+
+static void vDbgThreadFun(void* pvParam)
+{
+	while (1) {
+		dbi.Print("Hello, Jack\r\n");
+		vTaskDelay(1000);
 	}
 }
 
@@ -52,13 +60,15 @@ static TaskHandle_t xLedTaskHandle = NULL;
 static TaskHandle_t xSrsTaskHandle = NULL;
 static TaskHandle_t xDnlTaskHandle = NULL;
 static TaskHandle_t xUplTaskHandle = NULL;
+static TaskHandle_t xDbgTaskHandle = NULL;
 
 static void vAppTaskCreate(void)
 {
-	xTaskCreate(vLedThreadFun, "vLedThreadFun", 512, NULL, 1, &xLedTaskHandle);
-	xTaskCreate(vSrsThreadFun, "vSrsThreadFun", 512, NULL, 2, &xSrsTaskHandle);
-	//xTaskCreate(vDnlThreadFun, "vDnlThreadFun", 512, NULL, 2, &xDnlTaskHandle);
-	xTaskCreate(vUplThreadFun, "vUplThreadFun", 512, NULL, 2, &xUplTaskHandle);
+	xTaskCreate(vLedThreadFun, "vLedThreadFun", 512, NULL, 3, &xLedTaskHandle);
+	xTaskCreate(vSrsThreadFun, "vSrsThreadFun", 512, NULL, 3, &xSrsTaskHandle);
+	xTaskCreate(vDnlThreadFun, "vDnlThreadFun", 512, NULL, 3, &xDnlTaskHandle);
+	xTaskCreate(vUplThreadFun, "vUplThreadFun", 512, NULL, 3, &xUplTaskHandle);
+	xTaskCreate(vDbgThreadFun, "vDbgThreadFun", 512, NULL, 3, &xDbgTaskHandle);
 }
 
 //MPU_Data_t imu_data;
@@ -74,7 +84,7 @@ int main()
 	// Play startup music
 	Snd_Play();
 	// Wait for startup music
-	Delay_Ms(1000);
+	Delay_Ms(350);
 	// Stop startup music
 	Snd_Stop();
 	

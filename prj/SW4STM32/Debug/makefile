@@ -9,9 +9,16 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include usr/src/subdir.mk
+-include stl/src/gcc/subdir.mk
+-include stl/src/subdir.mk
 -include stl/StdPeriph_Driver/src/subdir.mk
--include stl/subdir.mk
 -include srv/src/subdir.mk
+-include src/subdir.mk
+-include rtx/src/gcc/subdir.mk
+-include rtx/src/subdir.mk
+-include kos/src/subdir.mk
+-include hal/src/subdir.mk
+-include drv/src/subdir.mk
 -include bsp/src/subdir.mk
 -include asp/src/subdir.mk
 -include app/src/subdir.mk
@@ -35,10 +42,10 @@ endif
 all: kylinbot.elf
 
 # Tool invocations
-kylinbot.elf: $(OBJS) $(USER_OBJS)
+kylinbot.elf: $(OBJS) $(USER_OBJS) /home/bj/workspace/eclipse/stm32/icra2017rm-mmc-emb/prj/SW4STM32/LinkerScript.ld
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU GCC Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"/home/bj/workspace/eclipse/stm32/kylinbot/prj/SW4STM32/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "kylinbot.elf" @"objects.list" $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"/home/bj/workspace/eclipse/stm32/icra2017rm-mmc-emb/prj/SW4STM32/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "kylinbot.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build

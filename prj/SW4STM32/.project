@@ -41,6 +41,26 @@
 			<locationURI>PARENT-2-PROJECT_LOC/bsp</locationURI>
 		</link>
 		<link>
+			<name>drv</name>
+			<type>2</type>
+			<locationURI>PARENT-2-PROJECT_LOC/drv</locationURI>
+		</link>
+		<link>
+			<name>hal</name>
+			<type>2</type>
+			<locationURI>PARENT-2-PROJECT_LOC/hal</locationURI>
+		</link>
+		<link>
+			<name>kos</name>
+			<type>2</type>
+			<locationURI>PARENT-2-PROJECT_LOC/kos</locationURI>
+		</link>
+		<link>
+			<name>rtx</name>
+			<type>2</type>
+			<locationURI>PARENT-2-PROJECT_LOC/rtx</locationURI>
+		</link>
+		<link>
 			<name>srv</name>
 			<type>2</type>
 			<locationURI>PARENT-2-PROJECT_LOC/srv</locationURI>

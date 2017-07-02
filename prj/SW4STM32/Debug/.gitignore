@@ -9,3 +9,8 @@
 /stl/
 /subdir.mk
 /usr/
+/rtx/
+/src/
+/drv/
+/hal/
+/kos/
