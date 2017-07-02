@@ -36,6 +36,8 @@ uint32_t Clk_GetUsTick(void);
 uint32_t Clk_GetMsTick(void);
 uint32_t Clk_GetScTick(void);
 
+void Clk_DelayUs(uint32_t t);
+
 #ifdef __cpluplus
 }
 #endif

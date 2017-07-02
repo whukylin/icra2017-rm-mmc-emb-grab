@@ -14,17 +14,14 @@
  * limitations under the License.
  */
 
-#include "mpu6500_int.h"
+#include "ist8310_int.h"
 
-uint8_t MPU6500_INT_Flag = 0;
-
-static void MPU6500_INT_Handler(uint8_t num)
+static void IST8310_INT_Handler(uint8_t num)
 {
-	MPU6500_INT_Flag = 1;
+	IST8310_INT_Flag = 1;
 }
 
-void MPU6500_INT_Config(void)
+void IST8310_INT_Config(void)
 {
-    EXTI_Bind(MPU6500_INT_PIN, MPU6500_NVIC_PRE_PRIORITY, MPU6500_NVIC_SUB_PRIORITY, EXTI_Trigger_Falling, MPU6500_INT_Handler);
+    EXTI_Bind(IST8310_INT_PIN, IST8310_NVIC_PRE_PRIORITY, IST8310_NVIC_SUB_PRIORITY, EXTI_Trigger_Falling, IST8310_INT_Handler);
 }
-

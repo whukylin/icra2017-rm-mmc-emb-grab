@@ -35,6 +35,7 @@ void Bsp_Config(void)
 	SR04_Config();
 	Spi5_Config();
 	MPU6500_Config();
+	IST8310_Config();
 	LED_GREEN_ON();
 }
 

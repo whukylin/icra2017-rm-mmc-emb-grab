@@ -28,7 +28,7 @@ static void vSrsThreadFun(void* pvParam)
 {
 	while (1) {
 		//Srs_Proc();
-		vTaskDelay(2000);
+		vTaskDelay(20000);
 	}
 }
 
@@ -50,9 +50,25 @@ static void vUplThreadFun(void* pvParam)
 
 static void vDbgThreadFun(void* pvParam)
 {
+	//static uint32_t tick = 0;
 	while (1) {
-		dbi.Print("Hello, Jack\r\n");
-		vTaskDelay(1000);
+		//dbi.Print("Hello, Jack\r\n");
+		//printf("Hello, Jack -> %d\r\n", ++tick);
+		vTaskDelay(10000);
+	}
+}
+
+static void vImuThreadFun(void* pvParam)
+{
+	static uint32_t last_tick = 0;
+	static MPU_Data_t imu_data;
+	while (1) {
+		if (Clk_GetUsTick() - last_tick > 1e4) {
+			last_tick = Clk_GetUsTick();
+			if (MPU6500_Read(&imu_data)) {
+				printf("%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\r\n", imu_data.ax, imu_data.ay, imu_data.az, imu_data.temp, imu_data.gx, imu_data.gy, imu_data.gz, imu_data.mx, imu_data.my, imu_data.mz);
+			}
+		}
 	}
 }
 
@@ -61,6 +77,7 @@ static TaskHandle_t xSrsTaskHandle = NULL;
 static TaskHandle_t xDnlTaskHandle = NULL;
 static TaskHandle_t xUplTaskHandle = NULL;
 static TaskHandle_t xDbgTaskHandle = NULL;
+static TaskHandle_t xImuTaskHandle = NULL;
 
 static void vAppTaskCreate(void)
 {
@@ -69,6 +86,7 @@ static void vAppTaskCreate(void)
 	xTaskCreate(vDnlThreadFun, "vDnlThreadFun", 512, NULL, 3, &xDnlTaskHandle);
 	xTaskCreate(vUplThreadFun, "vUplThreadFun", 512, NULL, 3, &xUplTaskHandle);
 	xTaskCreate(vDbgThreadFun, "vDbgThreadFun", 512, NULL, 3, &xDbgTaskHandle);
+	xTaskCreate(vImuThreadFun, "vImuThreadFun", 512, NULL, 3, &xImuTaskHandle);
 }
 
 //MPU_Data_t imu_data;
@@ -83,8 +101,13 @@ int main()
 	
 	// Play startup music
 	Snd_Play();
+
 	// Wait for startup music
-	Delay_Ms(350);
+	//Delay_Ms(350);
+	//Delay_Ms(1000);
+
+	Clk_DelayUs(7e5); // For more precise delay (us)
+
 	// Stop startup music
 	Snd_Stop();
 	

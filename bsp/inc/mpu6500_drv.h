@@ -22,6 +22,7 @@ extern "C" {
 #endif
 
 #include "mpu6500_spi.h"
+#include "ist8310.h"
 
 #define MPU6500_SELF_TEST_XG        (0x00)
 #define MPU6500_SELF_TEST_YG        (0x01)
@@ -138,9 +139,12 @@ typedef struct
 	int16_t gx;
 	int16_t gy;
 	int16_t gz;
+	int16_t mx;
+	int16_t my;
+	int16_t mz;
 }MPU_Data_t;
 
-#define MPU6500_DATA_SIZE 14
+#define MPU6500_DATA_SIZE 20 //sizeof(MPU_Data_t) //14
 
 uint8_t MPU6500_CheckDevice(void);
 uint8_t MPU6500_Init(void);

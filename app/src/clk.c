@@ -67,4 +67,19 @@ uint32_t Clk_GetScTick(void)
 	return TICK_TIM->CNT / 1000000;
 }
 
+void Clk_DelayUs(uint32_t t)
+{
+	uint32_t last_tick = TICK_TIM->CNT;
+	uint32_t this_tick = TICK_TIM->CNT;
+	uint32_t delt_tick = this_tick - last_tick;
+	while (delt_tick < t) {
+		this_tick = TICK_TIM->CNT;
+		if (this_tick < last_tick) {
+			delt_tick = 0xffffffff - last_tick + this_tick;
+		} else {
+			delt_tick = this_tick - last_tick;
+		}
+	}
+}
+
 
